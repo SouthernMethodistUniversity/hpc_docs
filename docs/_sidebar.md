@@ -1,7 +1,7 @@
 - [Home](/)
 - **Introduction**
   - [Clusters](/introduction/clusters)
-  - [Accounts](/introduction/introduction)
+  - [Accounts](/introduction/accounts)
   - [Usage](/introduction/usage)
   - [Need Help?](/services/help)
 
@@ -11,6 +11,7 @@
 
 - **Policies**
   - [Citizenship](/policies/citizenship)
+  - [Accounts](/policies/accounts)
 
 - **Services**
   - [Help](/services/help)
