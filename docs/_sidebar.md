@@ -18,4 +18,3 @@
   - [Workhops](/services/workshops)
   - [Projects](/services/projects)
   - [Grant Support](/services/grants)
-

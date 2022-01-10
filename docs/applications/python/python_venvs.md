@@ -19,11 +19,13 @@ The general workflow is to do the following:
 
 In more detail, we first load the version of _Python_ that we'd like to
 use. (NOTE: ```venv``` requires _Python >= 3.3_). You can see which versions
-of _Python_ are installed with
+of _Python_ are installed with the command
 
 ```bash
 module avail python
 ```
+
+from a terminal. You can access a terminal by logging into the system using SSH or by accessing the shell from Clusters menu at the top of the OnDemand portal at hpc.smu.edu.
 
 The _Intel_ compiler suites also include a version of _Python_ and may not show up in the ```module avail``` search.
 
@@ -192,6 +194,11 @@ source $HOME/my_python_env/bin/activate;
 
 This should come after the ```#SBATCH``` directives and after any modules you load, but before you run your application.
 
+## Tips
+
+- It is good practice to use a unique virtual environment for each project.
+- If you need to update a package inside an environment, it is a good idea to build a new, clean environment with that update to avoid potential dependency problems that may arise.
+- Choose meaningful names and/or organize environments into project folders. No one will remember when ```env3``` contains or was used for 6 months from now.
 
 ## Additional Resources
 
