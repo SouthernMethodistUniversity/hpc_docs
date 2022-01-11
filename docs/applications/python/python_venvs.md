@@ -172,7 +172,7 @@ source $HOME/my_python_env/bin/activate
 
 to the ```Custom environment settings``` field on the portal. It should look like:
 
-![Image of activation command in the custom environment settings field of the hpc portal](images/venv_python_activation_portal.png "Portal Activation Example")
+![Image of activation command in the custom environment settings field of the hpc portal](images/venv_python_activation_portal.png  "Portal Activation Example")
 
 ### Interactively from the terminal
 
@@ -189,7 +189,7 @@ in the terminal before running any commands.
 If you are running programs using _SBatch_ scripts, you should include the activation command in your script:
 
 ```bash
-source $HOME/my_python_env/bin/activate;
+source $HOME/my_python_env/bin/activate
 ```
 
 This should come after the ```#SBATCH``` directives and after any modules you load, but before you run your application.
@@ -202,5 +202,5 @@ This should come after the ```#SBATCH``` directives and after any modules you lo
 
 ## Additional Resources
 
-* [virtualenv documentation](https://virtualenv.pypa.io/en/latest/index.html)
-* [venv documentation](https://docs.python.org/3/library/venv.html)
+- [virtualenv documentation](https://virtualenv.pypa.io/en/latest/index.html)
+- [venv documentation](https://docs.python.org/3/library/venv.html)
