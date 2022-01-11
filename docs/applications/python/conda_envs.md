@@ -107,6 +107,8 @@ pip freeze > requirements.txt
 
 from inside the environment, which will generate a list of all the packages that were installed using ```pip```.
 
+This can make it easier to set up environments on different systems or for recording your environment for publications. Note: not all packages are available on all systems so this may not work if you are moving from a Linux machine to a Windows machine, for example. However, it is still useful as a starting place for setting up environments as similarly as possible.
+
 ## Using virtual environments
 
 To use virtual environments, we just need to load them before running our programs. This looks a bit different depending on how you are running.

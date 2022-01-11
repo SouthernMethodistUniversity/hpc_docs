@@ -1,6 +1,6 @@
 # Python
 
-## Installing Python Packages
+## Installing Python Packages  {docsify-ignore}
 
 Users who require Python packages that are not currently installed on M2
 are encouraged to utilize custom virtual environments. Virtual environments
@@ -16,7 +16,7 @@ There are benefits and downsides to each of the methods, but with a few exceptio
 
 One of the notable exceptions occurs when using ```mpi4py```. In this case, the performance can be severely impacted by using _Conda_, especially for communication heavy applications. See the[instructions for mpi4py](applications/python/python_venvs) for more details.
 
-## Instructions for setting up virtual environments
+## Instructions for setting up virtual environments  {docsify-ignore}
 
 We encourage users to try setting up environments using the following methods and choose the one that they are most comfortable with.
 
@@ -24,7 +24,7 @@ Instructions for [Python virtual environments](applications/python/python_venvs)
 
 Instructions for [Conda virtual environments for Python](applications/python/conda_envs)
 
-## Example Environments
+## Example Environments  {docsify-ignore}
 
 In addition to the instructions above, the following environments represent some of the common usages we see from users. These might not be exactly what you need, but hopefully they provide a good starting place.
 
