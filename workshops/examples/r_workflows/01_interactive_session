@@ -1,0 +1,3 @@
+module load r/4.0.2
+srun -p htc --mem=6G --pty $SHELL
+

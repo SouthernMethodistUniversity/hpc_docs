@@ -1,0 +1,350 @@
+\documentclass[aspectratio=169]{beamer}
+   \usetheme{metropolis}
+   \setbeamertemplate{blocks}[rounded][shadow=false]
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{dcolumn}
+   \newcolumntype{d}[1]{D{.}{.}{#1}}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{color}
+\usepackage{textpos}
+\usepackage{etoolbox}
+\usepackage[super]{nth}
+\usepackage[cache=false]{minted}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+\definecolor{smured}{rgb}{0.797,0,0.027}
+\definecolor{smublue}{RGB}{48,64,116}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{text_gray}{RGB}{46,58,62}
+
+\setbeamercolor{progress bar}{fg=smured,bg=smublue}
+\setbeamercolor{title separator}{fg=smublue}
+\setbeamercolor{frametitle}{bg=smublue}
+
+\metroset{
+  numbering=fraction
+}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=text_gray,
+  urlcolor=smured,
+}
+
+\addtobeamertemplate{frametitle}{}{
+\begin{textblock*}{1cm}(\textwidth,-1.155cm)
+\includegraphics[width=1cm]{figures/smu_logo.pdf}
+\end{textblock*}}
+
+\setminted{breaklines,linenos,fontsize=\scriptsize}
+\setmintedinline{fontsize=auto}
+
+\title{Introduction to Standard C++ Parallel Algorithms}
+\author{Robert Kalescky\\ HPC Applications Scientist}
+\institute{
+Research and Data Sciences Services\\
+Office of Information Technology\\
+Center for Research Computing\\
+Southern Methodist University}
+\date{April 28, 2021}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\footnotesize
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\input{introduction.tex}
+
+\section{C++ Parallel Algorithms}
+
+%\begin{frame}{}
+%\begin{itemize}
+%  \item 
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{C++ Parallel Algorithms}
+\begin{itemize}
+  \item C++17 introductions high-level parallel versions of many algorithms
+        found in the Standard Template Library
+  \item Several new algorithms were included specifically to aid in using the
+        new parallel algorithms, \textit{e.g.} \mintinline{c++}{std::reduce} and
+        \mintinline{c++}{std::transform_reduce}
+  \item Each parallel algorithm has an execution policy that defines how the
+        algorithm is parallelized
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Execution Policies}
+The C++17 standard defines three execution policies:
+\begin{description}
+  \item[\mintinline{c++}{std::execution::seq}] Sequential execution, \textit{i.e.} no parallelism
+  \item[\mintinline{c++}{std::execution::par}] Parallel execution via one or more threads
+  \item[\mintinline{c++}{std::execution::par_unseq}] Parallel execution via one or more threads with each thread possibly vectorized
+\end{description}
+\end{frame}
+
+\begin{frame}{Parallel Execution}
+When using an execution policy other than \mintinline{c++}{std::execution::seq}:
+\begin{itemize}
+  \item The compiler \textbf{may} execute the algorithm in parallel when possible and advantageous (some conforming C++17 inplementations may ignore the parallelization flag and run via \mintinline{c++}{std::execution::seq})
+  \item It is up to \textbf{you} to make sure that the algorithm and data are safe to be run in parallel
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Additional Resources}
+\begin{itemize}
+  \item \href{https://en.cppreference.com/w/cpp/algorithm}{C++ STL Algorithms Documentation}
+  \item \href{https://docs.nvidia.com/hpc-sdk/compilers/c++-parallel-algorithms/index.html}{NVIDIA HPC SDK Documentation}
+  \item \href{https://livebook.manning.com/book/c-plus-plus-concurrency-in-action-second-edition/chapter-10}{C++ Concurrancy In Action, \nth{2} Edition}
+  \item \href{https://www.youtube.com/watch?v=FJIn1YhPJJc}{CppCon 2018: Bryce Adelstein Lelbach ``The C++ Execution Model''}
+  \item \href{https://developer.download.nvidia.com/video/gputechconf/gtc/2019/presentation/s9770-c++17-parallel-algorithms-for-nvidia-gpus-with-pgi-c++.pdf}{C++17 Parallel Algorithms on NVIDIA GPUs with PGI C++}
+\end{itemize}
+\end{frame}
+
+
+\section{Using oneAPI On ManeFrame II (M2)}
+
+\begin{frame}{Using oneAPI On ManeFrame II (M2)}
+\begin{itemize}
+  \item All Intel oneAPI compilers, libraries, and tools are made availabe on M2 via \mintinline{sh}{module load intel/oneAPI-2021.lua}
+  \item \href{https://github.com/oneapi-src/oneAPI-samples}{Intel oneAPI Toolkit Samples}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Components}
+\begin{figure}
+  \includegraphics[width=0.75\linewidth]{figures/diagram-onapi-base-toolkit-16x9.png}
+  \caption{Components of the oneAPI 2021 base installation.}
+\end{figure}
+\end{frame}
+
+\subsection{Compilers}
+
+\begin{frame}{oneAPI DPC++/C++ Compiler}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+  \item Standards-based C++ compiler based on the open source LLVM compiler infrastructure
+  \begin{itemize}
+    \item Full support up through C++17
+    \item Initial support for C++20
+  \end{itemize}
+  \item SYCL compiler
+  \item DPC++ compiler (SYCL with Intel extensions)
+  \item Partial support for OpenMP 4.5 and 5.0 offloading
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/diagram-oneapi-dpc-c-compiler-16x9.png}
+  \caption{oneAPI DPC++ and C++ compiler and runtime.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{oneAPI DPC++ Library}
+\begin{itemize}
+  \item Productivity APIs for heterogeneous computing
+  \item Optimized standards-based and familiar APIs:
+  \begin{itemize}
+    \item C++ STL
+    \item Parallel STL (PSTL)
+    \item Boost.Compute
+    \item Standard SYCL
+  \end{itemize}
+  \item Custom iterators for parallel algorithms
+  \item Use device and host containers to target GPUs and FPGAs or run your code across multi-node CPUs
+\end{itemize}
+\end{frame}
+
+\begin{frame}{oneAPI Threading Building Blocks}
+\begin{itemize}
+  \item Simplifies the work of adding parallelism to complex applications
+  \item Runtime library automatically maps logical parallelism onto threads, making more efficient use of node resources
+  \item Scalable data-parallel programming
+    \begin{itemize}
+    \item Multiple threads to work on different parts of a collection
+    \item Scales well to larger numbers of processors by dividing the collection into smaller pieces
+    \item Program performance increases as processors and accelerators are added
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intel Advisor}
+\begin{itemize}
+  \item Design and analysis tool for achieving high application performance
+  \item Helps identify efficient threading, vectorization, and memory use, and GPU offload
+  \item Supports C, C++, Fortran, DPC++, OpenMP, and Python.
+  \item Intel Advisor features:
+  \begin{itemize}
+    \item Offload Advisor
+    \item Automated Roofline Analysis
+    \item Vectorization Advisor
+    \item Threading Advisor
+    \item Flow Graph Analyzer
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intel VTune Profiler}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+  \item Application performance profiler for CPU, GPU, and FPGA
+  \item Supports DPC++, C, C++, Fortran, OpenCL, Python, assembly, or any combination
+  \item Get coarse-grained system data for an extended period or detailed results mapped to source code.
+  \item Low system overhead
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/diagram-vtune-bigpicture-16x9.png}
+  \caption{Intel VTune Profiler overview.}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Intel Inspector}
+\begin{itemize}
+  \item Helps find memory errors and nondeterministic threading errors and problems
+  \item Dynamic memory and threading error debugger for C, C++, and Fortran applications
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intel Trace Analyzer and Collector}
+\begin{itemize}
+  \item Profiles and analyzes MPI applications
+  \item Discover temporal dependencies and bottlenecks
+  \item Check the correctness of your application
+  \item Locate potential programming errors, buffer overlaps, and deadlocks
+  \item Visualize and understand parallel application behavior
+  \item Evaluate profiling statistics and load balancing
+  \item Analyze performance of subroutines or code blocks
+  \item Learn about communication patterns, parameters, and performance data
+  \item Identify communication hot spots
+  \item Decrease time to solution and increase application efficiency
+\end{itemize}
+\end{frame}
+
+\subsection{Further Information}
+
+\begin{frame}{Further Information}
+\begin{itemize}
+  \item \href{https://www.oneapi.com}{The oneAPI Specification}
+  \item \href{https://www.apress.com/gp/book/9781484255735}{Data Parallel C++ (Free eBook)}
+  \item \href{https://software.intel.com/content/www/us/en/develop/tools/oneapi/base-toolkit.html}{Intel oneAPI Base Toolkit}
+  \item \href{https://software.intel.com/content/www/us/en/develop/tools/oneapi/hpc-toolkit.html}{Intel oneAPI HPC Toolkit}
+  \item \href{https://github.com/oneapi-src/oneAPI-samples}{Intel oneAPI Toolkit Samples}
+\end{itemize}
+\end{frame}
+
+\section{Using the NVIDIA HPC SDK On ManeFrame II (M2)}
+
+\begin{frame}{Using the NVIDIA HPC SDK On ManeFrame II (M2)}
+\begin{itemize}
+  \item All NVIDIA HPC SDK compilers, libraries, and tools are made availabe on M2 via \mintinline{sh}{module load nvhpc-21.2}
+  \item \href{https://docs.nvidia.com/hpc-sdk/index.html}{NVIDIA HPC SDK Documentation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Components}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/nvhpc_components.png}
+  \caption{Components of the NVIDIA HPC SDK.}
+\end{figure}
+\end{frame}
+
+\subsection{Compilers}
+
+\begin{frame}{NVIDIA HPC SDK Compilers}
+Standards-based compilers based on the open-source LLVM compiler infrastructure.
+\begin{description}
+  \item[nvc] C11 compiler for NVIDIA GPUs and AMD, Intel, OpenPOWER, and Arm CPUs
+  \item[nvc++] C++17 compiler for NVIDIA GPUs and AMD, Intel, OpenPOWER, and Arm CPUs
+  \item[nvfortran] Fortran 2003 compiler with many Fortran 2008 featutres implemented for NVIDIA GPUs and AMD, Intel, OpenPOWER, and Arm CPUs
+  \item[nvcc] CUDA C and CUDA C++ compiler driver for NVIDIA GPUs
+\end{description}
+\end{frame}
+
+\subsection{Parallel Programming Models}
+
+\begin{frame}{Parallel Programming Models}
+\begin{description}
+  \item[C++ -stdpar] C++ 17 Parallel Algorithms introduce parallel and vector concurrency through execution policies
+  \item[OpenACC] OpenACC directives for paralleliziation on CPUs and NVIDIA GPUs
+  \item[OpenMP] OpenMP directives for paralleliziation on CPUs and NVIDIA GPUs
+  \item[CUDA] C, C++, and Fortran varients of CUDA for parallelization on NVIDIA GPUs
+\end{description}
+\end{frame}
+
+\begin{frame}{Parallel Programming Models}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/use_gpu.png}
+  \caption{Parallel Programming Models}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Parallel Programming Models}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/parallel.png}
+  \caption{Parallel Programming Models}
+\end{figure}
+\end{frame}
+
+\begin{frame}{C++ Standard Parallel Algorithms (stdpar)}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/cpp.png}
+  \caption{Communications Libraries}
+\end{figure}
+\end{frame}
+
+\begin{frame}{C++ Standard Parallel Algorithms (stdpar)}
+\begin{figure}
+  \includegraphics[height=0.75\textheight]{figures/cpp_1.png}
+  \caption{Communications Libraries}
+\end{figure}
+\end{frame}
+
+\subsection{Tools}
+
+\begin{frame}{Tools}
+\begin{description}
+  \item[CUDA-GDB] Debugging CUDA applications.
+  \item[Nsight Compute] Interactive kernel profiler for CUDA applications
+  \item[Nsight System] System-wide performance analysis tool designed to visualize application algorithms
+  \item[Compute Sanitizer] Functional correctness checking tools suite
+  \item[NVTX] API for annotating application events, code ranges, and resources for use with Nsight
+\end{description}
+\end{frame}
+
+\section{Example}
+
+\begin{frame}{LULESH}
+\begin{listing}[H]
+\inputminted[firstline=3,firstnumber=1]{bash}{examples/stdpar/lulesh.sh}
+\caption{Commands to build and run LULESH on ManeFrame II (M2).}
+\end{listing}
+\end{frame}
+
+\input{conclusion.tex}
+
+\end{document}
+

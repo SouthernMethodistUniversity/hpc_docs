@@ -1,0 +1,198 @@
+\documentclass[aspectratio=169]{beamer}
+   \usetheme{metropolis}
+   \setbeamertemplate{blocks}[rounded][shadow=false]
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{dcolumn}
+   \newcolumntype{d}[1]{D{.}{.}{#1}}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{color}
+\usepackage{textpos}
+\usepackage{etoolbox}
+\usepackage[cache=false]{minted}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+\definecolor{smured}{rgb}{0.797,0,0.027}
+\definecolor{smublue}{RGB}{48,64,116}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{text_gray}{RGB}{46,58,62}
+
+\setbeamercolor{progress bar}{fg=smured,bg=smublue}
+\setbeamercolor{title separator}{fg=smublue}
+\setbeamercolor{frametitle}{bg=smublue}
+
+\metroset{
+  numbering=fraction
+}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=text_gray,
+  urlcolor=smured,
+}
+
+\addtobeamertemplate{frametitle}{}{
+\begin{textblock*}{1cm}(\textwidth,-1.155cm)
+\includegraphics[width=1cm]{figures/smu_logo.pdf}
+\end{textblock*}}
+
+\setminted{breaklines,linenos,fontsize=\scriptsize}
+\setmintedinline{fontsize=auto}
+
+\title{NVIDIA HPC SDK Overview}
+\author{Robert Kalescky\\ HPC Applications Scientist}
+\institute{
+Research and Data Sciences Services\\
+Office of Information Technology\\
+Center for Research Computing\\
+Southern Methodist University}
+\date{March 25, 2021}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\footnotesize
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\input{introduction.tex}
+
+\section{Using the NVIDIA HPC SDK On ManeFrame II (M2)}
+
+\begin{frame}{Using the NVIDIA HPC SDK On ManeFrame II (M2)}
+\begin{itemize}
+  \item All NVIDIA HPC SDK compilers, libraries, and tools are made availabe on M2 via \mintinline{sh}{module load nvhpc-21.2}
+  \item \href{https://docs.nvidia.com/hpc-sdk/index.html}{NVIDIA HPC SDK Documentation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Components}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/nvhpc_components.png}
+  \caption{Components of the NVIDIA HPC SDK.}
+\end{figure}
+\end{frame}
+
+\section{Compilers}
+
+\begin{frame}{NVIDIA HPC SDK Compilers}
+Standards-based compilers based on the open-source LLVM compiler infrastructure.
+\begin{description}
+  \item[nvc] C11 compiler for NVIDIA GPUs and AMD, Intel, OpenPOWER, and Arm CPUs
+  \item[nvc++] C++17 compiler for NVIDIA GPUs and AMD, Intel, OpenPOWER, and Arm CPUs
+  \item[nvfortran] Fortran 2003 compiler with many Fortran 2008 featutres implemented for NVIDIA GPUs and AMD, Intel, OpenPOWER, and Arm CPUs
+  \item[nvcc] CUDA C and CUDA C++ compiler driver for NVIDIA GPUs
+\end{description}
+\end{frame}
+
+\section{Parallel Programming Models}
+
+\begin{frame}{Parallel Programming Models}
+\begin{description}
+  \item[C++ -stdpar] C++ 17 Parallel Algorithms introduce parallel and vector concurrency through execution policies
+  \item[OpenACC] OpenACC directives for paralleliziation on CPUs and NVIDIA GPUs
+  \item[OpenMP] OpenMP directives for paralleliziation on CPUs and NVIDIA GPUs
+  \item[CUDA] C, C++, and Fortran varients of CUDA for parallelization on NVIDIA GPUs
+\end{description}
+\end{frame}
+
+\begin{frame}{Parallel Programming Models}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/use_gpu.png}
+  \caption{Parallel Programming Models}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Parallel Programming Models}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/parallel.png}
+  \caption{Parallel Programming Models}
+\end{figure}
+\end{frame}
+
+\begin{frame}{C++ Standard Parallel Algorithms (stdpar)}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/cpp.png}
+  \caption{Communications Libraries}
+\end{figure}
+\end{frame}
+
+\begin{frame}{C++ Standard Parallel Algorithms (stdpar)}
+\begin{figure}
+  \includegraphics[height=0.75\textheight]{figures/cpp_1.png}
+  \caption{Communications Libraries}
+\end{figure}
+\end{frame}
+
+\section{Math Libraries}
+
+\begin{frame}{Math Libraries}
+\begin{description}
+  \item[cuBLAS] GPU-accelerated implementation of the basic linear algebra subroutines (BLAS)
+  \item[cuTENSOR] GPU-accelerated tensor linear algebra library providing tensor contraction, reduction, and elementwise operations
+  \item[cuSPARSE] GPU-accelerated basic linear algebra subroutines for sparse matrices
+  \item[cuSOLVER] GPU-accelerated dense and sparse factorizations, linear solvers, and eigensolvers
+  \item[cuFFT] GPU-accelerated fast Fourier transform (FFT)
+  \item[cuRAND] GPU device side implementation of a random number generator
+\end{description}
+\end{frame}
+
+\begin{frame}{Math Libraries}
+\begin{figure}
+  \includegraphics[height=0.75\textheight]{figures/libraries.png}
+  \caption{Math Libraries}
+\end{figure}
+\end{frame}
+
+\section{Communications Libraries}
+
+\begin{frame}{Communications Libraries}
+\begin{description}
+  \item[MPI] NVIDIA GPU and Infiniband network optimized OpenMPI build
+  \item[NCCL] NVIDIA Collective Communications Library, contains multi-GPU and multi-node collective communication primitives optimized for NVIDIA GPUs
+  \item[NVSHMEM] Implementation of the OpenSHMEM standard highly optimized for NVIDIA GPUs
+\end{description}
+\end{frame}
+
+\begin{frame}{Communications Libraries}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/comm.png}
+  \caption{Communications Libraries}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Communications Libraries}
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/shmem.png}
+  \caption{Communications Libraries}
+\end{figure}
+\end{frame}
+
+\section{Tools}
+
+\begin{frame}{Tools}
+\begin{description}
+  \item[CUDA-GDB] Debugging CUDA applications.
+  \item[Nsight Compute] Interactive kernel profiler for CUDA applications
+  \item[Nsight System] System-wide performance analysis tool designed to visualize application algorithms
+  \item[Compute Sanitizer] Functional correctness checking tools suite
+  \item[NVTX] API for annotating application events, code ranges, and resources for use with Nsight
+\end{description}
+\end{frame}
+
+\input{conclusion.tex}
+
+\end{document}
+

@@ -1,0 +1,16 @@
+Bootstrap: docker                     # Base container source
+From: ubuntu:18.04                    # Base container version
+
+%post                                 # Changes to container
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+apt-get -y install\
+ python3-pip\
+ python3-numpy\
+ python3-pandas
+pip3 install\
+ jupyterlab
+
+%runscript                            # Default container command
+python3
+

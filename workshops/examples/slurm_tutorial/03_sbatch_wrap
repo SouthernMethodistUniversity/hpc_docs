@@ -1,0 +1,1 @@
+sbatch -p htc --mem=6G  --wrap "sleep 30; time python pi_monte_carlo.py 1000"

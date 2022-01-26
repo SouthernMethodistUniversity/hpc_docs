@@ -1,0 +1,3 @@
+module load r/4.0.2
+sbatch -p htc --mem=6G  --wrap "sleep 30; time Rscript pi_monte_carlo_serial.R 1000"
+

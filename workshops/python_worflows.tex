@@ -1,0 +1,268 @@
+\documentclass[aspectratio=169]{beamer}
+   \usetheme{metropolis}
+   \setbeamertemplate{blocks}[rounded][shadow=false]
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{dcolumn}
+   \newcolumntype{d}[1]{D{.}{.}{#1}}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{color}
+\usepackage{textpos}
+\usepackage{etoolbox}
+\usepackage[cache=false]{minted}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+\definecolor{smured}{rgb}{0.797,0,0.027}
+\definecolor{smublue}{RGB}{48,64,116}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{text_gray}{RGB}{46,58,62}
+
+\setbeamercolor{progress bar}{fg=smured,bg=smublue}
+\setbeamercolor{title separator}{fg=smublue}
+\setbeamercolor{frametitle}{bg=smublue}
+
+\metroset{
+  numbering=fraction
+}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=text_gray,
+  urlcolor=smured,
+}
+
+\addtobeamertemplate{frametitle}{}{
+\begin{textblock*}{1cm}(\textwidth,-1.155cm)
+\includegraphics[width=1cm]{figures/smu_logo.pdf}
+\end{textblock*}}
+
+\setminted{breaklines,linenos,fontsize=\scriptsize}
+\setmintedinline{fontsize=auto}
+
+\title[Python]{Python Workflows on ManeFrame II (M2)}
+\author{Robert Kalescky\\ HPC Applications Scientist}
+\institute{
+Research and Data Sciences Services\\
+Office of Information Technology\\
+Center for Research Computing\\
+Southern Methodist University}
+\date{March 18, 2021}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\footnotesize
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\input{introduction.tex}
+
+\section{ManeFrame II (M2) HPC OnDemand Web Portal}
+
+\begin{frame}{ManeFrame II (M2) HPC OnDemand Web Portal}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Provides an integrated single access point for HPC resources on the
+ManeFrame II (M2) supercomputer
+\item Accessing the Portal:
+\begin{itemize}
+\item Access to the HPC portal requires an existing M2 account
+\item Go to \url{hpc.smu.edu}
+\item Sign in using your SMU ID and SMU password
+\end{itemize}
+\item \href{http://faculty.smu.edu/csc/documentation/portal.html}{HPC Portal
+Documentation}
+\item
+\href{http://faculty.smu.edu/csc/documentation/portal.html\#remote-desktop}{HPC
+Portal Walkthrough Video}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth]{figures/portal.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Slurm}
+
+\begin{frame}{Serial Python Script: \(\pi\) Monte Carlo}
+\begin{listing}[H]
+\inputminted{python}{examples/slurm_tutorial/pi_monte_carlo.py}
+\caption{Serial algorithm to estimate the value of Pi.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Parallel Python Script: \(\pi\) Monte Carlo}
+\begin{listing}[H]
+\inputminted{python}{examples/slurm_tutorial/pi_monte_carlo_shared.py}
+\caption{Parallel algorithm to estimate the value of Pi.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Interactive Sessions}
+\begin{listing}[H]
+\inputminted{sh}{examples/slurm_tutorial/01_interactive_session}
+\caption{Using \mintinline{sh}{srun} to log into a compute node to run commands interactively.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Using \mintinline{sh}{srun}}
+\begin{listing}[H]
+\inputminted{sh}{examples/slurm_tutorial/02_srun}
+\caption{Using \mintinline{sh}{srun} to run commands directly on a compute node.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Using \mintinline{sh}{sbatch --wrap}}
+\begin{listing}[H]
+\inputminted{sh}{examples/slurm_tutorial/03_sbatch_wrap}
+\caption{Using \mintinline{sh}{sbatch --wrap} wrap a commands in an \mintinline{sh}{sbatch} script that is then submitted to the queue can run non-interactively.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Using \mintinline{sh}{sbatch}}
+\begin{listing}[H]
+\inputminted{sh}{examples/slurm_tutorial/04_sbatch_htc.sbatch}
+\caption{Using \mintinline{sh}{sbatch} run serial computations via an \mintinline{sh}{sbatch} script.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Using \mintinline{sh}{sbatch}}
+\begin{listing}[H]
+\inputminted{sh}{examples/slurm_tutorial/05_sbatch_standard-mem-s.sbatch}
+\caption{Using \mintinline{sh}{sbatch} run parallel computations via an \mintinline{sh}{sbatch} script.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Using \mintinline{sh}{sbatch --array}}
+\begin{listing}[H]
+\inputminted{sh}{examples/slurm_tutorial/06_sbatch_array.sbatch}
+\caption{Using \mintinline{sh}{sbatch --array} run parallel jobs via a single \mintinline{sh}{sbatch} script.}
+\end{listing}
+\end{frame}
+
+\section{Python Environments}
+
+\begin{frame}{Managing Python Installations}
+\begin{itemize}
+\item Python environments allow users to use specific versions of Python with
+the packages of their choice
+\item The packages can be installed via \mintinline{sh}{conda} or
+\mintinline{sh}{pip}, depending on the type of environment being used
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Anaconda Environments}
+\begin{itemize}
+\item Anaconda environments are managed using \mintinline{sh}{conda}, which is
+available via Anaconda installations such as \mintinline{sh}{python/2} and
+\mintinline{sh}{python/3} on ManeFrame II.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Anaconda Environments Example}
+\begin{listing}[H]
+\inputminted[firstline=3,firstnumber=1]{sh}{examples/conda_environments.sh}
+\caption{A specific version of Python is installed along with the JupyterLab
+package and its dependencies. The new environment is then loaded and then
+unloaded.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Python Virtual Environments}
+\begin{itemize}
+\item Python 3 has native support for managing environments, which can be used
+with any Python 3 installation on ManeFrame II.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Python Virtual Environments Example}
+\begin{listing}[H]
+\inputminted[firstline=3,firstnumber=1]{sh}{examples/python_environments.sh}
+\caption{A specific installation of Python, in this case from Spack, is used
+and then JupyterLab and its dependencies are installed. The new environment is
+then loaded and then unloaded.}
+\end{listing}
+\end{frame}
+
+\section{Containers}
+
+\begin{frame}{Containers Overview}
+\begin{itemize}
+\item Containers offer the ability to run fully customized software stacks,
+e.g.\ based on different Linux distributions and versions
+\item Containers are not virtual machines, where an entire hardware platform is
+virtualized, rather containers share a common kernel and access to physical
+hardware resources
+\item \href{https://www.docker.com}{Docker} is a popular container platform in
+development and server environments
+\item \href{https://sylabs.io}{Singularity} is a popular container platform in
+HPC environments
+\begin{itemize}
+\item Docker is not directly support on ManeFrame II
+\item Singularity can consume and run Docker containers
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Singularity Build Script Example}
+\begin{listing}[H]
+\inputminted{Singularity}{examples/python3.singularity}
+\caption{Example Singularity build file that uses Ubuntu 18.04 and Python3 with
+package installation via \mintinline{sh}{apt} and \mintinline{sh}{pip}.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Building Singularity Container Images}
+\begin{listing}[H]
+\inputminted{sh}{examples/build_python3_singularity.sh}
+\caption{Steps to build a Singularity container image. Note that building
+Singularity container images from build scripts on M2 requires permission.
+Request permission via \href{mailto:help@smu.edu}{help@smu.edu}.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Docker Build Script Example}
+\begin{listing}[H]
+\inputminted{Dockerfile}{examples/python3.dockerfile}
+\caption{Example Dockerfile that uses Ubuntu 18.04 and Python3 with package
+installation via \mintinline{sh}{apt} and \mintinline{sh}{pip}.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Building and Converting Docker Container Images}
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\begin{listing}[H]
+\inputminted{sh}{examples/build_python3_docker.sh}
+\caption{Building the Docker container off of M2, exporting the container
+image, and uploading to M2.}
+\end{listing}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{listing}[H]
+\inputminted{sh}{examples/python3_docker_to_singularity.sh}
+\caption{Converting the uploaded Docker container image to a Singularity
+container image.}
+\end{listing}
+\end{column}
+\end{columns}
+\end{frame}
+
+\input{conclusion.tex}
+
+\end{document}
+
