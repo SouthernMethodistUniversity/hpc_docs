@@ -11,7 +11,7 @@
     - [Conda Environments for Python](/applications/python/conda_envs)
     - [Miniconda Installation](/applications/python/miniconda)
     - [mpi4py in Python Environments](/applications/python/python_environment_mpi4py)
-  - [R](/applications/r)
+  - [R](/applications/r/)
 
 - **Policies**
   - [Citizenship](/policies/citizenship)

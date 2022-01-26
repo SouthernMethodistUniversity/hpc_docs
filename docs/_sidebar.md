@@ -7,7 +7,7 @@
 
 - **Applications and Workshops**
   - [Python](/applications/python/)
-  - [R](/applications/r)
+  - [R](/applications/r/)
 
 - **Policies**
   - [Citizenship](/policies/citizenship)
