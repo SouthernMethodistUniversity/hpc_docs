@@ -1,9 +1,9 @@
 # Tools
 LATEXMK = latexmk
-RM = rm -f
+RM = rm -rf
 
 # Project-specific settings
-DOCNAME ?= r_workflows
+DOCNAME ?= overview
 
 # Targets
 all: doc
@@ -20,7 +20,7 @@ mostlyclean:
 
 clean: mostlyclean
 	$(LATEXMK) -silent -C
-	$(RM) *.run.xml *.synctex.gz
+	$(RM) *.run.xml *.synctex.gz minted_cache
 	$(RM) *.d *.aux *-blx.bib *.{snm,nav}
 
 .PHONY: all clean doc mostlyclean pdf
