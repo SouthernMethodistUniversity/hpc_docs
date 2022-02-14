@@ -8,13 +8,15 @@
 \usepackage{dcolumn}
    \newcolumntype{d}[1]{D{.}{.}{#1}}
 \usepackage{graphicx}
-\usepackage[justification=centering]{caption}
+\usepackage[justification=raggedright]{caption}
 \usepackage{adjustbox}
 \usepackage{color}
 \usepackage{textpos}
 \usepackage{etoolbox}
 \usepackage[cache=true,cachedir=minted_cache]{minted}
 \usepackage{multimedia}
+
+\captionsetup[figure]{justification=centering}
 
 \makeatletter
 \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
