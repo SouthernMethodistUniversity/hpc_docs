@@ -56,7 +56,7 @@ Research and Data Sciences Services\\
 Office of Information Technology\\
 Center for Research Computing\\
 Southern Methodist University}
-\date{August 31, 2021}
+\date{February 9, 2022}
 
 \begin{document}
 
@@ -126,63 +126,7 @@ Portal Walkthrough Video}
 \end{columns}
 \end{frame}
 
-\section{Slurm}
-
-\begin{frame}{Serial R Script: \(\pi\) Monte Carlo}
-\begin{listing}[H]
-\inputminted{R}{examples/r_workflows/pi_monte_carlo_serial.R}
-\caption{Serial algorithm to estimate the value of Pi.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Parallel R Script: \(\pi\) Monte Carlo}
-\begin{listing}[H]
-\inputminted{R}{examples/r_workflows/pi_monte_carlo_parallel.R}
-\caption{Parallel algorithm to estimate the value of Pi.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Interactive Sessions}
-\begin{listing}[H]
-\inputminted{sh}{examples/r_workflows/01_interactive_session}
-\caption{Using \mintinline{sh}{srun} to log into a compute node to run commands interactively.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Using \mintinline{sh}{srun}}
-\begin{listing}[H]
-\inputminted{sh}{examples/r_workflows/02_srun}
-\caption{Using \mintinline{sh}{srun} to run commands directly on a compute node.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Using \mintinline{sh}{sbatch --wrap}}
-\begin{listing}[H]
-\inputminted{sh}{examples/r_workflows/03_sbatch_wrap}
-\caption{Using \mintinline{sh}{sbatch --wrap} wrap a commands in an \mintinline{sh}{sbatch} script that is then submitted to the queue can run non-interactively.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Using \mintinline{sh}{sbatch}}
-\begin{listing}[H]
-\inputminted{sh}{examples/r_workflows/04_sbatch_htc.sbatch}
-\caption{Using \mintinline{sh}{sbatch} run serial computations via an \mintinline{sh}{sbatch} script.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Using \mintinline{sh}{sbatch}}
-\begin{listing}[H]
-\inputminted{sh}{examples/r_workflows/05_sbatch_standard-mem-s.sbatch}
-\caption{Using \mintinline{sh}{sbatch} run parallel computations via an \mintinline{sh}{sbatch} script.}
-\end{listing}
-\end{frame}
-
-\begin{frame}{Using \mintinline{sh}{sbatch --array}}
-\begin{listing}[H]
-\inputminted{sh}{examples/r_workflows/06_sbatch_array.sbatch}
-\caption{Using \mintinline{sh}{sbatch --array} run parallel jobs via a single \mintinline{sh}{sbatch} script.}
-\end{listing}
-\end{frame}
+\input{slurm_r.tex}
 
 \section{Reproducibility and Environments}
 
