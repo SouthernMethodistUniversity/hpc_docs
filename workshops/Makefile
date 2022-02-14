@@ -3,7 +3,7 @@ LATEXMK = latexmk
 RM = rm -f
 
 # Project-specific settings
-DOCNAME = econ_overview
+DOCNAME ?= r_workflows
 
 # Targets
 all: doc
