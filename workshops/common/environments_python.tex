@@ -1,0 +1,44 @@
+\section{Python Environments}
+
+\begin{frame}{Managing Python Installations}
+\begin{itemize}
+\item Python environments allow users to use specific versions of Python with
+the packages of their choice
+\item The packages can be installed via \mintinline{sh}{conda} or
+\mintinline{sh}{pip}, depending on the type of environment being used
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Anaconda Environments}
+\begin{itemize}
+\item Anaconda environments are managed using \mintinline{sh}{conda}, which is
+available via Anaconda installations such as \mintinline{sh}{python/2} and
+\mintinline{sh}{python/3} on ManeFrame II.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Anaconda Environments Example}
+\begin{listing}[H]
+\inputminted[firstline=3,firstnumber=1]{sh}{examples/conda_environments.sh}
+\caption{A specific version of Python is installed along with the JupyterLab
+package and its dependencies. The new environment is then loaded and then
+unloaded.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Python Virtual Environments}
+\begin{itemize}
+\item Python 3 has native support for managing environments, which can be used
+with any Python 3 installation on ManeFrame II.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Python Virtual Environments Example}
+\begin{listing}[H]
+\inputminted[firstline=3,firstnumber=1]{sh}{examples/python_environments.sh}
+\caption{A specific installation of Python, in this case from Spack, is used
+and then JupyterLab and its dependencies are installed. The new environment is
+then loaded and then unloaded.}
+\end{listing}
+\end{frame}
+

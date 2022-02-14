@@ -1,0 +1,22 @@
+\section{R Environments}
+
+\begin{frame}{\mintinline{sh}{renv} Basics}
+\begin{description}
+\item[\mintinline{R}{renv::init()}] Initialize new project-local environment with a private R library
+\item[\mintinline{R}{renv::snapshot()}] Save the current state of the project library
+\item[\mintinline{R}{renv::restore()}] Restore the previously saved state of the project library, e.g.\ reloading the environment on another machine
+\end{description}
+\end{frame}
+
+\begin{frame}{GitHub and \mintinline{sh}{renv} Demo}
+\begin{enumerate}
+\item Create new Git repository on GitHub
+\item Clone the new repository on M2
+\item Create new RStudio project in RStudio via M2's Portal
+\item Create clean package environment via \mintinline{R}{renv::init(bare = TRUE)}
+\item Install custom packages, e.g. \mintinline{R}{renv::install("mcmc")}
+\item Create environment snapshot via \mintinline{R}{renv::snapshot(packages="mcmc")}
+\item Commit and push changes to the Git repository
+\end{enumerate}
+\end{frame}
+

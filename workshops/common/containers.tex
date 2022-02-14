@@ -1,0 +1,64 @@
+\section{Containers}
+
+\begin{frame}{Containers Overview}
+\begin{itemize}
+\item Containers offer the ability to run fully customized software stacks,
+e.g.\ based on different Linux distributions and versions
+\item Containers are not virtual machines, where an entire hardware platform is
+virtualized, rather containers share a common kernel and access to physical
+hardware resources
+\item \href{https://www.docker.com}{Docker} is a popular container platform in
+development and server environments
+\item \href{https://sylabs.io}{Singularity} is a popular container platform in
+HPC environments
+\begin{itemize}
+\item Docker is not directly support on ManeFrame II
+\item Singularity can consume and run Docker containers
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Singularity Build Script Example}
+\begin{listing}[H]
+\inputminted{Singularity}{examples/python3.singularity}
+\caption{Example Singularity build file that uses Ubuntu 18.04 and Python3 with
+package installation via \mintinline{sh}{apt} and \mintinline{sh}{pip}.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Building Singularity Container Images}
+\begin{listing}[H]
+\inputminted{sh}{examples/build_python3_singularity.sh}
+\caption{Steps to build a Singularity container image. Note that building
+Singularity container images from build scripts on M2 requires permission.
+Request permission via \href{mailto:help@smu.edu}{help@smu.edu}.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Docker Build Script Example}
+\begin{listing}[H]
+\inputminted{Dockerfile}{examples/python3.dockerfile}
+\caption{Example Dockerfile that uses Ubuntu 18.04 and Python3 with package
+installation via \mintinline{sh}{apt} and \mintinline{sh}{pip}.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Building and Converting Docker Container Images}
+\begin{columns}[T]
+\begin{column}{0.45\textwidth}
+\begin{listing}[H]
+\inputminted{sh}{examples/build_python3_docker.sh}
+\caption{Building the Docker container off of M2, exporting the container
+image, and uploading to M2.}
+\end{listing}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{listing}[H]
+\inputminted{sh}{examples/python3_docker_to_singularity.sh}
+\caption{Converting the uploaded Docker container image to a Singularity
+container image.}
+\end{listing}
+\end{column}
+\end{columns}
+\end{frame}
+
