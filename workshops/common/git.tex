@@ -1,0 +1,248 @@
+\section{Version Control Systems}
+
+\begin{frame}{Overview}
+\begin{itemize}
+\item Version Control (aka \emph{revision control} or \emph{source control})
+lets you track the history of your files over time. Why do you care? So
+when you mess up you can easily get back to a previous version that
+worked.\footnote{Adapted from
+\href{http://betterexplained.com/articles/a-visual-guide-to-version-control/}{A
+visual guide to version control}.}
+\item You've probably invented your own simple version control system in the
+past without realizing it. Do you have an directories with files like
+this?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ad Hoc Version Control}
+\begin{itemize}
+\item \mintinline{sh}{my_function.c}
+\item \mintinline{sh}{my_function2.c}
+\item \mintinline{sh}{my_function3.c}
+\item \mintinline{sh}{my_function4.c}
+\item \mintinline{sh}{my_function_old.c}
+\item \mintinline{sh}{my_function_older.c}
+\item \mintinline{sh}{my_function_even_older.c}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Ad Hoc Version Control}
+It's why we use "Save As"; you want to save the new file without writing
+over the old one. It's a common problem, and solutions are usually like
+this:
+
+
+\begin{itemize}
+\item
+  Make a single backup copy, e.g. \mintinline{sh}{Document.old.txt}.
+\item
+  If we're clever, we add a version number or date, e.g.
+  \mintinline{sh}{Document_V1.txt} or \mintinline{sh}{DocumentMarch2012.txt}.
+\item
+  We may even use a shared folder so other people can see and
+  edit files without sending them by email. Hopefully they rename the
+  file after they save it.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Why use a VCS?}
+\begin{itemize}
+\item Our shared folder/naming system is fine for class projects or one-time
+papers, but is exceptionally bad for software projects. Do you imagine
+that the Windows source code sits in a shared folder named something
+like "Windows7-Latest-New", for anyone to edit? Or that every programmer
+just works on different files in the same folder?
+
+\item For projects that are large, fast-changing, or have multiple authors, a
+Version Control System (VCS) is critical. Think of a VCS as a "file
+database", that helps to track changes and avoid general chaos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{VCS Features}
+\begin{description}
+\item[Backup and Restore] Files are saved as they are edited, and
+  you can jump to any moment in time. Need that file as it was on March
+  8? No problem.
+\item[Synchronization] Allows people to share files and stay up
+  to date with the latest version.
+\item[Short-term undo] Did you try to "fix" a file and just mess
+  it up? Throw away your changes and go back to the last "correct"
+  version in the database.
+\item[Long-term undo] Sometimes we mess up bad. Suppose you made
+  a change a year ago, and it had a bug that you never caught until now.
+  Jump back to the old version, and see what change was made that day.
+  Maybe you can fix that one bug and not have to undo your work for the
+  whole year?
+\end{description}
+\end{frame}
+
+\begin{frame}{VCS Features}
+\begin{description}
+\item[Track Changes] As files are updated, you can leave messages
+  explaining why the change happened (these are stored in the VCS, not
+  the file). This makes it easy to see how a file is evolving over time,
+  and why it was changed.
+\item[Track Ownership] A VCS tags every change with the name of
+  the person who made it, which can be hepful for laying blame \emph{or}
+  giving credit.
+\item[Sandboxing] Plan to make
+  a big change? You can make temporary changes in an isolated area, test
+  and work out the kinks before "checking in" your set of changes.
+\item[Branching and merging] A larger sandbox. You can branch a
+  copy of your code into a separate area and modify it in isolation
+  (tracking changes separately). Later, you can merge your work back
+  into the common area.
+\end{description}
+\end{frame}
+
+\begin{frame}{Shared Folders}
+Shared folders are quick and simple, but can't provide these critical
+features.
+\end{frame}
+
+\begin{frame}{General definitions}
+Most version control systems involve the following concepts, though the
+labels may be different.
+
+Basic setup:
+
+\begin{description}
+\item[Repository (repo)] The database storing the files.
+\item[Server] The computer storing the repo.
+\item[Client] The computer connecting to the repo.
+\item[Working Copy] Your local directory of files,
+  where you make changes.
+\item[Main] The primary location for code in the repo.
+  Think of code as a family tree, where ``main'' is the trunk.
+\end{description}
+\end{frame}
+
+\begin{frame}{Basic Actions}
+\begin{description}
+\item[Add] Put a file into the repo for the first time, i.e.
+  begin tracking it with Version Control.
+\item[Revision] What version a file is on (v1, v2, v3, etc.).
+\item[Head/Tip] The latest revision in the repo.
+\item[Check out] Download a file from the repo.
+\item[Check in] Upload a file to the repository (if it has
+  changed). The file gets a new revision number, and people can "check
+  out" the latest one.
+\end{description}
+\end{frame}
+\begin{frame}{Basic Actions}
+\begin{description}
+\item[Checkin Message] A short message describing what was
+  changed.
+\item[Changelog/History] A list of changes made to a file since
+  it was created.
+\item[Update/Sync] Synchronize your files with the latest from
+  the repository. This lets you grab the latest revisions of all files.
+\item[Revert] Throw away your local changes and reload the latest
+  version from the repository.
+\end{description}
+\end{frame}
+
+\begin{frame}{More Advanced Actions}
+\begin{description}
+\item[Branch] Create a separate copy of a file/folder for private
+  use (bug fixing, testing, etc). Branch is both a verb ("branch the
+  code") and a noun ("Which branch is it in?").
+\item[Diff/Change/Delta] Finding the differences between two
+  files. Useful for seeing what changed between revisions.
+\item[Merge/Patch] Apply the changes from one file to another, to
+  bring it up-to-date. For example, you can merge features from one
+  branch into another.
+\end{description}
+\end{frame}
+\begin{frame}{More Advanced Actions}
+\begin{description}
+\item[Conflict] When pending changes to a file contradict each
+  other (both changes cannot be applied automatically).
+\item[Resolve] Fixing the changes that contradict each other and
+  checking in the final version.
+\item[Locking] Taking control of a file so nobody else can edit
+  it until you unlock it. Some version control systems use this to avoid
+  conflicts.
+\item[Breaking the lock] Forcibly unlocking a file so you can
+  edit it. It may be needed if someone locks a file and goes on
+  vacation.
+\item[Check out for edit] Checking out an "editable" version of a
+  file. Some VCSes have editable files by default, others require an
+  explicit command.
+\end{description}
+\end{frame}
+
+\begin{frame}{Typical Scenario}
+
+\begin{itemize}
+\item
+  Alice adds a file (ShoppingList.txt) to the repository.
+\item
+  Alice checks out the file, makes a change (puts "milk" on the list),
+  and checks it back in with a checkin message ("Added delicious
+  beverage.").
+\item
+  The next morning, Bob updates his local working set and sees the
+  latest revision of ShoppingList.txt, which contains "milk".
+\item
+  Bob adds "donuts" to the list, while Alice also adds "eggs" to the
+  list.
+\item
+  Bob checks the list in, with a checking message "Mmmmm, donuts".
+\item
+  Alice updates her copy of the list before checking it in, and notices
+  that there is a conflict. Realizing that the order of items doesn't
+  matter, she merges the changes by putting both "donuts" and "eggs" on
+  the list, and checks in the final version.
+\end{itemize}
+\end{frame}
+
+\subsection{Git}
+
+\begin{frame}{Git}
+\begin{itemize}
+\item Originally released in 2005 (by
+\href{https://en.wikipedia.org/wiki/Linus_Torvalds}{Linus Torvalds}
+himself!).
+\item \href{https://en.wikipedia.org/wiki/Git_(software)}{Git} was 
+one of the first version control systems that followed a
+\emph{distributed revision control} model (DRCS), in which it is no
+longer required to have a single server that all clients connect with.
+\item DRCS follows a peer-to-peer approach in which each peer's
+working copy of the codebase is a fully-functional repository. These
+work by exchanging patches (sets of changes) between peers, resulting in
+some
+\href{https://en.wikipedia.org/wiki/Distributed_revision_control\#Distributed_vs._centralized}{key
+benefits over previous centralized systems}.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Git Commands}
+\begin{description}
+\item[Clone] Primary mechanism for retrieving
+  a local copy of a Git repository.
+\item[Pull] Fetches and merges changes on the remote
+  server to your working repository.
+\item[Push] Opposite of \mintinline{sh}{pull}, this sends all
+  changes in your local repository to a remote repository.
+\end{description}
+\end{frame}
+
+\begin{frame}{Git Resources}
+
+\begin{itemize}
+\item
+  \href{http://git-scm.com/}{Main Git site}
+\item
+  \href{http://www.atlassian.com/git/tutorial}{Git tutorials}
+\item
+  \href{http://git-scm.com/book}{Git book chapters}
+\end{itemize}
+\end{frame}
+

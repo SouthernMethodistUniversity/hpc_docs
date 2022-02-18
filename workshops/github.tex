@@ -1,0 +1,82 @@
+\documentclass[aspectratio=169]{beamer}
+   \usetheme{metropolis}
+   \setbeamertemplate{blocks}[rounded][shadow=false]
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{dcolumn}
+   \newcolumntype{d}[1]{D{.}{.}{#1}}
+\usepackage{graphicx}
+\usepackage[justification=raggedright]{caption}
+\usepackage{adjustbox}
+\usepackage{color}
+\usepackage{textpos}
+\usepackage{etoolbox}
+\usepackage[cache=true,cachedir=minted_cache]{minted}
+\usepackage{multimedia}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\captionsetup[figure]{justification=centering}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+\definecolor{smured}{rgb}{0.797,0,0.027}
+\definecolor{smublue}{RGB}{48,64,116}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{text_gray}{RGB}{46,58,62}
+
+\setbeamercolor{progress bar}{fg=smured,bg=smublue}
+\setbeamercolor{title separator}{fg=smublue}
+\setbeamercolor{frametitle}{bg=smublue}
+
+\metroset{
+  numbering=fraction
+}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=text_gray,
+  urlcolor=smured,
+}
+
+\addtobeamertemplate{frametitle}{}{
+\begin{textblock*}{1cm}(\textwidth,-1.155cm)
+\includegraphics[width=1cm]{figures/smu_logo.pdf}
+\end{textblock*}}
+
+\setminted{breaklines,linenos,fontsize=\scriptsize}
+\setmintedinline{fontsize=auto}
+
+\title{Introduction to GitHub}
+\author{Robert Kalescky\\ HPC Applications Scientist}
+\institute{
+Research and Data Sciences Services\\
+Office of Information Technology\\
+Center for Research Computing\\
+Southern Methodist University}
+\date{February 18, 2022}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\footnotesize
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\input{common/introduction.tex}
+\input{common/git.tex}
+\input{common/conclusion.tex}
+
+\end{document}
+
