@@ -1,7 +1,94 @@
 \section{Spack}
 
 \begin{frame}{What is Spack?}
-
+	\begin{itemize}
+		\item  \href{https://spack.readthedocs.io/en/latest/index.html}{Spack}   Is a package management tool
+		\item Spack is designed for complex and multi-user environments
+		\item Spack is non-destructive. Installing new versions of packages will not break existing installs
+		\item Spack helps ensure reproducible software installs
+	\end{itemize}
 \end{frame}
 
+\begin{frame}{Installing Spack}
+	\begin{listing}[H]
+		\inputminted{Dockerfile}{examples/spack/spack_install.sh}
+		\caption{Example of installing Spack. \\ *NOTE: we have Spack installed as a module on M2, this is mostly to make it easy for users to load software that we have installed using Spack. If you try to install software with the Spack module, you may encounter permission issues, so it is advisable to install your own version.}
+	\end{listing}
+\end{frame}
 
+\begin{frame}{Setting up Compilers}
+	It's a good idea to start with one or more of the compilers already installed on the system.
+	
+	To add one of these compilers:
+
+	\begin{listing}[H]
+		\inputminted{Dockerfile}{examples/spack/add_compiler.sh}
+		\caption{Example of adding a compiler to Spack.}
+	\end{listing}
+   
+\end{frame}
+
+\begin{frame}{Setting up Compilers}
+	
+	If you are adding an Intel compiler, you will need to modify the Spack compiler settings to load the compiler module for both Intel and GCC. This can be done with: (hint: this defaults to VIM for editing, you can change that with \textit{export EDITOR=nano})
+	
+	\textit{spack config edit compilers}
+	
+	The result should look like:
+	
+	\begin{listing}[H]
+		\inputminted{Dockerfile}{examples/spack/add_intel_compiler.sh}
+		\caption{Example of modified Intel configuration.}
+	\end{listing}
+	
+\end{frame}
+
+\begin{frame}{Using Spack}
+	\begin{itemize}
+		\item \textbf{spack list \textless package \textgreater} List all of the packages Spack can install and optionally search for the specified package.
+		\item \textbf{spack info \textless package \textgreater} List information about the specified package including options and versions available.
+		\item \textbf{spack install \textless package \textgreater} Install the specified package. It's a good idea to add the "--reuse" flag to avoid installing duplicate dependencies.
+		\item \textbf{spack find \textless package \textgreater} List all of the packages Spack has installed and optionally search for the specified package.
+		\item \textbf{spack load \textless package \textgreater} Load the specified package.*
+	\end{itemize}
+
+* Packages should also now be available using the module system on M2.
+\end{frame}
+
+\begin{frame}{Using Spack}
+	\begin{itemize}
+		\item \textbf{spack install --reuse package@2.1.3 } Install version 2.1.3 of the requested package
+		\item \textbf{spack install --reuse package@2.1.3 \%gcc@11.2.0 } Install version 2.1.3 of the requested package using gcc version 11.2.0 as the compiler (note: you need this compiler installed already)
+		\item \textbf{spack install --reuse package@2.1.3 \%gcc@11.2.0 +option1 +option2 } Install version 2.1.3 of the requested package using gcc version 11.2.0 as the compiler with option 1 and option 2 enabled
+	\end{itemize}
+
+*NOTE: if you frequently switch compilers, be mindful that "--reuse" may not use packages with a consistent compiler. This is a new feature that is continuing to improve.
+\end{frame}
+
+\begin{frame}{Spack Enviroments}
+	\begin{itemize}
+		\item You can use Spack environments to create isolated software stacks
+		\item Packages installed in environments are not available outside that environment
+		\item Good for projects because you can see exactly which versions of libraries you are using
+		\item Can result in lots of duplicate installs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Spack Enviroments}
+	\begin{itemize}
+		\item \textbf{spack env create myenv} Create a new environment called "myenv"
+		\item \textbf{spack env list} List available environments
+		\item \textbf{spack env activate myenv} Activate the environment called "myenv"
+		\item \textbf{spack env status} See which environments are active
+		\item \textbf{spack concretize} "lock" the versions of packages installed in the current environment so everything stays consistent. You can also use the output to build the same environment on a different system.
+		\item \textbf{despacktivate} Deactivae the current environment
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Spack Problems}
+	\begin{itemize}
+		\item Spack is relatively new and improving at a fast pace. Check their github for new features and fixes
+		\item Sometimes Spack installs things out of order (or packages have circular dependencies). Try installing packages where installs fail one at a time.
+		\item \textbf{Ask us for help!}
+	\end{itemize}
+\end{frame}
