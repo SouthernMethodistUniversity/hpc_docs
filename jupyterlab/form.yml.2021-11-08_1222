@@ -1,0 +1,99 @@
+# Batch Connect app configuration file
+#
+# @note Used to define the submitted cluster, title, description, and
+#   hard-coded/user-defined attributes that make up this Batch Connect app.
+---
+
+# **MUST** set cluster id here that matches cluster configuration file located
+# under /etc/ood/config/clusters.d/*.yml
+# @example Use the Owens cluster at Ohio Supercomputer Center
+#     cluster: "owens"
+cluster: "slurm_cluster"
+
+# Define attribute values that aren't meant to be modified by the user within
+# the Dashboard form
+attributes:
+  module_paths:
+    widget: text_area
+    label: "Custom module paths"
+    help: "Add custom module paths by exporting the MODULEPATH variable with custom module paths prepended."
+  environment:
+    widget: text_area
+    label: "Custom environment settings"
+    help: "It is necessary to export environment variables that have not already been exported."
+  # Set the corresponding modules that need to be loaded for Jupyter to run
+  #
+  # @note It is called within the batch job as `module load <modules>` if
+  #   defined
+  # @example Do not load any modules
+  #     modules: ""
+  # @example Using default python module
+  #     modules: "python"
+  # @example Using specific python module
+  #     modules: "python/3.5"
+  # @example Using combination of modules
+  #     modules: "python/3.5 cuda/8.0.44"
+  modules: 
+    value: "python/3"
+    label: "Additional environment modules to load"
+    help: "Enter as a space-delimited list additional environment modules to load. (Note: Specifying the 'python/2' module here will be ignored, as this version of JupyterLab uses Python v3.)"
+  # Any extra command line arguments to feed to the `jupyter notebook ...`
+  # command that launches the Jupyter notebook within the batch job
+  extra_jupyter_args: ""
+  bc_num_hours:
+    value: 24
+  bc_num_cores:
+    label: "Cores per node"
+    value: 1
+  bc_num_gpus:
+    label: "GPUs per node"
+    value: 0
+  bc_num_memory:
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    value: 6
+  custom_queue:
+    label: "Partition"
+    help: |
+      Please select an [M2 SLURM partition] to submit from the drop-down.
+
+      [M2 SLURM partition]: http://faculty.smu.edu/csc/documentation/slurm.html#maneframe-ii-s-slurm-partitions-queues
+    widget: select
+    options:
+      - [ "development [Max Time: 2 hours]",    "development"    ]
+      - [ "htc  [Max Time: 24 hours]",            "htc"            ]
+      - [ "standard-mem-s [Max Time: 24 hours]", "standard-mem-s" ]
+      - [ "standard-mem-m [Max Time: 7 days]", "standard-mem-m" ]
+      - [ "standard-mem-l [Max Time: 30 days]", "standard-mem-l" ]
+      - [ "medium-mem-1-s [Max Time: 24 hours]", "medium-mem-1-s" ]
+      - [ "medium-mem-1-m [Max Time: 7 days]", "medium-mem-1-m" ]
+      - [ "medium-mem-1-l [Max Time: 30 days]", "medium-mem-1-l" ]
+      - [ "medium-mem-2 [Max Time: 14 days]",   "medium-mem-2"   ]
+      - [ "high-mem-1 [Max Time: 14 days]",     "high-mem-1"     ]
+      - [ "high-mem-2 [Max Time: 14 days]",     "high-mem-2"     ]
+      - [ "mic [Max Time: 14 days]",            "mic"            ]
+      - [ "gpgpu-1 [Max Time: 7 days]",        "gpgpu-1"        ]
+      - [ "v100x8 [Max Time: 7 days]",         "v100x8"         ]
+    value: "htc"
+
+# All of the attributes that make up the Dashboard form (in respective order),
+# and made available to the submit configuration file and the template ERB
+# files
+#
+# @note You typically do not need to modify this unless you want to add a new
+#   configurable value
+# @note If an attribute listed below is hard-coded above in the `attributes`
+#   option, then it will not appear in the form page that the user sees in the
+#   Dashboard
+form:
+  - modules
+  - module_paths
+  - environment
+  - extra_jupyter_args
+  - custom_queue
+  - bc_num_hours
+  - bc_num_slots
+  - bc_num_cores
+  - bc_num_gpus
+  - bc_num_memory
+#  - bc_email_on_started

@@ -1,0 +1,14 @@
+---
+name: MATLAB
+category: Interactive Apps
+subcategory: GUIs
+role: batch_connect
+description: |
+  This app will launch a [MATLAB] GUI on the [M2 cluster]. You will be able to interact with the MATLAB GUI through a VNC session.
+
+  Note that the HPC OnDemand configuration of [MATLAB] runs in an interactive desktop environment requiring packages only installed on the nodes of the **`desktop`** SLURM partition, however there are [other ways to run interactive sessions] if there is a necessity to use a node in one of [the other queues].
+
+  [MATLAB]: https://www.mathworks.com/products/matlab.html
+  [M2 cluster]: http://faculty.smu.edu/csc/documentation/about.html
+  [the other queues]: http://faculty.smu.edu/csc/documentation/applications/matlab.html#types-of-nodes-on-which-matlab-is-to-run
+  [other ways to run interactive sessions]: http://faculty.smu.edu/csc/documentation/applications/matlab.html#running-matlab-interactively-with-the-graphical-user-interface

@@ -1,0 +1,30 @@
+---
+cluster: "slurm_cluster"
+form:
+  - version
+  - bc_queue
+  - bc_num_hours
+  - bc_num_slots
+  - bc_num_cores
+  - bc_num_memory
+  - bc_vnc_resolution
+attributes:
+  bc_num_hours:
+    value: 24
+  bc_num_cores:
+    label: "Cores per node"
+    value: 1
+  bc_num_memory:
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    value: 6
+  bc_vnc_resolution:
+    required: true
+  bc_queue: "desktop"
+  version:
+    widget: select
+    label: "SAS version"
+    help: "This defines the version of SAS you want to load."
+    options:
+      - [ "9.4", "sas/9.4" ]
+      - [ "9.4.update6", "sas/9.4.update6" ]
