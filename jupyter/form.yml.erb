@@ -1,0 +1,125 @@
+# Batch Connect app configuration file
+#
+# @note Used to define the submitted cluster, title, description, and
+#   hard-coded/user-defined attributes that make up this Batch Connect app.
+---
+
+# **MUST** set cluster id here that matches cluster configuration file located
+# under /etc/ood/config/clusters.d/*.yml
+# @example Use the Owens cluster at Ohio Supercomputer Center
+#     cluster: "owens"
+cluster: "slurm_cluster"
+
+form:
+  - modules
+  - environment
+  - extra_jupyter_args
+  - custom_queue
+  - bc_num_hours
+  - bc_num_slots
+  - bc_num_cores
+  - bc_num_gpus
+  - bc_num_memory
+
+# Define attribute values that aren't meant to be modified by the user within
+# the Dashboard form
+attributes:
+  environment:
+    widget: text_area
+    label: "Custom environment settings"
+    help: "It is necessary to export environment variables that have not already been exported."
+  # Set the corresponding modules that need to be loaded for Jupyter to run
+  #
+  # @note It is called within the batch job as `module load <modules>` if
+  #   defined
+  # @example Do not load any modules
+  #     modules: ""
+  # @example Using default python module
+  #     modules: "python"
+  # @example Using specific python module
+  #     modules: "python/3.5"
+  # @example Using combination of modules
+  #     modules: "python/3.5 cuda/8.0.44"
+  modules:
+    value: "python/3"
+    label: "Additional environment modules to load"
+    help: "Enter as a space-delimited list additional environment modules to load. (Note: Specifying the 'python/2' module here will be ignored, as this version of Jupyter Notebooks uses Python v3.)"
+  # Any extra command line arguments to feed to the `jupyter notebook ...`
+  # command that launches the Jupyter notebook within the batch job
+  extra_jupyter_args: ""
+  bc_num_hours:
+    id: bc_num_hours
+    label: Time (Hours)
+    help: |
+      - Number of hours to allocate
+      - Exceeding walltime time will automaticaly stop this job.
+    cacheable: true
+    widget: number_field
+    max: 24
+    min: 1
+    step: 1
+    value: 1
+  bc_num_slots:
+    id: num_nodes
+    label: Number of nodes
+    help: Number of computer nodes 
+    cacheable: true
+    widget: number_field
+    max: 81
+    min: 1
+    step: 1
+    value: 1
+  bc_num_cores:
+    id: num_cpus
+    label: "Cores per node"
+    help: Number of CPU threads
+    cacheable: true
+    widget: number_field
+    max: 36
+    min: 1
+    value: 1
+  bc_num_gpus:
+    id: num_gpus
+    label: "GPUs per node"
+    help: Number of GPUs or CUDA devices
+    cacheable: true
+    widget: number_field
+    max: 1
+    min: 0
+    step: 1
+    value: 0
+  bc_num_memory:
+    id: num_mem
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    widget: number_field
+    max: 250
+    min: 1
+    step: 1
+    value: 6
+  custom_queue:
+    label: "Partition"
+    help: |
+      Please select an [M2 SLURM partition] to submit from the drop-down.
+      NOTE: Queues designated with asterisks(*) contain [faculty partner nodes] primarily intended for use by specific faculty and their research groups and as such impose some restrictions, including the possibility of job pre-emption, on jobs submitted by those outside those teams.
+      [M2 SLURM partition]: https://s2.smu.edu/hpc/documentation/slurm.html#maneframe-ii-s-slurm-partitions-queues
+      [faculty partner nodes]: https://s2.smu.edu/hpc/documentation/about.html#faculty-partner-nodes
+    widget: select
+    options:
+      - [ "development [Max Time: 2 hours]",             "development"    ]
+      - [ "htc [Max Time: 24 hours, Maximum Nodes: 1]",  "htc"            ]
+      - [ "standard-mem-s [Max Time: 24 hours]",         "standard-mem-s" ]
+      - [ "standard-mem-m [Max Time: 7 days]",           "standard-mem-m" ]
+      - [ "standard-mem-l [Max Time: 30 days]",          "standard-mem-l" ]
+      - [ "medium-mem-1-s [Max Time: 24 hours]",         "medium-mem-1-s" ]
+      - [ "medium-mem-1-m [Max Time: 7 days]",           "medium-mem-1-m" ]
+      - [ "medium-mem-1-l [Max Time: 30 days]",          "medium-mem-1-l" ]
+      - [ "medium-mem-2 [Max Time: 14 days]",            "medium-mem-2"   ]
+      - [ "high-mem-1 [Max Time: 14 days]",              "high-mem-1"     ]
+      - [ "high-mem-2 [Max Time: 14 days]",              "high-mem-2"     ]
+      - [ "mic [Max Time: 14 days]",                     "mic"            ]
+      - [ "gpgpu-1 [Max Time: 7 days]",                  "gpgpu-1"        ]
+      - [ "v100x8 [Max Time: 7 days]",                   "v100x8"         ]
+      - [ "*fp-gpgpu-2 [Max Time: UNLIMITED]",           "fp-gpgpu-2"     ]
+      - [ "*fp-gpgpu-3 [Max Time: UNLIMITED]",           "fp-gpgpu-3"     ]
+      - [ "*fp-gpgpu-4 [Max Time: UNLIMITED]",           "fp-gpgpu-4"     ]
