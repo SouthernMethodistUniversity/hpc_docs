@@ -21,8 +21,8 @@ function partition_limits(selected_queue) {
 
 	if (selected_queue === "development") {
 		max_time = 2;
-		max_cpu = 36;
-		max_mem = 250;
+		max_cpu = 256;
+		max_mem = 374;
 		max_gpu = 1;
         max_node = 4;
 	}
@@ -113,7 +113,7 @@ function partition_limits(selected_queue) {
     else if (selected_queue === "htc") {
         max_time = 24;
         max_cpu = 1;
-        max_mem = 20;
+        max_mem = 250;
         max_gpu = 0;
         max_node = 1;
     }
@@ -173,6 +173,60 @@ function partition_limits(selected_queue) {
         node.val(max_node)
     }
     node.attr({"max": max_node })
+
+	// handle development queue 1 mic, 1 p100, 2 standard
+	if (selected_queue === "development") {
+
+		// if more than 1 node requested. Disable gpu + mic
+		if (node.val() > 1) {
+
+			// don't allow requesting more than 36 cores
+			// even though the mic has more
+			if (cpus.val() > 36) {
+				cpus.val(36)
+			}
+			cpus.attr({ "max": 36 });
+
+			// disable gpu since there's only 1
+			gpu.attr({ "max": 0 });
+			gpu.attr('disabled', 'disabled');
+			if (gpu.val() > 0) {
+				gpu.val(0);
+			}
+			
+		}
+
+		// check to see if a GPU was requested
+		if (gpu.val() > 0) {
+			// only 1 gpu node
+			if (node.val() > 1) {
+				node.val(1)
+			}
+			node.attr({"max": 1 })
+
+			// can't use a MIC node with a GPU
+			if (cpus.val() > 36) {
+				cpus.val(36)
+			}
+			cpus.attr({ "max": 36 });
+		}
+
+		// check if a MIC node was requested (based on core count)
+		if (cpus.val() > 36) {
+			// only 1 mic node
+			if (node.val() > 1) {
+				node.val(1)
+			}
+			node.attr({"max": 1 })
+
+			// can't use a MIC node with a GPU
+			gpu.attr({ "max": 0 });
+			gpu.attr('disabled', 'disabled');
+			if (gpu.val() > 0) {
+				gpu.val(0);
+			}
+		}
+	}
 }
 
 /*
@@ -185,10 +239,23 @@ $(document).ready(function () {
 
 	// Handle Partition Specific Settings
 	let queue = $('#batch_connect_session_context_custom_queue');
+	let ngpus = $('#num_gpus');
+	let ncpus = $('#num_cpus');
 	partition_limits(queue[0].value);
 	queue.change(function () {
+		partition_limits(queue[0]);
+	})
+
+	// update if gpus change
+	ngpus.change(function () {
 		partition_limits(queue[0].value);
 	})
+
+	// update if cpus change
+	ncpus.change(function () {
+		partition_limits(queue[0].value);
+	})
+	
 });
 
 
