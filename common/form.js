@@ -138,6 +138,20 @@ function partition_limits(selected_queue) {
         max_gpu = 2;
         max_node = 1;
     }
+	else if (selected_queue === "desktop") {
+        max_time = 24;
+        max_cpu = 36;
+        max_mem = 250;
+        max_gpu = 0;
+        max_node = 1;
+    }
+	else if (selected_queue === "desktop-vdi") {
+        max_time = 24;
+        max_cpu = 36;
+        max_mem = 250;
+        max_gpu = 1;
+        max_node = 1;
+    }
 
 	// Handle Max Time Changes
 	if (time.val() > max_time) {
