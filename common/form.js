@@ -193,7 +193,12 @@ function partition_limits(selected_queue) {
 			if (gpu.val() > 0) {
 				gpu.val(0);
 			}
-			
+
+			// set max memory to what is availabe
+			if (mem.val() > 250) {
+				mem.val(250);
+			}
+			mem.attr({ "max": 250 });
 		}
 
 		// check to see if a GPU was requested
@@ -209,10 +214,16 @@ function partition_limits(selected_queue) {
 				cpus.val(36)
 			}
 			cpus.attr({ "max": 36 });
+
+			// set max memory to what is availabe
+			if (mem.val() > 250) {
+				mem.val(250);
+			}
+			mem.attr({ "max": 250 });
 		}
 
-		// check if a MIC node was requested (based on core count)
-		if (cpus.val() > 36) {
+		// check if a MIC node was requested (based on core count or mem)
+		if (cpus.val() > 36 || mem.val() > 250) {
 			// only 1 mic node
 			if (node.val() > 1) {
 				node.val(1)
@@ -241,11 +252,16 @@ $(document).ready(function () {
 	let queue = $('#batch_connect_session_context_custom_queue');
 	let ngpus = $('#num_gpus');
 	let ncpus = $('#num_cpus');
+	let nnodes = $('#num_nodes');
+	let nmem =  $('#num_mem');
 	partition_limits(queue[0].value);
 	queue.change(function () {
 		partition_limits(queue[0]);
 	})
 
+	// These are to make sure queues with multiple resources are handled
+	// currently only applies to development queue since it has
+	// 1 mic, 1 p100, 2 standard nodes
 	// update if gpus change
 	ngpus.change(function () {
 		partition_limits(queue[0].value);
@@ -255,7 +271,14 @@ $(document).ready(function () {
 	ncpus.change(function () {
 		partition_limits(queue[0].value);
 	})
-	
+
+	// update if nodes changes
+	nnodes.change(function () {
+		partition_limits(queue[0].value);
+	})
+
+	// update if nodes changes
+	nmem.change(function () {
+		partition_limits(queue[0].value);
+	})
 });
-
-
