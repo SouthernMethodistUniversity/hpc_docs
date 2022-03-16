@@ -23,6 +23,10 @@ done
 #mkdir -p "$(dirname "${PULSE_CONFIG}")"
 #echo "autospawn = no" > "${PULSE_CONFIG}"
 
+# launch dbus first through eval becuase it can conflict with a conda environment
+# see https://github.com/OSC/ondemand/issues/700
+eval $(dbus-launch --sh-syntax)
+
 # Run Mate Terminal as login shell (sets proper TERM)
 dconf write /org/mate/terminal/profiles/default/login-shell true
 
