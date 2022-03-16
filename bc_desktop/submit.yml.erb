@@ -1,3 +1,24 @@
 ---
 batch_connect:
   template: vnc
+script:
+  queue_name: <%= custom_queue %>
+  native:
+    - "-N"
+    - "<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
+    - "--ntasks-per-node"
+    - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
+    - "--mem"
+    - "<%= bc_num_memory.blank? ? 6144 : bc_num_memory.to_i*1024 %>"
+    <% if @custom_queue == "desktop-vdi" %>
+    - "--gres"
+    - "gpu:1"
+    <% end %>
+    <% if @custom_queue == "desktop-vdi-dev" %>
+    - "--gres"
+    - "gpu:1"
+    <% end %>
+    <% if @custom_queue == "desktop-p100" %>
+    - "--gres"
+    - "gpu:1"
+    <% end %>
