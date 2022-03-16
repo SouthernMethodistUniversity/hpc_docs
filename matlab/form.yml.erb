@@ -1,0 +1,75 @@
+---
+cluster: "slurm_cluster"
+form:
+  - version
+  - bc_queue
+  - bc_num_hours
+  - bc_num_slots
+  - bc_num_cores
+  - bc_num_memory
+  - bc_vnc_resolution
+attributes:
+  version:
+    widget: select
+    label: "MATLAB version"
+    help: "This defines the version of MATLAB you want to load."
+    options:
+      - [ "R2021b", "matlab/r2021b" ]
+      - [ "R2020b", "matlab/r2020b" ]
+      - [ "R2018b", "matlab/r2018b" ]
+      - [ "R2017a", "matlab/r2017a" ]
+      - [ "R2016b", "matlab/r2016b" ]
+  bc_num_hours:
+    id: bc_num_hours
+    label: Time (Hours)
+    help: |
+      - Number of hours to allocate
+      - Exceeding walltime time will automaticaly stop this job.
+    cacheable: true
+    widget: number_field
+    max: 24
+    min: 1
+    step: 1
+    value: 1
+  bc_num_slots:
+    id: num_nodes
+    label: Number of nodes
+    help: Number of computer nodes 
+    cacheable: true
+    widget: number_field
+    max: 81
+    min: 1
+    step: 1
+    value: 1
+  bc_num_cores:
+    id: num_cpus
+    label: "Cores per node"
+    help: Number of CPU threads
+    cacheable: true
+    widget: number_field
+    max: 36
+    min: 1
+    value: 1
+  bc_num_gpus:
+    id: num_gpus
+    label: "GPUs per node"
+    help: Number of GPUs or CUDA devices
+    cacheable: true
+    widget: number_field
+    max: 1
+    min: 0
+    step: 1
+    value: 0
+  bc_num_memory:
+    id: num_mem
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    widget: number_field
+    max: 250
+    min: 1
+    step: 1
+    value: 6
+  bc_vnc_resolution:
+    required: true
+  bc_queue: "desktop"
+  
