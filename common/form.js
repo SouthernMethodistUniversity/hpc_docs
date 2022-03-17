@@ -10,148 +10,148 @@ function partition_limits(selected_queue) {
 	var cpus = $('#num_cpus');
 	var mem = $('#num_mem');
 	var gpu = $('#num_gpus');
-    var node = $('#num_nodes');
+	var node = $('#num_nodes');
 
 	// Get Default Max Values
 	var max_time = time.attr("max");
 	var max_cpu = cpus.attr("max");
 	var max_mem = mem.attr("max");
 	var max_gpu = gpu.attr("max");
-    var max_node = node.attr("max");
+	var max_node = node.attr("max");
 
 	if (selected_queue === "development") {
 		max_time = 2;
 		max_cpu = 256;
 		max_mem = 374;
 		max_gpu = 1;
-        max_node = 4;
+		max_node = 4;
 	}
 	else if (selected_queue === "standard-mem-s") {
 		max_time = 24;
 		max_cpu = 36;
 		max_mem = 250;
 		max_gpu = 0;
-       	max_node = 81;
+		max_node = 81;
 	}
 	else if (selected_queue === "standard-mem-m") {
 		max_time = 168;
 		max_cpu = 36;
 		max_mem = 250;
 		max_gpu = 0;
-       	max_node = 30;
+		max_node = 30;
 	}
 	else if (selected_queue === "standard-mem-l") {
 		max_time = 720;
 		max_cpu = 36;
 		max_mem = 250;
 		max_gpu = 0;
-       	max_node = 25;
+		max_node = 25;
 	}
 	else if (selected_queue === "medium-mem-1-s") {
 		max_time = 24;
 		max_cpu = 36;
 		max_mem = 750;
 		max_gpu = 0;
-       	max_node = 20;
+		max_node = 20;
 	}
 	else if (selected_queue === "medium-mem-1-m") {
 		max_time = 168;
 		max_cpu = 36;
 		max_mem = 750;
 		max_gpu = 0;
-       	max_node = 11;
+		max_node = 11;
 	}
 	else if (selected_queue === "medium-mem-1-l") {
 		max_time = 720;
 		max_cpu = 36;
 		max_mem = 750;
 		max_gpu = 0;
-       	max_node = 6;
+		max_node = 6;
 	}
-    else if (selected_queue === "medium-mem-2") {
-        max_time = 336;
-        max_cpu = 24;
-        max_mem = 750;
-        max_gpu = 0;
-       	max_node = 3;
+	else if (selected_queue === "medium-mem-2") {
+		max_time = 336;
+		max_cpu = 24;
+		max_mem = 750;
+		max_gpu = 0;
+		max_node = 3;
 	}
-    else if (selected_queue === "high-mem-1") {
-        max_time = 336;
-        max_cpu = 36;
-        max_mem = 1500;
-        max_gpu = 0;
-       	max_node = 6;
+	else if (selected_queue === "high-mem-1") {
+		max_time = 336;
+		max_cpu = 36;
+		max_mem = 1500;
+		max_gpu = 0;
+		max_node = 6;
 	}
-    else if (selected_queue === "high-mem-2") {
-        max_time = 336;
-        max_cpu = 40;
-        max_mem = 1500;
-        max_gpu = 0;
-       	max_node = 6;
+	else if (selected_queue === "high-mem-2") {
+		max_time = 336;
+		max_cpu = 40;
+		max_mem = 1500;
+		max_gpu = 0;
+		max_node = 6;
 	}
-    else if (selected_queue === "mic") {
-        max_time = 168;
-        max_cpu = 256;
-        max_mem = 374;
-        max_gpu = 0;
-       	max_node = 39;
+	else if (selected_queue === "mic") {
+		max_time = 168;
+		max_cpu = 256;
+		max_mem = 374;
+		max_gpu = 0;
+		max_node = 39;
 	}
-    else if (selected_queue === "gpgpu-1") {
-        max_time = 168;
-        max_cpu = 36;
-        max_mem = 250;
-        max_gpu = 1;
-       	max_node = 36;
+	else if (selected_queue === "gpgpu-1") {
+		max_time = 168;
+		max_cpu = 36;
+		max_mem = 250;
+		max_gpu = 1;
+		max_node = 36;
 	}
-    else if (selected_queue === "v100x8") {
-        max_time = 168;
-        max_cpu = 36;
-        max_mem = 750;
-        max_gpu = 8;
-       	max_node = 3;
+	else if (selected_queue === "v100x8") {
+		max_time = 168;
+		max_cpu = 36;
+		max_mem = 750;
+		max_gpu = 8;
+		max_node = 3;
 	}
-    else if (selected_queue === "htc") {
-        max_time = 24;
-        max_cpu = 1;
-        max_mem = 250;
-        max_gpu = 0;
-        max_node = 1;
-    }
-    else if (selected_queue === "fp-gpgpu-2") {
-        max_time = 20000;
-        max_cpu = 24;
-        max_mem = 120;
-        max_gpu = 8;
-        max_node = 1;
-    }
-    else if (selected_queue === "fp-gpgpu-3") {
-        max_time = 20000;
-        max_cpu = 40;
-        max_mem = 375;
-        max_gpu = 2;
-        max_node = 2;
-    }
-    else if (selected_queue === "fp-gpgpu-4") {
-        max_time = 20000;
-        max_cpu = 36;
-        max_mem = 375;
-        max_gpu = 2;
-        max_node = 1;
-    }
+	else if (selected_queue === "htc") {
+		max_time = 24;
+		max_cpu = 1;
+		max_mem = 250;
+		max_gpu = 0;
+		max_node = 1;
+	}
+	else if (selected_queue === "fp-gpgpu-2") {
+		max_time = 20000;
+		max_cpu = 24;
+		max_mem = 120;
+		max_gpu = 8;
+		max_node = 1;
+	}
+	else if (selected_queue === "fp-gpgpu-3") {
+		max_time = 20000;
+		max_cpu = 40;
+		max_mem = 375;
+		max_gpu = 2;
+		max_node = 2;
+	}
+	else if (selected_queue === "fp-gpgpu-4") {
+		max_time = 20000;
+		max_cpu = 36;
+		max_mem = 375;
+		max_gpu = 2;
+		max_node = 1;
+	}
 	else if (selected_queue === "desktop") {
-        max_time = 24;
-        max_cpu = 36;
-        max_mem = 250;
-        max_gpu = 0;
-        max_node = 1;
-    }
+		max_time = 24;
+		max_cpu = 36;
+		max_mem = 250;
+		max_gpu = 0;
+		max_node = 1;
+	}
 	else if (selected_queue === "desktop-vdi") {
-        max_time = 24;
-        max_cpu = 36;
-        max_mem = 250;
-        max_gpu = 1;
-        max_node = 1;
-    }
+		max_time = 24;
+		max_cpu = 36;
+		max_mem = 250;
+		max_gpu = 1;
+		max_node = 1;
+	}
 
 	// Handle Max Time Changes
 	if (time.val() > max_time) {
@@ -182,11 +182,11 @@ function partition_limits(selected_queue) {
 	else {
 		gpu.removeAttr('disabled');
 	}
-    // handle max nodes
-    if (node.val() > max_node) {
-        node.val(max_node)
-    }
-    node.attr({"max": max_node })
+	// handle max nodes
+	if (node.val() > max_node) {
+		node.val(max_node)
+	}
+	node.attr({ "max": max_node })
 
 	// handle development queue 1 mic, 1 p100, 2 standard
 	if (selected_queue === "development") {
@@ -221,7 +221,7 @@ function partition_limits(selected_queue) {
 			if (node.val() > 1) {
 				node.val(1)
 			}
-			node.attr({"max": 1 })
+			node.attr({ "max": 1 })
 
 			// can't use a MIC node with a GPU
 			if (cpus.val() > 36) {
@@ -242,7 +242,7 @@ function partition_limits(selected_queue) {
 			if (node.val() > 1) {
 				node.val(1)
 			}
-			node.attr({"max": 1 })
+			node.attr({ "max": 1 })
 
 			// can't use a MIC node with a GPU
 			gpu.attr({ "max": 0 });
@@ -267,7 +267,7 @@ $(document).ready(function () {
 	let ngpus = $('#num_gpus');
 	let ncpus = $('#num_cpus');
 	let nnodes = $('#num_nodes');
-	let nmem =  $('#num_mem');
+	let nmem = $('#num_mem');
 	partition_limits(queue[0].value);
 	queue.change(function () {
 		partition_limits(queue[0]);
@@ -295,4 +295,28 @@ $(document).ready(function () {
 	nmem.change(function () {
 		partition_limits(queue[0].value);
 	})
+
+	// hide custom environment field selectively
+	let env = $('#batch_connect_session_context_python_version');
+	var label = document.querySelector("[for='batch_connect_session_context_environment']");
+	var textbox = $('#batch_connect_session_context_environment');
+	if (env[0].value != "custom") {
+		textbox.hide();
+		label.style.display = "none";;
+	}
+	else {
+		textbox.show();
+		label.style.display = "inline";
+	}
+	env.change(function () {
+		if (env[0].value != "custom") {
+			textbox.hide();
+			label.style.display = "none";;
+		}
+		else {
+			textbox.show();
+			label.style.display = "inline";
+		}
+	})
+
 });
