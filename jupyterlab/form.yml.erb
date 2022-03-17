@@ -1,10 +1,34 @@
+<%-
+require 'open3'
+begin
+    # get queues from 
+    script = '/hpc/applications/anaconda/3/bin/conda info -e'
+    o, status = Open3.capture2('bash', stdin_data: script)
+    output = o.split("\n")
+    conda_envs = []
+    python3_module = [ "python/3 module",    "python/3" ]
+    custom_env = [ "Custom Environment - specify below", "custom"   ]
+    conda_envs.push(python3_module)
+    conda_envs.push(custom_env)
+    output.each do |env|
+      # skip envs in /hpc/applications
+      if env =~ /^((?!hpc\/applications).)*$/ && env[0] != '#'
+        split_env = env.gsub(/\s+/m, ' ').strip.split(" ")
+        if split_env.count == 1
+          split_env.push(split_env[0])
+        end
+        split_env[0] = "(Conda Environment) " + split_env[0]
+        conda_envs.push(split_env)
+        # conda_envs.push(env)
+      end
+    end
+
+end
+-%>
 ---
-
 cluster: "slurm_cluster"
-
 form:
-  - modules
-  - module_paths
+  - python_version
   - environment
   - custom_queue
   - bc_num_hours
@@ -15,18 +39,19 @@ form:
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
-  module_paths:
-    widget: text_area
-    label: "Custom module paths"
-    help: "Add custom module paths by exporting the MODULEPATH variable with custom module paths prepended."
   environment:
     widget: text_area
     label: "Custom environment settings"
-    help: "It is necessary to export environment variables that have not already been exported."
-  modules: 
-    value: "python/3"
-    label: "Additional environment modules to load"
-    help: "Enter as a space-delimited list additional environment modules to load. (Note: Specifying the 'python/2' module here will be ignored, as this version of JupyterLab uses Python v3.)"
+    help: |
+      "It is necessary to export environment variables that have not already been exported."
+  python_version:
+    label: "Select Python Environment"
+    widget: select
+    options:
+      <%- conda_envs.each do |q| -%>
+        - [ "<%= q[0] %>", "<%= q[1] %>" ]
+      <%- end -%>
+  
   bc_num_hours:
     id: bc_num_hours
     label: Time (Hours)
