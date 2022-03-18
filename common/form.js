@@ -5,28 +5,39 @@
  */
 function partition_limits(selected_queue) {
 
+	console.log("running partition limits with queue: " + selected_queue + " \n\r");
+
 	// Get Form Fields
 	var time;
 	var cpus;
 	var mem;
 	var gpu;
 	var node;
+	var gpu_label;
 	if ($('#bc_num_hours').length > 0) {
 		time = $('#bc_num_hours');
+		console.log("has time \n\r");
 	}
 	if ($('#num_cpus').length > 0) {
 		cpus = $('#num_cpus');
+		console.log("has cpus \n\r");
 	}
 	if ($('#num_mem').length > 0) {
 		mem = $('#num_mem');
+		console.log("has mem \n\r");
 	}
 	if ($('#num_gpus').length > 0) {
 		gpu = $('#num_gpus');
+		console.log("has gpus \n\r");
 	}
 	if ($('#num_nodes').length > 0) {
 		node = $('#num_nodes');
+		console.log("has nodes \n\r");
 	}
-
+	if (gpu) {
+		gpu_label = document.querySelector("[for='batch_connect_session_context_bc_num_gpus']");
+		console.log("has gpu label \n\r");
+	}
 
 	// Get Default Max Values
 	var max_time = 0;
@@ -214,12 +225,25 @@ function partition_limits(selected_queue) {
 		if (gpu.val() > max_gpu) {
 			gpu.val(max_gpu)
 		}
+		console.log("gpu val" + gpu.val() + " \n\r");
+		console.log("gpu max" + max_gpu + " \n\r");
 		gpu.attr({ "max": max_gpu });
 		if (max_gpu === 0) {
+			console.log("disabling gpu\n\r");
 			gpu.attr('disabled', 'disabled');
+			gpu.hide();
+			console.log("disable gpu -- none \n\r");
+			if (gpu_label) {
+				gpu_label.style.display = "none";
+			}
 		}
 		else {
+			console.log("enabling gpu \n\r");
 			gpu.removeAttr('disabled');
+			gpu.show();
+			if (gpu_label) {
+				gpu_label.style.display = "inline";
+			}
 		}
 	}
 
@@ -251,6 +275,11 @@ function partition_limits(selected_queue) {
 				if (gpu) {
 					gpu.attr({ "max": 0 });
 					gpu.attr('disabled', 'disabled');
+					gpu.hide();
+					console.log("disable gpu -- 2+ nodes \n\r");
+					if (gpu_label) {
+						gpu_label.style.display = "none";
+					}
 					if (gpu.val() > 0) {
 						gpu.val(0);
 					}
@@ -310,6 +339,11 @@ function partition_limits(selected_queue) {
 				if (gpu) {
 					gpu.attr({ "max": 0 });
 					gpu.attr('disabled', 'disabled');
+					gpu.hide();
+					console.log("disable gpu -- mic \n\r");
+					if (gpu_label) {
+						gpu_label.style.display = "none";
+					}
 					if (gpu.val() > 0) {
 						gpu.val(0);
 					}
@@ -324,9 +358,6 @@ function partition_limits(selected_queue) {
  */
 $(document).ready(function () {
 
-	// Set Default Partition
-	// $('select').find('option[value=interactive]').attr('selected', 'selected');
-
 	// Handle Partition Specific Settings
 	let queue;
 	let ngpus;
@@ -335,6 +366,8 @@ $(document).ready(function () {
 	let nmem;
 	if ($('#batch_connect_session_context_custom_queue').length > 0) {
 		queue = $('#batch_connect_session_context_custom_queue');
+		// Set Default Partition
+		$('select').find('option[value=interactive]').attr('selected', 'selected');
 	}
 	if ($('#num_gpus').length > 0) {
 		ngpus = $('#num_gpus');
@@ -351,7 +384,8 @@ $(document).ready(function () {
 	if (queue) {
 		partition_limits(queue[0].value);
 		queue.change(function () {
-			partition_limits(queue[0]);
+			console.log("queue changed \n\r");
+			partition_limits(queue[0].value);
 		})
 	}
 
