@@ -3,11 +3,11 @@ require 'open3'
 begin
     script = 'cat ' + staged_root.to_s + '/warnings.txt'
     o, status = Open3.capture2('bash', stdin_data: script)
-    output = o.split("\n")
+    warnings = o.split("\n")
 end
 -%>
 
-<%- output.each do |q| -%>
+<%- warnings.each do |q| -%>
 ### Warning:
 
 > <%= q %>
