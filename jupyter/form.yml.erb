@@ -1,31 +1,78 @@
-# Batch Connect app configuration file
-#
-# @note Used to define the submitted cluster, title, description, and
-#   hard-coded/user-defined attributes that make up this Batch Connect app.
+<%-
+require 'open3'
+begin
+    # get queues from 
+    script = '/hpc/applications/anaconda/3/bin/conda info -e'
+    o, status = Open3.capture2('bash', stdin_data: script)
+    output = o.split("\n")
+    conda_envs = []
+    python3_module = [ "python/3",    "python/3" ]
+    custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
+    conda_envs.push(python3_module)
+    conda_envs.push(custom_env)
+    enabled_envs = []
+    disabled_envs = []
+    output.each do |env|
+      # skip envs in /hpc/applications
+      if env =~ /^((?!hpc\/applications).)*$/ && env[0] != '#'
+        split_env = env.gsub(/\s+/m, ' ').strip.split(" ")
+        if split_env.count == 1
+          split_env.push(split_env[0])
+        end
+        jupyter_path = split_env[1] + "/bin/jupyter-notebook"
+        if File.file?(jupyter_path)
+          split_env[0] = "(Conda Environment) " + split_env[0]
+          enabled_envs.push(split_env)
+        else
+          split_env[1] = "No Jupyter Lab"
+          disabled_envs.push(split_env)
+        end
+      end
+    end
+    enabled_envs.each do |env|
+      conda_envs.push(env)
+    end
+    disabled_envs.each do |env|
+      conda_envs.push(env)
+    end
+end
+-%>
 ---
 cluster: "slurm_cluster"
-
 form:
-  - modules
-  - environment
   - custom_queue
+  - python_version
+  - environment
   - bc_num_hours
   - bc_num_slots
   - bc_num_cores
   - bc_num_gpus
   - bc_num_memory
-
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
+  python_version:
+    label: "Select Python Environment"
+    widget: select
+    help: |
+      - *python/3* is the default Anaconda Python 3 installation on M2 in the module "python/3"
+      - We've listed your *Conda* environments we found in standard locations. If the one you want to use is greyed out, it means that you need to install jupyter notebook in that environment before it can be used
+      - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
+      - Other environments can be specified by selecting "Custom Environment"
+    options:
+      <%- conda_envs.each do |q| -%>
+        - [ "<%= q[0] %>", "<%= q[1] %>" ]
+      <%- end -%>
   environment:
     widget: text_area
     label: "Custom environment settings"
-    help: "It is necessary to export environment variables that have not already been exported."
-  modules:
-    value: "python/3"
-    label: "Additional environment modules to load"
-    help: "Enter as a space-delimited list additional environment modules to load. (Note: Specifying the 'python/2' module here will be ignored, as this version of Jupyter Notebooks uses Python v3.)"
+    help: |
+      - Load any addition enviroment settings
+      - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
+      - Use *module load module1 module2 module3* to load M2 modules
+      - Use *export MY_VARIABLE=my_value* to export shell variables
+      - **NOTE:** *jupyter-notebook* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
+
   bc_num_hours:
     id: bc_num_hours
     label: Time (Hours)
@@ -60,7 +107,6 @@ attributes:
   bc_num_gpus:
     id: num_gpus
     label: "GPUs per node"
-    help: Number of GPUs or CUDA devices
     cacheable: true
     widget: number_field
     max: 1

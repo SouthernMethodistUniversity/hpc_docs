@@ -3,6 +3,10 @@
 # Benchmark info
 echo "TIMING - Starting main script at: $(date)"
 
+WARNING_FILE=$(pwd)/warnings.txt
+touch ${WARNING_FILE}
+LOAD_WANRINGS=0
+
 # Set working directory to home directory
 cd "${HOME}"
 
@@ -13,17 +17,22 @@ cd "${HOME}"
 # Purge the module environment to avoid conflicts
 module purge
 
-# Clustom module paths
-<%- unless context.module_paths.blank? -%>
-<%= context.module_paths %>
-env
-<%- end -%>
-
-<%- unless context.modules.blank? -%>
-# Load the require modules
-module load <%= context.modules.encode(universal_newline: true) %>
-# List loaded modules
-<%- end -%>
+# python environment from the drop down menu
+<% if context.python_version == "python/3" %>
+module load python/3
+<% elsif context.python_version != "custom" %>
+if ! command -v conda &> /dev/null
+then
+  echo $(which conda)
+  echo "Conda not found, but a conda environment was specified. Using default."
+  echo "Conda was not found, but a conda environment was specified. The default python/3 module was loaded. If this is not the desired behavior, ensure conda is in your path (loading your prefered conda and calling *conda init bash* from a terminal usually fixes this)" > ${WARNING_FILE}
+  LOAD_WANRINGS=1
+  module load python/3
+  echo $(which conda)
+fi
+eval "$(conda shell.bash hook)" 
+conda activate <%= context.python_version %>
+<% end %>
 
 # Clustom environment
 <%- unless context.environment.blank? -%>
@@ -34,6 +43,8 @@ env
 if ! command -v jupyter-lab &> /dev/null
 then
   echo "Jupyter Lab not found, using default."
+  echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure jupytor lab is installed in your environment and in your path" > ${WARNING_FILE}
+  LOAD_WANRINGS=1
   module load python/3
 fi
 
