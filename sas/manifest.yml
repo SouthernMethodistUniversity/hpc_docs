@@ -9,6 +9,6 @@ description: |
   Note that the HPC OnDemand configuration of [SAS] runs in an interactive desktop environment requiring packages only installed on the nodes of the **`desktop`** SLURM partition, however there are [other ways to run interactive sessions] if there is a necessity to use a node in one of [the other queues].
 
   [SAS]: https://www.sas.com/en_us/software/platform.html
-  [M2 cluster]: http://faculty.smu.edu/csc/documentation/about.html
-  [the other queues]: http://faculty.smu.edu/csc/documentation/applications/sas.html#types-of-nodes-on-which-sas-is-to-run
-  [other ways to run interactive sessions]: http://faculty.smu.edu/csc/documentation/applications/sas.html#running-sas-interactively-with-the-graphical-user-interface
+  [M2 cluster]: https://s2.smu.edu/hpc/documentation/about.html
+  [the other queues]: https://s2.smu.edu/hpc/documentation/applications/sas.html#types-of-nodes-on-which-sas-is-to-run
+  [other ways to run interactive sessions]: https://s2.smu.edu/hpc/documentation/applications/sas.html#running-sas-interactively-with-the-graphical-user-interface
