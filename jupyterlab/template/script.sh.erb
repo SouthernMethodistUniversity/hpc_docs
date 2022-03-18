@@ -13,17 +13,18 @@ cd "${HOME}"
 # Purge the module environment to avoid conflicts
 module purge
 
-# Clustom module paths
-<%- unless context.module_paths.blank? -%>
-<%= context.module_paths %>
-env
-<%- end -%>
-
-<%- unless context.modules.blank? -%>
-# Load the require modules
-module load <%= context.modules.encode(universal_newline: true) %>
-# List loaded modules
-<%- end -%>
+# python environment from the drop down menu
+<% if context.python_version == "python/3" %>
+module load python/3
+<% elsif context.python_version != "custom" %>
+if ! command -v conda &> /dev/null
+then
+  echo "Conda not found, but a conda environment was specified. Using default."
+  module load python/3
+fi
+eval "$(conda shell.bash hook)" 
+conda activate <%= context.python_version %>
+<% end %>
 
 # Clustom environment
 <%- unless context.environment.blank? -%>
