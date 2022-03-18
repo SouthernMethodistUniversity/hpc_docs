@@ -25,7 +25,7 @@ if ! command -v conda &> /dev/null
 then
   echo $(which conda)
   echo "Conda not found, but a conda environment was specified. Using default."
-  echo "Conda was not found, but a conda environment was specified. The default python/3 module was loaded. If this is not the desired behavoir, ensure conda is in your path (loading your prefered conda and calling *conda init bash* from a terminal usually fixes this)" > ${WARNING_FILE}
+  echo "Conda was not found, but a conda environment was specified. The default python/3 module was loaded. If this is not the desired behavior, ensure conda is in your path (loading your prefered conda and calling *conda init bash* from a terminal usually fixes this)" > ${WARNING_FILE}
   LOAD_WANRINGS=1
   module load python/3
   echo $(which conda)
