@@ -297,16 +297,19 @@ $(document).ready(function () {
 	})
 
 	// disable jupyter environments missing jupyter- lab
-	Array.from(document.querySelector("#batch_connect_session_context_python_version").options).forEach(function(option_element) {
-		let option_value = option_element.value;
-		if (!option_value.localeCompare("No Jupyter Lab")) {
-			console.log('Option value (disabel) : ' + option_value);
-            console.log("\n\r");
-			option_element.disabled = true;
-		} else {
-			console.log('Option value : ' + option_value);
-            console.log("\n\r");
-		}
-	});	
+	if ($('#batch_connect_session_context_python_version').length > 0) {
+
+		Array.from(document.querySelector("#batch_connect_session_context_python_version").options).forEach(function(option_element) {
+			let option_value = option_element.value;
+			if (!option_value.localeCompare("No Jupyter Lab")) {
+				console.log('Option value (disabel) : ' + option_value);
+				console.log("\n\r");
+				option_element.disabled = true;
+			} else {
+				console.log('Option value : ' + option_value);
+				console.log("\n\r");
+			}
+		});	
+	}
 
 });
