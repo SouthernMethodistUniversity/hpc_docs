@@ -392,28 +392,28 @@ $(document).ready(function () {
 	// currently only applies to development queue since it has
 	// 1 mic, 1 p100, 2 standard nodes
 	// update if gpus change
-	if (ngpus) {
+	if (ngpus && queue) {
 		ngpus.change(function () {
 			partition_limits(queue[0].value);
 		})
 	}
 
 	// update if cpus change
-	if (ncpus) {
+	if (ncpus && queue) {
 		ncpus.change(function () {
 			partition_limits(queue[0].value);
 		})
 	}
 
 	// update if nodes changes
-	if (nnodes) {
+	if (nnodes && queue) {
 		nnodes.change(function () {
 			partition_limits(queue[0].value);
 		})
 	}
 
 	// update if nodes changes
-	if (nmem) {
+	if (nmem && queue) {
 		nmem.change(function () {
 			partition_limits(queue[0].value);
 		})
