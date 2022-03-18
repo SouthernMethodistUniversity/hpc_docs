@@ -296,27 +296,17 @@ $(document).ready(function () {
 		partition_limits(queue[0].value);
 	})
 
-	// hide custom environment field selectively
-	let env = $('#batch_connect_session_context_python_version');
-	var label = document.querySelector("[for='batch_connect_session_context_environment']");
-	var textbox = $('#batch_connect_session_context_environment');
-	if (env[0].value != "custom") {
-		textbox.hide();
-		label.style.display = "none";;
-	}
-	else {
-		textbox.show();
-		label.style.display = "inline";
-	}
-	env.change(function () {
-		if (env[0].value != "custom") {
-			textbox.hide();
-			label.style.display = "none";;
+	// disable jupyter environments missing jupyter- lab
+	Array.from(document.querySelector("#batch_connect_session_context_python_version").options).forEach(function(option_element) {
+		let option_value = option_element.value;
+		if (!option_value.localeCompare("No Jupyter Lab")) {
+			console.log('Option value (disabel) : ' + option_value);
+            console.log("\n\r");
+			option_element.disabled = true;
+		} else {
+			console.log('Option value : ' + option_value);
+            console.log("\n\r");
 		}
-		else {
-			textbox.show();
-			label.style.display = "inline";
-		}
-	})
+	});	
 
 });
