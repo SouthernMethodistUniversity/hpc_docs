@@ -64,7 +64,7 @@ module purge
 module load intel
 
 # activate environment
-source ~/venv_mpi/bin/activate
+source $HOME/venv_mpi/bin/activate
 
 # run test
 srun python osu_bw.py
@@ -82,14 +82,11 @@ srun python osu_bw.py
 
 # load modules
 module purge
-
-# sometimes module purge removes the Conda variables from shell profiles
-# so reload them just to be safe
-source ~/.bashrc
 module load python/3
 
 # activate the environment
-conda activate /users/jlagrone/conda_mpi4py
+eval "$(conda shell.bash hook)"
+conda activate $HOME/conda_mpi4py
 
 # run test
 mpirun python osu_bw.py
