@@ -1,0 +1,18 @@
+# nThread 1 nGpus 2 minBytes 8 maxBytes 134217728 step: 2(factor) warmup iters: 5 iters: 20 validation: 1 
+#
+#                                      out-of-place                       in-place          
+#       size      type   redop     time   algbw   busbw  error     time   algbw   busbw
+#        (B)                       (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+           8     float     sum    32.30    0.00    0.00  1e-07    32.13    0.00    0.00
+          16     float     sum    32.25    0.00    0.00  3e-08    32.55    0.00    0.00 
+          32     float     sum    837.4    0.00    0.00  3e-08    104.6    0.00    0.00
+          64     float     sum    375.6    0.00    0.00  3e-08    32.43    0.00    0.00
+         ...       ...     ...      ...     ...     ...    ...      ...     ...     ... 
+     8388608     float     sum   1444.0    5.81    8.71  1e-07   1447.4    5.80    8.69
+    16777216     float     sum   2727.5    6.15    9.23  1e-07   2684.4    6.25    9.37
+    33554432     float     sum   5111.7    6.56    9.85  1e-07   5120.8    6.55    9.83
+    67108864     float     sum    10018    6.70   10.05  1e-07   9979.1    6.72   10.09
+   134217728     float     sum    19611    6.84   10.27  1e-07    19474    6.89   10.34
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 3.17035 
+#
