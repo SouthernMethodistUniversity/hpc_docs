@@ -18,7 +18,7 @@ and one using ```conda install```.
 module load intel
 
 # create a virtual environment named venv_mpi4py
-python -m venv ~/venv_mpi4py
+python -m venv $HOME/venv_mpi4py
 
 # upgrade pip
 pip install --upgrade pip
