@@ -1,0 +1,127 @@
+\section{Message Passing Interface (MPI)}
+
+\begin{frame}{Motivation}
+\begin{itemize}
+\item MPI is a specification of what the interface should look like and what it should do
+\begin{itemize}
+\item Separate processes on each node communicate by sending and receiving data over a network
+\item MPI can be used for parallelism on a single node as well
+\end{itemize}
+\item An MPI implementation is a set of libraries that allow for multiple nodes to be used together via message passing
+\item Many higher-level languages and libraries support or use MPI
+\item MPI has become the industry standard for distributed-memory programming
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MPI Implementations}
+\begin{itemize}
+\item Open source
+\begin{itemize}
+\item MPICH
+\item OpenMPI
+\item MVAPICH
+\end{itemize}
+\item Closed source
+\begin{itemize}
+\item Intel MPI (based on MPICH)
+\item Mellanox HPC-X MPI (based on OpenMPI)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Compiling MPI Programs}
+Depending on your programming language and the specific MPI implementation,
+these wrapper scripts can have different names
+\begin{itemize}
+\item C++: mpicxx or mpic++
+\item C: mpicc
+\item Fortran 90/95/2003: mpif90
+\item Fortran 77: mpif77
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Running MPI Programs}
+\begin{itemize}
+\item Running MPI batch jobs on ManeFrame is almost identical to running serial
+      and OpenMP batch jobs. However, when running MPI jobs, we must tell the
+      queueing system a few additional pieces of information:
+\begin{enumerate}
+\item How many total nodes we want to reserve on the machine?
+\item How many total cores do we want to reserve on the machine?
+\item How do you want to distribute tasks on each node?
+\item How many MPI tasks do you actually want to run?
+\end{enumerate}
+\item We have two key ways to control execution of parallel batch jobs:
+\begin{itemize}
+\item Controlling how the job is reserved
+\item Controlling how the MPI job is executed
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+\subsubsection{Estimating \(\pi\)}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=1, lastline=7]{C}{examples/mpi/mpi_monte_carlo_pi.c}
+\caption{Includes and function prototypes}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=35, lastline=48]{C}{examples/mpi/mpi_monte_carlo_pi.c}
+\caption{Function definitions.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=9, lastline=15]{C}{examples/mpi/mpi_monte_carlo_pi.c}
+\caption{Argument check and variable initialization.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=16, lastline=21]{C}{examples/mpi/mpi_monte_carlo_pi.c}
+\caption{Initialize MPI, get the global number of tasks, and get the process rank.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=22, lastline=27]{C}{examples/mpi/mpi_monte_carlo_pi.c}
+\caption{Get number of hits per rank via summation reduction.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=28, lastline=33]{C}{examples/mpi/mpi_monte_carlo_pi.c}
+\caption{If rank zero, report estimation of \(\pi\). All ranks finalize and exit.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=1, lastline=8]{Bash}{examples/mpi/mpi_monte_carlo_pi.sbatch}
+\caption{Reguest compute resources.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=10, lastline=13]{Bash}{examples/mpi/mpi_monte_carlo_pi.sbatch}
+\caption{Setup environment.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=15, lastline=17]{Bash}{examples/mpi/mpi_monte_carlo_pi.sbatch}
+\caption{Build the executable and run.}
+\end{listing}
+\end{frame}
+
