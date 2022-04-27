@@ -1,0 +1,99 @@
+\section{MPI for Python}
+
+\begin{frame}{Installing  \mintinline{sh}{mpi4py}}
+\begin{description}
+\item  \mintinline{sh}{mpi4py} should be installed with \mintinline{sh}{pip} when possible
+\item \mintinline{sh}{Conda} installed versions will likely be built with an unoptimized version of MPI
+\item There can be significant performance impacts, especially for communication bound applications
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile]{\mintinline{sh}{Conda} \mintinline{sh}{mpi4py} Demo}
+	Minimal example of  \mintinline{sh}{mpi4py} using \mintinline{sh}{Conda}
+\begin{minted}{sh}
+	# load version of Python that has Conda in it
+	module load python/3
+	
+	# create a virtual environment named conda_mpi4py that uses Python 3.9 
+	# and installs mpi4py
+	conda create -p $HOME/conda_mpi4py mpi4py python=3.9 
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\mintinline{sh}{pip} \mintinline{sh}{mpi4py} Demo}
+	Minimal example of  \mintinline{sh}{mpi4py} using \mintinline{sh}{pip}
+	\begin{minted}{sh}
+		# load Intel compilers, which include a version of Python and an MPI compiler
+		module load intel
+		
+		# create a virtual environment named venv_mpi4py
+		python -m venv ~/venv_mpi4py
+		
+		# upgrade pip
+		pip install --upgrade pip
+		
+		# make sure we're using the correct MPI compiler
+		export MPICC=$(which mpicc)
+		
+		# install mpi4py, the flags --no-binary :all: --compile 
+		# tell pip not to use a precompiled version
+		pip install --no-binary :all: --compile mpi4py
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Bandwidth Test}
+	We'll use a simple bandwidth test available here \url{https://github.com/felker/mpi4py_benchmark}
+	
+\textbf{Important commands:}
+	
+	Import the \mintinline{sh}{mpi4py} libraries
+	\begin{minted}{python}
+		from mpi4py import MPI
+	\end{minted}
+
+    Creating a communicator and getting ranks:
+    \begin{minted}{python}
+    	comm = MPI.COMM_WORLD
+    	myid = comm.Get_rank()
+    	numprocs = comm.Get_size()
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Bandwidth Test}
+	
+	Create send and receive buffers
+	\begin{minted}{python}
+		# create the message. [data_buffer size type]
+		if (id == 0):
+			s_msg = [s_buf, size, MPI.BYTE]
+			r_msg = [r_buf,    4, MPI.BYTE]
+		elif (if == 1):
+		 	s_msg = [s_buf, 4, MPI.BYTE]
+		 	r_msg = [r_buf,    size, MPI.BYTE]
+	\end{minted}
+	
+	Send and receive requests
+	\begin{minted}{python}
+		if (id == 0):
+			requests = comm.Isend(s_msg, 1, 100)
+			MPI.Request.Waitall(requests)
+			comm.Recv(r_msg, 1, 101)
+		elif (id == 1):
+			requests = comm.Irecv(r_msg, 0, 100)
+			MPI.Request.Waitall(requests)
+			comm.Send(s_msg, 0, 101)
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Running with \mintinline{sh}{Conda} \mintinline{sh}{mpi4py}}
+	\inputminted{sh}{examples/mpi4py/run_conda_env.sbatch}
+\end{frame}
+
+\begin{frame}[fragile]{Running with \mintinline{sh}{venv} \mintinline{sh}{mpi4py}}
+	\inputminted{sh}{examples/mpi4py/run_venv.sbatch}
+\end{frame}
+
+\begin{frame}[fragile]{Example Output}
+	\inputminted{text}{examples/mpi4py/sample_output.txt}
+\end{frame}
+
