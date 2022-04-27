@@ -1,0 +1,87 @@
+\section{NVSHMEM}
+
+\begin{frame}{Motivation for NVSHMEM}
+\begin{itemize}
+\item Programming model for efficient and scalable multi-GPU codes.
+\item Based on OpenSHMEM.
+\item Provides a partitioned global address space (PGAS) that spans the memory
+      of all included GPUs.
+\item Communication is initiated directly from the GPUs, which can be more
+      performant than CPU-bound distributed programming models.
+\end{itemize}
+\end{frame}
+
+\subsection{Examples}
+\subsubsection{Estimating \(\pi\)}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=1, lastline=14]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Includes and definitions.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=16, lastline=32]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Monte Carlo method for estimating \(\pi\) CUDA kernel.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=35, lastline=45]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Initialize NVSHMEM and get local processing element (PE) ID and global number of PEs.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=47, lastline=53]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Allocate memory on hosts and devices and initialize the number of hits.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=55, lastline=65]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Launch kernel on the devices to perform the computations, block until
+all are finished, and then accumulate the results.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=67, lastline=77]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Only on the first PE, copy accumlated hits back to host and report estimated value of \(\pi\).}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=79, lastline=87]{C++}{examples/nvshmem/nvshmem_pi.cpp}
+\caption{Free memory on hosts and device, finalize NVSHMEM, and exit.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=1, lastline=8]{Bash}{examples/nvshmem/nvshmem_pi.sbatch}
+\caption{Reguest compute resources.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=10, lastline=16]{sh}{examples/nvshmem/nvshmem_pi.sbatch}
+\caption{Setup the environment. \mintinline{sh}{$GCC_HOME} is to provide full C++ 11 support.}
+\end{listing}
+\end{frame}
+
+\begin{frame}{Estimating \(\pi\)}
+\begin{listing}[H]
+\inputminted[firstline=18, lastline=25]{sh}{examples/nvshmem/nvshmem_pi.sbatch}
+\caption{Build the executable for the specific PE being used and run.}
+\end{listing}
+\end{frame}
+
