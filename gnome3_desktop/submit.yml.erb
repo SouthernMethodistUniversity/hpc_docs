@@ -1,7 +1,8 @@
-<%
-  # image 
-  image="/hpc/applications/containers/gnome3.2.sif"
-%>
+<%- if bc_num_gpus.to_i != 0 -%>
+<% image="/hpc/applications/containers/gnome3.3-nvidia.sif" %>
+<%- else -%>
+<% image="/hpc/applications/containers/gnome3.3.sif" %>
+<%- end -%>
 ---
 script:
   job_name: "gnome3_desktop"

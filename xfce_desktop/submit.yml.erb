@@ -1,7 +1,8 @@
-<%
-  # image 
-  image="/hpc/applications/containers/xfce_desktop_4.12.sif"
-%>
+<%- if bc_num_gpus.to_i != 0 -%>
+<% image="/hpc/applications/containers/xfce_desktop_4.12-nvidia.sif" %>
+<%- else -%>
+<% image="/hpc/applications/containers/xfce_desktop_4.12.sif" %>
+<%- end -%>
 ---
 script:
   job_name: "xfce_desktop"
@@ -39,5 +40,5 @@ batch_connect:
 
     export SINGULARITY_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK"
 
-    singularity exec <%= image %> /bin/bash container.sh
+    singularity exec --nv <%= image %> /bin/bash container.sh
 
