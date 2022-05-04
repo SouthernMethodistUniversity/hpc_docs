@@ -1,7 +1,8 @@
-<%
-  # image 
-  image="/hpc/applications/containers/mate.sif"
-%>
+<%- if bc_num_gpus.to_i != 0 -%>
+<% image="/hpc/applications/containers/mate_desktop_1.16-nvidia.sif" %>
+<%- else -%>
+<% image="/hpc/applications/containers/mate_desktop_1.16.sif" %>
+<%- end -%>
 ---
 script:
   job_name: "mate_desktop"
@@ -32,4 +33,4 @@ batch_connect:
 
     export SINGULARITY_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK"
 
-    singularity exec <%= image %> /bin/bash container.sh
+    singularity exec --nv <%= image %> /bin/bash container.sh
