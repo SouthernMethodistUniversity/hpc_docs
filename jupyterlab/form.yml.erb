@@ -1,7 +1,7 @@
 <%-
 require 'open3'
 begin
-    # get queues from 
+    # get conda envs from 
     script = '/hpc/applications/anaconda/3/bin/conda info -e'
     o, status = Open3.capture2('bash', stdin_data: script)
     output = o.split("\n")
@@ -135,22 +135,18 @@ attributes:
     widget: select
     options:
       - [ "development [Max Time: 2 hours]",             "development"    ]
-      - [ "htc [Max Time: 24 hours, Maximum Nodes: 1]",  "htc"            ]
-      - [ "standard-mem-s [Max Time: 24 hours]",         "standard-mem-s" ]
-      - [ "standard-mem-m [Max Time: 7 days]",           "standard-mem-m" ]
-      - [ "standard-mem-l [Max Time: 30 days]",          "standard-mem-l" ]
-      - [ "medium-mem-1-s [Max Time: 24 hours]",         "medium-mem-1-s" ]
-      - [ "medium-mem-1-m [Max Time: 7 days]",           "medium-mem-1-m" ]
-      - [ "medium-mem-1-l [Max Time: 30 days]",          "medium-mem-1-l" ]
-      - [ "medium-mem-2 [Max Time: 14 days]",            "medium-mem-2"   ]
-      - [ "high-mem-1 [Max Time: 14 days]",              "high-mem-1"     ]
-      - [ "high-mem-2 [Max Time: 14 days]",              "high-mem-2"     ]
-      - [ "mic [Max Time: 14 days]",                     "mic"            ]
-      - [ "gpgpu-1 [Max Time: 7 days]",                  "gpgpu-1"        ]
-      - [ "v100x8 [Max Time: 7 days]",                   "v100x8"         ]
-      - [ "*fp-gpgpu-2 [Max Time: UNLIMITED]",           "fp-gpgpu-2"     ]
-      - [ "*fp-gpgpu-3 [ssMax Time: UNLIMITED]",           "fp-gpgpu-3"     ]
-      - [ "*fp-gpgpu-4 [Max Time: UNLIMITED]",           "fp-gpgpu-4"     ]
+      - [ "htc [Max Time: 12 hours, Maximum Nodes: 1]",  "htc"            ]
+      - [ "standard-mem-s [Max Time: 12 hours]",         "standard-mem-s" ]
+      - [ "medium-mem-1-s [Max Time: 12 hours]",         "medium-mem-1-s" ]
+      - [ "medium-mem-2 [Max Time: 12 hours]",           "medium-mem-2"   ]
+      - [ "high-mem-1 [Max Time: 12 hours]",             "high-mem-1"     ]
+      - [ "high-mem-2 [Max Time: 12 hours]",             "high-mem-2"     ]
+      - [ "mic [Max Time: 12 hours]",                    "mic"            ]
+      - [ "gpgpu-1 [Max Time: 12 hours]",                "gpgpu-1"        ]
+      - [ "v100x8 [Max Time: 12 hours]",                 "v100x8"         ]
+      - [ "*fp-gpgpu-2 [Max Time: 12 hours]",            "fp-gpgpu-2"     ]
+      - [ "*fp-gpgpu-3 [Max Time: 12 hours]",            "fp-gpgpu-3"     ]
+      - [ "*fp-gpgpu-4 [Max Time: 12 hours]",            "fp-gpgpu-4"     ]
   start_time:
     label: "Earliest Start Time"
     id: start
