@@ -7,6 +7,9 @@ function partition_limits(selected_queue) {
 
 	// console.log("running partition limits with queue: " + selected_queue + " \n\r");
 
+        // set a max time for all queues
+        var ood_max_time = 12;
+
 	// Get Form Fields
 	var time;
 	var cpus;
@@ -195,6 +198,11 @@ function partition_limits(selected_queue) {
 		max_gpu = 1;
 		max_node = 1;
 	}
+
+        // enforce max time regardless of queue
+        if (max_time > ood_max_time) {
+                max_time = ood_max_time;
+        }
 
 	// Handle Max Time Changes
 	if (time) {
