@@ -48,6 +48,9 @@ form:
   - bc_num_cores
   - bc_num_gpus
   - bc_num_memory
+  - start_time
+  - end_time
+  - bc_email_on_started
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
@@ -71,7 +74,7 @@ attributes:
       - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
       - Use *module load module1 module2 module3* to load M2 modules
       - Use *export MY_VARIABLE=my_value* to export shell variables
-      - **NOTE:** *jupyter-lab* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
+      - **NOTE:**  *jupyter-lab* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
 
   bc_num_hours:
     id: bc_num_hours
@@ -146,5 +149,17 @@ attributes:
       - [ "gpgpu-1 [Max Time: 7 days]",                  "gpgpu-1"        ]
       - [ "v100x8 [Max Time: 7 days]",                   "v100x8"         ]
       - [ "*fp-gpgpu-2 [Max Time: UNLIMITED]",           "fp-gpgpu-2"     ]
-      - [ "*fp-gpgpu-3 [Max Time: UNLIMITED]",           "fp-gpgpu-3"     ]
+      - [ "*fp-gpgpu-3 [ssMax Time: UNLIMITED]",           "fp-gpgpu-3"     ]
       - [ "*fp-gpgpu-4 [Max Time: UNLIMITED]",           "fp-gpgpu-4"     ]
+  start_time:
+    label: "Earliest Start Time"
+    id: start
+    help: "Specify earliest desired start time. Leave blank to start as soon as resources are available"
+    widget: datetime_field
+  end_time:
+    label: "Latest Start Time"
+    id: end
+    help: |
+        Specify latest allowable start time. Leave blank to allow job to queue with no limits.
+        **Jobs that do not start before this time will automatically be cancelled.**
+    widget: datetime_field
