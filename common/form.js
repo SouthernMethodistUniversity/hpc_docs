@@ -429,7 +429,7 @@ $(document).ready(function () {
 	if (end && enable_end) {
 		end_label = document.querySelector("[for='batch_connect_session_context_end_time']").closest('div.form-group');
 		if (end_label) {
-			if (enable_start.is(":checked")) {
+			if (enable_end.is(":checked")) {
 				end.removeAttr('disabled');
 				end.show();	
 				end_label.style.display = "inline";
