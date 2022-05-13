@@ -38,7 +38,7 @@ function partition_limits(selected_queue) {
 		// console.log("has nodes \n\r");
 	}
 	if (gpu) {
-		gpu_label = document.querySelector("[for='batch_connect_session_context_bc_num_gpus']");
+		gpu_label = document.querySelector("[for='batch_connect_session_context_bc_num_gpus']").closest('div.form-group');
 		// console.log("has gpu label \n\r");
 	}
 
