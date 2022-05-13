@@ -160,7 +160,7 @@ attributes:
     id: start
     cacheable: false
     help: |
-        Specify your earliest desired start time. Leave blank to start as soon as resources are available.
+        Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
         **Your job will start after the set time depending on the resources available. This is no guarantee 
         that your job will start at any particular time.**
     widget: datetime_field
@@ -175,7 +175,7 @@ attributes:
     id: end
     cacheable: false
     help: |
-        Specify latest allowable start time. Leave blank to allow job to queue with no limits.
+        Specify the latest allowable start time. Leave blank or uncheck the box above to allow the job to queue with no limits.
         **Jobs that do not start before this time will automatically be cancelled.**
     widget: datetime_field
 
