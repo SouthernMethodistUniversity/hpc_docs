@@ -50,3 +50,9 @@ script:
     - "--deadline"
     - "<%= (end_time.to_time + bc_num_hours.to_i.hours).to_datetime.strftime("%Y-%m-%d %H:%M:%S") %>"
     <%- end -%>
+    <%- if !email_on_started.blank? -%>
+    - "--mail-type"
+    - "BEGIN"
+    - "--mail-user"
+    - "<%= email_on_started %>"
+    <%- end -%>

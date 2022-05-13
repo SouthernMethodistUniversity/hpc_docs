@@ -371,6 +371,13 @@ $(document).ready(function () {
 	let ncpus;
 	let nnodes;
 	let nmem;
+        let enable_start;
+	let start;
+	let start_label;
+	let enable_end;
+	let end;
+	let end_label;
+
 	if ($('#batch_connect_session_context_custom_queue').length > 0) {
 		queue = $('#batch_connect_session_context_custom_queue');
 		// Set Default Partition
@@ -388,6 +395,52 @@ $(document).ready(function () {
 	if ($('#num_mem').length > 0) {
 		nmem = $('#num_mem');
 	}
+	if ($('#enable_start').length > 0) {
+		enable_start = $('#enable_start');
+		//console.log("enable_start: " + enable_start.is(":checked")  + " \n\r");
+	}
+	if ($('#start').length > 0) {
+		start = $('#start');
+	}
+	if ($('#enable_end').length > 0) {
+		enable_end = $('#enable_end');
+		//console.log("enable_enable: " + enable_end.is(":checked")  + " \n\r");
+	}
+	if ($('#end').length > 0) {
+		end = $('#end');
+	}
+
+	// enable disable fields on page load
+	if (start && enable_start) {
+		start_label = document.querySelector("[for='batch_connect_session_context_start_time']").closest('div.form-group');
+		if (start_label) {
+			if (enable_start.is(":checked")) {
+				start.removeAttr('disabled');
+				start.show();	
+				start_label.style.display = "inline";
+			} else {
+				start_label.style.display = "none";
+				start.attr('disabled', 'disabled');
+				start.hide();
+			}
+		}
+	}
+
+	if (end && enable_end) {
+		end_label = document.querySelector("[for='batch_connect_session_context_end_time']").closest('div.form-group');
+		if (end_label) {
+			if (enable_start.is(":checked")) {
+				end.removeAttr('disabled');
+				end.show();	
+				end_label.style.display = "inline";
+			} else {
+				end_label.style.display = "none";
+				end.attr('disabled', 'disabled');
+				end.hide();
+			}
+		}
+	}
+
 	if (queue) {
 		partition_limits(queue[0].value);
 		queue.change(function () {
@@ -442,6 +495,36 @@ $(document).ready(function () {
 			// 	console.log("\n\r");
 			// }
 		});
+	}
+
+        // enable / disable time limits if check boxes change
+        if (start_label) {
+		enable_start.change(function() {
+			//console.log("enable_start changed: " + enable_start.is(":checked")  + " \n\r");
+			if (enable_start.is(":checked")) {
+				start.removeAttr('disabled');
+				start.show();	
+				start_label.style.display = "inline";
+			} else {
+				start_label.style.display = "none";
+				start.attr('disabled', 'disabled');
+				start.hide();
+			}
+		})
+	}
+	if (end_label) {
+		enable_end.change(function() {
+			//console.log("enable_end changed: " + enable_end.is(":checked")  + " \n\r");
+			if (enable_end.is(":checked")) {
+				end.removeAttr('disabled');
+				end.show();	
+				end_label.style.display = "inline";
+			} else {
+				end_label.style.display = "none";
+				end.attr('disabled', 'disabled');
+				end.hide();
+			}
+		})
 	}
 
 });

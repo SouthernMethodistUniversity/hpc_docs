@@ -48,9 +48,11 @@ form:
   - bc_num_cores
   - bc_num_gpus
   - bc_num_memory
+  - enable_start_time
   - start_time
+  - enable_end_time
   - end_time
-  - bc_email_on_started
+  - email_on_started
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
@@ -147,15 +149,40 @@ attributes:
       - [ "*fp-gpgpu-2 [Max Time: 12 hours]",            "fp-gpgpu-2"     ]
       - [ "*fp-gpgpu-3 [Max Time: 12 hours]",            "fp-gpgpu-3"     ]
       - [ "*fp-gpgpu-4 [Max Time: 12 hours]",            "fp-gpgpu-4"     ]
+  enable_start_time:
+    label: "Enable Earliest Start Time"
+    id: enable_start
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
   start_time:
     label: "Earliest Start Time"
     id: start
-    help: "Specify earliest desired start time. Leave blank to start as soon as resources are available"
+    cacheable: false
+    help: |
+        Specify your earliest desired start time. Leave blank to start as soon as resources are available.
+        **Your job will start after the set time depending on the resources available. This is no guarantee 
+        that your job will start at any particular time.**
     widget: datetime_field
+  enable_end_time:
+    label: "Enable Latest Start Time"
+    id: enable_end
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
   end_time:
     label: "Latest Start Time"
     id: end
+    cacheable: false
     help: |
         Specify latest allowable start time. Leave blank to allow job to queue with no limits.
         **Jobs that do not start before this time will automatically be cancelled.**
     widget: datetime_field
+
+  email_on_started:
+    label: "Email Address"
+    id: email_address
+    help: |
+        (Optional) Send an email to the provided address when the job starts.
+        **Leave blank if you do not want an email sent.**
+    widget: email_field
