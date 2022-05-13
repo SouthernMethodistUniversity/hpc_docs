@@ -46,7 +46,7 @@ script:
     - "--begin"
     - "<%= start_time %>"
     <%- end -%>
-    <%- if !end_time.blank? -%>
+    <%- if !end_time.blank? and end_time.to_time > DateTime.now + 2.minutes -%>
     - "--deadline"
     - "<%= (end_time.to_time + bc_num_hours.to_i.hours).to_datetime.strftime("%Y-%m-%d %H:%M:%S") %>"
     <%- end -%>
