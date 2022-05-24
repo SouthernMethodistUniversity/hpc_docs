@@ -1,5 +1,8 @@
+#
+# XFCE Desktop Submission Script
+#
 <%- if bc_num_gpus.to_i != 0 -%>
-<% image="/hpc/applications/containers/xfce_desktop_4.12-nvidia.sif" %>
+<% image="/hpc/applications/containers/xfce_desktop_4.12-nv470-cuda114.sif" %>
 <%- else -%>
 <% image="/hpc/applications/containers/xfce_desktop_4.12.sif" %>
 <%- end -%>
