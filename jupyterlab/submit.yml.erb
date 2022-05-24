@@ -1,7 +1,6 @@
 # Job submission configuration file
 #
 ---
-
 #
 # Configure the content of the job script for the batch job here
 # @see http://www.rubydoc.info/gems/ood_core/OodCore/BatchConnect/Template
@@ -43,3 +42,17 @@ script:
     <%- end -%>
     - "--mem"
     - "<%= bc_num_memory.blank? ? 6144 : bc_num_memory.to_i*1024 %>"
+    <%- if !start_time.blank? -%>
+    - "--begin"
+    - "<%= start_time %>"
+    <%- end -%>
+    <%- if !end_time.blank? and end_time.to_time > DateTime.now + 2.minutes -%>
+    - "--deadline"
+    - "<%= (end_time.to_time + bc_num_hours.to_i.hours).to_datetime.strftime("%Y-%m-%d %H:%M:%S") %>"
+    <%- end -%>
+    <%- if !email_on_started.blank? -%>
+    - "--mail-type"
+    - "BEGIN"
+    - "--mail-user"
+    - "<%= email_on_started %>"
+    <%- end -%>
