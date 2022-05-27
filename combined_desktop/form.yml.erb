@@ -1,0 +1,92 @@
+---
+
+title: "Remote Desktop (NEW!)"
+cluster: "slurm_cluster"
+submit: submit.yml.erb
+
+form:
+  - custom_queue
+  - desktop_env
+  - bc_num_hours
+  - bc_num_cores
+  - bc_num_memory
+  - bc_num_gpus
+  - bc_vnc_resolution
+  #- bc_email_on_started
+  #- bc_num_slots
+
+attributes:
+  bc_num_hours:
+    id: bc_num_hours
+    label: Time (Hours)
+    help: |
+      - Number of hours to allocate
+      - Exceeding walltime time will automaticaly stop this job.
+    cacheable: true
+    widget: number_field
+    max: 24
+    min: 1
+    step: 1
+    value: 1
+  bc_num_slots:
+    id: num_nodes
+    value: 1
+    #label: Number of nodes
+    #help: Number of computer nodes 
+    #cacheable: true
+    #widget: number_field
+    #max: 81
+    #min: 1
+    #step: 1
+  bc_num_cores:
+    id: num_cpus
+    label: "Cores per node"
+    help: Number of CPU threads
+    cacheable: true
+    widget: number_field
+    max: 36
+    min: 1
+    value: 1
+  bc_num_gpus:
+    id: num_gpus
+    label: "GPUs per node"
+    cacheable: true
+    widget: number_field
+    max: 1
+    min: 0
+    step: 1
+    value: 0
+  bc_num_memory:
+    id: num_mem
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    widget: number_field
+    max: 250
+    min: 1
+    step: 1
+    value: 6
+  bc_vnc_idle: 0
+  bc_vnc_resolution:
+    required: true
+  node_type: null
+  custom_queue:
+    label: "Partition"
+    help: |
+      Please select an appropriate desktop queue. 
+      The VDI nodes contain an NVIDIA Quadro 5000 that may accelerate some graphical applications
+    widget: select
+    options:
+      - [ "Regular Desktop Node [Max Time: 12 hours]",        "desktop"         ]
+      - [ "VDI Desktop Node [Max Time: 24 hours]",            "desktop-vdi"     ]
+      - [ "VDI Development Desktop Node (restricted access)", "desktop-vdi-dev" ]
+  desktop_env:
+    label: "Desktop Environment"
+    help: |
+      Select the desktop environment you would like to use. This changes how the desktop appears,
+      but the underlying system is the same in all cases. 
+    widget: select
+    options:
+      - [ "Mate",       "mate" ]
+      - [ "Gnome 3",    "gnome"]
+      - [ "XFCE",       "xfce" ]
+      - [ "KDE Plasma", "kde"  ]
