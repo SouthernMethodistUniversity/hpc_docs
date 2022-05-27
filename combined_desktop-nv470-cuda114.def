@@ -3,10 +3,10 @@ From: nvidia/opengl:1.2-glvnd-runtime-centos7
 
 %labels
     Author Amit Kumar <ahkumar@smu.edu>, Richard England <rengland@smu.edu>
-    Version v1.16.2
+    Version v1.0
     Framework Open OnDemand
     Distribution CentOS 7
-    Application Mate Desktop
+    Application Combined Desktops
     Features NVIDIA Driver 470.103.01, CUDA 11.4
 
 %post
@@ -24,6 +24,7 @@ From: nvidia/opengl:1.2-glvnd-runtime-centos7
     yum groupinstall -y 'MATE Desktop'
     yum groupinstall -y 'GNOME Desktop'
     yum groupinstall -y 'Xfce' 'base-x'
+    yum groupinstall -y "KDE Plasma Workspaces"
     yum -y groupinstall 'Compatibility Libraries'
     yum -y groupinstall 'Network File System Client'
     yum --setopt=group_package_types=mandatory,default,optional -y groupinstall 'Internet Browser'
@@ -35,6 +36,7 @@ From: nvidia/opengl:1.2-glvnd-runtime-centos7
     yum -y install turbovnc
     yum -y install glx-utils
     yum -y install systemd-libs
+    yum -y install gnome-tweak-tool gnome-shell-extension-top-icons gnome-shell-extension-systemMonitor gnome-shell-extension-user-theme
     yum -y install sssd
     yum install -y python2-pip xorg-x11-apps xorg-x11-server-Xorg
     pip install ts
