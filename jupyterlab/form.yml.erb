@@ -93,7 +93,7 @@ attributes:
   bc_num_slots:
     id: num_nodes
     label: Number of nodes
-    help: Number of computer nodes 
+    help: Number of compute nodes 
     cacheable: true
     widget: number_field
     max: 81
@@ -112,6 +112,7 @@ attributes:
   bc_num_gpus:
     id: num_gpus
     label: "GPUs per node"
+    help: Number of GPUs per node
     cacheable: true
     widget: number_field
     max: 1
@@ -161,7 +162,7 @@ attributes:
     cacheable: false
     help: |
         Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
-        **Your job will start after the set time depending on the resources available. This is no guarantee 
+        **Your job will start after the set time depending on the resources available. There is no guarantee 
         that your job will start at any particular time.**
     widget: datetime_field
   enable_end_time:

@@ -48,6 +48,11 @@ form:
   - bc_num_cores
   - bc_num_gpus
   - bc_num_memory
+  - enable_start_time
+  - start_time
+  - enable_end_time
+  - end_time
+  - email_on_started
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
@@ -88,7 +93,7 @@ attributes:
   bc_num_slots:
     id: num_nodes
     label: Number of nodes
-    help: Number of computer nodes 
+    help: Number of compute nodes 
     cacheable: true
     widget: number_field
     max: 81
@@ -98,7 +103,7 @@ attributes:
   bc_num_cores:
     id: num_cpus
     label: "Cores per node"
-    help: Number of CPU threads
+    help: Number of CPU cores per node
     cacheable: true
     widget: number_field
     max: 36
@@ -107,6 +112,7 @@ attributes:
   bc_num_gpus:
     id: num_gpus
     label: "GPUs per node"
+    help: Number of GPUs per node
     cacheable: true
     widget: number_field
     max: 1
@@ -132,19 +138,53 @@ attributes:
     widget: select
     options:
       - [ "development [Max Time: 2 hours]",             "development"    ]
-      - [ "htc [Max Time: 24 hours, Maximum Nodes: 1]",  "htc"            ]
-      - [ "standard-mem-s [Max Time: 24 hours]",         "standard-mem-s" ]
-      - [ "standard-mem-m [Max Time: 7 days]",           "standard-mem-m" ]
-      - [ "standard-mem-l [Max Time: 30 days]",          "standard-mem-l" ]
-      - [ "medium-mem-1-s [Max Time: 24 hours]",         "medium-mem-1-s" ]
-      - [ "medium-mem-1-m [Max Time: 7 days]",           "medium-mem-1-m" ]
-      - [ "medium-mem-1-l [Max Time: 30 days]",          "medium-mem-1-l" ]
-      - [ "medium-mem-2 [Max Time: 14 days]",            "medium-mem-2"   ]
-      - [ "high-mem-1 [Max Time: 14 days]",              "high-mem-1"     ]
-      - [ "high-mem-2 [Max Time: 14 days]",              "high-mem-2"     ]
-      - [ "mic [Max Time: 14 days]",                     "mic"            ]
-      - [ "gpgpu-1 [Max Time: 7 days]",                  "gpgpu-1"        ]
-      - [ "v100x8 [Max Time: 7 days]",                   "v100x8"         ]
-      - [ "*fp-gpgpu-2 [Max Time: UNLIMITED]",           "fp-gpgpu-2"     ]
-      - [ "*fp-gpgpu-3 [Max Time: UNLIMITED]",           "fp-gpgpu-3"     ]
-      - [ "*fp-gpgpu-4 [Max Time: UNLIMITED]",           "fp-gpgpu-4"     ]
+      - [ "htc [Max Time: 12 hours, Maximum Nodes: 1]",  "htc"            ]
+      - [ "standard-mem-s [Max Time: 12 hours]",         "standard-mem-s" ]
+      - [ "medium-mem-1-s [Max Time: 12 hours]",         "medium-mem-1-s" ]
+      - [ "medium-mem-2 [Max Time: 12 hours]",           "medium-mem-2"   ]
+      - [ "high-mem-1 [Max Time: 12 hours]",             "high-mem-1"     ]
+      - [ "high-mem-2 [Max Time: 12 hours]",             "high-mem-2"     ]
+      - [ "mic [Max Time: 12 hours]",                    "mic"            ]
+      - [ "gpgpu-1 [Max Time: 12 hours]",                "gpgpu-1"        ]
+      - [ "v100x8 [Max Time: 12 hours]",                 "v100x8"         ]
+      - [ "*fp-gpgpu-2 [Max Time: 12 hours]",            "fp-gpgpu-2"     ]
+      - [ "*fp-gpgpu-3 [Max Time: 12 hours]",            "fp-gpgpu-3"     ]
+      - [ "*fp-gpgpu-4 [Max Time: 12 hours]",            "fp-gpgpu-4"     ]
+  enable_start_time:
+    label: "Enable Earliest Start Time"
+    id: enable_start
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  start_time:
+    label: "Earliest Start Time"
+    id: start
+    cacheable: false
+    help: |
+        Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
+        **Your job will start after the set time depending on the resources available. There is no guarantee 
+        that your job will start at any particular time.**
+    widget: datetime_field
+  enable_end_time:
+    label: "Enable Latest Start Time"
+    id: enable_end
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  end_time:
+    label: "Latest Start Time"
+    id: end
+    cacheable: false
+    min: "<%= DateTime.now + 30.minutes %>"
+    help: |
+        Specify the latest allowable start time. Leave blank or uncheck the box above to allow the job to queue with no limits.
+        **Jobs that do not start before this time will automatically be cancelled.**
+    widget: datetime_field
+
+  email_on_started:
+    label: "Email Address"
+    id: email_address
+    help: |
+        (Optional) Send an email to the provided address when the job starts.
+        **Leave blank if you do not want an email sent.**
+    widget: email_field
