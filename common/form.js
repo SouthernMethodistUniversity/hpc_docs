@@ -3,7 +3,7 @@
 /*
  * Function to handle partition limitations
  */
-function partition_limits(selected_queue) {
+function partition_limits(selected_queue, enable_exclusive) {
 
 	// console.log("running partition limits with queue: " + selected_queue + " \n\r");
 
@@ -48,6 +48,12 @@ function partition_limits(selected_queue) {
 	var max_mem = 0;
 	var max_gpu = 0;
 	var max_node = 0;
+
+	var min_time = 1;
+	var min_cpu = 1;
+	var min_mem = 1;
+	var min_gpu = 0;
+	var min_node = 1;
 
 	if (time) {
 		max_time = time.attr("max");
@@ -199,6 +205,13 @@ function partition_limits(selected_queue) {
 		max_node = 1;
 	}
 
+	// if exlusive is enabled. Enforce min = max
+	if (enable_exclusive) {
+		min_cpu = max_cpu;
+		min_gpu = max_gpu;
+		min_mem = max_mem;
+	}
+
         // enforce max time regardless of queue
         if (max_time > ood_max_time) {
                 max_time = ood_max_time;
@@ -210,6 +223,11 @@ function partition_limits(selected_queue) {
 			time.val(max_time)
 		}
 		time.attr({ "max": max_time });
+
+		if (time.val() < min_time) {
+			time.val(min_time)
+		}
+		time.attr({ "min": min_time });
 	}
 
 	// Handle Max CPU Changes
@@ -218,6 +236,10 @@ function partition_limits(selected_queue) {
 			cpus.val(max_cpu)
 		}
 		cpus.attr({ "max": max_cpu });
+		if (cpus.val() < min_cpu) {
+			cpus.val(min_cpu)
+		}
+		cpus.attr({ "min": min_cpu });
 	}
 
 	// Handle Max Mem Changes
@@ -226,6 +248,10 @@ function partition_limits(selected_queue) {
 			mem.val(max_mem)
 		}
 		mem.attr({ "max": max_mem });
+		if (mem.val() < min_mem) {
+			mem.val(min_mem)
+		}
+		mem.attr({ "min": min_mem });
 	}
 
 	// Handle Max GPU Changes
@@ -251,7 +277,12 @@ function partition_limits(selected_queue) {
 			if (gpu_label) {
 				gpu_label.style.display = "inline";
 			}
+
 		}
+		if (gpu.val() < min_gpu) {
+			gpu.val(min_gpu)
+		}
+		gpu.attr({ "min": min_gpu });
 	}
 
 	// handle max nodes
@@ -260,6 +291,10 @@ function partition_limits(selected_queue) {
 			node.val(max_node)
 		}
 		node.attr({ "max": max_node })
+		if (node.val() < min_node) {
+			node.val(min_node)
+		}
+		node.attr({ "min": min_node })
 	}
 
 	// handle development queue 1 mic, 1 p100, 2 standard
@@ -358,6 +393,14 @@ function partition_limits(selected_queue) {
 			}
 		}
 	}
+  
+        // set max values for cores, mem, and gpus if exclusive is enabled
+        // disable if dev because there "all resources" doesn't make sence
+        if (enable_exclusive && (selected_queue !== "development")) {
+        	gpu.val(max_gpu);
+		cpus.val(max_cpu);
+		mem.val(max_mem);
+        }
 }
 
 /*
@@ -377,6 +420,9 @@ $(document).ready(function () {
 	let enable_end;
 	let end;
 	let end_label;
+        let exclusive;
+	let exclusive_label;
+        var enable_exclusive = false
 
 	if ($('#batch_connect_session_context_custom_queue').length > 0) {
 		queue = $('#batch_connect_session_context_custom_queue');
@@ -408,6 +454,11 @@ $(document).ready(function () {
 	}
 	if ($('#end').length > 0) {
 		end = $('#end');
+	}
+	if ($('#enable_exclusive').length > 0) {
+		exclusive = $('#enable_exclusive');
+		enable_exclusive = exclusive.is(":checked");
+		exclusive_label = document.querySelector("[for='batch_connect_session_context_use_exclusive']").closest('div.form-group');
 	}
 
 	// enable disable fields on page load
@@ -441,11 +492,46 @@ $(document).ready(function () {
 		}
 	}
 
+	if (queue && exclusive) {
+
+		if (queue[0].value === "development") {
+			exclusive.attr('disabled', 'disabled');
+			exclusive.attr('checked', false);
+			enable_exclusive = false
+		} else if (queue[0].value === "gpgpu-1") {
+			exclusive.attr('disabled', 'disabled');
+			exclusive.attr('checked', true);
+			enable_exclusive = true
+		} else {
+			exclusive.removeAttr('disabled');
+		}
+
+	}
+
 	if (queue) {
-		partition_limits(queue[0].value);
+		partition_limits(queue[0].value, enable_exclusive);
 		queue.change(function () {
 			// console.log("queue changed \n\r");
-			partition_limits(queue[0].value);
+			
+			if (exclusive) {
+				if (queue[0].value === "development") {
+					exclusive.attr('disabled', 'disabled');
+					exclusive.attr('checked', false);
+					exclusive_label.style.display = "none";
+					enable_exclusive = false
+				} else if (queue[0].value === "gpgpu-1") {
+					exclusive.attr('disabled', 'disabled');
+					exclusive.attr('checked', true);
+					enable_exclusive = true
+					exclusive_label.style.display = "inline";
+				} else {
+					exclusive.removeAttr('disabled');
+					exclusive_label.style.display = "inline";
+				}
+
+			}
+
+			partition_limits(queue[0].value, enable_exclusive);
 		})
 	}
 
@@ -455,28 +541,28 @@ $(document).ready(function () {
 	// update if gpus change
 	if (ngpus && queue) {
 		ngpus.change(function () {
-			partition_limits(queue[0].value);
+			partition_limits(queue[0].value, enable_exclusive);
 		})
 	}
 
 	// update if cpus change
 	if (ncpus && queue) {
 		ncpus.change(function () {
-			partition_limits(queue[0].value);
+			partition_limits(queue[0].value, enable_exclusive);
 		})
 	}
 
 	// update if nodes changes
 	if (nnodes && queue) {
 		nnodes.change(function () {
-			partition_limits(queue[0].value);
+			partition_limits(queue[0].value, enable_exclusive);
 		})
 	}
 
 	// update if nodes changes
 	if (nmem && queue) {
 		nmem.change(function () {
-			partition_limits(queue[0].value);
+			partition_limits(queue[0].value, enable_exclusive);
 		})
 	}
 
@@ -526,5 +612,16 @@ $(document).ready(function () {
 			}
 		})
 	}
+
+	// enable disable fields if exclusive is checked or not
+	if (exclusive && queue) {
+		exclusive.change(function() {
+			console.log("exclusive changed: " + exclusive.is(":checked")  + " \n\r");
+			enable_exclusive = exclusive.is(":checked");
+			partition_limits(queue[0].value, enable_exclusive);
+
+		})
+	}
+
 
 });
