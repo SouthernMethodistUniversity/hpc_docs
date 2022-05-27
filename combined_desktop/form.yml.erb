@@ -8,6 +8,7 @@ form:
   - custom_queue
   - desktop_env
   - bc_num_hours
+  - use_exclusive
   - bc_num_cores
   - bc_num_memory
   - bc_num_gpus
@@ -28,16 +29,14 @@ attributes:
     min: 1
     step: 1
     value: 1
-  bc_num_slots:
-    id: num_nodes
-    value: 1
-    #label: Number of nodes
-    #help: Number of computer nodes 
-    #cacheable: true
-    #widget: number_field
-    #max: 81
-    #min: 1
-    #step: 1
+  use_exclusive:
+    label: "Enable exclusive use"
+    id: enable_exclusive
+    widget: check_box
+    help: |
+        Automically request all available resources on each node (CPU cores, memory, GPUs, etc.)
+
+        **If your job does not require all of the available resources, this may result in significantly longer wait times**
   bc_num_cores:
     id: num_cpus
     label: "Cores per node"

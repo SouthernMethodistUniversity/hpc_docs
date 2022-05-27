@@ -498,12 +498,15 @@ $(document).ready(function () {
 			exclusive.attr('disabled', 'disabled');
 			exclusive.attr('checked', false);
 			enable_exclusive = false
+			exclusive_label.style.display = "none";
 		} else if (queue[0].value === "gpgpu-1") {
 			exclusive.attr('disabled', 'disabled');
 			exclusive.attr('checked', true);
 			enable_exclusive = true
+			exclusive_label.style.display = "inline";
 		} else {
 			exclusive.removeAttr('disabled');
+			exclusive_label.style.display = "inline";
 		}
 
 	}

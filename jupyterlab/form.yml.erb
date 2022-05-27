@@ -45,6 +45,7 @@ form:
   - environment
   - bc_num_hours
   - bc_num_slots
+  - use_exclusive
   - bc_num_cores
   - bc_num_gpus
   - bc_num_memory
@@ -100,6 +101,14 @@ attributes:
     min: 1
     step: 1
     value: 1
+  use_exclusive:
+    label: "Enable exclusive use"
+    id: enable_exclusive
+    widget: check_box
+    help: |
+        Automically request all available resources on each node (CPU cores, memory, GPUs, etc.)
+
+        **If your job does not require all of the available resources, this may result in significantly longer wait times**
   bc_num_cores:
     id: num_cpus
     label: "Cores per node"
