@@ -8,6 +8,11 @@ form:
   - bc_num_cores
   - bc_num_memory
   - bc_vnc_resolution
+  - enable_start_time
+  - start_time
+  - enable_end_time
+  - end_time
+  - email_on_started
 attributes:
   bc_num_slots: 1
   version:
@@ -28,7 +33,7 @@ attributes:
       - Exceeding walltime time will automaticaly stop this job.
     cacheable: true
     widget: number_field
-    max: 24
+    max: 12
     min: 1
     step: 1
     value: 1
@@ -53,4 +58,42 @@ attributes:
   bc_vnc_resolution:
     required: true
   bc_queue: "desktop"
+  enable_start_time:
+    label: "Enable Earliest Start Time"
+    id: enable_start
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  start_time:
+    label: "Earliest Start Time"
+    id: start
+    cacheable: false
+    help: |
+        Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
+        **Your job will start after the set time depending on the resources available. There is no guarantee 
+        that your job will start at any particular time.**
+    widget: datetime_field
+  enable_end_time:
+    label: "Enable Latest Start Time"
+    id: enable_end
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  end_time:
+    label: "Latest Start Time"
+    id: end
+    cacheable: false
+    min: "<%= DateTime.now + 30.minutes %>"
+    help: |
+        Specify the latest allowable start time. Leave blank or uncheck the box above to allow the job to queue with no limits.
+        **Jobs that do not start before this time will automatically be cancelled.**
+    widget: datetime_field
+
+  email_on_started:
+    label: "Email Address"
+    id: email_address
+    help: |
+        (Optional) Send an email to the provided address when the job starts.
+        **Leave blank if you do not want an email sent.**
+    widget: email_field
   
