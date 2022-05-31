@@ -129,6 +129,9 @@ else
   echo "running container"
   echo "SIF: " ${SIF}
   singularity exec \
+  <%- if context.bc_num_gpus.to_i != 0 -%>
+  --nv \
+  <%- end -%>
   -B ${TMPDIR}:/tmp \
   -B ${TMPDIR}/run:/run \
   -B ${TMPDIR}/var/lib:/var/lib/rstudio-server \
