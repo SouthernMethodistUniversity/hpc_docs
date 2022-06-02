@@ -25,7 +25,7 @@ attributes:
       - Exceeding walltime time will automaticaly stop this job.
     cacheable: true
     widget: number_field
-    max: 24
+    max: 12
     min: 1
     step: 1
     value: 1
@@ -76,7 +76,7 @@ attributes:
     widget: select
     options:
       - [ "Regular Desktop Node [Max Time: 12 hours]",        "desktop"         ]
-      - [ "VDI Desktop Node [Max Time: 24 hours]",            "desktop-vdi"     ]
+      - [ "VDI Desktop Node [Max Time: 12 hours]",            "desktop-vdi"     ]
       - [ "VDI Development Desktop Node (restricted access)", "desktop-vdi-dev" ]
   desktop_env:
     label: "Desktop Environment"
