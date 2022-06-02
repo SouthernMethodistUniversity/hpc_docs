@@ -20,8 +20,6 @@ From: centos:7
     yum -y groupinstall 'Infiniband Support'
     yum groupinstall -y 'MATE Desktop'
     yum groupinstall -y 'GNOME Desktop'
-    yum groupinstall -y 'Xfce' 'base-x'
-    yum groupinstall -y "KDE Plasma Workspaces"
     yum -y groupinstall 'Compatibility Libraries'
     yum -y groupinstall 'Network File System Client'
     yum --setopt=group_package_types=mandatory,default,optional -y groupinstall 'Internet Browser'
