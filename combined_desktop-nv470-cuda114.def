@@ -57,3 +57,6 @@ From: nvidia/opengl:1.2-glvnd-runtime-centos7
 
 %environment
     export NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES},graphics,compat32
+    export ftp_proxy="http://10.210.15.2:3128"
+    export http_proxy="http://10.210.15.2:3128"
+    export https_proxy="http://10.210.15.2:3128"

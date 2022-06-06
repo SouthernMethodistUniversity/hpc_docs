@@ -48,3 +48,8 @@ From: centos:7
     rm -rf /var/cache/yum/*
     rm -rf /etc/ld.so.cache
     rm -rf /var/cache/ldconfig/*
+
+%environment
+    export ftp_proxy="http://10.210.15.2:3128"
+    export http_proxy="http://10.210.15.2:3128"
+    export https_proxy="http://10.210.15.2:3128"
