@@ -29,6 +29,8 @@ cd "${HOME}"
 # Load the required environment
 module load <%= context.version %>
 
+export {http,https,ftp}_proxy="http://10.210.15.2:3128"
+
 # Launch MATLAB
 module list
 set -x

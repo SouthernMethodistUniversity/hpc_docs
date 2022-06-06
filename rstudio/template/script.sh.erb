@@ -16,6 +16,7 @@ module purge
   export RSTUDIO_LD_PATH=$LD_LIBRARY_PATH
   REXEC=$(which R)
   RSESSION_EXEC=$(which rsession)
+  export {http,https,ftp}_proxy="http://10.210.15.2:3128"
 <% end %>
 
 # Clustom environment                     
@@ -86,6 +87,7 @@ sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   #!/bin/bash
 
   echo "PATH: " ${PATH}
+  export {http,https,ftp}_proxy="http://10.210.15.2:3128"
 
   rserver \
   --www-port "${port}" \
