@@ -396,7 +396,7 @@ function partition_limits(selected_queue, enable_exclusive) {
   
         // set max values for cores, mem, and gpus if exclusive is enabled
         // disable if dev because there "all resources" doesn't make sence
-        if (enable_exclusive && (selected_queue !== "development")) {
+        if (enable_exclusive && (selected_queue !== "development") && (selected_queue !== "htp")) {
         	gpu.val(max_gpu);
 		cpus.val(max_cpu);
 		mem.val(max_mem);
@@ -494,7 +494,7 @@ $(document).ready(function () {
 
 	if (queue && exclusive) {
 
-		if (queue[0].value === "development") {
+		if ((queue[0].value === "development") || (queue[0].value === "htc")) {
 			exclusive.attr('disabled', 'disabled');
 			exclusive.attr('checked', false);
 			enable_exclusive = false
@@ -517,7 +517,7 @@ $(document).ready(function () {
 			// console.log("queue changed \n\r");
 			
 			if (exclusive) {
-				if (queue[0].value === "development") {
+				if ((queue[0].value === "development") || (queue[0].value === "htc")) {
 					exclusive.attr('disabled', 'disabled');
 					exclusive.attr('checked', false);
 					exclusive_label.style.display = "none";
