@@ -17,6 +17,9 @@ From: nvidia/opengl:1.2-glvnd-runtime-centos7
     gpg --list-keys
     yum install -y epel-release
     yum -y install yum-utils
+    yum -y install zsh
+    yum -y install tcsh
+    yum -y install ksh
     yum -y install xorg-x11-utils
     yum -y install xorg-x11-xauth
     yum -y groupinstall 'Base'
