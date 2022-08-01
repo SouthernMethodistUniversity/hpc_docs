@@ -8,4 +8,5 @@
 ## Configuration
 
 * 20 NVIDIA DGX nodes.
+* 8 x 200 Gb Infiniband network connections per node.
 
