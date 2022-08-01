@@ -1,0 +1,18 @@
+root: intro.md
+format: jb-book
+defaults:
+  numbered: false
+parts:
+- caption: ManeFrame II (M2)
+  chapters:
+  - file: m2/about.rst
+- caption: NVIDIA DGX SuperPOD (MP)
+  chapters:
+  - file: mp/about.md
+- caption: ManeFrame III (M3)
+  chapters:
+  - file: m3/about.md
+- caption: Tutorials
+  chapters:
+  - file: tutorials/intro.md
+
