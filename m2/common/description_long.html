@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Standard-, Medium-, and High- Memory Compute Nodes &#8212; SMU HPC Documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">SMU HPC Documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ManeFrame II (M2)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about.html">
+   About
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NVIDIA DGX SuperPOD (MP)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mp/about.html">
+   NVIDIA DGX SuperPOD (MP)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ManeFrame III (M3)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../m3/about.html">
+   ManeFrame III (M3)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tutorials/intro.html">
+   HPC Tutorials
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/m2/common/description_long.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Standard-, Medium-, and High- Memory Compute Nodes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accelerator-nodes-with-nvidia-gpus">
+   Accelerator Nodes with NVIDIA GPUs
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#many-core-nodes-with-intel-xeon-phi-processors">
+   Many-Core Nodes with Intel Xeon Phi Processors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-desktop-nodes">
+   Virtual Desktop Nodes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-performance-network">
+   High-Performance Network
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-performance-and-archival-storage">
+   High-Performance and Archival Storage
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faculty-partner-nodes">
+   Faculty Partner Nodes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#professor-thomas-hagstrom-mathematics">
+     <em>
+      Professor Thomas Hagstrom (Mathematics)
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#professor-barbara-minsker-civil-and-environmental-engineering">
+     <em>
+      Professor Barbara Minsker (Civil and Environmental Engineering)
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Standard-, Medium-, and High- Memory Compute Nodes</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Standard-, Medium-, and High- Memory Compute Nodes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accelerator-nodes-with-nvidia-gpus">
+   Accelerator Nodes with NVIDIA GPUs
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#many-core-nodes-with-intel-xeon-phi-processors">
+   Many-Core Nodes with Intel Xeon Phi Processors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#virtual-desktop-nodes">
+   Virtual Desktop Nodes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-performance-network">
+   High-Performance Network
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#high-performance-and-archival-storage">
+   High-Performance and Archival Storage
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faculty-partner-nodes">
+   Faculty Partner Nodes
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#professor-thomas-hagstrom-mathematics">
+     <em>
+      Professor Thomas Hagstrom (Mathematics)
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#professor-barbara-minsker-civil-and-environmental-engineering">
+     <em>
+      Professor Barbara Minsker (Civil and Environmental Engineering)
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p>SMU’s high performance computing (HPC) cluster, ManeFrame II (M2), features
+state-of-the-art CPUs, accelerators, and networking technologies, high memory
+capacity per node, and advanced interactive GPU-accelerated remote desktop
+experiences.</p>
+<p>The cluster provides a familiar interactive experience for researchers, which
+includes the CentOS 7 operating system, the SLURM resource scheduler, and the
+Lmod environment module system. Additionally, familiar development tool chains
+are available including the GCC, Intel, and PGI compiler suites. Optimized
+high-level programming environments such as MATLAB, Python, and R are also
+installed in addition to the domain specific software packages that SMU
+researchers depend on for their work.</p>
+<table class="table">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 19%" />
+<col style="width: 17%" />
+<col style="width: 16%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>ManeFrame I (<em>retired</em>)</p></th>
+<th class="head"><p>ManeFrame II (2017)</p></th>
+<th class="head"><p>ManeFrame II (2019)</p></th>
+<th class="head"><p>NVIDIA DGX SuperPOD (Coming 2022)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Computational Ability</p></td>
+<td><p>104 TFLOPS</p></td>
+<td><p>630 TFLOPS</p></td>
+<td><p>870 TFLOPS</p></td>
+<td><p>1,644 TFLOPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of Nodes</p></td>
+<td><p>1,104</p></td>
+<td><p>349</p></td>
+<td><p>354</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>CPU Cores (AVX2)</p></td>
+<td><p>8,832</p></td>
+<td><p>11,088</p></td>
+<td><p>11,276</p></td>
+<td><p>2,560</p></td>
+</tr>
+<tr class="row-odd"><td><p>Total Accelerator Cores</p></td>
+<td><p>0</p></td>
+<td><p>132,608</p></td>
+<td><p>275,968</p></td>
+<td><p>1,392,640</p></td>
+</tr>
+<tr class="row-even"><td><p>Total Memory</p></td>
+<td><p>29.2 TB (29,856 GB)</p></td>
+<td><p>116.5 TB (119,336 GB)</p></td>
+<td><p>120 TB (122,880 GB)</p></td>
+<td><p>52.5 TB (53,760 GB)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Node Interconnect Bandwidth</p></td>
+<td><p>20 Gb/s</p></td>
+<td><p>100 Gb/s</p></td>
+<td><p>100 Gb/s</p></td>
+<td><p>200 Gb/s</p></td>
+</tr>
+<tr class="row-even"><td><p>Work Storage</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+<td><p>768 TB (Shared)</p></td>
+<td><p>768 TB (Shared)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scratch Space</p></td>
+<td><p>1.4 PB (1,229 TB)</p></td>
+<td><p>1.4 PB (1,434 TB)</p></td>
+<td><p>2.8 PB (2,867 TB)</p></td>
+<td><p>750 TB (Raw)</p></td>
+</tr>
+<tr class="row-even"><td><p>Archive Capabilities</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Operating System</p></td>
+<td><p>Scientific Linux 6</p></td>
+<td><p>CentOS 7</p></td>
+<td><p>CentOS 7</p></td>
+<td><p>Ubuntu 20.04</p></td>
+</tr>
+</tbody>
+</table>
+<section id="standard-medium-and-high-memory-compute-nodes">
+<span id="standard-nodes"></span><h1>Standard-, Medium-, and High- Memory Compute Nodes<a class="headerlink" href="#standard-medium-and-high-memory-compute-nodes" title="Permalink to this headline">#</a></h1>
+<p>Each of the 176 standard compute nodes has 36 cores, 256 GB of memory, and 100
+Gb/s networking. Specifically, these nodes contain dual Intel Xeon E5-2695v4
+2.1 GHz 18-core “Broadwell” processors with 45 MB of cache each and 256 GB of
+DDR4-2400 memory. This translates to efficient execution per processor cycle
+and vectorization via the second-generation Advanced Vector Extensions (AVX2).
+In addition, there are 35 medium- and five high-memory compute nodes which have
+the same processors, but feature 768 GB and 1,536 GB (1.5 TB) of DDR4-2400
+memory respectively and ManeFrame I’s four 768 GB and six 1,536 GB (1.5 TB)
+nodes are also part of ManeFrame II.</p>
+</section>
+<section id="accelerator-nodes-with-nvidia-gpus">
+<span id="p100-nodes"></span><h1>Accelerator Nodes with NVIDIA GPUs<a class="headerlink" href="#accelerator-nodes-with-nvidia-gpus" title="Permalink to this headline">#</a></h1>
+<p>M2 contains 36 accelerator nodes with NVIDIA GPUs are configured with dual
+Intel Xeon E5-2695v4 2.1 GHz 18-core “Broadwell” processors, 256 GB of
+DDR4-2400 memory, and one NVIDIA P100 GPU accelerator. Each NVIDIA P100 GPU has
+3,584 CUDA cores and 16 GB CoWoS HBM2 memory. The P100 GPU is the based on the
+Pascal architecture and a high bandwidth (732 GB/s) stacked memory
+architecture. In the summer of 2019, three additional nodes were added with
+eight NVIDIA Tesla V100 GPUs each. Each GPU has 32 GB of CoWoS HBM2 memory,
+5,120 NVIDIA CUDA cores, and 640 NVIDIA Tensor cores. In addition, M2 has one
+ever-broadening set of drop-in replacement libraries and ever easier to
+implement CUDA-based programming environments, make GPU-based acceleration
+significantly more approachable for many computationally intensive
+applications.</p>
+</section>
+<section id="many-core-nodes-with-intel-xeon-phi-processors">
+<span id="knl-nodes"></span><h1>Many-Core Nodes with Intel Xeon Phi Processors<a class="headerlink" href="#many-core-nodes-with-intel-xeon-phi-processors" title="Permalink to this headline">#</a></h1>
+<p>The 36 many-core nodes are configured with Intel Xeon Phi 7230 (also
+known as Knights Landing or KNL) processors and 385 GB of DDR4-2400
+memory. Each Xeon Phi has 64 1.30 GHz cores and 16 GB of high bandwidth
+(400 GB/s) stacked memory. KNL processors are based on the Intel’s
+“Silvermont” Atom processor cores and have hardware-based support for up
+to four concurrent threads. A principal benefit of the KNL processors is
+that they are based on and binary compatible with x86 architectures and
+therefore do not require specialized programming languages or
+directives/pragmas.</p>
+</section>
+<section id="virtual-desktop-nodes">
+<h1>Virtual Desktop Nodes<a class="headerlink" href="#virtual-desktop-nodes" title="Permalink to this headline">#</a></h1>
+<p>The five virtual desktop nodes will allow researchers remote desktop
+access to high-performance compute capability. These nodes can be used
+for applications that have demanding remote visualization and/or
+rendering requirements. In addition, these virtual desktops can be
+configured as either Linux or Windows for a handful of compatible
+applications. Each node has dual Intel Xeon E5-2695v4 2.1 GHz 18-core
+“Broadwell” processors, 256 GB of DDR4-2400 memory, and one NVIDIA
+Quadro M5000 GPU.</p>
+</section>
+<section id="high-performance-network">
+<h1>High-Performance Network<a class="headerlink" href="#high-performance-network" title="Permalink to this headline">#</a></h1>
+<p>The cluster provides high-speed and low-latency EDR InfiniBand
+networking. Every node is equipped with a Mellanox ConnectX-5 InfiniBand
+adaptor and all nodes are connected via Mellanox Switch-IB 2 switches.
+The InfiniBand network provides 100 Gb/s and less than 600 nanosecond
+latency. Additionally, the combination of ConnectX-5 and Switch-IB 2
+provides network acceleration for applications by off-loading some MPI
+calls, thereby reducing the load on the processors, freeing them to work
+on other computations.</p>
+</section>
+<section id="high-performance-and-archival-storage">
+<h1>High-Performance and Archival Storage<a class="headerlink" href="#high-performance-and-archival-storage" title="Permalink to this headline">#</a></h1>
+<p>The cluster has four storage systems. The first storage system is an NFS based
+storage providing space for home directories, applications, libraries, and
+compilers, etc. This storage system provides 11.4 TB of sold state drive based
+usable space and 38.4 TB of usable 7200 RPM SAS storage space. This storage
+space will have an automatic retention of 30 days’ worth of changes. The second
+storage system provides the high-performance Lustre file system for calculation
+scratch space. This storage system provides 2.8 PB of usable space with a write
+performance of 56.4 GB/s and read performance of 70.8 GB/s, when used in
+parallel. The third storage system is 110 TB of usable disk based archive space
+that includes off-site backup for disaster recovery. The fourth storage system,
+“work”, provides 8 TB of storage per user.</p>
+</section>
+<section id="faculty-partner-nodes">
+<h1>Faculty Partner Nodes<a class="headerlink" href="#faculty-partner-nodes" title="Permalink to this headline">#</a></h1>
+<p>See <span class="xref std std-ref">Programs and Policies</span> for more information.</p>
+<section id="professor-thomas-hagstrom-mathematics">
+<span id="fp-hagstrom"></span><h2><em>Professor Thomas Hagstrom (Mathematics)</em><a class="headerlink" href="#professor-thomas-hagstrom-mathematics" title="Permalink to this headline">#</a></h2>
+<p>Professor Hagstrom has one node that is available as port of M2. This node has
+dual Intel Xeon E5-2680v3 2.50 GHz 12-core “Sandy Bridge” processors, 128 GB of
+memory, and quad NVIDIA K80 GPU accelerators. Each GPU has 4,992 CUDA cores and
+24 GB of GDDR5 memory.</p>
+<p>The queue for these nodes, <code class="docutils literal notranslate"><span class="pre">fp-gpgpu-2</span></code>, is generally available to M2 users.</p>
+</section>
+<section id="professor-barbara-minsker-civil-and-environmental-engineering">
+<span id="fp-minsker"></span><h2><em>Professor Barbara Minsker (Civil and Environmental Engineering)</em><a class="headerlink" href="#professor-barbara-minsker-civil-and-environmental-engineering" title="Permalink to this headline">#</a></h2>
+<p>Professor Minsker has two nodes that are availabe as part of M2. These nodes
+each have dual Intel Xeon Gold 6148 2.40 GHz 20-core “Skylake” processors, 384
+GB of memory, dual NVIDIA V100 GPU accelerators, and 2 TB of local RAID scratch
+space. Each GPU has 5,120 CUDA cores, 640 Tensor cores, and 32 GB CoWoS HBM2
+memory. The V100 GPU is based on the Volta architecture and an extremely high
+bandwidth (900 GB/s) stacked memory architecture.</p>
+<p>The queue for these nodes, <code class="docutils literal notranslate"><span class="pre">fp-gpgpu-3</span></code>, is generally available to M2 users
+with the following restrictions.</p>
+<ul class="simple">
+<li><p>The maximum job duration for users not in Dr. Minsker’s group is 24 hours</p></li>
+<li><p>There is no maximum job duration for users in Dr. Minsker’s group when the
+<code class="docutils literal notranslate"><span class="pre">--qos</span> <span class="pre">qos_clowder</span></code> Slurm flag is used</p></li>
+<li><p>Jobs submitted without the <code class="docutils literal notranslate"><span class="pre">--qos</span> <span class="pre">qos_clowder</span></code> flag may be queued
+indefinitely until jobs submitted with the flag finish</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./m2/common"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
