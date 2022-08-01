@@ -10,9 +10,7 @@
 echo $SLURM_JOB_PARTITION
 
 module purge
-module load nvhpc-22.2       # Alternatively nvhpc-21.2, nvhpc-21.9
+module load gcc-9.2 hpcx
 
-mpicc -o mpi_monte_carlo_pi mpi_monte_carlo_pi.c
-
-srun mpi_monte_carlo_pi
+srun mpi_monte_carlo_pi 10000
 
