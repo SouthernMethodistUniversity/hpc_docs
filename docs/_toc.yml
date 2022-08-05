@@ -15,4 +15,6 @@ parts:
 - caption: Tutorials
   chapters:
   - file: tutorials/intro.md
+  - file: tutorials/unix/intro.md
+  - file: tutorials/cpp/intro.md
 
