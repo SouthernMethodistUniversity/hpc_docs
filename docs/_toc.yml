@@ -17,4 +17,15 @@ parts:
   - file: tutorials/intro.md
   - file: tutorials/unix/intro.md
   - file: tutorials/cpp/intro.md
+    sections:
+    - file: tutorials/cpp/syntax.md
+    - file: tutorials/cpp/building_programs.md
+    - file: tutorials/cpp/debugging.md
+    - file: tutorials/cpp/profiling.md
+    - file: tutorials/cpp/testing.md
+    - file: tutorials/cpp/math_libraries.md
+    - file: tutorials/cpp/parallel_stl.md
+    - file: tutorials/cpp/kokkos.md
+    - file: tutorials/cpp/openmp.md
+    - file: tutorials/cpp/mpi.md
 
