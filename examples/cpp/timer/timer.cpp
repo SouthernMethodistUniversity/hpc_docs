@@ -32,7 +32,7 @@ namespace Timer
     std::vector<double> Timer::m_accumulated_times;
     std::vector<std::size_t> Timer::m_accumulated_call_counts;
     std::vector<bool> Timer::m_running_timers;
-    std::vector<std::size_t> Timer::m_parent_level;
+    std::vector<std::size_t> Timer::m_levels;
     std::vector<std::size_t> Timer::m_parent_ids;
     std::vector<std::thread::id> Timer::m_thread_ids;
 
@@ -96,7 +96,7 @@ namespace Timer
             m_running_timers.push_back(m_is_running);
 
             // set the current level. Will be zero until we check later
-            m_parent_level.push_back(m_level);
+            m_levels.push_back(m_level);
 
             // set the parent id. Will be zero until we check later
             m_parent_ids.push_back(m_parent_id);
@@ -197,7 +197,7 @@ namespace Timer
                     m_accumulated_times.push_back(m_total_time);
                     m_accumulated_call_counts.push_back(m_call_count);
                     m_running_timers.push_back(m_is_running);
-                    m_parent_level.push_back(m_level);
+                    m_levels.push_back(m_level);
                     m_parent_ids.push_back(m_parent_id);
                     m_thread_ids.push_back(m_thread_id);
                 }
@@ -243,7 +243,7 @@ namespace Timer
             {
                 // Figure out how many levels this timer
                 // is nested inside other timers
-                m_level = findParentLevel();
+                m_level = findLevel();
 
                 // Find the timer that this timer is nested
                 // inside of (if it exists)
@@ -252,7 +252,7 @@ namespace Timer
                 // save the results to the shared static variables
                 {
                     std::unique_lock<std::mutex> lock(m_mutex);
-                    m_parent_level[m_index] = m_level;
+                    m_levels[m_index] = m_level;
                     m_parent_ids[m_index] = m_parent_id;
                 }
             }
@@ -337,7 +337,7 @@ namespace Timer
             max_name_length = (max_name_length > m_timer_names[i].length())
                                   ? max_name_length
                                   : m_timer_names[i].length();
-            max_level = (max_level > m_parent_level[i]) ? max_level : m_parent_level[i];
+            max_level = (max_level > m_levels[i]) ? max_level : m_levels[i];
             max_time =
                 (max_time > m_accumulated_times[i]) ? max_time : m_accumulated_times[i];
         }
@@ -394,15 +394,17 @@ namespace Timer
                 // |--timer2
                 // |--|--timer3
                 // etc.
-                for (int j = 0; j < m_parent_level[i]; ++j)
+                for (int j = 0; j < m_levels[i]; ++j)
                 {
                     std::cout << "|--";
                 }
 
+                // get the parent id of the parent
+                // it's at most the id of the 
                 int p_id = i;
-                if (m_parent_level[i] > 0)
+                if (m_levels[i] > 0)
                 {
-                    while (m_parent_level[p_id] >= m_parent_level[i] ||
+                    while (m_levels[p_id] >= m_levels[i] ||
                            m_thread_ids[p_id] != m_thread_id)
                     {
                         p_id--;
@@ -413,12 +415,12 @@ namespace Timer
                 // std::fixed + std::setprecision controlls how many decimal places to print
                 std::cout << std::left
                           << std::setw(max_name_length +
-                                       3 * (max_level - m_parent_level[i]) + 4)
+                                       3 * (max_level - m_levels[i]) + 4)
                           << m_timer_names[i] << std::right << std::setw(16) << std::fixed
                           << std::setprecision(3) << m_accumulated_times[i]
                           << std::setw(14) << m_accumulated_times[i] / max_time * 100
                           << " %";
-                if (m_parent_level[i] > 0)
+                if (m_levels[i] > 0)
                 {
                     // if this timer is nested also print the percentage relative to 
                     // its parent timer
@@ -435,8 +437,6 @@ namespace Timer
 
                 // print call counts
                 std::cout << std::setw(16) << m_accumulated_call_counts[i];
-
-                std::cout << " " << p_id << " " << m_parent_id;
 
                 // end line
                 std::cout << std::endl;
@@ -455,12 +455,46 @@ namespace Timer
     }
 
     /**
-     * @brief Attempt to find the parent of the current timer based on which
+     * @brief Print out all the static variables for debugging
+     *
+     */
+    void Timer::printDebugVariables()
+    {
+        // make sure nothing modifies shared static variables while
+        // we're using them
+        std::unique_lock<std::mutex> lock(m_mutex);
+
+        std::cout << "Name,"
+                  << "id," 
+                  << "time,"
+                  << "Calls,"
+                  << "running,"
+                  << "level,"
+                  << "parent id,"
+                  << "thread id," 
+                  << std::endl;
+
+        for (std::size_t i=0; i<m_timer_names.size(); ++i) {
+
+            std::cout << m_timer_names[i]
+                      << "," << i
+                      << "," << m_accumulated_times[i]
+                      << "," << m_accumulated_call_counts[i]
+                      << "," << m_running_timers[i]
+                      << "," << m_levels[i]
+                      << "," << m_parent_ids[i]
+                      << "," << m_thread_ids[i]
+                      << std::endl;
+        }
+    }
+
+    /**
+     * @brief Attempt to find the level of nesting for current timer based on which
      * timers are currently running and when they started
      *
      * @return std::size_t
      */
-    std::size_t Timer::findParentLevel()
+    std::size_t Timer::findLevel()
     {  
         // get the timers that are currently running
         std::size_t level = 0;
@@ -484,16 +518,17 @@ namespace Timer
         // somewhere in the middle.
         std::sort(running_timers.begin(), running_timers.end());
 
-        // Since the vector of timers is sorted, if successive
-        // entries are the same, then the timer is runnning and 
-        // was also running at start, so increment the nested level
-        for (std::size_t i = 1; i < running_timers.size(); ++i)
-        {
-            if (running_timers[i - 1] == running_timers[i])
+            // Since the vector of timers is sorted, if successive
+            // entries are the same, then the timer is runnning and
+            // was also running at start, so increment the nested level
+            for (std::size_t i = 1; i < running_timers.size(); ++i)
             {
-                level++;
+                if (running_timers[i - 1] == running_timers[i])
+                {
+                    level++;
+                }
             }
-        }
+
         return level;
     }
 
@@ -505,33 +540,49 @@ namespace Timer
      */
     std::size_t Timer::findParentID()
     {
+
         std::size_t id = 0;
-        std::vector<std::size_t> running_timers;
-        findRunningTimers(running_timers);
 
-        // make sure nothing modifies shared static variables while
-        // we're using them
-        std::unique_lock<std::mutex> lock(m_mutex);
+        // only check for a parent if nested
+        if (m_level > 0) {
 
-        for (const auto &timer_id : m_timers_running_at_start)
-        {
-            running_timers.push_back(timer_id);
-        }
+            std::vector<std::size_t> running_timers;
+            findRunningTimers(running_timers);
 
-        // count duplicates. The timer is nested if the same timer was running before
-        // this one and was still running afterwards. This does not account for edge
-        // cases where a timer may be on in both those cases, but was turned off
-        // somewhere in the middle.
-        std::sort(running_timers.begin(), running_timers.end());
+            // make sure nothing modifies shared static variables while
+            // we're using them
+            std::unique_lock<std::mutex> lock(m_mutex);
 
-        for (std::size_t i = 1; i < running_timers.size(); ++i)
-        {
-            if (running_timers[i - 1] == running_timers[i] &&
-                m_parent_level[running_timers[i]] < m_level)
+            // add timers that were running when this timer started to list
+            for (const auto &timer_id : m_timers_running_at_start)
             {
-                id = running_timers[i];
+                running_timers.push_back(timer_id);
+            }
+
+            // count duplicates. The timer is nested if the same timer was running before
+            // this one and was still running afterwards. This does not account for edge
+            // cases where a timer may be on in both those cases, but was turned off
+            // somewhere in the middle.
+            //
+            // std::greater<std::size_t>() sorts from largest to smallest
+            std::sort(running_timers.begin(), running_timers.end(), std::greater<std::size_t>());
+
+            // This makes the assumption that the timer with the highest
+            // ID was most recently started. Then we're looking for the
+            // most recently started timer with a level below the current
+            // timers level (NOTE: if the timer has not been stopped it 
+            // will be level 0)
+            for (std::size_t i = 1; i < running_timers.size(); ++i)
+            {
+                if (running_timers[i - 1] == running_timers[i] &&
+                    m_levels[running_timers[i]] < m_level)
+                {
+                    id = running_timers[i];
+                    break;
+                }
             }
         }
+
         return id;
     }
 

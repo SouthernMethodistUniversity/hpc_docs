@@ -184,6 +184,12 @@ namespace Timer
          */
         void printStats();
 
+        /**
+         * @brief Print out all the static variables for debugging
+         * 
+         */
+        void printDebugVariables();
+
     private:
         // In classes, you can control where functions and variables
         // can be accessed. Private functions and variables can be accessed
@@ -200,7 +206,7 @@ namespace Timer
         static std::vector<double> m_accumulated_times;
         static std::vector<std::size_t> m_accumulated_call_counts;
         static std::vector<bool> m_running_timers;
-        static std::vector<std::size_t> m_parent_level;
+        static std::vector<std::size_t> m_levels;
         static std::vector<std::size_t> m_parent_ids;
         static std::vector<std::thread::id> m_thread_ids;
 
@@ -228,12 +234,12 @@ namespace Timer
 
     private:
         /**
-         * @brief Attempt to find the parent of the current timer based on which
+         * @brief Attempt to find the level of nesting for current timer based on which
          * timers are currently running and when they started
          *
          * @return std::size_t
          */
-        std::size_t findParentLevel();
+        std::size_t findLevel();
 
         /**
          * @brief Attempt to find the parent ID of the current timer based on which

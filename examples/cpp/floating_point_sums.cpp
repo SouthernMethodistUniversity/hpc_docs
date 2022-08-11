@@ -139,6 +139,7 @@ int main()
     // print out some timing info
     main_timer.stop();
     main_timer.printStats();
+    // main_timer.printDebugVariables();
 
-    return 0;
+        return 0;
 }
