@@ -159,6 +159,7 @@ namespace Timer
             // timer, but didn't check to see if any were correct
             if (m_index < 0)
             {
+                std::unique_lock<std::mutex> lock(m_mutex);
 
                 // loop over the candidate timers that may be this timer.
                 // These timers have the correct name, but may not be the
@@ -191,7 +192,6 @@ namespace Timer
                 // TODO: should this be a function -- it is used here and in the constructor
                 if (m_index < 0)
                 {
-                    std::unique_lock<std::mutex> lock(m_mutex);
                     m_index = m_timer_names.size();
                     m_timer_names.push_back(m_name);
                     m_accumulated_times.push_back(m_total_time);
@@ -204,7 +204,10 @@ namespace Timer
             }
 
             // set this timer as on of the currently running timers.
-            m_running_timers[m_index] = m_is_running;
+            {
+                std::unique_lock<std::mutex> lock(m_mutex);
+                m_running_timers[m_index] = m_is_running;
+            }
             findRunningTimers(m_timers_running_at_start);
         }
 
@@ -229,7 +232,10 @@ namespace Timer
 
             // set that this timer is not running
             m_is_running = false;
-            m_running_timers[m_index] = m_is_running;
+            {
+                std::unique_lock<std::mutex> lock(m_mutex);
+                m_running_timers[m_index] = m_is_running;
+            }
 
             // if this is the first time the counter has been
             // stopped, try to identify some properties.
@@ -244,13 +250,19 @@ namespace Timer
                 m_parent_id = findParentID();
 
                 // save the results to the shared static variables
-                m_parent_level[m_index] = m_level;
-                m_parent_ids[m_index] = m_parent_id;
+                {
+                    std::unique_lock<std::mutex> lock(m_mutex);
+                    m_parent_level[m_index] = m_level;
+                    m_parent_ids[m_index] = m_parent_id;
+                }
             }
 
             // increment the number of calls to this timer
             m_call_count++;
-            m_accumulated_call_counts[m_index]++;
+            {
+                std::unique_lock<std::mutex> lock(m_mutex);
+                m_accumulated_call_counts[m_index]++;
+            }
 
             // compute the time between start and stop
             std::chrono::duration<double> time_diff = m_stop_time - m_start_time;
@@ -259,7 +271,10 @@ namespace Timer
             // .count() gives the number of clock "ticks"
             // We'll compute the time in more useful units later.
             m_total_time += time_diff.count();
-            m_accumulated_times[m_index] += time_diff.count();
+            {
+                std::unique_lock<std::mutex> lock(m_mutex);
+                m_accumulated_times[m_index] += time_diff.count();
+            }
         }
 
         return m_stop_time;
@@ -307,6 +322,10 @@ namespace Timer
      */
     void Timer::printStats()
     {
+
+        // make sure nothing modifies shared static variables while
+        // we're using them
+        std::unique_lock<std::mutex> lock(m_mutex);
 
         // figure out the longest name, time, and nesting level.
         // We need these to pad output to get things to line up nicely.
@@ -417,6 +436,8 @@ namespace Timer
                 // print call counts
                 std::cout << std::setw(16) << m_accumulated_call_counts[i];
 
+                std::cout << " " << p_id << " " << m_parent_id;
+
                 // end line
                 std::cout << std::endl;
             }
@@ -445,6 +466,10 @@ namespace Timer
         std::size_t level = 0;
         std::vector<std::size_t> running_timers;
         findRunningTimers(running_timers);
+
+        // make sure nothing modifies shared static variables while
+        // we're using them
+        std::unique_lock<std::mutex> lock(m_mutex);
 
         // add the timers that where running at start to the 
         // list of currently running timers
@@ -484,6 +509,10 @@ namespace Timer
         std::vector<std::size_t> running_timers;
         findRunningTimers(running_timers);
 
+        // make sure nothing modifies shared static variables while
+        // we're using them
+        std::unique_lock<std::mutex> lock(m_mutex);
+
         for (const auto &timer_id : m_timers_running_at_start)
         {
             running_timers.push_back(timer_id);
@@ -506,13 +535,23 @@ namespace Timer
         return id;
     }
 
+    // helper function to call findNameIndexes with the current
+    // timer's name
     std::vector<std::size_t> Timer::findNameIndexes()
     {
         return findNameIndexes(m_name);
     }
 
+    /**
+     * @brief Find the index(es) of the timer if the name already exists
+     *
+     * @return std::vector<std::size_t>
+     */
     std::vector<std::size_t> Timer::findNameIndexes(const std::string &name)
     {
+        // make sure nothing modifies shared static variables while
+        // we're using them
+        std::unique_lock<std::mutex> lock(m_mutex);
 
         // get all the timer ids that match the given name
         std::vector<std::size_t> return_vals;
@@ -528,8 +567,14 @@ namespace Timer
         return return_vals;
     }
 
+    /**
+     * @brief find the currently running timers
+     *
+     */
     void Timer::findRunningTimers(std::vector<std::size_t> &running_timers)
     {
+        // make sure nothing modifies shared static variables while
+        // we're using them
         std::unique_lock<std::mutex> lock(m_mutex);
         running_timers.clear();
         for (std::size_t i = 0; i < m_running_timers.size(); ++i)
