@@ -6,6 +6,7 @@
 #include <random>    // random number generators
 #include <algorithm> // for std::shuffle, random vector order
 #include <cmath>     // for acos
+#include "timer/timer.hpp" // our timer class
 
 // Function to sum the first n_terms of the
 // series
@@ -17,6 +18,8 @@
 template <class T>
 T forward_series(const std::size_t &n_terms)
 {
+    // create a timer
+    Timer::Timer timer("Forward Sum");
     T sum = 0;
     for (std::size_t n = 1; n <= n_terms; ++n)
     {
@@ -35,6 +38,8 @@ T forward_series(const std::size_t &n_terms)
 template <class T>
 T reverse_series(const std::size_t &n_terms)
 {
+    // create a timer
+    Timer::Timer timer("Reverse Sum");
     T sum = 0;
     for (std::size_t n = n_terms; n > 0; --n)
     {
@@ -53,6 +58,9 @@ T reverse_series(const std::size_t &n_terms)
 template <class T>
 T random_series(const std::size_t &n_terms)
 {
+    // create a timer
+    Timer::Timer timer("Random Sum");
+
     //  create a vector of numbers 1 to nterms
     std::vector<std::size_t> denominators(n_terms);
     std::iota(denominators.begin(), denominators.end(), 1);
@@ -88,6 +96,9 @@ void print_sums(const std::size_t &n_terms)
 int main()
 {
 
+    // create a timer
+    Timer::Timer main_timer("Main");
+
     // check precision by calculating pi
     std::cout.precision(std::numeric_limits<float>::digits10);
     double PIf = acos(-1.0F); // the F after 1.0 indicates to use float precision
@@ -110,13 +121,24 @@ int main()
                   << "Computing sum (1/n) with " << terms << " terms" << std::endl;
         std::cout << "=========================================" << std::endl;
         std::cout << "Float: " << std::endl;
+        Timer::Timer float_timer("Float timer");
         print_sums<float>(terms);
+        float_timer.stop();
+
         std::cout << "Double: " << std::endl;
+        Timer::Timer double_timer("Double timer");
         print_sums<double>(terms);
+        double_timer.stop();
+
+        Timer::Timer long_double_timer("Long double timer");
         std::cout << "Long double: " << std::endl;
         print_sums<long double>(terms);
-
+        long_double_timer.stop();
     }
+
+    // print out some timing info
+    main_timer.stop();
+    main_timer.printStats();
 
     return 0;
 }
