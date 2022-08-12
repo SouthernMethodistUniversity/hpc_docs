@@ -1,11 +1,11 @@
-#include <iostream>  // standard IO
-#include <vector>    // STL arrays
-#include <limits>    // get number of digits based on datatype
-#include <iomanip>   // for setprecision
-#include <numeric>   // for iota, create array of 1 to n
-#include <random>    // random number generators
-#include <algorithm> // for std::shuffle, random vector order
-#include <cmath>     // for acos
+#include <iostream>        // standard IO
+#include <vector>          // STL arrays
+#include <limits>          // get number of digits based on datatype
+#include <iomanip>         // for setprecision
+#include <numeric>         // for iota, create array of 1 to n
+#include <random>          // random number generators
+#include <algorithm>       // for std::shuffle, random vector order
+#include <cmath>           // for acos
 #include "timer/timer.hpp" // our timer class
 
 // Function to sum the first n_terms of the
@@ -20,7 +20,7 @@ T forward_series(const std::size_t &n_terms)
 {
     // create a timer
     Timer::Timer timer("Forward Sum");
-    T sum = 0;
+    T sum = static_cast<T>(0);
     for (std::size_t n = 1; n <= n_terms; ++n)
     {
         sum += static_cast<T>(1) / static_cast<T>(n);
@@ -40,10 +40,43 @@ T reverse_series(const std::size_t &n_terms)
 {
     // create a timer
     Timer::Timer timer("Reverse Sum");
-    T sum = 0;
+    T sum = static_cast<T>(0);
     for (std::size_t n = n_terms; n > 0; --n)
     {
         sum += static_cast<T>(1) / static_cast<T>(n);
+    }
+    return sum;
+}
+
+// Function to sum the first n_terms of the
+// series
+//
+// 1/1 + 1/2 + 1/3 + ... + 1/n_terms
+//
+// Using the Kahan summation algorithm see, e.g.
+// https://en.wikipedia.org/wiki/Kahan_summation_algorithm
+//
+//
+// Templated so we can see the effects
+// of using different datatypes
+template <class T>
+T kahan_series(const std::size_t &n_terms)
+{
+    // create a timer
+    Timer::Timer timer("Kahan Sum");
+    T sum = static_cast<T>(0);
+    T c = static_cast<T>(0);
+
+    // NOTE: directly, we just have 1 addition, but here
+    // we have 4 addition/subtraction operations, so we'd
+    // expect it to be about 4x slower
+    for (std::size_t n = n_terms; n > 0; --n)
+    {
+        T current_term = static_cast<T>(1) / static_cast<T>(n);
+        T y = current_term - c; // In exact math, c is always 0!
+        T t = sum + y;          // sum is "big" and y is "small"
+        c = (t - sum) - y;      // c is approximately the floating error 
+        sum = t;                // but is itself a floating point number
     }
     return sum;
 }
@@ -70,12 +103,50 @@ T random_series(const std::size_t &n_terms)
     std::mt19937 g(rd());
     std::shuffle(denominators.begin(), denominators.end(), g);
 
-    T sum = 0;
+    T sum = static_cast<T>(0);
     for (const std::size_t &n : denominators)
     {
         // the static_cast is to convert std::size_t
         // to the desired type before we do any math
         sum += static_cast<T>(1) / static_cast<T>(n);
+    }
+    return sum;
+}
+
+// Function to sum the first n_terms of the
+// series, summed in a random order
+//
+// 1/1 + 1/2 + 1/3 + ... + 1/n_terms
+//
+// using the Kahan algorithm
+//
+// Templated so we can see the effects
+// of using different datatypes
+template <class T>
+T random_kahan_series(const std::size_t &n_terms)
+{
+    // create a timer
+    Timer::Timer timer("Random Kahan Sum");
+
+    //  create a vector of numbers 1 to nterms
+    std::vector<std::size_t> denominators(n_terms);
+    std::iota(denominators.begin(), denominators.end(), 1);
+
+    // randomly reorder numbers
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(denominators.begin(), denominators.end(), g);
+
+    T sum = static_cast<T>(0);
+    T c = static_cast<T>(0);
+
+    for (const std::size_t &n : denominators)
+    {
+        T current_term = static_cast<T>(1) / static_cast<T>(n);
+        T y = current_term - c; // In exact math, c is always 0!
+        T t = sum + y;          // sum is "big" and y is "small"
+        c = (t - sum) - y;      // c is approximately the floating error
+        sum = t;                // but is itself a floating point number
     }
     return sum;
 }
@@ -88,9 +159,11 @@ void print_sums(const std::size_t &n_terms)
     // set the cout precision to match the datatype
     std::cout.precision(std::numeric_limits<T>::digits10);
     // compute and print the sums
-    std::cout << "\t forward sum: " << forward_series<float>(n_terms) << std::endl;
-    std::cout << "\t reverse sum: " << reverse_series<float>(n_terms) << std::endl;
-    std::cout << "\t random sum : " << random_series<float>(n_terms) << std::endl;
+    std::cout << "\t forward sum      : " << forward_series<float>(n_terms) << std::endl;
+    std::cout << "\t reverse sum      : " << reverse_series<float>(n_terms) << std::endl;
+    std::cout << "\t Kahan sum        : " << kahan_series<float>(n_terms) << std::endl;
+    std::cout << "\t random sum       : " << random_series<float>(n_terms) << std::endl;
+    std::cout << "\t random Kahan sum : " << random_kahan_series<float>(n_terms) << std::endl;
 }
 
 int main()
@@ -141,5 +214,5 @@ int main()
     main_timer.printStats();
     // main_timer.printDebugVariables();
 
-        return 0;
+    return 0;
 }
