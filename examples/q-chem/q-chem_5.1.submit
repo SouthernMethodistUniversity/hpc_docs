@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -J job_name          # job name
+#SBATCH -o job.log           # output and error file name (%j expands to jobID)
+#SBATCH -N 2                 # total number of nodes
+#SBATCH --ntasks-per-node=36 # tasks per node
+#SBATCH -p standard-mem-s    # queue (partition)
+#SBATCH --exclusive          # do not share node with other jobs
+#SBATCH --mem=250G           # maximum memory
+
+module purge
+module load q-chem/5.1
+
+export QCSCRATCH=$SCRATCH/users/$USER/scratch
+
+qchem -slurm fad.inp
+

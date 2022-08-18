@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -J job_name         # job name
+#SBATCH -o job.log          # output and error file name (%j expands to jobID)
+#SBATCH -n 16               # total number of tasks requested
+#SBATCH -N 2                # total number of nodes
+#SBATCH --ntasks-per-node=8 # tasks per node
+#SBATCH -p standard-mem-s   # queue (partition)
+#SBATCH --exclusive         # do not share node with other jobs
+
+module load q-chem/5.0
+export QCSCRATCH=$SCRATCH/users/$USER/scratch
+export QCMACHINEFILE=qchem_nodelist_$SLURM_JOB_ID
+scontrol show hostnames $SLURM_NODELIST > $QCMACHINEFILE
+
+qchem -np 16 fad.inp
+

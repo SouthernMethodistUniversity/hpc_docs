@@ -1,0 +1,23 @@
+Title H2O
+
+MATDIA RS
+ERIS DIRECT
+GRID DIRECT
+
+PRINT AUXIS,BASIS CGTO GTO MOS &
+      S,T,KS ORTHO &
+      XCE XCV RAM &
+      P
+#
+VISUALIZATION FULL
+
+Geometry Z-Matrix
+O
+H  1  rOH
+H  1  rOH  2  rHOH
+#
+Variables
+rOH     1.
+rHOH  115.
+#
+End

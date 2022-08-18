@@ -1,0 +1,2 @@
+sbatch -p htc --wrap "matlab -nodisplay -nosplash -r example"
+

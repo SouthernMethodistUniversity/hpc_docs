@@ -1,0 +1,12 @@
+task : singlepoint
+#task : bandstructure
+cut_off_energy : 560 eV
+xc_functional : PW91
+opt_strategy_bias : +3
+page_wvfns : 0
+max_scf_cycles : 50 
+NUM_DUMP_CYCLES : 0
+num_proc_in_smp : 2
+grid_scale : 2.0
+iprint : 1
+continuation : default
