@@ -1,4 +1,4 @@
-\section{ManeFrame II (M2)}
+\section{Supercomputing}
 
 \begin{frame}{Moore's Law}
 \begin{itemize}
@@ -183,6 +183,8 @@ As such, it's always a moving target.
 \end{figure}
 \end{frame}
 
+\section{SMU HPC Clusters}
+
 \begin{frame}{ManeFrame II (M2) Node Types}
 \begin{table}
 \tiny
@@ -235,7 +237,25 @@ fp-gpgpu-3 & various & 40 & 384\\
 \end{table}
 \end{frame}
 
-\begin{frame}{ManeFrame II File Systems}
+\begin{frame}{NVIDIA DGX SuperPOD (MP)}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item 20 NVIDIA DGX nodes
+\item 8 NVIDIA A100 80 GB GPUs per node
+\item Dual AMD Epyc 7742 2.25 GHz 64-core ``Rome'' processors per node
+\item 200 Gb/s \(\times\) 10 NVIDIA/Mellanox InfiniBand networking
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/superpod.jpg}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{SMU HPC File Systems}
 \begin{description}
 \item[\$HOME]
 \begin{itemize}
