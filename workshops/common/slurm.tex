@@ -1,0 +1,72 @@
+\section{Resource Management Via Slurm}
+
+\begin{frame}{Cluster Resource Management}
+\begin{itemize}
+\item Compute resources are shared by all users
+\item Queue systems manage access to specific resources
+\item There are many queue systems around: Moab, Torque, LoadLeveler, Condor,
+      Oracle Grid Engine, Argent Job Scheduler, Platform LSF, etc.
+\item SMU HPC clusters uses Simple Linux Utility for Resource Management
+      (SLURM)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cluster Resource Management}
+\begin{itemize}
+\item ManeFrame resource allocation is governed by a fair-share factor
+\begin{itemize}
+\item Preference is given to those who have submitted the fewest jobs
+\item Prevents a single user from “blocking” subsequent job submissions of
+      other users
+\end{itemize}
+\item Allocations can be requested interactively or as a batch job
+\item Queues (or partitions) are used to distinguish resources by type and the
+      maximum run time
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ManeFrame II (M2) Partitions (Queues)}
+\begin{table}
+\tiny
+\begin{tabular}{llll}
+\toprule
+Partition & Duration & Cores & Memory [GB]\\
+\midrule
+development & 2 hours & various & various\\
+htc & 1 day & 1 & 6\\
+standard-mem-s & 1 day & 36 & 256\\
+standard-mem-m & 1 week & 36 & 256\\
+standard-mem-l & 1 month & 36 & 256\\
+medium-mem-1-s & 1 day & 36 & 768\\
+medium-mem-1-m & 1 week & 36 & 768\\
+medium-mem-1-l & 1 month & 36 & 768\\
+medium-mem-2 & 2 weeks & 24 & 768\\
+high-mem-1 & 2 weeks & 36 & 1538\\
+high-mem-2 & 2 weeks & 40 & 1538\\
+mic & 1 week & 64 & 384\\
+gpgpu-1 & 1 week & 36 & 256\\
+v100x8 & 1 week & 1 & 20\\
+fp-gpgpu-2 & various & 24 & 128\\
+fp-gpgpu-3 & various & 40 & 384\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Basic SLURM Commands}
+\begin{table}
+\tiny
+\begin{tabular}{lll}
+\toprule
+Command & Description & Example Usage\\
+\midrule
+sinfo & Displays partition and node state information & \mintinline{sh}{sinfo}\\
+squeue & Displays queue state information & \mintinline{sh}{squeue -u $USER}\\
+sbatch & Submits batch script & \mintinline{sh}{sbatch job.submit}\\
+srun & Requests resources for interactive use & \mintinline{sh}{srun -p development --mem=1G --exclusive --pty $SHELL}\\
+scancel & Cancel jobs & \mintinline{sh}{scancel 12345678}\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
