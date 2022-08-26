@@ -18,7 +18,7 @@ Fall 2022 OIT, CRC, & DSI Workshop Series - Open to All!
 | 8/30  | 12:30-2:30  | Data Mining Using Rapid Miner | 1/1    | FLE 109  |
 | 9/2   | 10:00-12:00 | C++ Programming Workshop      | 1/6    | Ford 124 |
 | 9/6   | 10:00-12:00 | Introduction to HPC           | 1/1    | Ford 124 |
-| 9/7   | 12:30-2:30  | Machine Learning in R         | 1/2    | Ford 124 |
+| 9/7   | 12:30-2:30  | Machine Learning in R         | 1/2    | FLE 109  |
 | 9/9   | 12:30-2:30  | Machine Learning in R         | 2/2    | FLE 110  |
 | 9/14  | 12:30-2:30  | Text Mining in R              | 1/1    | FLE 109  |
 | 9/16  | 10:00-12:00 | C++ Programming Workshop      | 2/6    | Ford 124 |
