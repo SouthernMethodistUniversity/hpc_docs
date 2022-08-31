@@ -1,5 +1,5 @@
 ---
-name: JupyterLab (NEW!)
+name: JupyterLab
 category: Interactive Apps
 subcategory: Servers
 role: batch_connect

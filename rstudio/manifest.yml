@@ -1,5 +1,5 @@
 ---
-name: RStudio Server (NEW!)
+name: RStudio Server
 category: Interactive Apps
 subcategory: Servers
 role: batch_connect

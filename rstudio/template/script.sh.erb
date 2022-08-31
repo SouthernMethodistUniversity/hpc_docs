@@ -90,6 +90,8 @@ sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   echo "PATH: " ${PATH}
   export {http,https,ftp}_proxy="http://10.210.15.2:3128"
 
+  export RSESSION_PROXY_RSTUDIO_1_4=1
+
   rserver \
   --www-port "${port}" \
   --auth-none 0 \
