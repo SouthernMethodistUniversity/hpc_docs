@@ -42,12 +42,31 @@ conda activate <%= context.python_version %>
 env
 <%- end -%>
 
+# make sure Jupyter Lab exists
 if ! command -v jupyter-lab &> /dev/null
 then
-  echo "Jupyter Lab not found, using default."
-  echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure jupytor lab is installed in your environment and in your path" > ${WARNING_FILE}
-  LOAD_WANRINGS=1
-  module load python/3
+
+  if command -v jupyter &> /dev/null
+  then
+
+    # this check is a bit more expensive, but more robust
+    LAB_VERSION=$(jupyter --version | awk '/jupyterlab\s*:\s*(.*)/')
+
+    if [[ $LAB_VERSION == *"not installed"* ]]; then
+      echo "Jupyter Lab not found, using default"
+      echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
+      LOAD_WANRINGS=1
+      module load python/3 
+    fi
+
+  else
+   
+    echo "Jupyter not found, using default."
+    echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
+    LOAD_WANRINGS=1
+    module load python/3
+
+  fi
 fi
 
 module list
