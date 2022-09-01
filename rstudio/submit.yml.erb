@@ -1,6 +1,9 @@
 ---
 batch_connect:
   template: "basic"
+  conn_params:
+    - ood_need_token
+    - csrftoken
 script:
   queue_name: <%= custom_queue %>
   native:

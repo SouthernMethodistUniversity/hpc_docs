@@ -1,9 +1,4 @@
-<%-
-  require 'securerandom'
-
-  csrftoken=SecureRandom.uuid
--%>
-<% if ENV["OOD_USING_SINGULARITY"] == 1 %>
+<% if ood_need_token == 1 %>
 <script>
   var hostButton=$( "a.btn.btn-primary.btn-sm.fas.fa-terminal" );
   var hostname=hostButton.text();
@@ -16,7 +11,7 @@
   <input type="hidden" name="password" value="<%= password %>">
   <input type="hidden" name="staySignedIn" value="1">
   <input type="hidden" name="appUri" value="">
-<% if ENV["OOD_USING_SINGULARITY"] == 1 %>
+<% if ood_need_token == 1 %>
   <input id="csrfToken" type="hidden" name="csrf-token" value="<%= csrftoken %>"/>
 <%- end -%> 
   <button class="btn btn-primary" type="submit">
