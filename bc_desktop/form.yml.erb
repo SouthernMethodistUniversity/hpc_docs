@@ -3,15 +3,19 @@ cluster: "slurm_cluster"
 form:
   - bc_vnc_idle
   - desktop
+  - bc_queue
 #  - bc_account
   - bc_num_hours
   - bc_num_slots
   - bc_num_cores
   - bc_num_memory
   - node_type
-  - custom_queue
+  - enable_start_time
+  - start_time
+  - enable_end_time
+  - end_time
+  - email_on_started
   - bc_vnc_resolution
-  - bc_email_on_started
 
 attributes:
   desktop: "mate"
@@ -19,26 +23,16 @@ attributes:
   bc_vnc_resolution:
     required: true
   bc_num_slots: 1
-  custom_queue:
-    required: true
-    widget: select
-    label: "Queue"
-    help: "Choose the appropriate desktop queue."
-    options:
-      - [ "Regular Node", "desktop" ]
-      - [ "VDI Node", "desktop-vdi" ]
-      - [ "VDI Node - Development (Restricted)", "desktop-vdi-dev" ]
-    value: "desktop"
   node_type: null
   bc_num_hours:
     id: bc_num_hours
     label: Time (Hours)
     help: |
-      - Number of hours to allocate
+      - Number of hours to allocate (maximum 12 hours)
       - Exceeding walltime time will automaticaly stop this job.
     cacheable: true
     widget: number_field
-    max: 24
+    max: 12
     min: 1
     step: 1
     value: 1
@@ -51,15 +45,6 @@ attributes:
     max: 36
     min: 1
     value: 1
-  bc_num_gpus:
-    id: num_gpus
-    label: "GPUs per node"
-    cacheable: true
-    widget: number_field
-    max: 1
-    min: 0
-    step: 1
-    value: 0
   bc_num_memory:
     id: num_mem
     label: "Memory"
@@ -69,3 +54,42 @@ attributes:
     min: 1
     step: 1
     value: 6
+  bc_queue: "desktop"
+  enable_start_time:
+    label: "Enable Earliest Start Time"
+    id: enable_start
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  start_time:
+    label: "Earliest Start Time"
+    id: start
+    cacheable: false
+    help: |
+        Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
+        **Your job will start after the set time depending on the resources available. There is no guarantee 
+        that your job will start at any particular time.**
+    widget: datetime_field
+  enable_end_time:
+    label: "Enable Latest Start Time"
+    id: enable_end
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  end_time:
+    label: "Latest Start Time"
+    id: end
+    cacheable: false
+    min: "<%= DateTime.now + 30.minutes %>"
+    help: |
+        Specify the latest allowable start time. Leave blank or uncheck the box above to allow the job to queue with no limits.
+        **Jobs that do not start before this time will automatically be cancelled.**
+    widget: datetime_field
+
+  email_on_started:
+    label: "Email Address"
+    id: email_address
+    help: |
+        (Optional) Send an email to the provided address when the job starts.
+        **Leave blank if you do not want an email sent.**
+    widget: email_field
