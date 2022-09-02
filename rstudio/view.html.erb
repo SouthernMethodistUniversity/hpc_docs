@@ -19,6 +19,7 @@
   </button>
 </form>
 
+<% if ood_need_token == 1 %>
 >
 > If you are reconnecting to a session and get an error that says "The requested page was not found," please edit the URL in your browser by removing "appUri." 
 >
@@ -27,4 +28,4 @@
 > change `https://hpc.smu.edu/rnode/z001/31508/appUri`
 >
 > to `https://hpc.smu.edu/rnode/z001/31508`
-
+<%- end -%> 
