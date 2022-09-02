@@ -19,20 +19,22 @@ int main() {
     // Declare initialized integer variable
     int n = 42;
     int m = -2;
+    cout << "We begin with n initialized as " << n
+         << " and m initialized as " << m << "." << endl;
     
     // Arithmetic Operators
 
     // Postfix operators return the original value
-    cout << n++ << endl; // Post-increment, n is now 43, but 42 is printed
-    cout << n-- << endl; // Post-decrement, n is now 42, but 43 is printed
+    cout << "Post-increment: n++, " << n++ << " is printed, but n is now " << n << "." << endl;
+    cout << "Post-decrement: n--, " << n-- << " is printed, but n is now " << n << "." << endl;
 
     // Prefix operators return the modified value
-    cout << ++n << endl; // Pre-increment, n is now 43 and 43 is printed
-    cout << --n << endl; // Pre-decrement, n is now 42 and 42 is printed
+    cout << "Prefix-increment: ++n, " << ++n << " is printed and n is now " << n << "." << endl;
+    cout << "Prefix-decrement: --n, " << --n << " is printed and n is now " << n << "." << endl;
     
     // Unary operators
-    cout << +n << endl; // Unary plus, positive 42 is printed
-    cout << -n << endl; // Unary minus, negative -42 is printed
+    cout << "Unary plus, positive " << +n << " is printed." << endl;
+    cout << "Unary minus, positive " << -n << " is printed." << endl;
     
     // Binary operators
     cout << n * m << endl;           // Multiplication, -84 is printed
