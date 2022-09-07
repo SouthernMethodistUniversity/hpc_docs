@@ -32,7 +32,9 @@ From: nvidia/opengl:1.2-glvnd-runtime-centos7
     yum -y install evince eog
     yum -y install gedit
     yum -y install emacs
-    yum -y install Lmod-8.2.7-1.el7.x86_64
+    yum -y install glibc.i686
+    yum -y install Lmod.x86_64
+    yum -y install libXp.x86_64
     yum -y install VirtualGL
     yum -y install turbovnc
     yum -y install glx-utils
