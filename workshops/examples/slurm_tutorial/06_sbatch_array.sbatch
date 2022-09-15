@@ -8,5 +8,5 @@
 module purge
 module load python
 
-time python pi_monte_carlo.py $((100**${SLURM_ARRAY_TASK_ID}))
+time python3 pi_monte_carlo.py $((100**${SLURM_ARRAY_TASK_ID}))
 

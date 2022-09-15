@@ -9,5 +9,5 @@
 module purge
 module load python
 
-time python pi_monte_carlo_shared.py 10000000 ${SLURM_CPUS_PER_TASK}
+time python3 pi_monte_carlo_shared.py 10000000 ${SLURM_CPUS_PER_TASK}
 

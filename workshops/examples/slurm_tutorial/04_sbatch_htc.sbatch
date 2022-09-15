@@ -7,5 +7,5 @@
 module purge
 module load python
 
-time python pi_monte_carlo.py 1000
+time python3 pi_monte_carlo.py 1000
 
