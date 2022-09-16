@@ -17,4 +17,5 @@ parts:
   - file: tutorials/intro.md
   - file: tutorials/unix/intro.md
   - file: tutorials/cpp/session_1.md
+  - file: tutorials/cpp/session_2.md
 
