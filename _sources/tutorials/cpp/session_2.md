@@ -19,6 +19,15 @@ linenos: true
 ---
 ```
 
+`clang++ -std=c++17 -o functions_references_pointers functions_references_pointers.cpp`
+
+```{literalinclude} ../../../examples/cpp/functions_references_pointers.cpp
+---
+language: c++
+linenos: true
+---
+```
+
 ### Excercises
 
 Problem 2 from [Project Euler](https://projecteuler.net).
