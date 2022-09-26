@@ -14,6 +14,9 @@ From: centos:7
     gpg --list-keys
     yum install -y epel-release
     yum -y install yum-utils
+    yum -y install zsh
+    yum -y install tcsh
+    yum	-y install ksh
     yum -y install xorg-x11-utils
     yum -y install xorg-x11-xauth
     yum -y groupinstall 'Base'
@@ -26,7 +29,9 @@ From: centos:7
     yum -y install evince eog
     yum -y install gedit
     yum -y install emacs
-    yum -y install Lmod-8.2.7-1.el7.x86_64
+    yum -y install glibc.i686
+    yum -y install Lmod.x86_64
+    yum -y install libXp.x86_64
     yum -y install VirtualGL
     yum -y install turbovnc
     yum -y install glx-utils
@@ -48,3 +53,8 @@ From: centos:7
     rm -rf /var/cache/yum/*
     rm -rf /etc/ld.so.cache
     rm -rf /var/cache/ldconfig/*
+
+%environment
+    export ftp_proxy="http://10.210.15.2:3128"
+    export http_proxy="http://10.210.15.2:3128"
+    export https_proxy="http://10.210.15.2:3128"
