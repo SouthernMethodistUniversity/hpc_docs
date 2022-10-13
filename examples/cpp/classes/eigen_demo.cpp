@@ -7,9 +7,10 @@
  * https://en.cppreference.com/
 */
 
-#include <iostream>    // IO
-#include <Eigen/Dense> // The Eigen dense linear algebra library
-#include <cmath>       // for trig functions
+#include <iostream>       // IO
+#include <Eigen/Dense>    // The Eigen dense linear algebra library
+#include <Eigen/Geometry> // for rotation matrices
+#include <cmath>          // for trig functions
 
 int main()
 {
@@ -85,9 +86,10 @@ int main()
     std::cout << "c: " << c.transpose() << std::endl;
 
     // create a 3x3 matrix
-    Eigen::Matrix3d A, B;
+    Eigen::Matrix3d A, B, C;
     double theta = 1.23423; // random angle in radians
     double omega = 3.854;
+    double gamma = -2.863237;
 
     // make A & B be a rotation matrix
     // rotates in xy-plane
@@ -96,13 +98,18 @@ int main()
         0, 0, 1;
 
     // rotates in xy-plane
-    B << std::cos(omega), 0, -std::sin(omega),
-        0, 1, 0,
-        std::sin(omega), 0, std::cos(omega);
+    B.setIdentity();
+    B(0, 0) = std::cos(omega);
+    B(0, 2) = -std::sin(omega);
+    B(2, 0) = std::sin(omega);
+    B(2, 2) = std::cos(omega);
+
+    // rotates around the vector c
+    C = Eigen::AngleAxisd(gamma, c);
 
     // create a new rotation matrix that is the combination
-    // of A and B
-    auto R = A * B;
+    // of A, B, and C
+    auto R = A * B * C;
 
     std::cout << "R:" << std::endl
               << R << std::endl;
