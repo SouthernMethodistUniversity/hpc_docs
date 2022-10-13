@@ -10,6 +10,7 @@
 #include <vector>   // standard "vector" library for dynamic arrays
 #include <algorithm> // for the transform functions
 
+
 /*
 
 A functor is essentially a class that has defined the "()" operator.
@@ -20,13 +21,13 @@ There are 2 main reasons we might want a function like object:
 
   1.  function like object allow us to define, use, and modify
       properties, for instance the current state of an object.
-      In some applications this may be valueable and simplify 
+      In some applications this may be valueable and simplify
       the code (e.g. the function "knows" informatin that you
       would otherwise have to pass to the function.) This also
-      allows you to initialize frequently used values once, 
-      which is especially useful if they're expensive to compute.   
+      allows you to initialize frequently used values once,
+      which is especially useful if they're expensive to compute.
 
-  2.  By using a functor, the compiler is often able to do a 
+  2.  By using a functor, the compiler is often able to do a
       better job optimizing. Essentially this happens because
       the compiler knows exactly what function is being called,
       whereas if you pass a pointer to a function, the compiler
@@ -36,8 +37,7 @@ There are 2 main reasons we might want a function like object:
 
 */
 
-
-// example of a simple functor 
+// example of a simple functor
 // You see functors defined as structs instead of classes, classes are
 // more general structure with extra features (that we're not using)
 class increment
@@ -69,6 +69,10 @@ public:
         // and return that new value
         return m_increment_amount + input_num;
     }
+
+    void changeIncrementAmount(const int &inc) {
+        m_increment_amount = inc;
+    }
 }; // end of increment class. Note, ends with ;
 
 
@@ -98,7 +102,7 @@ int main() {
     increment dec_by_one(-1); // initialize the functor to subtract one
     for (auto &val : v)
     {
-        val = inc_by_one(val);
+        val = dec_by_one(val);
     }
     print_vector(v);
 
