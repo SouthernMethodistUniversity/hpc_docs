@@ -26,3 +26,4 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # add executables
 add_executable(inheritance_test.x inheritance_test.cpp simple_inheritance.cpp)
+add_executable(vector_test.x vector_class.cpp vector_test.cpp)
