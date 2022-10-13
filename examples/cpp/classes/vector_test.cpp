@@ -50,7 +50,7 @@ int main()
     std::cout << "c: " << std::endl;
     c.print();
 
-    for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < c.numElements(); ++i)
     {
         c[i] = 1;
     }
@@ -66,8 +66,18 @@ int main()
 
     Vector d(4);
 
-    // this should cause an error
-    c.dot(d);
+    // this should cause an error, but we can catch it
+    // by wrapping it in a try / catch block
+    try
+    {
+        c.dot(d);
+    }
+    catch (const std::exception &e)
+    {
+        // print out the error
+        // usually you stop the program after an error, but we'll keep going
+        std::cerr << e.what() << std::endl;
+    }
 
     return 0;
 }
