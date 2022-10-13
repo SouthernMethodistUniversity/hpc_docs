@@ -135,4 +135,6 @@ int main()
               << " and perimeter: "
               << shape.getPerimeter()
               << std::endl;
+
+    return 0;
 }

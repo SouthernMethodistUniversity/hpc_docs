@@ -68,4 +68,6 @@ int main()
 
     // this should cause an error
     c.dot(d);
+
+    return 0;
 }
