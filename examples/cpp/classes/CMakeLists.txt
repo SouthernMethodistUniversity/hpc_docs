@@ -24,6 +24,15 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # look for include files in the current directory
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+# find the Eigen Vector library
+find_package(Eigen3 NO_MODULE)
+
 # add executables
 add_executable(inheritance_test.x inheritance_test.cpp simple_inheritance.cpp)
 add_executable(vector_test.x vector_class.cpp vector_test.cpp)
+
+# only build the Eigen example if Eigen was found
+if(TARGET Eigen3::Eigen)
+    add_executable(eigen_demo.x eigen_demo.cpp)
+    target_link_libraries(eigen_demo.x Eigen3::Eigen)
+endif(TARGET Eigen3::Eigen)
