@@ -22,4 +22,7 @@ parts:
     - file: tutorials/cpp/session_2.md
     - file: tutorials/cpp/session_3.md
     - file: tutorials/cpp/session_4.md
+- caption: Policies
+  chapters:
+  - file: policies/policies.md
 
