@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Session 4" href="session_4.html" />
     <link rel="prev" title="Introduction to Programming in C++" href="session_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -154,25 +155,37 @@ const thebe_selector_output = ".output, .cell_output"
    HPC Tutorials
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../unix/intro.html">
    UNIX and Linux Shells
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="session_1.html">
-   Introduction to Programming in C++
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="session_2.html">
-   Introduction to Programming in C++
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Introduction to Programming in C++
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_1.html">
+     Introduction to Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_2.html">
+     Introduction to Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Programming in C++
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_4.html">
+     Session 4
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -416,34 +429,34 @@ title="Print to PDF"
 <span class="linenos"> 10</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="c1">   // standard &quot;vector&quot; library for dynamic arrays</span><span class="cp"></span>
 <span class="linenos"> 11</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span><span class="c1"> // for the transform functions</span><span class="cp"></span>
 <span class="linenos"> 12</span>
-<span class="linenos"> 13</span><span class="cm">/*</span>
-<span class="linenos"> 14</span>
-<span class="linenos"> 15</span><span class="cm">A functor is essentially a class that has defined the &quot;()&quot; operator.</span>
-<span class="linenos"> 16</span>
-<span class="linenos"> 17</span><span class="cm">This lets us define objects that behave like functions.</span>
-<span class="linenos"> 18</span>
-<span class="linenos"> 19</span><span class="cm">There are 2 main reasons we might want a function like object:</span>
-<span class="linenos"> 20</span>
-<span class="linenos"> 21</span><span class="cm">  1.  function like object allow us to define, use, and modify</span>
-<span class="linenos"> 22</span><span class="cm">      properties, for instance the current state of an object.</span>
-<span class="linenos"> 23</span><span class="cm">      In some applications this may be valueable and simplify </span>
-<span class="linenos"> 24</span><span class="cm">      the code (e.g. the function &quot;knows&quot; informatin that you</span>
-<span class="linenos"> 25</span><span class="cm">      would otherwise have to pass to the function.) This also</span>
-<span class="linenos"> 26</span><span class="cm">      allows you to initialize frequently used values once, </span>
-<span class="linenos"> 27</span><span class="cm">      which is especially useful if they&#39;re expensive to compute.   </span>
-<span class="linenos"> 28</span>
-<span class="linenos"> 29</span><span class="cm">  2.  By using a functor, the compiler is often able to do a </span>
-<span class="linenos"> 30</span><span class="cm">      better job optimizing. Essentially this happens because</span>
-<span class="linenos"> 31</span><span class="cm">      the compiler knows exactly what function is being called,</span>
-<span class="linenos"> 32</span><span class="cm">      whereas if you pass a pointer to a function, the compiler</span>
-<span class="linenos"> 33</span><span class="cm">      just knows a function is being called (but not necessarily</span>
-<span class="linenos"> 34</span><span class="cm">      which one.) This means, for example, the compiler might</span>
-<span class="linenos"> 35</span><span class="cm">      inline a functor.</span>
-<span class="linenos"> 36</span>
-<span class="linenos"> 37</span><span class="cm">*/</span><span class="w"></span>
-<span class="linenos"> 38</span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span><span class="cm">/*</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="cm">A functor is essentially a class that has defined the &quot;()&quot; operator.</span>
+<span class="linenos"> 17</span>
+<span class="linenos"> 18</span><span class="cm">This lets us define objects that behave like functions.</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="cm">There are 2 main reasons we might want a function like object:</span>
+<span class="linenos"> 21</span>
+<span class="linenos"> 22</span><span class="cm">  1.  function like object allow us to define, use, and modify</span>
+<span class="linenos"> 23</span><span class="cm">      properties, for instance the current state of an object.</span>
+<span class="linenos"> 24</span><span class="cm">      In some applications this may be valueable and simplify</span>
+<span class="linenos"> 25</span><span class="cm">      the code (e.g. the function &quot;knows&quot; informatin that you</span>
+<span class="linenos"> 26</span><span class="cm">      would otherwise have to pass to the function.) This also</span>
+<span class="linenos"> 27</span><span class="cm">      allows you to initialize frequently used values once,</span>
+<span class="linenos"> 28</span><span class="cm">      which is especially useful if they&#39;re expensive to compute.</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span><span class="cm">  2.  By using a functor, the compiler is often able to do a</span>
+<span class="linenos"> 31</span><span class="cm">      better job optimizing. Essentially this happens because</span>
+<span class="linenos"> 32</span><span class="cm">      the compiler knows exactly what function is being called,</span>
+<span class="linenos"> 33</span><span class="cm">      whereas if you pass a pointer to a function, the compiler</span>
+<span class="linenos"> 34</span><span class="cm">      just knows a function is being called (but not necessarily</span>
+<span class="linenos"> 35</span><span class="cm">      which one.) This means, for example, the compiler might</span>
+<span class="linenos"> 36</span><span class="cm">      inline a functor.</span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span><span class="cm">*/</span><span class="w"></span>
 <span class="linenos"> 39</span>
-<span class="linenos"> 40</span><span class="c1">// example of a simple functor </span>
+<span class="linenos"> 40</span><span class="c1">// example of a simple functor</span>
 <span class="linenos"> 41</span><span class="c1">// You see functors defined as structs instead of classes, classes are</span>
 <span class="linenos"> 42</span><span class="c1">// more general structure with extra features (that we&#39;re not using)</span>
 <span class="linenos"> 43</span><span class="k">class</span><span class="w"> </span><span class="nc">increment</span><span class="w"></span>
@@ -475,86 +488,90 @@ title="Print to PDF"
 <span class="linenos"> 69</span><span class="w">        </span><span class="c1">// and return that new value</span>
 <span class="linenos"> 70</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">m_increment_amount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">input_num</span><span class="p">;</span><span class="w"></span>
 <span class="linenos"> 71</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="linenos"> 72</span><span class="p">};</span><span class="w"> </span><span class="c1">// end of increment class. Note, ends with ;</span>
-<span class="linenos"> 73</span>
-<span class="linenos"> 74</span>
-<span class="linenos"> 75</span><span class="c1">// function to print vectors</span>
-<span class="linenos"> 76</span><span class="kt">void</span><span class="w"> </span><span class="nf">print_vector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos"> 77</span><span class="p">{</span><span class="w"></span>
-<span class="linenos"> 78</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">val</span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos"> 79</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span><span class="w"></span>
-<span class="linenos"> 80</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="linenos"> 81</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos"> 82</span><span class="p">}</span><span class="w"></span>
-<span class="linenos"> 83</span>
-<span class="linenos"> 84</span>
-<span class="linenos"> 85</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos"> 86</span>
-<span class="linenos"> 87</span><span class="w">    </span><span class="c1">// create an array of values to increment</span>
-<span class="linenos"> 88</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c1">// list initialized requires c++11 or later</span>
-<span class="linenos"> 89</span>
-<span class="linenos"> 90</span><span class="w">    </span><span class="c1">// use our increment functor to add 1</span>
-<span class="linenos"> 91</span><span class="w">    </span><span class="n">increment</span><span class="w"> </span><span class="n">inc_by_one</span><span class="p">;</span><span class="w"> </span><span class="c1">// initialize the functor with the default </span>
-<span class="linenos"> 92</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos"> 93</span><span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inc_by_one</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
-<span class="linenos"> 94</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="linenos"> 95</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos"> 96</span>
-<span class="linenos"> 97</span><span class="w">    </span><span class="c1">// use our increment functor to subtract 1</span>
-<span class="linenos"> 98</span><span class="w">    </span><span class="n">increment</span><span class="w"> </span><span class="n">dec_by_one</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"> </span><span class="c1">// initialize the functor to subtract one</span>
-<span class="linenos"> 99</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">100</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">101</span><span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inc_by_one</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">102</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="linenos">103</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">104</span>
-<span class="linenos">105</span><span class="w">    </span><span class="c1">// use our increment functor to add 2 to each value using the</span>
-<span class="linenos">106</span><span class="w">    </span><span class="c1">// std::transform function</span>
-<span class="linenos">107</span><span class="w">    </span><span class="c1">//</span>
-<span class="linenos">108</span><span class="w">    </span><span class="c1">// There is a subtlety here. The increment(2) argument here is</span>
-<span class="linenos">109</span><span class="w">    </span><span class="c1">// calling the constructor and setting the increment value. </span>
-<span class="linenos">110</span><span class="w">    </span><span class="c1">// Inside the transform function, it is calling v[i] = incremnt(v[i])</span>
-<span class="linenos">111</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">increment</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
-<span class="linenos">112</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">113</span>
-<span class="linenos">114</span><span class="w">    </span><span class="c1">// subtract 2 from each entry</span>
-<span class="linenos">115</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">increment</span><span class="p">(</span><span class="mi">-2</span><span class="p">));</span><span class="w"></span>
+<span class="linenos"> 72</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">changeIncrementAmount</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 74</span><span class="w">        </span><span class="n">m_increment_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inc</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 76</span><span class="p">};</span><span class="w"> </span><span class="c1">// end of increment class. Note, ends with ;</span>
+<span class="linenos"> 77</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="c1">// function to print vectors</span>
+<span class="linenos"> 80</span><span class="kt">void</span><span class="w"> </span><span class="nf">print_vector</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos"> 81</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 82</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">val</span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 83</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 86</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span>
+<span class="linenos"> 89</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 90</span>
+<span class="linenos"> 91</span><span class="w">    </span><span class="c1">// create an array of values to increment</span>
+<span class="linenos"> 92</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w"> </span><span class="c1">// list initialized requires c++11 or later</span>
+<span class="linenos"> 93</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="c1">// use our increment functor to add 1</span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="n">increment</span><span class="w"> </span><span class="n">inc_by_one</span><span class="p">;</span><span class="w"> </span><span class="c1">// initialize the functor with the default </span>
+<span class="linenos"> 96</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 97</span><span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inc_by_one</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">100</span>
+<span class="linenos">101</span><span class="w">    </span><span class="c1">// use our increment functor to subtract 1</span>
+<span class="linenos">102</span><span class="w">    </span><span class="n">increment</span><span class="w"> </span><span class="n">dec_by_one</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span><span class="w"> </span><span class="c1">// initialize the functor to subtract one</span>
+<span class="linenos">103</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">104</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">105</span><span class="w">        </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dec_by_one</span><span class="p">(</span><span class="n">val</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">106</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">107</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="w">    </span><span class="c1">// use our increment functor to add 2 to each value using the</span>
+<span class="linenos">110</span><span class="w">    </span><span class="c1">// std::transform function</span>
+<span class="linenos">111</span><span class="w">    </span><span class="c1">//</span>
+<span class="linenos">112</span><span class="w">    </span><span class="c1">// There is a subtlety here. The increment(2) argument here is</span>
+<span class="linenos">113</span><span class="w">    </span><span class="c1">// calling the constructor and setting the increment value. </span>
+<span class="linenos">114</span><span class="w">    </span><span class="c1">// Inside the transform function, it is calling v[i] = incremnt(v[i])</span>
+<span class="linenos">115</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">increment</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
 <span class="linenos">116</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
 <span class="linenos">117</span>
-<span class="linenos">118</span><span class="w">    </span><span class="c1">// The functor we defined above is a lot of work for something that</span>
-<span class="linenos">119</span><span class="w">    </span><span class="c1">// is pretty trivial (and might be even more work if the function</span>
-<span class="linenos">120</span><span class="w">    </span><span class="c1">// object needed to be more complex).</span>
-<span class="linenos">121</span><span class="w">    </span><span class="c1">//</span>
-<span class="linenos">122</span><span class="w">    </span><span class="c1">// Since C++11, C++ has &quot;lambda expressions,&quot; which is basically</span>
-<span class="linenos">123</span><span class="w">    </span><span class="c1">// a way for the compiler to generate a functor for you using some</span>
-<span class="linenos">124</span><span class="w">    </span><span class="c1">// shorthand notation</span>
-<span class="linenos">125</span>
-<span class="linenos">126</span><span class="w">    </span><span class="c1">// Make a lambda function that adds 1</span>
-<span class="linenos">127</span><span class="w">    </span><span class="c1">// auto requires c++14</span>
-<span class="linenos">128</span><span class="w">    </span><span class="c1">// the [&amp;] specifies we should capture values by reference</span>
-<span class="linenos">129</span><span class="w">    </span><span class="c1">// we could also capture by value, pointer, etc.</span>
-<span class="linenos">130</span><span class="w">    </span><span class="c1">// Then the inputs are in (...), we&#39;re taking an int</span>
-<span class="linenos">131</span><span class="w">    </span><span class="c1">// Finally, we define the function in {...} (just returning input + 1)</span>
-<span class="linenos">132</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">add_one_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">val</span><span class="p">){</span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;};</span><span class="w"></span>
-<span class="linenos">133</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">add_one_lambda</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">134</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">135</span>
-<span class="linenos">136</span><span class="w">    </span><span class="c1">// subtract 1 using lambdas</span>
-<span class="linenos">137</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dec_one_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
-<span class="linenos">138</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">dec_one_lambda</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">139</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">140</span>
-<span class="linenos">141</span><span class="w">    </span><span class="c1">// We can also use lambda functions inline. Here, we&#39;ll add 2</span>
-<span class="linenos">142</span><span class="w">    </span><span class="c1">// Again, for style preferences, I find it easier to read lambda expressions</span>
-<span class="linenos">143</span><span class="w">    </span><span class="c1">// if they&#39;re defined like the above. This example is inline and extactly the</span>
-<span class="linenos">144</span><span class="w">    </span><span class="c1">// same, but more complicated expressions may be difficult to read.</span>
-<span class="linenos">145</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="linenos">146</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">147</span>
-<span class="linenos">148</span><span class="w">    </span><span class="c1">// and subtract 3</span>
-<span class="linenos">149</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">118</span><span class="w">    </span><span class="c1">// subtract 2 from each entry</span>
+<span class="linenos">119</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">increment</span><span class="p">(</span><span class="mi">-2</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">120</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">121</span>
+<span class="linenos">122</span><span class="w">    </span><span class="c1">// The functor we defined above is a lot of work for something that</span>
+<span class="linenos">123</span><span class="w">    </span><span class="c1">// is pretty trivial (and might be even more work if the function</span>
+<span class="linenos">124</span><span class="w">    </span><span class="c1">// object needed to be more complex).</span>
+<span class="linenos">125</span><span class="w">    </span><span class="c1">//</span>
+<span class="linenos">126</span><span class="w">    </span><span class="c1">// Since C++11, C++ has &quot;lambda expressions,&quot; which is basically</span>
+<span class="linenos">127</span><span class="w">    </span><span class="c1">// a way for the compiler to generate a functor for you using some</span>
+<span class="linenos">128</span><span class="w">    </span><span class="c1">// shorthand notation</span>
+<span class="linenos">129</span>
+<span class="linenos">130</span><span class="w">    </span><span class="c1">// Make a lambda function that adds 1</span>
+<span class="linenos">131</span><span class="w">    </span><span class="c1">// auto requires c++14</span>
+<span class="linenos">132</span><span class="w">    </span><span class="c1">// the [&amp;] specifies we should capture values by reference</span>
+<span class="linenos">133</span><span class="w">    </span><span class="c1">// we could also capture by value, pointer, etc.</span>
+<span class="linenos">134</span><span class="w">    </span><span class="c1">// Then the inputs are in (...), we&#39;re taking an int</span>
+<span class="linenos">135</span><span class="w">    </span><span class="c1">// Finally, we define the function in {...} (just returning input + 1)</span>
+<span class="linenos">136</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">add_one_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">val</span><span class="p">){</span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;};</span><span class="w"></span>
+<span class="linenos">137</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">add_one_lambda</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">138</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">139</span>
+<span class="linenos">140</span><span class="w">    </span><span class="c1">// subtract 1 using lambdas</span>
+<span class="linenos">141</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dec_one_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="linenos">142</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">dec_one_lambda</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">143</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">144</span>
+<span class="linenos">145</span><span class="w">    </span><span class="c1">// We can also use lambda functions inline. Here, we&#39;ll add 2</span>
+<span class="linenos">146</span><span class="w">    </span><span class="c1">// Again, for style preferences, I find it easier to read lambda expressions</span>
+<span class="linenos">147</span><span class="w">    </span><span class="c1">// if they&#39;re defined like the above. This example is inline and extactly the</span>
+<span class="linenos">148</span><span class="w">    </span><span class="c1">// same, but more complicated expressions may be difficult to read.</span>
+<span class="linenos">149</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 <span class="linenos">150</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">151</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">151</span>
+<span class="linenos">152</span><span class="w">    </span><span class="c1">// and subtract 3</span>
+<span class="linenos">153</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">transform</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">154</span><span class="w">    </span><span class="n">print_vector</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">155</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -607,6 +624,13 @@ title="Print to PDF"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Introduction to Programming in C++</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="session_4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Session 4</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
