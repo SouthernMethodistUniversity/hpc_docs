@@ -1,4 +1,4 @@
-root: intro.md
+root: welcome.md
 format: jb-book
 defaults:
   numbered: false
