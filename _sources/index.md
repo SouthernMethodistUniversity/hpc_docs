@@ -1,3 +1,8 @@
+```{image} ./images/superpod.jpg
+:alt: NVIDIA DGX SuperPOD (MP)
+:align: center
+```
+
 # Welcome
 
 The mission of the Center for Research Computing at Southern Methodist
