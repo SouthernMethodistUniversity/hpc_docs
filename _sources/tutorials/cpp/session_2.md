@@ -1,14 +1,12 @@
-# Introduction to Programming in C++
+# Session 2
 
-## Session 2
-
-### Agenda
+## Agenda
 
 1. C++ Branching and Loops
 2. C++ Functions
 3. Excercises
 
-### C++ Branching and Loops
+## C++ Branching and Loops
 
 `clang++ -std=c++17 -o 02_branching_loops 02_branching_loops.cpp`
 
@@ -28,7 +26,7 @@ linenos: true
 ---
 ```
 
-### Excercises
+## Excercises
 
 Problem 2 from [Project Euler](https://projecteuler.net).
 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to Programming in C++ &#8212; SMU HPC Documentation</title>
+    <title>Session 3 &#8212; SMU HPC Documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Session 4" href="session_4.html" />
-    <link rel="prev" title="Introduction to Programming in C++" href="session_2.html" />
+    <link rel="prev" title="Session 2" href="session_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -155,9 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
    HPC Tutorials
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../unix/intro.html">
    UNIX and Linux Shells
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Introduction to Programming in C++
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -167,17 +172,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="session_1.html">
-     Introduction to Programming in C++
+     Session 1
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="session_2.html">
-     Introduction to Programming in C++
+     Session 2
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Introduction to Programming in C++
+     Session 3
     </a>
    </li>
    <li class="toctree-l2">
@@ -320,31 +325,24 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#session-3">
-   Session 3
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#agenda">
-     Agenda
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-functors-and-lambdas">
-     C++ Functors and Lambdas
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-make-and-cmake">
-     C++ Make and CMake
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excercises">
-     Excercises
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-functors-and-lambdas">
+   C++ Functors and Lambdas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-make-and-cmake">
+   C++ Make and CMake
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excercises">
+   Excercises
+  </a>
  </li>
 </ul>
 
@@ -355,7 +353,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to Programming in C++</h1>
+                <h1>Session 3</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -366,31 +364,24 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#session-3">
-   Session 3
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#agenda">
-     Agenda
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-functors-and-lambdas">
-     C++ Functors and Lambdas
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-make-and-cmake">
-     C++ Make and CMake
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excercises">
-     Excercises
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-functors-and-lambdas">
+   C++ Functors and Lambdas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-make-and-cmake">
+   C++ Make and CMake
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excercises">
+   Excercises
+  </a>
  </li>
 </ul>
 
@@ -402,12 +393,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-programming-in-c">
-<h1>Introduction to Programming in C++<a class="headerlink" href="#introduction-to-programming-in-c" title="Permalink to this headline">#</a></h1>
-<section id="session-3">
-<h2>Session 3<a class="headerlink" href="#session-3" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="session-3">
+<h1>Session 3<a class="headerlink" href="#session-3" title="Permalink to this headline">#</a></h1>
 <section id="agenda">
-<h3>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h3>
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>C++ Functors and Lambdas</p></li>
 <li><p>C++ Make and CMake</p></li>
@@ -415,7 +404,7 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="c-functors-and-lambdas">
-<h3>C++ Functors and Lambdas<a class="headerlink" href="#c-functors-and-lambdas" title="Permalink to this headline">#</a></h3>
+<h2>C++ Functors and Lambdas<a class="headerlink" href="#c-functors-and-lambdas" title="Permalink to this headline">#</a></h2>
 <p>`c++ -std=c++17 -o functors_and_lamda_functions functors_and_lamda_functions.cpp</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/*</span>
 <span class="linenos">  2</span><span class="cm"> Functors and Lambda Functions</span>
@@ -576,7 +565,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="c-make-and-cmake">
-<h3>C++ Make and CMake<a class="headerlink" href="#c-make-and-cmake" title="Permalink to this headline">#</a></h3>
+<h2>C++ Make and CMake<a class="headerlink" href="#c-make-and-cmake" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p><a class="reference external" href="https://s2.smu.edu/hpc/workshops/2018/summer/hpc/session_7.html">CRC Summer Workshop: Compiling Programs</a></p></li>
 <li><p><a class="reference external" href="https://makefiletutorial.com">Makefile Tutorial</a></p></li>
@@ -585,9 +574,8 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="excercises">
-<h3>Excercises<a class="headerlink" href="#excercises" title="Permalink to this headline">#</a></h3>
+<h2>Excercises<a class="headerlink" href="#excercises" title="Permalink to this headline">#</a></h2>
 <p>Problem 2 from <a class="reference external" href="https://projecteuler.net">Project Euler</a>.</p>
-</section>
 </section>
 </section>
 
@@ -622,7 +610,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to Programming in C++</p>
+            <p class="prev-next-title">Session 2</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="session_4.html" title="next page">
