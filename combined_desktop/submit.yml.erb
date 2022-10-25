@@ -2,9 +2,9 @@
 # Desktop Submission Script
 #
 <%- if bc_num_gpus.to_i != 0 -%>
-<% image="/hpc/applications/containers/combined_desktop-nv470-cuda114.sif" %>
+<% image="/hpc/applications/containers/combined_desktop-nv470-cuda114_testing.sif" %>
 <%- else -%>
-<% image="/hpc/applications/containers/combined_desktop.sif" %>
+<% image="/hpc/applications/containers/combined_desktop_testing.sif" %>
 <%- end -%>
 ---
 script:

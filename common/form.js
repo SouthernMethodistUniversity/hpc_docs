@@ -38,7 +38,7 @@ function partition_limits(selected_queue, enable_exclusive) {
 		// console.log("has nodes \n\r");
 	}
 	if (gpu) {
-		gpu_label = document.querySelector("[for='batch_connect_session_context_bc_num_gpus']").closest('div.form-group');
+		gpu_label = document.querySelector("[for='num_gpus']").closest('div.form-group');
 		// console.log("has gpu label \n\r");
 	}
 
@@ -75,7 +75,7 @@ function partition_limits(selected_queue, enable_exclusive) {
 		max_time = 2;
 		max_cpu = 256;
 		max_mem = 374;
-		max_gpu = 1;
+		max_gpu = 8;
 		max_node = 4;
 	}
 	else if (selected_queue === "standard-mem-s") {
@@ -458,12 +458,12 @@ $(document).ready(function () {
 	if ($('#enable_exclusive').length > 0) {
 		exclusive = $('#enable_exclusive');
 		enable_exclusive = exclusive.is(":checked");
-		exclusive_label = document.querySelector("[for='batch_connect_session_context_use_exclusive']").closest('div.form-group');
+		exclusive_label = document.querySelector("[for='enable_exclusive']").closest('div.form-group');
 	}
 
 	// enable disable fields on page load
 	if (start && enable_start) {
-		start_label = document.querySelector("[for='batch_connect_session_context_start_time']").closest('div.form-group');
+		start_label = document.querySelector("[for='start']").closest('div.form-group');
 		if (start_label) {
 			if (enable_start.is(":checked")) {
 				start.removeAttr('disabled');
@@ -478,7 +478,7 @@ $(document).ready(function () {
 	}
 
 	if (end && enable_end) {
-		end_label = document.querySelector("[for='batch_connect_session_context_end_time']").closest('div.form-group');
+		end_label = document.querySelector("[for='end']").closest('div.form-group');
 		if (end_label) {
 			if (enable_end.is(":checked")) {
 				end.removeAttr('disabled');
