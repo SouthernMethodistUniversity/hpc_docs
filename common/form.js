@@ -75,7 +75,7 @@ function partition_limits(selected_queue, enable_exclusive) {
 		max_time = 2;
 		max_cpu = 256;
 		max_mem = 374;
-		max_gpu = 1;
+		max_gpu = 8;
 		max_node = 4;
 	}
 	else if (selected_queue === "standard-mem-s") {
