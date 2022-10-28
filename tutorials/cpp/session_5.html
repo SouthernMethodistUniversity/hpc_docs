@@ -1,0 +1,1327 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Session 5 &#8212; SMU HPC Documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Policies" href="../../policies/policies.html" />
+    <link rel="prev" title="Session 4" href="session_4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/smu_logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SMU HPC Documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ManeFrame II (M2)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../m2/about.html">
+   About
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  NVIDIA DGX SuperPOD (MP)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../mp/about.html">
+   NVIDIA DGX SuperPOD (MP)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ManeFrame III (M3)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../m3/about.html">
+   ManeFrame III (M3)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   HPC Tutorials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../unix/intro.html">
+   UNIX and Linux Shells
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Introduction to Programming in C++
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_1.html">
+     Session 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_2.html">
+     Session 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_3.html">
+     Session 3
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="session_4.html">
+     Session 4
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Session 5
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Policies
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../policies/policies.html">
+   Policies
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/tutorials/cpp/session_5.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-templates">
+   C++ Templates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#debugging-programs">
+   Debugging Programs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-started">
+     Getting started
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugging-and-debuggers">
+     Debugging and debuggers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#enabling-debugging-information">
+       Enabling Debugging Information
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fixing-the-bug">
+       Fixing the Bug
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#advanced-debuggers">
+       Advanced debuggers
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profiling-and-optimizing-programs">
+   Profiling and Optimizing Programs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Getting started
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#profiling-and-performance-analysis">
+     Profiling and performance analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Session 5</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#agenda">
+   Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-templates">
+   C++ Templates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#debugging-programs">
+   Debugging Programs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-started">
+     Getting started
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugging-and-debuggers">
+     Debugging and debuggers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#enabling-debugging-information">
+       Enabling Debugging Information
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fixing-the-bug">
+       Fixing the Bug
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#advanced-debuggers">
+       Advanced debuggers
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#profiling-and-optimizing-programs">
+   Profiling and Optimizing Programs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Getting started
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#profiling-and-performance-analysis">
+     Profiling and performance analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="session-5">
+<h1>Session 5<a class="headerlink" href="#session-5" title="Permalink to this headline">#</a></h1>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>C++ Templates</p></li>
+<li><p>Debugging</p></li>
+<li><p>Profiling</p></li>
+</ol>
+</section>
+<section id="c-templates">
+<h2>C++ Templates<a class="headerlink" href="#c-templates" title="Permalink to this headline">#</a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/**</span>
+<span class="linenos">  2</span><span class="cm"> \brief Overview of C++ templates</span>
+<span class="linenos">  3</span>
+<span class="linenos">  4</span><span class="cm"> Useful References:</span>
+<span class="linenos">  5</span><span class="cm"> * Discovering Modern C++ by Peter Gottschling (amongst many other C++ books)</span>
+<span class="linenos">  6</span><span class="cm"> * https://en.cppreference.com/</span>
+<span class="linenos">  7</span><span class="cm">*/</span><span class="w"></span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="c1">// This is a header file, so we want to enure if only gets</span>
+<span class="linenos"> 10</span><span class="c1">// included once in the code so we don&#39;t end up with multiple</span>
+<span class="linenos"> 11</span><span class="c1">// redefinitions of the same functions in a project.</span>
+<span class="linenos"> 12</span><span class="c1">// On way to do this is to define a uniquely named variable</span>
+<span class="linenos"> 13</span><span class="c1">// using the prepocessor. Here, we name a variable &quot;_SMU_TEMPLATES_H_&quot;</span>
+<span class="linenos"> 14</span><span class="c1">// If that variable is already defined, then nothing happens.</span>
+<span class="linenos"> 15</span><span class="c1">// Otherwise, we define it and the code defining the class is</span>
+<span class="linenos"> 16</span><span class="c1">// used.</span>
+<span class="linenos"> 17</span><span class="cp">#ifndef _SMU_TEMPLATES_H_</span>
+<span class="linenos"> 18</span><span class="cp">#define _SMU_TEMPLATES_H_</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="c1">// Includes</span>
+<span class="linenos"> 21</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // for cout</span><span class="cp"></span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span><span class="c1">// Templates are a way to reduce and optimize code</span>
+<span class="linenos"> 24</span><span class="c1">// The basic use allows us to right a single function</span>
+<span class="linenos"> 25</span><span class="c1">// that operates on multiple data types automatically.</span>
+<span class="linenos"> 26</span><span class="c1">// For example, you might have noticed that C++ STL</span>
+<span class="linenos"> 27</span><span class="c1">// has a single std::abs, unlike C, where you have to</span>
+<span class="linenos"> 28</span><span class="c1">// choose from abs, fabs, etc based on the type.</span>
+<span class="linenos"> 29</span><span class="c1">// The other feature of templated functions is that</span>
+<span class="linenos"> 30</span><span class="c1">// they are expanded at compile time, which can</span>
+<span class="linenos"> 31</span><span class="c1">// drastically impact performance in many cases.</span>
+<span class="linenos"> 32</span><span class="c1">// This is how linear algebra libraries like eigen</span>
+<span class="linenos"> 33</span><span class="c1">// and armadillo are able to combine multiple</span>
+<span class="linenos"> 34</span><span class="c1">// operations into 1.</span>
+<span class="linenos"> 35</span>
+<span class="linenos"> 36</span><span class="c1">// enter our namespace</span>
+<span class="linenos"> 37</span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span><span class="w"></span>
+<span class="linenos"> 38</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 39</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="c1">// template functions and objects start with</span>
+<span class="linenos"> 41</span><span class="w">    </span><span class="c1">// &quot;template &lt;...&gt;&quot; directive followed by a</span>
+<span class="linenos"> 42</span><span class="w">    </span><span class="c1">// a function or object declaration</span>
+<span class="linenos"> 43</span><span class="w">    </span><span class="c1">//</span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="c1">// Here, we&#39;ll create a template over a type</span>
+<span class="linenos"> 45</span><span class="w">    </span><span class="c1">// which we&#39;ll call T. (You can change T to</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="c1">// any name you like).</span>
+<span class="linenos"> 47</span><span class="w">    </span><span class="c1">//</span>
+<span class="linenos"> 48</span><span class="w">    </span><span class="c1">// Our function will take 2 arguments of</span>
+<span class="linenos"> 49</span><span class="w">    </span><span class="c1">// as of now unknown type T and return</span>
+<span class="linenos"> 50</span><span class="w">    </span><span class="c1">// a type T value</span>
+<span class="linenos"> 51</span><span class="w">    </span><span class="c1">//</span>
+<span class="linenos"> 52</span><span class="w">    </span><span class="c1">// We&#39;ll define this function in place.</span>
+<span class="linenos"> 53</span><span class="w">    </span><span class="c1">// Note: in most cases templates need to</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="c1">// be declared AND defined in header files</span>
+<span class="linenos"> 55</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 57</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 58</span><span class="w">        </span><span class="c1">// This will work for any type that</span>
+<span class="linenos"> 59</span><span class="w">        </span><span class="c1">// has the &gt; operator.</span>
+<span class="linenos"> 60</span><span class="w">        </span><span class="c1">//</span>
+<span class="linenos"> 61</span><span class="w">        </span><span class="c1">// WARNING: there is also some subtle danger</span>
+<span class="linenos"> 62</span><span class="w">        </span><span class="c1">// in using a ternary operator with unknown</span>
+<span class="linenos"> 63</span><span class="w">        </span><span class="c1">// types.</span>
+<span class="linenos"> 64</span><span class="w">        </span><span class="c1">//</span>
+<span class="linenos"> 65</span><span class="w">        </span><span class="c1">// The reason this might be an issue is that in C++</span>
+<span class="linenos"> 66</span><span class="w">        </span><span class="c1">// the type of the ELSE statement is inferred from</span>
+<span class="linenos"> 67</span><span class="w">        </span><span class="c1">// the type of the THEN expression such that both match.</span>
+<span class="linenos"> 68</span><span class="w">        </span><span class="c1">// If a and b are different types (which is technically</span>
+<span class="linenos"> 69</span><span class="w">        </span><span class="c1">// possible here from polymorphism), then b will be</span>
+<span class="linenos"> 70</span><span class="w">        </span><span class="c1">// converted to the type of a, which may not be desired</span>
+<span class="linenos"> 71</span><span class="w">        </span><span class="c1">//</span>
+<span class="linenos"> 72</span><span class="w">        </span><span class="c1">// This can be avoided by using if {} else {} blocks</span>
+<span class="linenos"> 73</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 74</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span><span class="w">    </span><span class="c1">// Instead of types, we can also create templates based on numerical</span>
+<span class="linenos"> 77</span><span class="w">    </span><span class="c1">// values. In scientific codes, it is common to see this particulary</span>
+<span class="linenos"> 78</span><span class="w">    </span><span class="c1">// to specify dimensions (1d, 2d, 3d, 4d, ..., nd)</span>
+<span class="linenos"> 79</span><span class="w">    </span><span class="c1">//</span>
+<span class="linenos"> 80</span><span class="w">    </span><span class="c1">// Here, we specify the template argument is an int and set the default</span>
+<span class="linenos"> 81</span><span class="w">    </span><span class="c1">// to 3. We also specify a type argument</span>
+<span class="linenos"> 82</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos"> 83</span><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">DumbVector</span><span class="w"></span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 85</span>
+<span class="linenos"> 86</span><span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 87</span><span class="w">        </span><span class="n">T</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">DIM</span><span class="p">];</span><span class="w"> </span><span class="c1">// create an array of the specified dimension and type</span>
+<span class="linenos"> 88</span>
+<span class="linenos"> 89</span><span class="w">        </span><span class="c1">// just some basic getters / setters. We&#39;ll use the default constructors</span>
+<span class="linenos"> 90</span><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 91</span><span class="w">        </span><span class="c1">// function to set the values based on index</span>
+<span class="linenos"> 92</span><span class="w">        </span><span class="c1">// we&#39;ll define this here.</span>
+<span class="linenos"> 93</span><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="n">setByIndex</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 94</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 95</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DIM</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 96</span><span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 97</span><span class="w">                </span><span class="n">m_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 98</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="w">            </span><span class="k">else</span><span class="w"></span>
+<span class="linenos">100</span><span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">101</span><span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Tried to set data outside range&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">102</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">103</span><span class="w">        </span><span class="p">};</span><span class="w"></span>
+<span class="linenos">104</span>
+<span class="linenos">105</span><span class="w">        </span><span class="c1">// function to print ... we&#39;ll define this below</span>
+<span class="linenos">106</span><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">107</span>
+<span class="linenos">108</span><span class="w">    </span><span class="p">};</span><span class="w"> </span><span class="c1">// end class</span>
+<span class="linenos">109</span>
+<span class="linenos">110</span><span class="w">    </span><span class="c1">// define print function from class</span>
+<span class="linenos">111</span><span class="w">    </span><span class="c1">// note we need the template directive (with no defaults)</span>
+<span class="linenos">112</span><span class="w">    </span><span class="c1">// and the function is a member of the DumbVector class</span>
+<span class="linenos">113</span><span class="w">    </span><span class="c1">// with template args &lt;T,DIM&gt;</span>
+<span class="linenos">114</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">115</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;::</span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="linenos">116</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">117</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">118</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">119</span><span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">120</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">121</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">DIM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">122</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">123</span>
+<span class="linenos">124</span><span class="w">    </span><span class="c1">// We can use templates to compute expressions at compile</span>
+<span class="linenos">125</span><span class="w">    </span><span class="c1">// time. For instance, these functions will expand and compute</span>
+<span class="linenos">126</span><span class="w">    </span><span class="c1">// x1 * x2 * x3 * ... * xn if we call our function like</span>
+<span class="linenos">127</span><span class="w">    </span><span class="c1">// multiply(x1 * x2 * x3 * ... * xn )</span>
+<span class="linenos">128</span>
+<span class="linenos">129</span><span class="w">    </span><span class="c1">// we need a function to return the last entry</span>
+<span class="linenos">130</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">131</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x1</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">132</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">133</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">134</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">135</span>
+<span class="linenos">136</span><span class="w">    </span><span class="c1">// split the first value from the rest</span>
+<span class="linenos">137</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Types</span><span class="o">&gt;</span><span class="w"></span>
+<span class="linenos">138</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">Types</span><span class="p">...</span><span class="w"> </span><span class="n">xn</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">139</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">140</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">xn</span><span class="p">...);</span><span class="w"></span>
+<span class="linenos">141</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">142</span>
+<span class="linenos">143</span><span class="w">    </span>
+<span class="linenos">144</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">145</span>
+<span class="linenos">146</span><span class="cp">#endif </span><span class="c1">//_SMU_TEMPLATES_H_</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/*</span>
+<span class="linenos"> 2</span><span class="cm">Test our template class</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="cm">*/</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;templates.hpp&quot;</span><span class="cp"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w">    </span><span class="c1">// test our max function</span>
+<span class="linenos">14</span><span class="w">    </span><span class="c1">// NOTE: the template parameter is automatically inferred</span>
+<span class="linenos">15</span><span class="w">    </span><span class="c1">// and we didn&#39;t need to specify it</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">    </span><span class="c1">// using braces to scope variables so I can resuse names</span>
+<span class="linenos">18</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">132.3</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12321.1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="w">    </span><span class="c1">// Test our class. We need to tell it the dimensions and type</span>
+<span class="linenos">46</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">48</span>
+<span class="linenos">49</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">55</span>
+<span class="linenos">56</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">58</span>
+<span class="linenos">59</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">60</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">61</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">63</span>
+<span class="linenos">64</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">65</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">66</span>
+<span class="linenos">67</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">68</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">69</span>
+<span class="linenos">70</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">71</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">72</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="mf">4.5</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">73</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">74</span>
+<span class="linenos">75</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">76</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">77</span>
+<span class="linenos">78</span><span class="w">    </span><span class="c1">// Test our multiplication</span>
+<span class="linenos">79</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1 * 2 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">80</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1 * 2 * 3 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">81</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">82</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 * 5.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">83</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 * 5.0 * 6.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">84</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="debugging-programs">
+<h2>Debugging Programs<a class="headerlink" href="#debugging-programs" title="Permalink to this headline">#</a></h2>
+<p>The goal of debugging and performance optimization is to create code
+that runs as correctly and quickly as possible. Debugging is the process
+by which programming errors are found and corrected. Performance
+optimization is the analysis and improvement of the algorithms and
+methods implemented in the code.</p>
+<section id="getting-started">
+<h3>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h3>
+<p>In this session, we will use examples in either C, C++ or Fortran90.
+Choose your preferred language of the three and download the files to be
+used in this session by either clicking one of the following three
+links: <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_c.tgz&gt;</span></code>{.interpreted-text
+role=”download”}, <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_cxx.tgz&gt;</span></code>{.interpreted-text
+role=”download”}, <code class="docutils literal notranslate"><span class="pre">F90</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_f90.tgz&gt;</span></code>{.interpreted-text role=”download”}, or
+by copying the relevant files on ManeFrame with one of the following 3
+commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp /hpc/examples/workshops/hpc/session9_c.tgz .
+$ cp /hpc/examples/workshops/hpc/session9_cxx.tgz .
+$ cp /hpc/examples/workshops/hpc/session9_f90.tgz .
+</pre></div>
+</div>
+<p>Unpack your tarball and enter the resulting directory.</p>
+</section>
+<section id="debugging-and-debuggers">
+<h3>Debugging and debuggers<a class="headerlink" href="#debugging-and-debuggers" title="Permalink to this headline">#</a></h3>
+<section id="enabling-debugging-information">
+<h4>Enabling Debugging Information<a class="headerlink" href="#enabling-debugging-information" title="Permalink to this headline">#</a></h4>
+<p>In most compilers (including GNU and PGI), you can enable debugging
+information through adding the <code class="docutils literal notranslate"><span class="pre">-g</span></code> compiler flag. Add this flag to the
+compilation commands in the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for the target <code class="docutils literal notranslate"><span class="pre">driver2.exe</span></code>, and
+then compile the executable,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make driver2.exe
+</pre></div>
+</div>
+<p>Run the new executable. It should die with an error message about a
+segmentation violation (segmentation fault) or bus error, depending on
+the compiler/OS, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./driver2.exe
+Segmentation fault
+</pre></div>
+</div>
+<p>There are many ways to track down this kind of error (e.g. adding print
+statements everywhere, staring intently hoping for an epiphany, randomly
+changing things to see what happens). In this session we will use the
+most efficient debugging approach, that of using a tool to track down
+the bug for us.</p>
+<p>The tool we will use is the GNU debugger, which can be accessed through
+running the faulty executable program from within the debugging program
+itself. Load the executable into <code class="docutils literal notranslate"><span class="pre">gdb</span></code> with the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdb driver2.exe
+</pre></div>
+</div>
+<p>At the <code class="docutils literal notranslate"><span class="pre">gdb</span></code> prompt, type <code class="docutils literal notranslate"><span class="pre">run</span></code> to start the executable. It will
+automatically stop at the line where the segmentation fault occurs.</p>
+<p>In another terminal window, you can type <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">gdb</span></code> to learn more about
+how to use the debugger (or you can <a class="reference external" href="http://linux.die.net/man/1/gdb">click here to view the gdb man page
+on the web</a>.</p>
+<ul>
+<li><p>Perhaps the most valuable gdb command is <code class="docutils literal notranslate"><span class="pre">print</span></code> that may be used to
+see the internal value of a specified variable, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> print i
+</pre></div>
+</div>
+<p>will print out the current value of the iteration variable <code class="docutils literal notranslate"><span class="pre">i</span></code>).</p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">help</span></code> command inside of <code class="docutils literal notranslate"><span class="pre">gdb</span></code> may be used to find out more
+information on how to use the program itself.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">quit</span></code> command inside of <code class="docutils literal notranslate"><span class="pre">gdb</span></code> will exit the debugger and return
+you to the command line. Alternatively, you may just type <code class="docutils literal notranslate"><span class="pre">^d</span></code>
+([control]-[d]) to exit.</p></li>
+</ul>
+</section>
+<section id="fixing-the-bug">
+<h4>Fixing the Bug<a class="headerlink" href="#fixing-the-bug" title="Permalink to this headline">#</a></h4>
+<p>C users:</p>
+<p>:   Open both the files <code class="docutils literal notranslate"><span class="pre">driver2.c</span></code> and <code class="docutils literal notranslate"><span class="pre">tridiag_matvec.c</span></code>, and see if
+you can find/fix the problem by using <code class="docutils literal notranslate"><span class="pre">gdb</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code> statements
+as appropriate.</p>
+<p>C++ users:</p>
+<p>:   Open both the files <code class="docutils literal notranslate"><span class="pre">driver2.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">tridiag_matvec.cpp</span></code>, and see
+if you can find/fix the problem by using <code class="docutils literal notranslate"><span class="pre">gdb</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code>
+statements as appropriate.</p>
+<p>F90 users:</p>
+<p>:   Open both the files <code class="docutils literal notranslate"><span class="pre">driver2.f90</span></code> and <code class="docutils literal notranslate"><span class="pre">tridiag_matvec.f90</span></code>, and see
+if you can find/fix the problem by using <code class="docutils literal notranslate"><span class="pre">gdb</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code>
+statements as appropriate.</p>
+<p>A word of warning, the location of the segmentation fault or bus error
+is not always where the problem is located. Segmentation faults
+generally occur due to an attempt within the program to read to or write
+from an illegal memory location, i.e. a memory location that is not a
+part of a currently-available variable. Examples of bugs that can cause
+a seg-fault are iterating outside of the bounds of an array, or a
+mismatch between the arguments that a program uses to call a function
+and the arguments that the function expects to receive.</p>
+<p>Tips for tracking/fixing segmentation faults</p>
+<p>Using a debugger:</p>
+<ol>
+<li><p>determine exactly the line of code causing the fault,</p></li>
+<li><p>if the fault is inside a loop, determine exactly which iteration of
+the loop is causing the fault,</p></li>
+<li><p>use print statements in the debugger to see which variable is
+uninitialized, e.g. to see if the array <code class="docutils literal notranslate"><span class="pre">x</span></code> has entry <code class="docutils literal notranslate"><span class="pre">i</span></code> you could
+use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> print x<span class="o">[</span>i<span class="o">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Once you identify the precise location of the segmentation fault, go
+back to see where the data is allocated. Was it allocated with a
+different size, shape or type? Was it not allocated at all?</p>
+<p>If the data is allocated in a different manner than it is being used,
+determine which location needs fixing and try your best.</p>
+<p>Upon finding and fixing the bug causing the segmentation fault, the
+correctly-executing program should write the following line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2-norm of product = 1.414213562373E+00
+</pre></div>
+</div>
+<p>(or something within roundoff error of this result), and it should write
+the file <code class="docutils literal notranslate"><span class="pre">r.txt</span></code> that contains the result of the matrix-vector product.
+This output vector should contain all 0’s except for the first and last
+entries, which should be 1.</p>
+</section>
+<section id="advanced-debuggers">
+<h4>Advanced debuggers<a class="headerlink" href="#advanced-debuggers" title="Permalink to this headline">#</a></h4>
+<p>There are many freely-available Linux debugging utilities in addition to
+<a class="reference external" href="https://www.gnu.org/software/gdb/">gdb</a>. Most of these are graphical
+(i.e. point-and-click), and in fact use <code class="docutils literal notranslate"><span class="pre">gdb</span></code> under the hood. Some of
+the more popular of these debuggers include:
+<a class="reference external" href="https://www.gnu.org/software/ddd/">ddd</a>,
+<a class="reference external" href="http://projects.gnome.org/nemiver/">nemiver</a>,
+<a class="reference external" href="http://www.eclipse.org/eclipse/debug/">eclipse</a>,
+<a class="reference external" href="https://zerobugs.codeplex.com/">zerobugs</a>,
+<a class="reference external" href="http://www.woodmann.com/collaborative/tools/index.php/EDB_Linux_Debugger">edb</a>.
+However, of this set the ManeFrame cluster currently only has <code class="docutils literal notranslate"><span class="pre">gdb</span></code>
+installed (ask your system administrators for others you want/need).</p>
+<p>Additionally, there are some highly advanced non-free Linux debugging
+utilities available (all typically graphical), including
+<a class="reference external" href="http://www.roguewave.com/products/totalview.aspx">TotalView</a>,
+<a class="reference external" href="http://www.allinea.com/products/ddt/">DDT</a>,
+<a class="reference external" href="http://software.intel.com/en-us/articles/idb-linux">idb</a> (only works
+with the Intel compilers), and PGI’s
+<a class="reference external" href="http://www.pgroup.com/products/pgdbg.htm">pgdbg</a> (graphical) and
+[pgdebug]{.title-ref} (text version). Of these, the ManeFrame cluster
+has both <code class="docutils literal notranslate"><span class="pre">pgdbg</span></code> and <code class="docutils literal notranslate"><span class="pre">pgdebug</span></code>.</p>
+<p>The usage of most of the above debuggers is similar to <code class="docutils literal notranslate"><span class="pre">gdb</span></code>, except
+that in graphical debuggers it can be easier to view the
+data/instruction stack. The primary benefit of the non-free debuggers is
+their support for debugging parallel jobs that use OpenMP, MPI, or
+hybrid MPI/OpenMP computing approaches (see session 9). In fact, some of
+these professional tools can even be used to debug code running on GPU
+accelerators.</p>
+<p>If you’re interested in learning more about these, I recommend that you
+re-download the tarball for this session, load the <code class="docutils literal notranslate"><span class="pre">pgi</span></code> module, update
+the Makefile to use the <code class="docutils literal notranslate"><span class="pre">-g</span></code> option along with the relevant PGI compiler
+(<code class="docutils literal notranslate"><span class="pre">pgcc</span></code>, <code class="docutils literal notranslate"><span class="pre">pgc++</span></code> or <code class="docutils literal notranslate"><span class="pre">pgfortran</span></code>), and launch the job in the <code class="docutils literal notranslate"><span class="pre">pgdbg</span></code>
+debugger like you did with <code class="docutils literal notranslate"><span class="pre">gdb</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pgdbg ./driver2.exe
+</pre></div>
+</div>
+<p>Press the “play” button to start the executable running, and use the
+mouse to interact with the debugger as needed.</p>
+</section>
+</section>
+</section>
+<section id="profiling-and-optimizing-programs">
+<h2>Profiling and Optimizing Programs<a class="headerlink" href="#profiling-and-optimizing-programs" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>Getting started<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>In this session, we will use the same examples as Session 10 in either
+C, C++ or Fortran90. Choose your preferred language of the three and
+download the files to be used in this session by either clicking one of
+the following three links:
+<code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_c.tgz&gt;</span></code>{.interpreted-text
+role=”download”}, <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_cxx.tgz&gt;</span></code>{.interpreted-text
+role=”download”}, <code class="docutils literal notranslate"><span class="pre">F90</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_f90.tgz&gt;</span></code>{.interpreted-text role=”download”}, or
+by copying the relevant files on ManeFrame with one of the following 3
+commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp /hpc/examples/workshops/hpc/session9_c.tgz .
+$ cp /hpc/examples/workshops/hpc/session9_cxx.tgz .
+$ cp /hpc/examples/workshops/hpc/session9_f90.tgz .
+</pre></div>
+</div>
+<p>Unpack your tarball and enter the resulting directory.</p>
+</section>
+<section id="profiling-and-performance-analysis">
+<h3>Profiling and performance analysis<a class="headerlink" href="#profiling-and-performance-analysis" title="Permalink to this headline">#</a></h3>
+<p>There are two primary mechanisms for profiling code: determining which
+routines take the most time, and determining which specific lines of
+code would be best to optimize. Thankfully, the <a class="reference external" href="http://gcc.gnu.org/">GNU compiler
+collection</a> includes utilities for both of these
+tasks, as will be illustrated below. Utilities with similar
+functionality are included with some other compilers, and I recommend
+that you look up the corresponding information for your compiler of
+choice.</p>
+<p>In fact, OS X provides a free suite of programs,
+<a class="reference external" href="https://developer.apple.com/xcode/">Xcode</a>, that has incredibly useful
+profiling and performance monitoring tools. For users with OS X Lion or
+newer, this tool is called
+<a class="reference external" href="https://developer.apple.com/library/mac/documentation/developertools/conceptual/instrumentsuserguide/Introduction/Introduction.html">Instruments</a>;
+for users with older versions of OS X it is called
+<a class="reference external" href="https://developer.apple.com/legacy/library/documentation/DeveloperTools/Conceptual/SharkUserGuide/SharkUserGuide.pdf">Shark</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+#### Generating a profile
+
+In the GNU compilers (and many others), you can enable profiling
+information through adding in the `-p` compiler flag. Add this compiler
+flag to the commands in the `Makefile` for the target `driver1.exe`
+\[Hint: either put it with the flags in the `OPT` variable, or in the
+compile line before the `-o` flag\].
+
+Profiling information is generated by running the executable once to
+completion. Run the driver as usual:
+
+``` bash
+$ ./driver1.exe
+```
+
+Write down the total runtime required for the program (you will use this
+information later on).
+
+When the program has finished, you should see a new file in the
+directory called `gmon.out`. This contains the relevant profiling data,
+and was written during the execution of the code.
+
+Examine the profiling information by using the program `gprof`. You use
+this by calling `gprof`, followed by the executable name. It will
+automatically look in the `gmon.out` file in that directory for the
+profiling data that relates to the executable. Run the command
+
+``` bash
+$ gprof driver1.exe
+```
+
+When you run `gprof`, it outputs all of the profiling information to the
+screen. To enable easier examination of these results, you should
+instead send this data to a file. You can redirect this information to
+the file `profiling_data.txt` with the command
+
+``` bash
+$ gprof driver1.exe &gt; profiling_data.txt
+```
+
+You will then have the readable file `profiling_data.txt` with the
+relevant profiling information.
+
+#### Identifying bottlenecks
+
+Read through the first table of profiling information in this file. The
+first column of this table shows the percentage of time spent in each
+function called by the driver. Identify which one takes the vast
+majority of the time. This bottleneck should be the first routine that
+you investigate for optimization.
+
+Look through the routine identified from the previous step \-- the
+function may be contained in a file with a different name, so you can
+use `grep` to find which file contains the routine:
+
+``` bash
+$ grep -i &lt;routine_name&gt; *
+```
+
+where `&lt;routine_name&gt;` is the function that you identified from the
+previous step.
+
+Once you have determined the file that contains the culprit function,
+you can use the second utility routine `gcov` to determine which lines
+in the file are executed the most. To use `gcov`, you must modify the
+compile line once more, to use the compilation flags
+`-fprofile-arcs -ftest-coverage`.
+
+Add these compiler flags to the commands in the `Makefile` for the
+target `driver1.exe`, recompile, and re-run the executable,
+
+``` bash
+$ ./driver1.exe
+```
+
+You should now see additional files in the directory, including
+`driver1.gcda`, `driver1.gcno`, `vectors.gcda` and `vectors.gcno`. If
+you do not see these files, revisit the above instructions to ensure
+that you haven\&#39;t missed any steps.
+
+You should now run `gcov` on the input file that held the function you
+identified from the steps above. For example, if the source code file
+was `file.cpp`, you would run
+
+``` bash
+$ gcov file.cpp
+```
+
+This will output some information to the screen, including the name of a
+`.gcov` file that it creates with information on the program. Open this
+new file using `gedit`, and you will see lines like the following:
+
+``` text
+-:   51:  // fill in vectors x and y
+101:   52:  for (i=0; i&lt;l; i++) 
+10100:   53:    for (j=0; j&lt;m; j++) 
+1010000:   54:      for (k=0; k&lt;n; k++) 
+1000000:   55:        x[i][j][k] = random() / (pow(2.0,31.0) - 1.0);
+```
+
+The first column of numbers on the left signify the number of times each
+line of code was executed within the program. The second column of
+numbers correspond to the line number within the source code file. The
+remainder of each line shows the source code itself. From the above
+snippet, we see that lines 54 and 55 were executed 1.01 and 1 million
+times, respectively, indicating that these would be prime locations for
+code optimization.
+
+Find the corresponding lines of code in the function that you identified
+from the preceding step. It is here where you should focus your
+optimization efforts.
+
+#### Optimizing code
+
+Save a copy of the source code file you plan to modify using the `cp`
+command, e.g.
+
+``` bash
+$ cp file.cpp file_old.cpp
+```
+
+where `file` is the file that you have identified as containing the
+bottleneck routine (use the appropriate extension for your coding
+language). We will use this original file again later in the session.
+
+Now that you know which lines are executed, and how often, you should
+remove the `gcov` compiler options, but keep the `-p` in your
+`Makefile`.
+
+Determine what, if anything, can be optimized in this routine. The topic
+of code optimization is bigger than we can cover in a single workshop
+session, but here are some standard techniques.
+
+Code optimization techniques
+
+1.  Is there a simpler way that the arithmetic could be accomplished?
+    Sometimes the most natural way of writing down a problem does not
+    result in the least amount of effort. For example, we may implement
+    a line of code to evaluate the polynomial $p(x) =
+    2x^4-3x^3+5x^2-8x+7$ using either
+
+    ``` c++
+    p = 2.0*x*x*x*x - 3.0*x*x*x + 5.0*x*x - 8*x + 7.0;
+    ```
+
+    or
+
+    ``` c++
+    p = (((2.0*x - 3.0)*x + 5.0)*x - 8.0)*x + 7.0;
+    ```
+
+    The first line requires 10 multiplication and 4 addition/subtraction
+    operations, while the second requires only 4 multiplications and 4
+    additions/subtractions.
+
+2.  Is the code accessing memory in an optimal manner? Computers store
+    and access memory from RAM one \&quot;page\&quot; at a time, meaning that if
+    you retrieve a single number, the numbers nearby that value are also
+    stored in fast-access cache memory. So, if each iteration of a loop
+    uses values that are stored in disparate portions of RAM, each value
+    could require retrieval of a separate page. Alternatively, if each
+    loop iteration uses values from memory that are stored nearby one
+    another, many numbers in a row can be retrieved using a single RAM
+    access. Since RAM access speeds are significantly slower than cache
+    access speeds, something as small as a difference in loop ordering
+    can make a huge difference in speed.
+
+3.  Is the code doing redundant computations? While modern computers can
+    perform many calculations in the time it takes to access one page of
+    RAM, some calculations are costly enough to warrant computing it
+    only once and storing the result for later reuse. This is especially
+    pertinent for things that are performed a large number of times. For
+    example, consider the following two algorithms:
+
+    ``` c++
+    for (i=1; i&lt;10000; i++) {
+    d[i] = u[i-1]/h/h - 2.0*u[i]/h/h + u[i+1]/h/h;
+    } 
+    ```
+
+    and
+
+    ``` c++
+    double hinv2 = 1.0/h/h;
+    for (i=1; i&lt;10000; i++) {
+    d[i] = (u[i-1] - 2.0*u[i] + u[i+1])*hinv2;
+    }
+    ```
+
+    Since floating-point division is significantly more costly than
+    multiplication (roughly $10\times$), and the division by $h^2$ is
+    done redundantly both within and between loop iterations, the second
+    of these algorithms is typically much faster than the first.
+
+4.  Is the code doing unnecessary data copies? In many programming
+    languages, a function can be written to use either *call-by-value*
+    or *call-by-reference*.
+
+    In call-by-value, all arguments to a function are copied from the
+    calling routine into a new set of variables that are local to the
+    called function. This allows the called function to modify the input
+    variables without concern about corrupting data in the calling
+    routine.
+
+    In call-by-reference, the called function only receives memory
+    references to the actual data held by the calling routine. This
+    allows the called function to directly modify the data held by the
+    calling routine.
+
+    While call-by-reference is obviously more \&quot;dangerous,\&quot; it avoids
+    unnecessary (and costly) memory allocation/copying/deallocation in
+    the executing code. As such, highly efficient code typically uses
+    call-by-reference, with the programmer responsible for ensuring that
+    data requiring protection in the calling program is manually copied
+    before function calls, or that the functions themselves are
+    constructed to avoid modifying the underlying data.
+
+    In C and C++, call-by-value is the default, whereas Fortran uses
+    call-by-reference. However in C, pointers may be passed through
+    function calls to emulate call-by-reference. In C++, either pointers
+    can be sent through function calls, or arguments may be specified as
+    being passed by reference (using the `&amp;` symbol).
+
+Find what you can fix, so long as you do not change the mathematical
+result. Delete and re-compile the executable,
+
+``` bash
+$ rm driver1.exe; make driver1.exe
+```
+
+re-run the executable
+
+``` bash
+$ ./driver1.exe
+```
+
+Re-examine the results using `gprof`, and repeat the optimization
+process until you are certain that the code has been sufficiently
+optimized. You should be able to achieve a significant performance
+improvement (at least 40% faster than the original).
+
+Write down the total runtime required for your hand-optimized program.
+Copy your updated code to the file `file_new.cpp` (again, use the
+appropriate extension for your coding language).
+
+#### Compiler optimizations
+
+The compiler may also attempt to optimize the code itself. Try
+rebuilding the original (non-optimized) code with the compiler flag
+`-O2` (capital \&#39;o\&#39; for \&quot;Optimize\&quot;, followed by a \&#39;2\&#39; to denote the
+optimization level):
+
+1.  Replace the current flag `-O0` in your `Makefile` with the flag
+    `-O2`.
+
+2.  Copy the original file back, e.g.
+
+    ``` bash
+    $ cp file_old.cpp file.cpp
+    ```
+
+3.  Delete the old executable,
+
+    ``` bash
+    $ rm driver1.exe
+    ```
+
+4.  Re-compile `driver1.exe`,
+
+    ``` bash
+    $ make driver1.exe
+    ```
+
+5.  Re-run `driver1.exe`,
+
+    ``` bash
+    $ ./driver1.exe
+    ```
+
+Does this result in faster code than the original? Is it faster than
+your hand-optimized code? Write down the total run-time required for
+this test.
+
+Repeat the above steps, but this time using **both** the `-O2` compiler
+flag **and** your hand-optimized code in `file_new.cpp`. Determine you
+can see how well the code runs when you provide a hand-optimized code to
+then allow the compiler to optimize as well. How does this perform in
+comparison to the other three runs?
+
+There are a great many compiler optimizations that you can try with your
+executable. For a full description of all the possible options available
+with the GNU compiler collection, try
+
+``` bash
+$ man gcc
+```
+
+The `-O#` options allow specification of optimization levels 0, 1, 2 and
+3, each one applies additional optimizations to the previous level.
+Typically, compilers also implement a basic `-O` flag that defaults to
+`-O2`. However, there are additional optimizations that can be performed
+by the compiler, as will be discussed in the compiler\&#39;s man page or
+online documentation.
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials/cpp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="session_4.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Session 4</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../policies/policies.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Policies</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Southern Methodist University<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
