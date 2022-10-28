@@ -35,11 +35,9 @@ methods implemented in the code.
 In this session, we will use examples in either C, C++ or Fortran90.
 Choose your preferred language of the three and download the files to be
 used in this session by either clicking one of the following three
-links: `C version <_static/code/session9_c.tgz>`{.interpreted-text
-role="download"}, `C++
-version <_static/code/session9_cxx.tgz>`{.interpreted-text
-role="download"}, `F90 version
-<_static/code/session9_f90.tgz>`{.interpreted-text role="download"}, or
+links: `C version <_static/code/session9_c.tgz>`, `C++
+version <_static/code/session9_cxx.tgz>`, `F90 version
+<_static/code/session9_f90.tgz>`, or
 by copying the relevant files on ManeFrame with one of the following 3
 commands:
 
@@ -112,21 +110,16 @@ on the web](http://linux.die.net/man/1/gdb).
 
 #### Fixing the Bug
 
-C users:
-
-:   Open both the files `driver2.c` and `tridiag_matvec.c`, and see if
+* C users:
+  * Open both the files `driver2.c` and `tridiag_matvec.c`, and see if
     you can find/fix the problem by using `gdb` and `print` statements
     as appropriate.
-
-C++ users:
-
-:   Open both the files `driver2.cpp` and `tridiag_matvec.cpp`, and see
+* C++ users:
+  * Open both the files `driver2.cpp` and `tridiag_matvec.cpp`, and see
     if you can find/fix the problem by using `gdb` and `print`
     statements as appropriate.
-
-F90 users:
-
-:   Open both the files `driver2.f90` and `tridiag_matvec.f90`, and see
+* F90 users:
+  * Open both the files `driver2.f90` and `tridiag_matvec.f90`, and see
     if you can find/fix the problem by using `gdb` and `print`
     statements as appropriate.
 
@@ -228,10 +221,8 @@ In this session, we will use the same examples as Session 10 in either
 C, C++ or Fortran90. Choose your preferred language of the three and
 download the files to be used in this session by either clicking one of
 the following three links:
-`C version <_static/code/session9_c.tgz>`{.interpreted-text
-role="download"}, `C++
-version <_static/code/session9_cxx.tgz>`{.interpreted-text
-role="download"}, `F90 version
+`C version <_static/code/session9_c.tgz>`, `C++
+version <_static/code/session9_cxx.tgz>`, `F90 version
 <_static/code/session9_f90.tgz>`{.interpreted-text role="download"}, or
 by copying the relevant files on ManeFrame with one of the following 3
 commands:
@@ -262,7 +253,6 @@ newer, this tool is called
 [Instruments](https://developer.apple.com/library/mac/documentation/developertools/conceptual/instrumentsuserguide/Introduction/Introduction.html);
 for users with older versions of OS X it is called
 [Shark](https://developer.apple.com/legacy/library/documentation/DeveloperTools/Conceptual/SharkUserGuide/SharkUserGuide.pdf).
-:::
 
 #### Generating a profile
 
