@@ -51,7 +51,20 @@ namespace smu_demo_namespace
     //
     // We'll define this function in place.
     // Note: in most cases templates need to
-    // be declared AND defined in header files
+    // be declared AND defined in header files.
+    //
+    // If you define templated functions or objects
+    // in a compiler file, you need to 
+    // explicity instantiate the function(s) in the
+    // compiled file so the compiler knows what
+    // versions to build
+    // e.g.
+    // template custom_max<int>
+    // template custom_max<double>
+    // ... etc
+    // Note, you only have to define the function
+    // once, this just tells the compiler to 
+    // make those variants
     template <typename T>
     T custom_max(const T &a, const T &b)
     {

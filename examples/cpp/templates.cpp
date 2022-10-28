@@ -54,7 +54,7 @@ int main()
     }
 
     {
-        DumbVector<char, 3> test_vector;
+        DumbVector<char, 5> test_vector;
 
         for (int i = 0; i < 4; ++i)
         {
@@ -65,7 +65,7 @@ int main()
     }
 
     {
-        DumbVector<double, 3> test_vector;
+        DumbVector<double, 4> test_vector;
 
         for (int i = 0; i < 4; ++i)
         {
