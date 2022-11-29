@@ -32,7 +32,8 @@ From: centos:7
     yum -y install glibc.i686
     yum -y install Lmod.x86_64
     yum -y install libXp.x86_64
-    yum -y install VirtualGL
+    yum -y install VirtualGL.x86_64
+    yum -y install VirtualGL.i386
     yum -y install turbovnc
     yum -y install glx-utils
     yum -y install systemd-libs
