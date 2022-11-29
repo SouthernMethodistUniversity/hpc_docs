@@ -9,6 +9,7 @@ module purge
   R_LIBS_USER="${HOME}/R/portal/rocker-images/${RVERSION}"
   REXEC=$(singularity exec $SIF which R)
   RSESSION_EXEC=$(singularity exec $SIF which rsession)
+  RSESSION_EXEC="${RSESSION_EXEC:-"/usr/lib/rstudio-server/bin/rsession"}"
   export PATH=/usr/lib/rstudio-server/bin:$PATH
   export LD_LIBRARY_PATH=/usr/local/lib/R/lib/:$LD_LIBRARY_PATH
   export OOD_USING_SINGULARITY=1
