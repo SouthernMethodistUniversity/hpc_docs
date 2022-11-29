@@ -1,0 +1,29 @@
+Bootstrap: docker
+From: rocker/ml-verse:4.2.2
+
+%labels
+    Author John LaGrone <rengland@smu.edu>
+    Version v1.0
+    Application Rocker ml-verse
+
+%post
+
+    R -q -e 'install.packages("BiocManager")'
+    R -q -e 'BiocManager::install("DESeq2")'
+    R -q -e 'BiocManager::install("arrayQualityMetrics")'
+    R -q -e 'BiocManager::install("dada2")'
+    R -q -e 'BiocManager::install("phyloseq")'
+    R -q -e 'install.packages("pheatmap")'
+    R -q -e 'install.packages("vegan")'
+    R -q -e 'install.packages("vcfR")'
+    R -q -e 'install.packages("adegenet")'
+    R -q -e 'install.packages("poppr")'
+    R -q -e 'install.packages("mmod")'
+    R -q -e 'install.packages("treemap")'
+
+    rm -rf /tmp/downloaded_packages
+
+%environment
+    export ftp_proxy="http://10.210.15.2:3128"
+    export http_proxy="http://10.210.15.2:3128"
+    export https_proxy="http://10.210.15.2:3128"
