@@ -1,3 +1,25 @@
+<%
+def setWallTime(queue, runtime)
+  if queue == "development"
+    if runtime.to_i*3600 > 7200
+      return 7200
+    elsif runtime.to_i*3600 <= 0
+        return 3600
+    else
+     return runtime.to_i*3600
+    end
+  else
+    if runtime.to_i*3600 > 43200
+        return 43200
+    elsif runtime.to_i*3600 <= 0
+      return 3600
+    else
+      return runtime.to_i*3600
+    end
+  end
+end
+%>
+
 # Job submission configuration file
 #
 ---
@@ -32,6 +54,7 @@ batch_connect:
 
 script:
   queue_name: <%= custom_queue %>
+  wall_time: <%= setWallTime(custom_queue, bc_num_hours) %>
   native:
     - "-N"
     - "<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
