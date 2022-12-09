@@ -75,9 +75,11 @@ attributes:
       The VDI nodes contain an NVIDIA Quadro 5000 that may accelerate some graphical applications
     widget: select
     options:
-      - [ "Regular Desktop Node [Max Time: 12 hours]",        "desktop"         ]
-      - [ "VDI Desktop Node [Max Time: 12 hours]",            "desktop-vdi"     ]
-      - [ "VDI Development Desktop Node (restricted access)", "desktop-vdi-dev" ]
+      - [ "Regular Desktop Node [Max Time: 12 hours]",                             "desktop"         ]
+      - [ "VDI Desktop Node [Max Time: 12 hours]",                                 "desktop-vdi"     ]
+      - [ "VDI Development Desktop Node (restricted access) [Max Time: 12 hours]", "desktop-vdi-dev" ]
+      - [ "Medium Memory Node (up to 750G) [Max Time: 12 hours]",                  "medium-mem-1-s"    ]
+      - [ "P100 GPU Node (gpgpu-1) [Max Time: 12 hours]",                          "gpgpu-1"         ]
   desktop_env:
     label: "Desktop Environment"
     help: |
