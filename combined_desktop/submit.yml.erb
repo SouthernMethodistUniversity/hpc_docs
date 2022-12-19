@@ -38,10 +38,11 @@ script:
     - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
     <%- if bc_num_gpus.to_i != 0 -%>
     - "--gres"
-    <%- custom_queue == "development"	-%>
+    <%- if custom_queue == "development"	-%>
     - "gpu:volta:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
     <%-	else -%>
     - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
+    <%- end -%>
     <%- end -%>
     - "--mem"
     - "<%= bc_num_memory.blank? ? 4096 : bc_num_memory.to_i*1024 %>"
