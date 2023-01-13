@@ -5,7 +5,7 @@ module purge
   # load singularity
   module load singularity
   SIF=<%= context.Rapp %>
-  RVERSION=<%= /(\d+\.)?(\d+\.)?(\*|\d+)/.match(context.Rapp).to_s %>
+  RVERSION=<%= /\d+(\.\d+)+(?:[^.]+)?/.match(context.Rapp).to_s %>
   R_LIBS_USER="${HOME}/R/portal/rocker-images/${RVERSION}"
   REXEC=$(singularity exec $SIF which R)
   RSESSION_EXEC=$(singularity exec $SIF which rsession)
