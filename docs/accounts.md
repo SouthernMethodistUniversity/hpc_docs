@@ -1,8 +1,6 @@
-# Accounts
+# Request Accounts
 
-## Request an Account
-
-### Accounts for Individuals with an SMU ID
+## Accounts for Individuals with an SMU ID
 
 -   SMU faculty/staff can request an account by filling out the [New
     Account
@@ -11,7 +9,7 @@
     or adviser to request an account via the [New Account
     Form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL).
 
-### Accounts for Individuals without an SMU ID or Sponsored ID
+## Accounts for Individuals without an SMU ID or Sponsored ID
 
 1.  The sponsor must request an SMU ID or Sponsored ID and have that
     account activated before sponsor can request ManeFrame II (M2)
@@ -22,7 +20,13 @@
     the individual via the [New Account
     Form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL).
 
-## Reset Account Password
+# NVIDIA DGX SuperPOD (MP)
+
+Please send a NVIDIA DGX SuperPOD (MP) account request to the [SMU HPC
+Admins](mailto:help@smu.edu?subject=HPC). A ManeFrame II (M2) account is a
+prerequisite of having an MP account.
+
+# Reset Account Password
 
 ManeFrame II uses SMU's authentication system, which means that your
 username and password are based on your SMU credentials. Your username
@@ -32,7 +36,7 @@ password tool can be used to change or reset your password
 (<https://pwreset.smu.edu>). However, note that this changes your
 password for all SMU services such as email as well.
 
-## Terminate an Existing Account
+# Terminate an Existing Account
 
 Please send a request to the [SMU HPC
 Admins](mailto:help@smu.edu?subject=HPC) with a short explanation of

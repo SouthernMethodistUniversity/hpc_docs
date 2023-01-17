@@ -1,9 +1,5 @@
-.. _about:
-
-:tocdepth: 3
-
-About
-#####
+ManeFrame II (M2)
+#################
 
 .. include:: common/description_long.rst
 
