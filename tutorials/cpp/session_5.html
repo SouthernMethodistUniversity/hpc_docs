@@ -117,19 +117,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  ManeFrame II (M2)
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../m2/about.html">
-   About
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  NVIDIA DGX SuperPOD (MP)
+  About
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -138,16 +126,38 @@ const thebe_selector_output = ".output, .cell_output"
    NVIDIA DGX SuperPOD (MP)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../m2/about.html">
+   ManeFrame II (M2)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../m3/about.html">
+   ManeFrame III (M3)
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  ManeFrame III (M3)
+  Accounts
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../m3/about.html">
-   ManeFrame III (M3)
+  <a class="reference internal" href="../../accounts.html">
+   Request Accounts
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Access
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../access.html">
+   Access SMU HPC Systems
   </a>
  </li>
 </ul>
@@ -561,7 +571,7 @@ title="Print to PDF"
 <span class="linenos">  4</span><span class="cm"> Useful References:</span>
 <span class="linenos">  5</span><span class="cm"> * Discovering Modern C++ by Peter Gottschling (amongst many other C++ books)</span>
 <span class="linenos">  6</span><span class="cm"> * https://en.cppreference.com/</span>
-<span class="linenos">  7</span><span class="cm">*/</span><span class="w"></span>
+<span class="linenos">  7</span><span class="cm">*/</span>
 <span class="linenos">  8</span>
 <span class="linenos">  9</span><span class="c1">// This is a header file, so we want to enure if only gets</span>
 <span class="linenos"> 10</span><span class="c1">// included once in the code so we don&#39;t end up with multiple</span>
@@ -575,7 +585,7 @@ title="Print to PDF"
 <span class="linenos"> 18</span><span class="cp">#define _SMU_TEMPLATES_H_</span>
 <span class="linenos"> 19</span>
 <span class="linenos"> 20</span><span class="c1">// Includes</span>
-<span class="linenos"> 21</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // for cout</span><span class="cp"></span>
+<span class="linenos"> 21</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // for cout</span>
 <span class="linenos"> 22</span>
 <span class="linenos"> 23</span><span class="c1">// Templates are a way to reduce and optimize code</span>
 <span class="linenos"> 24</span><span class="c1">// The basic use allows us to right a single function</span>
@@ -591,8 +601,8 @@ title="Print to PDF"
 <span class="linenos"> 34</span><span class="c1">// operations into 1.</span>
 <span class="linenos"> 35</span>
 <span class="linenos"> 36</span><span class="c1">// enter our namespace</span>
-<span class="linenos"> 37</span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span><span class="w"></span>
-<span class="linenos"> 38</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 37</span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span>
+<span class="linenos"> 38</span><span class="p">{</span>
 <span class="linenos"> 39</span>
 <span class="linenos"> 40</span><span class="w">    </span><span class="c1">// template functions and objects start with</span>
 <span class="linenos"> 41</span><span class="w">    </span><span class="c1">// &quot;template &lt;...&gt;&quot; directive followed by a</span>
@@ -622,9 +632,9 @@ title="Print to PDF"
 <span class="linenos"> 65</span><span class="w">    </span><span class="c1">// Note, you only have to define the function</span>
 <span class="linenos"> 66</span><span class="w">    </span><span class="c1">// once, this just tells the compiler to </span>
 <span class="linenos"> 67</span><span class="w">    </span><span class="c1">// make those variants</span>
-<span class="linenos"> 68</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
-<span class="linenos"> 69</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="linenos"> 70</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 68</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="linenos"> 69</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class="linenos"> 70</span><span class="w">    </span><span class="p">{</span>
 <span class="linenos"> 71</span><span class="w">        </span><span class="c1">// This will work for any type that</span>
 <span class="linenos"> 72</span><span class="w">        </span><span class="c1">// has the &gt; operator.</span>
 <span class="linenos"> 73</span><span class="w">        </span><span class="c1">//</span>
@@ -640,8 +650,8 @@ title="Print to PDF"
 <span class="linenos"> 83</span><span class="w">        </span><span class="c1">// converted to the type of a, which may not be desired</span>
 <span class="linenos"> 84</span><span class="w">        </span><span class="c1">//</span>
 <span class="linenos"> 85</span><span class="w">        </span><span class="c1">// This can be avoided by using if {} else {} blocks</span>
-<span class="linenos"> 86</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="linenos"> 87</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 86</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="linenos"> 87</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos"> 88</span>
 <span class="linenos"> 89</span><span class="w">    </span><span class="c1">// Instead of types, we can also create templates based on numerical</span>
 <span class="linenos"> 90</span><span class="w">    </span><span class="c1">// values. In scientific codes, it is common to see this particulary</span>
@@ -649,31 +659,31 @@ title="Print to PDF"
 <span class="linenos"> 92</span><span class="w">    </span><span class="c1">//</span>
 <span class="linenos"> 93</span><span class="w">    </span><span class="c1">// Here, we specify the template argument is an int and set the default</span>
 <span class="linenos"> 94</span><span class="w">    </span><span class="c1">// to 3. We also specify a type argument</span>
-<span class="linenos"> 95</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"></span>
-<span class="linenos"> 96</span><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">DumbVector</span><span class="w"></span>
-<span class="linenos"> 97</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span>
+<span class="linenos"> 96</span><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">DumbVector</span>
+<span class="linenos"> 97</span><span class="w">    </span><span class="p">{</span>
 <span class="linenos"> 98</span>
-<span class="linenos"> 99</span><span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="k">private</span><span class="o">:</span>
 <span class="linenos">100</span><span class="w">        </span><span class="n">T</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">DIM</span><span class="p">];</span><span class="w"> </span><span class="c1">// create an array of the specified dimension and type</span>
 <span class="linenos">101</span>
 <span class="linenos">102</span><span class="w">        </span><span class="c1">// just some basic getters / setters. We&#39;ll use the default constructors</span>
-<span class="linenos">103</span><span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">103</span><span class="w">    </span><span class="k">public</span><span class="o">:</span>
 <span class="linenos">104</span><span class="w">        </span><span class="c1">// function to set the values based on index</span>
 <span class="linenos">105</span><span class="w">        </span><span class="c1">// we&#39;ll define this here.</span>
-<span class="linenos">106</span><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="n">setByIndex</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">107</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">108</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DIM</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">109</span><span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">110</span><span class="w">                </span><span class="n">m_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">111</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="linenos">112</span><span class="w">            </span><span class="k">else</span><span class="w"></span>
-<span class="linenos">113</span><span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">114</span><span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Tried to set data outside range&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">115</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="linenos">116</span><span class="w">        </span><span class="p">};</span><span class="w"></span>
+<span class="linenos">106</span><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="n">setByIndex</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">val</span><span class="p">)</span>
+<span class="linenos">107</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">108</span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DIM</span><span class="p">)</span>
+<span class="linenos">109</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">110</span><span class="w">                </span><span class="n">m_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="linenos">111</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">112</span><span class="w">            </span><span class="k">else</span>
+<span class="linenos">113</span><span class="w">            </span><span class="p">{</span>
+<span class="linenos">114</span><span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Tried to set data outside range&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">115</span><span class="w">            </span><span class="p">}</span>
+<span class="linenos">116</span><span class="w">        </span><span class="p">};</span>
 <span class="linenos">117</span>
 <span class="linenos">118</span><span class="w">        </span><span class="c1">// function to print ... we&#39;ll define this below</span>
-<span class="linenos">119</span><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">119</span><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
 <span class="linenos">120</span>
 <span class="linenos">121</span><span class="w">    </span><span class="p">};</span><span class="w"> </span><span class="c1">// end class</span>
 <span class="linenos">122</span>
@@ -681,15 +691,15 @@ title="Print to PDF"
 <span class="linenos">124</span><span class="w">    </span><span class="c1">// note we need the template directive (with no defaults)</span>
 <span class="linenos">125</span><span class="w">    </span><span class="c1">// and the function is a member of the DumbVector class</span>
 <span class="linenos">126</span><span class="w">    </span><span class="c1">// with template args &lt;T,DIM&gt;</span>
-<span class="linenos">127</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span><span class="w"></span>
-<span class="linenos">128</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;::</span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-<span class="linenos">129</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">130</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">131</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">132</span><span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">133</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="linenos">134</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">DIM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">135</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">127</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;</span>
+<span class="linenos">128</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">DIM</span><span class="o">&gt;::</span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<span class="linenos">129</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">130</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DIM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">131</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">132</span><span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">;</span>
+<span class="linenos">133</span><span class="w">        </span><span class="p">}</span>
+<span class="linenos">134</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_data</span><span class="p">[</span><span class="n">DIM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">135</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">136</span>
 <span class="linenos">137</span><span class="w">    </span><span class="c1">// We can use templates to compute expressions at compile</span>
 <span class="linenos">138</span><span class="w">    </span><span class="c1">// time. For instance, these functions will expand and compute</span>
@@ -697,21 +707,21 @@ title="Print to PDF"
 <span class="linenos">140</span><span class="w">    </span><span class="c1">// multiply(x1 * x2 * x3 * ... * xn )</span>
 <span class="linenos">141</span>
 <span class="linenos">142</span><span class="w">    </span><span class="c1">// we need a function to return the last entry</span>
-<span class="linenos">143</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"></span>
-<span class="linenos">144</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x1</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">145</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">146</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x1</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">147</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">143</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="linenos">144</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x1</span><span class="p">)</span>
+<span class="linenos">145</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">146</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x1</span><span class="p">;</span>
+<span class="linenos">147</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">148</span>
 <span class="linenos">149</span><span class="w">    </span><span class="c1">// split the first value from the rest</span>
-<span class="linenos">150</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Types</span><span class="o">&gt;</span><span class="w"></span>
-<span class="linenos">151</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">Types</span><span class="p">...</span><span class="w"> </span><span class="n">xn</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">152</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">153</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">xn</span><span class="p">...);</span><span class="w"></span>
-<span class="linenos">154</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">150</span><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Types</span><span class="o">&gt;</span>
+<span class="linenos">151</span><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">Types</span><span class="p">...</span><span class="w"> </span><span class="n">xn</span><span class="p">)</span>
+<span class="linenos">152</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">153</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">xn</span><span class="p">...);</span>
+<span class="linenos">154</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">155</span>
 <span class="linenos">156</span><span class="w">    </span>
-<span class="linenos">157</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">157</span><span class="p">}</span>
 <span class="linenos">158</span>
 <span class="linenos">159</span><span class="cp">#endif </span><span class="c1">//_SMU_TEMPLATES_H_</span>
 </pre></div>
@@ -719,87 +729,87 @@ title="Print to PDF"
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/*</span>
 <span class="linenos"> 2</span><span class="cm">Test our template class</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="cm">*/</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="cm">*/</span>
 <span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;templates.hpp&quot;</span><span class="cp"></span>
+<span class="linenos"> 6</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;templates.hpp&quot;</span>
 <span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
-<span class="linenos"> 9</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="p">{</span>
 <span class="linenos">10</span>
-<span class="linenos">11</span><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span><span class="p">;</span>
 <span class="linenos">12</span>
 <span class="linenos">13</span><span class="w">    </span><span class="c1">// test our max function</span>
 <span class="linenos">14</span><span class="w">    </span><span class="c1">// NOTE: the template parameter is automatically inferred</span>
 <span class="linenos">15</span><span class="w">    </span><span class="c1">// and we didn&#39;t need to specify it</span>
 <span class="linenos">16</span>
 <span class="linenos">17</span><span class="w">    </span><span class="c1">// using braces to scope variables so I can resuse names</span>
-<span class="linenos">18</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">19</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">20</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">19</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="linenos">20</span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="linenos">21</span>
-<span class="linenos">22</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">23</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"></span>
-<span class="linenos">24</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">25</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="linenos">23</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span>
+<span class="linenos">24</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">26</span>
-<span class="linenos">27</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">28</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">29</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">28</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;x&#39;</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;e&#39;</span><span class="p">;</span>
 <span class="linenos">30</span>
-<span class="linenos">31</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">32</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"></span>
-<span class="linenos">33</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">34</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="linenos">32</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span>
+<span class="linenos">33</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">34</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">35</span>
-<span class="linenos">36</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">37</span><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">132.3</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">38</span><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12321.1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">37</span><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">132.3</span><span class="p">;</span>
+<span class="linenos">38</span><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12321.1</span><span class="p">;</span>
 <span class="linenos">39</span>
-<span class="linenos">40</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">41</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="w"></span>
-<span class="linenos">42</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">43</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;according to our function, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">custom_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="linenos">41</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is the greatest of (&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;)&quot;</span>
+<span class="linenos">42</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">43</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">44</span>
 <span class="linenos">45</span><span class="w">    </span><span class="c1">// Test our class. We need to tell it the dimensions and type</span>
-<span class="linenos">46</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">47</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">47</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span>
 <span class="linenos">48</span>
-<span class="linenos">49</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">50</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">51</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">50</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="linenos">51</span><span class="w">        </span><span class="p">}</span>
 <span class="linenos">52</span>
-<span class="linenos">53</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">54</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="linenos">54</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">55</span>
-<span class="linenos">56</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">57</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">57</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span>
 <span class="linenos">58</span>
-<span class="linenos">59</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">60</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">61</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">62</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">60</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">61</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">);</span>
+<span class="linenos">62</span><span class="w">        </span><span class="p">}</span>
 <span class="linenos">63</span>
-<span class="linenos">64</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">65</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">64</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="linenos">65</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">66</span>
-<span class="linenos">67</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">68</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">67</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos">68</span><span class="w">        </span><span class="n">DumbVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">test_vector</span><span class="p">;</span>
 <span class="linenos">69</span>
-<span class="linenos">70</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="linenos">71</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="linenos">72</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="mf">4.5</span><span class="p">);</span><span class="w"></span>
-<span class="linenos">73</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">70</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">71</span><span class="w">        </span><span class="p">{</span>
+<span class="linenos">72</span><span class="w">            </span><span class="n">test_vector</span><span class="p">.</span><span class="n">setByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="o">*</span><span class="mf">4.5</span><span class="p">);</span>
+<span class="linenos">73</span><span class="w">        </span><span class="p">}</span>
 <span class="linenos">74</span>
-<span class="linenos">75</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span><span class="w"></span>
-<span class="linenos">76</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">75</span><span class="w">        </span><span class="n">test_vector</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="linenos">76</span><span class="w">    </span><span class="p">}</span>
 <span class="linenos">77</span>
 <span class="linenos">78</span><span class="w">    </span><span class="c1">// Test our multiplication</span>
-<span class="linenos">79</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1 * 2 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">80</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1 * 2 * 3 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">81</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">82</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 * 5.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">83</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 * 5.0 * 6.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
-<span class="linenos">84</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">79</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1 * 2 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">80</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1 * 2 * 3 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">81</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">82</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 * 5.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">83</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;multiplying 1.0 * 2.0 * 3.0 * 4.0 * 5.0 * 6.0 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">multiply</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">84</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -818,9 +828,9 @@ used in this session by either clicking one of the following three
 links: <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_c.tgz&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_cxx.tgz&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">F90</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_f90.tgz&gt;</span></code>, or
 by copying the relevant files on ManeFrame with one of the following 3
 commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp /hpc/examples/workshops/hpc/session9_c.tgz .
-$ cp /hpc/examples/workshops/hpc/session9_cxx.tgz .
-$ cp /hpc/examples/workshops/hpc/session9_f90.tgz .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>/hpc/examples/workshops/hpc/session9_c.tgz<span class="w"> </span>.
+$<span class="w"> </span>cp<span class="w"> </span>/hpc/examples/workshops/hpc/session9_cxx.tgz<span class="w"> </span>.
+$<span class="w"> </span>cp<span class="w"> </span>/hpc/examples/workshops/hpc/session9_f90.tgz<span class="w"> </span>.
 </pre></div>
 </div>
 <p>Unpack your tarball and enter the resulting directory.</p>
@@ -833,14 +843,14 @@ $ cp /hpc/examples/workshops/hpc/session9_f90.tgz .
 information through adding the <code class="docutils literal notranslate"><span class="pre">-g</span></code> compiler flag. Add this flag to the
 compilation commands in the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for the target <code class="docutils literal notranslate"><span class="pre">driver2.exe</span></code>, and
 then compile the executable,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make driver2.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w"> </span>driver2.exe
 </pre></div>
 </div>
 <p>Run the new executable. It should die with an error message about a
 segmentation violation (segmentation fault) or bus error, depending on
 the compiler/OS, e.g.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./driver2.exe
-Segmentation fault
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./driver2.exe
+Segmentation<span class="w"> </span>fault
 </pre></div>
 </div>
 <p>There are many ways to track down this kind of error (e.g. adding print
@@ -851,7 +861,7 @@ the bug for us.</p>
 <p>The tool we will use is the GNU debugger, which can be accessed through
 running the faulty executable program from within the debugging program
 itself. Load the executable into <code class="docutils literal notranslate"><span class="pre">gdb</span></code> with the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gdb driver2.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gdb<span class="w"> </span>driver2.exe
 </pre></div>
 </div>
 <p>At the <code class="docutils literal notranslate"><span class="pre">gdb</span></code> prompt, type <code class="docutils literal notranslate"><span class="pre">run</span></code> to start the executable. It will
@@ -862,7 +872,7 @@ on the web</a>.</p>
 <ul>
 <li><p>Perhaps the most valuable gdb command is <code class="docutils literal notranslate"><span class="pre">print</span></code> that may be used to
 see the internal value of a specified variable, e.g.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> print i
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>print<span class="w"> </span>i
 </pre></div>
 </div>
 <p>will print out the current value of the iteration variable <code class="docutils literal notranslate"><span class="pre">i</span></code>).</p>
@@ -916,7 +926,7 @@ the loop is causing the fault,</p></li>
 <li><p>use print statements in the debugger to see which variable is
 uninitialized, e.g. to see if the array <code class="docutils literal notranslate"><span class="pre">x</span></code> has entry <code class="docutils literal notranslate"><span class="pre">i</span></code> you could
 use</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span> print x<span class="o">[</span>i<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>gdb<span class="o">)</span><span class="w"> </span>print<span class="w"> </span>x<span class="o">[</span>i<span class="o">]</span>
 </pre></div>
 </div>
 </li>
@@ -970,7 +980,7 @@ re-download the tarball for this session, load the <code class="docutils literal
 the Makefile to use the <code class="docutils literal notranslate"><span class="pre">-g</span></code> option along with the relevant PGI compiler
 (<code class="docutils literal notranslate"><span class="pre">pgcc</span></code>, <code class="docutils literal notranslate"><span class="pre">pgc++</span></code> or <code class="docutils literal notranslate"><span class="pre">pgfortran</span></code>), and launch the job in the <code class="docutils literal notranslate"><span class="pre">pgdbg</span></code>
 debugger like you did with <code class="docutils literal notranslate"><span class="pre">gdb</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pgdbg ./driver2.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pgdbg<span class="w"> </span>./driver2.exe
 </pre></div>
 </div>
 <p>Press the “play” button to start the executable running, and use the
@@ -989,9 +999,9 @@ the following three links:
 <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_c.tgz&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_cxx.tgz&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">F90</span> <span class="pre">version</span> <span class="pre">&lt;_static/code/session9_f90.tgz&gt;</span></code>{.interpreted-text role=”download”}, or
 by copying the relevant files on ManeFrame with one of the following 3
 commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp /hpc/examples/workshops/hpc/session9_c.tgz .
-$ cp /hpc/examples/workshops/hpc/session9_cxx.tgz .
-$ cp /hpc/examples/workshops/hpc/session9_f90.tgz .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>/hpc/examples/workshops/hpc/session9_c.tgz<span class="w"> </span>.
+$<span class="w"> </span>cp<span class="w"> </span>/hpc/examples/workshops/hpc/session9_cxx.tgz<span class="w"> </span>.
+$<span class="w"> </span>cp<span class="w"> </span>/hpc/examples/workshops/hpc/session9_f90.tgz<span class="w"> </span>.
 </pre></div>
 </div>
 <p>Unpack your tarball and enter the resulting directory.</p>
@@ -1022,7 +1032,7 @@ flag to the commands in the <code class="docutils literal notranslate"><span cla
 compile line before the <code class="docutils literal notranslate"><span class="pre">-o</span></code> flag].</p>
 <p>Profiling information is generated by running the executable once to
 completion. Run the driver as usual:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./driver1.exe
 </pre></div>
 </div>
 <p>Write down the total runtime required for the program (you will use this
@@ -1034,14 +1044,14 @@ and was written during the execution of the code.</p>
 this by calling <code class="docutils literal notranslate"><span class="pre">gprof</span></code>, followed by the executable name. It will
 automatically look in the <code class="docutils literal notranslate"><span class="pre">gmon.out</span></code> file in that directory for the
 profiling data that relates to the executable. Run the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gprof driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gprof<span class="w"> </span>driver1.exe
 </pre></div>
 </div>
 <p>When you run <code class="docutils literal notranslate"><span class="pre">gprof</span></code>, it outputs all of the profiling information to the
 screen. To enable easier examination of these results, you should
 instead send this data to a file. You can redirect this information to
 the file <code class="docutils literal notranslate"><span class="pre">profiling_data.txt</span></code> with the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gprof driver1.exe &gt; profiling_data.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gprof<span class="w"> </span>driver1.exe<span class="w"> </span>&gt;<span class="w"> </span>profiling_data.txt
 </pre></div>
 </div>
 <p>You will then have the readable file <code class="docutils literal notranslate"><span class="pre">profiling_data.txt</span></code> with the
@@ -1057,7 +1067,7 @@ you investigate for optimization.</p>
 <p>Look through the routine identified from the previous step – the
 function may be contained in a file with a different name, so you can
 use <code class="docutils literal notranslate"><span class="pre">grep</span></code> to find which file contains the routine:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grep -i &lt;routine_name&gt; *
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>&lt;routine_name&gt;<span class="w"> </span>*
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;routine_name&gt;</span></code> is the function that you identified from the
@@ -1069,7 +1079,7 @@ compile line once more, to use the compilation flags
 <code class="docutils literal notranslate"><span class="pre">-fprofile-arcs</span> <span class="pre">-ftest-coverage</span></code>.</p>
 <p>Add these compiler flags to the commands in the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for the
 target <code class="docutils literal notranslate"><span class="pre">driver1.exe</span></code>, recompile, and re-run the executable,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./driver1.exe
 </pre></div>
 </div>
 <p>You should now see additional files in the directory, including
@@ -1079,7 +1089,7 @@ that you haven’t missed any steps.</p>
 <p>You should now run <code class="docutils literal notranslate"><span class="pre">gcov</span></code> on the input file that held the function you
 identified from the steps above. For example, if the source code file
 was <code class="docutils literal notranslate"><span class="pre">file.cpp</span></code>, you would run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ gcov file.cpp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gcov<span class="w"> </span>file.cpp
 </pre></div>
 </div>
 <p>This will output some information to the screen, including the name of a
@@ -1107,7 +1117,7 @@ optimization efforts.</p>
 <h4>Optimizing code<a class="headerlink" href="#optimizing-code" title="Permalink to this headline">#</a></h4>
 <p>Save a copy of the source code file you plan to modify using the <code class="docutils literal notranslate"><span class="pre">cp</span></code>
 command, e.g.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp file.cpp file_old.cpp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>file.cpp<span class="w"> </span>file_old.cpp
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">file</span></code> is the file that you have identified as containing the
@@ -1126,11 +1136,11 @@ Sometimes the most natural way of writing down a problem does not
 result in the least amount of effort. For example, we may implement
 a line of code to evaluate the polynomial <span class="math notranslate nohighlight">\(p(x) =
 2x^4-3x^3+5x^2-8x+7\)</span> using either</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">3.0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5.0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">7.0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">3.0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5.0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">8</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">7.0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="mf">2.0</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">8.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">7.0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="mf">2.0</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">3.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">8.0</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">7.0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The first line requires 10 multiplication and 4 addition/subtraction
@@ -1154,16 +1164,16 @@ RAM, some calculations are costly enough to warrant computing it
 only once and storing the result for later reuse. This is especially
 pertinent for things that are performed a large number of times. For
 example, consider the following two algorithms:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span>
 </pre></div>
 </div>
 <p>and</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">hinv2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="p">;</span><span class="w"></span>
-<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">hinv2</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">hinv2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="n">h</span><span class="o">/</span><span class="n">h</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">10000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">hinv2</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Since floating-point division is significantly more costly than
@@ -1199,11 +1209,11 @@ being passed by reference (using the <code class="docutils literal notranslate">
 </ol>
 <p>Find what you can fix, so long as you do not change the mathematical
 result. Delete and re-compile the executable,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rm driver1.exe<span class="p">;</span> make driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rm<span class="w"> </span>driver1.exe<span class="p">;</span><span class="w"> </span>make<span class="w"> </span>driver1.exe
 </pre></div>
 </div>
 <p>re-run the executable</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./driver1.exe
 </pre></div>
 </div>
 <p>Re-examine the results using <code class="docutils literal notranslate"><span class="pre">gprof</span></code>, and repeat the optimization
@@ -1224,22 +1234,22 @@ optimization level):</p>
 <li><p>Replace the current flag <code class="docutils literal notranslate"><span class="pre">-O0</span></code> in your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> with the flag
 <code class="docutils literal notranslate"><span class="pre">-O2</span></code>.</p></li>
 <li><p>Copy the original file back, e.g.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cp file_old.cpp file.cpp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>file_old.cpp<span class="w"> </span>file.cpp
 </pre></div>
 </div>
 </li>
 <li><p>Delete the old executable,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rm driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rm<span class="w"> </span>driver1.exe
 </pre></div>
 </div>
 </li>
 <li><p>Re-compile <code class="docutils literal notranslate"><span class="pre">driver1.exe</span></code>,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w"> </span>driver1.exe
 </pre></div>
 </div>
 </li>
 <li><p>Re-run <code class="docutils literal notranslate"><span class="pre">driver1.exe</span></code>,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./driver1.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./driver1.exe
 </pre></div>
 </div>
 </li>
@@ -1255,7 +1265,7 @@ comparison to the other three runs?</p>
 <p>There are a great many compiler optimizations that you can try with your
 executable. For a full description of all the possible options available
 with the GNU compiler collection, try</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ man gcc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>man<span class="w"> </span>gcc
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">-O#</span></code> options allow specification of optimization levels 0, 1, 2 and
