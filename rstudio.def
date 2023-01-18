@@ -21,32 +21,6 @@ From: rocker/ml-verse:4.2.2
     R -q -e 'install.packages("mmod")'
     R -q -e 'install.packages("treemap")'
 
-    R -q -e 'install.packages("robotstxt")'
-    R -q -e 'install.packages("janitor")'
-    R -q -e 'install.packages("fastRhockey")'
-    R -q -e 'install.packages("patchwork")'
-    R -q -e 'install.packages("plotly")'
-    R -q -e 'install.packages("shinythemes")'
-    R -q -e 'install.packages("shinydashboard")'
-    R -q -e 'install.packages("GGally")'
-    R -q -e 'install.packages("ggfortify")'
-    R -q -e 'install.packages("caret")'
-    R -q -e 'install.packages("ROCR")'
-    R -q -e 'install.packages("vip")'
-    R -q -e 'install.packages("glmnet")'
-    R -q -e 'install.packages("earth")'
-    R -q -e 'install.packages("rpart.plot")'
-    R -q -e 'install.packages("ranger")'
-    R -q -e 'install.packages("iml")'
-    R -q -e 'install.packages("xgboost")'
-    R -q -e 'install.packages("tidymodels")'
-    R -q -e 'install.packages("ggforce")'
-    R -q -e 'install.packages("skimr")'
-    R -q -e 'install.packages("stacks")'
-    R -q -e 'install.packages("NbClust")'
-    R -q -e 'install.packages("mclust")'
-    R -q -e 'install.packages("factoextra")'
-
     rm -rf /tmp/downloaded_packages
 
 %environment
