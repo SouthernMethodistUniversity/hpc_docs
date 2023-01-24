@@ -422,7 +422,10 @@ $(document).ready(function () {
 	let end_label;
         let exclusive;
 	let exclusive_label;
-        var enable_exclusive = false
+        var enable_exclusive = false;
+        let reservation;
+        var enable_reservation = false;
+        let reservation_label;
 
 	if ($('#batch_connect_session_context_custom_queue').length > 0) {
 		queue = $('#batch_connect_session_context_custom_queue');
@@ -461,6 +464,16 @@ $(document).ready(function () {
 		exclusive_label = document.querySelector("[for='enable_exclusive']").closest('div.form-group');
 	}
 
+        if ($('#enable_reservation').length > 0) {
+		enable_reservation = $('#enable_reservation');
+                console.log("enable_reservation: " + enable_reservation.is(":checked")  + " \n\r");
+	}
+        if ($('#batch_connect_session_context_reservation_list').length > 0) {
+                reservation = $('#batch_connect_session_context_reservation_list');
+        }
+
+       
+
 	// enable disable fields on page load
 	if (start && enable_start) {
 		start_label = document.querySelector("[for='start']").closest('div.form-group');
@@ -492,24 +505,40 @@ $(document).ready(function () {
 		}
 	}
 
-	if (queue && exclusive) {
+        
+        if (reservation && enable_reservation) {
+                reservation_label = document.querySelector("[for='batch_connect_session_context_reservation_list']").closest('div.form-group');
+                if (end_label) {
+                        if (enable_reservation.is(":checked")) {
+                                reservation.removeAttr('disabled');
+                                reservation.show();
+                                reservation_label.style.display = "inline";
+                        } else {
+                                reservation_label.style.display = "none";
+                                reservation.attr('disabled', 'disabled');
+                                reservation.hide();
+                        }
+                }
+        }
 
-		if ((queue[0].value === "development") || (queue[0].value === "htc")) {
-			exclusive.attr('disabled', 'disabled');
-			exclusive.attr('checked', false);
-			enable_exclusive = false
-			exclusive_label.style.display = "none";
-		} else if (queue[0].value === "gpgpu-1") {
-			exclusive.attr('disabled', 'disabled');
-			exclusive.attr('checked', true);
-			enable_exclusive = true
-			exclusive_label.style.display = "inline";
-		} else {
-			exclusive.removeAttr('disabled');
-			exclusive_label.style.display = "inline";
-		}
+        if (queue && exclusive) {
 
-	}
+                if ((queue[0].value === "development") || (queue[0].value === "htc")) {
+                        exclusive.attr('disabled', 'disabled');
+                        exclusive.attr('checked', false);
+                        enable_exclusive = false
+                        exclusive_label.style.display = "none";
+                } else if (queue[0].value === "gpgpu-1") {
+                        exclusive.attr('disabled', 'disabled');
+                        exclusive.attr('checked', true);
+                        enable_exclusive = true
+                        exclusive_label.style.display = "inline";
+                } else {
+                        exclusive.removeAttr('disabled');
+                        exclusive_label.style.display = "inline";
+                }
+
+        }
 
 	if (queue) {
 		partition_limits(queue[0].value, enable_exclusive);
@@ -615,6 +644,21 @@ $(document).ready(function () {
 			}
 		})
 	}
+        if (reservation_label) {
+                enable_reservation.change(function() {
+                        console.log("enable_reservation changed: " + enable_reservation.is(":checked")  + " \n\r");
+                        if (enable_reservation.is(":checked")) {
+                                reservation.removeAttr('disabled');
+                                reservation.show();
+                                reservation_label.style.display = "inline";
+                        } else {
+                                reservation_label.style.display = "none";
+                                reservation.attr('disabled', 'disabled');
+                                reservation.hide();
+                        }
+                })
+        }
+
 
 	// enable disable fields if exclusive is checked or not
 	if (exclusive && queue) {

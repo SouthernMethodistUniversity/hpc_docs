@@ -108,7 +108,7 @@ end
 cluster: "slurm_cluster"
 form:
   - use_reservation
-  - reservation
+  - reservation_list
   - Rapp
   - environment
   - custom_queue
@@ -131,9 +131,10 @@ attributes:
     help: |
         If you have a reservation, check this box to use it.
         Reservations are granted on a case-by-case basis for classes, workshops, and other time sensitive use cases
-  reservation:
+  reservation_list:
     widget: select
     label: "Reservation"
+    id: reservation_list_id
     options: 
       <% if valid_reservations_names.empty? %>
       - ["no reservations available", "-1"]
