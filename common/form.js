@@ -456,7 +456,7 @@ function handle_reservation_change(queue, reservation) {
                 
   Array.from(queue[0].options).forEach(function (option_element) {
     let option_value = option_element.value;
-    for (var i = 0; i < valid_queues.length -1; i++) {
+    for (var i = 1; i < valid_queues.length -1; i++) {
       if (!option_value.localeCompare(valid_queues[i])) {
         option_element.disabled = false;
         // select first valid queue

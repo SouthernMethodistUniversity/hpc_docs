@@ -20,6 +20,24 @@ def setWallTime(queue, runtime)
 end
 %>
 
+<%
+def setReservationWallTime(queue, endTime)
+  curTime = DateTime.now
+  lastTime = endTime.to_datetime
+  runtime = lastTime.to_i - curTime.to_i
+  if queue == "development"
+    if runtime > 7200
+      runtime = 7200
+    end
+  else
+    if runtime > 43200
+        runtime = 43200
+    end
+  end
+  return runtime
+end
+%>
+
 ---
 batch_connect:
   template: "basic"
@@ -28,7 +46,7 @@ batch_connect:
     - csrftoken
 script:
   queue_name: <%= custom_queue %>
-  wall_time: <%= setWallTime(custom_queue, bc_num_hours) %>
+  wall_time: <% if use_reservation %> <%=  setReservationWallTime(custom_queue, reservation_list.split(',')[-1]) %> <% else %> <%= setWallTime(custom_queue, bc_num_hours) %> <% end %>
   native:
     - "-N"
     - "<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
@@ -53,4 +71,8 @@ script:
     - "BEGIN"
     - "--mail-user"
     - "<%= email_on_started %>"
+    <%- end -%>
+    <%- if use_reservation -%>
+    - "--reservation"
+    - "<%= reservation_list.split(',')[0] %>"
     <%- end -%>

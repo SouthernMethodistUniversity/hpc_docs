@@ -53,7 +53,7 @@ begin
   res_end = getReservationEnd(reservation_info)
   res_groups = getReservationGroups(reservation_info)
   tmp_time = DateTime.now 
-  valid_reservations_names = ["fake testing res", "fake testing res 2"]
+  valid_reservations_names = ["fake-testing-res", "fake_testing_res_2"]
   valid_reservation_queues = ["standard-mem-s,medium-mem-1-s", "gpgpu-1,htc"]
   valid_reservation_ends = [tmp_time, tmp_time]
 
@@ -144,7 +144,7 @@ attributes:
       - ["no reservations available", "-1"]
       <% end %>
       <% valid_reservations_names.each_with_index do |resname, ind| %>
-      - [ "<%= resname %>", "<%= valid_reservation_queues[ind] %>,<%= valid_reservation_ends[ind] %>"]
+      - [ "<%= resname %>", "<%= resname %>,<%= valid_reservation_queues[ind] %>,<%= valid_reservation_ends[ind] %>"]
       <% end %>
   Rapp:
     widget: select
