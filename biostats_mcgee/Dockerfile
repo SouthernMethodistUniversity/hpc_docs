@@ -6,6 +6,12 @@
 FROM rocker/rstudio:4.2.2
 LABEL maintainer "Robert Kalescky <rkalescky@smu.edu>"
 
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update &&\
+  apt-get install -y\
+  libz-dev
+
 COPY install_packages.R /
 
 RUN Rscript /install_packages.R
