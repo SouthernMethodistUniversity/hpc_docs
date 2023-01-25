@@ -51,10 +51,11 @@ begin
   res_queues = getReservationPartitions(reservation_info)
   res_start = getReservationStart(reservation_info)
   res_end = getReservationEnd(reservation_info)
-  res_groups = getReservationGroups(reservation_info) 
-  valid_reservations_names = []
-  valid_reservation_queues = []
-  valid_reservation_ends = []
+  res_groups = getReservationGroups(reservation_info)
+  tmp_time = DateTime.now 
+  valid_reservations_names = ["fake testing res", "fake testing res 2"]
+  valid_reservation_queues = ["standard-mem-s,medium-mem-1-s", "gpgpu-1,htc"]
+  valid_reservation_ends = [tmp_time, tmp_time]
 
   # check if reservations are valid
   file = File.open("/users/jlagrone/rstudio_test_log", "w")
@@ -63,7 +64,6 @@ begin
     tmp_group = res_groups[i]
     tmp_start = res_start[i].to_datetime
     tmp_end = res_end[i].to_datetime
-    tmp_time = DateTime.now
 
     # fix time zones
     tmp_start = tmp_start.change(:offset => tmp_time.offset)
@@ -97,6 +97,10 @@ begin
       valid_reservation_ends.append(tmp_end)
     end
   end
+
+  file << "	valid names: #{valid_reservations_names} \n"
+  file << "	valid queues: #{valid_reservation_queues} \n"
+  file << "	valid ends: #{valid_reservation_ends} \n"
 
   file.close
 end
@@ -140,7 +144,7 @@ attributes:
       - ["no reservations available", "-1"]
       <% end %>
       <% valid_reservations_names.each_with_index do |resname, ind| %>
-      - [ "<%= resname.strip %>", "<%= ind %>"]
+      - [ "<%= resname %>", "<%= valid_reservation_queues[ind] %>,<%= valid_reservation_ends[ind] %>"]
       <% end %>
   Rapp:
     widget: select
