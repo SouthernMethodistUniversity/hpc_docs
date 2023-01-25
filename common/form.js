@@ -540,7 +540,6 @@ $(document).ready(function () {
         if ($('#enable_reservation').length > 0) {
 		enable_reservation = $('#enable_reservation');
                 enable_reservation_label = document.querySelector("[for='enable_reservation']").closest('div.form-group');
-                console.log("enable_reservation: " + enable_reservation.is(":checked")  + " \n\r");
 	}
         if ($('#batch_connect_session_context_reservation_list').length > 0) {
                 reservation = $('#batch_connect_session_context_reservation_list');
@@ -695,13 +694,8 @@ $(document).ready(function () {
 
         // disable invalid queues if a reservation is selected
         if (reservation && enable_reservation) {
-
-                console.log('checking reservation queues \n\r');
-
                 reservation.change(function () {
-                      console.log('reservation changed \n\r');
                       handle_reservation_change(queue, reservation);
-
 		});
 	}
 
@@ -728,7 +722,6 @@ $(document).ready(function () {
 	}
         if (reservation_label) {
                 enable_reservation.change(function() {
-                        console.log("enable_reservation changed: " + enable_reservation.is(":checked")  + " \n\r");
                         if (enable_reservation.is(":checked")) {
                                 enable_field(reservation, reservation_label);
                                 handle_reservation_change(queue, reservation);
@@ -745,7 +738,6 @@ $(document).ready(function () {
 	// enable disable fields if exclusive is checked or not
 	if (exclusive && queue) {
 		exclusive.change(function() {
-			console.log("exclusive changed: " + exclusive.is(":checked")  + " \n\r");
 			enable_exclusive = exclusive.is(":checked");
 			partition_limits(queue[0].value, enable_exclusive);
 

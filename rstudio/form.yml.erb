@@ -53,12 +53,11 @@ begin
   res_end = getReservationEnd(reservation_info)
   res_groups = getReservationGroups(reservation_info)
   tmp_time = DateTime.now 
-  valid_reservations_names = ["fake-testing-res", "fake_testing_res_2"]
-  valid_reservation_queues = ["standard-mem-s,medium-mem-1-s", "gpgpu-1,htc"]
-  valid_reservation_ends = [tmp_time, tmp_time]
+  valid_reservations_names = []
+  valid_reservation_queues = []
+  valid_reservation_ends = []
 
   # check if reservations are valid
-  file = File.open("/users/jlagrone/rstudio_test_log", "w")
   res_names.each_with_index do |name, i|
     tmp_queue = res_queues[i]
     tmp_group = res_groups[i]
@@ -68,13 +67,7 @@ begin
     # fix time zones
     tmp_start = tmp_start.change(:offset => tmp_time.offset)
     tmp_end = tmp_end.change(:offset => tmp_time.offset)
-    file << "current_index: #{i} \n"
-    file << "	name: #{name.strip} \n"
-    file << "	queue(s): #{tmp_queue.strip} \n"
-    file << "	group(s): #{tmp_group.strip} \n"
-    file << "	start: #{tmp_start} \n"
-    file << "	end: #{tmp_end} \n"
-    file << "	time: #{tmp_time} \n"
+   
     # check for valid group
     valid_group = false
     tmp_group.split(",").each do |group|
@@ -82,14 +75,12 @@ begin
         valid_group = true
       end
     end
-    file << "	in valid group: #{valid_group} \n"
 
     # check for valid time
     valid_time = false
     if tmp_start.past? && tmp_end.future?
       valid_time = true
     end
-    file << "	in valid time: #{valid_time} \n"
 
     if valid_time && valid_group
       valid_reservations_names.append(name)
@@ -97,12 +88,6 @@ begin
       valid_reservation_ends.append(tmp_end)
     end
   end
-
-  file << "	valid names: #{valid_reservations_names} \n"
-  file << "	valid queues: #{valid_reservation_queues} \n"
-  file << "	valid ends: #{valid_reservation_ends} \n"
-
-  file.close
 end
 %>
 
