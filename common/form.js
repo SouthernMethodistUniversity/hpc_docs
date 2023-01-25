@@ -597,8 +597,10 @@ $(document).ready(function () {
 
                         if (enable_reservation.is(":checked")) {
                                 enable_field(reservation, reservation_label);
+                                disable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label);
                         } else {
                                 disable_field(reservation, reservation_label);
+                                enable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label);
                         }
                 }
         }
