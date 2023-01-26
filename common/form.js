@@ -403,6 +403,72 @@ function partition_limits(selected_queue, enable_exclusive) {
         }
 }
 
+function disable_list_options(list) {
+
+  Array.from(list.options).forEach(function (option_element) {
+				option_element.disabled = true;});
+}
+
+function enable_list_options(list) {
+
+  Array.from(list.options).forEach(function (option_element) {
+				option_element.disabled = false;});
+}
+
+function disable_field(field, field_label) {
+  field_label.style.display = "none";
+  field.attr('disabled', 'disabled');
+  field.hide();
+}
+
+function enable_field(field, field_label) {
+  field.removeAttr('disabled');
+  field.show();
+  field_label.style.display = "inline";
+}
+
+function disable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label)
+{
+  disable_field(time, time_label);
+  disable_field(start, start_label);
+  disable_field(end, end_label);
+  disable_field(enable_start, enable_start_label);
+  disable_field(enable_end, enable_end_label);
+}
+
+function enable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label)
+{
+  enable_field(time, time_label);
+  enable_field(start, start_label);
+  enable_field(end, end_label);
+  enable_field(enable_start, enable_start_label);
+  enable_field(enable_end, enable_end_label);
+}
+
+function handle_reservation_change(queue, reservation) {
+
+  // disable all queues
+  disable_list_options(queue[0])
+
+  // get the valid queues from the reservations selection
+  var valid_queues = reservation[0].value.split(',');
+  var selected_option = false
+                
+  Array.from(queue[0].options).forEach(function (option_element) {
+    let option_value = option_element.value;
+    for (var i = 1; i < valid_queues.length -1; i++) {
+      if (!option_value.localeCompare(valid_queues[i])) {
+        option_element.disabled = false;
+        // select first valid queue
+        if (!selected_option) {
+          selected_option = true;
+          queue[0].value = option_value;
+        }
+      }
+    }
+  });
+}
+
 /*
  * Invoke the functions when the DOM is ready.
  */
@@ -414,15 +480,23 @@ $(document).ready(function () {
 	let ncpus;
 	let nnodes;
 	let nmem;
+        let time;
+        let time_label;
         let enable_start;
+        let enable_start_label;
 	let start;
 	let start_label;
 	let enable_end;
+        let enable_end_label;
 	let end;
 	let end_label;
         let exclusive;
 	let exclusive_label;
-        var enable_exclusive = false
+        var enable_exclusive = false;
+        let reservation;
+        let enable_reservation_label;
+        var enable_reservation = false;
+        let reservation_label;
 
 	if ($('#batch_connect_session_context_custom_queue').length > 0) {
 		queue = $('#batch_connect_session_context_custom_queue');
@@ -443,6 +517,7 @@ $(document).ready(function () {
 	}
 	if ($('#enable_start').length > 0) {
 		enable_start = $('#enable_start');
+                enable_start_label = document.querySelector("[for='enable_start']").closest('div.form-group');
 		//console.log("enable_start: " + enable_start.is(":checked")  + " \n\r");
 	}
 	if ($('#start').length > 0) {
@@ -450,6 +525,7 @@ $(document).ready(function () {
 	}
 	if ($('#enable_end').length > 0) {
 		enable_end = $('#enable_end');
+		enable_end_label = document.querySelector("[for='enable_end']").closest('div.form-group');
 		//console.log("enable_enable: " + enable_end.is(":checked")  + " \n\r");
 	}
 	if ($('#end').length > 0) {
@@ -461,18 +537,29 @@ $(document).ready(function () {
 		exclusive_label = document.querySelector("[for='enable_exclusive']").closest('div.form-group');
 	}
 
+        if ($('#enable_reservation').length > 0) {
+		enable_reservation = $('#enable_reservation');
+                enable_reservation_label = document.querySelector("[for='enable_reservation']").closest('div.form-group');
+	}
+        if ($('#batch_connect_session_context_reservation_list').length > 0) {
+                reservation = $('#batch_connect_session_context_reservation_list');
+        }
+
+        
+        if ($('#bc_num_hours').length > 0) {
+		time = $('#bc_num_hours');
+                time_label = document.querySelector("[for='bc_num_hours']").closest('div.form-group');
+	}
+       
+
 	// enable disable fields on page load
 	if (start && enable_start) {
 		start_label = document.querySelector("[for='start']").closest('div.form-group');
 		if (start_label) {
 			if (enable_start.is(":checked")) {
-				start.removeAttr('disabled');
-				start.show();	
-				start_label.style.display = "inline";
+                                enable_field(start, start_label);
 			} else {
-				start_label.style.display = "none";
-				start.attr('disabled', 'disabled');
-				start.hide();
+				disable_field(start, start_label);
 			}
 		}
 	}
@@ -481,35 +568,61 @@ $(document).ready(function () {
 		end_label = document.querySelector("[for='end']").closest('div.form-group');
 		if (end_label) {
 			if (enable_end.is(":checked")) {
-				end.removeAttr('disabled');
-				end.show();	
-				end_label.style.display = "inline";
+				enable_field(end, end_label);
 			} else {
-				end_label.style.display = "none";
-				end.attr('disabled', 'disabled');
-				end.hide();
+				disable_field(end, end_label);
 			}
 		}
 	}
 
-	if (queue && exclusive) {
+        
+        if (reservation && enable_reservation) {
+                reservation_label = document.querySelector("[for='batch_connect_session_context_reservation_list']").closest('div.form-group');
 
-		if ((queue[0].value === "development") || (queue[0].value === "htc")) {
-			exclusive.attr('disabled', 'disabled');
-			exclusive.attr('checked', false);
-			enable_exclusive = false
-			exclusive_label.style.display = "none";
-		} else if (queue[0].value === "gpgpu-1") {
-			exclusive.attr('disabled', 'disabled');
-			exclusive.attr('checked', true);
-			enable_exclusive = true
-			exclusive_label.style.display = "inline";
-		} else {
-			exclusive.removeAttr('disabled');
-			exclusive_label.style.display = "inline";
-		}
+                if (reservation_label) {
+                        // check if there are valid reservations
+                        var valid_res = false;
+                        Array.from(reservation[0].options).forEach(function (option_element) {
+			     let option_value = option_element.value;
+			     if (option_value.localeCompare("-1")) {
+				valid_res = true;
+			     }
+		        });
 
-	}
+                        // disable check box for reservations if there aren't any
+                        if (!valid_res) {
+                            disable_field(enable_reservation, enable_reservation_label);
+                        }
+
+                        if (enable_reservation.is(":checked")) {
+                                enable_field(reservation, reservation_label);
+                                disable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label);
+                                handle_reservation_change(queue, reservation);
+                        } else {
+                                disable_field(reservation, reservation_label);
+                                enable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label);
+                        }
+                }
+        }
+
+        if (queue && exclusive) {
+
+                if ((queue[0].value === "development") || (queue[0].value === "htc")) {
+                        exclusive.attr('disabled', 'disabled');
+                        exclusive.attr('checked', false);
+                        enable_exclusive = false
+                        exclusive_label.style.display = "none";
+                } else if (queue[0].value === "gpgpu-1") {
+                        exclusive.attr('disabled', 'disabled');
+                        exclusive.attr('checked', true);
+                        enable_exclusive = true
+                        exclusive_label.style.display = "inline";
+                } else {
+                        exclusive.removeAttr('disabled');
+                        exclusive_label.style.display = "inline";
+                }
+
+        }
 
 	if (queue) {
 		partition_limits(queue[0].value, enable_exclusive);
@@ -575,14 +688,15 @@ $(document).ready(function () {
 		Array.from(document.querySelector("#batch_connect_session_context_python_version").options).forEach(function (option_element) {
 			let option_value = option_element.value;
 			if (!option_value.localeCompare("No Jupyter Lab")) {
-				// console.log('Option value (disable) : ' + option_value);
-				// console.log("\n\r");
 				option_element.disabled = true;
 			}
-			// else {
-			// 	console.log('Option value : ' + option_value);
-			// 	console.log("\n\r");
-			// }
+		});
+	}
+
+        // disable invalid queues if a reservation is selected
+        if (reservation && enable_reservation) {
+                reservation.change(function () {
+                      handle_reservation_change(queue, reservation);
 		});
 	}
 
@@ -591,13 +705,9 @@ $(document).ready(function () {
 		enable_start.change(function() {
 			//console.log("enable_start changed: " + enable_start.is(":checked")  + " \n\r");
 			if (enable_start.is(":checked")) {
-				start.removeAttr('disabled');
-				start.show();	
-				start_label.style.display = "inline";
+				enable_field(start, start_label);
 			} else {
-				start_label.style.display = "none";
-				start.attr('disabled', 'disabled');
-				start.hide();
+                                disable_field(start, start_label);
 			}
 		})
 	}
@@ -605,21 +715,30 @@ $(document).ready(function () {
 		enable_end.change(function() {
 			//console.log("enable_end changed: " + enable_end.is(":checked")  + " \n\r");
 			if (enable_end.is(":checked")) {
-				end.removeAttr('disabled');
-				end.show();	
-				end_label.style.display = "inline";
+				enable_field(end, end_label);
 			} else {
-				end_label.style.display = "none";
-				end.attr('disabled', 'disabled');
-				end.hide();
+				disable_field(end, end_label);
 			}
 		})
 	}
+        if (reservation_label) {
+                enable_reservation.change(function() {
+                        if (enable_reservation.is(":checked")) {
+                                enable_field(reservation, reservation_label);
+                                handle_reservation_change(queue, reservation);
+                                disable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label);
+                        } else {
+                                disable_field(reservation, reservation_label);
+                                enable_list_options(queue[0]);
+                                enable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label);
+                        }
+                })
+        }
+
 
 	// enable disable fields if exclusive is checked or not
 	if (exclusive && queue) {
 		exclusive.change(function() {
-			console.log("exclusive changed: " + exclusive.is(":checked")  + " \n\r");
 			enable_exclusive = exclusive.is(":checked");
 			partition_limits(queue[0].value, enable_exclusive);
 

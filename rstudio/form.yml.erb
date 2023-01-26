@@ -9,11 +9,95 @@ def checkUserInGroup(group)
   end
   return val
 end
+
+# get reservation info from slurm
+def getReservationInfo()
+  script = '/cm/shared/apps/slurm/current/bin/scontrol show res'
+  o, status = Open3.capture2('bash', stdin_data: script)
+  return o.strip
+end
+
+def getReservationNames(reservation_info)
+   names = reservation_info.scan(/ReservationName=\K[^ ]+/)
+   return names
+end
+
+def getReservationPartitions(reservation_info)
+  names = reservation_info.scan(/PartitionName=\K[^ ]+/)
+  return names
+end
+
+def getReservationStart(reservation_info)
+  start_time = reservation_info.scan(/StartTime=\K[^ ]+/)
+  return start_time
+end
+
+def getReservationEnd(reservation_info)
+  end_time = reservation_info.scan(/EndTime=\K[^ ]+/)
+  return end_time
+end
+
+def getReservationGroups(reservation_info)
+  groups = reservation_info.scan(/Groups=\K[^ ]+/)
+  return groups
+end
+
+
+begin
+
+  # get reservation info
+  reservation_info = getReservationInfo()
+  res_names = getReservationNames(reservation_info)
+  res_queues = getReservationPartitions(reservation_info)
+  res_start = getReservationStart(reservation_info)
+  res_end = getReservationEnd(reservation_info)
+  res_groups = getReservationGroups(reservation_info)
+  tmp_time = DateTime.now 
+  valid_reservations_names = []
+  valid_reservation_queues = []
+  valid_reservation_ends = []
+
+  # check if reservations are valid
+  res_names.each_with_index do |name, i|
+    tmp_queue = res_queues[i]
+    tmp_group = res_groups[i]
+    tmp_start = res_start[i].to_datetime
+    tmp_end = res_end[i].to_datetime
+
+    # fix time zones
+    tmp_start = tmp_start.change(:offset => tmp_time.offset)
+    tmp_end = tmp_end.change(:offset => tmp_time.offset)
+   
+    # check for valid group
+    valid_group = false
+    tmp_group.split(",").each do |group|
+      if checkUserInGroup(group)
+        valid_group = true
+      end
+    end
+
+    # check for valid time
+    valid_time = false
+    if tmp_start.past? && tmp_end.future?
+      valid_time = true
+    end
+
+    if valid_time && valid_group
+      valid_reservations_names.append(name)
+      valid_reservation_queues.append(tmp_queue.strip)
+      valid_reservation_ends.append(tmp_end)
+    end
+  end
+end
 %>
+
+
 
 ---
 cluster: "slurm_cluster"
 form:
+  - use_reservation
+  - reservation_list
   - Rapp
   - environment
   - custom_queue
@@ -29,6 +113,24 @@ form:
   - end_time
   - email_on_started
 attributes:
+  use_reservation:
+    label: "Use reservation"
+    id: enable_reservation
+    widget: check_box
+    help: |
+        If you have a reservation, check this box to use it.
+        Reservations are granted on a case-by-case basis for classes, workshops, and other time sensitive use cases
+  reservation_list:
+    widget: select
+    label: "Reservation"
+    id: reservation_list_id
+    options: 
+      <% if valid_reservations_names.empty? %>
+      - ["no reservations available", "-1"]
+      <% end %>
+      <% valid_reservations_names.each_with_index do |resname, ind| %>
+      - [ "<%= resname %>", "<%= resname %>,<%= valid_reservation_queues[ind] %>,<%= valid_reservation_ends[ind] %>"]
+      <% end %>
   Rapp:
     widget: select
     label: "R Version"
