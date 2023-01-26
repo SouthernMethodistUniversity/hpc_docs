@@ -439,10 +439,18 @@ function disable_time_controlls(time, time_label, start, start_label, end, end_l
 function enable_time_controlls(time, time_label, start, start_label, end, end_label, enable_start, enable_start_label, enable_end, enable_end_label)
 {
   enable_field(time, time_label);
-  enable_field(start, start_label);
-  enable_field(end, end_label);
   enable_field(enable_start, enable_start_label);
   enable_field(enable_end, enable_end_label);
+  if (enable_start.is(":checked")) {
+    enable_field(start, start_label);
+  } else {
+    disable_field(start, start_label);
+  }
+  if (enable_end.is(":checked")) {
+    enable_field(end, end_label);
+  } else {
+    disable_field(end, end_label);
+  }
 }
 
 function handle_reservation_change(queue, reservation) {

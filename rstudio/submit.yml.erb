@@ -46,7 +46,11 @@ batch_connect:
     - csrftoken
 script:
   queue_name: <%= custom_queue %>
-  wall_time: <% if use_reservation %> <%=  setReservationWallTime(custom_queue, reservation_list.split(',')[-1]) %> <% else %> <%= setWallTime(custom_queue, bc_num_hours) %> <% end %>
+  <%- if use_reservation == "1" -%>
+  wall_time: <%=  setReservationWallTime(custom_queue, reservation_list.split(',')[-1]) %>
+  <%- else -%> 
+  wall_time: <%= setWallTime(custom_queue, bc_num_hours) %> 
+  <%- end -%>
   native:
     - "-N"
     - "<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
@@ -72,7 +76,7 @@ script:
     - "--mail-user"
     - "<%= email_on_started %>"
     <%- end -%>
-    <%- if use_reservation -%>
+    <%- if use_reservation  == "1" -%>
     - "--reservation"
     - "<%= reservation_list.split(',')[0] %>"
     <%- end -%>
