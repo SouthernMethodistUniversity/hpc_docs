@@ -1,22 +1,17 @@
-#!/usr/bin/env Rscript
-
-packages_cran = c(
-  "FastQC",
-  "cutadapt",
-  "TrimGalore!",
-  "STAR",
-  "RSEM",
-  "BiocManager"
+cran = list(
+  packages = c(
+    "BiocManager")
 )
 
-bioc_version = "3.16"
-packages_bioc = c(
-  "edgeR",
-  "AnnotationDbi",
-  "org.Hs.eg.db"
+bioc = list(
+  packages = c(
+    "edgeR",
+    "AnnotationDbi",
+    "org.Hs.eg.db"),
+  version = "3.16"
 )
 
-install.packages(packages_cran)
-BiocManager::install(version = bioc_version)
-BiocManager::install(packages_bioc)
+install.packages(cran$packages)
+BiocManager::install(version = bioc$version)
+BiocManager::install(bioc$packages)
 
