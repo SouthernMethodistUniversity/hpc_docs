@@ -51,5 +51,5 @@ local executables = {
 
 for _, executable in ipairs(executables) do
   build_command(executable)
-done
+end
 
