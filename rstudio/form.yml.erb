@@ -145,6 +145,9 @@ attributes:
 <%- if checkUserInGroup("stat_3341") -%>
       - [ "STAT 3341 (custom 4.2.2 for course)", "/hpc/applications/containers/ml-verse_4.2.2_STAT3341.sif"]
 <%- end -%>
+<%- if checkUserInGroup("stat_6358") -%>
+      - [ "STATS 6358", "/hpc/applications/containers/biostats_latest-2023-01-30-dc996dbdeea1.sif"]
+<%- end -%>
   environment:
     widget: text_area
     label: "Custom Environment Settings"
