@@ -1,11 +1,8 @@
 FROM ubuntu:20.04
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 # update package lists
 RUN apt-get -y update
-
-# fix hang when install tzdata
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # build tools
 RUN apt-get -y update && apt-get install -y \
@@ -149,3 +146,6 @@ RUN wget https://github.com/alexdobin/STAR/archive/2.7.10b.tar.gz \
 RUN apt-get install -y cutadapt
 
 ENV PATH="${PATH}:/usr/local:/usr/local/bin"
+ENV ftp_proxy="http://10.210.15.2:3128"
+ENV http_proxy="http://10.210.15.2:3128"
+ENV https_proxy="http://10.210.15.2:3128"
