@@ -1,42 +1,3 @@
-<%-
-require 'open3'
-begin
-    # get conda envs from 
-    script = '/hpc/applications/anaconda/3/bin/conda info -e'
-    o, status = Open3.capture2('bash', stdin_data: script)
-    output = o.split("\n")
-    conda_envs = []
-    python3_module = [ "python/3",    "python/3" ]
-    custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-    conda_envs.push(python3_module)
-    conda_envs.push(custom_env)
-    enabled_envs = []
-    disabled_envs = []
-    output.each do |env|
-      # skip envs in /hpc/applications
-      if env =~ /^((?!hpc\/applications).)*$/ && env[0] != '#'
-        split_env = env.gsub(/\s+/m, ' ').strip.split(" ")
-        if split_env.count == 1
-          split_env.push(split_env[0])
-        end
-        jupyter_path = split_env[1] + "/bin/jupyter-lab"
-        if File.file?(jupyter_path)
-          split_env[0] = "(Conda Environment) " + split_env[0]
-          enabled_envs.push(split_env)
-        else
-          split_env[1] = "No Jupyter Lab"
-          disabled_envs.push(split_env)
-        end
-      end
-    end
-    enabled_envs.each do |env|
-      conda_envs.push(env)
-    end
-    disabled_envs.each do |env|
-      conda_envs.push(env)
-    end
-end
--%>
 ---
 cluster: "slurm_cluster"
 form:
@@ -66,7 +27,7 @@ attributes:
       - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
       - Other environments can be specified by selecting "Custom Environment"
     options:
-      <%- conda_envs.each do |q| -%>
+      <%- CustomEnvironments.JupyterLabEnvs.each do |q| -%>
         - [ "<%= q[0] %>", "<%= q[1] %>" ]
       <%- end -%>
   environment:
