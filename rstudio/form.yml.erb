@@ -1,98 +1,3 @@
-<%
-require 'open3'
-def checkUserInGroup(group)
-  script = '/usr/bin/id -Gn $USER | /usr/bin/grep -c ' + group
-  o, status = Open3.capture2('bash', stdin_data: script)
-  val = false
-  if o.strip == "1"
-    val = true
-  end
-  return val
-end
-
-# get reservation info from slurm
-def getReservationInfo()
-  script = '/cm/shared/apps/slurm/current/bin/scontrol show res'
-  o, status = Open3.capture2('bash', stdin_data: script)
-  return o.strip
-end
-
-def getReservationNames(reservation_info)
-   names = reservation_info.scan(/ReservationName=\K[^ ]+/)
-   return names
-end
-
-def getReservationPartitions(reservation_info)
-  names = reservation_info.scan(/PartitionName=\K[^ ]+/)
-  return names
-end
-
-def getReservationStart(reservation_info)
-  start_time = reservation_info.scan(/StartTime=\K[^ ]+/)
-  return start_time
-end
-
-def getReservationEnd(reservation_info)
-  end_time = reservation_info.scan(/EndTime=\K[^ ]+/)
-  return end_time
-end
-
-def getReservationGroups(reservation_info)
-  groups = reservation_info.scan(/Groups=\K[^ ]+/)
-  return groups
-end
-
-
-begin
-
-  # get reservation info
-  reservation_info = getReservationInfo()
-  res_names = getReservationNames(reservation_info)
-  res_queues = getReservationPartitions(reservation_info)
-  res_start = getReservationStart(reservation_info)
-  res_end = getReservationEnd(reservation_info)
-  res_groups = getReservationGroups(reservation_info)
-  tmp_time = DateTime.now 
-  valid_reservations_names = []
-  valid_reservation_queues = []
-  valid_reservation_ends = []
-
-  # check if reservations are valid
-  res_names.each_with_index do |name, i|
-    tmp_queue = res_queues[i]
-    tmp_group = res_groups[i]
-    tmp_start = res_start[i].to_datetime
-    tmp_end = res_end[i].to_datetime
-
-    # fix time zones
-    tmp_start = tmp_start.change(:offset => tmp_time.offset)
-    tmp_end = tmp_end.change(:offset => tmp_time.offset)
-   
-    # check for valid group
-    valid_group = false
-    tmp_group.split(",").each do |group|
-      if checkUserInGroup(group)
-        valid_group = true
-      end
-    end
-
-    # check for valid time
-    valid_time = false
-    if tmp_start.past? && tmp_end.future?
-      valid_time = true
-    end
-
-    if valid_time && valid_group
-      valid_reservations_names.append(name)
-      valid_reservation_queues.append(tmp_queue.strip)
-      valid_reservation_ends.append(tmp_end)
-    end
-  end
-end
-%>
-
-
-
 ---
 cluster: "slurm_cluster"
 form:
@@ -125,11 +30,12 @@ attributes:
     label: "Reservation"
     id: reservation_list_id
     options: 
-      <% if valid_reservations_names.empty? %>
+      <% if ReservationInfo.ValidReservations[0].empty? %>
       - ["no reservations available", "-1"]
+      <% else %>
+      <% ReservationInfo.ValidReservations[0].each_with_index do |resname, ind| %>
+      - [ "<%= resname %>", "<%= resname %>,<%= ReservationInfo.ValidReservations[1][ind] %>,<%= ReservationInfo.ValidReservations[2][ind] %>"]
       <% end %>
-      <% valid_reservations_names.each_with_index do |resname, ind| %>
-      - [ "<%= resname %>", "<%= resname %>,<%= valid_reservation_queues[ind] %>,<%= valid_reservation_ends[ind] %>"]
       <% end %>
   Rapp:
     widget: select
@@ -142,10 +48,10 @@ attributes:
       - [ "4.1.3", "/hpc/applications/containers/ml-verse_4.1.3.sif"]
       - [ "4.2.0", "/hpc/applications/containers/ml-verse_4.2.0.sif"]
       - [ "4.2.2", "/hpc/applications/containers/ml-verse_4.2.2.sif"]
-<%- if checkUserInGroup("stat_3341") -%>
+<%- if GroupInfo.checkUserInGroup("stat_3341") -%>
       - [ "STAT 3341 (custom 4.2.2 for course)", "/hpc/applications/containers/ml-verse_4.2.2_STAT3341.sif"]
 <%- end -%>
-<%- if checkUserInGroup("stat_6358") -%>
+<%- if GroupInfo.checkUserInGroup("stat_6358") -%>
       - [ "STATS 6358", "/hpc/applications/containers/biostats_latest-2023-01-30-dc996dbdeea1.sif"]
 <%- end -%>
   environment:
