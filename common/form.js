@@ -589,17 +589,18 @@ $(document).ready(function () {
 
                 if (reservation_label) {
                         // check if there are valid reservations
-                        var valid_res = false;
+                        var valid_res = true;
                         Array.from(reservation[0].options).forEach(function (option_element) {
 			     let option_value = option_element.value;
-			     if (option_value.localeCompare("-1")) {
-				valid_res = true;
+			     if (option_value === "-1") {
+				valid_res = false;
 			     }
 		        });
 
                         // disable check box for reservations if there aren't any
                         if (!valid_res) {
                             disable_field(enable_reservation, enable_reservation_label);
+                            enable_reservation.attr('checked', false);
                         }
 
                         if (enable_reservation.is(":checked")) {
