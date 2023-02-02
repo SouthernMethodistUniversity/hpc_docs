@@ -9,7 +9,7 @@ class CustomEnvironments
       script = '/hpc/applications/anaconda/3/bin/conda info -e'
       o, status = Open3.capture2('bash', stdin_data: script)
       output = o.split("\n")
-      @found_envs = []
+      @CondaEnvs = []
 
       # check the output of Conda info for useable envs
       enabled_envs = []
@@ -25,26 +25,26 @@ class CustomEnvironments
           if split_env.count == 1
             split_env.push(split_env[0])
           end
-          @found_envs.push(split_env)
+          @CondaEnvs.push(split_env)
         end
       end
       #return
-      @found_envs
+      @CondaEnvs
     end
   end
 
   def self.JupyterLabEnvs
     @JupyterLabEnvs ||= begin
        
-      @jupyter_envs = []
+      @JupyterLabEnvs = []
 
       # always include the default python/3 module
       python3_module = [ "python/3",    "python/3" ]
       
       # always include to option to define a custom env
       custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-      @jupyter_envs.push(python3_module)
-      @jupyter_envs.push(custom_env)
+      @JupyterLabEnvs.push(python3_module)
+      @JupyterLabEnvs.push(custom_env)
 
       # check the output of Conda info for useable envs
       enabled_envs = []
@@ -65,28 +65,28 @@ class CustomEnvironments
       # add the found environments to the list
       # the disabled environments are listed last
       enabled_envs.each do |env|
-        @jupyter_envs.push(env)
+        @JupyterLabEnvs.push(env)
       end
       disabled_envs.each do |env|
-        @jupyter_envs.push(env)
+        @JupyterLabEnvs.push(env)
       end
       #return
-      @jupyter_envs
+      @JupyterLabEnvs
     end
   end
 
   def self.JupyterNotebookEnvs
     @JupyterNotebookEnvs ||= begin
        
-      @jupyter_envs = []
+      @JupyterNotebookEnvs = []
 
       # always include the default python/3 module
       python3_module = [ "python/3",    "python/3" ]
       
       # always include to option to define a custom env
       custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-      @jupyter_envs.push(python3_module)
-      @jupyter_envs.push(custom_env)
+      @JupyterNotebookEnvs.push(python3_module)
+      @JupyterNotebookEnvs.push(custom_env)
 
       # check the output of Conda info for useable envs
       enabled_envs = []
@@ -107,13 +107,13 @@ class CustomEnvironments
       # add the found environments to the list
       # the disabled environments are listed last
       enabled_envs.each do |env|
-        @jupyter_envs.push(env)
+        @JupyterNotebookEnvs.push(env)
       end
       disabled_envs.each do |env|
-        @jupyter_envs.push(env)
+        @JupyterNotebookEnvs.push(env)
       end
       #return
-      @jupyter_envs
+      @JupyterNotebookEnvs
     end
   end
 end
