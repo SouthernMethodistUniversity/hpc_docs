@@ -76,7 +76,7 @@ class CustomEnvironments
   end
 
   def self.JupyterNotebookEnvs
-    @JupyterLabEnvs ||= begin
+    @JupyterNotebookEnvs ||= begin
        
       @jupyter_envs = []
 
