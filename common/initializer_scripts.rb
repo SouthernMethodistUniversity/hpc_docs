@@ -25,6 +25,8 @@ class CustomEnvironments
           if split_env.count == 1
             split_env.push(split_env[0])
           end
+          # prepend "(Conda Env)"
+          split_env[0] = "(Conda Environment) " + split_env[0]
           @CondaEnvs.push(split_env)
         end
       end
@@ -55,7 +57,6 @@ class CustomEnvironments
         # otherwise add it to the disabled list
         jupyter_path = env[1] + "/bin/jupyter-lab"
         if File.file?(jupyter_path)
-          env[0] = "(Conda Environment) " + env[0]
           enabled_envs.push(env)
         else
           env[1] = "No Jupyter Lab"
@@ -97,7 +98,6 @@ class CustomEnvironments
         # otherwise add it to the disabled list
         jupyter_path = env[1] + "/bin/jupyter-notebook"
         if File.file?(jupyter_path)
-          env[0] = "(Conda Environment) " + env[0]
           enabled_envs.push(env)
         else
           env[1] = "No Jupyter Lab"

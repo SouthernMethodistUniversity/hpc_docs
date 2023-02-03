@@ -1,3 +1,144 @@
+<%-
+require 'open3'
+
+
+# find user conda environments
+class CustomEnvironments2
+
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
+
+  def self.CondaEnvs2()
+    begin
+
+      # get Conda environments from Conda info
+      script = '/hpc/applications/anaconda/3/bin/conda info -e'
+      o, status = Open3.capture2('bash', stdin_data: script)
+      output = o.split("\n")
+      conda_env = []
+
+      # check the output of Conda info for useable envs
+      enabled_envs = []
+      disabled_envs = []
+      output.each do |env| 
+        # skip envs in /hpc/applications and commented out lines
+        if env =~ /^((?!hpc\/applications).)*$/ && env[0] != '#'
+          # Conda info returns an optional name followed by a path
+          # so split the current line into the name (possibly blank)
+          # and the path to the env
+          split_env = env.split
+    
+          # if the name is blank use the path as the name
+          if split_env.count == 1
+            split_env.push(split_env[0])
+          end
+          conda_env.push(split_env)
+        end
+      end
+      #return
+      return conda_env
+    end
+  end
+
+  def self.JupyterLabEnvs2
+    begin
+       
+      @JupyterLabEnvs2 = []
+
+      # always include the default python/3 module
+      python3_module = [ "python/3",    "python/3" ]
+      
+      # always include to option to define a custom env
+      custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
+      @JupyterLabEnvs2.push(python3_module)
+      @JupyterLabEnvs2.push(custom_env)
+
+      # check the output of Conda info for useable envs
+      enabled_envs = []
+      disabled_envs = []
+      @CondaEnvsTest = @cache.fetch("#{User.new.name}/conda_envs", race_condition_ttl: 30.seconds) do
+        self.CondaEnvs2()
+      end
+      @CondaEnvsTest.each do |env| 
+        # now check if there is a jupyter-lab in the env
+        # if it exists, add it to the enabled list
+        # otherwise add it to the disabled list
+        jupyter_path = env[1] + "/bin/jupyter-lab"
+        if File.file?(jupyter_path)
+          tmp_env = env
+          tmp_env[0] = "(Conda Env) " + env[0]
+          enabled_envs.push(tmp_env)
+        else
+          tmp_env = env
+          tmp_env[0] = "(Install jupyterlab to use) " + env[0]
+          tmp_env[1] = "No Jupyter Lab"
+          disabled_envs.push(tmp_env)
+        end
+      end
+      # add the found environments to the list
+      # the disabled environments are listed last
+      enabled_envs.each do |env|
+        @JupyterLabEnvs2.push(env)
+      end
+      disabled_envs.each do |env|
+        @JupyterLabEnvs2.push(env)
+      end
+      #return
+      @JupyterLabEnvs2
+    end
+  end
+
+  def self.JupyterNotebookEnvs2
+    begin
+       
+      @JupyterNotebookEnvs2 = []
+
+      # always include the default python/3 module
+      python3_module = [ "python/3",    "python/3" ]
+      
+      # always include to option to define a custom env
+      custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
+      @JupyterNotebookEnvs2.push(python3_module)
+      @JupyterNotebookEnvs2.push(custom_env)
+
+      # check the output of Conda info for useable envs
+      enabled_envs = []
+      disabled_envs = []
+      @CondaEnvsTest2 = @cache.fetch("#{User.new.name}/conda_envs") do
+        self.CondaEnvs2()
+      end
+      @CondaEnvsTest2.each do |env|
+        # now check if there is a jupyter-notebook in the env
+        # if it exists, add it to the enabled list
+        # otherwise add it to the disabled list
+        jupyter_path = env[1] + "/bin/jupyter-notebook"
+        if File.file?(jupyter_path)
+          tmp_env = env
+          tmp_env[0] = "(Conda Env) " + env[0]
+          enabled_envs.push(tmp_env)
+        else
+          tmp_env = env
+          tmp_env[0] = "(Install jupyter notebook to use) " + env[0]
+          tmp_env[1] = "No Jupyter Lab"
+          disabled_envs.push(tmp_env)
+        end
+      end
+      # add the found environments to the list
+      # the disabled environments are listed last
+      enabled_envs.each do |env|
+        @JupyterNotebookEnvs2.push(env)
+      end
+      disabled_envs.each do |env|
+        @JupyterNotebookEnvs2.push(env)
+      end
+      #return
+      @JupyterNotebookEnvs2
+    end
+  end
+end
+
+
+-%>
+
 ---
 cluster: "slurm_cluster"
 form:
@@ -27,7 +168,7 @@ attributes:
       - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
       - Other environments can be specified by selecting "Custom Environment"
     options:
-      <%- CustomEnvironments.JupyterNotebookEnvs.each do |q| -%>
+      <%- CustomEnvironments2.JupyterNotebookEnvs2.each do |q| -%>
         - [ "<%= q[0] %>", "<%= q[1] %>" ]
       <%- end -%>
   environment:
