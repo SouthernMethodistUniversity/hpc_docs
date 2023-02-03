@@ -1,3 +1,178 @@
+<%-
+require 'open3'
+
+# class to help get group info about user
+class GroupInfo2
+
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 5.minute)
+
+  def self.GroupMembership
+    begin
+
+      # get users groups
+      script = '/usr/bin/id -Gn $USER'
+      o, status = Open3.capture2('bash', stdin_data: script)
+
+      @GroupMembership = []
+
+      # loop over output and append all groups to list
+      o.strip.split(" ").each do |group|
+        @GroupMembership.push(group)
+      end
+      #return
+      @GroupMembership
+    end
+  end
+
+  def self.checkUserInGroup(group)
+    @user_groups = @cache.fetch("#{User.new.name}/user_groups", race_condition_ttl: 30.seconds) do
+        self.GroupMembership
+     end
+    return @user_groups.include? group
+  end
+end
+
+# Get reservation info from slurm
+class ReservationInfo2
+
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
+
+  def self.SlurmReservations
+    begin
+
+      # get reservations from scrontrol
+      script = '/cm/shared/apps/slurm/current/bin/scontrol show res'
+      o, status = Open3.capture2('bash', stdin_data: script)
+      @SlurmReservations = o.strip
+
+      #return
+      @SlurmReservations
+    end
+  end
+
+  # extract reservation names
+  def self.Names
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @Names = @reservations.scan(/ReservationName=\K[^ ]+/)
+      #return
+      @Names
+    end
+  end
+
+  # extract reservation partitions
+  def self.Partitions
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @Partition = @reservations.scan(/PartitionName=\K[^ ]+/)
+      #return
+      @Partition
+    end
+  end
+
+  # extract reservation start times
+  def self.StartTimes
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @StartTimes = @reservations.scan(/StartTime=\K[^ ]+/)
+      #return
+      @StartTimes
+    end
+  end
+
+  # extract reservation end times
+  def self.EndTimes
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @EndTimes = @reservations.scan(/EndTime=\K[^ ]+/)
+      #return
+      @EndTimes
+    end
+  end
+
+  # extract reservation groups
+  def self.Groups
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @Groups = @reservations.scan(/Groups=\K[^ ]+/)
+      #return
+      @Groups
+    end
+  end
+
+  # compute currently valid reservations
+  def self.ValidReservations
+    begin
+      @res_names = @cache.fetch("#{User.new.name}/reservation_name", race_condition_ttl: 30.seconds) do
+        self.Names
+      end
+      @res_queues = @cache.fetch("#{User.new.name}/reservation_queue", race_condition_ttl: 30.seconds) do
+        self.Partitions
+      end
+      @res_start = @cache.fetch("#{User.new.name}/reservation_start", race_condition_ttl: 30.seconds) do
+        self.StartTimes
+      end
+      @res_end = @cache.fetch("#{User.new.name}/reservation_end", race_condition_ttl: 30.seconds) do
+        self.EndTimes
+      end
+      @res_groups = @cache.fetch("#{User.new.name}/reservation_group", race_condition_ttl: 30.seconds) do
+        self.Groups
+      end
+      tmp_time = DateTime.now 
+      valid_reservations_names = []
+      valid_reservation_queues = []
+      valid_reservation_ends = []
+
+      # check if reservations are valid
+      @res_names.each_with_index do |name, i|
+        tmp_queue = @res_queues[i]
+        tmp_group = @res_groups[i]
+        tmp_start = @res_start[i].to_datetime
+        tmp_end = @res_end[i].to_datetime
+
+        # fix time zones
+        tmp_start = tmp_start.change(:offset => tmp_time.offset)
+        tmp_end = tmp_end.change(:offset => tmp_time.offset)
+   
+        # check for valid group
+        valid_group = false
+        tmp_group.split(",").each do |group|
+          if GroupInfo2.checkUserInGroup(group)
+            valid_group = true
+          end
+        end
+
+        # check for valid time
+        valid_time = false
+        if tmp_start.past? && tmp_end.future?
+          valid_time = true
+        end
+
+        if valid_time && valid_group
+          valid_reservations_names.append(name)
+          valid_reservation_queues.append(tmp_queue.strip)
+          valid_reservation_ends.append(tmp_end)
+        end
+      end
+      @ValidReservations = [valid_reservations_names, valid_reservation_queues, valid_reservation_ends]
+      #return
+      @ValidReservations
+    end
+  end
+end
+
+-%>
+
 ---
 cluster: "slurm_cluster"
 form:
@@ -30,11 +205,11 @@ attributes:
     label: "Reservation"
     id: reservation_list_id
     options: 
-      <% if ReservationInfo.ValidReservations[0].empty? %>
+      <% if ReservationInfo2.ValidReservations[0].empty? %>
       - ["no reservations available", "-1"]
       <% else %>
-      <% ReservationInfo.ValidReservations[0].each_with_index do |resname, ind| %>
-      - [ "<%= resname %>", "<%= resname %>,<%= ReservationInfo.ValidReservations[1][ind] %>,<%= ReservationInfo.ValidReservations[2][ind] %>"]
+      <% ReservationInfo2.ValidReservations[0].each_with_index do |resname, ind| %>
+      - [ "<%= resname %>", "<%= resname %>,<%= ReservationInfo2.ValidReservations[1][ind] %>,<%= ReservationInfo2.ValidReservations[2][ind] %>"]
       <% end %>
       <% end %>
   Rapp:
@@ -48,10 +223,10 @@ attributes:
       - [ "4.1.3", "/hpc/applications/containers/ml-verse_4.1.3.sif"]
       - [ "4.2.0", "/hpc/applications/containers/ml-verse_4.2.0.sif"]
       - [ "4.2.2", "/hpc/applications/containers/ml-verse_4.2.2.sif"]
-<%- if GroupInfo.checkUserInGroup("stat_3341") -%>
+<%- if GroupInfo2.checkUserInGroup("stat_3341") -%>
       - [ "STAT 3341 (custom 4.2.2 for course)", "/hpc/applications/containers/ml-verse_4.2.2_STAT3341.sif"]
 <%- end -%>
-<%- if GroupInfo.checkUserInGroup("stat_6358") -%>
+<%- if GroupInfo2.checkUserInGroup("stat_6358") -%>
       - [ "STATS 6358", "/hpc/applications/containers/biostats_latest-2023-01-30-dc996dbdeea1.sif"]
 <%- end -%>
   environment:
