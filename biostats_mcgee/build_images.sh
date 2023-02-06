@@ -23,13 +23,16 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock\
  singularityware/docker2singularity biostats:${version} | tee build.log
 
 # Get Singularity image name
-img_name=$(grep "Build complete:" build.log | tr -s ' ' | cut -d' ' -f5 | cut -d'/' -f3 | tr -d '\b\r')
+simg=$(basename $(awk '/Build complete/{print $NF}' build.log) | tr -d '\b\r')
+img="${simg%.*}.sif"
+mv $simg $img
 
 # Change Singularity image permissions
 if [[ $(uname -s) == "Linux" ]]; then
-    sudo chown $USER:$USER $img_name
+    sudo chown $USER:$USER $img
 fi
 
 # Update module file with new Singularity image name
-sed -i'' -e "s/^local img_name.*/local img_name      = \'${img_name}\'/g" biostats.lua
+sed -i'' -e "s/^local img_name.*/local img_name      = \'${img}\'/g"\
+ biostats.lua
 
