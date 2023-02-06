@@ -5,7 +5,10 @@ local img_directory = '/hpc/applications/containers/'
 local img_path      = pathJoin(img_directory, img_name)
 
 function build_command(cmd)
-  local cmd_beginning = 'singularity exec '
+  local home          = os.getenv("HOME")
+  local user_libs     = pathJoin(home, 'R/portal/rocker-images/biostats_0')
+  local cmd           = 'singularity exec --nv '
+  local cmd_beginning = cmd .. '--env R_LIBS_USER=' .. user_libs.. ' '
   local cmd_ending    = img_path .. ' ' .. cmd
   local sh_ending     = ' "$@"'
   local csh_ending    = ' $*'
