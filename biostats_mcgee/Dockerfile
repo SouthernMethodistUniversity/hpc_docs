@@ -9,12 +9,38 @@ LABEL maintainer="Robert Kalescky <rkalescky@smu.edu>"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update &&\
- apt-get install -y\
- libz-dev\
- default-jre\
+ apt-get remove -y libcurl4 &&\
+ apt-get upgrade -y &&\
+ apt-get install -y --no-install-recommends\
+ apt-transport-https\
+ autoconf\
+ ca-certificates\
+ cmake\
+ curl\
  default-jdk\
- python3-pip
-
+ default-jre\
+ g++\
+ gcc\
+ git\
+ git-lfs\
+ gnupg\
+ libboost-all-dev\
+ libbz2-dev\
+ libcereal-dev\
+ libcurl4-openssl-dev\
+ libgff-dev\
+ libjemalloc-dev\
+ liblzma-dev\
+ libtbb-dev\
+ libz-dev\
+ make\
+ ninja-build\
+ python3-pip\
+ software-properties-common\
+ unzip\
+ wget\
+ zlib1g-dev
+ 
 # FastQC
 RUN git clone --depth 1 --branch v0.11.9\
  https://github.com/s-andrews/FastQC.git /opt/FastQC &&\
@@ -46,4 +72,18 @@ RUN git clone --depth 1 --branch v1.3.3\
 # Install R Packages
 COPY install_packages.R /
 RUN Rscript /install_packages.R
+
+# GATK4
+RUN git clone --depth 1 --branch 4.2.6.1\
+ https://github.com/broadinstitute/gatk.git /opt/gatk &&\
+ cd /opt/gatk &&\
+ ./gradlew installAll
+
+# Salmon
+RUN git clone --depth 1 --branch v1.9.0\
+ https://github.com/COMBINE-lab/salmon.git /opt/salmon &&\
+ mkdir /opt/salmon/build &&\
+ cd /opt/salmon/build &&\
+ cmake .. &&\
+ make install
 
