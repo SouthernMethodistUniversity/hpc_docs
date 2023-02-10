@@ -69,10 +69,6 @@ RUN git clone --depth 1 --branch v1.3.3\
  make -j install &&\
  rm -rf /opt/RSEM
 
-# Install R Packages
-COPY install_packages.R /
-RUN Rscript /install_packages.R
-
 # GATK4
 RUN git clone --depth 1 --branch 4.2.6.1\
  https://github.com/broadinstitute/gatk.git /opt/gatk &&\
@@ -86,4 +82,8 @@ RUN git clone --depth 1 --branch v1.9.0\
  cd /opt/salmon/build &&\
  cmake .. &&\
  make install
+
+# Install R Packages
+COPY install_packages.R /
+RUN Rscript /install_packages.R
 
