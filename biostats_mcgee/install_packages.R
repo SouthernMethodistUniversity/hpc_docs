@@ -1,6 +1,11 @@
 cran = list(
   packages = c(
-    "BiocManager")
+    "BiocManager",
+    "ade4",
+    "vcfR",
+    "adegenet",
+    "reshape2",
+    "ggplot2")
 )
 
 bioc = list(

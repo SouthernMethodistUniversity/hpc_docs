@@ -28,6 +28,7 @@ docker build --no-cache --progress=plain\
 docker run -v /var/run/docker.sock:/var/run/docker.sock\
  -v $PWD:/output --privileged -t --rm singularityware/docker2singularity\
  -n ${img} ${name}:${version} |& tee -a build.log
+mv ${img%.sif}.simg ${img}
 
 # Change Singularity image permissions
 if [[ $(uname -s) == "Linux" ]]; then
