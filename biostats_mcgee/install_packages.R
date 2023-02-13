@@ -5,7 +5,9 @@ cran = list(
     "vcfR",
     "adegenet",
     "reshape2",
-    "ggplot2")
+    "ggplot2",
+    "poppr",
+    "knitr)
 )
 
 bioc = list(

@@ -1,6 +1,6 @@
 load("singularity")
 
-local img_name      = 'biostats_latest-2023-02-07-858e2914ccfc.sif'
+local img_name      = 'biostats_latest_2023_02_10_16_07_16.sif'
 local img_directory = '/hpc/applications/containers/'
 local img_path      = pathJoin(img_directory, img_name)
 
