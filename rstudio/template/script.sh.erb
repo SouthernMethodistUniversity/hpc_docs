@@ -61,7 +61,7 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   exec &>>"\${RSESSION_LOG_FILE}"
 
   # make sure nothing uses more threads than is requested
-  export OMP_NUM_THREADS=${SLURM_JOB_CPUS_PER_NODE}
+  export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
 
   # Launch the original command
   echo "Launching rsession..."
