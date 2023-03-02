@@ -56,12 +56,15 @@ RUN apt-get -y update && apt-get install -y \
     && pip install torch torchvision torchaudio \
     && pip install nvidia-tensorrt \
     && pip install yapf \
-    && pip install jupyterlab
+    && pip install jupyterlab \
+    && pip install pyrealsense2 \
+    && pip install opencv-python
 
   # build Open3d
   # build 2x so we get cpu and gpu bindings
   RUN git clone https://github.com/isl-org/Open3D \
     && cd Open3D \
+    && git checkout ab6bf430c \
     && export SUDO=command \
     && ./util/install_deps_ubuntu.sh assume-yes \
     && cd ../ \
@@ -96,6 +99,22 @@ RUN apt-get -y update && apt-get install -y \
     && rm -rf Open3D* \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+    
+  # Build VTK. The version in the repos is missing some features
+  RUN git clone --recursive https://gitlab.kitware.com/vtk/vtk.git \
+    && cd vtk \
+    && git checkout tags/v9.2.6 \
+    && mkdir build \
+    && cd build \
+    && cmake .. \
+          -DVTK_USE_CUDA=ON \
+          -DVTK_SMP_ENABLE_OpenMP=ON \
+          -DVTK_OPENGL_HAS_OSMESA=ON \
+          -DVTK_USE_X=OFF \
+    && make -j8 \
+    && make install -j8 \
+    && cd ../../ \
+    && rm -rf vtk
 
   ENV export NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES},graphics,compat32
   ENV export ftp_proxy="http://10.210.15.2:3128"
