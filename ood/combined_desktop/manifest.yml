@@ -1,0 +1,10 @@
+---
+name: Combined Remote Desktop
+category: Interactive Apps
+subcategory: Desktops
+role: batch_connect
+description: |
+  This app will launch a Remote Desktop session from a contiainer image on [M2](https://s2.smu.edu/hpc/documentation/about.html) 
+  
+  **NOTE: Singularity and other containers will not run correctly in this environment.**
+icon: fas://desktop

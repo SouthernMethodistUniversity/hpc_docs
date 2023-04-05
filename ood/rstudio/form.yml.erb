@@ -1,0 +1,356 @@
+<%-
+require 'open3'
+
+# class to help get group info about user
+class GroupInfo2
+
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 5.minute)
+
+  def self.GroupMembership
+    begin
+
+      # get users groups
+      script = '/usr/bin/id -Gn $USER'
+      o, status = Open3.capture2('bash', stdin_data: script)
+
+      @GroupMembership = []
+
+      # loop over output and append all groups to list
+      o.strip.split(" ").each do |group|
+        @GroupMembership.push(group)
+      end
+      #return
+      @GroupMembership
+    end
+  end
+
+  def self.checkUserInGroup(group)
+    @user_groups = @cache.fetch("#{User.new.name}/user_groups", race_condition_ttl: 30.seconds) do
+        self.GroupMembership
+     end
+    return @user_groups.include? group
+  end
+end
+
+# Get reservation info from slurm
+class ReservationInfo2
+
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
+
+  def self.SlurmReservations
+    begin
+
+      # get reservations from scrontrol
+      script = '/cm/shared/apps/slurm/current/bin/scontrol show res'
+      o, status = Open3.capture2('bash', stdin_data: script)
+      @SlurmReservations = o.strip
+
+      #return
+      @SlurmReservations
+    end
+  end
+
+  # extract reservation names
+  def self.Names
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @Names = @reservations.scan(/ReservationName=\K[^ ]+/)
+      #return
+      @Names
+    end
+  end
+
+  # extract reservation partitions
+  def self.Partitions
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @Partition = @reservations.scan(/PartitionName=\K[^ ]+/)
+      #return
+      @Partition
+    end
+  end
+
+  # extract reservation start times
+  def self.StartTimes
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @StartTimes = @reservations.scan(/StartTime=\K[^ ]+/)
+      #return
+      @StartTimes
+    end
+  end
+
+  # extract reservation end times
+  def self.EndTimes
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @EndTimes = @reservations.scan(/EndTime=\K[^ ]+/)
+      #return
+      @EndTimes
+    end
+  end
+
+  # extract reservation groups
+  def self.Groups
+    begin
+      @reservations = @cache.fetch("#{User.new.name}/reservations", race_condition_ttl: 30.seconds) do
+        self.SlurmReservations
+      end
+      @Groups = @reservations.scan(/Groups=\K[^ ]+/)
+      #return
+      @Groups
+    end
+  end
+
+  # compute currently valid reservations
+  def self.ValidReservations
+    begin
+      @res_names = @cache.fetch("#{User.new.name}/reservation_name", race_condition_ttl: 30.seconds) do
+        self.Names
+      end
+      @res_queues = @cache.fetch("#{User.new.name}/reservation_queue", race_condition_ttl: 30.seconds) do
+        self.Partitions
+      end
+      @res_start = @cache.fetch("#{User.new.name}/reservation_start", race_condition_ttl: 30.seconds) do
+        self.StartTimes
+      end
+      @res_end = @cache.fetch("#{User.new.name}/reservation_end", race_condition_ttl: 30.seconds) do
+        self.EndTimes
+      end
+      @res_groups = @cache.fetch("#{User.new.name}/reservation_group", race_condition_ttl: 30.seconds) do
+        self.Groups
+      end
+      tmp_time = DateTime.now 
+      valid_reservations_names = []
+      valid_reservation_queues = []
+      valid_reservation_ends = []
+
+      # check if reservations are valid
+      @res_names.each_with_index do |name, i|
+        tmp_queue = @res_queues[i]
+        tmp_group = @res_groups[i]
+        tmp_start = @res_start[i].to_datetime
+        tmp_end = @res_end[i].to_datetime
+
+        # fix time zones
+        tmp_start = tmp_start.change(:offset => tmp_time.offset)
+        tmp_end = tmp_end.change(:offset => tmp_time.offset)
+   
+        # check for valid group
+        valid_group = false
+        tmp_group.split(",").each do |group|
+          if GroupInfo2.checkUserInGroup(group)
+            valid_group = true
+          end
+        end
+
+        # check for valid time
+        valid_time = false
+        if tmp_start.past? && tmp_end.future?
+          valid_time = true
+        end
+
+        if valid_time && valid_group
+          valid_reservations_names.append(name)
+          valid_reservation_queues.append(tmp_queue.strip)
+          valid_reservation_ends.append(tmp_end)
+        end
+      end
+      @ValidReservations = [valid_reservations_names, valid_reservation_queues, valid_reservation_ends]
+      #return
+      @ValidReservations
+    end
+  end
+end
+
+-%>
+
+---
+cluster: "slurm_cluster"
+form:
+  - use_reservation
+  - reservation_list
+  - Rapp
+  - environment
+  - custom_queue
+  - bc_num_hours
+  - bc_num_slots
+  - use_exclusive
+  - bc_num_cores
+  - bc_num_memory
+  - bc_num_gpus
+  - enable_start_time
+  - start_time
+  - enable_end_time
+  - end_time
+  - email_on_started
+attributes:
+  use_reservation:
+    label: "Use reservation"
+    id: enable_reservation
+    widget: check_box
+    help: |
+        If you have a reservation, check this box to use it.
+        Reservations are granted on a case-by-case basis for classes, workshops, and other time sensitive use cases
+  reservation_list:
+    widget: select
+    label: "Reservation"
+    id: reservation_list_id
+    options: 
+      <% if ReservationInfo2.ValidReservations[0].empty? %>
+      - ["no reservations available", "-1"]
+      <% else %>
+      <% ReservationInfo2.ValidReservations[0].each_with_index do |resname, ind| %>
+      - [ "<%= resname %>", "<%= resname %>,<%= ReservationInfo2.ValidReservations[1][ind] %>,<%= ReservationInfo2.ValidReservations[2][ind] %>"]
+      <% end %>
+      <% end %>
+  Rapp:
+    widget: select
+    label: "R Version"
+    options:
+      - [ "3.6.2", "r/3.6.2" ]
+      - [ "3.5.2", "r/3.5.2" ]
+      - [ "3.4.1", "r/3.4.1-1" ]
+      - [ "4.0.2", "r/4.0.2" ]
+      - [ "4.1.3", "/hpc/applications/containers/ml-verse_4.1.3.sif"]
+      - [ "4.2.0", "/hpc/applications/containers/ml-verse_4.2.0.sif"]
+      - [ "4.2.2", "/hpc/applications/containers/ml-verse_4.2.2.sif"]
+<%- if GroupInfo2.checkUserInGroup("stat_3341") -%>
+      - [ "STAT 3341 (custom 4.2.2 for course)", "/hpc/applications/containers/ml-verse_4.2.2_STAT3341.sif"]
+<%- end -%>
+<%- if GroupInfo2.checkUserInGroup("stat_6358") -%>
+      - [ "STATS 6358", "/hpc/applications/containers/biostats_latest.sif"]
+<%- end -%>
+  environment:
+    widget: text_area
+    label: "Custom Environment Settings"
+    help: |
+      Set custom environment variables, module paths via `module use
+      <path_to_modules>`, and additional modules via `module load
+      <space_separated_list_of_modules>`.
+  bc_num_hours:
+    id: bc_num_hours
+    label: Time (Hours)
+    help: |
+      - Number of hours to allocate
+      - Exceeding walltime time will automaticaly stop this job.
+    cacheable: true
+    widget: number_field
+    max: 24
+    min: 1
+    step: 1
+    value: 1
+  bc_num_slots:
+    id: num_nodes
+    label: Number of nodes
+    help: Number of compute nodes 
+    cacheable: true
+    widget: number_field
+    max: 81
+    min: 1
+    step: 1
+    value: 1
+  use_exclusive:
+    label: "Enable exclusive use"
+    id: enable_exclusive
+    widget: check_box
+    help: |
+        Automically request all available resources on each node (CPU cores, memory, GPUs, etc.)
+
+        **If your job does not require all of the available resources, this may result in significantly longer wait times**
+  bc_num_cores:
+    id: num_cpus
+    label: "Cores per node"
+    help: Number of CPU threads
+    cacheable: true
+    widget: number_field
+    max: 36
+    min: 1
+    value: 1
+  bc_num_gpus:
+    id: num_gpus
+    label: "GPUs per node"
+    help: Number of GPUs per node
+    cacheable: true
+    widget: number_field
+    max: 1
+    min: 0
+    step: 1
+    value: 0
+  bc_num_memory:
+    id: num_mem
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    widget: number_field
+    max: 250
+    min: 1
+    step: 1
+    value: 6
+  custom_queue:
+    label: "Partition"
+    help: |
+      Please select an [M2 SLURM partition] to submit from the drop-down.
+      NOTE: Queues designated with asterisks(*) contain [faculty partner nodes] primarily intended for use by specific faculty and their research groups and as such impose some restrictions, including the possibility of job pre-emption, on jobs submitted by those outside those teams.
+      [M2 SLURM partition]: https://s2.smu.edu/hpc/documentation/slurm.html#maneframe-ii-s-slurm-partitions-queues
+      [faculty partner nodes]: https://s2.smu.edu/hpc/documentation/about.html#faculty-partner-nodes
+    widget: select
+    options:
+      - [ "development [Max Time: 2 hours]",             "development"    ]
+      - [ "htc [Max Time: 12 hours, Maximum Nodes: 1]",  "htc"            ]
+      - [ "standard-mem-s [Max Time: 12 hours]",         "standard-mem-s" ]
+      - [ "medium-mem-1-s [Max Time: 12 hours]",         "medium-mem-1-s" ]
+      - [ "medium-mem-2 [Max Time: 12 hours]",           "medium-mem-2"   ]
+      - [ "high-mem-1 [Max Time: 12 hours]",             "high-mem-1"     ]
+      - [ "high-mem-2 [Max Time: 12 hours]",             "high-mem-2"     ]
+      - [ "mic [Max Time: 12 hours]",                    "mic"            ]
+      - [ "gpgpu-1 [Max Time: 12 hours]",                "gpgpu-1"        ]
+      - [ "v100x8 [Max Time: 12 hours]",                 "v100x8"         ]
+      - [ "*fp-gpgpu-2 [Max Time: 12 hours]",            "fp-gpgpu-2"     ]
+      - [ "*fp-gpgpu-3 [Max Time: 12 hours]",            "fp-gpgpu-3"     ]
+      - [ "*fp-gpgpu-4 [Max Time: 12 hours]",            "fp-gpgpu-4"     ]
+  enable_start_time:
+    label: "Enable Earliest Start Time"
+    id: enable_start
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  start_time:
+    label: "Earliest Start Time"
+    id: start
+    cacheable: false
+    help: |
+        Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
+        **Your job will start after the set time depending on the resources available. There is no guarantee 
+        that your job will start at any particular time.**
+    widget: datetime_field
+  enable_end_time:
+    label: "Enable Latest Start Time"
+    id: enable_end
+    widget: check_box
+    help: |
+        Enable extra settings to control when this job may start.
+  end_time:
+    label: "Latest Start Time"
+    id: end
+    cacheable: false
+    min: "<%= DateTime.now + 30.minutes %>"
+    help: |
+        Specify the latest allowable start time. Leave blank or uncheck the box above to allow the job to queue with no limits.
+        **Jobs that do not start before this time will automatically be cancelled.**
+    widget: datetime_field
+
+  email_on_started:
+    label: "Email Address"
+    id: email_address
+    help: |
+        (Optional) Send an email to the provided address when the job starts.
+        **Leave blank if you do not want an email sent.**
+    widget: email_field

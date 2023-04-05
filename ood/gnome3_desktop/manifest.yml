@@ -1,0 +1,7 @@
+---
+name: GNOME v3 Desktop
+category: Interactive Apps
+subcategory: Desktops
+role: batch_connect
+description: "This app will launch a GNOME v3 Desktop session from a contiainer image on [M2 cluster].\r\n\r\n[M2 cluster]: https://s2.smu.edu/hpc/documentation/about.html\r\n"
+icon: fas://desktop

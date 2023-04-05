@@ -1,0 +1,15 @@
+---
+name: Jupyter Notebook
+category: Interactive Apps
+subcategory: Servers
+role: batch_connect
+description: |
+  This app will launch a [Jupyter Notebook] server on the [M2 cluster].
+
+  See the [Python Application] documentation for tips on converting notebooks
+  and other Python files to job scripts if you require longer than 12 hours
+  of runtime
+
+  [Jupyter Notebook]: https://jupyter.org/
+  [M2 cluster]: https://s2.smu.edu/hpc/documentation/about.html
+  [Python Application]: https://s2.smu.edu/hpc/documentation/applications/python.html

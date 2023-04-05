@@ -1,0 +1,10 @@
+---
+name: QGIS Client
+category: Interactive Apps
+subcategory: Geography & Global Information Systems
+role: batch_connect
+description: |
+  This app will launch an [QGIS] client session from a contiainer image on [M2 cluster].
+  [QGIS]: https://docs.qgis.org/3.16/en/docs
+  [M2 cluster]: https://s2.smu.edu/hpc/documentation/about.html
+icon: fas://desktop

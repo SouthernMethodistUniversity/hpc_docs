@@ -1,0 +1,15 @@
+---
+name: RStudio Server
+category: Interactive Apps
+subcategory: Servers
+role: batch_connect
+description: |
+  This app will launch [RStudio Server], an IDE for [R], on a cluster node.
+
+  See the [R Application] documentation for tips on running R scripts as batch
+  jobs if you require longer than 12 hours of runtime
+
+  [RStudio Server]: https://www.rstudio.com/products/rstudio-server/
+  [R]: https://www.r-project.org/
+  [R Application]: https://s2.smu.edu/hpc/documentation/applications/r.html
+
