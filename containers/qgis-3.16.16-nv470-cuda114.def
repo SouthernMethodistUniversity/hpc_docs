@@ -1,0 +1,58 @@
+Bootstrap: docker
+From: nvidia/cuda:11.4.0-devel-ubuntu18.04
+
+%labels
+    Author Richard England <rengland@smu.edu>
+    Version v3.16.16
+    Framework XFCE
+    Distribution Ubuntu 18.04 LTS
+    Application QGIS
+    Features CUDA 11.4.0
+    
+%post
+    apt update && apt upgrade -y
+    apt install -y wget gnupg ca-certificates language-pack-en-base libpci-dev curl software-properties-common
+    
+    export DEBIAN_FRONTEND=noninteractive
+    export TZ=US/Chicago
+    ln -fs /usr/share/zoneinfo/US/Chicago /etc/localtime
+    dpkg-reconfigure locales
+    
+    apt install -y xfce4
+    dpkg-reconfigure --frontend noninteractive tzdata
+    
+    apt install -y chromium-browser xfonts-base xfwm4 python-websockify
+    apt update && apt upgrade -y
+    
+    wget --no-check-certificate https://sourceforge.net/projects/turbovnc/files/2.2.7/turbovnc_2.2.7_amd64.deb/download && mv ./download ./turbovnc_2.2.7_amd64.deb && dpkg -i ./turbovnc_2.2.7_amd64.deb && rm -f ./turbovnc_2.2.7_amd64.deb && apt-get clean all
+    
+    #wget https://us.download.nvidia.com/tesla/510.47.03/nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && dpkg -i https://us.download.nvidia.com/tesla/510.47.03/nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && rm -f nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && apt-get update && apt-get -y install cuda-drivers && apt-get clean all
+    #wget https://us.download.nvidia.com/tesla/510.47.03/nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && dpkg -i https://us.download.nvidia.com/tesla/510.47.03/nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && rm -f nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && apt-get update && apt-get clean all
+    #wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin && mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600 && wget https://developer.download.nvidia.com/compute/cuda/11.6.2/local_installers/cuda-repo-ubuntu1804-11-6-local_11.6.2-510.47.03-1_amd64.deb && dpkg -i cuda-repo-ubuntu1804-11-6-local_11.6.2-510.47.03-1_amd64.deb && apt-key add /var/cuda-repo-ubuntu1804-11-6-local/7fa2af80.pub && apt-get update && apt-get -y install cuda-drivers nvidia-driver-510 libcublas-11-6 libcublas-dev-11-6 cuda-libraries-11-6 cuda-libraries-dev-11-6 cuda-runtime-11-6 cuda-toolkit-11-6 cuda-tools-11-6 cuda-demo-suite-11-6 cuda-11-6 cuda nvidia-utils-510 && apt-get clean all
+    
+    #curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xF60F4B3D7FA2AF80" | sudo apt-key add -
+    #apt-get update
+    #wget https://us.download.nvidia.com/tesla/510.47.03/nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && dpkg -i nvidia-driver-local-repo-ubuntu1804-510.47.03_1.0-1_amd64.deb && apt-key add /var/cuda-repo-ubuntu1804-11-6-local/7fa2af80.pub && apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin && mv cuda-ubuntu1805.pin /etc/apt/preferences.d/cuda-repository-pin-600 && apt-get update && apt-get install cuda && apt-get install nvidia-gds
+    add-apt-repository -y ppa:graphics-drivers/ppa && apt update && apt install -y nvidia-driver-470 mesa-opencl-icd ocl-icd-opencl-dev clinfo dkms && apt-get clean all
+    
+    echo "deb https://qgis.org/ubuntu-ltr bionic main" >> /etc/apt/sources.list
+    echo "deb-src https://qgis.org/ubuntu-ltr bionic main" >> /etc/apt/sources.list
+    wget -O - https://qgis.org/downloads/qgis-2020.gpg.key | gpg --import
+    
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key F7E06F06199EF2F2
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 46B5721DBBD2996A
+    apt update
+    
+    DEBIAN_FRONTEND=noninteractive apt install -y qgis qgis-plugin-grass
+    apt autoclean
+    apt autoremove --purge -y
+    rm -rf /var/lib/apt/lists/*
+    
+%environment
+    export TZ=US/Chicago
+    export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    
+%runscript
+    exec "$@"
+

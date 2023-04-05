@@ -1,0 +1,37 @@
+Bootstrap: docker
+From: centos:7
+
+%labels
+    Author Richard England <rengland@smu.edu>
+    Version v4.12.1
+    Framework Open OnDemand
+    Distribution CentOS 7
+    Application XFCE Desktop
+
+%post
+    yum install -y epel-release
+    yum -y groupinstall 'Base'
+    yum -y groupinstall 'Infiniband Support'
+    yum groupinstall -y 'Xfce' 'base-x'
+    yum -y groupinstall 'Compatibility Libraries'
+    yum -y groupinstall 'Network File System Client'
+    yum --setopt=group_package_types=mandatory,default,optional -y groupinstall 'Legacy X Window System Compatibility'
+    yum --setopt=group_package_types=mandatory,default,optional -y groupinstall 'Internet Browser'
+    yum -y install emacs
+    yum -y install graphviz
+    yum -y install Lmod-8.2.7-1.el7.x86_64
+    yum -y install glx-utils
+    yum -y install systemd-libs
+    yum -y install sssd
+    yum install -y python2-pip xorg-x11-apps xorg-x11-server-Xorg
+    pip install ts
+    yum install -y https://yum.osc.edu/ondemand/1.6/compute/el7Server/x86_64/python-websockify-0.8.0-1.el7.noarch.rpm
+    yum install -y https://yum.osc.edu/ondemand/latest/compute/el7Server/x86_64/turbovnc-2.2.3-1.el7.x86_64.rpm
+    yum remove -y tigervnc-server python2-pip mate-power-manager
+    yum -y groupinstall "Development Tools"
+    yum -y install kernel-devel kmod
+    ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
+    yum clean all
+    
+    rm -rf /var/cache/yum/*
+

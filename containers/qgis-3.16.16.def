@@ -1,0 +1,49 @@
+Bootstrap: docker
+From: nvidia/cuda:11.6.0-devel-ubuntu18.04
+
+%labels
+    Author rengland@smu.edu
+    Version v3.16.16
+    Framework XFCE
+    Distribution Ubuntu 18.04 LTS
+    Application QGIS
+    Features CUDA 11.6.0
+    
+%post
+    apt update && apt upgrade -y
+    apt install -y wget gnupg ca-certificates language-pack-en-base libpci-dev
+    
+    export DEBIAN_FRONTEND=noninteractive
+    export TZ=US/Chicago
+    ln -fs /usr/share/zoneinfo/US/Chicago /etc/localtime
+    dpkg-reconfigure locales
+    
+    apt install -y xfce4
+    dpkg-reconfigure --frontend noninteractive tzdata
+    
+    apt install -y chromium-browser xfonts-base xfwm4 python-websockify
+    apt update && apt upgrade -y
+    
+    wget --no-check-certificate https://sourceforge.net/projects/turbovnc/files/2.2.7/turbovnc_2.2.7_amd64.deb/download && mv ./download ./turbovnc_2.2.7_amd64.deb && dpkg -i ./turbovnc_2.2.7_amd64.deb && rm -f ./turbovnc_2.2.7_amd64.deb
+    
+    echo "deb https://qgis.org/ubuntu-ltr bionic main" >> /etc/apt/sources.list
+    echo "deb-src https://qgis.org/ubuntu-ltr bionic main" >> /etc/apt/sources.list
+    wget -O - https://qgis.org/downloads/qgis-2020.gpg.key | gpg --import
+    
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key F7E06F06199EF2F2
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-key 46B5721DBBD2996A
+    apt update
+    
+    DEBIAN_FRONTEND=noninteractive apt install -y qgis qgis-plugin-grass
+    apt autoclean
+    apt autoremove --purge -y
+    rm -rf /var/lib/apt/lists/*
+    
+%environment
+    export TZ=US/Chicago
+    export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/var/run/dbus/system_bus_socket
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    
+%runscript
+    exec "$@"
+
