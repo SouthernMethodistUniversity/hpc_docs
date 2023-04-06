@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Standard-, Medium-, and High- Memory Compute Nodes &#8212; SMU HPC Documentation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,59 +61,92 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'm2/common/description_long';</script>
+    <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/smu_logo.jpg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">SMU HPC Documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/smu_logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/smu_logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -111,380 +155,206 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  About
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../mp/about.html">
-   NVIDIA DGX SuperPOD (MP)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../about.html">
-   ManeFrame II (M2)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../m3/about.html">
-   ManeFrame III (M3)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">HPC Systems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Accounts
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accounts</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../accounts.html">
-   Request Accounts
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Request Accounts</a></li>
+
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Access
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Access</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../access.html">
-   Access SMU HPC Systems
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../access.html">Access SMU HPC Systems</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../tutorials/intro.html">
-   HPC Tutorials
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../tutorials/unix/intro.html">
-   UNIX and Linux Shells
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../tutorials/cpp/intro.html">
-   Introduction to Programming in C++
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cpp/session_1.html">
-     Session 1
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cpp/session_2.html">
-     Session 2
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cpp/session_3.html">
-     Session 3
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cpp/session_4.html">
-     Session 4
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tutorials/cpp/session_5.html">
-     Session 5
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/intro.html">HPC Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/unix/intro.html">UNIX and Linux Shells</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/cpp/intro.html">Introduction to Programming in C++</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_1.html">Session 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_2.html">Session 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_3.html">Session 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_4.html">Session 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_5.html">Session 5</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Policies
- </span>
-</p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../policies/policies.html">
-   Policies
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../policies/policies.html">Policies</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/m2/common/description_long.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/m2/common/description_long.rst"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Standard-, Medium-, and High- Memory Compute Nodes
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accelerator-nodes-with-nvidia-gpus">
-   Accelerator Nodes with NVIDIA GPUs
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#many-core-nodes-with-intel-xeon-phi-processors">
-   Many-Core Nodes with Intel Xeon Phi Processors
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#virtual-desktop-nodes">
-   Virtual Desktop Nodes
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#high-performance-network">
-   High-Performance Network
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#high-performance-and-archival-storage">
-   High-Performance and Archival Storage
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#faculty-partner-nodes">
-   Faculty Partner Nodes
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#professor-thomas-hagstrom-mathematics">
-     <em>
-      Professor Thomas Hagstrom (Mathematics)
-     </em>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#professor-barbara-minsker-civil-and-environmental-engineering">
-     <em>
-      Professor Barbara Minsker (Civil and Environmental Engineering)
-     </em>
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Standard-, Medium-, and High- Memory Compute Nodes</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Standard-, Medium-, and High- Memory Compute Nodes
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#accelerator-nodes-with-nvidia-gpus">
-   Accelerator Nodes with NVIDIA GPUs
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#many-core-nodes-with-intel-xeon-phi-processors">
-   Many-Core Nodes with Intel Xeon Phi Processors
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#virtual-desktop-nodes">
-   Virtual Desktop Nodes
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#high-performance-network">
-   High-Performance Network
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#high-performance-and-archival-storage">
-   High-Performance and Archival Storage
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#faculty-partner-nodes">
-   Faculty Partner Nodes
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#professor-thomas-hagstrom-mathematics">
-     <em>
-      Professor Thomas Hagstrom (Mathematics)
-     </em>
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#professor-barbara-minsker-civil-and-environmental-engineering">
-     <em>
-      Professor Barbara Minsker (Civil and Environmental Engineering)
-     </em>
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Standard-, Medium-, and High- Memory Compute Nodes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard-, Medium-, and High- Memory Compute Nodes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerator-nodes-with-nvidia-gpus">Accelerator Nodes with NVIDIA GPUs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#many-core-nodes-with-intel-xeon-phi-processors">Many-Core Nodes with Intel Xeon Phi Processors</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-desktop-nodes">Virtual Desktop Nodes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-network">High-Performance Network</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-and-archival-storage">High-Performance and Archival Storage</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#faculty-partner-nodes">Faculty Partner Nodes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-thomas-hagstrom-mathematics"><em>Professor Thomas Hagstrom (Mathematics)</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-barbara-minsker-civil-and-environmental-engineering"><em>Professor Barbara Minsker (Civil and Environmental Engineering)</em></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p>SMU’s high performance computing (HPC) cluster, ManeFrame II (M2), features
 state-of-the-art CPUs, accelerators, and networking technologies, high memory
 capacity per node, and advanced interactive GPU-accelerated remote desktop
@@ -497,13 +367,6 @@ high-level programming environments such as MATLAB, Python, and R are also
 installed in addition to the domain specific software packages that SMU
 researchers depend on for their work.</p>
 <table class="table">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 19%" />
-<col style="width: 17%" />
-<col style="width: 16%" />
-<col style="width: 26%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>ManeFrame I (<em>retired</em>)</p></th>
@@ -576,7 +439,7 @@ researchers depend on for their work.</p>
 </tbody>
 </table>
 <section id="standard-medium-and-high-memory-compute-nodes">
-<span id="standard-nodes"></span><h1>Standard-, Medium-, and High- Memory Compute Nodes<a class="headerlink" href="#standard-medium-and-high-memory-compute-nodes" title="Permalink to this headline">#</a></h1>
+<span id="standard-nodes"></span><h1>Standard-, Medium-, and High- Memory Compute Nodes<a class="headerlink" href="#standard-medium-and-high-memory-compute-nodes" title="Permalink to this heading">#</a></h1>
 <p>Each of the 176 standard compute nodes has 36 cores, 256 GB of memory, and 100
 Gb/s networking. Specifically, these nodes contain dual Intel Xeon E5-2695v4
 2.1 GHz 18-core “Broadwell” processors with 45 MB of cache each and 256 GB of
@@ -588,7 +451,7 @@ memory respectively and ManeFrame I’s four 768 GB and six 1,536 GB (1.5 TB)
 nodes are also part of ManeFrame II.</p>
 </section>
 <section id="accelerator-nodes-with-nvidia-gpus">
-<span id="p100-nodes"></span><h1>Accelerator Nodes with NVIDIA GPUs<a class="headerlink" href="#accelerator-nodes-with-nvidia-gpus" title="Permalink to this headline">#</a></h1>
+<span id="p100-nodes"></span><h1>Accelerator Nodes with NVIDIA GPUs<a class="headerlink" href="#accelerator-nodes-with-nvidia-gpus" title="Permalink to this heading">#</a></h1>
 <p>M2 contains 36 accelerator nodes with NVIDIA GPUs are configured with dual
 Intel Xeon E5-2695v4 2.1 GHz 18-core “Broadwell” processors, 256 GB of
 DDR4-2400 memory, and one NVIDIA P100 GPU accelerator. Each NVIDIA P100 GPU has
@@ -603,7 +466,7 @@ significantly more approachable for many computationally intensive
 applications.</p>
 </section>
 <section id="many-core-nodes-with-intel-xeon-phi-processors">
-<span id="knl-nodes"></span><h1>Many-Core Nodes with Intel Xeon Phi Processors<a class="headerlink" href="#many-core-nodes-with-intel-xeon-phi-processors" title="Permalink to this headline">#</a></h1>
+<span id="knl-nodes"></span><h1>Many-Core Nodes with Intel Xeon Phi Processors<a class="headerlink" href="#many-core-nodes-with-intel-xeon-phi-processors" title="Permalink to this heading">#</a></h1>
 <p>The 36 many-core nodes are configured with Intel Xeon Phi 7230 (also
 known as Knights Landing or KNL) processors and 385 GB of DDR4-2400
 memory. Each Xeon Phi has 64 1.30 GHz cores and 16 GB of high bandwidth
@@ -615,7 +478,7 @@ therefore do not require specialized programming languages or
 directives/pragmas.</p>
 </section>
 <section id="virtual-desktop-nodes">
-<h1>Virtual Desktop Nodes<a class="headerlink" href="#virtual-desktop-nodes" title="Permalink to this headline">#</a></h1>
+<h1>Virtual Desktop Nodes<a class="headerlink" href="#virtual-desktop-nodes" title="Permalink to this heading">#</a></h1>
 <p>The five virtual desktop nodes will allow researchers remote desktop
 access to high-performance compute capability. These nodes can be used
 for applications that have demanding remote visualization and/or
@@ -626,7 +489,7 @@ applications. Each node has dual Intel Xeon E5-2695v4 2.1 GHz 18-core
 Quadro M5000 GPU.</p>
 </section>
 <section id="high-performance-network">
-<h1>High-Performance Network<a class="headerlink" href="#high-performance-network" title="Permalink to this headline">#</a></h1>
+<h1>High-Performance Network<a class="headerlink" href="#high-performance-network" title="Permalink to this heading">#</a></h1>
 <p>The cluster provides high-speed and low-latency EDR InfiniBand
 networking. Every node is equipped with a Mellanox ConnectX-5 InfiniBand
 adaptor and all nodes are connected via Mellanox Switch-IB 2 switches.
@@ -637,7 +500,7 @@ calls, thereby reducing the load on the processors, freeing them to work
 on other computations.</p>
 </section>
 <section id="high-performance-and-archival-storage">
-<h1>High-Performance and Archival Storage<a class="headerlink" href="#high-performance-and-archival-storage" title="Permalink to this headline">#</a></h1>
+<h1>High-Performance and Archival Storage<a class="headerlink" href="#high-performance-and-archival-storage" title="Permalink to this heading">#</a></h1>
 <p>The cluster has four storage systems. The first storage system is an NFS based
 storage providing space for home directories, applications, libraries, and
 compilers, etc. This storage system provides 11.4 TB of sold state drive based
@@ -651,10 +514,10 @@ that includes off-site backup for disaster recovery. The fourth storage system,
 “work”, provides 8 TB of storage per user.</p>
 </section>
 <section id="faculty-partner-nodes">
-<h1>Faculty Partner Nodes<a class="headerlink" href="#faculty-partner-nodes" title="Permalink to this headline">#</a></h1>
+<h1>Faculty Partner Nodes<a class="headerlink" href="#faculty-partner-nodes" title="Permalink to this heading">#</a></h1>
 <p>See <span class="xref std std-ref">Programs and Policies</span> for more information.</p>
 <section id="professor-thomas-hagstrom-mathematics">
-<span id="fp-hagstrom"></span><h2><em>Professor Thomas Hagstrom (Mathematics)</em><a class="headerlink" href="#professor-thomas-hagstrom-mathematics" title="Permalink to this headline">#</a></h2>
+<span id="fp-hagstrom"></span><h2><em>Professor Thomas Hagstrom (Mathematics)</em><a class="headerlink" href="#professor-thomas-hagstrom-mathematics" title="Permalink to this heading">#</a></h2>
 <p>Professor Hagstrom has one node that is available as port of M2. This node has
 dual Intel Xeon E5-2680v3 2.50 GHz 12-core “Sandy Bridge” processors, 128 GB of
 memory, and quad NVIDIA K80 GPU accelerators. Each GPU has 4,992 CUDA cores and
@@ -662,7 +525,7 @@ memory, and quad NVIDIA K80 GPU accelerators. Each GPU has 4,992 CUDA cores and
 <p>The queue for these nodes, <code class="docutils literal notranslate"><span class="pre">fp-gpgpu-2</span></code>, is generally available to M2 users.</p>
 </section>
 <section id="professor-barbara-minsker-civil-and-environmental-engineering">
-<span id="fp-minsker"></span><h2><em>Professor Barbara Minsker (Civil and Environmental Engineering)</em><a class="headerlink" href="#professor-barbara-minsker-civil-and-environmental-engineering" title="Permalink to this headline">#</a></h2>
+<span id="fp-minsker"></span><h2><em>Professor Barbara Minsker (Civil and Environmental Engineering)</em><a class="headerlink" href="#professor-barbara-minsker-civil-and-environmental-engineering" title="Permalink to this heading">#</a></h2>
 <p>Professor Minsker has two nodes that are availabe as part of M2. These nodes
 each have dual Intel Xeon Gold 6148 2.40 GHz 20-core “Skylake” processors, 384
 GB of memory, dual NVIDIA V100 GPU accelerators, and 2 TB of local RAID scratch
@@ -693,7 +556,7 @@ indefinitely until jobs submitted with the flag finish</p></li>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./m2/common"
         },
         predefinedOutput: true
@@ -701,36 +564,98 @@ indefinitely until jobs submitted with the flag finish</p></li>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard-, Medium-, and High- Memory Compute Nodes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accelerator-nodes-with-nvidia-gpus">Accelerator Nodes with NVIDIA GPUs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#many-core-nodes-with-intel-xeon-phi-processors">Many-Core Nodes with Intel Xeon Phi Processors</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-desktop-nodes">Virtual Desktop Nodes</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-network">High-Performance Network</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#high-performance-and-archival-storage">High-Performance and Archival Storage</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#faculty-partner-nodes">Faculty Partner Nodes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-thomas-hagstrom-mathematics"><em>Professor Thomas Hagstrom (Mathematics)</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#professor-barbara-minsker-civil-and-environmental-engineering"><em>Professor Barbara Minsker (Civil and Environmental Engineering)</em></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Southern Methodist University<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Southern Methodist University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
