@@ -5,9 +5,7 @@ defaults:
 parts:
 - caption: About
   chapters:
-  - file: mp/about.md
-  - file: m2/about.rst
-  - file: m3/about.md
+  - file: about.md
 - caption: Accounts
   chapters:
   - file: accounts.md
