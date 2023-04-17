@@ -4,10 +4,14 @@ env_dir="$WORK/.venv/torch"
 
 env_install() {
   req=$1
+  env_dir=${env_dir}_${cluster}
   python3 -m venv $env_dir
   source $env_dir/bin/activate
   pip3 install -U pip wheel setuptools
   pip3 install -r $req
+  echo "Finished installing Python environment."
+  echo "Use via:"
+  echo "source ${env_dir}/bin/activate"
 }
 
 env_mp() {
