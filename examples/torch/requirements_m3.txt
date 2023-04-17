@@ -1,0 +1,9 @@
+torch==2.0.0
+--index-url https://download.pytorch.org/whl/cpu
+torchvision==0.15.1
+--index-url https://download.pytorch.org/whl/cpu
+torchaudio==2.0.1
+--index-url https://download.pytorch.org/whl/cpu
+jupyterlab==3.6.3
+pandas==2.0.0
+
