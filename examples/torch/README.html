@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Session 4 &#8212; SMU HPC Documentation</title>
+    <title>Torch &#8212; SMU HPC Documentation</title>
   
   
   
@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cpp/session_4';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/torch/README';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Session 5" href="session_5.html" />
-    <link rel="prev" title="Session 3" href="session_3.html" />
+    <link rel="next" title="HPC Tutorials" href="../../tutorials/intro.html" />
+    <link rel="prev" title="Access SMU HPC Systems" href="../../access.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,19 +173,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../access.html">Access SMU HPC Systems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../examples/torch/README.html">Torch</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Torch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">HPC Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unix/intro.html">UNIX and Linux Shells</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Introduction to Programming in C++</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="session_1.html">Session 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_2.html">Session 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_3.html">Session 3</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Session 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_5.html">Session 5</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/intro.html">HPC Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/unix/intro.html">UNIX and Linux Shells</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/cpp/intro.html">Introduction to Programming in C++</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_1.html">Session 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_2.html">Session 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_3.html">Session 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_4.html">Session 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_5.html">Session 5</a></li>
 </ul>
 </li>
 </ul>
@@ -246,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/tutorials/cpp/session_4.md" target="_blank"
+      <li><a href="../../_sources/examples/torch/README.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -328,7 +328,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Session 4</h1>
+    <h1>Torch</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -338,14 +338,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-classes">C++ Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-vector-class">Simple Vector Class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-inheritance">Class Inheritance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigen-demo">Eigen Demo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#armadillo-demo">Armadillo Demo</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
 </ul>
             </nav>
         </div>
@@ -357,30 +351,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="session-4">
-<h1>Session 4<a class="headerlink" href="#session-4" title="Permalink to this heading">#</a></h1>
-<section id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>C++ Classes</p></li>
-<li><p>C++ Eigen</p></li>
-<li><p>C++ Armadillo</p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="torch">
+<h1>Torch<a class="headerlink" href="#torch" title="Permalink to this heading">#</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>Run the script <code class="docutils literal notranslate"><span class="pre">./setup_env.sh</span></code>, which will install Torch, JupyterLab,
+and Pandas in a cluster-specific Python environment on either MP or M3.
+The GPU version of Torch is installed on MP, while the CPU-only version
+is installed on M3.</p>
 </section>
-<section id="c-classes">
-<h2>C++ Classes<a class="headerlink" href="#c-classes" title="Permalink to this heading">#</a></h2>
-<section id="simple-vector-class">
-<h3>Simple Vector Class<a class="headerlink" href="#simple-vector-class" title="Permalink to this heading">#</a></h3>
-</section>
-<section id="class-inheritance">
-<h3>Class Inheritance<a class="headerlink" href="#class-inheritance" title="Permalink to this heading">#</a></h3>
-</section>
-<section id="eigen-demo">
-<h3>Eigen Demo<a class="headerlink" href="#eigen-demo" title="Permalink to this heading">#</a></h3>
-</section>
-<section id="armadillo-demo">
-<h3>Armadillo Demo<a class="headerlink" href="#armadillo-demo" title="Permalink to this heading">#</a></h3>
-</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h2>
+<p>Source the Python environment via <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">${env_dir}/bin/activate</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">${env_dir}</span></code> is the root installation path.</p>
 </section>
 </section>
 
@@ -397,7 +380,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./tutorials/cpp"
+            path: "./examples/torch"
         },
         predefinedOutput: true
     }
@@ -416,20 +399,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="session_3.html"
+       href="../../access.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Session 3</p>
+        <p class="prev-next-title">Access SMU HPC Systems</p>
       </div>
     </a>
     <a class="right-next"
-       href="session_5.html"
+       href="../../tutorials/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Session 5</p>
+        <p class="prev-next-title">HPC Tutorials</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -451,14 +434,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-classes">C++ Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-vector-class">Simple Vector Class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-inheritance">Class Inheritance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigen-demo">Eigen Demo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#armadillo-demo">Armadillo Demo</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
 </ul>
   </nav></div>
 
