@@ -12,6 +12,9 @@ parts:
 - caption: Access
   chapters:
   - file: access.md
+- caption: Applications
+  chapters:
+  - file: examples/torch/README.md
 - caption: Tutorials
   chapters:
   - file: tutorials/intro.md
