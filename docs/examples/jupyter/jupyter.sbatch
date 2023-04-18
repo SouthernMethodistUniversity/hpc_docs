@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -J jupyter
 #SBATCH -o jupyter_%j.out
-#SBATCH -c 1
-#SBATCH --mem=6G
+#SBATCH -G 1
+#SBATCH -t 0-1
 
 # Configure resources
 # -----------------------------------------------------------------------------
@@ -20,19 +20,28 @@ source $WORK/.venv/jupyter/bin/activate # See above as needed
 # Launch JupyterLab session (Usually no need to edit below)
 # -----------------------------------------------------------------------------
 
-declare -A d
-d["slurm_cluster"]="m2"
-d["nvidia"]="superpod"
-d["m3"]="m3"
-login=$(printf "%s.%s.smu.edu"\
- $SLURM_SUBMIT_HOST\
- ${d[$SLURM_CLUSTER_NAME]})
+case $SLURM_CLUSTER_NAME in
+  slurm_cluster)
+    node=$SLURM_SUBMIT_HOST
+    name="m2"
+    ;;
+  nvidia)
+    node=$(echo $SLURM_SUBMIT_HOST | tr -d 's-')
+    name="superpod"
+    ;;
+  m3)
+    node=$SLURM_SUBMIT_HOST
+    name="m3"
+    ;;
+esac
+
+login=$(printf "%s.%s.smu.edu" ${node} ${name})
 port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 jupyter lab --no-browser --ip=127.0.0.1 --port=${port} &
 while ! $(jupyter server list 2>&1 | grep -q ${port}); do
   sleep 5s
 done
-url=$(jupyter server list 2>&1 | grep ${port} | cut -d' ' -f2)
+url=$(jupyter server list 2>&1 | awk '/'${port}'/{print $2}')
 
 echo "# -----------------------------------------------------------------------------"
 echo "Mac/Linux/WSL/PowerShell:"
