@@ -14,6 +14,9 @@ elsif working_dir.file?
 end
 %>
 
+# FOR TESTING. LOAD LOCAL MODULE
+module use /users/jlagrone/repos/hpc_docs/modules/m3/
+
 CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
@@ -24,7 +27,7 @@ export PASSWORD="$password"
 echo "$(date): Running on compute node ${compute_node}:$port"
 
 # VSCode complains that system git is too old.
-module load project/ondemand git app_code_server/<%= code_server_version %>
+module load code-server/<%= code_server_version %>
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
 
@@ -49,7 +52,12 @@ if [[ -f "$CPP_FILE" ]]; then
 echo "$(date): Started code-server"
 echo ""
 
-code-server \
+ /hpc/m3/containers/code-server/code-server_amd64-4.11.0.sif /app/code-server/bin/code-server
+
+apptainer exec \
+    -B $WORK,$SCRATCH \
+    /hpc/m3/containers/code-server/code-server_amd64-4.11.0.sif \
+    /app/code-server/bin/code-server \
     --auth="password" \
     --bind-addr="0.0.0.0:${port}" \
     --disable-telemetry \

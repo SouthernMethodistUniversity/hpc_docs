@@ -5,7 +5,7 @@ local work_dir = os.getenv("WORK")
 local scratch_dir = os.getenv("SCRATCH")
 
 function build_command(app)
-  local cmd        = 'apptainer run  -B ' .. scratch_dir .. ',' .. work_dir .. ' -B /users/jlagrone/repos/hpc_docs/containers/code-server:/host_pwd --pwd /host_pwd ' .. sif_file .. ' ' .. app
+  local cmd        = 'apptainer exec -u -B ' .. scratch_dir .. ',' .. work_dir .. ' -B /users/jlagrone/repos/hpc_docs/containers/code-server:/host_pwd --pwd /host_pwd ' .. sif_file .. ' /app/code-server/bin/code-server'
   local sh_ending  = ' ""'
   local csh_ending = ' '
   local sh_cmd     = cmd .. sh_ending
