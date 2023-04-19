@@ -1,21 +1,25 @@
 <%-
 require 'open3'
 
-
 # find user conda environments
-class CustomEnvironments2
+class CustomEnvironments
 
   @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
 
   def self.LookForConda()
     begin
       # try to find a path for conda
-      script = 'eval $(conda shell.bash hook); /usr/bin/which conda'
-      o, status = Open3.capture2('/bin/bash -l', stdin_data: script)
+      # conda is usually a shell function, so it's not easily checked
+      # look for CONDA_EXE environment variable
+      script = "eval $(conda shell.bash hook);  /usr/bin/env | /usr/bin/grep -oP 'CONDA_EXE=\\K.+'"
+      o, status = Open3.capture2('/bin/bash -l -i', stdin_data: script)
       output = o.split("\n")
       open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Which conda returns "
+        f.puts "Ran " + script
+        f.puts "output"
         f.puts output
+        f.puts "status"
+        f.puts status
       }
       if output.empty?
         # TODO: change to default path / module
@@ -64,79 +68,270 @@ class CustomEnvironments2
     end
   end
 
-  def self.CondaEnvs2()
+  def self.GetCondaProviders()
     begin
 
-      conda_provider = LookForMicromamba()
-      if conda_provider.empty?
-        conda_provider = LookForMamba()
-      end
-      if conda_provider.empty?
-        conda_provider = LookForConda()
+      @FoundCondaProviders = []
+
+      # TODO: Add defaults?
+      temp = LookForMamba()
+      if !(temp.empty?)
+        val = ["Mamba", temp]
+        @FoundCondaProviders.push(val)
       end
 
-      #TODO: default check
-      if conda_provider.empty?
-        conda_provider = '/users/jlagrone/.local/bin/micromamba'
+      temp = LookForMicromamba()
+      if !(temp.empty?)
+        val = ["Micromamba", temp]
+        @FoundCondaProviders.push(val)
       end
 
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Conda Provider: "
-        f.puts conda_provider
-      }
-      # get Conda environments from Conda info
-      script = conda_provider.to_str + ' env list -q'
+      temp = LookForConda()
+      if !(temp.empty?)
+        val = ["Conda", temp]
+        @FoundCondaProviders.push(val)
+      end
+ 
+      return @FoundCondaProviders
+    end
+  end
+
+  def self.CondaProviders
+    begin
+      @CondaProviders = @cache.fetch("#{User.new.name}/conda_providers", race_condition_ttl: 30.seconds) do
+        self.GetCondaProviders()
+      end
+      @CondaProviders
+    end
+  end
+
+  def self.GetCondaEnvs(conda_command)
+    begin
+
+       # get Conda environments from Conda info
+      script = conda_command + ' info -e'
       o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
       output = o.split("\n")
-
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Running: "
-        f.puts script
-        f.puts output
-      }
-
-      # check the output of Conda info for useable envs
       conda_env = []
-      enabled_envs = []
-      disabled_envs = []
-      output.each do |env| 
-        # skip envs in /hpc/applications and commented out lines
-        if env =~ /^((?!hpc\/applications).)*$/ && env[0] != '#'
+    
+      # parse the output
+      output.each do |env|
+        # skip commented out lines
+        if env[0] != '#'
           # Conda info returns an optional name followed by a path
           # so split the current line into the name (possibly blank)
           # and the path to the env
           split_env = env.split
     
-          # if the name is blank use the path as the name
+          # if the name is blank insert a blank into the array
           if split_env.count == 1
-            split_env.push(split_env[0])
+            split_env = ["", split_env[0]]
           end
+          
+          # append the conda command
+          split_env.push("Conda Env")
+          split_env.push(conda_command)
+
           conda_env.push(split_env)
         end
       end
-      #return
+
+      return conda_env
+    end
+  end    
+
+  def self.GetMambaEnvs(mamba_command)
+    begin
+
+       # get Conda environments from Conda info
+      script = mamba_command + ' env list -q'
+      o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
+      output = o.split("\n")
+      mamba_env = []
+
+      # parse the output
+      output.each do |env|
+        # skip commented out lines
+        if env[0] != '#'
+          # Mamba info returns an optional name followed by a path
+          # so split the current line into the name (possibly blank)
+          # and the path to the env
+          split_env = env.split
+
+          # if the name is blank insert a blank into the array
+          if split_env.count == 1
+            split_env = ["", split_env[0]]
+          end
+
+          # append the conda command
+          split_env.push("Mamba Env")
+          split_env.push(mamba_command)
+
+          mamba_env.push(split_env)
+        end
+      end
+
+      return mamba_env
+    end
+  end
+
+  def self.GetMicromambaEnvs(micromamba_command)
+    begin
+
+       # get Conda environments from Conda info
+      script = micromamba_command + ' env list -q'
+      o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
+      output = o.split("\n")
+      micromamba_env = []
+
+      # parse the output
+      # first 2 lines are headers
+      output.shift
+      output.shift
+
+      output.each do |env|
+        # skip commented out lines
+        if env[0] != '#'
+          # Micromamba info returns an optional name, optional activation, followed by a path
+          # so split the current line into the name (possibly blank)
+          # and the path to the env
+          split_env = env.split
+
+          # remove * for activated if present
+          if split_env[0] == '*'
+            env_split.shift
+          end
+          if split_env[1] == '*'
+            env_split.delete_at(1)
+          end
+
+          # if the name is blank insert a blank into the array
+          if split_env.count == 1
+            split_env = ["", split_env[0]]
+          end
+
+          # append the conda command
+          split_env.push("Micromamba Env")
+          split_env.push(micromamba_command)
+           
+          micromamba_env.push(split_env)
+        end
+      end
+
+      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+        f.puts "Found Micromamba Envs: "
+        micromamba_env.each do |env|
+          f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
+        end
+      }
+
+      return micromamba_env
+    end
+  end    
+
+  def self.UniqueEnvs()
+    begin
+   
+      envs = []
+      
+      # get all the environments
+      self.CondaProviders.each do |provider|
+        open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+          f.puts "Checking for envs with: " + provider[0] + ", " + provider[1]
+        }
+        if provider[0] == "Conda"
+          temp = self.GetCondaEnvs(provider[1])
+          open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+            f.puts "Found: "
+            temp.each do |env|
+              f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
+            end
+          }
+          temp.each do |val|
+            envs.push(val)
+          end
+        elsif provider[0] == "Mamba"
+          temp = self.GetMambaEnvs(provider[1])
+          open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+            f.puts "Found: "
+            temp.each do |env|
+              f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
+            end
+          }
+          temp.each do |val|
+            envs.push(val)
+          end
+        elsif provider[0] == "Micromamba"
+          temp = self.GetMicromambaEnvs(provider[1])
+          open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+            f.puts "Found: "
+            temp.each do |env|
+              f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
+            end
+          }
+          temp.each do |val|
+            envs.push(val)
+          end
+        end
+      end
+
+      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+        f.puts "All Envs: "
+        f.puts envs
+      }
+
+      # remove duplicates. Prefer version with name if it exists
+      i = 0
+      while i < envs.count() do
+        j = i + 1
+        while j < envs.count() do
+          if (envs[i][1] == envs[j][1])
+            # if one has a name, keep that one
+            if envs[i][0].empty? && !(envs[j][0].empty?)
+              envs[i][0] = envs[j][0]
+              envs[i][1] = envs[j][1]
+              envs[i][2] = envs[j][2]
+              envs[i][3] = envs[j][3]
+            end
+            envs.delete_at(j)
+          else
+            j += 1
+          end
+        end
+        i += 1
+      end
+      return envs
+    end
+  end
+
+
+  def self.CondaEnvs()
+    begin
+
+      conda_env = self.UniqueEnvs()
       return conda_env
     end
   end
 
-  def self.JupyterLabEnvs2
+  def self.JupyterLabEnvs
     begin
        
-      @JupyterLabEnvs2 = []
+      @JupyterLabEnvs = []
 
       # always include the default python/3 module
-      python3_module = [ "python/3",    "python/3" ]
+      # FIXME
+      python3_module = [ "Default System Env",    "Default Env Path", "Default Env Type", "Default Conda Path" ]
       
       # always include to option to define a custom env
-      custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-      @JupyterLabEnvs2.push(python3_module)
-      @JupyterLabEnvs2.push(custom_env)
+      custom_env = [ "Custom Environment - only use what is specified below", "custom", "user provided", "user provided"   ]
+      @JupyterLabEnvs.push(python3_module)
+      @JupyterLabEnvs.push(custom_env)
 
       # check the output of Conda info for useable envs
       enabled_envs = []
       disabled_envs = []
       @CondaEnvsTest = @cache.fetch("#{User.new.name}/conda_envs", race_condition_ttl: 30.seconds) do
-        self.CondaEnvs2()
+        self.CondaEnvs()
       end
       @CondaEnvsTest.each do |env| 
         # now check if there is a jupyter-lab in the env
@@ -145,11 +340,11 @@ class CustomEnvironments2
         jupyter_path = env[1] + "/bin/jupyter-lab"
         if File.file?(jupyter_path)
           tmp_env = env
-          tmp_env[0] = "(Conda Env) " + env[0]
+          tmp_env[0] = "(" + env[2] + ") " + env[0]
           enabled_envs.push(tmp_env)
         else
           tmp_env = env
-          tmp_env[0] = "(Install jupyterlab to use) " + env[0]
+          tmp_env[0] = "(" + env[2] + " -- Install jupyterlab to use) " + env[0]
           tmp_env[1] = "No Jupyter Lab"
           disabled_envs.push(tmp_env)
         end
@@ -157,63 +352,22 @@ class CustomEnvironments2
       # add the found environments to the list
       # the disabled environments are listed last
       enabled_envs.each do |env|
-        @JupyterLabEnvs2.push(env)
+        @JupyterLabEnvs.push(env)
       end
       disabled_envs.each do |env|
-        @JupyterLabEnvs2.push(env)
+        @JupyterLabEnvs.push(env)
       end
       #return
-      @JupyterLabEnvs2
-    end
-  end
-
-  def self.JupyterNotebookEnvs2
-    begin
-       
-      @JupyterNotebookEnvs2 = []
-
-      # always include the default python/3 module
-      python3_module = [ "python/3",    "python/3" ]
-      
-      # always include to option to define a custom env
-      custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-      @JupyterNotebookEnvs2.push(python3_module)
-      @JupyterNotebookEnvs2.push(custom_env)
-
-      # check the output of Conda info for useable envs
-      enabled_envs = []
-      disabled_envs = []
-      @CondaEnvsTest2 = @cache.fetch("#{User.new.name}/conda_envs") do
-        self.CondaEnvs2()
-      end
-      @CondaEnvsTest2.each do |env|
-        # now check if there is a jupyter-notebook in the env
-        # if it exists, add it to the enabled list
-        # otherwise add it to the disabled list
-        jupyter_path = env[1] + "/bin/jupyter-notebook"
-        if File.file?(jupyter_path)
-          tmp_env = env
-          tmp_env[0] = "(Conda Env) " + env[0]
-          enabled_envs.push(tmp_env)
-        else
-          tmp_env = env
-          tmp_env[0] = "(Install jupyter notebook to use) " + env[0]
-          tmp_env[1] = "No Jupyter Lab"
-          disabled_envs.push(tmp_env)
+      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
+        f.puts "Environments: "
+        @JupyterLabEnvs.each do |env|
+          f.puts env[0] + ", " + env[1] + ", " + env[2]
         end
-      end
-      # add the found environments to the list
-      # the disabled environments are listed last
-      enabled_envs.each do |env|
-        @JupyterNotebookEnvs2.push(env)
-      end
-      disabled_envs.each do |env|
-        @JupyterNotebookEnvs2.push(env)
-      end
-      #return
-      @JupyterNotebookEnvs2
+      }
+      @JupyterLabEnvs
     end
   end
+
 end
 
 
@@ -222,6 +376,8 @@ end
 ---
 cluster: "m3cluster"
 form:
+  - conda_command
+  - auto_accounts
   - auto_queues
   - python_version
   - environment
@@ -242,7 +398,16 @@ attributes:
       - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
       - Other environments can be specified by selecting "Custom Environment"
     options:
-      <%- CustomEnvironments2.JupyterLabEnvs2.each do |q| -%>
+      <%- CustomEnvironments.JupyterLabEnvs.each do |q| -%>
+        - [ "<%= q[0] %>", "<%= q[1] %>",
+            data-set-conda-command: <%= q[2] %>
+          ]
+      <%- end -%>
+  conda_command:
+    widget: select
+    help: "Select conda / mamba to use"
+    options:
+      <%- CustomEnvironments.CondaProviders.each do |q| -%>
         - [ "<%= q[0] %>", "<%= q[1] %>" ]
       <%- end -%>
   environment:

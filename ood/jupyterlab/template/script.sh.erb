@@ -19,6 +19,8 @@ cd "${HOME}"
 # Purge the module environment to avoid conflicts
 module purge
 
+CONDA_COMMAND=<%= context.conda_command %>
+
 # python environment from the drop down menu
 <% if context.python_version == "python/3" %>
 module load python/3
