@@ -11,7 +11,7 @@ echo "Building tag: ${TAG}"
 
 # build the container
 module purge
-module load applications/apptainer
+module load apptainer
 
 CONTAINER_NAME=rocker_geospatial_${TAG}.sif
 apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
@@ -49,7 +49,7 @@ whatis("URL: https://hub.docker.com/r/rocker/geospatial")
 whatis("Description: Provides access to R and Rstudio through a Rocker container built with Apptainer")
 family("R")
 
-always_load('singularity')
+always_load('apptainer')
 local sif_file = '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}'
 
 local work_dir = os.getenv("WORK")
