@@ -16,6 +16,24 @@ module load apptainer
 CONTAINER_NAME=rocker_geospatial_${TAG}.sif
 apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
 
+# get the path for rsession inside the contianer. We need this
+# for the portal, so it's useful to "precompute" and load
+apptainer exec rocker_geospatial_4.2.3.sif  test -x /usr/lib/rstudio-server/bin/rsession
+RSESSION_EXEC="/usr/lib/rstudio-server/bin/rsession"
+# verify
+if ! apptainer exec ${CONTAINER_NAME} test -x ${RSESSION_EXEC} &> /dev/null
+then
+  echo "rsession not at ${RSESSION_EXEC} in the container"
+  exit 12
+fi
+RSERVER_EXEC="/usr/lib/rstudio-server/bin/rserver"
+# verify
+if ! apptainer exec ${CONTAINER_NAME} test -x ${RSERVER_EXEC} &> /dev/null
+then
+  echo "rserver not at ${RSERVER_EXEC} in the container"
+  exit 12
+fi
+
 # move container to /hpc/{sys}/containers/
 CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
 if [ "$CLUSTER" = "nvidia" ]; then
@@ -58,6 +76,9 @@ local home = os.getenv("HOME")
 local user_libs  = pathJoin(home, 'R/rocker/${TAG}')
 
 function build_command(app)
+  if app == 'rserver' then
+    app = '${RSERVER_EXEC}'
+  end
   local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
   local sh_ending  = ' "$@"'
   local csh_ending = ' $*'
@@ -67,6 +88,7 @@ function build_command(app)
 end
 
 setenv('TMPDIR', '/dev/shm')
+setenv('CONTAINER_RSESSION', '${RSESSION_EXEC}')
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')

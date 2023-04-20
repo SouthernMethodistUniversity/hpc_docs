@@ -22,6 +22,9 @@ local home = os.getenv("HOME")
 local user_libs  = pathJoin(home, 'R/rocker/4.2.3')
 
 function build_command(app)
+if app == 'rserver' then
+  app = '/usr/lib/rstudio-server/bin/rserver'
+end
 local cmd        = 'apptainer run  --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
 local sh_ending  = ' ""'
 local csh_ending = ' '
@@ -31,6 +34,7 @@ set_shell_function(app , sh_cmd, csh_cmd)
 end
 
 setenv('TMPDIR', '/dev/shm')
+setenv('CONTAINER_RSESSION', '/usr/lib/rstudio-server/bin/rsession')
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')
