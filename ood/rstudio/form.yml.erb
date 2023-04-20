@@ -5,6 +5,7 @@ form:
   - environment
   - auto_queues
   - bc_num_hours
+  - rserver_timeout
   - bc_num_cores
   - bc_num_memory
 attributes:
@@ -29,6 +30,14 @@ attributes:
     min: 1
     step: 1
     value: 1
+  rserver_timeout:
+    label: Timeout (minutes)
+    help: |
+      - Time in minutes before a job is cancelled for being idle
+    max: 60
+    min: 1
+    step: 1
+    value: 30
   bc_num_cores:
     id: num_cpus
     label: "Cores per node"
