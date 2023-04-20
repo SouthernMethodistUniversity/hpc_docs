@@ -9,7 +9,5 @@ password="$(create_passwd 16)"
 export RSTUDIO_PASSWORD="${password}"
 
 # rstudio 1.4+ needs a csrf token
-<% if context.Rapp =~ /.sif/ %>
 ood_need_token=1
 csrftoken=<%= SecureRandom.uuid %>
-<% end %>

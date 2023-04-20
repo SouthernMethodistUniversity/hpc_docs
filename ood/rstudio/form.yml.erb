@@ -1,7 +1,7 @@
 ---
 cluster: "m3cluster"
 form:
-  - auto_modules_R
+  - r_module
   - environment
   - auto_queues
   - bc_num_hours
@@ -9,8 +9,11 @@ form:
   - bc_num_cores
   - bc_num_memory
 attributes:
-  auto_modules_R:
+  r_module:
+    widget: select
     label: "R Version"
+    options:
+      - [ "4.2.3", "R/4.2.3" ]
   environment:
     widget: text_area
     label: "Custom Environment Settings"
