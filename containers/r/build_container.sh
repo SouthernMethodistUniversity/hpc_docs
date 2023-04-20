@@ -11,7 +11,7 @@ echo "Building tag: ${TAG}"
 
 # build the container
 module purge
-module load singularity
+module load applications/apptainer
 
 CONTAINTER_NAME=rocker_geospatial_${TAG}.sif
 apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
