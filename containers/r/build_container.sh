@@ -13,7 +13,7 @@ echo "Building tag: ${TAG}"
 module purge
 module load applications/apptainer
 
-CONTAINTER_NAME=rocker_geospatial_${TAG}.sif
+CONTAINER_NAME=rocker_geospatial_${TAG}.sif
 apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
 
 # move container to /hpc/{sys}/containers/
