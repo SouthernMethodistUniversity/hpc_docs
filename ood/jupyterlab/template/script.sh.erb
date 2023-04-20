@@ -27,9 +27,13 @@ CONDA_COMMAND=<%= context.conda_command %>
 eval "$(<%= context.conda_command %> shell.bash hook)"
 conda activate <%= context.python_version %>
 <% elsif context.conda_type == "Micromamba Env" %>
+# micromamba doesn't always export everything as expected
+# see: https://github.com/mamba-org/mamba/issues/1748
+export MAMBA_EXE=<%= context.conda_command %>
 eval "$(<%= context.conda_command %> shell hook --shell=bash)"
 micromamba activate <%= context.python_version %>
 <% elsif context.conda_type == "Mamba Env" %>
+export MAMBA_EXE=<%= context.conda_command %>
 eval "$(<%= context.conda_command %> shell hook --shell=bash)"
 mamba  activate <%= context.python_version %>
 <% end %>
@@ -40,14 +44,6 @@ mamba  activate <%= context.python_version %>
 env
 <%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
-
-echo "which command: ", $(/usr/bin/which command)
-echo "command -v jupyter-lab: ", $(command -v jupyter-lab)
-echo "command -v jupyter: ", $(command -v jupyter)
-echo "which jupyter-lab: ", $(/usr/bin/which jupyter-lab)
-echo "which jupyter: ", $(/usr/bin/which jupyter)
-
-
 
 # make sure Jupyter Lab exists
 if ! command -v jupyter-lab &> /dev/null
