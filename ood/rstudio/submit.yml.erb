@@ -45,7 +45,7 @@ batch_connect:
     - ood_need_token
     - csrftoken
 script:
-  queue_name: <%= custom_queue %>
+  queue_name: <%= auto_queues %>
   wall_time: <%= setWallTime(custom_queue, bc_num_hours) %> 
   native:
     - "-N"
