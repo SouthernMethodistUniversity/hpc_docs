@@ -22,14 +22,13 @@ local home = os.getenv("HOME")
 local user_libs  = pathJoin(home, 'R/rocker/4.2.3')
 
 function build_command(app)
+local app_command = app
 if app == 'rserver' then
   app_command = '/usr/lib/rstudio-server/bin/rserver'
-else
-  app_command = app
 end
 local cmd        = 'apptainer run  --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app_command
-local sh_ending  = ' ""'
-local csh_ending = ' '
+local sh_ending  = ' "$@"'
+local csh_ending = ' $*'
 local sh_cmd     = cmd .. sh_ending
 local csh_cmd    = cmd .. csh_ending
 set_shell_function(app, sh_cmd, csh_cmd)
