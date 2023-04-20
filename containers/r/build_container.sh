@@ -33,7 +33,13 @@ then
   echo "rserver not at ${RSERVER_EXEC} in the container"
   exit 12
 fi
-
+R_EXEC=$(apptainer exec ${CONTAINER_NAME} which R)
+# verify
+if ! apptainer exec ${CONTAINER_NAME} test -x ${R_EXEC} &> /dev/null
+then
+  echo "r not at ${R_EXEC} in the container"
+  exit 12
+fi
 # move container to /hpc/{sys}/containers/
 CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
 if [ "$CLUSTER" = "nvidia" ]; then
@@ -77,18 +83,21 @@ local user_libs  = pathJoin(home, 'R/rocker/${TAG}')
 
 function build_command(app)
   if app == 'rserver' then
-    app = '${RSERVER_EXEC}'
+    app_command = '${RSERVER_EXEC}'
+  else
+    app_command = app
   end
-  local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
+  local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app_command
   local sh_ending  = ' "$@"'
   local csh_ending = ' $*'
   local sh_cmd     = cmd .. sh_ending
   local csh_cmd    = cmd .. csh_ending
-  set_shell_function(app , sh_cmd, csh_cmd)
+  set_shell_function(app, sh_cmd, csh_cmd)
 end
 
 setenv('TMPDIR', '/dev/shm')
 setenv('CONTAINER_RSESSION', '${RSESSION_EXEC}')
+setenv('CONTAINER_R', '${R_EXEC}')
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')
