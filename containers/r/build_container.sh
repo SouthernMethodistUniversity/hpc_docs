@@ -79,14 +79,10 @@ local sif_file = '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}'
 local work_dir = os.getenv("WORK")
 local scratch_dir = os.getenv("SCRATCH")
 local home = os.getenv("HOME")
-local user_libs  = pathJoin(home, 'R/rocker/${TAG}')
+local user_libs = pathJoin(home, 'R/rocker/${TAG}')
 
 function build_command(app)
-  local app_command = app
-  if app == 'rserver' then
-    app_command = '${RSERVER_EXEC}'
-  end
-  local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app_command
+  local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
   local sh_ending  = ' "\$@"'
   local csh_ending = ' \$*'
   local sh_cmd     = cmd .. sh_ending
@@ -96,11 +92,13 @@ end
 
 setenv('TMPDIR', '/dev/shm')
 setenv('CONTAINER_RSESSION', '${RSESSION_EXEC}')
+setenv('CONTAINER_RSERVER', '${RSERVER_EXEC}')
 setenv('CONTAINER_R', '${R_EXEC}')
+setenv('CONTAINER_IMAGE', '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}')
+setenv('R_LIB_USER', user_libs)
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')
 build_command('Rscript')
-build_command('rserver')
 EOL
 )

@@ -19,14 +19,10 @@ local sif_file = '/hpc/m3/containers/rocker/rocker_geospatial_4.2.3.sif'
 local work_dir = os.getenv("WORK")
 local scratch_dir = os.getenv("SCRATCH")
 local home = os.getenv("HOME")
-local user_libs  = pathJoin(home, 'R/rocker/4.2.3')
+local user_libs = pathJoin(home, 'R/rocker/4.2.3')
 
 function build_command(app)
-local app_command = app
-if app == 'rserver' then
-  app_command = '/usr/lib/rstudio-server/bin/rserver'
-end
-local cmd        = 'apptainer run  --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app_command
+local cmd        = 'apptainer run  --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
 local sh_ending  = ' "$@"'
 local csh_ending = ' $*'
 local sh_cmd     = cmd .. sh_ending
@@ -36,9 +32,11 @@ end
 
 setenv('TMPDIR', '/dev/shm')
 setenv('CONTAINER_RSESSION', '/usr/lib/rstudio-server/bin/rsession')
+setenv('CONTAINER_RSERVER', '/usr/lib/rstudio-server/bin/rserver')
 setenv('CONTAINER_R', '/usr/local/bin/R')
+setenv('CONTAINER_IMAGE', '/hpc/m3/containers/rocker/rocker_geospatial_4.2.3.sif')
+setenv('R_LIB_USER', user_libs)
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')
 build_command('Rscript')
-build_command('rserver')
