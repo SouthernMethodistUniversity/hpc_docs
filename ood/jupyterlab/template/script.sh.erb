@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash -l
 
 export {http,https,ftp}_proxy="http://10.210.15.2:3128"
 
@@ -19,30 +19,35 @@ cd "${HOME}"
 # Purge the module environment to avoid conflicts
 module purge
 
-CONDA_COMMAND=<%= context.conda_command %>
+echo "MAMBA_ROOT_PREFIX: ${MAMBA_ROOT_PREFIX}"
 
-# python environment from the drop down menu
-<% if context.python_version == "python/3" %>
-module load python/3
-<% elsif context.python_version != "custom" %>
-if ! command -v conda &> /dev/null
-then
-  echo $(which conda)
-  echo "Conda not found, but a conda environment was specified. Using default."
-  echo "Conda was not found, but a conda environment was specified. The default python/3 module was loaded. If this is not the desired behavior, ensure conda is in your path (loading your prefered conda and calling *conda init bash* from a terminal usually fixes this)" > ${WARNING_FILE}
-  LOAD_WANRINGS=1
-  module load python/3
-  echo $(which conda)
-fi
-eval "$(conda shell.bash hook)" 
+<% if context.python_version != "custom" %>
+CONDA_COMMAND=<%= context.conda_command %>
+<% if context.conda_type == "Conda Env" %>
+eval "$(<%= context.conda_command %> shell.bash hook)"
 conda activate <%= context.python_version %>
+<% elsif context.conda_type == "Micromamba Env" %>
+eval "$(<%= context.conda_command %> shell hook --shell=bash)"
+micromamba activate <%= context.python_version %>
+<% elsif context.conda_type == "Mamba Env" %>
+eval "$(<%= context.conda_command %> shell hook --shell=bash)"
+mamba  activate <%= context.python_version %>
+<% end %>
 <% end %>
 
 # Clustom environment
 <%- unless context.environment.blank? -%>
-<%= context.environment.encode(universal_newline: true) %>
 env
+<%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
+
+echo "which command: ", $(/usr/bin/which command)
+echo "command -v jupyter-lab: ", $(command -v jupyter-lab)
+echo "command -v jupyter: ", $(command -v jupyter)
+echo "which jupyter-lab: ", $(/usr/bin/which jupyter-lab)
+echo "which jupyter: ", $(/usr/bin/which jupyter)
+
+
 
 # make sure Jupyter Lab exists
 if ! command -v jupyter-lab &> /dev/null
@@ -62,7 +67,7 @@ then
     fi
 
   else
-   
+
     echo "Jupyter not found, using default."
     echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
     LOAD_WANRINGS=1
