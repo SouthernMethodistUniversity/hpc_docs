@@ -67,11 +67,10 @@ sed 's/^ \{2\}//' > "${RSERVER_TIMEOUT_FILE}" << EOL
 
   TIMEOUT_LIMIT=<%=context.rserver_timeout.to_i()*60 %>
   IDLE_TIME=0
-  while [ \${IDLE_TIME} -le \${TIMEOUT_LIMIT} ]
+  NSESSIONS=\$(rstudio-server active-sessions | wc -l)
+  while [ \${IDLE_TIME} -le \${TIMEOUT_LIMIT} ] || [ \${NSESSIONS} -gt 1 ]
   do
-
     # check for active session
-    NSESSIONS=\$(rstudio-server active-sessions | wc -l)
     if [ \${NSESSIONS} -gt 1 ]; then
       IDLE_TIME=0
       # after a session has started allow 5 minute
@@ -83,6 +82,7 @@ sed 's/^ \{2\}//' > "${RSERVER_TIMEOUT_FILE}" << EOL
       IDLE_TIME=\$((\${IDLE_TIME} + 30))
       echo "IDLE for \${IDLE_TIME} seconds"
     fi
+    NSESSIONS=\$(rstudio-server active-sessions | wc -l)
   done
 
   # kill rserver
