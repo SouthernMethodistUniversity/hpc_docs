@@ -41,10 +41,57 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   # Launch the original command
   echo "Launching rsession..."
   set -x
-  exec ${CONTAINER_RSESSION} --r-libs-user "${R_LIBS_USER}" --session-timeout-minutes=<%= context.rserver_timeout %> "\${@}"
+  exec ${CONTAINER_RSESSION} \
+    --r-libs-user "${R_LIBS_USER}" \
+    --session-timeout-minutes <%= context.rserver_timeout %> \
+    --session-timeout-suspend 0 \
+    "\${@}"
 EOL
 )
 chmod 700 "${RSESSION_WRAPPER_FILE}"
+
+# Generate a script to kill rserver if it is idle for too long
+export RSERVER_TIMEOUT_FILE="${PWD}/rtimeout.sh"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RSERVER_TIMEOUT_FILE}" << EOL
+  #!/bin/bash
+
+  # Source environment
+  source "${PWD}/environment.txt"
+  sleep 30
+
+  # Log all output from this script
+  export RTIMEOUT_LOG_FILE="${PWD}/rtimeout.log"
+  exec &>>"\${RTIMEOUT_LOG_FILE}"
+
+  TIMEOUT_LIMIT=<%=context.rserver_timeout.to_i()*60 %>
+  IDLE_TIME=0
+  while [ \${IDLE_TIME} -le \${TIMEOUT_LIMIT} ]
+  do
+
+    # check for active session
+    NSESSIONS=\$(rstudio-server active-sessions | wc -l)
+    if [ \${NSESSIONS} -gt 1 ]; then
+      IDLE_TIME=0
+      # after a session has started allow 5 minute
+      # grace after that session times out or the
+      # requested limit if smaller
+      TIMEOUT_LIMIT=\$(( 300 < \${TIMEOUT_LIMIT} ? 300 : \${TIMEOUT_LIMIT} ))
+    else
+      sleep 30
+      IDLE_TIME=\$((\${IDLE_TIME} + 30))
+      echo "IDLE for \${IDLE_TIME} seconds"
+    fi
+  done
+
+  # kill rserver
+  pkill -15 rserver
+
+EOL
+)
+chmod 700 "${RSERVER_TIMEOUT_FILE}"
+
 
 # Create a unique $TMPDIR for runtime files
 export TMPDIR="$(mktemp -d)"
@@ -52,6 +99,40 @@ mkdir -p -m 700 ${TMPDIR}/run ${TMPDIR}/lib ${TMPDIR}/tmp ${TMPDIR}/var/lib/rstu
 
 export WORKING_DIR=${PWD}
 mkdir -p -m 700 ${WORKING_DIR}/etc
+
+# Generate a script to start the server
+export RUN_RSERVER="${PWD}/run_rserver.sh"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
+  #!/bin/bash
+
+  # Source environment
+  source "${PWD}/environment.txt"
+
+  # Log all output from this script
+  export RSERVER_LOG_FILE="${PWD}/rserver.log"
+  exec &>>"\${RSERVER_LOG_FILE}"
+
+  # start the timeout check
+  exec "${RSERVER_TIMEOUT_FILE}" &
+
+  # start the server
+  exec ${CONTAINER_RSERVER} \
+  --www-port "${port}" \
+  --auth-none 0 \
+  --auth-pam-helper-path "${RSTUDIO_AUTH}" \
+  --auth-encrypt-password 0 \
+  --server-user "${USER}" \
+  --rsession-path "${RSESSION_WRAPPER_FILE}" \
+  --server-data-dir "${TMPDIR}" \
+  --secure-cookie-key-file "${TMPDIR}/rstudio-server/secure-cookie-key" \
+  --rsession-which-r="${CONTAINER_R}"
+
+EOL
+)
+chmod 700 "${RUN_RSERVER}"
+
 
 # Set working directory to home directory
 cd "${HOME}"
@@ -72,15 +153,6 @@ apptainer exec \
   -B ${SCRATCH} \
   -B ${WORK} \
   ${CONTAINER_IMAGE} \
-  ${CONTAINER_RSERVER} \
-  --www-port "${port}" \
-  --auth-none 0 \
-  --auth-pam-helper-path "${RSTUDIO_AUTH}" \
-  --auth-encrypt-password 0 \
-  --server-user "${USER}" \
-  --rsession-path "${RSESSION_WRAPPER_FILE}" \
-  --server-data-dir "${TMPDIR}" \
-  --secure-cookie-key-file "${TMPDIR}/rstudio-server/secure-cookie-key" \
-  --rsession-which-r="${CONTAINER_R}"
+  ${RUN_RSERVER}
 
 printf 'rserver exited' 1>&2
