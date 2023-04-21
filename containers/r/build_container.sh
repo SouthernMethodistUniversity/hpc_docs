@@ -95,7 +95,7 @@ setenv('CONTAINER_RSESSION', '${RSESSION_EXEC}')
 setenv('CONTAINER_RSERVER', '${RSERVER_EXEC}')
 setenv('CONTAINER_R', '${R_EXEC}')
 setenv('CONTAINER_IMAGE', '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}')
-setenv('R_LIB_USER', user_libs)
+setenv('R_LIBS_USER', user_libs)
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')

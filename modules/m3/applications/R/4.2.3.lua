@@ -35,7 +35,7 @@ setenv('CONTAINER_RSESSION', '/usr/lib/rstudio-server/bin/rsession')
 setenv('CONTAINER_RSERVER', '/usr/lib/rstudio-server/bin/rserver')
 setenv('CONTAINER_R', '/usr/local/bin/R')
 setenv('CONTAINER_IMAGE', '/hpc/m3/containers/rocker/rocker_geospatial_4.2.3.sif')
-setenv('R_LIB_USER', user_libs)
+setenv('R_LIBS_USER', user_libs)
 unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')
