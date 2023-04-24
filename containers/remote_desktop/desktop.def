@@ -1,0 +1,45 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+    Author John LaGrone <jlagrone@smu.edu>
+    Version 1.0
+    Framework Open OnDemand
+    Distribution Ubuntu 22.04
+    Application Combined Desktops
+
+%post
+    apt-get -y update
+    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+               lmod \
+               zsh \
+               tcsh \
+               ksh \
+               x11-utils \
+               xauth \
+               infiniband-diags \
+               opensm \
+               dbus-x11 \
+               procps \
+               psmisc \
+               xdg-utils \
+               xdg-user-dirs \
+               menu-xdg \
+               mime-support \
+               desktop-file-utils \
+               bash-completion \
+               mesa-utils-extra \
+               libxv1 \
+               lsb-release \
+               ubuntu-mate-desktop \
+               ubuntu-gnome-desktop \
+               xfce4 \
+               evince \
+               gedit \
+               emacs \
+               vim \
+               tightvncserver \
+               novnc \
+               python3-websockify \
+               python3-numpy
+               
