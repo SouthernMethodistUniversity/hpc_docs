@@ -33,7 +33,7 @@ attributes:
     help: Number of CPU threads
     cacheable: true
     widget: number_field
-    max: 36
+    max: 128
     min: 1
     value: 1
   bc_num_memory:
@@ -41,20 +41,10 @@ attributes:
     label: "Memory"
     help: "Please select the amount of memory (in GB) you need for your job."
     widget: number_field
-    max: 250
+    max: 500
     min: 1
     step: 1
     value: 6
   bc_vnc_resolution:
     required: true
-  node_type: null
-  desktop_env:
-    label: "Desktop Environment"
-    help: |
-      Select the desktop environment you would like to use. This changes how the desktop appears,
-      but the underlying system is the same in all cases. 
-    widget: select
-    options:
-      - [ "Mate",       "mate" ]
-      - [ "Gnome 3",    "gnome"]
-      - [ "Xfce",       "xfce"]
+  desktop_env: "mate"
