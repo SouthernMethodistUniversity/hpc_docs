@@ -8,6 +8,7 @@ form:
   - auto_queues
   - desktop_env
   - bc_num_hours
+  - bc_vnc_idle: 2700
   - bc_num_cores
   - bc_num_memory
   - bc_vnc_resolution
@@ -43,7 +44,6 @@ attributes:
     min: 1
     step: 1
     value: 6
-  bc_vnc_idle: 0
   bc_vnc_resolution:
     required: true
   node_type: null
@@ -56,3 +56,4 @@ attributes:
     options:
       - [ "Mate",       "mate" ]
       - [ "Gnome 3",    "gnome"]
+      - [ "Xfce",       "xfce"]
