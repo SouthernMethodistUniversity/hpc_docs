@@ -28,7 +28,7 @@ end
 script:
   job_name: "remote_desktop"
   queue_name:  <%= auto_queues %>
-  wall_time: <%= bc_num_hours %>
+  wall_time: <%= bc_num_hours.to_i() * 3600 %>
   native:
     - "--cpus-per-task"
     - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
