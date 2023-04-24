@@ -6,11 +6,31 @@ From: ubuntu:22.04
     Version 1.0
     Framework Open OnDemand
     Distribution Ubuntu 22.04
-    Application Combined Desktops
+    Application Remote Desktops
+
+%apprun vncserver
+  exec vncserver "${@}"
+
+%apprun vncpasswd
+  exec vncpasswd "${@}"
+
+%apprun websockify
+  exec /opt/websockify/run "${@}"
+
+%runscript
+  exec vncserver "${@}"
+
+%environment
+  export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
 
 %post
-    apt-get -y update
-    DEBIAN_FRONTEND=noninteractive apt-get -y install \
+  export TURBOVNC_VERSION=3.0.3
+  export VIRTUALGL_VERSION=3.1
+  export LIBJPEG_VERSION=2.1.5.1
+
+  # probably way more than we need
+  apt-get -y update
+  DEBIAN_FRONTEND=noninteractive apt-get -y install \
                lmod \
                zsh \
                tcsh \
@@ -28,6 +48,7 @@ From: ubuntu:22.04
                mime-support \
                desktop-file-utils \
                bash-completion \
+               libegl1-mesa \
                mesa-utils-extra \
                libxv1 \
                lsb-release \
@@ -37,9 +58,40 @@ From: ubuntu:22.04
                evince \
                gedit \
                emacs \
+               nano \
                vim \
-               tightvncserver \
                novnc \
                python3-websockify \
-               python3-numpy
+               python3-numpy \
+               lshw \
+               net-tools \
+               ca-certificates \
+               locales \
+               curl \
+               gcc \
+               make \
+               wget \
+               git
                
+
+  # Configure default locale
+  echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+  locale-gen en_US.utf8
+  /usr/sbin/update-locale LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+
+  # TurboVNC
+  wget https://sourceforge.net/projects/turbovnc/files/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
+  dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
+  rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
+ 
+  # VirtualGL 
+  wget https://sourceforge.net/projects/libjpeg-turbo/files/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q
+  wget https://sourceforge.net/projects/virtualgl/files/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
+  dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
+  dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
+  rm -f *.deb
+
+  # Clean up
+  rm -rf /var/lib/apt/lists/*
