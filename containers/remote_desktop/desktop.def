@@ -53,8 +53,6 @@ From: ubuntu:22.04
                libxv1 \
                lsb-release \
                ubuntu-mate-desktop \
-               ubuntu-gnome-desktop \
-               xfce4 \
                evince \
                gedit \
                emacs \
@@ -92,6 +90,13 @@ From: ubuntu:22.04
   dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
   dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
   rm -f *.deb
+
+  # disable bluetooth
+  sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
+  rm /lib/systemd/system/blueman-mechanism.service
+  rm /etc/xdg/autostart/blueman.desktop
+  rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
+  systemctl disable bluetooth.service
 
   # Clean up
   rm -rf /var/lib/apt/lists/*
