@@ -4,12 +4,12 @@ category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [JupyterLab] server on the [M2 cluster].
+  This app will launch a [JupyterLab] server on the [M3 cluster].
 
   See the [Python Application] documentation for tips on converting notebooks
   and other Python files to job scripts if you require longer than 12 hours
   of runtime
 
   [JupyterLab]: https://jupyterlab.readthedocs.io/
-  [M2 cluster]: https://s2.smu.edu/hpc/documentation/about.html
+  [M3 cluster]: https://southernmethodistuniversity.github.io/hpc_docs/about.html#maneframe-iii-m3
   [Python Application]: https://s2.smu.edu/hpc/documentation/applications/python.html
