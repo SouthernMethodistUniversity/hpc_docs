@@ -14,13 +14,6 @@ class CustomEnvironments
       script = "eval $(conda shell.bash hook);  /usr/bin/env | /usr/bin/grep -oP 'CONDA_EXE=\\K.+'"
       o, status = Open3.capture2('/bin/bash -l -i', stdin_data: script)
       output = o.split("\n")
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Ran " + script
-        f.puts "output"
-        f.puts output
-        f.puts "status"
-        f.puts status
-      }
       if output.empty?
         # TODO: change to default path / module
         return output
@@ -36,10 +29,6 @@ class CustomEnvironments
       script = 'eval $(mamba shell.bash hook); /usr/bin/which mamba'
       o, status = Open3.capture2('/bin/bash -l', stdin_data: script)
       output = o.split("\n")
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Which mamba returns "
-        f.puts output
-      }
       if output.empty?
         # TODO: change to default path / module
         return output
@@ -55,10 +44,6 @@ class CustomEnvironments
       script = 'eval $(micromamba shell.bash hook); /usr/bin/which micromamba'
       o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
       output = o.split("\n")
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Which micromamba returns "
-        f.puts output
-      }
       if output.empty?
         # TODO: change to default path / module
         return output
@@ -218,13 +203,6 @@ class CustomEnvironments
         end
       end
 
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Found Micromamba Envs: "
-        micromamba_env.each do |env|
-          f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
-        end
-      }
-
       return micromamba_env
     end
   end    
@@ -236,49 +214,23 @@ class CustomEnvironments
       
       # get all the environments
       self.CondaProviders.each do |provider|
-        open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-          f.puts "Checking for envs with: " + provider[0] + ", " + provider[1]
-        }
         if provider[0] == "Conda"
           temp = self.GetCondaEnvs(provider[1])
-          open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-            f.puts "Found: "
-            temp.each do |env|
-              f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
-            end
-          }
           temp.each do |val|
             envs.push(val)
           end
         elsif provider[0] == "Mamba"
           temp = self.GetMambaEnvs(provider[1])
-          open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-            f.puts "Found: "
-            temp.each do |env|
-              f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
-            end
-          }
           temp.each do |val|
             envs.push(val)
           end
         elsif provider[0] == "Micromamba"
           temp = self.GetMicromambaEnvs(provider[1])
-          open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-            f.puts "Found: "
-            temp.each do |env|
-              f.puts env[0] + ", " + env[1] + ", " + env[2] + ", " + env[3]
-            end
-          }
           temp.each do |val|
             envs.push(val)
           end
         end
       end
-
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "All Envs: "
-        f.puts envs
-      }
 
       # remove duplicates. Prefer version with name if it exists
       i = 0
@@ -358,12 +310,6 @@ class CustomEnvironments
         @JupyterLabEnvs.push(env)
       end
       #return
-      open('/users/jlagrone/jupyterlab_debug.out', 'a+') { |f|
-        f.puts "Environments: "
-        @JupyterLabEnvs.each do |env|
-          f.puts env[0] + ", " + env[1] + ", " + env[2]
-        end
-      }
       @JupyterLabEnvs
     end
   end
