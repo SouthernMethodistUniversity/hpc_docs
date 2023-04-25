@@ -393,7 +393,6 @@ attributes:
     label: "Select Python Environment"
     widget: select
     help: |
-      - *python/3* is the default Anaconda Python 3 installation on M2 in the module "python/3"
       - We've listed your *Conda* environments we found in standard locations. If the one you want to use is greyed out, it means that you need to install jupyterlab in that environment before it can be used
       - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
       - Other environments can be specified by selecting "Custom Environment"
@@ -414,7 +413,7 @@ attributes:
     help: |
       - Load any addition enviroment settings
       - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
-      - Use *module load module1 module2 module3* to load M2 modules
+      - Use *module load module1 module2 module3* to load modules
       - Use *export MY_VARIABLE=my_value* to export shell variables
       - **NOTE:**  *jupyter-lab* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
 
@@ -426,7 +425,7 @@ attributes:
       - Exceeding walltime time will automaticaly stop this job.
     cacheable: true
     widget: number_field
-    max: 24
+    max: 12
     min: 1
     step: 1
     value: 1
@@ -444,7 +443,7 @@ attributes:
     help: Number of CPU threads
     cacheable: true
     widget: number_field
-    max: 36
+    max: 128
     min: 1
     value: 1
   bc_num_memory:
@@ -452,7 +451,7 @@ attributes:
     label: "Memory"
     help: "Please select the amount of memory (in GB) you need for your job."
     widget: number_field
-    max: 250
+    max: 500
     min: 1
     step: 1
     value: 6
