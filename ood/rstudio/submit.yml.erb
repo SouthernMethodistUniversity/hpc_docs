@@ -1,43 +1,3 @@
-<%
-def setWallTime(queue, runtime)
-  if queue == "development"
-    if runtime.to_i*3600 > 7200
-      return 7200
-    elsif runtime.to_i*3600 <= 0
-        return 3600
-    else
-     return runtime.to_i*3600
-    end
-  else
-    if runtime.to_i*3600 > 43200
-        return 43200
-    elsif runtime.to_i*3600 <= 0
-      return 3600
-    else
-      return runtime.to_i*3600
-    end
-  end
-end
-%>
-
-<%
-def setReservationWallTime(queue, endTime)
-  curTime = DateTime.now
-  lastTime = endTime.to_datetime
-  runtime = lastTime.to_i - curTime.to_i
-  if queue == "development"
-    if runtime > 7200
-      runtime = 7200
-    end
-  else
-    if runtime > 43200
-        runtime = 43200
-    end
-  end
-  return runtime
-end
-%>
-
 ---
 batch_connect:
   template: "basic"
@@ -46,7 +6,7 @@ batch_connect:
     - csrftoken
 script:
   queue_name: <%= auto_queues %>
-  wall_time: <%= setWallTime(custom_queue, bc_num_hours) %> 
+  wall_time: <%= bc_num_hours.to_i() * 3600 %> 
   native:
     - "-N"
     - "1"
