@@ -26,10 +26,5 @@ done
 # Run Mate Terminal as login shell (sets proper TERM)
 dconf write /org/mate/terminal/profiles/default/login-shell true
 
-# set an idle logout time??
-#dconf write /org/mate/screensaver/power-management-delay 5
-#dconf write /org/mate/screensaver/logout-delay 120
-#dconf write /org/mate/screensaver/logout-enabled true
-
 # Start up mate desktop (block until user logs out of desktop)
 mate-session

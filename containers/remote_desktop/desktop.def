@@ -109,5 +109,10 @@ From: ubuntu:22.04
   rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
   systemctl disable bluetooth.service
 
+  # create symlinks for lmod
+  ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
+  ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
+ 
+
   # Clean up
   rm -rf /var/lib/apt/lists/*
