@@ -15,8 +15,7 @@ class CustomEnvironments
       o, status = Open3.capture2('/bin/bash -l -i', stdin_data: script)
       output = o.split("\n")
       if output.empty?
-        # TODO: change to default path / module
-        return output
+        return '/hpc/m3/apps/conda/bin/conda'
       else
         return output[0]
       end
