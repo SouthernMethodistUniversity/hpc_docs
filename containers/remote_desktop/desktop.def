@@ -102,6 +102,11 @@ From: ubuntu:22.04
   dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
   rm -f *.deb
 
+  # add libpng12-0 needed for ansys
+  add-apt-repository ppa:linuxuprising/libpng12 -y
+  apt-get -y update
+  apt-get -y install libpng12-0
+
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
   rm /lib/systemd/system/blueman-mechanism.service
