@@ -24,7 +24,7 @@ if [ -f "$DESTINATION" ]; then
 
   read -p "$DESTINATION already exists. Overwrite y/N? " yn
   case $yn in
-     [Yy]* ) continue;;
+     [Yy]* ) echo "Overwriting existing file";;
      * ) exit;;
   esac
 fi
