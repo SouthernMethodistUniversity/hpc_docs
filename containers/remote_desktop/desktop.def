@@ -81,7 +81,8 @@ From: ubuntu:22.04
                make \
                wget \
                git \
-               epiphany-browser               
+               strace \
+               chromium-browser
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -122,6 +123,5 @@ From: ubuntu:22.04
   ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
   ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
  
-
   # Clean up
   rm -rf /var/lib/apt/lists/*
