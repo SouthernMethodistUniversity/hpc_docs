@@ -28,15 +28,6 @@ From: ubuntu:22.04
   export VIRTUALGL_VERSION=3.1
   export LIBJPEG_VERSION=2.1.5.1
 
-  # firefox. The default in ubuntu is a snap package now
-  # so use the mozilla ppa
-  apt-get -y update
-  apt-get install -y software-properties-common
-  add-apt-repository ppa:mozillateam/ppa -y
-  echo '\nPackage: * \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 1001 \n\nPackage: firefox \nPin: version 1:1snap1-0ubuntu2 \nPin-Priority: -1 \n' | tee /etc/apt/preferences.d/mozilla-firefox
-  apt-get -y update
-  apt-get install -y firefox
-
   # probably way more than we need
   apt-get -y update
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
@@ -89,7 +80,8 @@ From: ubuntu:22.04
                gcc \
                make \
                wget \
-               git
+               git \
+               webbrowser-app
                
 
   # Configure default locale
