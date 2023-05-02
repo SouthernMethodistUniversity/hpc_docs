@@ -81,8 +81,7 @@ From: ubuntu:22.04
                make \
                wget \
                git \
-               webbrowser-app
-               
+               epiphany-browser               
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
