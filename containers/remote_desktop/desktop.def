@@ -102,10 +102,14 @@ From: ubuntu:22.04
   dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
   rm -f *.deb
 
-  # add libpng12-0 needed for ansys
+  # add deps needed for ansys
   add-apt-repository ppa:linuxuprising/libpng12 -y
   apt-get -y update
-  apt-get -y install libpng12-0
+  apt-get -y install libpng12-0 libjpeg62
+  
+  # Ansys statically links libldap-2.4.so.2
+  # just symlink to a more recent version
+  ln -s /usr/lib/x86_64-linux-gnu/libldap-2.5.so.0.1.9 /usr/lib/x86_64-linux-gnu/libldap-2.4.so.2
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
