@@ -1,0 +1,99 @@
+# Conda
+
+:::{tip}
+We recommend trying Mamba (<https://mamba.readthedocs.io/en/latest/>).
+It is a drop in replacement for Conda and is typically considerably faster.
+:::
+
+Conda (<https://docs.conda.io/en/latest/>) is a package management system.
+
+## Loading Conda
+
+We have a base install of Conda available as a module that can be accessed using
+
+```bash
+module load conda
+```
+
+You can also install your own versions of Conda in your `$WORK` or `$HOME` directory.
+We recommend 
+
+- Micromamba: <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>
+- Miniconda: <https://docs.conda.io/en/latest/miniconda.html>
+
+The first time you run Conda, you will need to initialize it.
+This creates some shell functions in your profile to make it easier to call Conda.
+
+```bash
+conda init $SHELL
+```
+
+After doing this, you may need to log out and log back in to see the effects.
+In most cases, you can source your shell profile to avoid having to log out.
+For most users, this is `source ~/.bashrc`.
+
+We additionally recommend that you disable Conda's auto-activate base functionallity.
+By default, Conda will load a base environment, which can cause issues with system
+dependencies. In particular, applications on <hpc.smu.edu> often behave in unexpected
+ways becuase it tries to use a Conda package instead of the correct system package.
+
+```bash
+conda config --set auto_activate_base false
+```
+
+## Creating Virtual Environments from the Command Line
+
+For simple environments with a small number of packages, you can create an environment named
+`conda_env` (or any name of your choosing) in your `$WORK` directory with
+
+```bash
+conda create -p $WORK/conda_env python=3.9 package1 package2 package3
+```
+
+The `-p` tells Conda to install all the files in the directory `$WORK/conda_env`. 
+Here, we request Python version 3.9 and the packages `package1 package2 package3` 
+which are the packages you'd like to install (e.g. `numpy`, `tensorflow`, `pandas`, etc.).
+In general, it is a good idea install all the packages at the same time becasue Conda will
+do a better job of resolving dependencies.
+
+## Creating Virtual Environments From environment.yml File
+
+For environments that contain more than a few packages, we suggest creating a `environment.yml`
+file (note, you can name the file anything you'd like, but it is common practice to call it `environment.yml`.)
+
+The basic structure of the `environment.yml` is
+
+```text
+name: conda_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.9
+  - package1
+  - package2
+  - package3
+  - pip
+  - pip:
+    - pip_package1
+    - -r requirements.txt
+```
+
+The `name` field is what the created environment will be called (it can be anything you like, but we again use
+the name `conda_env` for the example).
+
+The next section is `channels`, which are the repositories where Conda will look for the requested packages. 
+Conda prioritizes the channels from the top down, so in this case Conda will prefer the package in `conda-forge`
+over the package in `defaults` (typically the packages in the `conda-forge` are more up to date.)
+
+The next section is `dependencies` and this is where you should list all of the packages you would like to install.
+If you have packages that need to be installed with `pip`, you should include `pip` in the dependencies as above
+and you can list the specific packages like the above as `pip_package1`, etc. and/or you can have all the `pip` 
+packages in a `requirments.txt` file.
+
+Once you have made the `environment.yml` file, you can create the environment with in your `$WORK` folder 
+(you can use a different path if you prefer) with
+
+```bash
+conda env create -f environment.yml -p $WORK/conda_env
+```
