@@ -3,14 +3,10 @@ format: jb-book
 defaults:
   numbered: false
 parts:
-- caption: About
+- caption: Getting Started
   chapters:
   - file: about.md
-- caption: Accounts
-  chapters:
   - file: accounts.md
-- caption: Access
-  chapters:
   - file: access.md
 - caption: Applications
   chapters:
