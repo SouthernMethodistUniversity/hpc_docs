@@ -81,8 +81,7 @@ From: ubuntu:22.04
                make \
                wget \
                git \
-               strace \
-               chromium-browser
+               strace
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -118,6 +117,14 @@ From: ubuntu:22.04
   rm /etc/xdg/autostart/blueman.desktop
   rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
   systemctl disable bluetooth.service
+
+  # firefox. The default in ubuntu is a snap package now
+  # so use the mozilla ppa
+  apt-get install -y software-properties-common
+  add-apt-repository ppa:mozillateam/ppa -y
+  echo '\nPackage: * \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 1001 \n\nPackage: firefox \nPin: version 1:1snap1-0ubuntu2 \nPin-Priority: -1 \n' | tee /etc/apt/preferences.d/mozilla-firefox
+  apt-get -y update
+  apt-get install -y firefox
 
   # create symlinks for lmod
   ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
