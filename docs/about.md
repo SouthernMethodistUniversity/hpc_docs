@@ -1,5 +1,33 @@
 # About
 
+SMU's high-performance computing (HPC) clusters, M3 and the NVIDIA DGX
+SuperPOD, feature state-of-the-art CPUs, accelerators, and networking
+technologies, high memory capacity per node, and advanced interactive
+experiences via the Open OnDemand Portal.
+
+The clusters provides a familiar interactive experience for researchers,
+which includes the Ubuntu Linux operating system, the SLURM resource
+scheduler, and the Lmod environment module system. Additionally,
+familiar development tool chains are available including the GCC, Intel,
+and NVIDIA compiler suites. Optimized high-level programming environments
+such as MATLAB, Python, and R are also installed in addition to the
+domain specific software packages that SMU researchers depend on for
+their work.
+
+| HPC System           | M1                 | M2         | M2         | SuperPOD     | M3           |
+|----------------------|--------------------|------------|------------|--------------| -------------|
+| Year                 | 2014               | 2017       | 2019       | 2022         | 2023         |
+| Compute Ability      | 104 TFLOPS         | 630 TFLOPS | 870 TFLOPS | 1,644 TFLOPS | 1,003 TFLOPS |
+| Number of Nodes      | 1,104              | 349        | 354        | 20           | 178          |
+| CPU Cores            | 8,832              | 11,088     | 11,276     | 2,560        | 22,784       |
+| Total GPU Cores      | 0                  | 132,608    | 275,968    | 1,392,640    | 0            |
+| Total Memory         | 29.2 TB            | 116.5 TB   | 120 TB     | 52.5 TB      | 101 TB       |
+| Network Bandwidth    | 20 Gb/s            | 100 Gb/s   | 100 Gb/s   | 200 Gb/s     | 200 Gb/s     |
+| Work Storage         | None               | None       | 768 TB     | 768 TB       | 3.5 PB       |
+| Scratch Space        | 1.4 PB             | 1.4 PB     | 2.8 PB     | 750 TB       | 3.5 PB       |
+| Archive Capabilities | No                 | Yes        | Yes        | No           | No           |
+| Operating System     | Scientific Linux 6 | CentOS 7   | CentOS 7   | Ubuntu 20.04 | Ubuntu 22.04 |
+
 ## ManeFrame III (M3)
 
 ### Configuration
@@ -8,6 +36,7 @@
 |--------------------|-----------------|---------------|
 | Nodes              | 170             | 8             |
 | Processors         | AMD EPYC 7763   | AMD EPYC 7763 |
+| Frequency          | 2.45 GHz        | 2.45 GHz      |
 | CPUs/Node          | 2               | 2             |
 | Cores/Node         | 128             | 128           |
 | Memory/Node        | 512 GB          | 2 TB          |
@@ -49,117 +78,7 @@
 | Local Scratch/Node | 27 TB                       |
 | Network            | 10x200 Gb/s                 |
 
-## ManeFrame II (M2)
-
-SMU's high performance computing (HPC) cluster, ManeFrame II (M2),
-features state-of-the-art CPUs, accelerators, and networking
-technologies, high memory capacity per node, and advanced interactive
-GPU-accelerated remote desktop experiences.
-
-The cluster provides a familiar interactive experience for researchers,
-which includes the CentOS 7 operating system, the SLURM resource
-scheduler, and the Lmod environment module system. Additionally,
-familiar development tool chains are available including the GCC, Intel,
-and PGI compiler suites. Optimized high-level programming environments
-such as MATLAB, Python, and R are also installed in addition to the
-domain specific software packages that SMU researchers depend on for
-their work.
-
-| HPC System             | ManeFrame I        | ManeFrame II | ManeFrame II | NVIDIA DGX SuperPOD |
-|------------------------|--------------------|--------------|--------------|---------------------|
-| Year                   | 2014               | 2017         | 2019         | 2022                |
-| Computational Ability  | 104 TFLOPS         | 630 TFLOPS   | 870 TFLOPS   | 1,644 TFLOPS        |
-| Number of Nodes        | 1,104              | 349          | 354          | 20                  |
-| CPU Cores              | 8,832              | 11,088       | 11,276       | 2,560               |
-| Total GPU Cores        | 0                  | 132,608      | 275,968      | 1,392,640           |
-| Total Memory           | 29.2 TB            | 116.5 TB     | 120 TB       | 52.5 TB             |
-| Interconnect Bandwidth | 20 Gb/s            | 100 Gb/s     | 100 Gb/s     | 200 Gb/s            |
-| Work Storage           | None               | None         | 768 TB       | 768 TB              |
-| Scratch Space          | 1.4 PB             | 1.4 PB       | 2.8 PB       | 750 TB              |
-| Archive Capabilities   | No                 | Yes          | Yes          | No                  |
-| Operating System       | Scientific Linux 6 | CentOS 7     | CentOS 7     | Ubuntu 20.04        |
-
-### Standard-, Medium-, and High- Memory Compute Nodes
-
-Each of the 176 standard compute nodes has 36 cores, 256 GB of memory,
-and 100 Gb/s networking. Specifically, these nodes contain dual Intel
-Xeon E5-2695v4 2.1 GHz 18-core "Broadwell" processors with 45 MB of
-cache each and 256 GB of DDR4-2400 memory. This translates to efficient
-execution per processor cycle and vectorization via the
-second-generation Advanced Vector Extensions (AVX2). In addition, there
-are 35 medium- and five high-memory compute nodes which have the same
-processors, but feature 768 GB and 1,536 GB (1.5 TB) of DDR4-2400 memory
-respectively and ManeFrame I's four 768 GB and six 1,536 GB (1.5 TB)
-nodes are also part of ManeFrame II.
-
-### Accelerator Nodes with NVIDIA GPUs
-
-M2 contains 36 accelerator nodes with NVIDIA GPUs are configured with
-dual Intel Xeon E5-2695v4 2.1 GHz 18-core "Broadwell" processors, 256 GB
-of DDR4-2400 memory, and one NVIDIA P100 GPU accelerator. Each NVIDIA
-P100 GPU has 3,584 CUDA cores and 16 GB CoWoS HBM2 memory. The P100 GPU
-is the based on the Pascal architecture and a high bandwidth (732 GB/s)
-stacked memory architecture. In the summer of 2019, three additional
-nodes were added with eight NVIDIA Tesla V100 GPUs each. Each GPU has 32
-GB of CoWoS HBM2 memory, 5,120 NVIDIA CUDA cores, and 640 NVIDIA Tensor
-cores. In addition, M2 has one ever-broadening set of drop-in
-replacement libraries and ever easier to implement CUDA-based
-programming environments, make GPU-based acceleration significantly more
-approachable for many computationally intensive applications.
-
-### Many-Core Nodes with Intel Xeon Phi Processors
-
-The 36 many-core nodes are configured with Intel Xeon Phi 7230 (also
-known as Knights Landing or KNL) processors and 385 GB of DDR4-2400
-memory. Each Xeon Phi has 64 1.30 GHz cores and 16 GB of high bandwidth
-(400 GB/s) stacked memory. KNL processors are based on the Intel's
-"Silvermont" Atom processor cores and have hardware-based support for up
-to four concurrent threads. A principal benefit of the KNL processors is
-that they are based on and binary compatible with x86 architectures and
-therefore do not require specialized programming languages or
-directives/pragmas.
-
-### Virtual Desktop Nodes
-
-The five virtual desktop nodes will allow researchers remote desktop
-access to high-performance compute capability. These nodes can be used
-for applications that have demanding remote visualization and/or
-rendering requirements. In addition, these virtual desktops can be
-configured as either Linux or Windows for a handful of compatible
-applications. Each node has dual Intel Xeon E5-2695v4 2.1 GHz 18-core
-"Broadwell" processors, 256 GB of DDR4-2400 memory, and one NVIDIA
-Quadro M5000 GPU.
-
-### High-Performance Network
-
-The cluster provides high-speed and low-latency EDR InfiniBand
-networking. Every node is equipped with a Mellanox ConnectX-5 InfiniBand
-adaptor and all nodes are connected via Mellanox Switch-IB 2 switches.
-The InfiniBand network provides 100 Gb/s and less than 600 nanosecond
-latency. Additionally, the combination of ConnectX-5 and Switch-IB 2
-provides network acceleration for applications by off-loading some MPI
-calls, thereby reducing the load on the processors, freeing them to work
-on other computations.
-
-### High-Performance and Archival Storage
-
-The cluster has four storage systems. The first storage system is an NFS
-based storage providing space for home directories, applications,
-libraries, and compilers, etc. This storage system provides 11.4 TB of
-sold state drive based usable space and 38.4 TB of usable 7200 RPM SAS
-storage space. This storage space will have an automatic retention of 30
-days' worth of changes. The second storage system provides the
-high-performance Lustre file system for calculation scratch space. This
-storage system provides 2.8 PB of usable space with a write performance
-of 56.4 GB/s and read performance of 70.8 GB/s, when used in parallel.
-The third storage system is 110 TB of usable disk based archive space
-that includes off-site backup for disaster recovery. The fourth storage
-system, \"work\", provides 8 TB of storage per user.
-
 ## Faculty Partner Nodes
-
-See `Programs and Policies <programs_and_policies>`{.interpreted-text
-role="ref"} for more information.
 
 ### Professor Thomas Hagstrom (Mathematics)
 
@@ -193,7 +112,7 @@ users with the following restrictions.
 
 ## Acknowledgement
 
-If you wish to acknowledge the use of M2 in any publication we suggest
-the following: \"Computational resources for this research were provided
-by SMU\'s Center for Research Computing.\"
+If you wish to acknowledge the use of SMU HPC resources in any publication we
+suggest the following: \"Computational resources for this research were
+provided by SMU\'s Center for Research Computing.\"
 
