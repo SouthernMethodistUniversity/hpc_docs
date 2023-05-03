@@ -17,9 +17,9 @@ The following instructions are for standard OpenSSH installations such as
 those found in Linux, macOS, and Windows (>=10) including WSL.
 
 1. Open a terminal
-2. Type `ssh <your_username>@<m2|superpod>.smu.edu` where `<your_username>` is
+2. Type `ssh <your_username>@<m3|superpod>.smu.edu` where `<your_username>` is
    your username, which is usually the first part of your SMU email address,
-   and `<m2|superpod>` is either `m3` or `superpod`.
+   and `<m3|superpod>` is either `m3` or `superpod`.
 3. Type a Duo **passcode** or `1` for a Duo push. The passcode can
    come from the Duo app or from an OIT procured hardware token (faculty and
    staff only).
@@ -48,7 +48,7 @@ Once these two programs are installed, you can then log into SMU HPC systems:
     2.  In the "X11 forwarding" section, select "Enable X11 forwarding".
     3.  In the "Category" box, scroll to the top and select "Session".
     4.  In the "Host Name" field, type "<m3|superpod>.smu.edu" where
-        `<m2|superpod>` is either `m3` or `superpod`.
+        `<m3|superpod>` is either `m3` or `superpod`.
     5.  In the "Saved Sessions" field, type "M3" or
         "SuperPOD", respectively.
     6.  Press "Save".
