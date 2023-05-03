@@ -1,4 +1,4 @@
-# Request Accounts
+# Accounts
 
 ## Accounts for Individuals with an SMU ID
 
