@@ -163,7 +163,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 
 
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Access</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
@@ -334,12 +333,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-ondemand-web-portal">HPC OnDemand Web Portal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-access-via-ssh">Terminal Access via SSH</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-applications-via-x11-forwarding">Graphical Applications via X11-Forwarding</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-key-based-authentication">Setting Up Key-Based Authentication</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Setting Up Key-Based Authentication</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Setting Up Key-Based Authentication</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-applications-via-x11-forwarding">Graphical Applications via X11-Forwarding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-key-based-authentication">Setting Up Key-Based Authentication</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-files-via-sftp">Accessing Files via SFTP</a><ul class="nav section-nav flex-column">
@@ -367,8 +362,9 @@ document.write(`
 <h1>Access<a class="headerlink" href="#access" title="Permalink to this heading">#</a></h1>
 <section id="hpc-ondemand-web-portal">
 <h2>HPC OnDemand Web Portal<a class="headerlink" href="#hpc-ondemand-web-portal" title="Permalink to this heading">#</a></h2>
-<p>ManeFrame II can be accessed directly from a browser via the HPC OnDemand Web
-Portal.</p>
+<p>SMU HPC clusters can be accessed directly from a browser via the HPC OnDemand
+Web Portal, which provides access to files, remote desktops, JupyterLab, and
+RStudio.</p>
 </section>
 <section id="terminal-access-via-ssh">
 <h2>Terminal Access via SSH<a class="headerlink" href="#terminal-access-via-ssh" title="Permalink to this heading">#</a></h2>
@@ -382,9 +378,9 @@ OpenSSH</label><div class="sd-tab-content docutils">
 those found in Linux, macOS, and Windows (&gt;=10) including WSL.</p>
 <ol class="arabic simple">
 <li><p>Open a terminal</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;&lt;m2|superpod&gt;.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;&lt;m3|superpod&gt;.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
 your username, which is usually the first part of your SMU email address,
-and <code class="docutils literal notranslate"><span class="pre">&lt;m2|superpod&gt;</span></code> is either <code class="docutils literal notranslate"><span class="pre">m2</span></code> or <code class="docutils literal notranslate"><span class="pre">superpod</span></code>.</p></li>
+and <code class="docutils literal notranslate"><span class="pre">&lt;m3|superpod&gt;</span></code> is either <code class="docutils literal notranslate"><span class="pre">m3</span></code> or <code class="docutils literal notranslate"><span class="pre">superpod</span></code>.</p></li>
 <li><p>Type a Duo <strong>passcode</strong> or <code class="docutils literal notranslate"><span class="pre">1</span></code> for a Duo push. The passcode can
 come from the Duo app or from an OIT procured hardware token (faculty and
 staff only).</p></li>
@@ -419,10 +415,10 @@ from the System Tray.</p></li>
 </li>
 <li><p>In the “X11 forwarding” section, select “Enable X11 forwarding”.</p></li>
 <li><p>In the “Category” box, scroll to the top and select “Session”.</p></li>
-<li><p>In the “Host Name” field, type “&lt;m2|superpod&gt;.smu.edu” where
-<code class="docutils literal notranslate"><span class="pre">&lt;m2|superpod&gt;</span></code> is either <code class="docutils literal notranslate"><span class="pre">m2</span></code> or <code class="docutils literal notranslate"><span class="pre">superpod</span></code>.</p></li>
-<li><p>In the “Saved Sessions” field, type “ManeFrame II (M2)” or
-“SuperPOD (MP)”, respectively.</p></li>
+<li><p>In the “Host Name” field, type “&lt;m3|superpod&gt;.smu.edu” where
+<code class="docutils literal notranslate"><span class="pre">&lt;m3|superpod&gt;</span></code> is either <code class="docutils literal notranslate"><span class="pre">m3</span></code> or <code class="docutils literal notranslate"><span class="pre">superpod</span></code>.</p></li>
+<li><p>In the “Saved Sessions” field, type “M3” or
+“SuperPOD”, respectively.</p></li>
 <li><p>Press “Save”.</p></li>
 <li><p>Press “Open”. Select “Yes” if you presented with a “PuTTY
 Security Alert” window.</p></li>
@@ -459,6 +455,8 @@ applications.</p>
 to enable <a class="reference external" href="https://en.wikipedia.org/wiki/AIGLX">indirect GLX</a>, which
 is disabled by default</p></li>
 </ol>
+<p>After XQuartz is installed add the <code class="docutils literal notranslate"><span class="pre">-X</span></code> flag, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">...</span></code> when
+logging in.</p>
 </div>
 <input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
@@ -469,50 +467,101 @@ server</a> and the <a class="reference external" href="http://sourceforge.net/
 Fonts</a>.</p>
 </div>
 </div>
+</section>
 <section id="setting-up-key-based-authentication">
-<h4>Setting Up Key-Based Authentication<a class="headerlink" href="#setting-up-key-based-authentication" title="Permalink to this heading">#</a></h4>
-<p>SSH keys to be used for SSH and SFTP clients, which allows for
-password-less access, but still requires Duo authentication.</p>
-<p>The SSH steps are generally as follows:</p>
+<h3>Setting Up Key-Based Authentication<a class="headerlink" href="#setting-up-key-based-authentication" title="Permalink to this heading">#</a></h3>
+<p>Key-based authentication can be used to log into SMU HPC clusters without
+needing to input a password, but you still will need to go through Duo.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The commands given below are to be run from your <strong>your</strong> and not on the
+clusters themselves.</p>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Linux</label><div class="sd-tab-content docutils">
+<p>Run the following commands from a terminal on the <strong>local computer</strong> that
+you want to have key-based access to SMU HPC resources:</p>
 <ol class="arabic simple">
-<li><p>Open the Terminal app at “/Applications/Utilities/Terminal.app”</p></li>
-<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-CX</span> <span class="pre">&lt;your_username&gt;&#64;m2.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
-your username, which is the first part of your SMU email address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u=&lt;your</span> <span class="pre">SMU</span> <span class="pre">HPC</span> <span class="pre">username&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">SMU</span> <span class="pre">HPC</span> <span class="pre">username&gt;</span></code> is set to
+your SMU HPC username to be used for the subsequent commands.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c=&lt;SMU</span> <span class="pre">HPC</span> <span class="pre">cluster&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;SMU</span> <span class="pre">HPC</span> <span class="pre">cluster&gt;</span></code> is either <code class="docutils literal notranslate"><span class="pre">m3</span></code> or <code class="docutils literal notranslate"><span class="pre">superpod</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-q</span> <span class="pre">-t</span> <span class="pre">ecdsa</span> <span class="pre">-f</span> <span class="pre">~/.ssh/id_ecdsa_${c}</span></code> You will need to
+press <em>enter</em> twice.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_ecdsa_${c}.pub</span> <span class="pre">|</span> <span class="pre">ssh</span> <span class="pre">${u}&#64;${c}.smu.edu</span> <span class="pre">&quot;mkdir</span> <span class="pre">-p</span> <span class="pre">~/.ssh</span> <span class="pre">&amp;&amp;</span> <span class="pre">chmod</span> <span class="pre">0700</span> <span class="pre">~/.ssh</span> <span class="pre">&amp;&amp;</span> <span class="pre">touch</span> <span class="pre">~/.ssh/authorized_keys</span> <span class="pre">&amp;&amp;</span> <span class="pre">chmod</span> <span class="pre">0700</span> <span class="pre">~/.ssh/authorized_keys</span> <span class="pre">&amp;&amp;</span> <span class="pre">cat</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.ssh/authorized_keys</span> <span class="pre">&amp;&amp;</span> <span class="pre">chmod</span> <span class="pre">0400</span> <span class="pre">~/.ssh/authorized_keys&quot;</span></code>
+Press <em>enter</em> and you will be prompted for your SMU password.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">printf</span> <span class="pre">&quot;Host</span> <span class="pre">*${c}.smu.edu\n</span>&#160;&#160; <span class="pre">User</span> <span class="pre">%s\n</span>&#160;&#160; <span class="pre">IdentityFile</span> <span class="pre">~/.ssh/id_ecdsa_${c}\n&quot;</span> <span class="pre">&quot;${u}&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.ssh/config</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-add</span> <span class="pre">-k</span> <span class="pre">~/.ssh/id_ecdsa_${c}</span></code></p></li>
 </ol>
-</section>
-<section id="id1">
-<h4>Setting Up Key-Based Authentication<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
-<p>SSH keys to be used for SSH and SFTP clients, which allows for
-password-less access, but still requires Duo authentication.</p>
-</section>
-<section id="id2">
-<h4>Setting Up Key-Based Authentication<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
-</section>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+macOS</label><div class="sd-tab-content docutils">
+<p>Run the following commands from a terminal on the <strong>local computer</strong> that
+you want to have key-based access to SMU HPC resources:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">u=&lt;your</span> <span class="pre">SMU</span> <span class="pre">HPC</span> <span class="pre">username&gt;</span></code> <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">SMU</span> <span class="pre">HPC</span> <span class="pre">username&gt;</span></code> is set to
+your SMU HPC username to be used for the subsequent commands.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c=&lt;SMU</span> <span class="pre">HPC</span> <span class="pre">cluster&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;SMU</span> <span class="pre">HPC</span> <span class="pre">cluster&gt;</span></code> is either <code class="docutils literal notranslate"><span class="pre">m3</span></code> or <code class="docutils literal notranslate"><span class="pre">superpod</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-q</span> <span class="pre">-t</span> <span class="pre">ecdsa</span> <span class="pre">-f</span> <span class="pre">~/.ssh/id_ecdsa_${c}</span></code> You will need to
+press <em>enter</em> twice.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_ecdsa_${c}.pub</span> <span class="pre">|</span> <span class="pre">ssh</span> <span class="pre">${u}&#64;${c}.smu.edu</span> <span class="pre">&quot;mkdir</span> <span class="pre">-p</span> <span class="pre">~/.ssh</span> <span class="pre">&amp;&amp;</span> <span class="pre">chmod</span> <span class="pre">0700</span> <span class="pre">~/.ssh</span> <span class="pre">&amp;&amp;</span> <span class="pre">touch</span> <span class="pre">~/.ssh/authorized_keys</span> <span class="pre">&amp;&amp;</span> <span class="pre">chmod</span> <span class="pre">0700</span> <span class="pre">~/.ssh/authorized_keys</span> <span class="pre">&amp;&amp;</span> <span class="pre">cat</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.ssh/authorized_keys</span> <span class="pre">&amp;&amp;</span> <span class="pre">chmod</span> <span class="pre">0400</span> <span class="pre">~/.ssh/authorized_keys&quot;</span></code>
+Press <em>enter</em> and you will be prompted for your SMU password.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">printf</span> <span class="pre">&quot;Host</span> <span class="pre">*${c}.smu.edu\n</span>&#160;&#160; <span class="pre">User</span> <span class="pre">%s\n</span>&#160;&#160; <span class="pre">IdentityFile</span> <span class="pre">~/.ssh/id_ecdsa_${c}\n&quot;</span> <span class="pre">&quot;${u}&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.ssh/config</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-add</span> <span class="pre">--apple-use-keychain</span> <span class="pre">~/.ssh/id_ecdsa_${c}</span></code> You will be asked for
+the key’s password, if present.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Windows</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Open PuTTYgen.</p></li>
+<li><p>Press “Generate”.</p></li>
+<li><p>Move mouse around blank area in window as instructed until key has
+been generated.</p></li>
+<li><p>Select the “Conversions” menu and then “Export OpenSSH key”.</p></li>
+<li><p>Press “Yes” at the warning prompt.</p></li>
+<li><p>Type “&lt;cluster&gt;_ssh_key_private” for the file name, where “&lt;cluster&gt;”
+is either “m3” or “superpod”</p></li>
+<li><p>Press “Save”.</p></li>
+<li><p>Leaving the “PuTTY Key Generator” window open, open the PuTTY
+application.</p></li>
+<li><p>Type “&lt;cluster&gt;.smu.edu” into the “Host Name” field, where
+“&lt;cluster&gt;” is either “m3” or “superpod”</p></li>
+<li><p>Press “Open”.</p></li>
+<li><p>Enter your SMU username (first part of your SMU email address).</p></li>
+<li><p>Enter your SMU password.</p></li>
+<li><p>At the command prompt type <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;</span></code> (note the single double quote at
+the end).</p></li>
+<li><p>From the “PuTTY Key Generator” window, copy all the text in the
+“Public key for pasting into OpenSSH authorized_keys file:”
+section (select all the text, right-click, and select “Copy”).</p></li>
+<li><p>Select PuTTY window and right-click at the prompt to paste the
+copied text.</p></li>
+<li><p>At the command prompt type <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.ssh/authorized_keys</span></code> (note the
+single double quote at the beginning).</p></li>
+<li><p>Press the “Enter (return)” key.</p></li>
+<li><p>At the command prompt type <code class="docutils literal notranslate"><span class="pre">exit</span></code> to log out of the cluster.</p></li>
+<li><p>Close the “PuTTY Key Generator” window.</p></li>
+</ol>
+</div>
+</div>
 </section>
 </section>
 <section id="accessing-files-via-sftp">
 <h2>Accessing Files via SFTP<a class="headerlink" href="#accessing-files-via-sftp" title="Permalink to this heading">#</a></h2>
-<p>ManeFrame II has two separate file systems. The first, the “home” file
-system, contains user’s home directories (“~/”, “/users/$USER”,
-“$HOME”) and is what is seen when first logging into the system. The
-second, the “scratch” file system, is ManeFrame II’s high performance
-parallel file system (“/scratch/users/$USER” or “$SCRATCH”). The
-scratch file system is significantly larger and faster than the “home”
-file system and should be the file system used when running
-calculations. Files needed for running calculations or building software
-must be copied from your local computer to ManeFrame II. This is
-generally done using an SFTP client or the “scp” command where
-available.</p>
 <section id="sftp-clients">
 <h3>SFTP Clients<a class="headerlink" href="#sftp-clients" title="Permalink to this heading">#</a></h3>
 <p>There are several popular SFTP clients available and any file transfer
-client that supports SFTP will work with ManeFrame II. Several popular
+client that supports SFTP will work with SMU HPC clusters. Several popular
 SFTP clients include <a class="reference external" href="https://winscp.net/">WinSCP</a> (Windows)
 and <a class="reference external" href="https://cyberduck.io">CyberDuck</a> (Windows, macOS). These clients
 generally display two panes with the left side being your local files
-and the right side being your ManeFrame II files. When setting up access
+and the right side being your files on the cluster. When setting up access
 in these clients, SFTP must be chosen and your credentials will be your
-ManeFrame II credentials.</p>
+normal SMU HPC credentials.</p>
 <p>Users using SFTP clients such as Transmit and Cyberduck on macOS or
 Cyberduck and WinSCP on Windows will be prompted by the application for
 their password, if not saved, followed by a request for a Duo
@@ -522,16 +571,16 @@ app or from an OIT procured hardware token (faculty and staff only).</p>
 </section>
 <section id="reducing-the-number-of-duo-authentications">
 <h2>Reducing the Number of Duo Authentications<a class="headerlink" href="#reducing-the-number-of-duo-authentications" title="Permalink to this heading">#</a></h2>
-<p>An initial SSH/SFTP connection to M2 can be reused for subsequent
+<p>An initial SSH/SFTP connection can be reused for subsequent
 connections, which allows for multiple connections without being
 prompted by Duo repeatedly.</p>
 <section id="ssh">
 <h3>SSH<a class="headerlink" href="#ssh" title="Permalink to this heading">#</a></h3>
 <p>For those using OpenSSH (macOS, Linux, and Windows WSL), add the
-following to your <em>local computer’s</em> SSH <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file:</p>
+following to your <strong>local computer’s</strong> SSH <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Host *
   ControlMaster auto
-  ControlPath ~/.ssh/sockets/ssh_mux_%h_%p_%r
+  ControlPath ~/.ssh/sockets/ssh_mux_%C
   ControlPersist 600
 </pre></div>
 </div>
@@ -541,7 +590,7 @@ following to your <em>local computer’s</em> SSH <code class="docutils literal 
 <h3>PuTTY<a class="headerlink" href="#putty" title="Permalink to this heading">#</a></h3>
 <p>For those using PuTTY on Windows, check the box “Share SSH connection
 if possible” under “Category”; “Connection”; “SSH”; “Sharing an
-SSH connection between PuTTY tools.</p>
+SSH connection between PuTTY tools”.</p>
 </section>
 <section id="cyberduck">
 <h3>Cyberduck<a class="headerlink" href="#cyberduck" title="Permalink to this heading">#</a></h3>
@@ -625,12 +674,8 @@ setting can be used to enable connection persistence. Within Cyberduck:</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-ondemand-web-portal">HPC OnDemand Web Portal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-access-via-ssh">Terminal Access via SSH</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-applications-via-x11-forwarding">Graphical Applications via X11-Forwarding</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-key-based-authentication">Setting Up Key-Based Authentication</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Setting Up Key-Based Authentication</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Setting Up Key-Based Authentication</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-applications-via-x11-forwarding">Graphical Applications via X11-Forwarding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-key-based-authentication">Setting Up Key-Based Authentication</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-files-via-sftp">Accessing Files via SFTP</a><ul class="nav section-nav flex-column">
