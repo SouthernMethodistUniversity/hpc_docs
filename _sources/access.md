@@ -1,4 +1,4 @@
-# Access SMU HPC Systems
+# Access
 
 ## HPC OnDemand Web Portal
 
