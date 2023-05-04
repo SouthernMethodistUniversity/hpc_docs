@@ -269,13 +269,12 @@ class CustomEnvironments
        
       @JupyterLabEnvs = []
 
-      # always include the default python/3 module
-      # FIXME
-      python3_module = [ "Default System Env", "No Jupyter Lab", "Default Env Type", "Default Conda Path" ]
+      # always include the option to build
+      build_new = [ "Build New Environment", "new", "Default Env Type", "Default Conda Path" ]
       
       # always include to option to define a custom env
       custom_env = [ "Custom Environment - only use what is specified below", "custom", "user provided", "user provided"   ]
-      @JupyterLabEnvs.push(python3_module)
+      @JupyterLabEnvs.push(build_new)
       @JupyterLabEnvs.push(custom_env)
 
       # check the output of Conda info for useable envs
@@ -323,6 +322,8 @@ cluster: "m3cluster"
 form:
   - auto_queues
   - python_version
+  - build_environment
+  - environment_name
   - conda_command
   - conda_type
   - environment
@@ -344,9 +345,41 @@ attributes:
       <%- CustomEnvironments.JupyterLabEnvs.each do |q| -%>
         - [ '<%= q[0] %>', '<%= q[1] %>',
             data-set-conda-command: '<%= q[3] %>',
-            data-set-conda-type: '<%= q[2] %>'
+            data-set-conda-type: '<%= q[2] %>',
+            <%- if q[1] != "new" -%>
+            data-hide-build-environment: true,
+            data-hide-environment-name: true
+            <%- end -%>
           ]
       <%- end -%>
+  build_environment:
+    label: Select a base environment to build
+    widget: select
+    value: "1"
+    help: |
+      Build a new Conda environment. These are simple base environments to help you
+      get started, but you will likely need to install additional packages yourself.
+
+      - data science: Common data science tools. Uses [datascience.yml]
+      - bioinformatics: Tools for bioinformatics workflows. Uses [bioinformatics.yml]
+      - sklearn: Machine learning with scikit-learn. Uses [sklearn.yml]
+      - R: Create an R environment with some base packages. Uses [r.yml] 
+
+      See our documentation on [Conda environments] for more information.
+      [Conda environments]: https://southernmethodistuniversity.github.io/hpc_docs/ecamples/conda
+      [datascience.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/datascience 
+      [bioinformatics.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/bioinformatics
+      [sklearn.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/sklearn
+      [r.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/r
+    options:  
+    - ["data science", "1"]
+    - ["bioinformatics", "2"]
+    - ["sklearn", "3"]
+    - ["R", "4"]
+  environment_name:
+    label: Specify a name your you Conda environment
+    help: |
+      - If the environment name already exists, the job will fail
   conda_command:
     widget: "hidden_field"
   conda_type:
