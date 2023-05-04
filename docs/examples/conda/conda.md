@@ -97,3 +97,61 @@ Once you have made the `environment.yml` file, you can create the environment wi
 ```bash
 conda env create -f environment.yml -p $WORK/conda_env
 ```
+
+## Using the HPC Portal
+
+If you are running interactive sessions through the portal using JupyterLab, 
+you need to have `JupyterLab` installed in your environment. 
+If it is not, the portal will not allow that environment to be used.
+
+You Conda environment should appear in the drop down list of Python Environments.
+If it is greyed out, that means that you need to install JupyterLab in the environment.
+
+### Using a base
+
+```bash
+conda activate $HOME/conda_env
+```
+
+to the ```Custom environment settings``` field on the portal. It should look like:
+
+![Image of activation command in the custom environment settings field of the hpc portal](images/conda_python_activation_portal.png "Portal Activation Example")
+
+### Interactively from the terminal
+
+If you are running programs interactively from the terminal (e.g. using ```srun```) just activate the virtual environment with
+
+```bash
+conda activate $HOME/conda_env
+```
+
+in the terminal before running any commands.
+
+### Using SBatch scripts
+
+If you are running programs using _SBatch_ scripts, you should include the activation command in your script:
+
+```bash
+conda activate $HOME/conda_env
+```
+
+## Tips and reproducibility
+
+- In general, you should not update packages inside a Conda environment.
+Instead, you should make a new environment with the versions of the packages need
+and verify this works before removing any old environments that are not longer 
+needed. This is especially true if you used `pip` to install anything.
+- It is a good idea to include version numbers of the packages you want (if you know them).
+For example, in the above, we requested Python version 3.9 or newer.
+Being more specific can help speed up how long it takes to set up the environment 
+because it will reduce the number of package version Conda will consider.
+- It is best to install all of the packages when you create the environment, if possible. 
+Conda will do a better job of resolving dependencies.
+- Conda can take a long time to resolve dependencies, 
+see this [blog post](https://www.anaconda.com/blog/understanding-and-improving-condas-performance)
+for more tips to speed up the process. Alternatively you can try using Mamba instead of Conda.
+
+## Additional Resources
+
+- [Understanding and improving _Conda_ performance](https://www.anaconda.com/blog/understanding-and-improving-condas-performance)
+- [Managing _Conda_ environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
