@@ -10,7 +10,7 @@ touch ${WARNING_FILE}
 LOAD_WANRINGS=0
 
 # if requested, try to build an environment
-<% if context.python_version = "new" %>
+<% if context.python_version == "new" %>
 
 module purge
 module load conda
@@ -30,8 +30,10 @@ cp <%= context.build_environment %> environment.yml
 NAME=$(head -n 1 environment.yml)
 NAME=${NAME#*:} # strips name: from beginning
 <% else %>
-NAME=<%= context.environment_name %>
+NAME="<%= context.environment_name %>"
+NAME="${NAME// /_}" # replace spaces with underscores
 <% end %>
+echo "NAME: ${NAME}"
 # check if directory already exists
 ENV_PATH=${WORK}/.ood_envs/${NAME}
 if [ -d "${ENV_PATH}" ]
@@ -45,7 +47,7 @@ fi
 sed -i "1s/.*/name: ${NAME}/" environment.yml
 
 # build the environment with mamba
-mamba env create -y --prefix ${ENV_PATH} -f environment.yml
+mamba create -y --prefix ${ENV_PATH} -f environment.yml
 
 # overide the settings with correct values
 <% context.conda_type = "Mamba Env" %>
