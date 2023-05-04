@@ -45,7 +45,7 @@ fi
 sed -i "1s/.*/name: ${NAME}/" environment.yml
 
 # build the environment with mamba
-mamba create -y --prefix ${ENV_PATH} -f environment.yml
+mamba env create --prefix ${ENV_PATH} -f environment.yml
 
 # overide the settings with correct values
 <% context.conda_type = "Mamba Env" %>
