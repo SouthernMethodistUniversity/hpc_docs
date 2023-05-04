@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Conda &#8212; SMU HPC Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/conda/README';</script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Torch" href="../torch/README.html" />
+    <link rel="prev" title="Access" href="../../access.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/smu_logo.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/smu_logo.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../access.html">Access</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torch/README.html">Torch</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/intro.html">HPC Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/unix/intro.html">UNIX and Linux Shells</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/cpp/intro.html">Introduction to Programming in C++</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_1.html">Session 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_2.html">Session 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_3.html">Session 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_4.html">Session 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_5.html">Session 5</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../policies/policies.html">Policies</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/examples/conda/README.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Conda</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-conda">Loading Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-installation">System Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-installation">User Installation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-the-command-line">Creating Virtual Environments from the Command Line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-environment-yml-file">Creating Virtual Environments From environment.yml File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-hpc-portal">Using the HPC Portal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-base">Using a base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactively-from-the-terminal">Interactively from the terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-sbatch-scripts">Using SBatch scripts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-reproducibility">Tips and reproducibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="conda">
+<h1>Conda<a class="headerlink" href="#conda" title="Permalink to this heading">#</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We recommend trying Mamba (<a class="reference external" href="https://mamba.readthedocs.io/en/latest/">https://mamba.readthedocs.io/en/latest/</a>).
+It is a drop in replacement for Conda and is typically considerably faster.</p>
+</div>
+<p>Conda (<a class="reference external" href="https://docs.conda.io/en/latest/">https://docs.conda.io/en/latest/</a>) is a package management system.</p>
+<section id="loading-conda">
+<h2>Loading Conda<a class="headerlink" href="#loading-conda" title="Permalink to this heading">#</a></h2>
+<section id="system-installation">
+<h3>System Installation<a class="headerlink" href="#system-installation" title="Permalink to this heading">#</a></h3>
+<p>We have a base install of Conda available as a module that can be accessed using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>conda
+</pre></div>
+</div>
+</section>
+<section id="user-installation">
+<h3>User Installation<a class="headerlink" href="#user-installation" title="Permalink to this heading">#</a></h3>
+<p>You can also install your own versions of Conda in your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory.
+We recommend</p>
+<ul class="simple">
+<li><p>Micromamba: <a class="reference external" href="https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html">https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html</a></p></li>
+<li><p>Miniconda: <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p></li>
+</ul>
+<p>The first time you run Conda, you will need to initialize it.
+This creates some shell functions in your profile to make it easier to call Conda.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init<span class="w"> </span><span class="nv">$SHELL</span>
+</pre></div>
+</div>
+<p>After doing this, you may need to log out and log back in to see the effects.
+In most cases, you can source your shell profile to avoid having to log out.
+For most users, this is <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>.</p>
+<p>We additionally recommend that you disable Conda’s auto-activate base
+functionallity. By default, Conda will load a base environment, which can cause
+issues with system dependencies. In particular, applications on
+<a class="reference external" href="https://hpc.m3.smu.edu">https://hpc.m3.smu.edu</a> often behave in unexpected ways becuase it tries to
+use a Conda package instead of the correct system package.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
+conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>envs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/envs
+conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>pkgs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/pkgs
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-virtual-environments-from-the-command-line">
+<h2>Creating Virtual Environments from the Command Line<a class="headerlink" href="#creating-virtual-environments-from-the-command-line" title="Permalink to this heading">#</a></h2>
+<p>For simple environments with a small number of packages, you can create an
+environment named <code class="docutils literal notranslate"><span class="pre">conda_env</span></code> (or any name of your choosing) in your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>
+directory with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>conda_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>package1<span class="w"> </span>package2<span class="w"> </span>package3
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-n</span></code> tells Conda what to name the environment. Here, we request Python
+version 3.9 and the packages <code class="docutils literal notranslate"><span class="pre">package1</span> <span class="pre">package2</span> <span class="pre">package3</span></code> which are the
+packages you’d like to install (e.g. <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, etc.). In
+general, it is a good idea install all the packages at the same time becasue
+Conda will do a better job of resolving dependencies.</p>
+</section>
+<section id="creating-virtual-environments-from-environment-yml-file">
+<h2>Creating Virtual Environments From environment.yml File<a class="headerlink" href="#creating-virtual-environments-from-environment-yml-file" title="Permalink to this heading">#</a></h2>
+<p>For environments that contain more than a few packages, we suggest creating a
+<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file (note, you can name the file anything you’d like, but it
+is common practice to call it <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>.)</p>
+<p>The basic structure of the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>name: conda_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python&gt;=3.9
+  - package1
+  - package2
+  - package3
+  - pip
+  - pip:
+    - pip_package1
+    - -r requirements.txt
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> field is what the created environment will be called (it can be
+anything you like, but we again use the name <code class="docutils literal notranslate"><span class="pre">conda_env</span></code> for the example).</p>
+<p>The next section is <code class="docutils literal notranslate"><span class="pre">channels</span></code>, which are the repositories where Conda will
+look for the requested packages. Conda prioritizes the channels from the top
+down, so in this case Conda will prefer the package in <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> over the
+package in <code class="docutils literal notranslate"><span class="pre">defaults</span></code> (typically the packages in the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> are more up
+to date.)</p>
+<p>The next section is <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> and this is where you should list all of the
+packages you would like to install. If you have packages that need to be
+installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, you should include <code class="docutils literal notranslate"><span class="pre">pip</span></code> in the dependencies as above and
+you can list the specific packages like the above as <code class="docutils literal notranslate"><span class="pre">pip_package1</span></code>, etc.
+and/or you can have all the <code class="docutils literal notranslate"><span class="pre">pip</span></code> packages in a <code class="docutils literal notranslate"><span class="pre">requirments.txt</span></code> file.</p>
+<p>Once you have made the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file, you can create the environment
+with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-n<span class="w"> </span>conda_env
+</pre></div>
+</div>
+</section>
+<section id="using-the-hpc-portal">
+<h2>Using the HPC Portal<a class="headerlink" href="#using-the-hpc-portal" title="Permalink to this heading">#</a></h2>
+<p>If you are running interactive sessions through the portal using JupyterLab,
+you need to have <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> installed in your environment. If it is not, the
+portal will not allow that environment to be used.</p>
+<p>You Conda environment should appear in the drop down list of Python
+Environments. If it is greyed out, that means that you need to install
+JupyterLab in the environment.</p>
+<section id="using-a-base">
+<h3>Using a base<a class="headerlink" href="#using-a-base" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>conda_env
+</pre></div>
+</div>
+<p>to the <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">environment</span> <span class="pre">settings</span></code> field on the portal. It should look
+like:</p>
+<p><img alt="Image of activation command in the custom environment settings field of thehpc portal" src="examples/conda/images/conda_python_activation_portal.png" /></p>
+</section>
+<section id="interactively-from-the-terminal">
+<h3>Interactively from the terminal<a class="headerlink" href="#interactively-from-the-terminal" title="Permalink to this heading">#</a></h3>
+<p>If you are running programs interactively from the terminal (e.g. using
+<code class="docutils literal notranslate"><span class="pre">srun</span></code>) just activate the virtual environment with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>conda_env
+</pre></div>
+</div>
+<p>in the terminal before running any commands.</p>
+</section>
+<section id="using-sbatch-scripts">
+<h3>Using SBatch scripts<a class="headerlink" href="#using-sbatch-scripts" title="Permalink to this heading">#</a></h3>
+<p>If you are running programs using <em>SBatch</em> scripts, you should include the
+activation command in your script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>conda_env
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tips-and-reproducibility">
+<h2>Tips and reproducibility<a class="headerlink" href="#tips-and-reproducibility" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In general, you should not update packages inside a Conda environment.
+Instead, you should make a new environment with the versions of the packages
+need and verify this works before removing any old environments that are not
+longer needed. This is especially true if you used <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install anything.</p></li>
+<li><p>It is a good idea to include version numbers of the packages you want (if you
+know them). For example, in the above, we requested Python version 3.9 or
+newer. Being more specific can help speed up how long it takes to set up the
+environment because it will reduce the number of package version Conda will
+consider.</p></li>
+<li><p>It is best to install all of the packages when you create the environment, if
+possible. Conda will do a better job of resolving dependencies.</p></li>
+<li><p>Conda can take a long time to resolve dependencies, see this <a class="reference external" href="https://www.anaconda.com/blog/understanding-and-improving-condas-performance">blog
+post</a>
+for more tips to speed up the process. Alternatively you can try using Mamba
+instead of Conda.</p></li>
+</ul>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.anaconda.com/blog/understanding-and-improving-condas-performance">Understanding and improving <em>Conda</em> performance</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing <em>Conda</em> environments</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples/conda"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../access.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Access</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../torch/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Torch</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-conda">Loading Conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-installation">System Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-installation">User Installation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-the-command-line">Creating Virtual Environments from the Command Line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-environment-yml-file">Creating Virtual Environments From environment.yml File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-hpc-portal">Using the HPC Portal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-base">Using a base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactively-from-the-terminal">Interactively from the terminal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-sbatch-scripts">Using SBatch scripts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-and-reproducibility">Tips and reproducibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Southern Methodist University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
