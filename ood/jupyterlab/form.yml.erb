@@ -15,7 +15,7 @@ class CustomEnvironments
       o, status = Open3.capture2('/bin/bash -l -i', stdin_data: script)
       output = o.split("\n")
       if output.empty?
-        return '/hpc/m3/apps/conda/bin/conda'
+        output
       else
         return output[0]
       end
@@ -29,7 +29,6 @@ class CustomEnvironments
       o, status = Open3.capture2('/bin/bash -l', stdin_data: script)
       output = o.split("\n")
       if output.empty?
-        # TODO: change to default path / module
         return output
       else
         return output[0]
@@ -44,7 +43,6 @@ class CustomEnvironments
       o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
       output = o.split("\n")
       if output.empty?
-        # TODO: change to default path / module
         return output
       else
         return output[0]
@@ -57,7 +55,12 @@ class CustomEnvironments
 
       @FoundCondaProviders = []
 
-      # TODO: Add defaults?
+      # system defaults in conda module
+      val = ["Conda", "/hpc/m3/apps/conda/bin/conda"]
+      @FoundCondaProviders.push(val)
+      val = ["Mamba", "/hpc/m3/apps/conda/bin/mamba"]
+      @FoundCondaProviders.push(val)
+      
       temp = LookForMamba()
       if !(temp.empty?)
         val = ["Mamba", temp]

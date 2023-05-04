@@ -8,9 +8,9 @@ touch ${WARNING_FILE}
 LOAD_WANRINGS=0
 
 # if requested, try to build an environment
+module purge
 <% if context.python_version == "new" %>
 
-module purge
 module load conda
 
 # make sure auto activate base is off
@@ -33,7 +33,7 @@ NAME="${NAME// /_}" # replace spaces with underscores
 <% end %>
 echo "NAME: ${NAME}"
 # check if directory already exists
-ENV_PATH=${WORK}/.ood_envs/${NAME}
+ENV_PATH=${WORK}/.conda/envs/${NAME}
 if [ -d "${ENV_PATH}" ]
 then
     LOAD_WANRINGS=1
@@ -50,7 +50,6 @@ mamba env create -n ${NAME} -f environment.yml
 # overide the settings with correct values
 <% context.conda_type = "Mamba Env" %>
 <% context.conda_command = "" %>
-
 <% end %>
 
 # Set working directory to home directory
@@ -60,9 +59,6 @@ cd "${HOME}"
 #
 # Start Jupyter Notebook Server
 #
-
-# Purge the module environment to avoid conflicts
-module purge
 
 echo "MAMBA_ROOT_PREFIX: ${MAMBA_ROOT_PREFIX}"
 
@@ -101,19 +97,13 @@ then
     LAB_VERSION=$(jupyter --version | awk '/jupyterlab\s*:\s*(.*)/')
 
     if [[ $LAB_VERSION == *"not installed"* ]]; then
-      echo "Jupyter Lab not found, using default"
-      echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
+      echo "Jupyter Lab was not found in the environment specified." > ${WARNING_FILE}
       LOAD_WANRINGS=1
-      module load python/3 
     fi
 
   else
-
-    echo "Jupyter not found, using default."
-    echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
+    echo "Jupyter Lab was not found in the environment specified." > ${WARNING_FILE}
     LOAD_WANRINGS=1
-    module load python/3
-
   fi
 fi
 
