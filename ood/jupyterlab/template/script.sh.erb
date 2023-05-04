@@ -27,13 +27,15 @@ cp <%= context.build_environment %> environment.yml
 # use the name in the environment file
 NAME=$(head -n 1 environment.yml)
 NAME=${NAME#*:} # strips name: from beginning
+# remove leading / trailing whitespace
+NAME="$(echo -e "${NAME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 <% else %>
 NAME="<%= context.environment_name %>"
 NAME="${NAME// /_}" # replace spaces with underscores
 <% end %>
-echo "NAME: ${NAME}"
 # check if directory already exists
 ENV_PATH=${WORK}/.conda/envs/${NAME}
+echo "ENV_PATH: ${ENV_PATH}"
 if [ -d "${ENV_PATH}" ]
 then
     LOAD_WANRINGS=1
@@ -50,6 +52,8 @@ mamba env create -n ${NAME} -f environment.yml
 # overide the settings with correct values
 <% context.conda_type = "Mamba Env" %>
 <% context.conda_command = "" %>
+<% else %>
+NAME=<%= context.python_version %>
 <% end %>
 
 # Set working directory to home directory
@@ -60,23 +64,21 @@ cd "${HOME}"
 # Start Jupyter Notebook Server
 #
 
-echo "MAMBA_ROOT_PREFIX: ${MAMBA_ROOT_PREFIX}"
-
 <% if context.python_version != "custom" %>
 CONDA_COMMAND=<%= context.conda_command %>
 <% if context.conda_type == "Conda Env" %>
 eval "$(<%= context.conda_command %> shell.bash hook)"
-conda activate <%= context.python_version %>
+conda activate ${NAME}
 <% elsif context.conda_type == "Micromamba Env" %>
 # micromamba doesn't always export everything as expected
 # see: https://github.com/mamba-org/mamba/issues/1748
 export MAMBA_EXE=<%= context.conda_command %>
 eval "$(<%= context.conda_command %> shell hook --shell=bash)"
-micromamba activate <%= context.python_version %>
+micromamba activate ${NAME}
 <% elsif context.conda_type == "Mamba Env" %>
 export MAMBA_EXE=<%= context.conda_command %>
 eval "$(<%= context.conda_command %> shell hook --shell=bash)"
-mamba  activate <%= context.python_version %>
+mamba  activate ${NAME}
 <% end %>
 <% end %>
 
