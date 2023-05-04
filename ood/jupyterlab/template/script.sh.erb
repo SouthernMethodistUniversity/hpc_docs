@@ -8,7 +8,11 @@ echo "TIMING - Starting main script at: $(date)"
 
 WARNING_FILE=$(pwd)/warnings.txt
 touch ${WARNING_FILE}
-LOAD_WANRINGS=0
+LOAD_WARNINGS=0
+
+ERROR_FILE=$(pwd)/errors.txt
+touch ${ERROR_FILE}
+LOAD_ERRORS=0
 
 # if requested, try to build an environment
 module purge
@@ -41,8 +45,8 @@ ENV_PATH=${WORK}/.conda/envs/${NAME}
 echo "ENV_PATH: ${ENV_PATH}"
 if [ -d "${ENV_PATH}" ]
 then
-  LOAD_WANRINGS=1
-  echo "Environment name: ${NAME} already exists! Loading existing environment" > ${WARNING_FILE}
+  LOAD_WARNINGS=1
+  echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
 else
   # actually change the name
   sed -i "1s/.*/name: ${NAME}/" environment.yml
@@ -101,14 +105,14 @@ then
     LAB_VERSION=$(jupyter --version | awk '/jupyterlab\s*:\s*(.*)/')
 
     if [[ $LAB_VERSION == *"not installed"* ]]; then
-      echo "Jupyter Lab was not found in the environment specified." > ${WARNING_FILE}
-      LOAD_WANRINGS=1
+      echo "Jupyter Lab was not found in the environment specified." > ${ERROR_FILE}
+      LOAD_ERRORS=1
       JUPYTER_EXISTS=0
     fi
 
   else
-    echo "Jupyter Lab was not found in the environment specified." > ${WARNING_FILE}
-    LOAD_WANRINGS=1
+    echo "Jupyter Lab was not found in the environment specified." > ${ERROR_FILE}
+    LOAD_ERRORS=1
     JUPYTER_EXISTS=0
   fi
 fi
