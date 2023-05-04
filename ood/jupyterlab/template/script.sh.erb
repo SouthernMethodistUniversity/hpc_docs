@@ -25,7 +25,7 @@ conda config --set auto_activate_base false
 cp <%= context.build_environment %> environment.yml
 
 # set the name to be the requested name
-<% if context.environemnt_name.empty? %>
+<% if context.environment_name.empty? %>
 # use the name in the environment file
 NAME=$(head -n 1 environment.yml)
 NAME=${NAME#*:} # strips name: from beginning
