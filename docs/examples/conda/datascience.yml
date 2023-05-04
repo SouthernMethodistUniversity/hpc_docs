@@ -1,0 +1,13 @@
+name: datascience
+channels:
+- conda-forge
+- defaults
+dependencies:
+- python
+- pip
+- jupyterlab
+- numpy
+- scipy
+- matplotlib
+- pandas
+- plotly
