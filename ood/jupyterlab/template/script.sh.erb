@@ -1,4 +1,7 @@
-#!/usr/bin/bash -l
+#!/bin/bash -e
+
+# exit on error
+set -e
 
 # Benchmark info
 echo "TIMING - Starting main script at: $(date)"
@@ -38,20 +41,19 @@ ENV_PATH=${WORK}/.conda/envs/${NAME}
 echo "ENV_PATH: ${ENV_PATH}"
 if [ -d "${ENV_PATH}" ]
 then
-    LOAD_WANRINGS=1
-    echo "Environment name: ${NAME} already exists!" > ${WARNING_FILE}
-    exit 1
+  LOAD_WANRINGS=1
+  echo "Environment name: ${NAME} already exists! Loading existing environment" > ${WARNING_FILE}
+else
+  # actually change the name
+  sed -i "1s/.*/name: ${NAME}/" environment.yml
+
+  # build the environment with mamba
+  mamba env create -n ${NAME} -f environment.yml
 fi
-
-# actually change the name
-sed -i "1s/.*/name: ${NAME}/" environment.yml
-
-# build the environment with mamba
-mamba env create -n ${NAME} -f environment.yml
 
 # overide the settings with correct values
 <% context.conda_type = "Mamba Env" %>
-<% context.conda_command = "" %>
+<% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
 <% else %>
 NAME=<%= context.python_version %>
 <% end %>
@@ -63,7 +65,6 @@ cd "${HOME}"
 #
 # Start Jupyter Notebook Server
 #
-
 <% if context.python_version != "custom" %>
 CONDA_COMMAND=<%= context.conda_command %>
 <% if context.conda_type == "Conda Env" %>
@@ -76,8 +77,8 @@ export MAMBA_EXE=<%= context.conda_command %>
 eval "$(<%= context.conda_command %> shell hook --shell=bash)"
 micromamba activate ${NAME}
 <% elsif context.conda_type == "Mamba Env" %>
-export MAMBA_EXE=<%= context.conda_command %>
-eval "$(<%= context.conda_command %> shell hook --shell=bash)"
+echo "type mamba:" $(type mamba)
+
 mamba  activate ${NAME}
 <% end %>
 <% end %>
@@ -89,6 +90,7 @@ env
 <%- end -%>
 
 # make sure Jupyter Lab exists
+JUPYTER_EXISTS=1
 if ! command -v jupyter-lab &> /dev/null
 then
 
@@ -101,11 +103,13 @@ then
     if [[ $LAB_VERSION == *"not installed"* ]]; then
       echo "Jupyter Lab was not found in the environment specified." > ${WARNING_FILE}
       LOAD_WANRINGS=1
+      JUPYTER_EXISTS=0
     fi
 
   else
     echo "Jupyter Lab was not found in the environment specified." > ${WARNING_FILE}
     LOAD_WANRINGS=1
+    JUPYTER_EXISTS=0
   fi
 fi
 
@@ -116,4 +120,6 @@ echo "TIMING - Starting jupyter at: $(date)"
 
 # Launch the Jupyter Notebook Server
 set -x
-jupyter lab --config="${CONFIG_FILE}"
+if [ $JUPYTER_EXISTS -eq 1 ]; then
+  jupyter lab --config="${CONFIG_FILE}"
+fi
