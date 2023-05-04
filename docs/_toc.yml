@@ -10,6 +10,7 @@ parts:
   - file: access.md
 - caption: Applications
   chapters:
+  - file: examples/conda/README.md
   - file: examples/torch/README.md
 - caption: Tutorials
   chapters:
