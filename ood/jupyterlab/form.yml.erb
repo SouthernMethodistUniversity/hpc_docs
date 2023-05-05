@@ -1,62 +1,290 @@
 <%-
 require 'open3'
 
-
 # find user conda environments
-class CustomEnvironments2
+class CustomEnvironments
 
   @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
 
-  def self.CondaEnvs2()
+  def self.LookForConda()
+    begin
+      # try to find a path for conda
+      # conda is usually a shell function, so it's not easily checked
+      # look for CONDA_EXE environment variable
+      script = "eval $(conda shell.bash hook);  /usr/bin/env | /usr/bin/grep -oP 'CONDA_EXE=\\K.+'"
+      o, status = Open3.capture2('/bin/bash -l -i', stdin_data: script)
+      output = o.split("\n")
+      if output.empty?
+        output
+      else
+        return output[0]
+      end
+    end
+  end
+
+  def self.LookForMamba()
+    begin
+      # try to find a path for mamba
+      script = 'eval $(mamba shell.bash hook); /usr/bin/which mamba'
+      o, status = Open3.capture2('/bin/bash -l', stdin_data: script)
+      output = o.split("\n")
+      if output.empty?
+        return output
+      else
+        return output[0]
+      end
+    end
+  end
+
+  def self.LookForMicromamba()
+    begin
+      # try to find a path for micromamba
+      script = 'eval $(micromamba shell.bash hook); /usr/bin/which micromamba'
+      o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
+      output = o.split("\n")
+      if output.empty?
+        return output
+      else
+        return output[0]
+      end
+    end
+  end
+
+  def self.GetCondaProviders()
     begin
 
-      # get Conda environments from Conda info
-      script = '/hpc/applications/anaconda/3/bin/conda info -e'
-      o, status = Open3.capture2('bash', stdin_data: script)
+      @FoundCondaProviders = []
+
+      # system defaults in conda module
+      val = ["Conda", "/hpc/m3/apps/conda/bin/conda"]
+      @FoundCondaProviders.push(val)
+      val = ["Mamba", "/hpc/m3/apps/conda/bin/mamba"]
+      @FoundCondaProviders.push(val)
+      
+      temp = LookForMamba()
+      if !(temp.empty?)
+        val = ["Mamba", temp]
+        @FoundCondaProviders.push(val)
+      end
+
+      temp = LookForMicromamba()
+      if !(temp.empty?)
+        val = ["Micromamba", temp]
+        @FoundCondaProviders.push(val)
+      end
+
+      temp = LookForConda()
+      if !(temp.empty?)
+        val = ["Conda", temp]
+        @FoundCondaProviders.push(val)
+      end
+ 
+      return @FoundCondaProviders
+    end
+  end
+
+  def self.CondaProviders
+    begin
+      @CondaProviders = @cache.fetch("#{User.new.name}/conda_providers", race_condition_ttl: 30.seconds) do
+        self.GetCondaProviders()
+      end
+      @CondaProviders
+    end
+  end
+
+  def self.GetCondaEnvs(conda_command)
+    begin
+
+       # get Conda environments from Conda info
+      script = conda_command + ' info -e'
+      o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
       output = o.split("\n")
       conda_env = []
-
-      # check the output of Conda info for useable envs
-      enabled_envs = []
-      disabled_envs = []
-      output.each do |env| 
-        # skip envs in /hpc/applications and commented out lines
-        if env =~ /^((?!hpc\/applications).)*$/ && env[0] != '#'
+    
+      # parse the output
+      output.each do |env|
+        # skip commented out lines
+        if env[0] != '#'
           # Conda info returns an optional name followed by a path
           # so split the current line into the name (possibly blank)
           # and the path to the env
           split_env = env.split
     
-          # if the name is blank use the path as the name
+          # if the name is blank insert a blank into the array
           if split_env.count == 1
-            split_env.push(split_env[0])
+            split_env = ["", split_env[0]]
           end
+          
+          # append the conda command
+          split_env.push("Conda Env")
+          split_env.push(conda_command)
+
           conda_env.push(split_env)
         end
       end
-      #return
+
+      return conda_env
+    end
+  end    
+
+  def self.GetMambaEnvs(mamba_command)
+    begin
+
+       # get Conda environments from Conda info
+      script = mamba_command + ' env list -q'
+      o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
+      output = o.split("\n")
+      mamba_env = []
+
+      # parse the output
+      output.each do |env|
+        # skip commented out lines
+        if env[0] != '#'
+          # Mamba info returns an optional name followed by a path
+          # so split the current line into the name (possibly blank)
+          # and the path to the env
+          split_env = env.split
+
+          # if the name is blank insert a blank into the array
+          if split_env.count == 1
+            split_env = ["", split_env[0]]
+          end
+
+          # append the conda command
+          split_env.push("Mamba Env")
+          split_env.push(mamba_command)
+
+          mamba_env.push(split_env)
+        end
+      end
+
+      return mamba_env
+    end
+  end
+
+  def self.GetMicromambaEnvs(micromamba_command)
+    begin
+
+       # get Conda environments from Conda info
+      script = micromamba_command + ' env list -q'
+      o, status = Open3.capture2('/usr/bin/bash -l', stdin_data: script)
+      output = o.split("\n")
+      micromamba_env = []
+
+      # parse the output
+      # first 2 lines are headers
+      output.shift
+      output.shift
+
+      output.each do |env|
+        # skip commented out lines
+        if env[0] != '#'
+          # Micromamba info returns an optional name, optional activation, followed by a path
+          # so split the current line into the name (possibly blank)
+          # and the path to the env
+          split_env = env.split
+
+          # remove * for activated if present
+          if split_env[0] == '*'
+            env_split.shift
+          end
+          if split_env[1] == '*'
+            env_split.delete_at(1)
+          end
+
+          # if the name is blank insert a blank into the array
+          if split_env.count == 1
+            split_env = ["", split_env[0]]
+          end
+
+          # append the conda command
+          split_env.push("Micromamba Env")
+          split_env.push(micromamba_command)
+           
+          micromamba_env.push(split_env)
+        end
+      end
+
+      return micromamba_env
+    end
+  end    
+
+  def self.UniqueEnvs()
+    begin
+   
+      envs = []
+      
+      # get all the environments
+      self.CondaProviders.each do |provider|
+        if provider[0] == "Conda"
+          temp = self.GetCondaEnvs(provider[1])
+          temp.each do |val|
+            envs.push(val)
+          end
+        elsif provider[0] == "Mamba"
+          temp = self.GetMambaEnvs(provider[1])
+          temp.each do |val|
+            envs.push(val)
+          end
+        elsif provider[0] == "Micromamba"
+          temp = self.GetMicromambaEnvs(provider[1])
+          temp.each do |val|
+            envs.push(val)
+          end
+        end
+      end
+
+      # remove duplicates. Prefer version with name if it exists
+      i = 0
+      while i < envs.count() do
+        j = i + 1
+        while j < envs.count() do
+          if (envs[i][1] == envs[j][1])
+            # if one has a name, keep that one
+            if envs[i][0].empty? && !(envs[j][0].empty?)
+              envs[i][0] = envs[j][0]
+              envs[i][1] = envs[j][1]
+              envs[i][2] = envs[j][2]
+              envs[i][3] = envs[j][3]
+            end
+            envs.delete_at(j)
+          else
+            j += 1
+          end
+        end
+        i += 1
+      end
+      return envs
+    end
+  end
+
+
+  def self.CondaEnvs()
+    begin
+
+      conda_env = self.UniqueEnvs()
       return conda_env
     end
   end
 
-  def self.JupyterLabEnvs2
+  def self.JupyterLabEnvs
     begin
        
-      @JupyterLabEnvs2 = []
+      @JupyterLabEnvs = []
 
-      # always include the default python/3 module
-      python3_module = [ "python/3",    "python/3" ]
+      # always include the option to build
+      build_new = [ "Build New Environment", "new", "Default Env Type", "Default Conda Path" ]
       
       # always include to option to define a custom env
-      custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-      @JupyterLabEnvs2.push(python3_module)
-      @JupyterLabEnvs2.push(custom_env)
+      custom_env = [ "Custom Environment - only use what is specified below", "custom", "user provided", "user provided"   ]
+      @JupyterLabEnvs.push(build_new)
+      @JupyterLabEnvs.push(custom_env)
 
       # check the output of Conda info for useable envs
       enabled_envs = []
       disabled_envs = []
       @CondaEnvsTest = @cache.fetch("#{User.new.name}/conda_envs", race_condition_ttl: 30.seconds) do
-        self.CondaEnvs2()
+        self.CondaEnvs()
       end
       @CondaEnvsTest.each do |env| 
         # now check if there is a jupyter-lab in the env
@@ -65,11 +293,11 @@ class CustomEnvironments2
         jupyter_path = env[1] + "/bin/jupyter-lab"
         if File.file?(jupyter_path)
           tmp_env = env
-          tmp_env[0] = "(Conda Env) " + env[0]
+          tmp_env[0] = "(" + env[2] + ") " + env[0]
           enabled_envs.push(tmp_env)
         else
           tmp_env = env
-          tmp_env[0] = "(Install jupyterlab to use) " + env[0]
+          tmp_env[0] = "(" + env[2] + " -- Install jupyterlab to use) " + env[0]
           tmp_env[1] = "No Jupyter Lab"
           disabled_envs.push(tmp_env)
         end
@@ -77,85 +305,35 @@ class CustomEnvironments2
       # add the found environments to the list
       # the disabled environments are listed last
       enabled_envs.each do |env|
-        @JupyterLabEnvs2.push(env)
+        @JupyterLabEnvs.push(env)
       end
       disabled_envs.each do |env|
-        @JupyterLabEnvs2.push(env)
+        @JupyterLabEnvs.push(env)
       end
       #return
-      @JupyterLabEnvs2
+      @JupyterLabEnvs
     end
   end
 
-  def self.JupyterNotebookEnvs2
-    begin
-       
-      @JupyterNotebookEnvs2 = []
-
-      # always include the default python/3 module
-      python3_module = [ "python/3",    "python/3" ]
-      
-      # always include to option to define a custom env
-      custom_env = [ "Custom Environment - only use what is specified below", "custom"   ]
-      @JupyterNotebookEnvs2.push(python3_module)
-      @JupyterNotebookEnvs2.push(custom_env)
-
-      # check the output of Conda info for useable envs
-      enabled_envs = []
-      disabled_envs = []
-      @CondaEnvsTest2 = @cache.fetch("#{User.new.name}/conda_envs") do
-        self.CondaEnvs2()
-      end
-      @CondaEnvsTest2.each do |env|
-        # now check if there is a jupyter-notebook in the env
-        # if it exists, add it to the enabled list
-        # otherwise add it to the disabled list
-        jupyter_path = env[1] + "/bin/jupyter-notebook"
-        if File.file?(jupyter_path)
-          tmp_env = env
-          tmp_env[0] = "(Conda Env) " + env[0]
-          enabled_envs.push(tmp_env)
-        else
-          tmp_env = env
-          tmp_env[0] = "(Install jupyter notebook to use) " + env[0]
-          tmp_env[1] = "No Jupyter Lab"
-          disabled_envs.push(tmp_env)
-        end
-      end
-      # add the found environments to the list
-      # the disabled environments are listed last
-      enabled_envs.each do |env|
-        @JupyterNotebookEnvs2.push(env)
-      end
-      disabled_envs.each do |env|
-        @JupyterNotebookEnvs2.push(env)
-      end
-      #return
-      @JupyterNotebookEnvs2
-    end
-  end
 end
 
 
 -%>
 
 ---
-cluster: "slurm_cluster"
+cluster: "m3cluster"
 form:
-  - custom_queue
+  - auto_queues
   - python_version
+  - build_environment
+  - environment_name
+  - conda_command
+  - conda_type
   - environment
   - bc_num_hours
-  - bc_num_slots
-  - use_exclusive
+  - notebook_timeout
   - bc_num_cores
-  - bc_num_gpus
   - bc_num_memory
-  - enable_start_time
-  - start_time
-  - enable_end_time
-  - end_time
-  - email_on_started
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
@@ -163,21 +341,59 @@ attributes:
     label: "Select Python Environment"
     widget: select
     help: |
-      - *python/3* is the default Anaconda Python 3 installation on M2 in the module "python/3"
       - We've listed your *Conda* environments we found in standard locations. If the one you want to use is greyed out, it means that you need to install jupyterlab in that environment before it can be used
       - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
       - Other environments can be specified by selecting "Custom Environment"
     options:
-      <%- CustomEnvironments2.JupyterLabEnvs2.each do |q| -%>
-        - [ "<%= q[0] %>", "<%= q[1] %>" ]
+      <%- CustomEnvironments.JupyterLabEnvs.each do |q| -%>
+        - [ '<%= q[0] %>', '<%= q[1] %>',
+            data-set-conda-command: '<%= q[3] %>',
+            data-set-conda-type: '<%= q[2] %>',
+            <%- if q[1] != "new" -%>
+            data-hide-build-environment: true,
+            data-hide-environment-name: true
+            <%- end -%>
+          ]
       <%- end -%>
+  build_environment:
+    label: Select a base environment to build
+    widget: select
+    value: "1"
+    help: |
+      Build a new Conda environment. These are simple base environments to help you
+      get started, but you will likely need to install additional packages yourself.
+
+      - data science: Common data science tools. Uses [datascience.yml]
+      - bioinformatics: Tools for bioinformatics workflows. Uses [bioinformatics.yml]
+      - sklearn: Machine learning with scikit-learn. Uses [sklearn.yml]
+      - R: Create an R environment with some base packages. Uses [r.yml] 
+
+      See our documentation on [Conda environments] for more information.
+      [Conda environments]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/README
+      [datascience.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/datascience.yml 
+      [bioinformatics.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/bioinformatics.yml
+      [sklearn.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/sklearn.yml
+      [r.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/r.yml
+    options:  
+    - ["data science", "/hpc/m3/hpc_docs/docs/examples/conda/datascience.yml"]
+    - ["bioinformatics", "/hpc/m3/repos/hpc_docs/docs/examples/conda/bioinformatics.yml"]
+    - ["sklearn", "/hpc/m3/repos/hpc_docs/docs/examples/conda/sklearn.yml"]
+    - ["R", "/hpc/m3/repos/hpc_docs/docs/examples/conda/r.yml"]
+  environment_name:
+    label: Specify a name your you Conda environment
+    help: |
+      - If the environment name already exists, the job will fail
+  conda_command:
+    widget: "hidden_field"
+  conda_type:
+    widget: "hidden_field"
   environment:
     widget: text_area
     label: "Custom environment settings"
     help: |
       - Load any addition enviroment settings
       - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
-      - Use *module load module1 module2 module3* to load M2 modules
+      - Use *module load module1 module2 module3* to load modules
       - Use *export MY_VARIABLE=my_value* to export shell variables
       - **NOTE:**  *jupyter-lab* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
 
@@ -189,113 +405,34 @@ attributes:
       - Exceeding walltime time will automaticaly stop this job.
     cacheable: true
     widget: number_field
-    max: 24
+    max: 12
     min: 1
     step: 1
     value: 1
-  bc_num_slots:
-    id: num_nodes
-    label: Number of nodes
-    help: Number of compute nodes 
-    cacheable: true
+  notebook_timeout:
     widget: number_field
-    max: 81
-    min: 1
-    step: 1
-    value: 1
-  use_exclusive:
-    label: "Enable exclusive use"
-    id: enable_exclusive
-    widget: check_box
+    label: Timeout (minutes)
     help: |
-        Automically request all available resources on each node (CPU cores, memory, GPUs, etc.)
-
-        **If your job does not require all of the available resources, this may result in significantly longer wait times**
+      - Time in minutes before a job is cancelled for being idle
+    max: 60
+    min: 15
+    step: 1
+    value: 30
   bc_num_cores:
     id: num_cpus
     label: "Cores per node"
     help: Number of CPU threads
     cacheable: true
     widget: number_field
-    max: 36
+    max: 128
     min: 1
     value: 1
-  bc_num_gpus:
-    id: num_gpus
-    label: "GPUs per node"
-    help: Number of GPUs per node
-    cacheable: true
-    widget: number_field
-    max: 1
-    min: 0
-    step: 1
-    value: 0
   bc_num_memory:
     id: num_mem
     label: "Memory"
     help: "Please select the amount of memory (in GB) you need for your job."
     widget: number_field
-    max: 250
+    max: 500
     min: 1
     step: 1
     value: 6
-  custom_queue:
-    label: "Partition"
-    help: |
-      Please select an [M2 SLURM partition] to submit from the drop-down.
-      NOTE: Queues designated with asterisks(*) contain [faculty partner nodes] primarily intended for use by specific faculty and their research groups and as such impose some restrictions, including the possibility of job pre-emption, on jobs submitted by those outside those teams.
-      [M2 SLURM partition]: https://s2.smu.edu/hpc/documentation/slurm.html#maneframe-ii-s-slurm-partitions-queues
-      [faculty partner nodes]: https://s2.smu.edu/hpc/documentation/about.html#faculty-partner-nodes
-    widget: select
-    options:
-      - [ "development [Max Time: 2 hours]",             "development"    ]
-      - [ "htc [Max Time: 12 hours, Maximum Nodes: 1]",  "htc"            ]
-      - [ "standard-mem-s [Max Time: 12 hours]",         "standard-mem-s" ]
-      - [ "medium-mem-1-s [Max Time: 12 hours]",         "medium-mem-1-s" ]
-      - [ "medium-mem-2 [Max Time: 12 hours]",           "medium-mem-2"   ]
-      - [ "high-mem-1 [Max Time: 12 hours]",             "high-mem-1"     ]
-      - [ "high-mem-2 [Max Time: 12 hours]",             "high-mem-2"     ]
-      - [ "mic [Max Time: 12 hours]",                    "mic"            ]
-      - [ "gpgpu-1 [Max Time: 12 hours]",                "gpgpu-1"        ]
-      - [ "v100x8 [Max Time: 12 hours]",                 "v100x8"         ]
-      - [ "*fp-gpgpu-2 [Max Time: 12 hours]",            "fp-gpgpu-2"     ]
-      - [ "*fp-gpgpu-3 [Max Time: 12 hours]",            "fp-gpgpu-3"     ]
-      - [ "*fp-gpgpu-4 [Max Time: 12 hours]",            "fp-gpgpu-4"     ]
-  enable_start_time:
-    label: "Enable Earliest Start Time"
-    id: enable_start
-    widget: check_box
-    help: |
-        Enable extra settings to control when this job may start.
-  start_time:
-    label: "Earliest Start Time"
-    id: start
-    cacheable: false
-    help: |
-        Specify your earliest desired start time. Leave blank or uncheck the box above to start as soon as resources are available.
-        **Your job will start after the set time depending on the resources available. There is no guarantee 
-        that your job will start at any particular time.**
-    widget: datetime_field
-  enable_end_time:
-    label: "Enable Latest Start Time"
-    id: enable_end
-    widget: check_box
-    help: |
-        Enable extra settings to control when this job may start.
-  end_time:
-    label: "Latest Start Time"
-    id: end
-    cacheable: false
-    min: "<%= DateTime.now + 30.minutes %>"
-    help: |
-        Specify the latest allowable start time. Leave blank or uncheck the box above to allow the job to queue with no limits.
-        **Jobs that do not start before this time will automatically be cancelled.**
-    widget: datetime_field
-
-  email_on_started:
-    label: "Email Address"
-    id: email_address
-    help: |
-        (Optional) Send an email to the provided address when the job starts.
-        **Leave blank if you do not want an email sent.**
-    widget: email_field

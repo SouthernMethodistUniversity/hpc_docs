@@ -1,1 +1,36 @@
-../common/info.md.erb
+<%-
+require 'open3'
+begin
+    script = 'cat ' + staged_root.to_s + '/warnings.txt'
+    o, status = Open3.capture2('bash', stdin_data: script)
+    warnings = o.split("\n")
+
+    script = 'cat ' + staged_root.to_s + '/errors.txt'
+    o, status = Open3.capture2('bash', stdin_data: script)
+    errors = o.split("\n")
+end
+-%>
+
+<%- errors.each do |q| -%>
+## Errors:
+
+> <%= q %>
+
+---
+
+<%- end -%>
+
+<%- warnings.each do |q| -%>
+### Warning:
+
+> <%= q %>
+
+---
+
+<%- end -%>
+
+> This job will automatically end after it has been idle for <%= @user_context["notebook_timeout"] %> minutes
+
+<% if  @user_context["python_version"] == "new" %>
+> Building a custom environment, which may take 10-15 minutes to start
+<% end %>

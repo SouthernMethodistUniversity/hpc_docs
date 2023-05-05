@@ -1,4 +1,4 @@
-#/bin/bash -e
+#!/bin/bash -e
 # build singularity container for Rocker geospatial
 # just pull docker image from https://hub.docker.com/r/rocker/geospatial
 

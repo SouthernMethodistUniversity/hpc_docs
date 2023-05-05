@@ -1,0 +1,24 @@
+<%-
+  groups = OodSupport::User.new.groups.sort_by(&:id).tap { |groups|
+    groups.unshift(groups.delete(OodSupport::Process.group))
+  }.map(&:name).grep(/^P./)
+-%>
+---
+cluster: "m3cluster"
+form:
+  - bc_num_hours
+  - working_dir
+  - version
+attributes:
+  version:
+    widget: "select"
+    label: "Codeserver Version"
+    options:
+      - ["4.11.0", "4.11.0"]
+
+  working_dir:
+    label: "Working Directory"
+    data-filepicker: true
+    data-target-file-type: dirs  # Valid values are: files, dirs, or both
+    readonly: false
+    help: "Select your project directory; defaults to $HOME"

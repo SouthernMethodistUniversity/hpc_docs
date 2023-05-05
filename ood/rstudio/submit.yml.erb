@@ -1,43 +1,3 @@
-<%
-def setWallTime(queue, runtime)
-  if queue == "development"
-    if runtime.to_i*3600 > 7200
-      return 7200
-    elsif runtime.to_i*3600 <= 0
-        return 3600
-    else
-     return runtime.to_i*3600
-    end
-  else
-    if runtime.to_i*3600 > 43200
-        return 43200
-    elsif runtime.to_i*3600 <= 0
-      return 3600
-    else
-      return runtime.to_i*3600
-    end
-  end
-end
-%>
-
-<%
-def setReservationWallTime(queue, endTime)
-  curTime = DateTime.now
-  lastTime = endTime.to_datetime
-  runtime = lastTime.to_i - curTime.to_i
-  if queue == "development"
-    if runtime > 7200
-      runtime = 7200
-    end
-  else
-    if runtime > 43200
-        runtime = 43200
-    end
-  end
-  return runtime
-end
-%>
-
 ---
 batch_connect:
   template: "basic"
@@ -45,38 +5,12 @@ batch_connect:
     - ood_need_token
     - csrftoken
 script:
-  queue_name: <%= custom_queue %>
-  <%- if use_reservation == "1" -%>
-  wall_time: <%=  setReservationWallTime(custom_queue, reservation_list.split(',')[-1]) %>
-  <%- else -%> 
-  wall_time: <%= setWallTime(custom_queue, bc_num_hours) %> 
-  <%- end -%>
+  queue_name: <%= auto_queues %>
+  wall_time: <%= bc_num_hours.to_i() * 3600 %> 
   native:
     - "-N"
-    - "<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
+    - "1"
     - "--ntasks-per-node"
     - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
-    <%- if bc_num_gpus.to_i != 0 -%>
-    - "--gres"
-    - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
-    <%- end -%>
     - "--mem"
     - "<%= bc_num_memory.blank? ? 6144 : bc_num_memory.to_i*1024 %>"
-    <%- if !start_time.blank? -%>
-    - "--begin"
-    - "<%= start_time %>"
-    <%- end -%>
-    <%- if !end_time.blank? and end_time.to_time > DateTime.now + 2.minutes -%>
-    - "--deadline"
-    - "<%= (end_time.to_time + bc_num_hours.to_i.hours).to_datetime.strftime("%Y-%m-%d %H:%M:%S") %>"
-    <%- end -%>
-    <%- if !email_on_started.blank? -%>
-    - "--mail-type"
-    - "BEGIN"
-    - "--mail-user"
-    - "<%= email_on_started %>"
-    <%- end -%>
-    <%- if use_reservation  == "1" -%>
-    - "--reservation"
-    - "<%= reservation_list.split(',')[0] %>"
-    <%- end -%>

@@ -1,49 +1,15 @@
-<%
-def setWallTime(queue, runtime)
-  if queue == "development"
-    if runtime.to_i*3600 > 7200
-      return 7200
-    elsif runtime.to_i*3600 <= 0
-        return 3600
-    else
-     return runtime.to_i*3600
-    end
-  else
-    if runtime.to_i*3600 > 43200
-        return 43200
-    elsif runtime.to_i*3600 <= 0
-      return 3600
-    else
-      return runtime.to_i*3600
-    end
-  end
-end
-%>
-
 #
 # Desktop Submission Script
 #
-<%- if bc_num_gpus.to_i != 0 -%>
-<% image="/hpc/applications/containers/combined_desktop-nv470-cuda114_testing.sif" %>
-<%- else -%>
-<% image="/hpc/applications/containers/combined_desktop_testing.sif" %>
-<%- end -%>
+<% image="/hpc/m3/containers/remote_desktop/remote_desktop_1.0.sif" %>
 ---
 script:
   job_name: "remote_desktop"
-  queue_name: <%= custom_queue %>
-  wall_time: <%= setWallTime(custom_queue, bc_num_hours) %>
+  queue_name:  <%= auto_queues %>
+  wall_time: <%= bc_num_hours.to_i() * 3600 %>
   native:
     - "--cpus-per-task"
     - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
-    <%- if bc_num_gpus.to_i != 0 -%>
-    - "--gres"
-    <%- if custom_queue == "development"	-%>
-    - "gpu:volta:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
-    <%-	else -%>
-    - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
-    <%- end -%>
-    <%- end -%>
     - "--mem"
     - "<%= bc_num_memory.blank? ? 4096 : bc_num_memory.to_i*1024 %>"
   template: "vnc"
@@ -55,24 +21,19 @@ batch_connect:
     . ~/.bashrc
   script_wrapper: |
     module purge
-    module load singularity/3.8.2
+    module load apptainer
     cat << "CTRSCRIPT" > container.sh
     #!/bin/bash
 
-    export PATH="$PATH:/opt/TurboVNC/bin"
     %s  
     CTRSCRIPT
     chmod +x container.sh
 
     sed -e s/-nohttpd//g -i container.sh
 
-    export SINGULARITY_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK"
+    export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK"
     
     CONTAINER_SCRIPT=$(pwd)/container.sh
 
     # switch container launch to enable GPU usage is available
-    <%- if bc_num_gpus.to_i != 0 -%>
-    singularity exec --nv <%= image %> /opt/VirtualGL/bin/vglrun +v -d egl $CONTAINER_SCRIPT
-    <%- else -%>
-    singularity exec <%= image %> $CONTAINER_SCRIPT
-    <%- end -%>
+    apptainer exec <%= image %> $CONTAINER_SCRIPT

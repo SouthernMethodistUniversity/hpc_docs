@@ -1,40 +1,14 @@
 #!/bin/bash
 module purge
 
-<% if context.Rapp =~ /.sif/ %>
-  # load singularity
-  module load singularity
-  SIF=<%= context.Rapp %>
-  RVERSION=<%= /\d+(\.\d+)+(?:[^.]+)?/.match(context.Rapp).to_s %>
-  R_LIBS_USER="${HOME}/R/portal/rocker-images/${RVERSION}"
-  REXEC=$(singularity exec $SIF which R)
-  RSESSION_EXEC=$(singularity exec $SIF which rsession)
-  RSESSION_EXEC="${RSESSION_EXEC:-"/usr/lib/rstudio-server/bin/rsession"}"
-  export PATH=/usr/lib/rstudio-server/bin:$PATH
-  export LD_LIBRARY_PATH=/usr/local/lib/R/lib/:$LD_LIBRARY_PATH
-  export OOD_USING_SINGULARITY=1
-<% else %>
-  export PATH="/hpc/applications/rstudio_server/1.3.1073/bin:${PATH}"
-  module load <%= context.Rapp %>
-  export RSTUDIO_LD_PATH=$LD_LIBRARY_PATH
-  REXEC=$(which R)
-  RSESSION_EXEC=$(which rsession)
-  export {http,https,ftp}_proxy="http://10.210.15.2:3128"
-<% end %>
+# load the requested module
+module load <%= context.r_module %>
 
-# Clustom environment                     
-<%- unless context.environment.blank? -%> 
-<%= context.environment.encode(universal_newline: true) %>                
-env                                       
-<%- end -%> 
-
-# ensure singularity is loaded if we have an image
-if [ -z ${SIF+x} ];
-then
-  echo "not using containers"
-else
-  module load singularity
-fi    
+# Clustom environment settings
+<%- unless context.environment.blank? -%>
+env
+<%= context.environment.encode(universal_newline: true) %>
+<%- end -%>
 
 #
 # Start RStudio Server
@@ -65,48 +39,99 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
 
   # Launch the original command
   echo "Launching rsession..."
-  echo "which rsession: " $(which rsession)
   set -x
-  exec ${RSESSION_EXEC} --r-libs-user "${R_LIBS_USER}" "\${@}"
+  exec ${CONTAINER_RSESSION} \
+    --r-libs-user "${R_LIBS_USER}" \
+    --session-timeout-minutes <%= context.rserver_timeout %> \
+    --session-timeout-suspend 0 \
+    "\${@}"
 EOL
 )
 chmod 700 "${RSESSION_WRAPPER_FILE}"
 
+# Generate a script to kill rserver if it is idle for too long
+export RSERVER_TIMEOUT_FILE="${PWD}/rtimeout.sh"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RSERVER_TIMEOUT_FILE}" << EOL
+  #!/bin/bash
+
+  # Source environment
+  source "${PWD}/environment.txt"
+  sleep 30
+
+  # Log all output from this script
+  export RTIMEOUT_LOG_FILE="${PWD}/rtimeout.log"
+  exec &>>"\${RTIMEOUT_LOG_FILE}"
+
+  TIMEOUT_LIMIT=<%=context.rserver_timeout.to_i()*60 %>
+  IDLE_TIME=0
+  NSESSIONS=\$(rstudio-server active-sessions | wc -l)
+  while [ \${IDLE_TIME} -le \${TIMEOUT_LIMIT} ] || [ \${NSESSIONS} -gt 1 ]
+  do
+    # check for active session
+    if [ \${NSESSIONS} -gt 1 ]; then
+      IDLE_TIME=0
+      # after a session has started allow 5 minute
+      # grace after that session times out or the
+      # requested limit if smaller
+      TIMEOUT_LIMIT=\$(( 300 < \${TIMEOUT_LIMIT} ? 300 : \${TIMEOUT_LIMIT} ))
+    else
+      sleep 30
+      IDLE_TIME=\$((\${IDLE_TIME} + 30))
+      echo "IDLE for \${IDLE_TIME} seconds"
+    fi
+    NSESSIONS=\$(rstudio-server active-sessions | wc -l)
+  done
+
+  # kill rserver
+  pkill -15 rserver
+
+EOL
+)
+chmod 700 "${RSERVER_TIMEOUT_FILE}"
+
+
 # Create a unique $TMPDIR for runtime files
 export TMPDIR="$(mktemp -d)"
-
-#TMPDIR=$HOME/rstudio-tmp 
 mkdir -p -m 700 ${TMPDIR}/run ${TMPDIR}/lib ${TMPDIR}/tmp ${TMPDIR}/var/lib/rstudio-server
 
 export WORKING_DIR=${PWD}
 mkdir -p -m 700 ${WORKING_DIR}/etc
 
-# generate a script to run rserver
-# Generate an `rsession` wrapper script
+# Generate a script to start the server
 export RUN_RSERVER="${PWD}/run_rserver.sh"
 (
 umask 077
 sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   #!/bin/bash
 
-  echo "PATH: " ${PATH}
-  export {http,https,ftp}_proxy="http://10.210.15.2:3128"
+  # Source environment
+  source "${PWD}/environment.txt"
 
-  export RSESSION_PROXY_RSTUDIO_1_4=1
+  # Log all output from this script
+  export RSERVER_LOG_FILE="${PWD}/rserver.log"
+  exec &>>"\${RSERVER_LOG_FILE}"
 
-  rserver \
+  # start the timeout check
+  exec "${RSERVER_TIMEOUT_FILE}" &
+
+  # start the server
+  exec ${CONTAINER_RSERVER} \
   --www-port "${port}" \
   --auth-none 0 \
   --auth-pam-helper-path "${RSTUDIO_AUTH}" \
   --auth-encrypt-password 0 \
   --server-user "${USER}" \
-  --rsession-path "/etc/rstudio/ression.sh" \
+  --rsession-path "${RSESSION_WRAPPER_FILE}" \
   --server-data-dir "${TMPDIR}" \
   --secure-cookie-key-file "${TMPDIR}/rstudio-server/secure-cookie-key" \
-  --rsession-which-r="${REXEC}"
+  --rsession-which-r="${CONTAINER_R}"
+
 EOL
 )
 chmod 700 "${RUN_RSERVER}"
+
 
 # Set working directory to home directory
 cd "${HOME}"
@@ -118,35 +143,15 @@ module list
 echo "Starting up rserver..."
 set -x
 
-# if we have an image use singularity
-if [ -z ${SIF+x} ];
-then
-  echo "running module"
-  rserver \
-  --www-port "${port}" \
-  --auth-none 0 \
-  --auth-pam-helper-path "${RSTUDIO_AUTH}" \
-  --auth-encrypt-password 0 \
-  --server-user "${USER}" \
-  --rsession-path "${RSESSION_WRAPPER_FILE}" \
-  --server-data-dir "${TMPDIR}" \
-  --secure-cookie-key-file "${TMPDIR}/rstudio-server/secure-cookie-key" \
-  --rsession-which-r="${REXEC}"
-else
-  echo "running container"
-  echo "SIF: " ${SIF}
-  singularity exec \
-  <%- if context.bc_num_gpus.to_i != 0 -%>
-  --nv \
-  <%- end -%>
+apptainer exec \
   -B ${TMPDIR}:/tmp \
   -B ${TMPDIR}/run:/run \
   -B ${TMPDIR}/var/lib:/var/lib/rstudio-server \
   -B ${WORKING_DIR} \
   -B ${WORKING_DIR}/etc:/etc/rstudio \
-  -B ${RSESSION_WRAPPER_FILE}:/etc/rstudio/ression.sh \
-  ${SIF} \
+  -B ${SCRATCH} \
+  -B ${WORK} \
+  ${CONTAINER_IMAGE} \
   ${RUN_RSERVER}
-fi 
 
 printf 'rserver exited' 1>&2

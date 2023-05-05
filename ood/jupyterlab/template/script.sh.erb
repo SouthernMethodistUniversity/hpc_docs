@@ -1,48 +1,100 @@
-#!/usr/bin/env bash
+#!/bin/bash -e
 
-export {http,https,ftp}_proxy="http://10.210.15.2:3128"
+# exit on error
+set -e
 
 # Benchmark info
 echo "TIMING - Starting main script at: $(date)"
 
 WARNING_FILE=$(pwd)/warnings.txt
 touch ${WARNING_FILE}
-LOAD_WANRINGS=0
+LOAD_WARNINGS=0
+
+ERROR_FILE=$(pwd)/errors.txt
+touch ${ERROR_FILE}
+LOAD_ERRORS=0
+
+# if requested, try to build an environment
+module purge
+<% if context.python_version == "new" %>
+
+module load conda
+
+# make sure auto activate base is off
+conda config --set auto_activate_base false
+
+# build the environment with the requested name
+# in $WORK/.ood_envs/$NAME
+
+# first copy the yml file to the working dir
+cp <%= context.build_environment %> environment.yml
+
+# set the name to be the requested name
+<% if context.environment_name.empty? %>
+# use the name in the environment file
+NAME=$(head -n 1 environment.yml)
+NAME=${NAME#*:} # strips name: from beginning
+# remove leading / trailing whitespace
+NAME="$(echo -e "${NAME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+<% else %>
+NAME="<%= context.environment_name %>"
+NAME="${NAME// /_}" # replace spaces with underscores
+<% end %>
+# check if directory already exists
+ENV_PATH=${WORK}/.conda/envs/${NAME}
+echo "ENV_PATH: ${ENV_PATH}"
+if [ -d "${ENV_PATH}" ]
+then
+  LOAD_WARNINGS=1
+  echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
+else
+  # actually change the name
+  sed -i "1s/.*/name: ${NAME}/" environment.yml
+
+  # build the environment with mamba
+  mamba env create -n ${NAME} -f environment.yml
+fi
+
+# overide the settings with correct values
+<% context.conda_type = "Mamba Env" %>
+<% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
+<% else %>
+NAME=<%= context.python_version %>
+<% end %>
 
 # Set working directory to home directory
 cd "${HOME}"
 
+
 #
 # Start Jupyter Notebook Server
 #
+<% if context.python_version != "custom" %>
+CONDA_COMMAND=<%= context.conda_command %>
+<% if context.conda_type == "Conda Env" %>
+eval "$(<%= context.conda_command %> shell.bash hook)"
+conda activate ${NAME}
+<% elsif context.conda_type == "Micromamba Env" %>
+# micromamba doesn't always export everything as expected
+# see: https://github.com/mamba-org/mamba/issues/1748
+export MAMBA_EXE=<%= context.conda_command %>
+eval "$(<%= context.conda_command %> shell hook --shell=bash)"
+micromamba activate ${NAME}
+<% elsif context.conda_type == "Mamba Env" %>
+echo "type mamba:" $(type mamba)
 
-# Purge the module environment to avoid conflicts
-module purge
-
-# python environment from the drop down menu
-<% if context.python_version == "python/3" %>
-module load python/3
-<% elsif context.python_version != "custom" %>
-if ! command -v conda &> /dev/null
-then
-  echo $(which conda)
-  echo "Conda not found, but a conda environment was specified. Using default."
-  echo "Conda was not found, but a conda environment was specified. The default python/3 module was loaded. If this is not the desired behavior, ensure conda is in your path (loading your prefered conda and calling *conda init bash* from a terminal usually fixes this)" > ${WARNING_FILE}
-  LOAD_WANRINGS=1
-  module load python/3
-  echo $(which conda)
-fi
-eval "$(conda shell.bash hook)" 
-conda activate <%= context.python_version %>
+mamba  activate ${NAME}
+<% end %>
 <% end %>
 
 # Clustom environment
 <%- unless context.environment.blank? -%>
-<%= context.environment.encode(universal_newline: true) %>
 env
+<%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
 
 # make sure Jupyter Lab exists
+JUPYTER_EXISTS=1
 if ! command -v jupyter-lab &> /dev/null
 then
 
@@ -53,19 +105,15 @@ then
     LAB_VERSION=$(jupyter --version | awk '/jupyterlab\s*:\s*(.*)/')
 
     if [[ $LAB_VERSION == *"not installed"* ]]; then
-      echo "Jupyter Lab not found, using default"
-      echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
-      LOAD_WANRINGS=1
-      module load python/3 
+      echo "Jupyter Lab was not found in the environment specified." > ${ERROR_FILE}
+      LOAD_ERRORS=1
+      JUPYTER_EXISTS=0
     fi
 
   else
-   
-    echo "Jupyter not found, using default."
-    echo "Jupyter Lab was not found in the environment specified. The default python/3 module was loaded. If this is not the desired behavior, please ensure Jupyter Lab is installed in your environment and in your path" > ${WARNING_FILE}
-    LOAD_WANRINGS=1
-    module load python/3
-
+    echo "Jupyter Lab was not found in the environment specified." > ${ERROR_FILE}
+    LOAD_ERRORS=1
+    JUPYTER_EXISTS=0
   fi
 fi
 
@@ -76,4 +124,6 @@ echo "TIMING - Starting jupyter at: $(date)"
 
 # Launch the Jupyter Notebook Server
 set -x
-jupyter lab --config="${CONFIG_FILE}"
+if [ $JUPYTER_EXISTS -eq 1 ]; then
+  jupyter lab --config="${CONFIG_FILE}"
+fi

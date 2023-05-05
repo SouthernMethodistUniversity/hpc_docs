@@ -1,0 +1,11 @@
+name: sklearn
+channels:
+  - conda-forge
+dependencies:
+ - scikit-learn
+ - matplotlib
+ - numpy
+ - pandas
+ - matplotlib
+ - scipy
+ - jupyterlab

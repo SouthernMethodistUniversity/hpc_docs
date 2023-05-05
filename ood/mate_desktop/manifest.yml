@@ -1,8 +1,0 @@
----
-name: Remote Mate Conatianer Desktop
-category: Interactive Apps
-subcategory: Desktops
-role: batch_connect
-description: "This app will launch a Desktop session from a contiainer image on [M2 cluster].\r\n\r\n[M2
-  cluster]: http://faculty.smu.edu/csc/documentation/about.html\r\n"
-icon: fas://desktop
