@@ -30,3 +30,7 @@ end
 <%- end -%>
 
 > This job will automatically end after it has been idle for <%= @user_context["notebook_timeout"] %> minutes
+
+<% if  @user_context["python_version"] == "new" %>
+> Building a custom environment, which may take 10-15 minutes to start
+<% end %>
