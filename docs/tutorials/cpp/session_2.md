@@ -10,7 +10,7 @@
 
 `clang++ -std=c++17 -o 02_branching_loops 02_branching_loops.cpp`
 
-```{literalinclude} ../../../examples/cpp/02_branching_loops.cpp
+```{literalinclude} ../../examples/cpp/02_branching_loops.cpp
 ---
 language: c++
 linenos: true
@@ -19,7 +19,7 @@ linenos: true
 
 `clang++ -std=c++17 -o functions_references_pointers functions_references_pointers.cpp`
 
-```{literalinclude} ../../../examples/cpp/functions_references_pointers.cpp
+```{literalinclude} ../../examples/cpp/functions_references_pointers.cpp
 ---
 language: c++
 linenos: true
