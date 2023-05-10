@@ -8,14 +8,16 @@ parts:
   - file: about.md
   - file: accounts.md
   - file: access.md
+  - file: portal.rst
 - caption: Applications
   chapters:
   - file: examples/conda/README.md
   - file: examples/torch/README.md
 - caption: Tutorials
   chapters:
-  - file: tutorials/intro.md
-  - file: tutorials/unix/intro.md
+  - file: tutorials/unix/unix.rst
+  - file: tutorials/modules/modules.rst
+  - file: tutorials/slurm/slurm.rst
   - file: tutorials/cpp/intro.md
     sections:
     - file: tutorials/cpp/session_1.md
