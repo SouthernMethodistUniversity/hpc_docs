@@ -8,7 +8,7 @@ parts:
   - file: about.md
   - file: accounts.md
   - file: access.md
-  - file: portal.rst
+  - file: portal.md
   - file: m3_migration.md
 - caption: Applications
   chapters:
