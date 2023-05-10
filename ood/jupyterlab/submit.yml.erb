@@ -29,7 +29,7 @@ batch_connect:
 #  native: # ... array of command line arguments ...
 
 script:
-  queue_name: <%= auto_queues %>
+  queue_name: <%= custom_queues %>
   wall_time: <%= bc_num_hours.to_i() * 3600 %>
   native:
     - "-N"

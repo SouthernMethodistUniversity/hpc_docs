@@ -323,7 +323,7 @@ end
 ---
 cluster: "m3cluster"
 form:
-  - auto_queues
+  - custom_queues
   - python_version
   - build_environment
   - environment_name
@@ -337,6 +337,21 @@ form:
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
+  custom_queues:
+    label: "Parition"
+    widget: select
+    help: |
+      Please select the SLURM partition to submit the job to.
+    options:
+      - ["Development Queue (2 hour limit)", "dev",
+        data-max-bc-num-hours: 2,
+        ]
+      - ["Standard Memory Queue (12 hour limit)", "standard-s",
+        data-max-bc-num-hours: 12,
+        ]
+      - ["High Memory Queue (12 hour limit)", "highmem",
+        data-max-bc-num-hours: 12,
+        ]
   python_version:
     label: "Select Python Environment"
     widget: select
@@ -395,7 +410,7 @@ attributes:
       - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
       - Use *module load module1 module2 module3* to load modules
       - Use *export MY_VARIABLE=my_value* to export shell variables
-      - **NOTE:**  *jupyter-lab* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
+      - **NOTE:**  *jupyter-lab* must be available in your environment.
 
   bc_num_hours:
     id: bc_num_hours
