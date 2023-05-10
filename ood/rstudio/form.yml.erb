@@ -22,7 +22,7 @@ attributes:
       <path_to_modules>`, and additional modules via `module load
       <space_separated_list_of_modules>`.
   custom_queues:
-    label: "Parition"
+    label: "Partition"
     widget: select
     help: |
       Please select the SLURM partition to submit the job to.
@@ -56,6 +56,7 @@ attributes:
     min: 15
     step: 1
     value: 30
+    widget: number_field
   bc_num_cores:
     id: num_cpus
     label: "Cores per node"
