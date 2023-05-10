@@ -110,6 +110,20 @@ with:
 conda env create -f environment.yml -n conda_env
 ```
 
+### Examples
+
+The following are examples of how you might start to build your environment
+for a few different usage cases. These are the source files we use on 
+the web portal, if you choose to build a custom environment from the form.
+
+It is likely that these will not meet the needs of any specific use case,
+but you can add or remove packages as needed for your particular needs.
+
+- Example of an environment for *data science*, [datascience.yml](datascience.yml).
+- Example of an environment for *bioinformatics*, [bioinformatics.yml](bioinformatics.yml).
+- Example of an environment for *machine learning with SKLearn*, [sklearn.yml](sklearn.yml).
+- Example of an environment for *R*, [r.yml](r.yml)
+
 ## Using the HPC Portal
 
 If you are running interactive sessions through the portal using JupyterLab,
