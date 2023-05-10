@@ -6,10 +6,9 @@ role: batch_connect
 description: |
   This app will launch a [JupyterLab] server on the [M3 cluster].
 
-  See the [Python Application] documentation for tips on converting notebooks
-  and other Python files to job scripts if you require longer than 12 hours
-  of runtime
+  Portal jobs are interactive by nature and, therefore, limited to a maximum of 12 hours.
+  If your jobs take longer, please convert them to scripts and run them in batch mode
+  (i.e. non-interactively.)
 
   [JupyterLab]: https://jupyterlab.readthedocs.io/
   [M3 cluster]: https://southernmethodistuniversity.github.io/hpc_docs/about.html#maneframe-iii-m3
-  [Python Application]: https://s2.smu.edu/hpc/documentation/applications/python.html
