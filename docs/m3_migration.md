@@ -60,12 +60,12 @@ the specific packages they need. If you require help with this, please let us kn
 
 ## Suggestions for making the most of M3
 
-- make sure any paths you have in scripts are still correct
-- Recompile performance critical applications. M3 uses AMD CPUs (M2 used Intel.)
+- Make sure any paths you have in scripts are still correct.
+- Recompile performance critical applications. M3 uses AMD CPUs (M2 used Intel.).
 - Rebuild environments. While it is possible you can copy environments and they 
 will work, you may get a performance boost by rebuilding them.
 - Ask for help if you run into issues. This is a new system and some of the edges
-are still a bit rough
+are still a bit rough.
 
 ## GPU access
 
