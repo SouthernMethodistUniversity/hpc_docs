@@ -9,6 +9,7 @@ parts:
   - file: accounts.md
   - file: access.md
   - file: portal.rst
+  - file: m3_migration.md
 - caption: Applications
   chapters:
   - file: examples/conda/README.md
