@@ -5,6 +5,10 @@ subcategory: Desktops
 role: batch_connect
 description: |
   This app will launch a Remote Desktop session from a contiainer image on [M3](https://southernmethodistuniversity.github.io/hpc_docs/about.html#maneframe-iii-m3)
-  
-  **NOTE: Singularity and other containers will not run correctly in this environment.**
+
+  Portal jobs are interactive by nature and, therefore, limited to a maximum of 12 hours.
+  If your jobs take longer, please convert them to scripts and run them in batch mode
+  (i.e. non-interactively.)
+
+  **NOTE: Apptainter (formerly Singularity) and other containers will not run in this environment.**
 icon: fas://desktop
