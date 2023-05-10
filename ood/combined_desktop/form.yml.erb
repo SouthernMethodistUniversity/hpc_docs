@@ -5,7 +5,7 @@ cluster: "m3cluster"
 submit: submit.yml.erb
 
 form:
-  - auto_queues
+  - custom_queues
   - desktop_env
   - bc_num_hours
   - bc_vnc_idle
@@ -14,6 +14,21 @@ form:
   - bc_vnc_resolution
 
 attributes:
+  custom_queues:
+    label: "Partition"
+    widget: select
+    help: |
+      Please select the SLURM partition to submit the job to.
+    options:
+      - ["Development Queue (2 hour limit)", "dev",
+        data-max-bc-num-hours: 2,
+        ]
+      - ["Standard Memory Queue (12 hour limit)", "standard-s",
+        data-max-bc-num-hours: 12,
+        ]
+      - ["High Memory Queue (12 hour limit)", "highmem",
+        data-max-bc-num-hours: 12,
+        ]
   bc_vnc_idle: 2700
   bc_num_hours:
     id: bc_num_hours
