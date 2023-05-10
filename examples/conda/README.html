@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Torch" href="../torch/README.html" />
-    <link rel="prev" title="Access" href="../../access.html" />
+    <link rel="prev" title="M3 Migration" href="../../m3_migration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="../../access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../m3_migration.html">M3 Migration</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="current nav bd-sidenav">
@@ -338,7 +339,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-the-command-line">Creating Virtual Environments from the Command Line</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-environment-yml-file">Creating Virtual Environments From environment.yml File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-environment-yml-file">Creating Virtual Environments From environment.yml File</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-hpc-portal">Using the HPC Portal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-base">Using a base</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactively-from-the-terminal">Interactively from the terminal</a></li>
@@ -455,29 +459,44 @@ with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-n<span class="w"> </span>conda_env
 </pre></div>
 </div>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<p>The following are examples of how you might start to build your environment
+for a few different usage cases. These are the source files we use on
+the web portal, if you choose to build a custom environment from the form.</p>
+<p>It is likely that these will not meet the needs of any specific use case,
+but you can add or remove packages as needed for your particular needs.</p>
+<ul class="simple">
+<li><p>Example of an environment for <em>data science</em>, <a class="reference download internal" download="" href="../../_downloads/2437fdcf29666f94b1f0f99e4fcf84e3/datascience.yml"><span class="xref download myst">datascience.yml</span></a>.</p></li>
+<li><p>Example of an environment for <em>bioinformatics</em>, <a class="reference download internal" download="" href="../../_downloads/a5a66b5ca25cd42826be7e4f00c2bbac/bioinformatics.yml"><span class="xref download myst">bioinformatics.yml</span></a>.</p></li>
+<li><p>Example of an environment for <em>machine learning with SKLearn</em>, <a class="reference download internal" download="" href="../../_downloads/7848bdb80a36259caeb38cef501cedff/sklearn.yml"><span class="xref download myst">sklearn.yml</span></a>.</p></li>
+<li><p>Example of an environment for <em>R</em>, <a class="reference download internal" download="" href="../../_downloads/bf48c70ca74908bba8eb6da099f1935a/r.yml"><span class="xref download myst">r.yml</span></a></p></li>
+</ul>
+</section>
 </section>
 <section id="using-the-hpc-portal">
 <h2>Using the HPC Portal<a class="headerlink" href="#using-the-hpc-portal" title="Permalink to this heading">#</a></h2>
 <p>If you are running interactive sessions through the portal using JupyterLab,
 you need to have <code class="docutils literal notranslate"><span class="pre">JupyterLab</span></code> installed in your environment. If it is not, the
 portal will not allow that environment to be used.</p>
-<p>You Conda environment should appear in the drop down list of Python
+<p>Your Conda environment should appear in the drop down list of Python
 Environments. If it is greyed out, that means that you need to install
 JupyterLab in the environment.</p>
 <section id="using-a-base">
 <h3>Using a base<a class="headerlink" href="#using-a-base" title="Permalink to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>conda_env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>conda_env
 </pre></div>
 </div>
 <p>to the <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">environment</span> <span class="pre">settings</span></code> field on the portal. It should look
 like:</p>
-<p><img alt="Image of activation command in the custom environment settings field of thehpc portal" src="examples/conda/images/conda_python_activation_portal.png" /></p>
 </section>
 <section id="interactively-from-the-terminal">
 <h3>Interactively from the terminal<a class="headerlink" href="#interactively-from-the-terminal" title="Permalink to this heading">#</a></h3>
 <p>If you are running programs interactively from the terminal (e.g. using
 <code class="docutils literal notranslate"><span class="pre">srun</span></code>) just activate the virtual environment with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>conda_env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>conda_env
 </pre></div>
 </div>
 <p>in the terminal before running any commands.</p>
@@ -486,7 +505,8 @@ like:</p>
 <h3>Using SBatch scripts<a class="headerlink" href="#using-sbatch-scripts" title="Permalink to this heading">#</a></h3>
 <p>If you are running programs using <em>SBatch</em> scripts, you should include the
 activation command in your script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>conda_env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>conda_env
 </pre></div>
 </div>
 </section>
@@ -552,12 +572,12 @@ instead of Conda.</p></li>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../access.html"
+       href="../../m3_migration.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Access</p>
+        <p class="prev-next-title">M3 Migration</p>
       </div>
     </a>
     <a class="right-next"
@@ -593,7 +613,10 @@ instead of Conda.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-the-command-line">Creating Virtual Environments from the Command Line</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-environment-yml-file">Creating Virtual Environments From environment.yml File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-virtual-environments-from-environment-yml-file">Creating Virtual Environments From environment.yml File</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-hpc-portal">Using the HPC Portal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-base">Using a base</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactively-from-the-terminal">Interactively from the terminal</a></li>

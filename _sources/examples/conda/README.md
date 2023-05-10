@@ -110,28 +110,39 @@ with:
 conda env create -f environment.yml -n conda_env
 ```
 
+### Examples
+
+The following are examples of how you might start to build your environment
+for a few different usage cases. These are the source files we use on 
+the web portal, if you choose to build a custom environment from the form.
+
+It is likely that these will not meet the needs of any specific use case,
+but you can add or remove packages as needed for your particular needs.
+
+- Example of an environment for *data science*, [datascience.yml](datascience.yml).
+- Example of an environment for *bioinformatics*, [bioinformatics.yml](bioinformatics.yml).
+- Example of an environment for *machine learning with SKLearn*, [sklearn.yml](sklearn.yml).
+- Example of an environment for *R*, [r.yml](r.yml)
+
 ## Using the HPC Portal
 
 If you are running interactive sessions through the portal using JupyterLab,
 you need to have `JupyterLab` installed in your environment. If it is not, the
 portal will not allow that environment to be used.
 
-You Conda environment should appear in the drop down list of Python
+Your Conda environment should appear in the drop down list of Python
 Environments. If it is greyed out, that means that you need to install
 JupyterLab in the environment.
 
 ### Using a base
 
 ```bash
+module load conda
 conda activate conda_env
 ```
 
 to the ```Custom environment settings``` field on the portal. It should look
 like:
-
-![Image of activation command in the custom environment settings field of the
-hpc portal](images/conda_python_activation_portal.png "Portal Activation
-Example")
 
 ### Interactively from the terminal
 
@@ -139,6 +150,7 @@ If you are running programs interactively from the terminal (e.g. using
 ```srun```) just activate the virtual environment with
 
 ```bash
+module load conda
 conda activate conda_env
 ```
 
@@ -150,6 +162,7 @@ If you are running programs using _SBatch_ scripts, you should include the
 activation command in your script:
 
 ```bash
+module load conda
 conda activate conda_env
 ```
 
