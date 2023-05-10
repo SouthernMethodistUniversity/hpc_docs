@@ -323,7 +323,7 @@ end
 ---
 cluster: "m3cluster"
 form:
-  - auto_queues
+  - custom_queues
   - python_version
   - build_environment
   - environment_name
@@ -337,6 +337,21 @@ form:
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
+  custom_queues:
+    label: "Partition"
+    widget: select
+    help: |
+      Please select the SLURM partition to submit the job to.
+    options:
+      - ["Development Queue (2 hour limit)", "dev",
+        data-max-bc-num-hours: 2,
+        ]
+      - ["Standard Memory Queue (12 hour limit)", "standard-s",
+        data-max-bc-num-hours: 12,
+        ]
+      - ["High Memory Queue (12 hour limit)", "highmem",
+        data-max-bc-num-hours: 12,
+        ]
   python_version:
     label: "Select Python Environment"
     widget: select
@@ -363,17 +378,15 @@ attributes:
       Build a new Conda environment. These are simple base environments to help you
       get started, but you will likely need to install additional packages yourself.
 
-      - data science: Common data science tools. Uses [datascience.yml]
-      - bioinformatics: Tools for bioinformatics workflows. Uses [bioinformatics.yml]
-      - sklearn: Machine learning with scikit-learn. Uses [sklearn.yml]
-      - R: Create an R environment with some base packages. Uses [r.yml] 
+      - data science: Common data science tools.
+      - bioinformatics: Tools for bioinformatics workflows.
+      - sklearn: Machine learning with scikit-learn.
+      - R: Create an R environment with some base packages. 
 
       See our documentation on [Conda environments] for more information.
+      The specific environment files for each of the found under [example environments]
       [Conda environments]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/README
-      [datascience.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/datascience.yml 
-      [bioinformatics.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/bioinformatics.yml
-      [sklearn.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/sklearn.yml
-      [r.yml]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/r.yml
+      [example environments]: https://southernmethodistuniversity.github.io/hpc_docs/examples/conda/README.html#creating-virtual-environments-from-environment-yml-file
     options:  
     - ["data science", "/hpc/m3/hpc_docs/docs/examples/conda/datascience.yml"]
     - ["bioinformatics", "/hpc/m3/repos/hpc_docs/docs/examples/conda/bioinformatics.yml"]
@@ -395,10 +408,9 @@ attributes:
       - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
       - Use *module load module1 module2 module3* to load modules
       - Use *export MY_VARIABLE=my_value* to export shell variables
-      - **NOTE:**  *jupyter-lab* must be available in your environment, if we can't find it we will load the version in the module "python/3" which may conflict with the settings you provided
+      - **NOTE:**  *jupyter-lab* must be available in your environment.
 
   bc_num_hours:
-    id: bc_num_hours
     label: Time (Hours)
     help: |
       - Number of hours to allocate
@@ -419,7 +431,6 @@ attributes:
     step: 1
     value: 30
   bc_num_cores:
-    id: num_cpus
     label: "Cores per node"
     help: Number of CPU threads
     cacheable: true
@@ -428,7 +439,6 @@ attributes:
     min: 1
     value: 1
   bc_num_memory:
-    id: num_mem
     label: "Memory"
     help: "Please select the amount of memory (in GB) you need for your job."
     widget: number_field

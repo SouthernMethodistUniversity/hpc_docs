@@ -6,10 +6,10 @@ role: batch_connect
 description: |
   This app will launch [RStudio Server], an IDE for [R], on a cluster node.
 
-  See the [R Application] documentation for tips on running R scripts as batch
-  jobs if you require longer than 12 hours of runtime
+  Portal jobs are interactive by nature and, therefore, limited to a maximum of 12 hours.
+  If your jobs take longer, please convert them to scripts and run them in batch mode
+  (i.e. non-interactively.)
 
   [RStudio Server]: https://www.rstudio.com/products/rstudio-server/
   [R]: https://www.r-project.org/
-  [R Application]: https://s2.smu.edu/hpc/documentation/applications/r.html
 
