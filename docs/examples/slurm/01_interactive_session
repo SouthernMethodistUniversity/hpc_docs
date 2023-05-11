@@ -1,0 +1,2 @@
+srun -p dev -c 1 --mem=6G --pty $SHELL
+
