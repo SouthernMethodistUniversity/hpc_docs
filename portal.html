@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome &#8212; SMU HPC Documentation</title>
+    <title>HPC Portal &#8212; SMU HPC Documentation</title>
   
   
   
@@ -61,11 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'portal';</script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="About" href="about.html" />
+    <link rel="next" title="M3 Migration" href="m3_migration.html" />
+    <link rel="prev" title="Access" href="access.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -150,20 +151,20 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
                     Welcome
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">HPC Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="m3_migration.html">M3 Migration</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
@@ -242,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/index.md" target="_blank"
+      <li><a href="_sources/portal.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +325,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome</h1>
+    <h1>HPC Portal</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,12 +335,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fall-2022-workshop-series">Fall 2022 Workshop Series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-portal">Accessing the Portal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-apps">Interactive Apps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-desktop-portal-remote-desktop">Remote Desktop {#portal_remote_desktop}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">JupyterLab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rstudio-server">RStudio Server</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-access">Shell Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-jobs">Monitoring Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-access">File Access</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -350,189 +356,108 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <img alt="NVIDIA DGX SuperPOD (MP)" class="align-center" src="_images/superpod.jpg" />
-<section class="tex2jax_ignore mathjax_ignore" id="welcome">
-<h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this heading">#</a></h1>
-<p>The mission of the Center for Research Computing at Southern Methodist
-University is to support research and education enabled by high-performance
-computing technology. We are motivated by the fact that computer simulation and
-data analysis has become an essential facilitator of discovery in most
-disciplines, and that advances in computing, networking, and data storage
-technologies are likely to accelerate this trend.</p>
-<p>The primary purposes of the Center are to: (i.) provide a state-of-the-art
-research computing infrastructure for SMU faculty and students; (ii.) provide
-training and support to faculty and students in the use of the Center’s
-resources and external facilities, including awarding certificates in
-high-performance computing based on a completion of assignments associated with
-center’s workshops; (iii.) provide the mechanism for faculty governance of
-advanced research computing and related educational activities ; (iv.)
-stimulate multidisciplinary research involving computation; (v.) support and
-develop educational programs involving computation; (vi.) publicize faculty and
-student research involving computation; and (vii.) engage with local government
-and industry on relevant research projects.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="hpc-portal">
+<h1>HPC Portal<a class="headerlink" href="#hpc-portal" title="Permalink to this heading">#</a></h1>
+<p>HPC OnDemand provides an integrated, single access point for SMU HPC resources.</p>
+<section id="accessing-the-portal">
+<h2>Accessing the Portal<a class="headerlink" href="#accessing-the-portal" title="Permalink to this heading">#</a></h2>
+<p>Access to the HPC OnDemand web portal requires an existing SMU HPC account,
+which can be requested as documented in
+<a class="reference internal" href="accounts.html"><span class="doc">Accounts</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https://hpc.m3.smu.edu/">hpc.m3.smu.edu</a>.</p></li>
+<li><p>Sign in using your SMU ID and SMU password</p></li>
+</ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="fall-2022-workshop-series">
-<h1>Fall 2022 Workshop Series<a class="headerlink" href="#fall-2022-workshop-series" title="Permalink to this heading">#</a></h1>
-<p>The Fall 2022 OIT, CRC, &amp; DSI workshop series provides a hands-on experience
-that will guide researchers from the basics of using SMU’s supercomputing
-resources to advanced parallelization and application specific usage. The
-topics will cover information useful for researchers to quickly begin to use
-the advanced compute capabilities provided with the cluster. New users are
-encouraged to take advantage of the introductory “Introduction to HPC” workshop
-that will be given once monthly during the semester.</p>
-<p>Fall 2022 OIT, CRC, &amp; DSI Workshop Series - Open to All!</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Date</p></th>
-<th class="head"><p>Time</p></th>
-<th class="head"><p>Workshop</p></th>
-<th class="head"><p>Series</p></th>
-<th class="head"><p>Location</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>8/23</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Introduction to HPC</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>8/30</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Data Mining Using Rapid Miner</p></td>
-<td><p>1/1</p></td>
-<td><p>FLE 109</p></td>
-</tr>
-<tr class="row-even"><td><p>9/2</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>C++ Programming Workshop</p></td>
-<td><p>1/6</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>9/6</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Introduction to HPC</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>9/7</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Machine Learning in R</p></td>
-<td><p>1/2</p></td>
-<td><p>FLE 109</p></td>
-</tr>
-<tr class="row-odd"><td><p>9/9</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Machine Learning in R</p></td>
-<td><p>2/2</p></td>
-<td><p>FLE 110</p></td>
-</tr>
-<tr class="row-even"><td><p>9/14</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Text Mining in R</p></td>
-<td><p>1/1</p></td>
-<td><p>FLE 109</p></td>
-</tr>
-<tr class="row-odd"><td><p>9/16</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>C++ Programming Workshop</p></td>
-<td><p>2/6</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>9/20</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Parallel C++ STL</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>9/21</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Machine Learning in Python</p></td>
-<td><p>1/2</p></td>
-<td><p>FLE 109</p></td>
-</tr>
-<tr class="row-even"><td><p>9/23</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Machine Learning in Python</p></td>
-<td><p>2/2</p></td>
-<td><p>FLE 110</p></td>
-</tr>
-<tr class="row-odd"><td><p>9/27</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Parallel C++ APIs</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>9/30</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>C++ Programming Workshop</p></td>
-<td><p>3/6</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>10/4</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Introduction to HPC</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>10/5</p></td>
-<td><p>12:30-2:30</p></td>
-<td><p>Deep Learning with Python</p></td>
-<td><p>1/1</p></td>
-<td><p>FLE 109</p></td>
-</tr>
-<tr class="row-odd"><td><p>10/14</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>C++ Programming Workshop</p></td>
-<td><p>4/6</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>10/18</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Using MPI</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>10/25</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Bridging C++ and Python</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>10/28</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>C++ Programming Workshop</p></td>
-<td><p>5/6</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>11/1</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Introduction to HPC</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-even"><td><p>11/8</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>Bridging C++ and R</p></td>
-<td><p>1/1</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-<tr class="row-odd"><td><p>11/11</p></td>
-<td><p>10:00-12:00</p></td>
-<td><p>C++ Programming Workshop</p></td>
-<td><p>6/6</p></td>
-<td><p>Ford 124</p></td>
-</tr>
-</tbody>
-</table>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<section id="interactive-apps">
+<h2>Interactive Apps<a class="headerlink" href="#interactive-apps" title="Permalink to this heading">#</a></h2>
+<section id="remote-desktop-portal-remote-desktop">
+<h3>Remote Desktop {#portal_remote_desktop}<a class="headerlink" href="#remote-desktop-portal-remote-desktop" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Select “Remote Desktop” from the “Interactive Apps” drop-down
+menu.</p></li>
+<li><p>Select options required for your remote desktop instance. These
+options are the same as those requested via a standard Slurm script.</p></li>
+<li><p>Select “Launch”</p></li>
+<li><p>Wait for the job to start. When the job starts a new button
+“Launch noVNC in New Tab” button will appear.</p></li>
+<li><p>Select “Launch noVNC in New Tab”</p></li>
+<li><p>Graphical applications can be run via the Terminal, e.g.
+<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">comsol</span> <span class="pre">&amp;&amp;</span> <span class="pre">comsol</span> <span class="pre">&amp;</span></code>.</p></li>
+<li><p>When finished using the remote desktop instance, return to the “My
+Interactive Sessions” tab in your browser and select “Delete” and
+“Confirm”, when prompted, to cancel the job.</p></li>
+</ol>
+</section>
+<section id="jupyterlab">
+<h3>JupyterLab<a class="headerlink" href="#jupyterlab" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Select “JupyterLab” from the “Interactive Apps” drop-down menu.</p></li>
+<li><p>Select options required for your remote desktop instance. These
+options are similar to those requested via a standard Slurm script.</p></li>
+<li><p>Select “Launch”</p></li>
+<li><p>Wait for the job to start. When the job starts a new button
+“Connect to JupyterLab” button will appear.</p></li>
+<li><p>Select “Connect to JupyterLab”</p></li>
+<li><p>The Jupyter Notebook graphical interface will be presented and
+running on the resources requested.</p></li>
+<li><p>When finished using the JupyterLab instance, return to the “My
+Interactive Sessions” tab in your browser and select “Delete” and
+“Confirm”, when prompted, to cancel the job.</p></li>
+</ol>
+</section>
+<section id="rstudio-server">
+<h3>RStudio Server<a class="headerlink" href="#rstudio-server" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Select “RStudio Server” from the “Interactive Apps” drop-down
+menu.</p></li>
+<li><p>Select options required for your remote desktop instance. These
+options are the same as those requested via a standard Slurm script.</p></li>
+<li><p>Select “Launch”</p></li>
+<li><p>Wait for the job to start. When the job starts a new button
+“Connect to RStudio Server” button will appear.</p></li>
+<li><p>Select “Connect to RStudio Server”</p></li>
+<li><p>The RStudio graphical interface will be presented and running on the
+resources requested.</p></li>
+<li><p>When finished using the RStudio Server instance, return to the “My
+Interactive Sessions” tab in your browser and select “Delete” and
+“Confirm”, when prompted, to cancel the job.</p></li>
+</ol>
+</section>
+</section>
+<section id="shell-access">
+<h2>Shell Access<a class="headerlink" href="#shell-access" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Select “M3 Shell Access” from the “Clusters” drop-down
+menu. Note that this shell access does not provide access to
+graphical applications. If needed, please use a
+<code class="docutils literal notranslate"><span class="pre">&quot;Remote</span> <span class="pre">Desktop&quot;</span> <span class="pre">&lt;portal_remote_desktop&gt;</span></code>{.interpreted-text
+role=”ref”} instance.</p></li>
+<li><p>When finished using the shell, type <code class="docutils literal notranslate"><span class="pre">exit</span></code> and close the browser
+tab.</p></li>
+</ol>
+</section>
+<section id="monitoring-jobs">
+<h2>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>“Active Jobs” from the “Jobs” drop-down menu.</p></li>
+</ol>
+</section>
+<section id="file-access">
+<h2>File Access<a class="headerlink" href="#file-access" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>“Home Directory” from the “Files” drop-down menu.</p></li>
+</ol>
+<ul class="simple">
+<li><p>You can navigate to specific directories by clicking the directories
+shown.</p></li>
+<li><p>You can go to specific directories using the “Go To…” button.</p></li>
+<li><p>You can upload files simply by dragging them to the window or by
+selecting the “Upload” button.</p></li>
+<li><p>You can download files and directories by selecting them and then
+selecting the “Download” button.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -566,12 +491,21 @@ that will be given once monthly during the semester.</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="access.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Access</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="about.html"
+       href="m3_migration.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">About</p>
+        <p class="prev-next-title">M3 Migration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -593,12 +527,17 @@ that will be given once monthly during the semester.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Welcome</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fall-2022-workshop-series">Fall 2022 Workshop Series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-portal">Accessing the Portal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-apps">Interactive Apps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-desktop-portal-remote-desktop">Remote Desktop {#portal_remote_desktop}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">JupyterLab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rstudio-server">RStudio Server</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-access">Shell Access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monitoring-jobs">Monitoring Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-access">File Access</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
