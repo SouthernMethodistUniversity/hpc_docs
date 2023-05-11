@@ -17,8 +17,8 @@ parts:
 - caption: Tutorials
   chapters:
   - file: tutorials/unix/unix.rst
-  - file: tutorials/modules/modules.rst
-  - file: tutorials/slurm/slurm.rst
+  - file: tutorials/modules/modules.md
+  - file: tutorials/slurm/slurm.md
   - file: tutorials/cpp/intro.md
     sections:
     - file: tutorials/cpp/session_1.md

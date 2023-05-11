@@ -1,0 +1,1 @@
+srun -p dev -c 1 --mem=6G  python3 pi_monte_carlo.py 1000
