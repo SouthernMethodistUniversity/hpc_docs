@@ -243,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/tutorials/slurm/slurm.rst" target="_blank"
+      <li><a href="../../_sources/tutorials/slurm/slurm.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -253,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -336,11 +336,21 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-jobs-using-slurm">Submitting Jobs Using Slurm</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-slurm-job-scheduler">The SLURM Job Scheduler</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maneframe-ii-s-slurm-partitions-queues">ManeFrame II’s SLURM Partitions/Queues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-slurm-job-scheduler">The SLURM Job Scheduler</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-commands">SLURM commands</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-running-interactive-jobs">Example: Running Interactive Jobs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-job-submission-file">Batch Job Submission File</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-batch-jobs">Running Batch Jobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-batch-jobs">Running Batch Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-session-via-srun">Interactive Session Via <code class="docutils literal notranslate"><span class="pre">srun</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-interactive-job-via-srun">Single Interactive Job Via <code class="docutils literal notranslate"><span class="pre">srun</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-threaded-batch-job-via-sbatch-s-wrapping-function">Single-Threaded Batch Job via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>’s Wrapping Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-threaded-batch-job-via-batch-script">Single Threaded Batch Job via Batch Script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-multi-threaded-job-via-batch-script">Single Multi-Threaded Job via Batch Script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-single-threaded-jobs-via-batch-script">Array of Single Threaded Jobs via Batch Script</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -354,20 +364,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="id1">
-<h1>Slurm<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="slurm">
+<h1>Slurm<a class="headerlink" href="#slurm" title="Permalink to this heading">#</a></h1>
 <section id="submitting-jobs-using-slurm">
 <h2>Submitting Jobs Using Slurm<a class="headerlink" href="#submitting-jobs-using-slurm" title="Permalink to this heading">#</a></h2>
 <p>Before beginning this session, first retrieve the corresponding set of
 files either by copying the relevant files at the command line:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>-R<span class="w"> </span>/hpc/examples/workshops/hpc/slurm_tutorial<span class="w"> </span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-R<span class="w"> </span>/hpc/m3/examples/slurm<span class="w"> </span>.
 </pre></div>
 </div>
-</div><p>Additionally, we need to set up our environment correctly:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python
-</pre></div>
-</div>
-</div><section id="the-slurm-job-scheduler">
+<section id="the-slurm-job-scheduler">
 <h3>The SLURM Job Scheduler<a class="headerlink" href="#the-slurm-job-scheduler" title="Permalink to this heading">#</a></h3>
 <p>In this tutorial we’ll focus on running serial jobs (both batch and
 interactive) on ManeFrame II (we’ll discuss parallel jobs in later
@@ -389,72 +395,6 @@ queued jobs so that all of the compute nodes are utilized to their
 capacity, yet doing so in a fair manner that gives priority to users who
 have used less resources and/or contributed more to the acquisition of
 the system.</p>
-</section>
-<section id="maneframe-ii-s-slurm-partitions-queues">
-<h3>ManeFrame II’s SLURM Partitions/Queues<a class="headerlink" href="#maneframe-ii-s-slurm-partitions-queues" title="Permalink to this heading">#</a></h3>
-<p>There are currently 15 partitions also known as queues available on
-ManeFrame II. These queues are designed to allow to various usage
-scenarios based on the calculations’s expected duration, its degree of
-parallelization, and its memory requirements with the goal of allowing
-fair access to computational resources for all users. The queues are
-described in the following table.</p>
-<section id="types-of-queues-available">
-<h4>Types of Queues Available<a class="headerlink" href="#types-of-queues-available" title="Permalink to this heading">#</a></h4>
-<section id="standard-medium-and-high-memory-compute-nodes">
-<h5>Standard-, Medium-, and High- Memory Compute Nodes<a class="headerlink" href="#standard-medium-and-high-memory-compute-nodes" title="Permalink to this heading">#</a></h5>
-<p>Each of the 176 standard compute nodes has 36 cores, 256 GB of memory,
-and 100 Gb/s networking. Specifically, these nodes contain dual Intel
-Xeon E5-2695v4 2.1 GHz 18-core “Broadwell” processors with 45 MB of
-cache each and 256 GB of DDR4-2400 memory. The “Broadwell”
-microarchitecture of these processors is four generations newer than the
-“Nehalem”-based Xeon processors in ManeFrame. This translates to more
-efficient execution per processor cycle and significantly improved
-vectorization via the second-generation Advanced Vector Extensions
-(AVX2). In addition, there are 35 medium- and five high-memory compute
-nodes which have the same processors, but feature 768 GB and 1,536 GB
-(1.5 TB) of DDR4-2400 memory respectively and ManeFrame’s new four 768
-GB and six 1,536 GB (1.5 TB) nodes also will be added to the new
-cluster. The new and more efficient architecture, high core count, and
-high memory capacities of these nodes will provide significant
-improvements to existing computationally or memory intensive workflows.</p>
-</section>
-<section id="accelerator-nodes-with-nvidia-gpus">
-<h5>Accelerator Nodes with NVIDIA GPUs<a class="headerlink" href="#accelerator-nodes-with-nvidia-gpus" title="Permalink to this heading">#</a></h5>
-<p>The 36 accelerator nodes with NVIDIA GPUs are configured with dual Intel
-Xeon E5-2695v4 2.1 GHz 18-core “Broadwell” processors, 256 GB of
-DDR4-2400 memory, and one NVIDIA P100 GPU accelerator. Each NVIDIA P100
-GPU has 3584 CUDA cores and 16 GB CoWoS HBM2 memory. The P100 GPU is the
-based on the new Pascal architecture and an extremely high bandwidth
-(732 GB/s) stacked memory architecture. These GPUs, combined with an
-ever-broadening set of drop-in replacement libraries and ever easier to
-implement CUDA-based programming environments, make GPU-based
-acceleration significantly more approachable for many computationally
-intensive applications.</p>
-</section>
-<section id="many-core-nodes-with-intel-xeon-phi-processors">
-<h5>Many-Core Nodes with Intel Xeon Phi Processors<a class="headerlink" href="#many-core-nodes-with-intel-xeon-phi-processors" title="Permalink to this heading">#</a></h5>
-<p>The 36 many-core nodes are configured with Intel Xeon Phi 7230 (also
-known as Knights Landing or KNL) processors and 385 GB of DDR4-2400
-memory. Each Xeon Phi has 64 1.30 GHz cores and 16 GB of high bandwidth
-(400 GB/s) stacked memory. KNL processors are based on the Intel’s
-“Silvermont” Atom processor cores and have hardware-based support for up
-to four concurrent threads. A principal benefit of the KNL processors is
-that they are based on and binary compatible with x86 architectures and
-therefore do not require specialized programming languages or
-directives/pragmas.</p>
-</section>
-<section id="virtual-desktop-nodes">
-<h5>Virtual Desktop Nodes<a class="headerlink" href="#virtual-desktop-nodes" title="Permalink to this heading">#</a></h5>
-<p>The five virtual desktop nodes will allow researchers remote desktop
-access to high-performance compute capability. These nodes can be used
-for applications that have demanding remote visualization and/or
-rendering requirements. In addition, these virtual desktops can be
-configured as either Linux or Windows for a handful of compatible
-applications. Each node has dual Intel Xeon E5-2695v4 2.1 GHz 18-core
-“Broadwell” processors, 256 GB of DDR4-2400 memory, and one NVIDIA
-Quadro M5000 GPU.</p>
-</section>
-</section>
 <section id="slurm-commands">
 <h4>SLURM commands<a class="headerlink" href="#slurm-commands" title="Permalink to this heading">#</a></h4>
 <p>While there are a <a class="reference external" href="https://computing.llnl.gov/linux/slurm/documentation.html">multitude of SLURM
@@ -464,20 +404,19 @@ jobs:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code> – displays information about SLURM nodes and partitions
 (queue types). A full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sinfo.html">here</a>. The
-usage command (with the most-helpful optional arguments in brackets)
-is</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sinfo<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>&lt;nodes&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;partition&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span>
+<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sinfo.html">here</a>. The usage
+command (with the most-helpful optional arguments in brackets) is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sinfo<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>&lt;nodes&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;partition&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span>
 </pre></div>
 </div>
-</div><p>where these options are:</p>
+<p>where these options are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">--all</span></code> – Display information about all partitions</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">--long</span></code> – Displays more detailed information</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">&lt;nodes&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--nodes</span> <span class="pre">&lt;nodes&gt;</span></code> – Displays information only
-about the specified node(s). Multiple nodes may be comma separated
-or expressed using a node range expression. For example
-<code class="docutils literal notranslate"><span class="pre">mfc[1005-1007].hpc.smu.edu</span></code> would indicate three nodes,
+about the specified node(s). Multiple nodes may be comma
+separated or expressed using a node range expression. For
+example <code class="docutils literal notranslate"><span class="pre">mfc[1005-1007].hpc.smu.edu</span></code> would indicate three nodes,
 <code class="docutils literal notranslate"><span class="pre">mfc1005.hpc.smu.edu</span></code> through <code class="docutils literal notranslate"><span class="pre">mfc1007.hpc.smu.edu</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;partition&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition</span> <span class="pre">&lt;partition&gt;</span></code> – Displays
 information only about the specified partition</p></li>
@@ -485,31 +424,32 @@ information only about the specified partition</p></li>
 with no node state details.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sinfo<span class="w"> </span>--long<span class="w"> </span>-p<span class="w"> </span>highmem<span class="w">  </span><span class="c1"># long output for all nodes allocated to the &quot;highmem&quot; partition</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sinfo<span class="w"> </span>--long<span class="w"> </span>-p<span class="w"> </span>highmem<span class="w">  </span><span class="c1"># long output for all nodes allocated to the &quot;highmem&quot; partition</span>
 $<span class="w"> </span>sinfo<span class="w"> </span>-s<span class="w">                 </span><span class="c1"># summarizes output on all nodes on all partitions</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> – views information about jobs located in the SLURM
 scheduling queue. A full list of options is available
 <a class="reference external" href="https://computing.llnl.gov/linux/slurm/squeue.html">here</a>. The
 usage command (with the most-helpful optional arguments in brackets)
 is</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-j<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="o">]</span><span class="w"> </span><span class="o">[</span>--start<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-j<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="o">]</span><span class="w"> </span><span class="o">[</span>--start<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="o">]</span>
 </pre></div>
 </div>
-</div><p>where these options are:</p>
+<p>where these options are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">--all</span></code> – Display information about jobs and job
-steps in all partions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code> or <code class="docutils literal notranslate"><span class="pre">--all</span></code> – Display information about jobs and job steps
+in all partions.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">&lt;job_id_list&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">&lt;job_id_list&gt;</span></code> – Requests a
-comma separated list of job ids to display. Defaults to all jobs.</p></li>
+comma separated list of job ids to display. Defaults to all
+jobs.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">--long</span></code> – Reports more of the available information
 for the selected jobs or job steps, subject to any constraints
 specified.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part_list&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition</span> <span class="pre">&lt;part_list&gt;</span></code> – Specifies the
-partitions of the jobs or steps to view. Accepts a comma separated
-list of partition names.</p></li>
+partitions of the jobs or steps to view. Accepts a comma
+separated list of partition names.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--start</span></code> – Reports the <em>expected</em> start time of pending jobs,
 in order of increasing start time.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;user_list&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--user</span> <span class="pre">&lt;user_list&gt;</span></code> – Requests jobs or
@@ -517,24 +457,24 @@ job steps from a comma separated list of users. The list can
 consist of user names or user id numbers.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w">                            </span><span class="c1"># all jobs</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w">                            </span><span class="c1"># all jobs</span>
 $<span class="w"> </span>squeue<span class="w"> </span>-u<span class="w"> </span>rkalescky<span class="w"> </span>--start<span class="w">       </span><span class="c1"># anticipated start time of jobs</span>
 $<span class="w"> </span>squeue<span class="w"> </span>--jobs<span class="w"> </span><span class="m">12345</span>,12346,12348<span class="w">   </span><span class="c1"># information on only jobs 12345, 12346 and 12348</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> – submits a batch script to SLURM. A full list of options
 is available
 <a class="reference external" href="https://computing.llnl.gov/linux/slurm/sbatch.html">here</a>. The
 usage command is</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="sb">`</span>&lt;script&gt;<span class="sb">`</span><span class="w"> </span><span class="o">[</span>args<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="sb">`</span>&lt;script&gt;<span class="sb">`</span><span class="w"> </span><span class="o">[</span>args<span class="o">]</span>
 </pre></div>
 </div>
-</div><p>where <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> is a <em>batch submission script</em>, and <code class="docutils literal notranslate"><span class="pre">[args]</span></code> are
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> is a <em>batch submission script</em>, and <code class="docutils literal notranslate"><span class="pre">[args]</span></code> are
 any optional arguments that should be supplied to <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code>. The
 <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command accepts a multitude of options; these options may
-be supplied either at the command-line or inside the batch submission
-script.</p>
+be supplied either at the command-line or inside the batch
+submission script.</p>
 <p>It is recommended that all options be specified <em>inside</em> the batch
 submission file, to ensure reproducibility of results (i.e. so that
 the same options are specified on each run, and no options are
@@ -543,36 +483,35 @@ equivalently be specified within this script (at the top, before any
 executable commands), preceded by the text <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>.</p>
 <p>These options are discussed in the following section, batch_file.</p>
 <p>Examples:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>./myscript.sh<span class="w">    </span><span class="c1"># submits the batch submission file &quot;myscript.sh&quot; to SLURM</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>./myscript.sh<span class="w">    </span><span class="c1"># submits the batch submission file &quot;myscript.sh&quot; to SLURM</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">srun</span></code> – runs a parallel or interactive job on the worker nodes. A
 full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/srun.html">here</a>. The
-usage command (with the most-helpful optional arguments in brackets)
-is</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span><span class="o">[</span>-D<span class="w"> </span>&lt;path&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span>&lt;errf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--epilog<span class="o">=</span>&lt;executable&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;outf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pty<span class="o">]</span><span class="w"> </span><span class="o">[</span>--x11<span class="o">]</span><span class="w"> </span>&lt;executable&gt;
+<a class="reference external" href="https://computing.llnl.gov/linux/slurm/srun.html">here</a>. The usage
+command (with the most-helpful optional arguments in brackets) is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span><span class="o">[</span>-D<span class="w"> </span>&lt;path&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span>&lt;errf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--epilog<span class="o">=</span>&lt;executable&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;outf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pty<span class="o">]</span><span class="w"> </span><span class="o">[</span>--x11<span class="o">]</span><span class="w"> </span>&lt;executable&gt;
 </pre></div>
 </div>
-</div><p>where these options are:</p>
+<p>where these options are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--chdir=&lt;path&gt;</span></code> – have the remote processes
 change directories <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> before beginning execution. The
 default is to change to the current working directory of the
 <code class="docutils literal notranslate"><span class="pre">srun</span></code> process.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">&lt;errf&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--error=&lt;errf&gt;</span></code> – redirects stderr to the
-file <code class="docutils literal notranslate"><span class="pre">&lt;errf&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">&lt;errf&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--error=&lt;errf&gt;</span></code> – redirects stderr to the file
+<code class="docutils literal notranslate"><span class="pre">&lt;errf&gt;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--epilog=&lt;executable&gt;</span></code> – run <code class="docutils literal notranslate"><span class="pre">executable</span></code> just after the job
 completes. The command line arguments for <code class="docutils literal notranslate"><span class="pre">executable</span></code> will be
 the command and arguments of the job itself. If <code class="docutils literal notranslate"><span class="pre">executable</span></code> is
 “none”, then no epilog will be run.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-I</span></code> or <code class="docutils literal notranslate"><span class="pre">--immediate[=secs]</span></code> – exit if requested resources
-not available in “secs” seconds (useful for interactive jobs).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-I</span></code> or <code class="docutils literal notranslate"><span class="pre">--immediate[=secs]</span></code> – exit if requested resources not
+available in “secs” seconds (useful for interactive jobs).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;outf&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--output=&lt;outf&gt;</span></code> – redirects stdout to the
 file <code class="docutils literal notranslate"><span class="pre">&lt;outf&gt;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition=&lt;part&gt;</span></code> – requests that the job
-be run on the requested partition.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition=&lt;part&gt;</span></code> – requests that the job be
+run on the requested partition.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">&lt;num&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--nodes=&lt;num&gt;</span></code> – requests that the job be run
 using <code class="docutils literal notranslate"><span class="pre">&lt;num&gt;</span></code> nodes. <em>Primarily useful for running parallel
 jobs</em></p></li>
@@ -584,41 +523,41 @@ using <code class="docutils literal notranslate"><span class="pre">&lt;num&gt;</
 time of the job. The default/maximum time limit is defined on a
 per-partition basis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--x11=[batch|first|last|all]</span></code> – exports the X11 display from
-the firstall allocated node(s), so that graphics displayed by this
-process can be forwarded to your screen.</p></li>
+the firstall allocated node(s), so that graphics displayed by
+this process can be forwarded to your screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;executable&gt;</span></code> – the actual program to run.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;parallel&quot; partition</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;parallel&quot; partition</span>
 $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>emacs<span class="w">  </span><span class="c1"># runs &quot;emacs&quot; and forwards graphics</span>
 $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span><span class="w"> </span><span class="c1"># runs a the user&#39;s current shell and forwards graphics</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code> – obtains a SLURM job allocation (a set of nodes),
-executes a command, and then releases the allocation when the command
-is finished. A full list of options is available
+executes a command, and then releases the allocation when the
+command is finished. A full list of options is available
 <a class="reference external" href="https://computing.llnl.gov/linux/slurm/salloc.html">here</a>. The
 usage command is</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>salloc<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>args<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>salloc<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>args<span class="o">]</span>
 </pre></div>
 </div>
-</div><p>where <code class="docutils literal notranslate"><span class="pre">&lt;command&gt;</span> <span class="pre">[command</span> <span class="pre">args]</span></code> specifies the command (and any
-arguments) to run. Available options are almost identical to
-<code class="docutils literal notranslate"><span class="pre">srun</span></code>, including:</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;command&gt;</span> <span class="pre">[command</span> <span class="pre">args]</span></code> specifies the command (and any
+arguments) to run. Available options are almost identical to <code class="docutils literal notranslate"><span class="pre">srun</span></code>,
+including:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--chdir=&lt;path&gt;</span></code> – change directory to
-<code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> before beginning execution.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-I</span></code> or <code class="docutils literal notranslate"><span class="pre">--immediate[=secs]</span></code> – exit if requested resources
-not available in “secs” seconds (useful for interactive jobs).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition=&lt;part&gt;</span></code> – requests that the job
-be run on the requested partition.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--chdir=&lt;path&gt;</span></code> – change directory to <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code>
+before beginning execution.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-I</span></code> or <code class="docutils literal notranslate"><span class="pre">--immediate[=secs]</span></code> – exit if requested resources not
+available in “secs” seconds (useful for interactive jobs).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition=&lt;part&gt;</span></code> – requests that the job be
+run on the requested partition.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;min&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--time=&lt;min&gt;</span></code> – sets a limit on the total run
 time of the job. The default/maximum time limit is defined on a
 per-partition basis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--x11=[batch|first|last|all]</span></code> – exports the X11 display from
-the firstall allocated node(s), so that graphics displayed by this
-process can be forwarded to your screen.</p></li>
+the firstall allocated node(s), so that graphics displayed by
+this process can be forwarded to your screen.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scancel</span></code> – kills jobs or job steps that are under the control of
@@ -626,10 +565,10 @@ SLURM (and listed by <code class="docutils literal notranslate"><span class="pre
 <a class="reference external" href="https://computing.llnl.gov/linux/slurm/scancel.html">here</a>. The
 usage command (with the most-helpful optional arguments in brackets)
 is</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="o">[</span>-i<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>&lt;job_name&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>&lt;state&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="w"> </span>&lt;uname&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>jobid<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="o">[</span>-i<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>&lt;job_name&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>&lt;state&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="w"> </span>&lt;uname&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>jobid<span class="o">]</span>
 </pre></div>
 </div>
-</div><p>where these options are:</p>
+<p>where these options are:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-i</span></code> or <code class="docutils literal notranslate"><span class="pre">--interactive</span></code> – require response from user for each
 job (used when cancelling multiple jobs at once)</p></li>
@@ -637,63 +576,63 @@ job (used when cancelling multiple jobs at once)</p></li>
 with the specified name.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--partition=&lt;part&gt;</span></code> – cancel only on jobs in
 the specified partition.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;state&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--state=&lt;state&gt;</span></code> – cancel only on jobs in
-the specified state. Valid job states are <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code>
-and <code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;state&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--state=&lt;state&gt;</span></code> – cancel only on jobs in the
+specified state. Valid job states are <code class="docutils literal notranslate"><span class="pre">PENDING</span></code>, <code class="docutils literal notranslate"><span class="pre">RUNNING</span></code> and
+<code class="docutils literal notranslate"><span class="pre">SUSPENDED</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">&lt;uname&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--user=&lt;uname&gt;</span></code> – cancel only on jobs of the
 specified user (note: normal users can only cancel their own
 jobs).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">jobid</span></code> is the numeric job identifier (as shown by <code class="docutils literal notranslate"><span class="pre">squeue</span></code>)
-of the job to cancel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jobid</span></code> is the numeric job identifier (as shown by <code class="docutils literal notranslate"><span class="pre">squeue</span></code>) of
+the job to cancel.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="m">1234</span><span class="w">  </span><span class="c1"># cancel job number 1234</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="m">1234</span><span class="w">  </span><span class="c1"># cancel job number 1234</span>
 $<span class="w"> </span>scancel<span class="w"> </span>-u<span class="w"> </span>rkalescky<span class="w">  </span><span class="c1"># cancel all jobs owned by user &quot;rkalescky&quot;</span>
 $<span class="w"> </span>scancel<span class="w"> </span>-t<span class="w"> </span>PENDING<span class="w"> </span>-u<span class="w"> </span>joe<span class="w">  </span><span class="c1"># cancel all pending jobs owned by user &quot;joe&quot;</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 </ul>
 </section>
 </section>
 <section id="example-running-interactive-jobs">
 <h3>Example: Running Interactive Jobs<a class="headerlink" href="#example-running-interactive-jobs" title="Permalink to this heading">#</a></h3>
 <p>In this example, we’ll interactively run the Python script
-<code class="docutils literal notranslate"><span class="pre">pi_monte_carlo.py</span></code>, that performs a simple algorithm for
-approximating <em>π</em> using a Monte Carlo method.</p>
+<code class="docutils literal notranslate"><span class="pre">pi_monte_carlo.py</span></code>, that performs a simple algorithm for approximating
+<em>π</em> using a Monte Carlo method.</p>
 <p>This script accepts a single integer-valued command-line argument,
 corresponding to the number of random values to use in the
 approximation, with the typical tradeoff that <em>the harder you work, the
 better your answer</em>.</p>
 <p>While you can run this at the command line:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50</span>
 </pre></div>
 </div>
-</div><p>as we increase the number of random values to obtain a more accurate
-approximation it can take longer to run, so as “good citizens” we should
-instead run it on dedicated compute nodes instead of the shared login
-nodes.</p>
+<p>as we increase the number of random values to obtain a more accurate
+approximation it can take longer to run, so as “good citizens” we
+should instead run it on dedicated compute nodes instead of the shared
+login nodes.</p>
 <p>Before running this script on a compute node, we need to ensure that
 <code class="docutils literal notranslate"><span class="pre">myjob.py</span></code> has “executable” permissions:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./pi_monte_carlo.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>./pi_monte_carlo.py
 </pre></div>
 </div>
-</div><p>We’ll use <code class="docutils literal notranslate"><span class="pre">srun</span></code> to run this script interactively for interval values
+<p>We’ll use <code class="docutils literal notranslate"><span class="pre">srun</span></code> to run this script interactively for interval values
 of {50,500,5000,50000}. For each run, we’ll direct the output to a
 separate file:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_50.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_50.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50</span>
 $<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_500.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">500</span>
 $<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_5000.txt<span class="w"> </span>./mpi_monte_carlo.py<span class="w"> </span><span class="m">5000</span>
 $<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_50000.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50000</span>
 </pre></div>
 </div>
-</div><p>Upon completion you should have the files <code class="docutils literal notranslate"><span class="pre">run_50.txt</span></code>,
-<code class="docutils literal notranslate"><span class="pre">run_500.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">run_5000.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">run_50000.txt</span></code> in your
-directory. View the results to ensure that things ran properly:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>run_*
+<p>Upon completion you should have the files <code class="docutils literal notranslate"><span class="pre">run_50.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">run_500.txt</span></code>,
+<code class="docutils literal notranslate"><span class="pre">run_5000.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">run_50000.txt</span></code> in your directory. View the results
+to ensure that things ran properly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>run_*
 </pre></div>
 </div>
-</div><p>in the above commands we do not need to directly specify to run on the
+<p>in the above commands we do not need to directly specify to run on the
 “development” SLURM partition, since that is the default partition.</p>
 </section>
 <section id="batch-job-submission-file">
@@ -705,13 +644,13 @@ the job you want to run. This is the <code class="docutils literal notranslate">
 <p>A batch submission script is just that, a shell script. You are welcome
 to use your preferred shell scripting language; in this tutorial we’ll
 use Bash. As a result, the script typically starts with the line</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 </pre></div>
 </div>
-</div><p>The following lines (before any executable commands) contain the options
+<p>The following lines (before any executable commands) contain the options
 to be supplied to the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command. Each of these options must be
 prepended with the text <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J my_program       # job name to display in squeue</span>
 <span class="c1">#SBATCH -o output-%j.txt    # standard output file</span>
 <span class="c1">#SBATCH -e error-%j.txt     # standard error file</span>
@@ -719,9 +658,9 @@ prepended with the text <code class="docutils literal notranslate"><span class="
 <span class="c1">#SBATCH -t 180              # maximum runtime in minutes</span>
 </pre></div>
 </div>
-</div><p>Since each of these <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> options begins with the character <code class="docutils literal notranslate"><span class="pre">#</span></code>,
-they are treated as comments by the Bash shell; however <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
-parses the file to find these and supply them as options for the job.</p>
+<p>Since each of these <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> options begins with the character <code class="docutils literal notranslate"><span class="pre">#</span></code>, they
+are treated as comments by the Bash shell; however <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> parses the
+file to find these and supply them as options for the job.</p>
 <p>After all of the requested options have been specified, you can supply
 any number of executable lines, variable definitions, and even
 functions, as with any other Bash script.</p>
@@ -739,81 +678,82 @@ actually runs the script).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">%u</span></code> – your username</p></li>
 </ul>
 <p>The available options to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> are
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sbatch.html">numerous</a>. Here
-we list the most useful options for running serial batch jobs.</p>
+<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sbatch.html">numerous</a>. Here we
+list the most useful options for running serial batch jobs.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;dir&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--workdir=&lt;dir&gt;</span></code> – sets the working directory
-where the batch script should be run, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -D /scratch/users/ezekiel/test_run</span>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;dir&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--workdir=&lt;dir&gt;</span></code> – sets the working directory where
+the batch script should be run, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -D /scratch/users/ezekiel/test_run</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-J</span> <span class="pre">&lt;name&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--job-name=&lt;name&gt;</span></code> – sets the job name as output
 by the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -J test_job</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -J test_job</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">&lt;fname&gt;</span></code> – sets the output file name for stdout and stderr (if
 stderr is left unspecified). The default standard output is directed
-to a file of the name <code class="docutils literal notranslate"><span class="pre">slurm-%j.out</span></code>, where <code class="docutils literal notranslate"><span class="pre">%j</span></code> corresponds to
-the job ID number. You can do something similar, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -o output-%j.txt</span>
+to a file of the name <code class="docutils literal notranslate"><span class="pre">slurm-%j.out</span></code>, where <code class="docutils literal notranslate"><span class="pre">%j</span></code> corresponds to the
+job ID number. You can do something similar, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -o output-%j.txt</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">&lt;fname&gt;</span></code> – sets the output file name for stderr only. The
 default is to combine this with stdout. An example similar to <code class="docutils literal notranslate"><span class="pre">-o</span></code>
 above would be</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -e error-%j.txt</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -e error-%j.txt</span>
 </pre></div>
 </div>
-</div></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">&lt;fname&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--input=&lt;fname&gt;</span></code> – sets the standard input
-stream for the running job. For example, if an executable program
-will prompt the user for text input, these inputs may be placed in a
-file <code class="docutils literal notranslate"><span class="pre">inputs.txt</span></code> and specified to the script via</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -i inputs.txt</span>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">&lt;fname&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--input=&lt;fname&gt;</span></code> – sets the standard input stream
+for the running job. For example, if an executable program will
+prompt the user for text input, these inputs may be placed in a file
+<code class="docutils literal notranslate"><span class="pre">inputs.txt</span></code> and specified to the script via</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -i inputs.txt</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">&lt;part&gt;</span></code> – tells SLURM on which partition it should submit the
-job. The options are “interactive”, “highmem” or “parallel”. For
-example, so submit a batch job to a high-memory node you would use</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p highmem</span>
+job. The options are “interactive”, “highmem” or “parallel”.
+For example, so submit a batch job to a high-memory node you would
+use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -p highmem</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;num&gt;</span></code> – tells SLURM the maximum runtime to be allowed for the
 job (in minutes). For example, to allow a job to run for up to 3
 hours you would use</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -t 180</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -t 180</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> – tells SLURM that the job can not share nodes with
 other running jobs.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --exclusive</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --exclusive</span>
 </pre></div>
 </div>
-</div></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code> or <code class="docutils literal notranslate"><span class="pre">--share</span></code> – tells SLURM that the job can share nodes
-with other running jobs. This is the opposite of <code class="docutils literal notranslate"><span class="pre">--exclusive</span></code>,
-whichever option is seen last on the command line will be used. This
-option may result the allocation being granted sooner than if the
-<code class="docutils literal notranslate"><span class="pre">--share</span></code> option was not set and allow higher system utilization,
-but application performance will likely suffer due to competition for
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-s</span></code> or <code class="docutils literal notranslate"><span class="pre">--share</span></code> – tells SLURM that the job can share nodes with
+other running jobs. This is the opposite of <code class="docutils literal notranslate"><span class="pre">--exclusive</span></code>, whichever
+option is seen last on the command line will be used. This option
+may result the allocation being granted sooner than if the <code class="docutils literal notranslate"><span class="pre">--share</span></code>
+option was not set and allow higher system utilization, but
+application performance will likely suffer due to competition for
 resources within a node.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -s</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -s</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-user</span> <span class="pre">&lt;email</span> <span class="pre">address&gt;</span></code> – tells SLURM your email address if
 you’d like to receive job-related email notifications, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mail-user peruna@smu.edu</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mail-user peruna@smu.edu</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--mail-type=&lt;flag&gt;</span></code> – tells SLURM which types of email
 notification messages you wish to receive. Options include:</p>
 <ul class="simple">
@@ -824,10 +764,10 @@ notification messages you wish to receive. Options include:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code> – send a message for all of the above</p></li>
 </ul>
 <p>For example,</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mail-type=all</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mail-type=all</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 </ul>
 </section>
 <section id="running-batch-jobs">
@@ -843,34 +783,34 @@ notification messages you wish to receive. Options include:</p>
 </ol>
 <section id="interactive-session-via-srun">
 <h4>Interactive Session Via <code class="docutils literal notranslate"><span class="pre">srun</span></code><a class="headerlink" href="#interactive-session-via-srun" title="Permalink to this heading">#</a></h4>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>python
 srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
 python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
-</div><p>This method involves interactively requesting a HTC compute node and
+<p>This method involves interactively requesting a HTC compute node and
 then running the calculation manually.</p>
 </section>
 <section id="single-interactive-job-via-srun">
 <h4>Single Interactive Job Via <code class="docutils literal notranslate"><span class="pre">srun</span></code><a class="headerlink" href="#single-interactive-job-via-srun" title="Permalink to this heading">#</a></h4>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
-</div><p>This method interactively requests that the calculation be directly run
+<p>This method interactively requests that the calculation be directly run
 on the requested resource.</p>
 </section>
 <section id="single-threaded-batch-job-via-sbatch-s-wrapping-function">
 <h4>Single-Threaded Batch Job via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>’s Wrapping Function<a class="headerlink" href="#single-threaded-batch-job-via-sbatch-s-wrapping-function" title="Permalink to this heading">#</a></h4>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">&quot;sleep 30; time python pi_monte_carlo.py 1000&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">&quot;sleep 30; time python pi_monte_carlo.py 1000&quot;</span>
 </pre></div>
 </div>
-</div><p>This method submits a batch job by wrapping the command line that you
+<p>This method submits a batch job by wrapping the command line that you
 wish to run in an <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script that is then submited for you. This
 method is non-interactive.</p>
 </section>
 <section id="single-threaded-batch-job-via-batch-script">
 <h4>Single Threaded Batch Job via Batch Script<a class="headerlink" href="#single-threaded-batch-job-via-batch-script" title="Permalink to this heading">#</a></h4>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J python</span>
 <span class="c1">#SBATCH -o python_%j.out</span>
 <span class="c1">#SBATCH -p htc</span>
@@ -881,12 +821,12 @@ module<span class="w"> </span>load<span class="w"> </span>python
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
-</div><p>This batch script is manually creatd and then submited via
+<p>This batch script is manually creatd and then submited via
 <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">04_sbatch_htc.sbatch</span></code>.</p>
 </section>
 <section id="single-multi-threaded-job-via-batch-script">
 <h4>Single Multi-Threaded Job via Batch Script<a class="headerlink" href="#single-multi-threaded-job-via-batch-script" title="Permalink to this heading">#</a></h4>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J pi</span>
 <span class="c1">#SBATCH -o pi_%j.out</span>
 <span class="c1">#SBATCH -p development</span>
@@ -899,12 +839,12 @@ module<span class="w"> </span>load<span class="w"> </span>python
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo_shared.py<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span>
 </pre></div>
 </div>
-</div><p>This batch script runs a parallel version of the Monte Carlo <em>π</em>
+<p>This batch script runs a parallel version of the Monte Carlo <em>π</em>
 approximation script on two cores.</p>
 </section>
 <section id="array-of-single-threaded-jobs-via-batch-script">
 <h4>Array of Single Threaded Jobs via Batch Script<a class="headerlink" href="#array-of-single-threaded-jobs-via-batch-script" title="Permalink to this heading">#</a></h4>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J pi_array</span>
 <span class="c1">#SBATCH -o pi_array_%a-%A.out</span>
 <span class="c1">#SBATCH --array=1-4%2</span>
@@ -916,7 +856,7 @@ module<span class="w"> </span>load<span class="w"> </span>python
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="k">$((</span><span class="m">10</span><span class="o">**</span><span class="si">${</span><span class="nv">SLURM_ARRAY_JOB_ID</span><span class="si">}</span><span class="k">))</span>
 </pre></div>
 </div>
-</div><p>This batch script submits a job that will perform an array of jobs in
+<p>This batch script submits a job that will perform an array of jobs in
 parallel as allowed by the queue system.</p>
 </section>
 </section>
@@ -991,11 +931,21 @@ parallel as allowed by the queue system.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-jobs-using-slurm">Submitting Jobs Using Slurm</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-slurm-job-scheduler">The SLURM Job Scheduler</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maneframe-ii-s-slurm-partitions-queues">ManeFrame II’s SLURM Partitions/Queues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-slurm-job-scheduler">The SLURM Job Scheduler</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-commands">SLURM commands</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-running-interactive-jobs">Example: Running Interactive Jobs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-job-submission-file">Batch Job Submission File</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-batch-jobs">Running Batch Jobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-batch-jobs">Running Batch Jobs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-session-via-srun">Interactive Session Via <code class="docutils literal notranslate"><span class="pre">srun</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-interactive-job-via-srun">Single Interactive Job Via <code class="docutils literal notranslate"><span class="pre">srun</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-threaded-batch-job-via-sbatch-s-wrapping-function">Single-Threaded Batch Job via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>’s Wrapping Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-threaded-batch-job-via-batch-script">Single Threaded Batch Job via Batch Script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-multi-threaded-job-via-batch-script">Single Multi-Threaded Job via Batch Script</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-single-threaded-jobs-via-batch-script">Array of Single Threaded Jobs via Batch Script</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

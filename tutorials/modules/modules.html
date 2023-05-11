@@ -243,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/tutorials/modules/modules.rst" target="_blank"
+      <li><a href="../../_sources/tutorials/modules/modules.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -253,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -348,19 +348,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="id1">
-<h1>Modules<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h1>
 <p>The <em>module</em> system is a command-line tool to help users manage their
-Linux environment variables (e.g. <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>). It
-works by grouping related environment variable settings together based
-on various usage scenarios, such as</p>
+Linux environment variables (e.g. <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>). It works
+by grouping related environment variable settings together based on
+various usage scenarios, such as</p>
 <ul class="simple">
 <li><p>Adding executables to a user’s <code class="docutils literal notranslate"><span class="pre">PATH</span></code></p></li>
 <li><p>Adding the location of specific software libraries to a user’s
 <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code></p></li>
-<li><p>Adding documentation manual pages “man pages” to a user’s <code class="docutils literal notranslate"><span class="pre">MANPATH</span></code></p></li>
-<li><p>Creating custom environment variables to define the global path where
-a specific package is installed, e.g. <code class="docutils literal notranslate"><span class="pre">FFTWHOME</span></code></p></li>
+<li><p>Adding documentation manual pages “man pages” to a user’s
+<code class="docutils literal notranslate"><span class="pre">MANPATH</span></code></p></li>
+<li><p>Creating custom environment variables to define the global path
+where a specific package is installed, e.g. <code class="docutils literal notranslate"><span class="pre">FFTWHOME</span></code></p></li>
 </ul>
 <p>These modules may be added/removed dynamically, allowing a user to have
 a great amount of control over her/his environment.</p>
@@ -374,7 +375,7 @@ follows:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> – displays a list of all available modules on the
 system, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail
 
 ------------------------------------<span class="w"> </span>/hpc/modules/applications<span class="w"> </span>-------------------------------------
 <span class="w">   </span>aimall/17.01.25<span class="w">        </span>gaussian/g16a<span class="w">     </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>orca/4.0.0<span class="w">        </span>sas/9.4
@@ -396,23 +397,22 @@ Use<span class="w"> </span><span class="s2">&quot;module spider&quot;</span><spa
 Use<span class="w"> </span><span class="s2">&quot;module keyword key1 key2 ...&quot;</span><span class="w"> </span>to<span class="w"> </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules<span class="w"> </span>matching<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;keys&quot;</span>.
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code> – lists all currently loaded modules in your working
 environment. At first, we have none:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
 No<span class="w"> </span>modules<span class="w"> </span>installed
 </pre></div>
 </div>
-</div></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> – loads a module into your
-working environment. For example, at the moment matlab is not in our
-PATH:</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>matlab
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> – loads a module into your working
+environment. For example, at the moment matlab is not in our PATH:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>matlab
 -bash:<span class="w"> </span>matlab:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
 </pre></div>
 </div>
-</div><p>but once we load the <code class="docutils literal notranslate"><span class="pre">matlab</span></code> module, it is now in our path</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>matlab
+<p>but once we load the <code class="docutils literal notranslate"><span class="pre">matlab</span></code> module, it is now in our path</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>matlab
 $<span class="w"> </span>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash
 
 <span class="w">                                      </span>&lt;<span class="w"> </span>M<span class="w"> </span>A<span class="w"> </span>T<span class="w"> </span>L<span class="w"> </span>A<span class="w"> </span>B<span class="w"> </span><span class="o">(</span>R<span class="o">)</span><span class="w"> </span>&gt;
@@ -424,21 +424,21 @@ $<span class="w"> </span>matlab<span class="w"> </span>-nodisplay<span class="w"
 To<span class="w"> </span>get<span class="w"> </span>started,<span class="w"> </span><span class="nb">type</span><span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>these:<span class="w"> </span>helpwin,<span class="w"> </span>helpdesk,<span class="w"> </span>or<span class="w"> </span>demo.
 For<span class="w"> </span>product<span class="w"> </span>information,<span class="w"> </span>visit<span class="w"> </span>www.mathworks.com.
 
-&gt;&gt;
+&gt;&gt;<span class="w"> </span>
 </pre></div>
 </div>
-</div><p>and it is listed as being loaded in our environment (after quiting)</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
+<p>and it is listed as being loaded in our environment (after quiting)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
 
 Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
 <span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>matlab/r2017a
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">rm</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span></code> – undoes a previous “add” or
 “load” command, removing the module from your working environment,
 e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>python
 $<span class="w"> </span>module<span class="w"> </span>list
 
 Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
@@ -451,10 +451,10 @@ Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
 <span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>matlab/r2017a
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">switch</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">swap</span></code> – this does a combination
 unload/load, swapping out one module for another, e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc-6.3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc-6.3<span class="w"> </span>
 $<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>mvapich2
 $<span class="w"> </span>module<span class="w"> </span>list
 
@@ -468,11 +468,11 @@ Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
 <span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc-6.3<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>openmpi/2.1.1-ne4p6t6
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">display</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">show</span></code> – this shows detaled
 information about how a specific module affects your environment,
 e.g.</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>display<span class="w"> </span>r
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>display<span class="w"> </span>r
 ------------------------------------------------------------------------------------------------
 <span class="w">   </span>/hpc/modules/applications/r/3.4.1.lua:
 ------------------------------------------------------------------------------------------------
@@ -491,7 +491,7 @@ prepend_path<span class="o">(</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;
 prepend_path<span class="o">(</span><span class="s2">&quot;CPATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/include&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
-</div></li>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">help</span></code> – This displays a set of descriptive information
 about the module (what it does, the version number of the software,
 etc.). This only applies to packages where their “help” pages have
@@ -501,29 +501,29 @@ been installed (none yet on ManeFrame).</p></li>
 <h2>Module Example<a class="headerlink" href="#module-example" title="Permalink to this heading">#</a></h2>
 <p>As a simple example, let’s compare how to do the same task first
 without, and then with, the module system. Returning to our previous
-example on using Makefiles, we can compile that code using the GCC C++
+example on using Makefiles, we can compile that code using the Intel C++
 compiler by using the command</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/gcc-6.3.0-25d5bficqjhp272cil37hy3znbqrqoqj/bin/g++<span class="w"> </span>driver.cpp<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>one_norm.cpp<span class="w"> </span>vector_difference.cpp<span class="w"> </span>vector_product.cpp<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>vector_sum.cpp<span class="w"> </span>-lm<span class="w"> </span>-o<span class="w"> </span>driver.exe
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/hpc/m3/apps/intel/oneapi/2023.1/compiler/2023.1.0/linux/bin/dpcpp<span class="w"> </span>driver.cpp<span class="w"> </span><span class="se">\</span>
+one_norm.cpp<span class="w"> </span>vector_difference.cpp<span class="w"> </span>vector_product.cpp<span class="w"> </span><span class="se">\</span>
+vector_sum.cpp<span class="w"> </span>-lm<span class="w"> </span>-o<span class="w"> </span>driver.exe
 </pre></div>
 </div>
-</div><p>While this certainly works, it requires us to know the global PATH to
-the <code class="docutils literal notranslate"><span class="pre">g++</span></code> compiler. Using the module system, this simplifies to</p>
-<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc-6.3
-$<span class="w"> </span>g++<span class="w"> </span>driver.cpp<span class="w"> </span>one_norm.cpp<span class="w"> </span>vector_difference.cpp<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>vector_product.cpp<span class="w"> </span>vector_sum.cpp<span class="w"> </span>-lm<span class="w"> </span>-o<span class="w"> </span>driver.exe
+<p>While this certainly works, it requires us to know the full path to
+the <code class="docutils literal notranslate"><span class="pre">dpcpp</span></code> compiler. Using the module system, this simplifies to</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>intel
+dpcpp<span class="w"> </span>driver.cpp<span class="w"> </span>one_norm.cpp<span class="w"> </span>vector_difference.cpp<span class="w"> </span><span class="se">\</span>
+vector_product.cpp<span class="w"> </span>vector_sum.cpp<span class="w"> </span>-lm<span class="w"> </span>-o<span class="w"> </span>driver.exe
 </pre></div>
 </div>
-</div><p>Even for this simple example where we only need to add something to our
-PATH, the module system can be invaluable since it is rare that you know
+<p>Even for this simple example where we only need to add something to our
+<code class="docutils literal notranslate"><span class="pre">$PATH</span></code>, the module system can be invaluable since it is rare that you know
 the global location of a file when you first log into a new system.</p>
 </section>
 <section id="module-resources">
 <h2>Module Resources:<a class="headerlink" href="#module-resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="http://modules.sourceforge.net/">Main Module page</a></p></li>
-<li><p><a class="reference external" href="http://sourceforge.net/p/modules/wiki/FAQ/">Module FAQ</a></p></li>
+<li><p><a class="reference external" href="https://lmod.readthedocs.io/">Lmod</a></p></li>
+<li><p><a class="reference external" href="http://modules.sourceforge.net/">Environment Modules</a></p></li>
 </ul>
 </section>
 </section>

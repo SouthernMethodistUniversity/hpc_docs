@@ -13,7 +13,8 @@ which can be requested as documented in
 
 ## Interactive Apps
 
-### Remote Desktop {#portal_remote_desktop}
+(portal_remote_desktop)=
+### Remote Desktop
 
 1.  Select "Remote Desktop" from the "Interactive Apps" drop-down
     menu.
@@ -29,12 +30,11 @@ which can be requested as documented in
     Interactive Sessions" tab in your browser and select "Delete" and
     "Confirm", when prompted, to cancel the job.
 
-```{=html}
 <iframe
 src="https://smu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=72acf55b-f2b7-4626-a953-ab58015d1d64&autoplay=false&offerviewer=false&showtitle=true&showbrand=false&start=0&interactivity=all"
 width=600 height=338 style="border: 1px solid #464646;" allowfullscreen allow="autoplay">
 </iframe>
-```
+
 ### JupyterLab
 
 1.  Select "JupyterLab" from the "Interactive Apps" drop-down menu.
@@ -68,11 +68,9 @@ width=600 height=338 style="border: 1px solid #464646;" allowfullscreen allow="a
 
 ## Shell Access
 
-1.  Select "M3 Shell Access" from the "Clusters" drop-down
-    menu. Note that this shell access does not provide access to
-    graphical applications. If needed, please use a
-    `"Remote Desktop" <portal_remote_desktop>`{.interpreted-text
-    role="ref"} instance.
+1.  Select "M3 Shell Access" from the "Clusters" drop-down menu. Note that this
+    shell access does not provide access to graphical applications. If needed,
+    please use a [Remote Desktop](portal_remote_desktop) instance.
 2.  When finished using the shell, type `exit` and close the browser
     tab.
 
