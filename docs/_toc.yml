@@ -16,7 +16,10 @@ parts:
   - file: examples/torch/README.md
 - caption: Tutorials
   chapters:
-  - file: tutorials/unix/unix.rst
+  - file: tutorials/unix/intro.md
+    sections:
+    - file: tutorials/unix/unix.md
+    - file: tutorials/unix/scripting.md
   - file: tutorials/modules/modules.md
   - file: tutorials/slurm/slurm.md
   - file: tutorials/cpp/intro.md
