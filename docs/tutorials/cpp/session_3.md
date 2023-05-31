@@ -10,7 +10,7 @@
 
 `c++ -std=c++17 -o functors_and_lamda_functions functors_and_lamda_functions.cpp
 
-```{literalinclude} ../../../examples/cpp/functors_and_lamda_functions.cpp
+```{literalinclude} ../../examples/cpp/functors_and_lamda_functions.cpp
 ---
 language: c++
 linenos: true

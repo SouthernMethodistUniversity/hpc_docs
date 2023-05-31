@@ -19,7 +19,7 @@
 
 ## C++ Types, Expressions, and Statements
 
-```{literalinclude} ../../../examples/cpp/00_types_expressions_statements.cpp
+```{literalinclude} ../../examples/cpp/00_types_expressions_statements.cpp
 ---
 language: c++
 linenos: true
@@ -28,7 +28,7 @@ linenos: true
 
 ## C++ Operators and Conditionals
 
-```{literalinclude} ../../../examples/cpp/01_operators_conditionals.cpp
+```{literalinclude} ../../examples/cpp/01_operators_conditionals.cpp
 ---
 language: c++
 linenos: true

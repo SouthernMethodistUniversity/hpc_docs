@@ -8,14 +8,14 @@
 
 ## C++ Templates
 
-```{literalinclude} ../../../examples/cpp/templates.hpp
+```{literalinclude} ../../examples/cpp/templates.hpp
 ---
 language: c++
 linenos: true
 ---
 ```
 
-```{literalinclude} ../../../examples/cpp/templates.cpp
+```{literalinclude} ../../examples/cpp/templates.cpp
 ---
 language: c++
 linenos: true
