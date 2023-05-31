@@ -9,6 +9,6 @@ local root = "/hpc/m3/apps/demon/6.2.2"
 local base = pathJoin(root, "deMon")
 
 setenv("CREX_ROOT", root)
-prepend_path("MANDPATH", pathJoin(base, "man"))
+prepend_path("MANPATH", pathJoin(base, "man"))
 append_path("PATH", pathJoin(base, "bin"))
 
