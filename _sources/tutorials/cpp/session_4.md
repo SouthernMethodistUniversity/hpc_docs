@@ -10,21 +10,21 @@
 
 ### Simple Vector Class
 
-```{literalinclude} ../../../examples/cpp/classes/vector_class.hpp
+```{literalinclude} ../../examples/cpp/classes/vector_class.hpp
 ---
 language: c++
 linenos: true
 ---
 ```
 
-```{literalinclude} ../../../examples/cpp/classes/vector_class.cpp
+```{literalinclude} ../../examples/cpp/classes/vector_class.cpp
 ---
 language: c++
 linenos: true
 ---
 ```
 
-```{literalinclude} ../../../examples/cpp/classes/vector_test.cpp
+```{literalinclude} ../../examples/cpp/classes/vector_test.cpp
 ---
 language: c++
 linenos: true
@@ -33,21 +33,21 @@ linenos: true
 
 ### Class Inheritance
 
-```{literalinclude} ../../../examples/cpp/classes/simple_inheritance.hpp
+```{literalinclude} ../../examples/cpp/classes/simple_inheritance.hpp
 ---
 language: c++
 linenos: true
 ---
 ```
 
-```{literalinclude} ../../../examples/cpp/classes/simple_inheritance.hpp
+```{literalinclude} ../../examples/cpp/classes/simple_inheritance.hpp
 ---
 language: c++
 linenos: true
 ---
 ```
 
-```{literalinclude} ../../../examples/cpp/classes/inheritance_test.hpp
+```{literalinclude} ../../examples/cpp/classes/inheritance_test.hpp
 ---
 language: c++
 linenos: true
@@ -56,7 +56,7 @@ linenos: true
 
 ### Eigen Demo
 
-```{literalinclude} ../../../examples/cpp/classes/eigen_demo.cpp
+```{literalinclude} ../../examples/cpp/classes/eigen_demo.cpp
 ---
 language: c++
 linenos: true
@@ -65,7 +65,7 @@ linenos: true
 
 ### Armadillo Demo
 
-```{literalinclude} ../../../examples/cpp/armadillo/main.cpp
+```{literalinclude} ../../examples/cpp/armadillo/main.cpp
 ---
 language: c++
 linenos: true
