@@ -78,6 +78,7 @@ From: ubuntu:22.04
                locales \
                curl \
                gcc \
+               gfortran \
                make \
                wget \
                git \
