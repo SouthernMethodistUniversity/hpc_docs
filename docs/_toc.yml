@@ -6,6 +6,8 @@ parts:
 - caption: Getting Started
   chapters:
   - file: about.md
+    sections:
+      - file: about/queues.md
   - file: accounts.md
   - file: access.md
   - file: portal.md
