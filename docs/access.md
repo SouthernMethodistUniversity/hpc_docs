@@ -219,3 +219,61 @@ setting can be used to enable connection persistence. Within Cyberduck:
 2. Under "Transfers", use the "Transfer Files" drop-down to select
    "Use browser connection".
 
+### Port Forwarding
+
+:::{note}
+These instructions assume you are using an OpenSSH client.
+This is the default on Mac and Linux systems. On Windows systems, WSL is OpenSSH based.
+:::
+
+You can use forwarding to utilize some HPC resources from your own computer
+(typically over a web browser.)
+
+You should not run programs on the login nodes, so it is necessary to use a
+login node as a "jump" between your computer and the compute node(s) you are
+using.
+
+The basic procedure is:
+
+1. Log in to a HPC machine
+2. Request compute resuorces using `srun`, `sbatch`, `salloc`, or similar
+3. Start your program and get port information
+4. ssh into the compute node you got using a login node as a jump host and forward the appropriate port
+
+For example, you might want to port forward JupyterLab:
+
+1. login, e.g. `ssh username@m3.smu.edu`
+2. Request resources, in this case, an interactive shell session using 1 core and 4GB of memory for 1 hour: 
+
+```bash
+srun -p dev -c 1 --mem=4GB -t 60 --pty $SHELL
+```
+
+3. Start JupyterLab (note you will need to setup JupyterLab in a Python or Conda environment see: [conda example](examples/conda/README.md)
+
+```bash
+jupyter lab --ip 0.0.0.0 --no-browser
+```
+
+Once Jupyter Lab starts, you should see something like
+
+```bash
+[C 2023-06-08 12:06:31.942 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///users/username/.local/share/jupyter/runtime/jpserver-952278-open.html
+    Or copy and paste one of these URLs:
+        http://c002:8888/lab?token=b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a38ebdc
+     or http://127.0.0.1:8888/lab?token=b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a38ebdc
+```
+
+We need two pieces of information: the compute node and the port. These can be read off
+the link `http://c002:8888/lab?token=b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a38ebdc`.
+The format is `http:://node:port/lab...` so in this case, the node is `c002` and the port
+is `8888`. Note that these may be different each time you run.
+
+4. Keepin your original terminal open and running, open a new terminal (or new terminal tab)
+and run `ssh username@node -J username@m3.smu.edu -L port:node:port`. So in this case,
+we should run `ssh username@c002 -J username@m3.smu.edu -L 8888:c002:8888`. After this connects
+and you login (twice, once for the login node and once for the compute node) you should be
+able to use the link `http://127.0.0.1:8888/...` from your computer.
