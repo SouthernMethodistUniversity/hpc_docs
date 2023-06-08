@@ -23,6 +23,14 @@ From: ubuntu:22.04
 %environment
   export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
 
+%files
+
+  # properly init zsh profiles
+  # copy from m3 to container
+  # zsh fails to install if we copy to /etc/zsh 
+  # so copy to /opt and mv later
+  /etc/zsh/zshenv /opt/zshenv
+
 %post
   export TURBOVNC_VERSION=3.0.3
   export VIRTUALGL_VERSION=3.1
@@ -78,6 +86,7 @@ From: ubuntu:22.04
                locales \
                curl \
                gcc \
+               gfortran \
                make \
                wget \
                git \
@@ -127,6 +136,8 @@ From: ubuntu:22.04
   apt-get install -y firefox
 
   # create symlinks for lmod
+  rm /etc/zsh/zshenv
+  mv /opt/zshenv /etc/zsh/zshenv
   ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
   ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
  
