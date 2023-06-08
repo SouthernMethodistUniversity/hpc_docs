@@ -1,0 +1,10 @@
+whatis("NCEPLIBS-g2c")
+family("g2c")
+conflict("g2c")
+
+prepend_path("LD_LIBRARY_PATH","/hpc/m3/apps/g2c/1.7.0/lib")
+prepend_path("CPATH", "/hpc/m3/apps/g2c/1.7.0/include")
+prepend_path("LIBRARY_PATH", "/hpc/m3/apps/g2c/lib")
+prepend_path("C_INCLUDE_PATH", "/hpc/m3/apps/g2c/1.7.0/include")
+prepend_path("CPLUS_INLCUDE_PATH", "/hpc/m3/apps/g2c/1.7.0/include") 
+prepend_path("CMAKE_PREFIX_PATH","/hpc/m3/apps/g2c/1.7.0/")
