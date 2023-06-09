@@ -8,7 +8,7 @@ For examples and tips on SLURM usage, see [our SLURM documentation](../slurm/slu
 :::
 
 :::{note}
-The efficiency of SLURM and our HPC systems depend reasonable usage requests.
+The efficiency of SLURM and our HPC systems depend on reasonable resource requests.
 Whenever possible, you should request only the resources your job needs including
 memory, number of cores, number of gpus, and run time.
 
@@ -39,7 +39,7 @@ nodes on the `highmem` partition having more memory.
 data to/from M3. 
 
 :::{note}
-You should select the queue most appropriate for your jobs and not based on current availability.
+You should select the queue most appropriate for your jobs and not on current availability.
 :::
 
 ## SuperPod (MP) Queues
@@ -50,10 +50,10 @@ The SuperPod has only 1 queue:
 |----------------|-----------------|----------------|-----------------|----------------|------------|
 | batch          | 20              | 128            | 2TB             | 8 Nvidia A100s | 48 hours   |
 
-All SuperPod nodes are identical and contain dual AMD EPYC 7742 64-Core Processors
+All SuperPod nodes are identical and contain dual AMD EPYC 7742 64-Core Processors.
 
 We have partitioned the nodes on the SuperPod, so for every GPU you request, you will also 
-receive 16 CPU cores and 96GB of memory.
+receive 16 CPU cores and 96GB of memory automatically.
 
 :::{note}
 CPU only jobs should be run on M3 and not the SuperPod
