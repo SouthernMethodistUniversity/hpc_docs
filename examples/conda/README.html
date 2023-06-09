@@ -159,7 +159,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/queues.html">Queues</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
 
 
@@ -174,14 +177,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/unix/unix.html">UNIX &amp; Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/unix/scripting.html">Scripting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/modules/modules.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/slurm/slurm.html">Slurm</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_1.html">Session 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_2.html">Session 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/cpp/session_3.html">Session 3</a></li>
@@ -395,7 +398,7 @@ We recommend</p>
 </ul>
 <p>The first time you run Conda, you will need to initialize it.
 This creates some shell functions in your profile to make it easier to call Conda.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init<span class="w"> </span><span class="nv">$SHELL</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init<span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SHELL</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-c<span class="w"> </span><span class="m">6</span>-<span class="k">)</span>
 </pre></div>
 </div>
 <p>After doing this, you may need to log out and log back in to see the effects.
@@ -405,10 +408,12 @@ For most users, this is <code class="docutils literal notranslate"><span class="
 functionallity. By default, Conda will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
 <a class="reference external" href="https://hpc.m3.smu.edu">https://hpc.m3.smu.edu</a> often behave in unexpected ways becuase it tries to
-use a Conda package instead of the correct system package.</p>
+use a Conda package instead of the correct system package.
+The next two commands tell Conda to prefer to save packages and environments
+in your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory so they don’t take up space in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
-conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>envs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/envs
-conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>pkgs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/pkgs
+conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>envs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/envs
+conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>pkgs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/pkgs
 </pre></div>
 </div>
 </section>

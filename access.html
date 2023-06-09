@@ -159,7 +159,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="about/queues.html">Queues</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 
 
@@ -174,14 +177,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/unix/unix.html">UNIX &amp; Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/unix/scripting.html">Scripting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/modules/modules.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/slurm/slurm.html">Slurm</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_1.html">Session 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_2.html">Session 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_3.html">Session 3</a></li>
@@ -353,6 +356,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty">PuTTY</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyberduck">Cyberduck</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding">Port Forwarding</a></li>
 </ul>
 </li>
 </ul>
@@ -610,6 +614,61 @@ setting can be used to enable connection persistence. Within Cyberduck:</p>
 “Use browser connection”.</p></li>
 </ol>
 </section>
+<section id="port-forwarding">
+<h3>Port Forwarding<a class="headerlink" href="#port-forwarding" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These instructions assume you are using an OpenSSH client.
+This is the default on Mac and Linux terminals. On Windows systems, WSL is OpenSSH based.</p>
+</div>
+<p>You can use forwarding to utilize some HPC resources from your own computer
+(typically over a web browser.)</p>
+<p>You should not run programs on the login nodes, so it is necessary to use a
+login node as a “jump” between your computer and the compute node(s) you are
+using.</p>
+<p>The basic procedure is:</p>
+<ol class="arabic simple">
+<li><p>Log in to a HPC machine</p></li>
+<li><p>Request compute resuorces using <code class="docutils literal notranslate"><span class="pre">srun</span></code>, <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, <code class="docutils literal notranslate"><span class="pre">salloc</span></code>, or similar</p></li>
+<li><p>Start your program and get port information</p></li>
+<li><p>ssh into the compute node you got using a login node as a jump host and forward the appropriate port</p></li>
+</ol>
+<p>For example, you might want to port forward JupyterLab:</p>
+<ol class="arabic simple">
+<li><p>login, e.g. <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">username&#64;m3.smu.edu</span></code></p></li>
+<li><p>Request resources, in this case, an interactive shell session using 1 core and 4GB of memory for 1 hour:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>--mem<span class="o">=</span>4GB<span class="w"> </span>-t<span class="w"> </span><span class="m">60</span><span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Start JupyterLab (note you will need to setup JupyterLab in a Python or Conda environment see: <a class="reference internal" href="examples/conda/README.html"><span class="doc std std-doc">conda example</span></a></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab<span class="w"> </span>--ip<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--no-browser
+</pre></div>
+</div>
+<p>Once Jupyter Lab starts, you should see something like</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>C<span class="w"> </span><span class="m">2023</span>-06-08<span class="w"> </span><span class="m">12</span>:06:31.942<span class="w"> </span>ServerApp<span class="o">]</span><span class="w"> </span>
+<span class="w">    </span>
+<span class="w">    </span>To<span class="w"> </span>access<span class="w"> </span>the<span class="w"> </span>server,<span class="w"> </span>open<span class="w"> </span>this<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>browser:
+<span class="w">        </span>file:///users/username/.local/share/jupyter/runtime/jpserver-952278-open.html
+<span class="w">    </span>Or<span class="w"> </span>copy<span class="w"> </span>and<span class="w"> </span>paste<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>these<span class="w"> </span>URLs:
+<span class="w">        </span>http://c002:8888/lab?token<span class="o">=</span>b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a38ebdc
+<span class="w">     </span>or<span class="w"> </span>http://127.0.0.1:8888/lab?token<span class="o">=</span>b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a38ebdc
+</pre></div>
+</div>
+<p>We need two pieces of information: the compute node and the port. These can be read off
+the link <code class="docutils literal notranslate"><span class="pre">http://c002:8888/lab?token=b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a38ebdc</span></code>.
+The format is <code class="docutils literal notranslate"><span class="pre">http:://node:port/lab...</span></code> so in this case, the node is <code class="docutils literal notranslate"><span class="pre">c002</span></code> and the port
+is <code class="docutils literal notranslate"><span class="pre">8888</span></code>. Note that these may be different each time you run.</p>
+<ol class="arabic simple" start="4">
+<li><p>Keeping your original terminal open and running, open a new terminal (or new terminal tab)
+and run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">username&#64;node</span> <span class="pre">-J</span> <span class="pre">username&#64;m3.smu.edu</span> <span class="pre">-L</span> <span class="pre">port:node:port</span></code>. So in this case,
+we should run <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">username&#64;c002</span> <span class="pre">-J</span> <span class="pre">username&#64;m3.smu.edu</span> <span class="pre">-L</span> <span class="pre">8888:c002:8888</span></code>. After this connects
+and you login (twice, once for the login node and once for the compute node) you should be
+able to use the link <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8888/...</span></code> from your prefered web browser.</p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -694,6 +753,7 @@ setting can be used to enable connection persistence. Within Cyberduck:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty">PuTTY</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyberduck">Cyberduck</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding">Port Forwarding</a></li>
 </ul>
 </li>
 </ul>

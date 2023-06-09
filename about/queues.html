@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Policies &#8212; SMU HPC Documentation</title>
+    <title>Queues &#8212; SMU HPC Documentation</title>
   
   
   
@@ -61,11 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'policies/policies';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'about/queues';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Session 5" href="../tutorials/cpp/session_5.html" />
+    <link rel="next" title="Accounts" href="../accounts.html" />
+    <link rel="prev" title="About" href="../about.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,9 +158,9 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../about/queues.html">Queues</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../about.html">About</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Queues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../accounts.html">Accounts</a></li>
@@ -193,8 +194,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Policies</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../policies/policies.html">Policies</a></li>
 </ul>
 
     </div>
@@ -249,7 +250,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/policies/policies.md" target="_blank"
+      <li><a href="../_sources/about/queues.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -331,7 +332,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Policies</h1>
+    <h1>Queues</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -341,7 +342,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#account-and-account-password-sharing-policy">Account and Account Password Sharing Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m3-queues">M3 Queues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#superpod-mp-queues">SuperPod (MP) Queues</a></li>
 </ul>
             </nav>
         </div>
@@ -353,14 +355,117 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="policies">
-<h1>Policies<a class="headerlink" href="#policies" title="Permalink to this heading">#</a></h1>
-<section id="account-and-account-password-sharing-policy">
-<h2>Account and Account Password Sharing Policy<a class="headerlink" href="#account-and-account-password-sharing-policy" title="Permalink to this heading">#</a></h2>
-<p>No two individuals should share the same ManeFrame II account, nor
-should two individuals share the password of the same account. Each
-individual is entitled to have their own account hence please request
-one.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="queues">
+<h1>Queues<a class="headerlink" href="#queues" title="Permalink to this heading">#</a></h1>
+<p>SMU’s high-performance computing (HPC) clusters use <a class="reference external" href="https://slurm.schedmd.com/">SLURM</a>
+to schedule and manage resources.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For examples and tips on SLURM usage, see <span class="xref myst">our SLURM documentation</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The efficiency of SLURM and our HPC systems depend on reasonable resource requests.
+Whenever possible, you should request only the resources your job needs including
+memory, number of cores, number of gpus, and run time.</p>
+<p>Requesting more than you need makes your job and everyone elses jobs run less
+efficiently.</p>
+</div>
+<section id="m3-queues">
+<h2>M3 Queues<a class="headerlink" href="#m3-queues" title="Permalink to this heading">#</a></h2>
+<p>M3 has the following queues:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Partition Name</p></th>
+<th class="head"><p>Number of Nodes</p></th>
+<th class="head"><p>Cores Per Node</p></th>
+<th class="head"><p>Memory Per Node</p></th>
+<th class="head"><p>Time Limit</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>dev</p></td>
+<td><p>4</p></td>
+<td><p>128</p></td>
+<td><p>500GB</p></td>
+<td><p>2 hours</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>standard-s</p></td>
+<td><p>143</p></td>
+<td><p>128</p></td>
+<td><p>500GB</p></td>
+<td><p>24 hours</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>standard-l</p></td>
+<td><p>20</p></td>
+<td><p>128</p></td>
+<td><p>500GB</p></td>
+<td><p>7 days</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>highmem</p></td>
+<td><p>8</p></td>
+<td><p>128</p></td>
+<td><p>2TB</p></td>
+<td><p>5 days</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>dtn</p></td>
+<td><p>2</p></td>
+<td><p>128</p></td>
+<td><p>500GB</p></td>
+<td><p>7 days</p></td>
+<td><p>*approval required</p></td>
+</tr>
+</tbody>
+</table>
+<p>All M3 nodes are identical and contain dual AMD EPYC 7763 64-Core Processors with the exception of the
+nodes on the <code class="docutils literal notranslate"><span class="pre">highmem</span></code> partition having more memory.</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dev</span></code> nodes are meant for interactive and development work</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">standard-s</span></code> and <code class="docutils literal notranslate"><span class="pre">standard-l</span></code> nodes are where most jobs should be run depending on their duration</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">highmem</span></code> nodes are for jobs requiring more than 500GB of memory</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dtn</span></code> nodes are “Data Transfer Nodes.” Access requires approval. These nodes are meant only for transfering
+data to/from M3.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should select the queue most appropriate for your jobs and not on current availability.</p>
+</div>
+</section>
+<section id="superpod-mp-queues">
+<h2>SuperPod (MP) Queues<a class="headerlink" href="#superpod-mp-queues" title="Permalink to this heading">#</a></h2>
+<p>The SuperPod has only 1 queue:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Partition Name</p></th>
+<th class="head"><p>Number of Nodes</p></th>
+<th class="head"><p>Cores Per Node</p></th>
+<th class="head"><p>Memory Per Node</p></th>
+<th class="head"><p>GPUs Per Node</p></th>
+<th class="head"><p>Time Limit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>batch</p></td>
+<td><p>20</p></td>
+<td><p>128</p></td>
+<td><p>2TB</p></td>
+<td><p>8 Nvidia A100s</p></td>
+<td><p>48 hours</p></td>
+</tr>
+</tbody>
+</table>
+<p>All SuperPod nodes are identical and contain dual AMD EPYC 7742 64-Core Processors.</p>
+<p>We have partitioned the nodes on the SuperPod, so for every GPU you request, you will also
+receive 16 CPU cores and 96GB of memory automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CPU only jobs should be run on M3 and not the SuperPod</p>
+</div>
 </section>
 </section>
 
@@ -377,7 +482,7 @@ one.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./policies"
+            path: "./about"
         },
         predefinedOutput: true
     }
@@ -396,13 +501,22 @@ one.</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../tutorials/cpp/session_5.html"
+       href="../about.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Session 5</p>
+        <p class="prev-next-title">About</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../accounts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accounts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -422,7 +536,8 @@ one.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#account-and-account-password-sharing-policy">Account and Account Password Sharing Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m3-queues">M3 Queues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#superpod-mp-queues">SuperPod (MP) Queues</a></li>
 </ul>
   </nav></div>
 
