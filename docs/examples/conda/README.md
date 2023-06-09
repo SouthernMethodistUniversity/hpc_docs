@@ -29,7 +29,7 @@ The first time you run Conda, you will need to initialize it.
 This creates some shell functions in your profile to make it easier to call Conda.
 
 ```bash
-conda init $SHELL
+conda init $(echo $SHELL | cut -c 6-)
 ```
 
 After doing this, you may need to log out and log back in to see the effects.
@@ -41,11 +41,13 @@ functionallity. By default, Conda will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
 <https://hpc.m3.smu.edu> often behave in unexpected ways becuase it tries to
 use a Conda package instead of the correct system package.
+The next two commands tell Conda to prefer to save packages and environments
+in your `$WORK` directory so they don't take up space in your `$HOME`.
 
 ```bash
 conda config --set auto_activate_base false
-conda config --set envs_dirs $WORK/.conda/envs
-conda config --set pkgs_dirs $WORK/.conda/pkgs
+conda config --prepend envs_dirs $WORK/.conda/envs
+conda config --prepend pkgs_dirs $WORK/.conda/pkgs
 ```
 
 ## Creating Virtual Environments from the Command Line
