@@ -223,7 +223,7 @@ setting can be used to enable connection persistence. Within Cyberduck:
 
 :::{note}
 These instructions assume you are using an OpenSSH client.
-This is the default on Mac and Linux systems. On Windows systems, WSL is OpenSSH based.
+This is the default on Mac and Linux terminals. On Windows systems, WSL is OpenSSH based.
 :::
 
 You can use forwarding to utilize some HPC resources from your own computer
@@ -272,8 +272,8 @@ the link `http://c002:8888/lab?token=b93c756f0f3026f816bf9bcee417b77fd4dcc75b3a3
 The format is `http:://node:port/lab...` so in this case, the node is `c002` and the port
 is `8888`. Note that these may be different each time you run.
 
-4. Keepin your original terminal open and running, open a new terminal (or new terminal tab)
+4. Keeping your original terminal open and running, open a new terminal (or new terminal tab)
 and run `ssh username@node -J username@m3.smu.edu -L port:node:port`. So in this case,
 we should run `ssh username@c002 -J username@m3.smu.edu -L 8888:c002:8888`. After this connects
 and you login (twice, once for the login node and once for the compute node) you should be
-able to use the link `http://127.0.0.1:8888/...` from your computer.
+able to use the link `http://127.0.0.1:8888/...` from your prefered web browser.
