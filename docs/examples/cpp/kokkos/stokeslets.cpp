@@ -6,26 +6,13 @@
 
 constexpr double PI = 3.14159265358979323846;
 
-template <Kokkos::MemoryTraits MemSpace>
+// note: templating the exec space and the view type
+// allows us to change where the execution occurs and
+// the datatype / ordering used
+template <class ExecSpace, class KokkosVector>
 void computeStokeslet(const int &N)
 {
-    // Allocate a vector on the device (could be GPU or CPU)
-    // first we'll use typedef to rename the long templated
-    // c++ datatype to something more readable
-    //
-    //
-    // In Kokkos, Views are essentially containers to hold
-    // array data with a bit of extra metadata.
-    //
-    // We'll use the double datatype for our values
-    // Then we need to specify a layout:
-    // LayoutLeft: leftmost index is stride 1  (column major in 2d)
-    // LayoutRight: rightmost index is stride 1 (row major in 2d)
-    // Then we need to specify the memory space, this is where the memory
-    // will be allocated.
-    typedef Kokkos::View<double *[3], Kokkos::LayoutRight, MemSpace> KokkosVector;
-
-    // Use out typedef to create a vector with N elements.
+    // create a vector with N elements.
     // Kokkos lets you name view, which is usually a good idea
     // for readability and debugging.
     KokkosVector device_x("Positions", N);
@@ -36,9 +23,9 @@ void computeStokeslet(const int &N)
     // to do some operations, like inspect values to print out or to
     // allocate values in some cases
     // To facilitate this, Kokkos has "mirrors"
-    KokkosVector::HostMirror host_x = Kokkos::create_mirror_view(device_x);
-    KokkosVector::HostMirror host_u = Kokkos::create_mirror_view(device_u);
-    KokkosVector::HostMirror host_f = Kokkos::create_mirror_view(device_f);
+    auto host_x = Kokkos::create_mirror_view(device_x);
+    auto host_u = Kokkos::create_mirror_view(device_u);
+    auto host_f = Kokkos::create_mirror_view(device_f);
 
     // Now we'll initialize the vectors on the host with some values
     const double radius = 1;
@@ -62,12 +49,6 @@ void computeStokeslet(const int &N)
         host_f(i, 1) = -host_x(i, 1) / mag;
         host_f(i, 2) = -host_x(i, 2) / mag;
     }
-
-    // for (int i=0; i<5; ++i) {
-    //   std::cout << "i: " << i << ", u = (" << host_u(i,0) << ", " << host_u(i,1) << ", " << host_u(i,2) << ")" << std::endl;
-    //   std::cout << "i: " << i << ", x = (" << host_x(i,0) << ", " << host_x(i,1) << ", " << host_x(i,2) << ")" << std::endl;
-    //   std::cout << "i: " << i << ", f = (" << host_f(i,0) << ", " << host_f(i,1) << ", " << host_f(i,2) << ")" << std::endl;
-    //  }
 
     // The vector has the correct values on the host now, but not on
     // the device. Kokkos does not hide any data transfers between
@@ -127,9 +108,10 @@ void computeStokeslet(const int &N)
     // KOKKOS_LAMBDA is a macro that puts appropriate decorators on
     // the lambda expression (cuda needs stuff like __device__ and/or __host__)
     // depending on where it is running
+    using range_policy = Kokkos::RangePolicy<ExecSpace>;
     Kokkos::Timer timer_compute;
     Kokkos::parallel_for(
-        "Stokeslet Computation", N, KOKKOS_LAMBDA(const std::size_t i) {
+        "Stokeslet Computation", range_policy( 0, N ), KOKKOS_LAMBDA(const std::size_t i) {
             device_u(i, 0) = 0;
             device_u(i, 1) = 0;
             device_u(i, 2) = 0;
@@ -182,17 +164,43 @@ int main(int argc, char *argv[])
     // first we need to initialize Kokkos
     Kokkos::initialize(argc, argv);
 
-    // This is just a trick to get all of the allocations
-    // from Kokkos we use to go out of scope and
-    // deallocate before we finalize without having to
-    // do it manually
+    // The braces are to scope the variables so we can run
+    // diffent things using similar names
     {
 
-    std::cout << "\nusing host space" << std::endl;
-    computeStokeslet<Kokkos::HostSpace>(N);
+      // first we'll use typedef to rename the long templated
+      // c++ datatype to something more readable
+      //
+      // In Kokkos, Views are essentially containers to hold
+      // array data with a bit of extra metadata.
+      //
+      // We'll use the double datatype for our values
+      // Then we need to specify a layout:
+      // LayoutLeft: leftmost index is stride 1  (column major in 2d)
+      // LayoutRight: rightmost index is stride 1 (row major in 2d)
+      // Then we need to specify the memory space, this is where the memory
+      // will be allocated.
+      //
+      // This will be a "host" memory space
+      typedef Kokkos::View<double *[3], Kokkos::LayoutRight, Kokkos::HostSpace> KokkosVector;
 
-    std::cout << "\nusing cuda space" << std::endl;
-    computeStokeslet<Kokkos::CudaSpace>(N);
+      // set the execution space to be host
+      using ExecSpace = Kokkos::HostSpace::execution_space;
+
+      std::cout << "\nusing host space" << std::endl;
+      computeStokeslet<ExecSpace, KokkosVector>(N);
+    }
+
+    // due the same thing but use the CudaMemory and execution space
+    {
+      typedef Kokkos::View<double *[3], Kokkos::LayoutRight, Kokkos::CudaSpace> KokkosVector;
+
+      // set the execution space to be cuda
+      using ExecSpace = Kokkos::CudaSpace::execution_space;
+
+      std::cout << "\nusing cuda space" << std::endl;
+      computeStokeslet<ExecSpace, KokkosVector>(N);
+    }
 
     // Tell Kokkos we're done so it can clean up
     Kokkos::finalize();

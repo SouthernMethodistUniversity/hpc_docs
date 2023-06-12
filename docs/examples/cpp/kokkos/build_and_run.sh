@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # load the modules we need
 module purge
