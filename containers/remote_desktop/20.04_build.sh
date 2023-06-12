@@ -30,7 +30,7 @@ if [ -f "$DESTINATION" ]; then
 fi
 
 # build the container
-apptainer build --fakeroot ${CONTAINER_NAME} desktop.def
+apptainer build --fakeroot ${CONTAINER_NAME} 20.04_desktop.def
 
 # move container to /hpc/{sys}/containers/
 mkdir -p /hpc/${CLUSTER}/containers/remote_desktop
