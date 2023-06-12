@@ -48,8 +48,3 @@ From: rocker/ml-verse:4.2.2
     R -q -e 'install.packages("factoextra")'
 
     rm -rf /tmp/downloaded_packages
-
-%environment
-    export ftp_proxy="http://10.210.15.2:3128"
-    export http_proxy="http://10.210.15.2:3128"
-    export https_proxy="http://10.210.15.2:3128"
