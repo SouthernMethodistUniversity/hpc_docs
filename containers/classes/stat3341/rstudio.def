@@ -1,10 +1,10 @@
 Bootstrap: docker
-From: rocker/ml-verse:4.2.2
+From: rocker/geospatial:4.3.0
 
 %labels
     Author John LaGrone <jlagrone@smu.edu>
     Version v1.0
-    Application Rocker ml-verse
+    Application Rocker geospatial
 
 %post
 
