@@ -43,7 +43,7 @@ unset APPTAINER_BIND
 cp rstudio.def temp_build.def
 
 # set the version in the definition file
-sed -i 's/TAG/${VERSON}/g' temp_build.def
+sed -i 's/TAG/${VERSION}/g' temp_build.def
 
 apptainer build --fakeroot ${CONTAINER_NAME} temp_build.def
 
