@@ -12,7 +12,7 @@ class CustomEnvironments
       # conda is usually a shell function, so it's not easily checked
       # look for CONDA_EXE environment variable
       script = "eval $(conda shell.bash hook);  /usr/bin/env | /usr/bin/grep -oP 'CONDA_EXE=\\K.+'"
-      o, status = Open3.capture2('/bin/bash -l -i', stdin_data: script)
+      o, status = Open3.capture2('/bin/bash -l', stdin_data: script)
       output = o.split("\n")
       if output.empty?
         output
