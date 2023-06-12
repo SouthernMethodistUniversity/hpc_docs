@@ -4,7 +4,7 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.2.3"
+VERSION="4.3.0"
 TAG=${VERSION}
 
 echo "Building tag: ${TAG}"
@@ -18,7 +18,7 @@ apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
 
 # get the path for rsession inside the contianer. We need this
 # for the portal, so it's useful to "precompute" and load
-apptainer exec rocker_geospatial_4.2.3.sif  test -x /usr/lib/rstudio-server/bin/rsession
+apptainer exec ${CONTAINER_NAME}  test -x /usr/lib/rstudio-server/bin/rsession
 RSESSION_EXEC="/usr/lib/rstudio-server/bin/rsession"
 # verify
 if ! apptainer exec ${CONTAINER_NAME} test -x ${RSESSION_EXEC} &> /dev/null
