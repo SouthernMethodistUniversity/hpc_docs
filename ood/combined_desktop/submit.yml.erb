@@ -1,7 +1,6 @@
 #
 # Desktop Submission Script
 #
-<% image="/hpc/m3/containers/remote_desktop/remote_desktop_1.0.sif" %>
 ---
 script:
   job_name: "remote_desktop"
@@ -36,4 +35,4 @@ batch_connect:
     CONTAINER_SCRIPT=$(pwd)/container.sh
 
     # switch container launch to enable GPU usage is available
-    apptainer exec <%= image %> $CONTAINER_SCRIPT
+    apptainer exec <%= desktop_os %> $CONTAINER_SCRIPT
