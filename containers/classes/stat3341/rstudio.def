@@ -46,5 +46,6 @@ From: rocker/geospatial:4.3.0
     R -q -e 'install.packages("NbClust")'
     R -q -e 'install.packages("mclust")'
     R -q -e 'install.packages("factoextra")'
+    R -q -e 'install.packages("polite")'
 
     rm -rf /tmp/downloaded_packages
