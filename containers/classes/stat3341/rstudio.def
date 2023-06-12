@@ -1,10 +1,10 @@
 Bootstrap: docker
-From: rocker/ml-verse:4.2.2
+From: rocker/geospatial:TAG
 
 %labels
     Author John LaGrone <jlagrone@smu.edu>
     Version v1.0
-    Application Rocker ml-verse
+    Application Rocker geospatial
 
 %post
 
@@ -46,10 +46,6 @@ From: rocker/ml-verse:4.2.2
     R -q -e 'install.packages("NbClust")'
     R -q -e 'install.packages("mclust")'
     R -q -e 'install.packages("factoextra")'
+    R -q -e 'install.packages("polite")'
 
     rm -rf /tmp/downloaded_packages
-
-%environment
-    export ftp_proxy="http://10.210.15.2:3128"
-    export http_proxy="http://10.210.15.2:3128"
-    export https_proxy="http://10.210.15.2:3128"
