@@ -1,0 +1,141 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%labels
+    Author John LaGrone <jlagrone@smu.edu>
+    Version 1.0
+    Framework Open OnDemand
+    Distribution Ubuntu 20.04
+    Application Remote Desktops
+
+%apprun vncserver
+  exec vncserver "${@}"
+
+%apprun vncpasswd
+  exec vncpasswd "${@}"
+
+%apprun websockify
+  exec /opt/websockify/run "${@}"
+
+%runscript
+  exec vncserver "${@}"
+
+%environment
+  export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
+
+%files
+
+  # properly init zsh profiles
+  # copy from m3 to container
+  # zsh fails to install if we copy to /etc/zsh 
+  # so copy to /opt and mv later
+  /etc/zsh/zshenv /opt/zshenv
+
+%post
+  export TURBOVNC_VERSION=3.0.3
+  export VIRTUALGL_VERSION=3.1
+  export LIBJPEG_VERSION=2.1.5.1
+
+  # probably way more than we need
+  apt-get -y update
+  DEBIAN_FRONTEND=noninteractive apt-get -y install \
+               lua5.3 \
+               lua-bit32:amd64 \
+               lua-posix:amd64 \
+               lua-posix-dev \
+               lua-filesystem \
+               liblua5.3-0:amd64 \
+               liblua5.3-dev:amd64 \
+               tcl \
+               tcl-dev \
+               tcl8.6 \
+               tcl8.6-dev:amd64 \
+               libtcl8.6:amd64 \
+               zsh \
+               tcsh \
+               ksh \
+               x11-utils \
+               xauth \
+               infiniband-diags \
+               opensm \
+               dbus-x11 \
+               procps \
+               psmisc \
+               xdg-utils \
+               xdg-user-dirs \
+               menu-xdg \
+               mime-support \
+               desktop-file-utils \
+               bash-completion \
+               libegl1-mesa \
+               mesa-utils-extra \
+               libxv1 \
+               lsb-release \
+               ubuntu-mate-desktop \
+               evince \
+               gedit \
+               emacs \
+               nano \
+               vim \
+               novnc \
+               python3-websockify \
+               python3-numpy \
+               lshw \
+               net-tools \
+               ca-certificates \
+               locales \
+               curl \
+               gcc \
+               gfortran \
+               make \
+               wget \
+               git \
+               strace
+
+  # Configure default locale
+  echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+  locale-gen en_US.utf8
+  /usr/sbin/update-locale LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+
+  # TurboVNC
+  wget https://sourceforge.net/projects/turbovnc/files/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
+  dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
+  rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
+ 
+  # VirtualGL 
+  wget https://sourceforge.net/projects/libjpeg-turbo/files/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q
+  wget https://sourceforge.net/projects/virtualgl/files/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
+  dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
+  dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
+  rm -f *.deb
+
+  # add deps needed for ansys
+  add-apt-repository ppa:linuxuprising/libpng12 -y
+  apt-get -y update
+  apt-get -y install libpng12-0 libjpeg62
+  
+  # disable bluetooth
+  sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
+  rm /lib/systemd/system/blueman-mechanism.service
+  rm /etc/xdg/autostart/blueman.desktop
+  rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
+  systemctl disable bluetooth.service
+
+  # firefox. The default in ubuntu is a snap package now
+  # so use the mozilla ppa
+  apt-get install -y software-properties-common
+  add-apt-repository ppa:mozillateam/ppa -y
+  echo '\nPackage: * \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 1001 \n\nPackage: firefox \nPin: version 1:1snap1-0ubuntu2 \nPin-Priority: -1 \n' | tee /etc/apt/preferences.d/mozilla-firefox
+  apt-get -y update
+  apt-get install -y firefox
+
+  # create symlinks for lmod
+  rm /etc/zsh/zshenv
+  mv /opt/zshenv /etc/zsh/zshenv
+  ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
+  ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
+ 
+  # Clean up
+  rm -rf /var/lib/apt/lists/*
