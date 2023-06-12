@@ -2,8 +2,20 @@
 module purge
 
 # load the requested module
-module load <%= context.r_module %>
+FORM_MODULE=<%= context.r_module %>
+EXTENSION="${FORM_MODULE##*.}"
 
+# if exension is .lua split into folder
+# and module otherwise just load the module
+if [ "$EXTENSION" == "lua" ]
+then
+  MOD_NAME=$(basename -s .lua ${FORM_MODULE})
+  MOD_PATH=$(dirname ${FORM_MODULE})
+  module use ${MOD_PATH}
+  module --ignore_cache load ${MOD_NAME}
+else
+  module load ${FORM_MODULE}
+fi
 # Clustom environment settings
 <%- unless context.environment.blank? -%>
 env

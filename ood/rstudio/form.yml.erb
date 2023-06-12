@@ -1,6 +1,7 @@
 ---
 cluster: "m3cluster"
 form:
+  - auto_accounts
   - r_module
   - environment
   - custom_queues
@@ -9,11 +10,20 @@ form:
   - bc_num_cores
   - bc_num_memory
 attributes:
+  auto_accounts:
+   help: |
+     Select a Slurm account. By default all users have a  default "smu" account.
+     You may have other accounts, e.g. to access course specific material or
+     special allocations.
   r_module:
     widget: select
     label: "R Version"
     options:
+      - [ "4.3.0", "R/4.3.0" ]
       - [ "4.2.3", "R/4.2.3" ]
+      - [ "stat 3341", "/hpc/m3/containers/classes/2023/june_b/stat3341/stat3341_4.3.0.lua",
+          data-option-for-auto-accounts-smu: false
+        ]
   environment:
     widget: text_area
     label: "Custom Environment Settings"
