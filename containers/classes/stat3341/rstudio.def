@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: rocker/geospatial:4.3.0
+From: rocker/geospatial:TAG
 
 %labels
     Author John LaGrone <jlagrone@smu.edu>
