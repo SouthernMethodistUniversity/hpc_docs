@@ -12,6 +12,24 @@ COURSE_NUMBER="stat3341"
 TERM="june_b"
 YEAR="2023"
 
+# check if this version already exists
+CONTAINER_NAME=${COURSE_NUMBER}_r_${TAG}.sif
+CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
+if [ "$CLUSTER" = "nvidia" ]; then
+  CLUSTER="mp"
+fi
+IMAGE_LOCATION=/hpc/${CLUSTER}/containers/classes/${YEAR}/${TERM}/${COURSE_NUMBER}
+DESTINATION=${IMAGE_LOCATION}/${CONTAINER_NAME}
+
+if [ -f "$DESTINATION" ]; then
+
+  read -p "$DESTINATION already exists. Overwrite y/N? " yn
+  case $yn in
+     [Yy]* ) echo "Overwriting existing file";;
+     * ) exit;;
+  esac
+fi
+
 echo "Building tag: ${TAG}"
 
 # build the container
@@ -27,7 +45,6 @@ cp rstudio.def temp_build.def
 # set the version in the definition file
 sed -i 's/TAG/${VERSON}/g' temp_build.def
 
-CONTAINER_NAME=${COURSE_NUMBER}_r_${TAG}.sif
 apptainer build --fakeroot ${CONTAINER_NAME} temp_build.def
 
 # get the path for rsession inside the contianer. We need this
