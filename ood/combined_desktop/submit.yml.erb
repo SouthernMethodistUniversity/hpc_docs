@@ -26,14 +26,14 @@ batch_connect:
     #!/bin/bash
 
     %s  
-    
-    export PATH="/hpc/sys/apps/slurm/current/bin${PATH:+":$PATH"}"
     CTRSCRIPT
     chmod +x container.sh
 
     sed -e s/-nohttpd//g -i container.sh
 
     export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK,/cm/local/apps/slurm"
+
+    export SINGULARITYENV_PREPEND_PATH="/hpc/sys/apps/slurm/current/bin${SINGULARITYENV_PREPEND_PATH:+":$SINGULARITYENV_PREPEND_PATH"}"
     
     CONTAINER_SCRIPT=$(pwd)/container.sh
 
