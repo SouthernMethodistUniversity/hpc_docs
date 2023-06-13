@@ -90,7 +90,10 @@ From: ubuntu:20.04
                make \
                wget \
                git \
-               strace
+               strace \
+               lsb \
+               libxm4 \
+               xsltproc
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
