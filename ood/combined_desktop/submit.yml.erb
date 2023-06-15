@@ -31,7 +31,7 @@ batch_connect:
 
     sed -e s/-nohttpd//g -i container.sh
 
-    export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK,/cm/local/apps/slurm"
+    export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK,/cm/local/apps/slurm,/var/lib/sss,/etc/passwd"
 
     export SINGULARITYENV_PREPEND_PATH="/hpc/sys/apps/slurm/current/bin${SINGULARITYENV_PREPEND_PATH:+":$SINGULARITYENV_PREPEND_PATH"}"
     
