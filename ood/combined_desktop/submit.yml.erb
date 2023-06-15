@@ -33,7 +33,7 @@ batch_connect:
 
     export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK,/cm/local/apps/slurm,/var/lib/sss,/etc/passwd"
 
-    export SINGULARITYENV_PREPEND_PATH="/hpc/sys/apps/slurm/current/bin${SINGULARITYENV_PREPEND_PATH:+":$SINGULARITYENV_PREPEND_PATH"}"
+    export APPTAINERENV_PREPEND_PATH="/hpc/sys/apps/slurm/current/bin${APPTAINERENV_PREPEND_PATH:+":$APPTAINERENV_PREPEND_PATH"}"
     
     CONTAINER_SCRIPT=$(pwd)/container.sh
 
