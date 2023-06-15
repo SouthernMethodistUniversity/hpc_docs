@@ -44,8 +44,8 @@ From: almalinux:8
     dnf -y install systemd-libs
     dnf -y install gdm gnome-tweak-tool gnome-shell-extension-top-icons gnome-shell-extension-systemMonitor gnome-shell-extension-user-theme
     dnf -y install sssd
-    dnf install -y python2-pip xorg-x11-apps xorg-x11-server-Xorg
-    dnf remove -y tigervnc-server python2-pip mate-power-manager
+    dnf install -y xorg-x11-apps xorg-x11-server-Xorg
+    dnf remove -y xfce4-screensaver
     dnf -y groupinstall 'Development Tools'
     dnf -y install kernel-devel kmod
     dnf -y install compat-openssl10
