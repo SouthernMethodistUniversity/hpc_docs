@@ -6,6 +6,7 @@ submit: submit.yml.erb
 
 form:
   - custom_queues
+  - desktop_os
   - desktop_env
   - bc_num_hours
   - bc_vnc_idle
@@ -28,6 +29,19 @@ attributes:
         ]
       - ["High Memory Queue (12 hour limit)", "highmem",
         data-max-bc-num-hours: 12,
+        ]
+  desktop_os:
+    label: "Operating System"
+    widget: select
+    help: |
+      Please Select Operating System.
+      Note: Centos is available to support some legacy applications. Some features of M3 will be unavailable.
+    options:
+      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.0.sif",
+        data-set-desktop-env: 'mate',
+        ]
+      - ["AlmaLinux 8", "/hpc/m3/containers/remote_desktop/almalinux_remote_desktop_1.0.0.sif",
+        data-set-desktop-env: 'xfce',
         ]
   bc_vnc_idle: 2700
   bc_num_hours:
@@ -59,4 +73,3 @@ attributes:
     value: 6
   bc_vnc_resolution:
     required: true
-  desktop_env: "mate"

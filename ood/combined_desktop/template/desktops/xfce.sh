@@ -18,7 +18,7 @@ xfconf-query -c xfce4-session -p /startup/gpg-agent/enabled -n -t bool -s false
 AUTOSTART="${HOME}/.config/autostart"
 rm -fr "${AUTOSTART}"    # clean up previous autostarts
 mkdir -p "${AUTOSTART}"
-for service in "pulseaudio" "rhsm-icon" "spice-vdagent" "tracker-extract" "tracker-miner-apps" "tracker-miner-user-guides" "xfce4-power-manager" "xfce-polkit"; do
+for service in "pulseaudio" "rhsm-icon" "spice-vdagent" "tracker-extract" "tracker-miner-apps" "tracker-miner-user-guides" "xfce4-power-manager" "xfce-polkit" "xfce4-screenlocker" "xfce4-screensaver"; do
   echo -e "[Desktop Entry]\nHidden=true" > "${AUTOSTART}/${service}.desktop"
 done
 
