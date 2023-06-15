@@ -345,12 +345,19 @@ attributes:
     options:
       - ["Development Queue (2 hour limit)", "dev",
         data-max-bc-num-hours: 2,
+        data-max-bc-num-cores: 128,
+        ]
+      - ["HTC Queue (12 hour limit, 1 core)", "htc",
+        data-max-bc-num-hours: 12,
+        data-max-bc-num-cores: 1,
         ]
       - ["Standard Memory Queue (12 hour limit)", "standard-s",
         data-max-bc-num-hours: 12,
+        data-max-bc-num-cores: 128,
         ]
       - ["High Memory Queue (12 hour limit)", "highmem",
         data-max-bc-num-hours: 12,
+        data-max-bc-num-cores: 128,
         ]
   python_version:
     label: "Select Python Environment"
@@ -445,4 +452,4 @@ attributes:
     max: 500
     min: 1
     step: 1
-    value: 6
+    value: 4
