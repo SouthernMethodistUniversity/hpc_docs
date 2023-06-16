@@ -49,6 +49,7 @@ From: almalinux:8
     dnf -y groupinstall 'Development Tools'
     dnf -y install kernel-devel kmod
     dnf -y install compat-openssl10
+    dnf -y install libnsl
     ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
     
     echo "/usr/lib64/gtk-2.0/modules" >/etc/ld.so.conf.d/gtk2.conf
