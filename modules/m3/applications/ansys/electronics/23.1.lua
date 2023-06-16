@@ -47,3 +47,11 @@ else
   append_path("PATH","/hpc/m3/apps/ansys/23R1/v231/Linux64")
   setenv("GALLIUM_DRIVER","softpipe")
 end
+
+-- slurm doesn't work work in the almalinux container
+-- this breaks ansys because it tries to call slurm commands internally
+if string.find(container_name, "almalinux") then
+
+  LmodMessage("\nAnsys may not work as expect in AlmaLinux \nYou may need to do the following: \n\nunset $(compgen -v | grep \"SLURM\") \nansysedt -local \n\nInside Ansys make sure the number of cores and gpus in the HPC Options menu of the Simulation tab match your job request \n")
+
+end
