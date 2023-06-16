@@ -155,14 +155,18 @@ module list
 echo "Starting up rserver..."
 set -x
 
+unset APPTAINER_BIND
+
 apptainer exec \
   -B ${TMPDIR}:/tmp \
   -B ${TMPDIR}/run:/run \
   -B ${TMPDIR}/var/lib:/var/lib/rstudio-server \
   -B ${WORKING_DIR} \
   -B ${WORKING_DIR}/etc:/etc/rstudio \
-  -B ${SCRATCH} \
+  -B ${HOME} \
   -B ${WORK} \
+  -B ${SCRATCH} \
+  -B /work \
   ${CONTAINER_IMAGE} \
   ${RUN_RSERVER}
 
