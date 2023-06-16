@@ -21,14 +21,14 @@ efficiently.
 
 M3 has the following queues:
 
-| Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                       |
-|----------------|------------------|----------------|-----------------|------------|---------------------------------------------|
-| dev            | 4                | 128            | 500GB           | 2 hours    |                                             |
-| htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *share nodes a listed in htc and standard-s |
-| standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *share nodes a listed in htc and standard-s |
-| standard-l     | 20               | 128            | 500GB           | 7 days     |                                             |
-| highmem        | 8                | 128            | 2TB             | 5 days     |                                             |
-| dtn            | 2                | 128            | 500GB           | 7 days     | *approval required                          |
+| Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                         |
+|----------------|------------------|----------------|-----------------|------------|-----------------------------------------------|
+| dev            | 4                | 128            | 500GB           | 2 hours    |                                               |
+| htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *share nodes are listed in htc and standard-s |
+| standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *share nodes are listed in htc and standard-s |
+| standard-l     | 20               | 128            | 500GB           | 7 days     |                                               |
+| highmem        | 8                | 128            | 2TB             | 5 days     |                                               |
+| dtn            | 2                | 128            | 500GB           | 7 days     | *approval required                            |
 
 All M3 nodes are identical and contain dual AMD EPYC 7763 64-Core Processors with the exception of the
 nodes on the `highmem` partition having more memory.
