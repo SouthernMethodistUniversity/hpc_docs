@@ -42,6 +42,9 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   # Source environment
   source "${PWD}/environment.txt"
 
+  # make sure the container libR is visible
+  export LD_LIBRARY_PATH="/usr/local/lib/R/lib${LD_LIBRARY_PATH:+":$LD_LIBRARY_PATH"}"
+
   # Log all output from this script
   export RSESSION_LOG_FILE="${PWD}/rsession.log"
   exec &>>"\${RSESSION_LOG_FILE}"
