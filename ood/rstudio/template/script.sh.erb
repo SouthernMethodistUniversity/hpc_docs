@@ -53,29 +53,6 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   # make sure nothing uses more threads than is requested
   export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
 
-  # look for restore workspace in input args and remove it
-  ARGS="\${@}"
-#  RE="(.*)--r-restore-workspace 2(.*)"
-  # echo is because bash changed behavior of =~ with strings / quotes
-#  [[ "\$ARGS" =~ $(echo "\$RE") ]]
-#  if [ ! -z "\$BASH_REMATCH[0]" ]; then
-#    ARGS="\${BASH_REMATCH[1]} \${BASH_REMATCH[2]}"
-#  fi
-
-  # look for restore session and remove it
-#  RE="(.*)--r-run-rprofile 2(.*)"
-#  [[ "\$ARGS" =~ $(echo "\$RE") ]]
-#  if [ ! -z "\$BASH_REMATCH[0]" ]; then
-#    ARGS="\${BASH_REMATCH[1]} \${BASH_REMATCH[2]}"
-#  fi
-
-
-  # append option we want
-#  ARGS="\${ARGS} --r-run-rprofile 0 --r-restore-workspace 0"
-
-  echo "INPUT: \${@}"
-  echo "ARGS: \${ARGS}"
-
   # Launch the original command
   echo "Launching rsession..."
   set -x
@@ -83,7 +60,7 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
     --r-libs-user "${R_LIBS_USER}" \
     --session-timeout-minutes <%= context.rserver_timeout %> \
     --session-timeout-suspend 0 \
-    $(echo "\${ARGS}")
+    "\${@}"
 EOL
 )
 chmod 700 "${RSESSION_WRAPPER_FILE}"
