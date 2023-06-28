@@ -139,14 +139,13 @@ sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   --rsession-path "${RSESSION_WRAPPER_FILE}" \
   --server-data-dir "${TMPDIR}" \
   --secure-cookie-key-file "${TMPDIR}/rstudio-server/secure-cookie-key" \
-  --rsession-which-r="${CONTAINER_R}" \
-  --server-daemonize=0
+  --rsession-which-r="${CONTAINER_R}"
 
 EOL
 )
 chmod 700 "${RUN_RSERVER}"
 
-# Generate a script to start the server
+# Generate Rstudio preference file (global)
 mkdir -p ${PWD}/etc
 export RSTUDIO_PREFS="${PWD}/etc/rstudio-prefs.json"
 (
@@ -162,7 +161,7 @@ EOL
 )
 chmod 700 "${RSTUDIO_PREFS}"
 
-# make rserver log to file
+# make rserver log to file in PWD
 export RSTUDIO_LOGS="${PWD}/etc/logging.conf"
 (
 umask 077
