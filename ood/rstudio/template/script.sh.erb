@@ -28,6 +28,8 @@ env
 
 # PAM auth helper used by RStudio
 export RSTUDIO_AUTH="${PWD}/bin/auth"
+export RSTUDIO_CONFIG_DIRS="/etc/"
+#export RSTUDIO_CONFIG_HOME="/etc/rstudio"
 
 # Export environment
 export > "${PWD}/environment.txt"
@@ -42,7 +44,6 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   # Source environment
   source "${PWD}/environment.txt"
 
-  # make sure the container libR is visible
   export LD_LIBRARY_PATH="/usr/local/lib/R/lib${LD_LIBRARY_PATH:+":$LD_LIBRARY_PATH"}"
 
   # Log all output from this script
@@ -52,6 +53,29 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   # make sure nothing uses more threads than is requested
   export OMP_NUM_THREADS=${SLURM_CPUS_ON_NODE}
 
+  # look for restore workspace in input args and remove it
+  ARGS="\${@}"
+#  RE="(.*)--r-restore-workspace 2(.*)"
+  # echo is because bash changed behavior of =~ with strings / quotes
+#  [[ "\$ARGS" =~ $(echo "\$RE") ]]
+#  if [ ! -z "\$BASH_REMATCH[0]" ]; then
+#    ARGS="\${BASH_REMATCH[1]} \${BASH_REMATCH[2]}"
+#  fi
+
+  # look for restore session and remove it
+#  RE="(.*)--r-run-rprofile 2(.*)"
+#  [[ "\$ARGS" =~ $(echo "\$RE") ]]
+#  if [ ! -z "\$BASH_REMATCH[0]" ]; then
+#    ARGS="\${BASH_REMATCH[1]} \${BASH_REMATCH[2]}"
+#  fi
+
+
+  # append option we want
+#  ARGS="\${ARGS} --r-run-rprofile 0 --r-restore-workspace 0"
+
+  echo "INPUT: \${@}"
+  echo "ARGS: \${ARGS}"
+
   # Launch the original command
   echo "Launching rsession..."
   set -x
@@ -59,7 +83,7 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
     --r-libs-user "${R_LIBS_USER}" \
     --session-timeout-minutes <%= context.rserver_timeout %> \
     --session-timeout-suspend 0 \
-    "\${@}"
+    $(echo "\${ARGS}")
 EOL
 )
 chmod 700 "${RSESSION_WRAPPER_FILE}"
@@ -124,10 +148,6 @@ sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   # Source environment
   source "${PWD}/environment.txt"
 
-  # Log all output from this script
-  export RSERVER_LOG_FILE="${PWD}/rserver.log"
-  exec &>>"\${RSERVER_LOG_FILE}"
-
   # start the timeout check
   exec "${RSERVER_TIMEOUT_FILE}" &
 
@@ -141,12 +161,41 @@ sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   --rsession-path "${RSESSION_WRAPPER_FILE}" \
   --server-data-dir "${TMPDIR}" \
   --secure-cookie-key-file "${TMPDIR}/rstudio-server/secure-cookie-key" \
-  --rsession-which-r="${CONTAINER_R}"
+  --rsession-which-r="${CONTAINER_R}" \
+  --server-daemonize=0
 
 EOL
 )
 chmod 700 "${RUN_RSERVER}"
 
+# Generate a script to start the server
+mkdir -p ${PWD}/etc
+export RSTUDIO_PREFS="${PWD}/etc/rstudio-prefs.json"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RSTUDIO_PREFS}" << EOL
+{
+    "terminal_track_environment": false,
+    "load_workspace": false,
+    "restore_source_documents": false,
+    "restore_last_project": false
+}
+EOL
+)
+chmod 700 "${RSTUDIO_PREFS}"
+
+# make rserver log to file
+export RSTUDIO_LOGS="${PWD}/etc/logging.conf"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RSTUDIO_LOGS}" << EOL
+[*]
+log-level=debug
+logger-type=file
+log-dir=${PWD}
+EOL
+)
+chmod 700 "${RSTUDIO_LOGS}"
 
 # Set working directory to home directory
 cd "${HOME}"
@@ -160,12 +209,17 @@ set -x
 
 unset APPTAINER_BIND
 
+export APPTAINERENV_XDG_CONFIG_DIRS="/etc/"
+export APPTAINERENV_RSTUDIO_CONFIG_DIRS=$RSTUDIO_CONFIG_DIRS
+#export APPTAINERENV_XDG_CONFIG_HOME="/etc/rstudio"
+#export APPTAINERENV_RSTUDIO_CONFIG_HOME=$RSTUDIO_CONFIG_HOME
 apptainer exec \
   -B ${TMPDIR}:/tmp \
   -B ${TMPDIR}/run:/run \
   -B ${TMPDIR}/var/lib:/var/lib/rstudio-server \
   -B ${WORKING_DIR} \
-  -B ${WORKING_DIR}/etc:/etc/rstudio \
+  -B ${WORKING_DIR}/etc/logging.conf:/etc/rstudio/logging.conf \
+  -B ${WORKING_DIR}/etc/rstudio-prefs.json:/etc/rstudio/rstudio-prefs.json \
   -B ${HOME} \
   -B ${WORK} \
   -B ${SCRATCH} \
