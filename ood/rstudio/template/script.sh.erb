@@ -29,6 +29,9 @@ env
 # PAM auth helper used by RStudio
 export RSTUDIO_AUTH="${PWD}/bin/auth"
 
+# make sure RSTUDIO looks for rstudio-prefs.json
+export RSTUDIO_CONFIG_DIRS="/etc/"
+
 # Export environment
 export > "${PWD}/environment.txt"
 
@@ -42,7 +45,7 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
   # Source environment
   source "${PWD}/environment.txt"
 
-  # make sure the container libR is visible
+  # make sure the container libR is visible inside container
   export LD_LIBRARY_PATH="/usr/local/lib/R/lib${LD_LIBRARY_PATH:+":$LD_LIBRARY_PATH"}"
 
   # Log all output from this script
@@ -124,10 +127,6 @@ sed 's/^ \{2\}//' > "${RUN_RSERVER}" << EOL
   # Source environment
   source "${PWD}/environment.txt"
 
-  # Log all output from this script
-  export RSERVER_LOG_FILE="${PWD}/rserver.log"
-  exec &>>"\${RSERVER_LOG_FILE}"
-
   # start the timeout check
   exec "${RSERVER_TIMEOUT_FILE}" &
 
@@ -147,6 +146,34 @@ EOL
 )
 chmod 700 "${RUN_RSERVER}"
 
+# Generate Rstudio preference file (global)
+mkdir -p ${PWD}/etc
+export RSTUDIO_PREFS="${PWD}/etc/rstudio-prefs.json"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RSTUDIO_PREFS}" << EOL
+{
+    "terminal_track_environment": false,
+    "load_workspace": false,
+    "restore_source_documents": false,
+    "restore_last_project": false
+}
+EOL
+)
+chmod 700 "${RSTUDIO_PREFS}"
+
+# make rserver log to file in PWD
+export RSTUDIO_LOGS="${PWD}/etc/logging.conf"
+(
+umask 077
+sed 's/^ \{2\}//' > "${RSTUDIO_LOGS}" << EOL
+[*]
+log-level=debug
+logger-type=file
+log-dir=${PWD}
+EOL
+)
+chmod 700 "${RSTUDIO_LOGS}"
 
 # Set working directory to home directory
 cd "${HOME}"
@@ -160,12 +187,15 @@ set -x
 
 unset APPTAINER_BIND
 
+export APPTAINERENV_XDG_CONFIG_DIRS="/etc/"
+export APPTAINERENV_RSTUDIO_CONFIG_DIRS=$RSTUDIO_CONFIG_DIRS
 apptainer exec \
   -B ${TMPDIR}:/tmp \
   -B ${TMPDIR}/run:/run \
   -B ${TMPDIR}/var/lib:/var/lib/rstudio-server \
   -B ${WORKING_DIR} \
-  -B ${WORKING_DIR}/etc:/etc/rstudio \
+  -B ${WORKING_DIR}/etc/logging.conf:/etc/rstudio/logging.conf \
+  -B ${WORKING_DIR}/etc/rstudio-prefs.json:/etc/rstudio/rstudio-prefs.json \
   -B ${HOME} \
   -B ${WORK} \
   -B ${SCRATCH} \
