@@ -28,8 +28,9 @@ env
 
 # PAM auth helper used by RStudio
 export RSTUDIO_AUTH="${PWD}/bin/auth"
+
+# make sure RSTUDIO looks for rstudio-prefs.json
 export RSTUDIO_CONFIG_DIRS="/etc/"
-#export RSTUDIO_CONFIG_HOME="/etc/rstudio"
 
 # Export environment
 export > "${PWD}/environment.txt"
@@ -188,8 +189,6 @@ unset APPTAINER_BIND
 
 export APPTAINERENV_XDG_CONFIG_DIRS="/etc/"
 export APPTAINERENV_RSTUDIO_CONFIG_DIRS=$RSTUDIO_CONFIG_DIRS
-#export APPTAINERENV_XDG_CONFIG_HOME="/etc/rstudio"
-#export APPTAINERENV_RSTUDIO_CONFIG_HOME=$RSTUDIO_CONFIG_HOME
 apptainer exec \
   -B ${TMPDIR}:/tmp \
   -B ${TMPDIR}/run:/run \
