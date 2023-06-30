@@ -1,4 +1,4 @@
-whatis("loads Julia 1.7.3 environment")
+whatis("loads Julia 1.8.5 environment")
 family("julia")
 conflict("julia")
 local root = "/hpc/m3/apps/julia/1.8.5"
