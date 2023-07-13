@@ -18,48 +18,54 @@ LOAD_ERRORS=0
 module purge
 <% if context.python_version == "new" %>
 
-module load conda
+  echo "Building new environment"
 
-# make sure auto activate base is off
-conda config --set auto_activate_base false
+  module load conda
 
-# build the environment with the requested name
-# in $WORK/.ood_envs/$NAME
+  # make sure auto activate base is off
+  conda config --set auto_activate_base false
 
-# first copy the yml file to the working dir
-cp <%= context.build_environment %> environment.yml
+  # build the environment with the requested name
+  # in $WORK/.ood_envs/$NAME
 
-# set the name to be the requested name
-<% if context.environment_name.empty? %>
-# use the name in the environment file
-NAME=$(head -n 1 environment.yml)
-NAME=${NAME#*:} # strips name: from beginning
-# remove leading / trailing whitespace
-NAME="$(echo -e "${NAME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+  # first copy the yml file to the working dir
+  cp <%= context.build_environment %> environment.yml
+
+  # set the name to be the requested name
+  <% if context.environment_name.empty? %>
+    # use the name in the environment file
+    NAME=$(head -n 1 environment.yml)
+    NAME=${NAME#*:} # strips name: from beginning
+    # remove leading / trailing whitespace
+    NAME="$(echo -e "${NAME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+  <% else %>
+    NAME="<%= context.environment_name %>"
+    NAME="${NAME// /_}" # replace spaces with underscores
+  <% end %>
+
+  # check if directory already exists
+  ENV_PATH=${WORK}/.conda/envs/${NAME}
+  echo "ENV_PATH: ${ENV_PATH}"
+  if [ -d "${ENV_PATH}" ]
+  then
+    LOAD_WARNINGS=1
+    echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
+  else
+    # actually change the name
+    sed -i "1s/.*/name: ${NAME}/" environment.yml
+
+    # build the environment with mamba
+    echo "TIMING - Starting environment build at: $(date)"
+    mamba env create -n ${NAME} -f environment.yml
+    echo "TIMING - Finisied environment build at: $(date)"
+  fi
+
+  # overide the settings with correct values
+  <% context.conda_type = "Mamba Env" %>
+  <% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
+
 <% else %>
-NAME="<%= context.environment_name %>"
-NAME="${NAME// /_}" # replace spaces with underscores
-<% end %>
-# check if directory already exists
-ENV_PATH=${WORK}/.conda/envs/${NAME}
-echo "ENV_PATH: ${ENV_PATH}"
-if [ -d "${ENV_PATH}" ]
-then
-  LOAD_WARNINGS=1
-  echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
-else
-  # actually change the name
-  sed -i "1s/.*/name: ${NAME}/" environment.yml
-
-  # build the environment with mamba
-  mamba env create -n ${NAME} -f environment.yml
-fi
-
-# overide the settings with correct values
-<% context.conda_type = "Mamba Env" %>
-<% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
-<% else %>
-NAME=<%= context.python_version %>
+  NAME=<%= context.python_version %>
 <% end %>
 
 # Set working directory to home directory
@@ -70,31 +76,32 @@ cd "${HOME}"
 # Start Jupyter Notebook Server
 #
 <% if context.python_version != "custom" %>
-CONDA_COMMAND=<%= context.conda_command %>
-<% if context.conda_type == "Conda Env" %>
-eval "$(<%= context.conda_command %> shell.bash hook)"
-conda activate ${NAME}
-<% elsif context.conda_type == "Micromamba Env" %>
-# micromamba doesn't always export everything as expected
-# see: https://github.com/mamba-org/mamba/issues/1748
-export MAMBA_EXE=<%= context.conda_command %>
-eval "$(<%= context.conda_command %> shell hook --shell=bash)"
-micromamba activate ${NAME}
-<% elsif context.conda_type == "Mamba Env" %>
-echo "type mamba:" $(type mamba)
-
-mamba  activate ${NAME}
-<% end %>
+  CONDA_COMMAND=<%= context.conda_command %>
+  <% if context.conda_type == "Conda Env" %>
+    eval "$(<%= context.conda_command %> shell.bash hook)"
+    conda activate ${NAME}
+  <% elsif context.conda_type == "Micromamba Env" %>
+    # micromamba doesn't always export everything as expected
+    # see: https://github.com/mamba-org/mamba/issues/1748
+    export MAMBA_EXE=<%= context.conda_command %>
+    eval "$(<%= context.conda_command %> shell hook --shell=bash)"
+    micromamba activate ${NAME}
+  <% elsif context.conda_type == "Mamba Env" %>
+    echo "type mamba:" $(type mamba)
+    mamba  activate ${NAME}
+  <% end %>
 <% end %>
 
 # Clustom environment
 <%- unless context.environment.blank? -%>
-env
-<%= context.environment.encode(universal_newline: true) %>
+  #env
+  echo "Loading custom environment settings"
+  <%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
 
 # make sure Jupyter Lab exists
 JUPYTER_EXISTS=1
+JUPYTER_COMMAND=""
 if ! command -v jupyter-lab &> /dev/null
 then
 
@@ -108,6 +115,9 @@ then
       echo "Jupyter Lab was not found in the environment specified." > ${ERROR_FILE}
       LOAD_ERRORS=1
       JUPYTER_EXISTS=0
+    else
+      JUPYTER_COMMAND=$(which jupyter)
+      JUPYTER_COMMAND="${JUPYTER_COMMAND} lab"
     fi
 
   else
@@ -115,6 +125,8 @@ then
     LOAD_ERRORS=1
     JUPYTER_EXISTS=0
   fi
+else
+  JUPYTER_COMMAND=$(which jupyter-lab)
 fi
 
 module list
@@ -125,5 +137,5 @@ echo "TIMING - Starting jupyter at: $(date)"
 # Launch the Jupyter Notebook Server
 set -x
 if [ $JUPYTER_EXISTS -eq 1 ]; then
-  jupyter lab --config="${CONFIG_FILE}"
+  ${JUPYTER_COMMAND} --config="${CONFIG_FILE}"
 fi
