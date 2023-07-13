@@ -19,7 +19,7 @@ module purge
 <% if context.python_version == "new" %>
 
   echo "Building new environment"
-
+  export ENVIRONMENT_BUILDING=0
   module load conda
 
   # make sure auto activate base is off
@@ -63,6 +63,7 @@ module purge
   # overide the settings with correct values
   <% context.conda_type = "Mamba Env" %>
   <% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
+  export ENVIRONMENT_BUILDING=1
 
 <% else %>
   NAME=<%= context.python_version %>

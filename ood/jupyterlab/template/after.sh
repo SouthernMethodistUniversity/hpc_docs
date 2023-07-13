@@ -1,3 +1,14 @@
+# If building an env. Wait for that to finish
+<% if context.python_version == "new" %>
+
+echo "TIMING - Starting wait for env build at: $(date)"
+while (( ${ENVIRONMENT_BUILDING} )); do
+  sleep 5
+done
+echo "TIMING - Wait for env build ended at: $(date)"
+
+<% end %>
+
 # Wait for the Jupyter Notebook server to start
 echo "Waiting for Jupyter Notebook server to open port ${port}..."
 echo "TIMING - Starting wait at: $(date)"
