@@ -57,3 +57,9 @@ c.ServerApp.disable_check_xsrf = True
 c.ServerApp.shutdown_no_activity_timeout = <%= context.notebook_timeout.to_i*60 %>
 EOL
 )
+
+#make sure build env variable is set if needed
+<% if context.python_version == "new" %>
+  export ENVIRONMENT_BUILDING=1
+<% end %>
+
