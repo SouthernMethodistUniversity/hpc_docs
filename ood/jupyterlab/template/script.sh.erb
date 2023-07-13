@@ -18,10 +18,7 @@ LOAD_ERRORS=0
 module purge
 <% if context.python_version == "new" %>
 
-  echo "ENVIRONMENT_BUILDING (script): ${ENVIRONMENT_BUILDING}"
-
   echo "Building new environment"
-  ENVIRONMENT_BUILDING=1
   module load conda
 
   # make sure auto activate base is off
@@ -58,14 +55,15 @@ module purge
 
     # build the environment with mamba
     echo "TIMING - Starting environment build at: $(date)"
-    mamba env create -n ${NAME} -f environment.yml
+    mamba env create -n ${NAME} -f environment.yml &> "${ENV_BUILD_LOG}"
     echo "TIMING - Finisied environment build at: $(date)"
   fi
 
   # overide the settings with correct values
   <% context.conda_type = "Mamba Env" %>
   <% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
-  ENVIRONMENT_BUILDING=0
+
+  echo "\nNEW ENV BUILD COMPLETE" >> "${ENV_BUILD_LOG}"
 
 <% else %>
   NAME=<%= context.python_version %>
