@@ -43,13 +43,35 @@ module purge
   <% end %>
 
   # check if directory already exists
+  ENV_EXISTS=0
+  N_ENV_PATHS=$(conda config --show envs_dirs | wc -l)
+  N_ENV_PATHS="$((N_ENV_PATHS-1))"
+  for i in $( seq 1 ${N_ENV_PATHS} )
+  do
+    echo "i: ${i}"
+    path_str=$(conda config --show envs_dirs | tail -${i} | head -n 1)
+    echo "path: ${path_str}"
+    ENV_PATH="/"${path_str#*/}/${NAME}
+    echo "Checking ENV_PATH: ${ENV_PATH}"
+    if [ -d "${ENV_PATH}" ]
+    then
+      ENV_EXISTS=1
+      LOAD_WARNINGS=1
+      echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
+    fi
+  done
+
+  # check $WORK too since its the system default
   ENV_PATH=${WORK}/.conda/envs/${NAME}
-  echo "ENV_PATH: ${ENV_PATH}"
+  echo "Checking ENV_PATH: ${ENV_PATH}"
   if [ -d "${ENV_PATH}" ]
   then
+    ENV_EXISTS=1
     LOAD_WARNINGS=1
     echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
-  else
+  fi
+
+  if (( ! ${ENV_EXISTS} )); then
     # actually change the name
     sed -i "1s/.*/name: ${NAME}/" environment.yml
 
@@ -63,7 +85,7 @@ module purge
   <% context.conda_type = "Mamba Env" %>
   <% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
 
-  echo "\nNEW ENV BUILD COMPLETE" >> "${ENV_BUILD_LOG}"
+  echo "NEW ENV BUILD COMPLETE" >> "${ENV_BUILD_LOG}"
 
 <% else %>
   NAME=<%= context.python_version %>
