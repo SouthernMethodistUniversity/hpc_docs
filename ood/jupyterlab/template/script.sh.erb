@@ -48,27 +48,30 @@ module purge
   N_ENV_PATHS="$((N_ENV_PATHS-1))"
   for i in $( seq 1 ${N_ENV_PATHS} )
   do
-    echo "i: ${i}"
     path_str=$(conda config --show envs_dirs | tail -${i} | head -n 1)
-    echo "path: ${path_str}"
     ENV_PATH="/"${path_str#*/}/${NAME}
     echo "Checking ENV_PATH: ${ENV_PATH}"
     if [ -d "${ENV_PATH}" ]
     then
       ENV_EXISTS=1
       LOAD_WARNINGS=1
-      echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
+      echo "Environment name: <em>${NAME}</em> already exists!" >> ${WARNING_FILE}
+      echo "Environment path: <em>${ENV_PATH}</em>" >> ${WARNING_FILE}
+      echo "Loading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" >> ${WARNING_FILE}
     fi
   done
 
   # check $WORK too since its the system default
+  # IT **SHOULD** have already been checked ...
   ENV_PATH=${WORK}/.conda/envs/${NAME}
   echo "Checking ENV_PATH: ${ENV_PATH}"
   if [ -d "${ENV_PATH}" ]
   then
     ENV_EXISTS=1
     LOAD_WARNINGS=1
-    echo "Environment name: ${NAME} already exists! \nLoading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" > ${WARNING_FILE}
+    echo "Environment name: <em>${NAME}</em> already exists!" >> ${WARNING_FILE}
+    echo "Environment path: <em>${ENV_PATH}</em>" >> ${WARNING_FILE}
+    echo "Loading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" >> ${WARNING_FILE}
   fi
 
   if (( ! ${ENV_EXISTS} )); then
