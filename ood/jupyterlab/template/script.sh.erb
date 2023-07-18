@@ -142,8 +142,7 @@ then
       LOAD_ERRORS=1
       JUPYTER_EXISTS=0
     else
-      JUPYTER_COMMAND=$(which jupyter)
-      JUPYTER_COMMAND="${JUPYTER_COMMAND} lab"
+      JUPYTER_COMMAND="jupyter lab"
     fi
 
   else
@@ -152,7 +151,7 @@ then
     JUPYTER_EXISTS=0
   fi
 else
-  JUPYTER_COMMAND=$(which jupyter-lab)
+  JUPYTER_COMMAND="jupyter-lab"
 fi
 
 module list
