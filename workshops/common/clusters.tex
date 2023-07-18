@@ -21,30 +21,30 @@
 \end{figure}
 \end{frame}
 
-\begin{frame}{Decrease in Cost Per FLOPS}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.65\linewidth]{figures/compute_cost.png}
-\end{figure}
-\end{frame}
+%\begin{frame}{Decrease in Cost Per FLOPS}
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.65\linewidth]{figures/compute_cost.png}
+%\end{figure}
+%\end{frame}
 
-\begin{frame}{Additional Problems}
-\begin{itemize}
-\item Growing performance discrepancy between processing units and data storage
-\begin{itemize}
-\item 40\% processor performance improvement per year
-\item 10\% RAM performance improvement per year
-\end{itemize}
-\item Discrepancy leads to memory-bound programs
-\begin{itemize}
-\item CPU spends more and more time idle, waiting on data from
-\end{itemize}
-\item Many simulations require incredible amounts of memory to achieve high-accuracy solutions (PDE, MD, QM, etc.)
-\begin{itemize}
-\item These cannot fit on a single computer alone
-\end{itemize}
-\end{itemize}
-\end{frame}
+%\begin{frame}{Additional Problems}
+%\begin{itemize}
+%\item Growing performance discrepancy between processing units and data storage
+%\begin{itemize}
+%\item 40\% processor performance improvement per year
+%\item 10\% RAM performance improvement per year
+%\end{itemize}
+%\item Discrepancy leads to memory-bound programs
+%\begin{itemize}
+%\item CPU spends more and more time idle, waiting on data from
+%\end{itemize}
+%\item Many simulations require incredible amounts of memory to achieve high-accuracy solutions (PDE, MD, QM, etc.)
+%\begin{itemize}
+%\item These cannot fit on a single computer alone
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
 
 \begin{frame}{The Parallel Solution}
 \begin{itemize}
@@ -68,112 +68,112 @@ significantly more powerful than what is commonly available.
 As such, it's always a moving target.
 \end{frame}
 
-\begin{frame}{Supercomputer Types}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Single processor
-\item Shared Memory Parallel (SMP)
-\item Massively Parallel Processors
-\item Constellations
-\item Clusters
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{figures/mainframe.jpg}
-\end{center}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{History of Parallel Architectures}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{figures/top500_architecture.jpg}
-\end{center}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{figures/top500_core_count.jpg}
-\end{center}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Flynn’s Parallel Architecture Taxonomy}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Single/multiple instruction streams
-\begin{itemize}
-\item Number of types of instructions to be performed at once
-\end{itemize}
-\item Single/multiple data streams
-\begin{itemize}
-\item Number of data streams to be operated on at once
-\end{itemize}
-\item Most modern parallel computers are MIMD
-\item SIMD was popular until 1990s
-\item MISD never used to large extent
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{figures/flynn_taxonomy.jpg}
-\end{center}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Multicomputer Architecture}
-\begin{center}
-\includegraphics[scale=0.25]{figures/cluster_interconnect.jpg}
-\end{center}
-\begin{itemize}
-\item Each processor only has direct access to its own local memory address space
-\begin{itemize}
-\item The same address on different processors refers to different memory locations
-\end{itemize}
-\item Processors interact with one another through passing messages
-\item Commercial multicomputers typically provide a custom switching network to
-      provide low-latency, high-bandwidth access between processors
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Multicomputer Architecture}
-\begin{itemize}
-\item Commodity clusters are build using commodity computers and switches/LANs
-\item Less costly than SMP's
-\item Increased latency/decreased bandwidth between CPUs
-\item Theoretically extensible to arbitrary processor counts
-\item Software becomes complicated
-\item Networking gets expensive
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Cluster Storage Resources}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Usually there is an inverse relationship between storage amount and speed
-\item Clusters and applications can distort the standard order
-\begin{itemize}
-\item Aggregation, e.g. RAID
-\item Network optimization to a specific topology
-\item Applications can be configured and built for specific hardware
-\item New hardware technologies
-\end{itemize}
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{center}
-\includegraphics[width=\textwidth]{figures/storage_hierarchy.jpg}
-\end{center}
-\end{column}
-\end{columns}
-\end{frame}
+%\begin{frame}{Supercomputer Types}
+%\begin{columns}
+%\begin{column}{0.5\textwidth}
+%\begin{itemize}
+%\item Single processor
+%\item Shared Memory Parallel (SMP)
+%\item Massively Parallel Processors
+%\item Constellations
+%\item Clusters
+%\end{itemize}
+%\end{column}
+%\begin{column}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{figures/mainframe.jpg}
+%\end{center}
+%\end{column}
+%\end{columns}
+%\end{frame}
+%
+%\begin{frame}{History of Parallel Architectures}
+%\begin{columns}
+%\begin{column}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{figures/top500_architecture.jpg}
+%\end{center}
+%\end{column}
+%\begin{column}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{figures/top500_core_count.jpg}
+%\end{center}
+%\end{column}
+%\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Flynn’s Parallel Architecture Taxonomy}
+%\begin{columns}
+%\begin{column}{0.5\textwidth}
+%\begin{itemize}
+%\item Single/multiple instruction streams
+%\begin{itemize}
+%\item Number of types of instructions to be performed at once
+%\end{itemize}
+%\item Single/multiple data streams
+%\begin{itemize}
+%\item Number of data streams to be operated on at once
+%\end{itemize}
+%\item Most modern parallel computers are MIMD
+%\item SIMD was popular until 1990s
+%\item MISD never used to large extent
+%\end{itemize}
+%\end{column}
+%\begin{column}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{figures/flynn_taxonomy.jpg}
+%\end{center}
+%\end{column}
+%\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Multicomputer Architecture}
+%\begin{center}
+%\includegraphics[scale=0.25]{figures/cluster_interconnect.jpg}
+%\end{center}
+%\begin{itemize}
+%\item Each processor only has direct access to its own local memory address space
+%\begin{itemize}
+%\item The same address on different processors refers to different memory locations
+%\end{itemize}
+%\item Processors interact with one another through passing messages
+%\item Commercial multicomputers typically provide a custom switching network to
+%      provide low-latency, high-bandwidth access between processors
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Multicomputer Architecture}
+%\begin{itemize}
+%\item Commodity clusters are build using commodity computers and switches/LANs
+%\item Less costly than SMP's
+%\item Increased latency/decreased bandwidth between CPUs
+%\item Theoretically extensible to arbitrary processor counts
+%\item Software becomes complicated
+%\item Networking gets expensive
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Cluster Storage Resources}
+%\begin{columns}
+%\begin{column}{0.5\textwidth}
+%\begin{itemize}
+%\item Usually there is an inverse relationship between storage amount and speed
+%\item Clusters and applications can distort the standard order
+%\begin{itemize}
+%\item Aggregation, e.g. RAID
+%\item Network optimization to a specific topology
+%\item Applications can be configured and built for specific hardware
+%\item New hardware technologies
+%\end{itemize}
+%\end{itemize}
+%\end{column}
+%\begin{column}{0.5\textwidth}
+%\begin{center}
+%\includegraphics[width=\textwidth]{figures/storage_hierarchy.jpg}
+%\end{center}
+%\end{column}
+%\end{columns}
+%\end{frame}
 
 \begin{frame}{Cluster Super Computers}
 \begin{figure}
@@ -185,39 +185,105 @@ As such, it's always a moving target.
 
 \section{SMU HPC Clusters}
 
-\begin{frame}{ManeFrame II (M2) Node Types}
+\begin{frame}{SMU HPC Clusters}
 \begin{table}
-\tiny
-\begin{tabular}{lllll}
+\scriptsize
+\begin{tabular}{llllll}
 \toprule
-Type & Quantity & Cores & Memory [GB] & Additional Resources\\
+HPC System & M1 & M2 & M2 & SuperPOD & M3 \\
 \midrule
-Standard-Memory & 176 & 36 & 256 & \\
-Medium-Memory-1 & 35 & 36 & 768 & \\
-Medium-Memory-2 & 4 & 24 & 768 & 3 TB SSD local scratch\\
-High-Memory-1 & 5 & 36 & 1,536 & \\
-High-Memory-2 & 6 & 40 & 1,536 & 3 TB SSD local scratch\\
-GPGPU-1 & 36 & 36 & 256 & NVIDIA P100 GPU has 3,584 CUDA cores and 16 GB CoWoS\\
-MIC-1 & 36 & 64 & 384 & 16 GB of high bandwidth (400 GB/s) stacked memory\\
-VDI & 5 & 36 & 256 & NVIDIA Quadro M5000 GPU\\
-v100x8 & 3 & 36 & 768 & 8 NVIDIA V100 GPUs with 5,120 CUDA cores and 32 GB CoWoS\\
-Faculty Partner Nodes & 3 &  &  & Various research specific NVIDIA GPU configurations\\
-\midrule
-ManeFrame II & 354 & 11,276 & 120 TB & 2.8 PB storage and InfiniBand network\\
+Year & 2014 & 2017 & 2019 & 2022 & 2023 \\
+Compute Ability & 104 TFLOPS & 630 TFLOPS & 870 TFLOPS & 1,644 TFLOPS &
+1,003 TFLOPS \\
+Number of Nodes & 1,104 & 349 & 354 & 20 & 178 \\
+CPU Cores & 8,832 & 11,088 & 11,276 & 2,560 & 22,784 \\
+Total GPU Cores & 0 & 132,608 & 275,968 & 1,392,640 & 0 \\
+Total Memory & 29.2 TB & 116.5 TB & 120 TB & 52.5 TB & 101 TB \\
+Network Bandwidth & 20 Gb/s & 100 Gb/s & 100 Gb/s & 200 Gb/s & 200
+Gb/s \\
+Work Storage & None & None & 768 TB & 768 TB & 3.5 PB \\
+Scratch Space & 1.4 PB & 1.4 PB & 2.8 PB & 750 TB & 3.5 PB \\
+Archive Capabilities & No & Yes & Yes & No & No \\
+Operating System & Scientific Linux 6 & CentOS 7 & CentOS 7 & Ubuntu
+20.04 & Ubuntu 22.04 \\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{frame}
 
+\begin{frame}{M3 Node Configuration}
+\begin{table}
+\begin{tabular}{lll}
+\toprule
+Resource & Standard-Memory & High-Memory \\
+\midrule
+Nodes & 170 & 8 \\
+Processors & AMD EPYC 7763 & AMD EPYC 7763 \\
+Frequency & 2.45 GHz & 2.45 GHz \\
+CPUs/Node & 2 & 2 \\
+Cores/Node & 128 & 128 \\
+Memory/Node & 512 GB & 2 TB \\
+Local Scratch/Node & None & 4.3 TB \\
+Interconnect & 200 Gb/s & 200 Gb/s \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+
 \begin{frame}{NVIDIA DGX SuperPOD (MP)}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{itemize}
-\item 20 NVIDIA DGX nodes
-\item 8 NVIDIA A100 80 GB GPUs per node
-\item Dual AMD Epyc 7742 2.25 GHz 64-core ``Rome'' processors per node
-\item 200 Gb/s \(\times\) 10 NVIDIA/Mellanox InfiniBand networking
-\end{itemize}
+\begin{table}
+\tiny
+\begin{tabular}{ll}
+\toprule
+Component & Summary \\
+\midrule
+Computational Ability & 1,644 TFLOPS \\
+Number of Nodes & 20 \\
+CPU Cores & 2,560 \\
+GPU Accelerator Cores & 1,392,640 \\
+Total Memory & 52.5 TB \\
+Interconnect Bandwidth & 10x200 Gb/s Infiniband Connections Per Node \\
+Work Storage & 768 TB (Shared) \\
+Scratch Storage & 750 TB (Raw) \\
+Operating System & Ubuntu 20.04 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/superpod.jpg}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{NVIDIA DGX Node Configuration}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{table}
+\tiny
+\begin{tabular}{ll}
+\toprule
+Resource & DGX Node \\
+\midrule
+Processors & AMD EPYC 7742 \\
+CPUs/Node & 2 \\
+Cores/Node & 128 \\
+Memory/Node & 2 TB \\
+GPUs & NVIDIA A100 Tensor Core GPU \\
+GPUs/Node & 8 \\
+GPU Memory/GPU & 80 GB \\
+GPU Interconnect & NVLink \\
+Local Scratch/Node & 27 TB \\
+Network & 10x200 Gb/s \\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{column}
 \begin{column}{0.5\textwidth}
 \begin{center}
@@ -231,19 +297,24 @@ ManeFrame II & 354 & 11,276 & 120 TB & 2.8 PB storage and InfiniBand network\\
 \begin{description}
 \item[\$HOME]
 \begin{itemize}
-  \item Default file system when logging into M2, e.g. \mintinline{sh}{/users/$USER}.
-  \item Space should be used to write, edit, compile programs, and job submission scripts, etc.
+  \item Default file system when logging into a cluster.
+  \item Space should be used to write, edit, compile programs, and job
+        submission scripts, etc.
   \item Restricted by quotas (200 GB) and backed-up.
+  \item Each cluster has it's own \mintinline{sh}{$HOME}.
 \end{itemize}
 \item[\$WORK]
 \begin{itemize}
-  \item Long term storage at \mintinline{sh}{/work/users/$USER}.
+  \item Designed for longer term storage than \mintinline{sh}{$HOME}.
   \item Restricted by quotas (8 TB) and not backed-up.
+  \item All clusters have access to \mintinline{sh}{$WORK}.
 \end{itemize}
 \item[\$SCRATCH]
 \begin{itemize}
- \item Scratch space at \mintinline{sh}{/scratch/users/$USER}.
- \item Treat \$SCRATCH as a volatile file system that is not backed-up.
+  \item High-performance scratch space.
+  \item Treat \mintinline{sh}{$SCRATCH} as a volatile file system.
+  \item Restricted by quotas to 60 days and not backed-up.
+  \item Each cluster has it's own \mintinline{sh}{$SCRATCH}.
 \end{itemize}
 \end{description}
 \end{frame}

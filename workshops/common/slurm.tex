@@ -13,7 +13,7 @@
 
 \begin{frame}{Cluster Resource Management}
 \begin{itemize}
-\item ManeFrame resource allocation is governed by a fair-share factor
+\item SMU HPC resource allocation is governed by a fair-share factor
 \begin{itemize}
 \item Preference is given to those who have submitted the fewest jobs
 \item Prevents a single user from “blocking” subsequent job submissions of
@@ -25,48 +25,55 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{ManeFrame II (M2) Partitions (Queues)}
+\begin{frame}{M3 Partitions (Queues)}
 \begin{table}
-\tiny
+\scriptsize
 \begin{tabular}{llll}
 \toprule
 Partition & Duration & Cores & Memory [GB]\\
 \midrule
-development & 2 hours & various & various\\
-htc & 1 day & 1 & 6\\
-standard-mem-s & 1 day & 36 & 256\\
-standard-mem-m & 1 week & 36 & 256\\
-standard-mem-l & 1 month & 36 & 256\\
-medium-mem-1-s & 1 day & 36 & 768\\
-medium-mem-1-m & 1 week & 36 & 768\\
-medium-mem-1-l & 1 month & 36 & 768\\
-medium-mem-2 & 2 weeks & 24 & 768\\
-high-mem-1 & 2 weeks & 36 & 1538\\
-high-mem-2 & 2 weeks & 40 & 1538\\
-mic & 1 week & 64 & 384\\
-gpgpu-1 & 1 week & 36 & 256\\
-v100x8 & 1 week & 1 & 20\\
-fp-gpgpu-2 & various & 24 & 128\\
-fp-gpgpu-3 & various & 40 & 384\\
+dev & 2 hours & various & various\\
+htc & 1 day & 1 & 3.9\\
+standard-s & 1 day & 128 & 512\\
+standard-l & 1 week & 128 & 512\\
+highmem & 5 days & 128 & 2048\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{frame}
 
-\begin{frame}{Basic SLURM Commands}
+\begin{frame}{MP Partitions (Queues)}
 \begin{table}
-\tiny
-\begin{tabular}{lll}
+\scriptsize
+\begin{tabular}{lllll}
 \toprule
-Command & Description & Example Usage\\
+Partition & Duration & Cores & GPUs & Memory [GB]\\
 \midrule
-sinfo & Displays partition and node state information & \mintinline{sh}{sinfo}\\
-squeue & Displays queue state information & \mintinline{sh}{squeue -u $USER}\\
-sbatch & Submits batch script & \mintinline{sh}{sbatch job.submit}\\
-srun & Requests resources for interactive use & \mintinline{sh}{srun -p development --mem=1G --exclusive --pty $SHELL}\\
-scancel & Cancel jobs & \mintinline{sh}{scancel 12345678}\\
+default & 2 days & 16 & 1 & 96\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{frame}
+
+%\begin{frame}{Basic SLURM Commands}
+%\begin{table}
+%\tiny
+%\begin{tabular}{lll}
+%\toprule
+%Command & Description & Example Usage\\
+%\midrule
+%sinfo & Displays partition and node state information & \mintinline{sh}{sinfo}\\
+%squeue & Displays queue state information & \mintinline{sh}{squeue -u $USER}\\
+%sbatch & Submits batch script & \mintinline{sh}{sbatch job.submit}\\
+%srun & Requests resources for interactive use & \mintinline{sh}{srun -p dev -c 1 --mem=1G --pty $SHELL}\\
+%scancel & Cancel jobs & \mintinline{sh}{scancel 12345678}\\
+%\bottomrule
+%\end{tabular}
+%\end{table}
+%\end{frame}
+
+\section{Demo}
+
+\section{Tour}
+
 
