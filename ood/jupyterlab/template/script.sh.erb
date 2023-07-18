@@ -65,7 +65,7 @@ module purge
   # IT **SHOULD** have already been checked ...
   ENV_PATH=${WORK}/.conda/envs/${NAME}
   echo "Checking ENV_PATH: ${ENV_PATH}"
-  if [ -d "${ENV_PATH}" ]
+  if [ -d "${ENV_PATH}" ] && [ ! ${ENV_EXISTS} ]
   then
     ENV_EXISTS=1
     LOAD_WARNINGS=1
@@ -80,7 +80,7 @@ module purge
 
     # build the environment with mamba
     echo "TIMING - Starting environment build at: $(date)"
-    mamba env create -n ${NAME} -f environment.yml &> "${ENV_BUILD_LOG}"
+    mamba env create -vv -n ${NAME} -f environment.yml &> "${ENV_BUILD_LOG}"
     echo "TIMING - Finisied environment build at: $(date)"
   fi
 
