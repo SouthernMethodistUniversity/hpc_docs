@@ -1,3 +1,15 @@
+# If building an env. Wait for that to finish
+<% if context.python_version == "new" %>
+  echo "TIMING - Starting wait for env build at: $(date)"
+  sleep 10 # sleep for a bit to let the main script catch up
+  isInFile=$(cat "${ENV_BUILD_LOG}" | grep -c "NEW ENV BUILD COMPLETE")
+  while (( ! $isInFile )); do
+    sleep 5
+    isInFile=$(cat "${ENV_BUILD_LOG}" | grep -c "NEW ENV BUILD COMPLETE")
+  done
+  echo "TIMING - Wait ended for env build at: $(date)"
+<% end %>
+
 # Wait for the Jupyter Notebook server to start
 echo "Waiting for Jupyter Notebook server to open port ${port}..."
 echo "TIMING - Starting wait at: $(date)"

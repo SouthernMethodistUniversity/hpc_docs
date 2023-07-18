@@ -20,14 +20,15 @@ end
 
 <%- end -%>
 
+<% if !warnings.empty? %>
+### Warning
 <%- warnings.each do |q| -%>
-### Warning:
-
-> <%= q %>
+> <p><%= q %></p>
+<%- end -%>
 
 ---
 
-<%- end -%>
+<% end %>
 
 > This job will automatically end after it has been idle for <%= @user_context["notebook_timeout"] %> minutes
 
