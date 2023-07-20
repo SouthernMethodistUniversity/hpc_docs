@@ -68,7 +68,6 @@ def check_rpath(file, pkg_prefix):
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
   test_str = str(pkg_prefix).strip()
   for line in iter(proc.stdout.readline,''):
-    #print(line)
     if test_str in line:
       return True
 
@@ -82,7 +81,9 @@ parser.add_argument('package', metavar='pkg', nargs='+',
 parser.add_argument('-o', '--outfile',
                     help="Send output to the specified file instead of screen",
                     type=pathlib.Path)
-
+parser.add_argument('-v', '--verbose',
+                    help="output debugging information",
+                    default=False, action='store_true')
 # parse the input
 args = parser.parse_args()
 
@@ -98,7 +99,8 @@ else:
 # get the dependencies
 deps = get_spack_dep_hashes(pkg)
 pkg_prefix = find_prefix(pkg)
-#print("path: ", pkg_prefix)
+if args.verbose:
+  print("path: ", pkg_prefix)
 
 # recursively check dependencies
 deps_to_check = deps
@@ -110,29 +112,38 @@ while len(deps_to_check) > 0:
   deps = deps + list(set(tmp_deps) - set(deps))
   deps_to_check = list(set(deps) - set(checked_deps))
 
-#print("deps: ", deps)
+if args.verbose:
+  print("deps: ", deps)
 
 # get dependency paths
 dep_paths = deps
 for i in range(0, len(deps)):
   dep_paths[i] = find_prefix(deps[i])
 
-#print("deps_paths: ", dep_paths)
+if args.verbose:
+  print("deps_paths: ", dep_paths)
 
 # check all files in all dependency folders to see if there's an rpath
 # TODO / FIXME: can we be smart about this? Are these only in lib and bin dirs?
 files_to_update = []
 for p in dep_paths:
 
+  if args.verbose:
+    print("Checking: ", p)
+
   # loop over all files in current path
   for subdir, dirs, files in os.walk(p):
     for file in files:
       f = p.joinpath(subdir).joinpath(file)
-#       print("\tchecking :", f)
+      if args.verbose:
+        print("\tchecking :", f)
       if check_rpath(f, pkg_prefix):
-#        print(f)
+        if args.verbose:
+          print("\t\t valid")
         files_to_update.append(f)
 
-print("files to update: (", len(files_to_update), ")")
+if args.verbose:
+  print("files to update: (", len(files_to_update), ")")
+
 for f in files_to_update:
   print(f)
