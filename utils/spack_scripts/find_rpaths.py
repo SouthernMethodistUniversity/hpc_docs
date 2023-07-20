@@ -5,6 +5,7 @@ import sys # for exit
 import io # for buffers
 import subprocess # for running commands
 import shlex # for parsing out terminal commands
+from datetime import datetime # to get current date and time
 
 def get_spack_dep_hashes(pkg):
   command_base = 'spack dependents --installed '
@@ -79,7 +80,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('package', metavar='pkg', nargs='+',
                     help="Spack package to search for")
 parser.add_argument('-o', '--outfile',
-                    help="Send output to the specified file instead of screen",
+                    help="File to save output to (defaults to pkg_name_{date}_rpath_dependents.txt)",
                     type=pathlib.Path)
 parser.add_argument('-v', '--verbose',
                     help="output debugging information",
@@ -95,6 +96,16 @@ else:
   pkg = ''
   for p in args.package:
     pkg = pkg + p + ' '
+
+if args.outfile is None:
+  now = datetime.now()
+  date_str = now.strftime("%m-%d-%Y_%H:%M:%S")
+  outfile = pathlib.Path(str(pkg).strip() + '_' + date_str + '_rpath_dependents.txt')
+else:
+  outfile = args.outfile
+
+if args.verbose:
+  print("outfile: ", outfile)
 
 # get the dependencies
 deps = get_spack_dep_hashes(pkg)
@@ -145,11 +156,11 @@ for p in dep_paths:
 if args.verbose:
   print("files to update: (", len(files_to_update), ")")
 
-if args.outfile:
-  file = open(args.outfile,'w')
-  for f in files_to_update:
-    file.write(str(f)+"\n")
-  file.close()
-else:
+file = open(outfile,'w')
+for f in files_to_update:
+  file.write(str(f)+"\n")
+file.close()
+
+if args.verbose:
   for f in files_to_update:
     print(f)
