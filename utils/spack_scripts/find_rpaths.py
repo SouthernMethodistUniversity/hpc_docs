@@ -61,6 +61,18 @@ def find_prefix(pkg):
 
   return pathlib.Path(path_string)
 
+def check_rpath(file, pkg_prefix):
+  command_base = 'chrpath -l '
+  command = command_base + str(file)
+  run_cmd = shlex.split(command)
+  proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+  test_str = str(pkg_prefix).strip()
+  for line in iter(proc.stdout.readline,''):
+    #print(line)
+    if test_str in line:
+      return True
+
+  return False
 
 # Set up command line options
 parser = argparse.ArgumentParser(
@@ -86,7 +98,7 @@ else:
 # get the dependencies
 deps = get_spack_dep_hashes(pkg)
 pkg_prefix = find_prefix(pkg)
-print("path: ", pkg_prefix)
+#print("path: ", pkg_prefix)
 
 # recursively check dependencies
 deps_to_check = deps
@@ -98,11 +110,29 @@ while len(deps_to_check) > 0:
   deps = deps + list(set(tmp_deps) - set(deps))
   deps_to_check = list(set(deps) - set(checked_deps))
 
-print("deps: ", deps)
+#print("deps: ", deps)
 
 # get dependency paths
 dep_paths = deps
 for i in range(0, len(deps)):
   dep_paths[i] = find_prefix(deps[i])
 
-print("deps_paths: ", dep_paths)
+#print("deps_paths: ", dep_paths)
+
+# check all files in all dependency folders to see if there's an rpath
+# TODO / FIXME: can we be smart about this? Are these only in lib and bin dirs?
+files_to_update = []
+for p in dep_paths:
+
+  # loop over all files in current path
+  for subdir, dirs, files in os.walk(p):
+    for file in files:
+      f = p.joinpath(subdir).joinpath(file)
+#       print("\tchecking :", f)
+      if check_rpath(f, pkg_prefix):
+#        print(f)
+        files_to_update.append(f)
+
+print("files to update: (", len(files_to_update), ")")
+for f in files_to_update:
+  print(f)
