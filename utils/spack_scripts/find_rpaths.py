@@ -45,6 +45,22 @@ def get_spack_dep_hashes(pkg):
 
   return deps
 
+def find_prefix(pkg):
+  command_base = 'spack find --paths '
+  command = command_base + pkg
+  run_cmd = shlex.split(command)
+  proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+  while (True):
+    line = proc.stdout.readline()
+    if (line == ""): break
+    if '--' in line:
+      continue
+    else:
+      path_string = line.strip().split(" ")[-1]
+
+  return pathlib.Path(path_string)
+
 
 # Set up command line options
 parser = argparse.ArgumentParser(
@@ -69,6 +85,8 @@ else:
 
 # get the dependencies
 deps = get_spack_dep_hashes(pkg)
+pkg_prefix = find_prefix(pkg)
+print("path: ", pkg_prefix)
 
 # recursively check dependencies
 deps_to_check = deps
@@ -81,3 +99,10 @@ while len(deps_to_check) > 0:
   deps_to_check = list(set(deps) - set(checked_deps))
 
 print("deps: ", deps)
+
+# get dependency paths
+dep_paths = deps
+for i in range(0, len(deps)):
+  dep_paths[i] = find_prefix(deps[i])
+
+print("deps_paths: ", dep_paths)
