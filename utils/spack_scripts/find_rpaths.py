@@ -12,11 +12,15 @@ def get_spack_dep_hashes(pkg):
   run_cmd = shlex.split(command)
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
+  if pkg == '/':
+   return []
+
   dep_string = ''
   err=False
   while (True):
     line = proc.stdout.readline()
     if (line == ""): break
+    if "No dependents" in line: return []
     if 'Error' in line:
       print('Error:')
       print(proc.stdout)
@@ -31,9 +35,13 @@ def get_spack_dep_hashes(pkg):
   if err:
     sys.exit(-1)
 
+  dep_string=" ".join(dep_string.split())
   deps = dep_string.strip().split(" ")
   for i in range(0, len(deps)):
     deps[i] = '/' + deps[i]
+
+  if deps == '/':
+   deps = []
 
   return deps
 
@@ -61,5 +69,15 @@ else:
 
 # get the dependencies
 deps = get_spack_dep_hashes(pkg)
+
+# recursively check dependencies
+deps_to_check = deps
+checked_deps = []
+
+while len(deps_to_check) > 0:
+  tmp_deps = get_spack_dep_hashes(deps_to_check[0])
+  checked_deps.append(deps_to_check[0])
+  deps = deps + list(set(tmp_deps) - set(deps))
+  deps_to_check = list(set(deps) - set(checked_deps))
 
 print("deps: ", deps)
