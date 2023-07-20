@@ -110,6 +110,8 @@ if args.verbose:
 # get the dependencies
 deps = get_spack_dep_hashes(pkg)
 pkg_prefix = find_prefix(pkg)
+if pkg_prefix.is_symlink():
+  pkg_prefix = pkg_prefix.parent.joinpath(pkg_prefix.readlink())
 if args.verbose:
   print("path: ", pkg_prefix)
 
