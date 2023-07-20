@@ -145,5 +145,11 @@ for p in dep_paths:
 if args.verbose:
   print("files to update: (", len(files_to_update), ")")
 
-for f in files_to_update:
-  print(f)
+if args.outfile:
+  file = open(args.outfile,'w')
+  for f in files_to_update:
+    file.write(str(f)+"\n")
+  file.close()
+else:
+  for f in files_to_update:
+    print(f)
