@@ -24,18 +24,22 @@ attributes:
       - ["Development Queue (2 hour limit)", "dev",
         data-max-bc-num-hours: 2,
         data-max-bc-num-cores: 128,
+        data-max-bc-num-memory: 500,
         ]
       - ["HTC Queue (12 hour limit, 1 core)", "htc",
         data-max-bc-num-hours: 12,
         data-max-bc-num-cores: 1,
+        data-max-bc-num-memory: 500,
         ]
       - ["Standard Memory Queue (12 hour limit)", "standard-s",
         data-max-bc-num-hours: 12,
         data-max-bc-num-cores: 128,
+        data-max-bc-num-memory: 500,
         ]
       - ["High Memory Queue (12 hour limit)", "highmem",
         data-max-bc-num-hours: 12,
         data-max-bc-num-cores: 128,
+        data-max-bc-num-memory: 2000,
         ]
   desktop_os:
     label: "Operating System"
