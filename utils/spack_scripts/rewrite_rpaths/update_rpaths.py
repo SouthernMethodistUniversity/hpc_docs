@@ -104,7 +104,7 @@ else:
   old_prefix = args.oldpath
 
 now  = datetime.now()
-date_str = now.strftime("%m-%d-%Y_%H:%M:%S")
+date_str = now.strftime("%m-%d-%Y_%H-%M-%S")
 if args.outfile is None:
   outfile = pathlib.Path('rpath_update' + '_' + date_str + '.json')
 else:
