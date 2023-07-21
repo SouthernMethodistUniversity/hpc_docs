@@ -6,6 +6,7 @@ import io # for buffers
 import subprocess # for running commands
 import shlex # for parsing out terminal commands
 from datetime import datetime # to get current date and time
+import json # for logging
 
 def get_rpath(pkg):
   command_base = 'patchelf --print-rpath '
@@ -99,6 +100,13 @@ if args.oldpath is None:
 else:
   old_prefix = args.oldpath
 
+if args.outfile is None:
+  outfile = now = datetime.now()
+  date_str = now.strftime("%m-%d-%Y_%H:%M:%S")
+  outfile = pathlib.Path('rpath_update' + '_' + date_str + '.json')
+else:
+  outfile = args.outfile
+
 # read in package locations
 with open(pkg_file, 'r') as f:
   pkg_paths = f.readlines()
@@ -107,6 +115,10 @@ with open(pkg_file, 'r') as f:
 
 if args.verbose:
   print("pkg_paths: \n", pkg_paths)
+
+
+# for logging
+packages = []
 
 # loop over the packages to update
 for p in pkg_paths:
@@ -144,9 +156,37 @@ for p in pkg_paths:
   if args.verbose:
     print("new_rpath: \n", new_rpath)
 
+  # store data
+  pkg_settings = {
+    "path": str(p),
+    "original rpath": cur_rpath,
+    "updated rpath": new_rpath,
+    "original prefix": str(old_prefix),
+    "new prefix": str(prefix)
+  }
+
+  packages.append(pkg_settings)
+
   # set new rpath
   set_rpath(p, new_rpath)
 
   if args.verbose:
     tmp_rpath = get_rpath(p)
     print("set new_rpath: \n", tmp_rpath)
+
+log = {
+  "input": [
+    {
+     "verbose": args.verbose,
+     "packagepaths": str(args.packagepaths),
+     "outfile": str(outfile),
+     "newpath": str(args.newpath),
+     "oldpath": str(args.oldpath)
+    }
+  ],
+  "packages": packages
+}
+
+json_log = json.dumps(log, indent=2)
+with open(outfile, "w") as f:
+  f.write(json_log)
