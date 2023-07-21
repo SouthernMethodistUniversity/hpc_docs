@@ -7,6 +7,9 @@ import subprocess # for running commands
 import shlex # for parsing out terminal commands
 from datetime import datetime # to get current date and time
 import json # for logging
+import shutil # for copying files
+import tarfile # for compression
+
 
 def get_rpath(pkg):
   command_base = 'patchelf --print-rpath '
@@ -100,12 +103,17 @@ if args.oldpath is None:
 else:
   old_prefix = args.oldpath
 
+now  = datetime.now()
+date_str = now.strftime("%m-%d-%Y_%H:%M:%S")
 if args.outfile is None:
-  outfile = now = datetime.now()
-  date_str = now.strftime("%m-%d-%Y_%H:%M:%S")
   outfile = pathlib.Path('rpath_update' + '_' + date_str + '.json')
 else:
   outfile = args.outfile
+
+# create a folder to save backup versions of packages to
+backup_dir = pathlib.Path("rpath_pkg_backup_" + date_str + "/")
+backup_dir.mkdir(parents=True, exist_ok=True)
+backup_tar = pathlib.Path("rpath_pkg_backup_" + date_str + ".tar.gz")
 
 # read in package locations
 with open(pkg_file, 'r') as f:
@@ -167,6 +175,9 @@ for p in pkg_paths:
 
   packages.append(pkg_settings)
 
+  # save a backup of the package before updating
+  shutil.copy2(p, backup_dir)
+
   # set new rpath
   set_rpath(p, new_rpath)
 
@@ -190,3 +201,13 @@ log = {
 json_log = json.dumps(log, indent=2)
 with open(outfile, "w") as f:
   f.write(json_log)
+
+# save a copy of the log in the backup dir so we can use it to
+# restore packages if needed
+backup_config = backup_dir.joinpath('config.json')
+with open(backup_config, "w") as f:
+  f.write(json_log)
+
+# compress backup
+with tarfile.open(backup_tar, "w:gz") as tar:
+  tar.add(backup_dir, arcname=os.path.basename(backup_dir))
