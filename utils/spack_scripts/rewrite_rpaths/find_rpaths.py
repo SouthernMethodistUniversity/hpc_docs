@@ -68,6 +68,9 @@ def check_rpath(file, pkg_prefix):
   run_cmd = shlex.split(command)
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
   test_str = str(pkg_prefix).strip()
+  # make sure path ends with slash
+  if test_str[-1] != os.sep:
+    test_str = test_str + os.sep
   for line in iter(proc.stdout.readline,''):
     if test_str in line:
       return True
