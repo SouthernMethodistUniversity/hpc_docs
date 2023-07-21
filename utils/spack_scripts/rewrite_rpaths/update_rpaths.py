@@ -22,6 +22,15 @@ def get_rpath(pkg):
 
   return rpath_str
 
+def set_rpath(pkg, rpath, verbose=False):
+  command_base = 'patchelf --set-rpath '
+  command = command_base + rpath + ' ' + pkg
+  run_cmd = shlex.split(command)
+  proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE)
+
+  if verbose:
+    print(proc)
+
 def get_needed_libs(pkg):
   command_base = 'patchelf --print-needed '
   command = command_base + pkg
@@ -61,6 +70,11 @@ parser.add_argument('-v', '--verbose',
 parser.add_argument('-n', '--newpath',
                     help="Prefix for the new library path",
                     type=pathlib.Path)
+parser.add_argument( '--oldpath',
+                    help="Prefix for the old library path to update",
+                    type=pathlib.Path)
+
+
 # parse the input
 args = parser.parse_args()
 
@@ -77,6 +91,13 @@ if args.packagepaths is None:
   sys.exit(-1)
 else:
   pkg_file = args.packagepaths
+
+if args.oldpath is None:
+  print("No old prefix specified")
+  parser.print_help()
+  sys.exit(-1)
+else:
+  old_prefix = args.oldpath
 
 # read in package locations
 with open(pkg_file, 'r') as f:
@@ -99,13 +120,33 @@ for p in pkg_paths:
     print("cur_needs: \n", cur_needs)
 
   # check to see if one of the needed libs is in the new path
-  update_list = []
-  for need in cur_needs:
-    need_path = get_new_lib_path(need, prefix)
-    if need_path:
-      tmp = [need, need_path]
-      update_list.append(tmp)
+  #update_list = []
+  #for need in cur_needs:
+  #  need_path = get_new_lib_path(need, prefix)
+  #  if need_path:
+  #    tmp = [need, need_path]
+  #    update_list.append(tmp)
+  #
+  #if args.verbose:
+  #  print("update_list: \n", update_list)
+
+  # generate a new rpath
+  old_str = str(old_prefix).strip()
+  if old_str[-1] != os.sep:
+    old_str = old_str + os.sep
+
+  new_str = str(prefix).strip()
+  if new_str[-1] != os.sep:
+    new_str = new_str + os.sep
+
+  new_rpath = cur_rpath.replace(old_str, new_str)
 
   if args.verbose:
-    print("update_list: \n", update_list)
+    print("new_rpath: \n", new_rpath)
 
+  # set new rpath
+  set_rpath(p, new_rpath)
+
+  if args.verbose:
+    tmp_rpath = get_rpath(p)
+    print("set new_rpath: \n", tmp_rpath)
