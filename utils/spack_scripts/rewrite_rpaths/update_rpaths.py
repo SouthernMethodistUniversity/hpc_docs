@@ -10,10 +10,79 @@ import json # for logging
 import shutil # for copying files
 import tarfile # for compression
 
+def get_spack_dep_hashes(pkg):
+  command_base = 'spack dependents --installed '
+  command = command_base + pkg
+  run_cmd = shlex.split(command)
+  proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+  if pkg == '/':
+   return []
+
+  dep_string = ''
+  err=False
+  while (True):
+    line = proc.stdout.readline()
+    if (line == ""): break
+    if "No dependents" in line: return []
+    if 'Error' in line:
+      print('Error:')
+      print(proc.stdout)
+      err = True
+    elif '--' in line:
+      continue
+    else:
+      dep_string = dep_string + line.strip().split(" ")[0] + ' '
+      if err:
+        print(line)
+
+  if err:
+    sys.exit(-1)
+
+  dep_string=" ".join(dep_string.split())
+  deps = dep_string.strip().split(" ")
+  for i in range(0, len(deps)):
+    deps[i] = '/' + deps[i]
+
+  if deps == '/':
+   deps = []
+
+  return deps
+
+def find_prefix(pkg):
+  command_base = 'spack find --paths '
+  command = command_base + pkg
+  run_cmd = shlex.split(command)
+  proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+  while (True):
+    line = proc.stdout.readline()
+    if (line == ""): break
+    if '--' in line:
+      continue
+    else:
+      path_string = line.strip().split(" ")[-1]
+
+  return pathlib.Path(path_string)
+
+def check_rpath(file, pkg_prefix):
+  command_base = 'chrpath -l '
+  command = command_base + str(file)
+  run_cmd = shlex.split(command)
+  proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+  test_str = str(pkg_prefix).strip()
+  # make sure path ends with slash
+  if test_str[-1] != os.sep:
+    test_str = test_str + os.sep
+  for line in iter(proc.stdout.readline,''):
+    if test_str in line:
+      return True
+
+  return False
 
 def get_rpath(pkg):
   command_base = 'patchelf --print-rpath '
-  command = command_base + pkg
+  command = command_base + str(pkg)
   run_cmd = shlex.split(command)
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE)
 
@@ -28,7 +97,7 @@ def get_rpath(pkg):
 
 def set_rpath(pkg, rpath, verbose=False):
   command_base = 'patchelf --set-rpath '
-  command = command_base + rpath + ' ' + pkg
+  command = command_base + rpath + ' ' + str(pkg)
   run_cmd = shlex.split(command)
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE)
 
@@ -37,7 +106,7 @@ def set_rpath(pkg, rpath, verbose=False):
 
 def get_needed_libs(pkg):
   command_base = 'patchelf --print-needed '
-  command = command_base + pkg
+  command = command_base + str(pkg)
   run_cmd = shlex.split(command)
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE)
 
@@ -61,10 +130,9 @@ def get_new_lib_path(lib, prefix):
 
 # Set up command line options
 parser = argparse.ArgumentParser(
-    description='Update rpaths for package dependents in a specified list.')
-parser.add_argument('-i', '--packagepaths',
-                    help="File with package(s) to update (1 per line)",
-                    type=pathlib.Path)
+    description='Update rpaths for package dependents of a specific spack install package.')
+parser.add_argument('package', metavar='pkg', nargs='+',
+                    help="Spack package to search for")
 parser.add_argument('-o', '--outfile',
                     help="File to save output to (defaults to rpath_update_{date}.json)",
                     type=pathlib.Path)
@@ -74,13 +142,18 @@ parser.add_argument('-v', '--verbose',
 parser.add_argument('-n', '--newpath',
                     help="Prefix for the new library path",
                     type=pathlib.Path)
-parser.add_argument( '--oldpath',
-                    help="Prefix for the old library path to update",
-                    type=pathlib.Path)
-
 
 # parse the input
 args = parser.parse_args()
+
+if args.package is None:
+  print("No package specified")
+  parser.print_help()
+  sys.exit(-1)
+else:
+  pkg = ''
+  for p in args.package:
+    pkg = pkg + p + ' '
 
 if args.newpath is None:
   print("No prefix specified to update rpaths specified")
@@ -89,20 +162,6 @@ if args.newpath is None:
 else:
   prefix = args.newpath
 
-if args.packagepaths is None:
-  print("No file with packages to update specified")
-  parser.print_help()
-  sys.exit(-1)
-else:
-  pkg_file = args.packagepaths
-
-if args.oldpath is None:
-  print("No old prefix specified")
-  parser.print_help()
-  sys.exit(-1)
-else:
-  old_prefix = args.oldpath
-
 now  = datetime.now()
 date_str = now.strftime("%m-%d-%Y_%H-%M-%S")
 if args.outfile is None:
@@ -110,20 +169,64 @@ if args.outfile is None:
 else:
   outfile = args.outfile
 
+# get the dependencies
+deps = get_spack_dep_hashes(pkg)
+old_prefix = find_prefix(pkg)
+if old_prefix.is_symlink():
+  old_prefix = old_prefix.parent.joinpath(old_prefix.readlink())
+if args.verbose:
+  print("path: ", old_prefix)
+
+# recursively check dependencies
+deps_to_check = deps
+checked_deps = []
+
+while len(deps_to_check) > 0:
+  tmp_deps = get_spack_dep_hashes(deps_to_check[0])
+  checked_deps.append(deps_to_check[0])
+  deps = deps + list(set(tmp_deps) - set(deps))
+  deps_to_check = list(set(deps) - set(checked_deps))
+
+if args.verbose:
+  print("deps: ", deps)
+
+# get dependency paths
+dep_paths = deps
+for i in range(0, len(deps)):
+  dep_paths[i] = find_prefix(deps[i])
+
+if args.verbose:
+  print("deps_paths: ", dep_paths)
+
+# check all files in all dependency folders to see if there's an rpath
+# TODO / FIXME: can we be smart about this? Are these only in lib and bin dirs?
+pkg_paths = []
+for p in dep_paths:
+
+  if args.verbose:
+    print("Checking: ", p)
+
+  # loop over all files in current path
+  for subdir, dirs, files in os.walk(p):
+    for file in files:
+      f = p.joinpath(subdir).joinpath(file)
+      if args.verbose:
+        print("\tchecking :", f)
+      if check_rpath(f, old_prefix):
+        if args.verbose:
+          print("\t\t valid")
+        pkg_paths.append(f)
+
+if args.verbose:
+  print("files to update: (", len(pkg_paths), ")")
+
 # create a folder to save backup versions of packages to
 backup_dir = pathlib.Path("rpath_pkg_backup_" + date_str + "/")
 backup_dir.mkdir(parents=True, exist_ok=True)
 backup_tar = pathlib.Path("rpath_pkg_backup_" + date_str + ".tar.gz")
 
-# read in package locations
-with open(pkg_file, 'r') as f:
-  pkg_paths = f.readlines()
-  for i in range(0, len(pkg_paths)):
-    pkg_paths[i] = pkg_paths[i].strip()
-
 if args.verbose:
   print("pkg_paths: \n", pkg_paths)
-
 
 # for logging
 packages = []
@@ -133,11 +236,11 @@ for p in pkg_paths:
 
   # get the rpath and needed libs for the current package
   cur_rpath = get_rpath(p)
-  cur_needs = get_needed_libs(p)
+  # cur_needs = get_needed_libs(p)
 
   if args.verbose:
     print("cur_rpath: \n", cur_rpath)
-    print("cur_needs: \n", cur_needs)
+#    print("cur_needs: \n", cur_needs)
 
   # check to see if one of the needed libs is in the new path
   #update_list = []
@@ -188,11 +291,11 @@ for p in pkg_paths:
 log = {
   "input": [
     {
+     "package": pkg,
      "verbose": args.verbose,
-     "packagepaths": str(args.packagepaths),
      "outfile": str(outfile),
      "newpath": str(args.newpath),
-     "oldpath": str(args.oldpath)
+     "oldpath": str(old_prefix)
     }
   ],
   "packages": packages
