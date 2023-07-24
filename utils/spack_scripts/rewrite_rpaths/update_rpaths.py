@@ -142,6 +142,9 @@ parser.add_argument('-v', '--verbose',
 parser.add_argument('-n', '--newpath',
                     help="Prefix for the new library path",
                     type=pathlib.Path)
+parser.add_argument('--dryrun',
+                    help="Run and generate all output, but don't actually update any packages",
+                    default=False, action='store_true')
 
 # parse the input
 args = parser.parse_args()
@@ -282,7 +285,8 @@ for p in pkg_paths:
   shutil.copy2(p, backup_dir)
 
   # set new rpath
-  set_rpath(p, new_rpath)
+  if not args.dryrun:
+    set_rpath(p, new_rpath)
 
   if args.verbose:
     tmp_rpath = get_rpath(p)
@@ -293,6 +297,7 @@ log = {
     {
      "package": pkg,
      "verbose": args.verbose,
+     "dryrun": args.dryrun,
      "outfile": str(outfile),
      "newpath": str(args.newpath),
      "oldpath": str(old_prefix)
@@ -314,3 +319,6 @@ with open(backup_config, "w") as f:
 # compress backup
 with tarfile.open(backup_tar, "w:gz") as tar:
   tar.add(backup_dir, arcname=os.path.basename(backup_dir))
+
+# delete the folder
+shutil.rmtree(backup_dir)
