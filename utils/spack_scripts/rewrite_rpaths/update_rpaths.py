@@ -146,186 +146,200 @@ parser.add_argument('-n', '--newpath',
 parser.add_argument('--dryrun',
                     help="Run and generate all output, but don't actually update any packages",
                     default=False, action='store_true')
-
+parser.add_argument('--restore',
+                    help="Location of a tar.gz backup to restore",
+                    type=pathlib.Path)
 # parse the input
 args = parser.parse_args()
 
-if args.package is None:
-  print("No package specified")
-  parser.print_help()
-  sys.exit(-1)
+# if we're restoring, we don't need to parse most of the args
+if args.restore is None:
+  update=True
 else:
-  pkg = ''
-  for p in args.package:
-    pkg = pkg + p + ' '
+  update=False
 
-if args.newpath is None:
-  print("No prefix specified to update rpaths specified")
-  parser.print_help()
-  sys.exit(-1)
-else:
-  prefix = args.newpath
+if update:
+  if args.package is None:
+    print("No package specified")
+    parser.print_help()
+    sys.exit(-1)
+  else:
+    pkg = ''
+    for p in args.package:
+      pkg = pkg + p + ' '
+
+  if args.newpath is None:
+    print("No prefix specified to update rpaths specified")
+    parser.print_help()
+    sys.exit(-1)
+  else:
+    prefix = args.newpath
 
 now  = datetime.now()
 date_str = now.strftime("%m-%d-%Y_%H-%M-%S")
 if args.outfile is None:
-  outfile = pathlib.Path('rpath_update' + '_' + date_str + '.json')
+  if update:
+    outfile = pathlib.Path('rpath_update' + '_' + date_str + '.json')
+  else:
+    outfile = pathlib.Path('rpath_restore' + '_' + date_str + '.json')
 else:
   outfile = args.outfile
 
-# get the dependencies
-deps = get_spack_dep_hashes(pkg)
-old_prefix = find_prefix(pkg)
-if old_prefix.is_symlink():
-  old_prefix = old_prefix.parent.joinpath(old_prefix.readlink())
-if args.verbose:
-  print("path: ", old_prefix)
+# update rpaths
+if update:
+  # get the dependencies
+  deps = get_spack_dep_hashes(pkg)
+  old_prefix = find_prefix(pkg)
+  if old_prefix.is_symlink():
+    old_prefix = old_prefix.parent.joinpath(old_prefix.readlink())
+  if args.verbose:
+    print("path: ", old_prefix)
 
-# recursively check dependencies
-deps_to_check = deps
-checked_deps = []
+  # recursively check dependencies
+  deps_to_check = deps
+  checked_deps = []
 
-while len(deps_to_check) > 0:
-  tmp_deps = get_spack_dep_hashes(deps_to_check[0])
-  checked_deps.append(deps_to_check[0])
-  deps = deps + list(set(tmp_deps) - set(deps))
-  deps_to_check = list(set(deps) - set(checked_deps))
-
-if args.verbose:
-  print("deps: ", deps)
-
-# get dependency paths
-dep_paths = deps
-for i in range(0, len(deps)):
-  dep_paths[i] = find_prefix(deps[i])
-
-if args.verbose:
-  print("deps_paths: ", dep_paths)
-
-# check all files in all dependency folders to see if there's an rpath
-# TODO / FIXME: can we be smart about this? Are these only in lib and bin dirs?
-pkg_paths = []
-for p in dep_paths:
+  while len(deps_to_check) > 0:
+    tmp_deps = get_spack_dep_hashes(deps_to_check[0])
+    checked_deps.append(deps_to_check[0])
+    deps = deps + list(set(tmp_deps) - set(deps))
+    deps_to_check = list(set(deps) - set(checked_deps))
 
   if args.verbose:
-    print("Checking: ", p)
+    print("deps: ", deps)
 
-  # loop over all files in current path
-  for subdir, dirs, files in os.walk(p):
-    for file in files:
-      f = p.joinpath(subdir).joinpath(file)
-      if args.verbose:
-        print("\tchecking :", f)
-      if check_rpath(f, old_prefix):
+  # get dependency paths
+  dep_paths = deps
+  for i in range(0, len(deps)):
+    dep_paths[i] = find_prefix(deps[i])
+
+  if args.verbose:
+    print("deps_paths: ", dep_paths)
+
+  # check all files in all dependency folders to see if there's an rpath
+  # TODO / FIXME: can we be smart about this? Are these only in lib and bin dirs?
+  pkg_paths = []
+  for p in dep_paths:
+
+    if args.verbose:
+      print("Checking: ", p)
+
+    # loop over all files in current path
+    for subdir, dirs, files in os.walk(p):
+      for file in files:
+        f = p.joinpath(subdir).joinpath(file)
         if args.verbose:
-          print("\t\t valid")
-        pkg_paths.append(f)
-
-if args.verbose:
-  print("files to update: (", len(pkg_paths), ")")
-
-# create a folder to save backup versions of packages to
-backup_dir = pathlib.Path("rpath_pkg_backup_" + date_str + "/")
-backup_dir.mkdir(parents=True, exist_ok=True)
-backup_tar = pathlib.Path("rpath_pkg_backup_" + date_str + ".tar.gz")
-
-if args.verbose:
-  print("pkg_paths: \n", pkg_paths)
-
-# for logging
-packages = []
-
-# loop over the packages to update
-for p in pkg_paths:
-
-  # get the rpath and needed libs for the current package
-  cur_rpath = get_rpath(p)
-  # cur_needs = get_needed_libs(p)
+          print("\tchecking :", f)
+        if check_rpath(f, old_prefix):
+          if args.verbose:
+            print("\t\t valid")
+          pkg_paths.append(f)
 
   if args.verbose:
-    print("cur_rpath: \n", cur_rpath)
-#    print("cur_needs: \n", cur_needs)
+    print("files to update: (", len(pkg_paths), ")")
 
-  # check to see if one of the needed libs is in the new path
-  #update_list = []
-  #for need in cur_needs:
-  #  need_path = get_new_lib_path(need, prefix)
-  #  if need_path:
-  #    tmp = [need, need_path]
-  #    update_list.append(tmp)
-  #
-  #if args.verbose:
-  #  print("update_list: \n", update_list)
-
-  # generate a new rpath
-  old_str = str(old_prefix).strip()
-  if old_str[-1] != os.sep:
-    old_str = old_str + os.sep
-
-  new_str = str(prefix).strip()
-  if new_str[-1] != os.sep:
-    new_str = new_str + os.sep
-
-  new_rpath = cur_rpath.replace(old_str, new_str)
+  # create a folder to save backup versions of packages to
+  backup_dir = pathlib.Path("rpath_pkg_backup_" + date_str + "/")
+  backup_dir.mkdir(parents=True, exist_ok=True)
+  backup_tar = pathlib.Path("rpath_pkg_backup_" + date_str + ".tar.gz")
 
   if args.verbose:
-    print("new_rpath: \n", new_rpath)
+    print("pkg_paths: \n", pkg_paths)
 
-  # generate hash of path in case theres more than 1 package with the same name
-  h=hashlib.shake_128(str(p).encode('utf-8')).hexdigest(4)
-  backup_name = str(p.name) + '_' + str(h)
+  # for logging
+  packages = []
 
-  # store data
-  pkg_settings = {
-    "path": str(p),
-    "backup_name": backup_name,
-    "original rpath": cur_rpath,
-    "updated rpath": new_rpath,
-    "original prefix": str(old_prefix),
-    "new prefix": str(prefix)
+  # loop over the packages to update
+  for p in pkg_paths:
+
+    # get the rpath and needed libs for the current package
+    cur_rpath = get_rpath(p)
+    # cur_needs = get_needed_libs(p)
+
+    if args.verbose:
+      print("cur_rpath: \n", cur_rpath)
+
+    # generate a new rpath
+    old_str = str(old_prefix).strip()
+    if old_str[-1] != os.sep:
+      old_str = old_str + os.sep
+
+    new_str = str(prefix).strip()
+    if new_str[-1] != os.sep:
+      new_str = new_str + os.sep
+
+    new_rpath = cur_rpath.replace(old_str, new_str)
+
+    if args.verbose:
+      print("new_rpath: \n", new_rpath)
+
+    # generate hash of path in case theres more than 1 package with the same name
+    h=hashlib.shake_128(str(p).encode('utf-8')).hexdigest(4)
+    backup_name = str(p.name) + '_' + str(h)
+
+    # store data
+    pkg_settings = {
+      "path": str(p),
+      "backup_name": backup_name,
+      "original rpath": cur_rpath,
+      "updated rpath": new_rpath,
+      "original prefix": str(old_prefix),
+      "new prefix": str(prefix)
+    }
+
+    packages.append(pkg_settings)
+
+    # save a backup of the package before updating
+    backup_file = backup_dir.joinpath(backup_name)
+    shutil.copy2(p, backup_file)
+
+    # set new rpath
+    if not args.dryrun:
+      set_rpath(p, new_rpath)
+
+    if args.verbose:
+      tmp_rpath = get_rpath(p)
+      print("set new_rpath: \n", tmp_rpath)
+
+  log = {
+    "input": [
+      {
+       "package": pkg,
+       "verbose": args.verbose,
+       "dryrun": args.dryrun,
+       "outfile": str(outfile),
+       "newpath": str(args.newpath),
+       "oldpath": str(old_prefix)
+      }
+    ],
+    "packages": packages
   }
 
-  packages.append(pkg_settings)
+  json_log = json.dumps(log, indent=2)
+  with open(outfile, "w") as f:
+    f.write(json_log)
 
-  # save a backup of the package before updating
-  backup_file = backup_dir.joinpath(backup_name)
-  shutil.copy2(p, backup_file)
+  # save a copy of the log in the backup dir so we can use it to
+  # restore packages if needed
+  backup_config = backup_dir.joinpath('config.json')
+  with open(backup_config, "w") as f:
+    f.write(json_log)
 
-  # set new rpath
-  if not args.dryrun:
-    set_rpath(p, new_rpath)
+  # compress backup
+  with tarfile.open(backup_tar, "w:gz") as tar:
+    tar.add(backup_dir, arcname=os.path.basename(backup_dir))
 
+  # delete the folder
+  shutil.rmtree(backup_dir)
+
+# retore backup
+else:
+
+  # extract the backup
+  backup_dir = pathlib.Path(args.restore.stem)
+  backup_dir.mkdir(parents=True, exist_ok=True)
+  backup_files = tarfile.open('gfg.tar.gz')
   if args.verbose:
-    tmp_rpath = get_rpath(p)
-    print("set new_rpath: \n", tmp_rpath)
-
-log = {
-  "input": [
-    {
-     "package": pkg,
-     "verbose": args.verbose,
-     "dryrun": args.dryrun,
-     "outfile": str(outfile),
-     "newpath": str(args.newpath),
-     "oldpath": str(old_prefix)
-    }
-  ],
-  "packages": packages
-}
-
-json_log = json.dumps(log, indent=2)
-with open(outfile, "w") as f:
-  f.write(json_log)
-
-# save a copy of the log in the backup dir so we can use it to
-# restore packages if needed
-backup_config = backup_dir.joinpath('config.json')
-with open(backup_config, "w") as f:
-  f.write(json_log)
-
-# compress backup
-with tarfile.open(backup_tar, "w:gz") as tar:
-  tar.add(backup_dir, arcname=os.path.basename(backup_dir))
-
-# delete the folder
-shutil.rmtree(backup_dir)
+    print("extracting: \n", backup_files.getnames())
+  backup_files.extractall(backup_dir)
+  backup_files.close()
