@@ -1,0 +1,13 @@
+whatis("Synopsys Quantum ATK")
+family("quantum_atk")
+
+local synopsys_root = "/hpc/m3/apps/quantumatk/"
+local version = "2022.03-SP1"
+local root = pathJoin(synopsys_root, version)
+local bin = pathJoin(root, "bin")
+local lib = pathJoin(root, "lib")
+
+setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic2.smu.edu")
+
+prepend_path("PATH", bin)
+append_path("LD_LIBRARY_PATH", lib)
