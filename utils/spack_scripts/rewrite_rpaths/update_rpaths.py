@@ -9,6 +9,7 @@ from datetime import datetime # to get current date and time
 import json # for logging
 import shutil # for copying files
 import tarfile # for compression
+import hashlib # for generating hashes (requires python>= 3.10)
 
 def get_spack_dep_hashes(pkg):
   command_base = 'spack dependents --installed '
@@ -270,9 +271,14 @@ for p in pkg_paths:
   if args.verbose:
     print("new_rpath: \n", new_rpath)
 
+  # generate hash of path in case theres more than 1 package with the same name
+  h=hashlib.shake_128(str(p).encode('utf-8')).hexdigest(4)
+  backup_name = str(p.name) + '_' + str(h)
+
   # store data
   pkg_settings = {
     "path": str(p),
+    "backup_name": backup_name,
     "original rpath": cur_rpath,
     "updated rpath": new_rpath,
     "original prefix": str(old_prefix),
@@ -282,7 +288,8 @@ for p in pkg_paths:
   packages.append(pkg_settings)
 
   # save a backup of the package before updating
-  shutil.copy2(p, backup_dir)
+  backup_file = backup_dir.joinpath(backup_name)
+  shutil.copy2(p, backup_file)
 
   # set new rpath
   if not args.dryrun:
