@@ -231,10 +231,12 @@ if update:
         f = p.joinpath(subdir).joinpath(file)
         if args.verbose:
           print("\tchecking :", f)
-        if check_rpath(f, old_prefix):
-          if args.verbose:
-            print("\t\t valid")
-          pkg_paths.append(f)
+        # skip symlinks
+        if not f.is_symlink():
+          if check_rpath(f, old_prefix):
+            if args.verbose:
+              print("\t\t valid")
+            pkg_paths.append(f)
 
   if args.verbose:
     print("files to update: (", len(pkg_paths), ")")
