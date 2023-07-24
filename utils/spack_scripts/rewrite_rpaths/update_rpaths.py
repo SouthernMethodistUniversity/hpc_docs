@@ -132,7 +132,7 @@ def get_new_lib_path(lib, prefix):
 # Set up command line options
 parser = argparse.ArgumentParser(
     description='Update rpaths for package dependents of a specific spack install package.')
-parser.add_argument('package', metavar='pkg', nargs='+',
+parser.add_argument('package', metavar='pkg', nargs='*', default='invalid',
                     help="Spack package to search for")
 parser.add_argument('-o', '--outfile',
                     help="File to save output to (defaults to rpath_update_{date}.json)",
@@ -159,7 +159,7 @@ else:
   update=False
 
 if update:
-  if args.package is None:
+  if args.package == 'invalid':
     print("No package specified")
     parser.print_help()
     sys.exit(-1)
@@ -335,11 +335,53 @@ if update:
 # retore backup
 else:
 
+  print("restoring backup from: ", args.restore)
+
   # extract the backup
-  backup_dir = pathlib.Path(args.restore.stem)
-  backup_dir.mkdir(parents=True, exist_ok=True)
-  backup_files = tarfile.open('gfg.tar.gz')
+  backup_dir = pathlib.Path(pathlib.Path(args.restore.stem).stem)
+  backup_files = tarfile.open(args.restore)
   if args.verbose:
     print("extracting: \n", backup_files.getnames())
-  backup_files.extractall(backup_dir)
+  backup_files.extractall(args.restore.parent)
   backup_files.close()
+
+  # read in config file
+  config_file = open(backup_dir.joinpath('config.json'))
+  config = json.load(config_file)
+  config_file.close()
+
+  # loop over all the entries
+  packages=[]
+  for package in config["packages"]:
+    if args.verbose:
+      print("restoring: ", package["path"])
+
+    pkg_settings = {
+      "package": package["path"],
+      "restored from": str(backup_dir.joinpath(package["backup_name"]))
+    }
+    packages.append(pkg_settings)
+
+    if not args.dryrun:
+      print("removing: ", package["path"])
+      os.remove(package["path"])
+      shutil.copy2(backup_dir.joinpath(package["backup_name"]), package["path"])
+
+  # delete the extracted folder
+  shutil.rmtree(backup_dir)
+
+  log = {
+    "input": [
+      {
+       "backup archive": str(args.restore),
+       "verbose": args.verbose,
+       "dryrun": args.dryrun,
+       "outfile": str(outfile),
+      }
+    ],
+    "packages": packages
+  }
+
+  json_log = json.dumps(log, indent=2)
+  with open(outfile, "w") as f:
+    f.write(json_log)
