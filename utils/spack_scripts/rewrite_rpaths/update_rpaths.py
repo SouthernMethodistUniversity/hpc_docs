@@ -10,6 +10,7 @@ import json # for logging
 import shutil # for copying files
 import tarfile # for compression
 import hashlib # for generating hashes (requires python>= 3.10)
+import time # for sleep
 
 def get_spack_dep_hashes(pkg):
   command_base = 'spack dependents --installed '
@@ -67,7 +68,7 @@ def find_prefix(pkg):
   return pathlib.Path(path_string)
 
 def check_rpath(file, pkg_prefix):
-  command_base = 'chrpath -l '
+  command_base = 'patchelf --print-rpath '
   command = command_base + str(file)
   run_cmd = shlex.split(command)
   proc = subprocess.Popen(run_cmd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -292,6 +293,15 @@ if update:
     # save a backup of the package before updating
     backup_file = backup_dir.joinpath(backup_name)
     shutil.copy2(p, backup_file)
+
+    # wait to make sure file was actually copied.
+    # shutil appear to run fsync or similar in the background
+    wait_time = 0
+    while os.stat(p).st_size != os.stat(backup_file).st_size:
+      sleep(1)
+      wait_time += 1
+    if args.verbose:
+      print("waited ", wait_time, " seconds for copy")
 
     # set new rpath
     if not args.dryrun:
