@@ -1,6 +1,10 @@
 whatis("Synopsys Quantum ATK")
 family("quantum_atk")
 
+load("gcc/11.2.0")
+load("openmpi/4.1.4-7al4h2x")
+
+
 local synopsys_root = "/hpc/m3/apps/quantumatk/"
 local version = "2022.12-SP1"
 local root = pathJoin(synopsys_root, version)
