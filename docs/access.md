@@ -99,7 +99,7 @@ Key-based authentication can be used to log into SMU HPC clusters without
 needing to input a password, but you still will need to go through Duo.
 
 ```{warning}
-The commands given below are to be run from your **your** and not on the
+The commands given below are to be run from **your** computer and not on the
 clusters themselves.
 ```
 
