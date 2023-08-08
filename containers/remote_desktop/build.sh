@@ -6,7 +6,7 @@ module load apptainer
 unset APPTAINER_BIND
 
 # set version
-VERSION=1.0
+VERSION=1.1
 
 # TODO: gpu enabled?
 
