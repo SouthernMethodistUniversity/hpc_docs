@@ -36,7 +36,8 @@ do
   fi
 done < ${APTLIST}
 
-# cleanup
+# cleanup + json dev package
+echo "  libjson-c-dev \\" >> Dockerfile
 echo "  && apt-get clean -y && rm -rf /var/lib/apt/lists/*" >> Dockerfile
 echo '' >> Dockerfile 
 
@@ -45,3 +46,7 @@ echo "COPY z00_lmod.csh /etc/profile.d/z00_lmod.csh" >> Dockerfile
 echo "COPY z00_lmod.sh /etc/profile.d/z00_lmod.sh" >> Dockerfile
 echo "COPY zz00_lmod.csh /etc/profile.d/zz00_lmod.csh" >> Dockerfile
 echo "COPY zz00_lmod.sh /etc/profile.d/zz00_lmod.sh" >> Dockerfile
+
+# make sure slurm user is available
+echo "RUN echo \"slurm:x:300:300::/cm/local/apps/slurm:/bin/sh\" >> /etc/passwd" >> Dockerfile
+echo "RUN echo \"slurm:x:300:\" >> /etc/group" >> Dockerfile
