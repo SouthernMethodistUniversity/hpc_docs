@@ -50,3 +50,14 @@ echo "COPY zz00_lmod.sh /etc/profile.d/zz00_lmod.sh" >> Dockerfile
 # make sure slurm user is available
 echo "RUN echo \"slurm:x:300:300::/cm/local/apps/slurm:/bin/sh\" >> /etc/passwd" >> Dockerfile
 echo "RUN echo \"slurm:x:300:\" >> /etc/group" >> Dockerfile
+
+# add slurm, pmix, hwloc, pyxis installs
+#
+#
+# SLURM build
+# export lua_LIBS="-L/hpc/mp/spack/opt/spack/linux-ubuntu20.04-zen2/gcc-10.3.0/lua-5.3.5-qw2i56f4tmbgrjcyd4jgjoeqy2fowq3x/lib/ -llua5.3"
+# export lua_CFLAGS="-I/hpc/mp/spack/opt/spack/linux-ubuntu20.04-zen2/gcc-10.3.0/lua-5.3.5-qw2i56f4tmbgrjcyd4jgjoeqy2fowq3x/include/"
+echo "ADD mp_container_slurm.tar.gz /cm/shared/apps/" >> Dockerfile
+
+# Add slurm to path
+echo "ENV PATH=\"/cm/shared/apps/slurm/current/bin:\${PATH}\"" >> Dockerfile
