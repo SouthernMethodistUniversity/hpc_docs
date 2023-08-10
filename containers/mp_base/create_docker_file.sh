@@ -115,3 +115,7 @@ echo "ADD mp_container_slurm.tar.gz /cm/shared/apps/" >> Dockerfile
 
 # Add slurm to path
 echo "ENV PATH=\"/cm/shared/apps/slurm/current/bin:\${PATH}\"" >> Dockerfile
+
+# fix permissions and remove sbin
+echo "RUN rm -rf /cm/shared/apps/slurm/current/sbin/" >> Dockerfile
+echo "RUN chown -R root:root /cm/shared/apps/" >> Dockerfile
