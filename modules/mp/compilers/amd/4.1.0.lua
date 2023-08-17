@@ -8,7 +8,7 @@ append_path("MODULEPATH", "/hpc/mp/module_files/mpi/aocc-4.1.0/")
 append_path("MODULEPATH", "/hpc/mp/spack_modules/linux-ubuntu22.04-zen2/cuda/aocc-4.1.0/")
 
 -- generic packages / dependencies
-append_path("MODULE_PATH","/hpc/mp/spack_modules/linux-ubuntu22.04-zen2/aocc-4.1.0")
+append_path("MODULEPATH","/hpc/mp/spack_modules/linux-ubuntu22.04-zen2/aocc-4.1.0")
 
 prepend_path("LIBRARY_PATH","/usr/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib32")
 prepend_path("LD_LIBRARY_PATH","/usr/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib32")
