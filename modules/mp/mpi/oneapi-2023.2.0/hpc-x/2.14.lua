@@ -2,7 +2,7 @@ whatis("NVIDIA HPC-X toolkit")
 family("mpi")
 extensions("hcoll/4.8.3221, ucx/1.15.0, ucc/1.2.0, openmpi/4.1.5rc2, sharp/3.2.0-rc2")
 
-load("cuda/11.8.0-vbvgppx")
+load("cuda/11.8.0-if3pb3g")
 
 setenv("UCX_NET_DEVICES","mlx5_0:1,mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_6:1,mlx5_7:1,mlx5_8:1,mlx5_9:1")
 
