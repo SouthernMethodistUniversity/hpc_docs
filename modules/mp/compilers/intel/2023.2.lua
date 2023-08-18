@@ -1,7 +1,7 @@
 whatis("Provides access to Intel 2023.2 compiler suite, libraries, and applications.")
 family("compiler")
 
-append_path("MODULEPATH", "/hpc/mp/apps/intel/oneapi/2023.2/modulefiles")
+append_path("MODULEPATH", "/hpc/mp/apps/intel/2023.2/modulefiles")
 load("compiler/latest")
 
 -- mpi
