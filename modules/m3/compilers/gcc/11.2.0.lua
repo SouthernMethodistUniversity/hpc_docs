@@ -5,7 +5,7 @@ family("compiler")
 append_path("MODULEPATH", "/hpc/m3/hpc_docs/modules/m3/mpi/gcc-11.2.0")
 
 --cuda
-append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-zen3/cuda/gcc-11.2.0/")
+append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-x86_64_v3/cuda/gcc-11.2.0/")
 
 -- spack packages
 append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-zen3/gcc-11.2.0")
