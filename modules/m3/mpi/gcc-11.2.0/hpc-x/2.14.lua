@@ -2,7 +2,7 @@ whatis("NVIDIA HPC-X toolkit")
 family("mpi")
 extensions("hcoll/4.8.3221, ucx/1.15.0, ucc/1.2.0, openmpi/4.1.5rc2, sharp/3.2.0-rc2")
 
-load("cuda/11.8.0-wsvuhlw")
+load("cuda/11.8.0-vnha6cm")
 
 setenv("HPCX_DIR","/hpc/m3/apps/hpcx/hpcx-v2.14-gcc-inbox-ubuntu22.04-cuda11-gdrcopy2-nccl2.16-x86_64")
 setenv("HPCX_HOME","/hpc/m3/apps/hpcx/hpcx-v2.14-gcc-inbox-ubuntu22.04-cuda11-gdrcopy2-nccl2.16-x86_64")
