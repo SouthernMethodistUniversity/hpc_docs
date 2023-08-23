@@ -28,6 +28,7 @@ attributes:
         data-max-bc-num-memory: 500,
         data-set-bc-num-gpus: 0,
         data-hide-bc-num-gpus: true,
+        data-show-desktop-os: true,
         ]
       - ["GPU Development Queue (2 hour limit)", "gpu-dev",
         data-max-bc-num-hours: 2,
@@ -41,6 +42,7 @@ attributes:
         data-max-bc-num-memory: 500,
         data-set-bc-num-gpus: 0,
         data-hide-bc-num-gpus: true,
+        data-show-desktop-os: true,
         ]
       - ["Standard Memory Queue (12 hour limit)", "standard-s",
         data-max-bc-num-hours: 12,
@@ -48,6 +50,7 @@ attributes:
         data-max-bc-num-memory: 500,
         data-set-bc-num-gpus: 0,
         data-hide-bc-num-gpus: true,
+        data-show-desktop-os: true,
         ]
       - ["High Memory Queue (12 hour limit)", "highmem",
         data-max-bc-num-hours: 12,
@@ -55,6 +58,7 @@ attributes:
         data-max-bc-num-memory: 2000,
         data-set-bc-num-gpus: 0,
         data-hide-bc-num-gpus: true,
+        data-show-desktop-os: true,
         ]
   desktop_os:
     label: "Operating System"
@@ -65,6 +69,15 @@ attributes:
     options:
       - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.sif",
         data-set-desktop-env: 'mate',
+        data-option-for-custom-queues-gpu-dev: false
+        ]
+      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1_gpu.sif",
+        data-set-desktop-env: 'mate',
+        data-option-for-custom-queues-gpu-dev: true,
+        data-option-for-custom-queues-standard-s: false,
+        data-option-for-custom-queues-htc: false,
+        data-option-for-custom-queues-highmem: false,
+        data-option-for-custom-queues-dev: false,
         ]
       - ["AlmaLinux 8", "/hpc/m3/containers/remote_desktop/almalinux_remote_desktop_1.0.0.sif",
         data-set-desktop-env: 'xfce',
