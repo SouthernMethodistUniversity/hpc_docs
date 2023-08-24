@@ -96,6 +96,15 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                libxm4 \
                xsltproc \
                paraview
+                              
+
+  # add webots
+  mkdir -p /etc/apt/keyrings
+  cd /etc/apt/keyrings
+  wget -q https://cyberbotics.com/Cyberbotics.asc
+  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/Cyberbotics.asc] https://cyberbotics.com/debian binary-amd64/" | tee /etc/apt/sources.list.d/Cyberbotics.list
+  apt-get -y update
+  apt-get -y install webots
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
