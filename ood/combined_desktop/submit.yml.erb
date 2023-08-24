@@ -41,4 +41,8 @@ batch_connect:
     CONTAINER_SCRIPT=$(pwd)/container.sh
 
     # switch container launch to enable GPU usage is available
+    <%- if bc_num_gpus.to_i != 0 and ! bc_num_gpus.blank? -%>
+    apptainer exec --nv <%= desktop_os %> /opt/VirtualGL/bin/vglrun +v -d egl $CONTAINER_SCRIPT
+    <%- else -%>
     apptainer exec <%= desktop_os %> $CONTAINER_SCRIPT
+    <%- end -%>
