@@ -12,6 +12,7 @@ parts:
   - file: access.md
   - file: portal.md
   - file: m3_migration.md
+  - file: mp_update.md
 - caption: Applications
   chapters:
   - file: examples/conda/README.md
