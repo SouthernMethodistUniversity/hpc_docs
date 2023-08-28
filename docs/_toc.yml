@@ -24,6 +24,8 @@ parts:
     - file: tutorials/unix/scripting.md
   - file: tutorials/modules/modules.md
   - file: tutorials/slurm/slurm.md
+    sections:
+    - file: tutorials/slurm/best_practics.md
   - file: tutorials/cpp/intro.md
     sections:
     - file: tutorials/cpp/session_1.md
