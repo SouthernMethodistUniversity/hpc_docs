@@ -1,5 +1,10 @@
 # Access
 
+SMU HPC systems are directly accessible on campus via Ethernet, excluding
+dorms, and PerunaNet. All other networks require using the SMU VPN.
+Instructions for setting up and using the VPN can be found
+[here](https://www.smu.edu/OIT/Services/VPN).
+
 ## HPC OnDemand Web Portal
 
 SMU HPC clusters can be accessed directly from a browser via the HPC OnDemand
