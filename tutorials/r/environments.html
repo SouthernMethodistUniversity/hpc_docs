@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>C++ &#8212; SMU HPC Documentation</title>
+    <title>R Virtual Environments &#8212; SMU HPC Documentation</title>
   
   
   
@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cpp/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/r/environments';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Session 1" href="session_1.html" />
-    <link rel="prev" title="Containers" href="../containers/containers.html" />
+    <link rel="next" title="Submitting R Jobs" href="slurm.html" />
+    <link rel="prev" title="R" href="overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,17 +189,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../containers/containers.html">Containers</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">C++</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="session_1.html">Session 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_2.html">Session 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_3.html">Session 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_4.html">Session 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="session_5.html">Session 5</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/session_1.html">Session 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/session_2.html">Session 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/session_3.html">Session 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/session_4.html">Session 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/session_5.html">Session 5</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../r/environments.html">R Virtual Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../r/slurm.html">Submitting R Jobs</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">R</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">R Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm.html">Submitting R Jobs</a></li>
 </ul>
 </li>
 </ul>
@@ -260,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/tutorials/cpp/intro.md" target="_blank"
+      <li><a href="../../_sources/tutorials/r/environments.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,7 +342,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>C++</h1>
+    <h1>R Virtual Environments</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -352,8 +352,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sessions">Sessions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-resources">C++ Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renv-basics"><code class="docutils literal notranslate"><span class="pre">renv</span></code> Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-and-renv-demo">GitHub and <code class="docutils literal notranslate"><span class="pre">renv</span></code> Demo</a></li>
 </ul>
             </nav>
         </div>
@@ -365,53 +365,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="c">
-<h1>C++<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h1>
-<section id="sessions">
-<h2>Sessions<a class="headerlink" href="#sessions" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="r-virtual-environments">
+<h1>R Virtual Environments<a class="headerlink" href="#r-virtual-environments" title="Permalink to this heading">#</a></h1>
+<section id="renv-basics">
+<h2><code class="docutils literal notranslate"><span class="pre">renv</span></code> Basics<a class="headerlink" href="#renv-basics" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://rstudio.github.io/renv/"><code class="docutils literal notranslate"><span class="pre">renv</span></code></a> package helps create reproducible
+environments for R projects.</p>
+<p>There are a few core commands when using <code class="docutils literal notranslate"><span class="pre">renv</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">renv::init()</span></code>: Initialize new project-local environment with a private R
+library</p>
+<p><code class="docutils literal notranslate"><span class="pre">renv::snapshot()</span></code>: Save the current state of the project library</p>
+<p><code class="docutils literal notranslate"><span class="pre">renv::restore()</span></code>: Restore the previously saved state of the project library,
+e.g. reloading the environment on another machine</p>
+</section>
+<section id="github-and-renv-demo">
+<h2>GitHub and <code class="docutils literal notranslate"><span class="pre">renv</span></code> Demo<a class="headerlink" href="#github-and-renv-demo" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Session 1</p>
-<ul class="simple">
-<li><p>Resources</p></li>
-<li><p>Types, Expressions, and Statements</p></li>
-<li><p>Operators and Conditionals</p></li>
-</ul>
-</li>
-<li><p>Session 2</p>
-<ul class="simple">
-<li><p>Branching and Loops</p></li>
-<li><p>Functions</p></li>
-</ul>
-</li>
-<li><p>Session 3</p>
-<ul class="simple">
-<li><p>Functors and Lambdas</p></li>
-<li><p>Make and CMake</p></li>
-</ul>
-</li>
-<li><p>Session 4</p>
-<ul class="simple">
-<li><p>Classes</p></li>
-<li><p>Eigen</p></li>
-<li><p>Armadillo</p></li>
-</ul>
-</li>
+<li><p>Create new Git repository on GitHub</p></li>
+<li><p>Clone the new repository on the cluster</p></li>
+<li><p>Create new RStudio project in RStudio via the Portal</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">renv</span></code> if needed via <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;renv&quot;)</span></code></p></li>
+<li><p>Create clean package environment via <code class="docutils literal notranslate"><span class="pre">renv::init()</span></code></p></li>
+<li><p>Quit and restart your R session.</p></li>
+<li><p>Install custom packages, e.g. <code class="docutils literal notranslate"><span class="pre">renv::install(&quot;rstan&quot;)</span></code></p></li>
+<li><p>Create environment snapshot via
+<code class="docutils literal notranslate"><span class="pre">renv::snapshot(packages=&quot;mcmc&quot;)</span></code></p></li>
+<li><p>Commit and push changes to the Git repository</p></li>
 </ol>
 </section>
-<section id="c-resources">
-<h2>C++ Resources<a class="headerlink" href="#c-resources" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://go.oreilly.com/southern-methodist">O’Reilly Learning Platform for Higher Education</a></p>
-<ul>
-<li><p>Discovering Modern C++: An Intensive Course for Scientists, Engineers, and Programmers by Peter Gottschling</p></li>
-<li><p>A Tour of C++, 2nd Edition by Bjarne Stroustrup</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://en.cppreference.com">C++ Reference</a></p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -427,7 +408,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./tutorials/cpp"
+            path: "./tutorials/r"
         },
         predefinedOutput: true
     }
@@ -446,20 +427,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../containers/containers.html"
+       href="overview.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Containers</p>
+        <p class="prev-next-title">R</p>
       </div>
     </a>
     <a class="right-next"
-       href="session_1.html"
+       href="slurm.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Session 1</p>
+        <p class="prev-next-title">Submitting R Jobs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -481,8 +462,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sessions">Sessions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-resources">C++ Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renv-basics"><code class="docutils literal notranslate"><span class="pre">renv</span></code> Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-and-renv-demo">GitHub and <code class="docutils literal notranslate"><span class="pre">renv</span></code> Demo</a></li>
 </ul>
   </nav></div>
 
