@@ -369,6 +369,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding">Port Forwarding</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-host-key-changes">SSH Host Key Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openssh">OpenSSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty-on-windows">PuTTY on Windows</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -684,6 +689,47 @@ able to use the link <code class="docutils literal notranslate"><span class="pre
 </ol>
 </section>
 </section>
+<section id="ssh-host-key-changes">
+<h2>SSH Host Key Changes<a class="headerlink" href="#ssh-host-key-changes" title="Permalink to this heading">#</a></h2>
+<p>Occationally the SSH host keys will change SMU HPC systems. When this happens
+you may get a message such as the one below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @                              
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!                                    
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!              
+It is also possible that a host key has just been changed.                               
+The fingerprint for the ED25519 key sent by the remote host is                           
+SHA256:4242424242424242424242424242424242424242424.                                      
+Please contact your system administrator.                                                
+Add correct host key in /Users/adent/.ssh/known_hosts to get rid of this message.    
+Offending ED25519 key in /Users/adent/.ssh/known_hosts:42                            
+<span class="hll">Host key for superpod.smu.edu has changed and you have requested strict checking.
+</span>Host key verification failed.                                                            
+</pre></div>
+</div>
+<p>To resolve the issue the offending key needs to be removed on your local
+machine.</p>
+<section id="openssh">
+<h3>OpenSSH<a class="headerlink" href="#openssh" title="Permalink to this heading">#</a></h3>
+<p>On macOS, Linux, and Windows using the Command Prompt, PowerShell, WSL, or
+MobaXterm, the offending key can be removed via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-R<span class="w"> </span>superpod.smu.edu
+</pre></div>
+</div>
+<p>Please note that the specific host, e.g. <code class="docutils literal notranslate"><span class="pre">superpod.smu.edu</span></code>, may be different.
+See the specific host in the second to last line of the error message
+(highlighted above).</p>
+</section>
+<section id="putty-on-windows">
+<h3>PuTTY on Windows<a class="headerlink" href="#putty-on-windows" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Open the “Registry Editor”.</p></li>
+<li><p>Browse to “HKEY_CURRENT_USER\SOFTWARE&lt;Your Windows User Name&gt;\PuTTY\SshHostKeys”.</p></li>
+<li><p>Right-click on the offending key and select delete.</p></li>
+</ol>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -768,6 +814,11 @@ able to use the link <code class="docutils literal notranslate"><span class="pre
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty">PuTTY</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cyberduck">Cyberduck</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#port-forwarding">Port Forwarding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-host-key-changes">SSH Host Key Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openssh">OpenSSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty-on-windows">PuTTY on Windows</a></li>
 </ul>
 </li>
 </ul>
