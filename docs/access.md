@@ -1,5 +1,10 @@
 # Access
 
+SMU HPC systems are directly accessible on campus via Ethernet, excluding
+dorms, and PerunaNet. All other networks require using the SMU VPN.
+Instructions for setting up and using the VPN can be found
+[here](https://www.smu.edu/OIT/Services/VPN).
+
 ## HPC OnDemand Web Portal
 
 SMU HPC clusters can be accessed directly from a browser via the HPC OnDemand
@@ -277,3 +282,48 @@ and run `ssh username@node -J username@m3.smu.edu -L port:node:port`. So in this
 we should run `ssh username@c002 -J username@m3.smu.edu -L 8888:c002:8888`. After this connects
 and you login (twice, once for the login node and once for the compute node) you should be
 able to use the link `http://127.0.0.1:8888/...` from your prefered web browser.
+
+## SSH Host Key Changes
+
+Occationally the SSH host keys will change SMU HPC systems. When this happens
+you may get a message such as the one below:
+
+```{code-block}
+:emphasize-lines: 12
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @                              
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!                                    
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!              
+It is also possible that a host key has just been changed.                               
+The fingerprint for the ED25519 key sent by the remote host is                           
+SHA256:4242424242424242424242424242424242424242424.                                      
+Please contact your system administrator.                                                
+Add correct host key in /Users/adent/.ssh/known_hosts to get rid of this message.    
+Offending ED25519 key in /Users/adent/.ssh/known_hosts:42                            
+Host key for superpod.smu.edu has changed and you have requested strict checking.
+Host key verification failed.                                                            
+```
+
+To resolve the issue the offending key needs to be removed on your local
+machine.
+
+### OpenSSH
+
+On macOS, Linux, and Windows using the Command Prompt, PowerShell, WSL, or
+MobaXterm, the offending key can be removed via:
+
+```bash
+ssh-keygen -R superpod.smu.edu
+```
+
+Please note that the specific host, e.g. `superpod.smu.edu`, may be different.
+See the specific host in the second to last line of the error message
+(highlighted above).
+
+### PuTTY on Windows
+
+1. Open the "Registry Editor".
+2. Browse to "HKEY_CURRENT_USER\SOFTWARE\<Your Windows User Name>\PuTTY\SshHostKeys".
+3. Right-click on the offending key and select delete.
+

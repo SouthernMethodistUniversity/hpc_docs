@@ -12,6 +12,7 @@ parts:
   - file: access.md
   - file: portal.md
   - file: m3_migration.md
+  - file: mp_update.md
 - caption: Applications
   chapters:
   - file: examples/conda/README.md
@@ -24,6 +25,8 @@ parts:
     - file: tutorials/unix/scripting.md
   - file: tutorials/modules/modules.md
   - file: tutorials/slurm/slurm.md
+    sections:
+    - file: tutorials/slurm/best_practices.md
   - file: tutorials/containers/containers.md
   - file: tutorials/cpp/intro.md
     sections:
@@ -32,6 +35,10 @@ parts:
     - file: tutorials/cpp/session_3.md
     - file: tutorials/cpp/session_4.md
     - file: tutorials/cpp/session_5.md
+  - file: tutorials/r/overview.md
+    sections:
+    - file: tutorials/r/environments.md
+    - file: tutorials/r/slurm.md
 - caption: Policies
   chapters:
   - file: policies/policies.md
