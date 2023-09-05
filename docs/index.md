@@ -1,6 +1,6 @@
 ```{image} ./images/superpod.jpg
 :alt: NVIDIA DGX SuperPOD (MP)
-:align: center
+:align: center 
 ```
 
 # Welcome
