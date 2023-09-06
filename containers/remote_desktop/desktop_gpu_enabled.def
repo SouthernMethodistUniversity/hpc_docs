@@ -154,6 +154,11 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   mv /opt/zshenv /etc/zsh/zshenv
   ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
   ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
+
+  # vivaldi
+  wget https://downloads.vivaldi.com/stable/vivaldi-stable_6.2.3105.47-1_amd64.deb -q
+  dpkg -i vivaldi-stable_6.2.3105.47-1_amd64.deb
+  rm -f *.deb
  
   # Clean up
   rm -rf /var/lib/apt/lists/*
