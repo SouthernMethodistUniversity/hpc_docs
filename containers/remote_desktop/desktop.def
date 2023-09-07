@@ -34,7 +34,7 @@ From: ubuntu:22.04
 %post
   export TURBOVNC_VERSION=3.0.3
   export VIRTUALGL_VERSION=3.1
-  export LIBJPEG_VERSION=2.1.5.1
+  export LIBJPEG_VERSION=3.0.0
 
   # probably way more than we need
   apt-get -y update
@@ -132,19 +132,19 @@ From: ubuntu:22.04
   rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
   systemctl disable bluetooth.service
 
-  # firefox. The default in ubuntu is a snap package now
-  # so use the mozilla ppa
-  apt-get install -y software-properties-common
-  add-apt-repository ppa:mozillateam/ppa -y
-  echo '\nPackage: * \nPin: release o=LP-PPA-mozillateam \nPin-Priority: 1001 \n\nPackage: firefox \nPin: version 1:1snap1-0ubuntu2 \nPin-Priority: -1 \n' | tee /etc/apt/preferences.d/mozilla-firefox
-  apt-get -y update
-  apt-get install -y firefox
-
   # create symlinks for lmod
   rm /etc/zsh/zshenv
   mv /opt/zshenv /etc/zsh/zshenv
   ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
   ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
+
+  # add chrome
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -q
+  apt install -y ./google-chrome-stable_current_amd64.deb
+  rm -f *.deb
+
+  # add --no-sandbox to chrome start
+  sed -i 's\Exec=/usr/bin/google-chrome-stable\Exec=/usr/bin/google-chrome-stable --no-sandbox\g' /usr/share/applications/google-chrome.desktop
  
   # Clean up
   rm -rf /var/lib/apt/lists/*
