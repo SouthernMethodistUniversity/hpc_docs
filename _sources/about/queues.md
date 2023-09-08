@@ -24,6 +24,7 @@ M3 has the following queues:
 | Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                         |
 |----------------|------------------|----------------|-----------------|------------|-----------------------------------------------|
 | dev            | 4                | 128            | 500GB           | 2 hours    |                                               |
+| gpu-dev        | 3                | 36             | 734GB           | 2 hours    | 8 Nvidia V100 GPUs per node
 | htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *share nodes are listed in htc and standard-s |
 | standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *share nodes are listed in htc and standard-s |
 | standard-l     | 20               | 128            | 500GB           | 7 days     |                                               |
@@ -34,6 +35,7 @@ All M3 nodes are identical and contain dual AMD EPYC 7763 64-Core Processors wit
 nodes on the `highmem` partition having more memory.
 
 - The `dev` nodes are meant for interactive and development work
+- The `gpu-dev` nodes are meant for interactive and development work. Production and batch jobs should run on the SuperPod.
 - The `htc` nodes are for "High Throughput Computing" and are intended for jobs that typically launch a 
 large number of tasks that require a single core and a small amount of memory for a short time. This is also an
 appropriate queue for many interactive jobs requiring longer than 2 hours.

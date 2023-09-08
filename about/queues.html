@@ -402,35 +402,42 @@ efficiently.</p>
 <td><p>2 hours</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>htc</p></td>
+<tr class="row-odd"><td><p>gpu-dev</p></td>
+<td><p>3</p></td>
+<td><p>36</p></td>
+<td><p>734GB</p></td>
+<td><p>2 hours</p></td>
+<td><p>8 Nvidia V100 GPUs per node</p></td>
+</tr>
+<tr class="row-even"><td><p>htc</p></td>
 <td><p>10 + 10 shared*</p></td>
 <td><p>128</p></td>
 <td><p>500GB</p></td>
 <td><p>24 hours</p></td>
 <td><p>*share nodes are listed in htc and standard-s</p></td>
 </tr>
-<tr class="row-even"><td><p>standard-s</p></td>
+<tr class="row-odd"><td><p>standard-s</p></td>
 <td><p>136 + 10 shared*</p></td>
 <td><p>128</p></td>
 <td><p>500GB</p></td>
 <td><p>24 hours</p></td>
 <td><p>*share nodes are listed in htc and standard-s</p></td>
 </tr>
-<tr class="row-odd"><td><p>standard-l</p></td>
+<tr class="row-even"><td><p>standard-l</p></td>
 <td><p>20</p></td>
 <td><p>128</p></td>
 <td><p>500GB</p></td>
 <td><p>7 days</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>highmem</p></td>
+<tr class="row-odd"><td><p>highmem</p></td>
 <td><p>8</p></td>
 <td><p>128</p></td>
 <td><p>2TB</p></td>
 <td><p>5 days</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>dtn</p></td>
+<tr class="row-even"><td><p>dtn</p></td>
 <td><p>2</p></td>
 <td><p>128</p></td>
 <td><p>500GB</p></td>
@@ -443,6 +450,7 @@ efficiently.</p>
 nodes on the <code class="docutils literal notranslate"><span class="pre">highmem</span></code> partition having more memory.</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">dev</span></code> nodes are meant for interactive and development work</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">gpu-dev</span></code> nodes are meant for interactive and development work. Production and batch jobs should run on the SuperPod.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">htc</span></code> nodes are for “High Throughput Computing” and are intended for jobs that typically launch a
 large number of tasks that require a single core and a small amount of memory for a short time. This is also an
 appropriate queue for many interactive jobs requiring longer than 2 hours.</p></li>
