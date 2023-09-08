@@ -11,6 +11,10 @@ script:
     - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
     - "--mem"
     - "<%= bc_num_memory.blank? ? 4096 : bc_num_memory.to_i*1024 %>"
+    <%- if bc_num_gpus.to_i != 0 -%>
+    - "--gres"
+    - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
+    <%- end -%>
   template: "vnc"
 batch_connect:
   template: "vnc"
@@ -37,4 +41,8 @@ batch_connect:
     CONTAINER_SCRIPT=$(pwd)/container.sh
 
     # switch container launch to enable GPU usage is available
+    <%- if bc_num_gpus.to_i != 0 and ! bc_num_gpus.blank? -%>
+    apptainer exec --nv <%= desktop_os %> /opt/VirtualGL/bin/vglrun +v -d egl $CONTAINER_SCRIPT
+    <%- else -%>
     apptainer exec <%= desktop_os %> $CONTAINER_SCRIPT
+    <%- end -%>

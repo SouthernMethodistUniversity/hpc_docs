@@ -334,6 +334,7 @@ form:
   - notebook_timeout
   - bc_num_cores
   - bc_num_memory
+  - bc_num_gpus
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
@@ -347,21 +348,35 @@ attributes:
         data-max-bc-num-hours: 2,
         data-max-bc-num-cores: 128,
         data-max-bc-num-memory: 500,
+        data-set-bc-num-gpus: 0,
+        data-hide-bc-num-gpus: true,
+        ]
+      - ["GPU Development Queue (2 hour limit)", "gpu-dev",
+        data-max-bc-num-hours: 2,
+        data-max-bc-num-cores: 36,
+        data-max-bc-num-memory: 734,
+        data-show-bc-num-gpus: true,
         ]
       - ["HTC Queue (12 hour limit, 1 core)", "htc",
         data-max-bc-num-hours: 12,
         data-max-bc-num-cores: 1,
         data-max-bc-num-memory: 500,
+        data-set-bc-num-gpus: 0,
+        data-hide-bc-num-gpus: true,
         ]
       - ["Standard Memory Queue (12 hour limit)", "standard-s",
         data-max-bc-num-hours: 12,
         data-max-bc-num-cores: 128,
         data-max-bc-num-memory: 500,
+        data-set-bc-num-gpus: 0,
+        data-hide-bc-num-gpus: true,
         ]
       - ["High Memory Queue (12 hour limit)", "highmem",
         data-max-bc-num-hours: 12,
         data-max-bc-num-cores: 128,
         data-max-bc-num-memory: 2000,
+        data-set-bc-num-gpus: 0,
+        data-hide-bc-num-gpus: true,
         ]
   python_version:
     label: "Select Python Environment"
@@ -457,3 +472,11 @@ attributes:
     min: 1
     step: 1
     value: 4
+  bc_num_gpus:
+    label: "Number of GPUs"
+    help: "Please select the number of GPUs for your job"
+    widget: number_field
+    max: 8
+    min: 0
+    step: 0
+    value: 1
