@@ -317,6 +317,41 @@ class CustomEnvironments
 
 end
 
+# check for workshop queue
+class CheckQueues
+ 
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
+
+  def self.GetQueues()
+    begin
+      # get list of queues from sinfo
+      script = "/hpc/sys/apps/slurm/current/bin/sinfo -ho '%R'"
+      o, status = Open3.capture2e(script)
+      output = o.split("\n")
+      return output
+    end
+  end
+  
+  def self.Queues
+    begin
+      @Queues = @cache.fetch("#{User.new.name}/queues", race_condition_ttl: 30.seconds) do
+        self.GetQueues()
+      end
+      return @Queues
+    end
+  end
+
+  def self.HasQueue(check_q)
+    @HasQueue = false
+    self.Queues.each do |q|
+       if (q == check_q)
+         @HasQueue = true
+       end
+    end 
+    return @HasQueue
+  end
+end
+
 
 -%>
 
@@ -378,6 +413,15 @@ attributes:
         data-set-bc-num-gpus: 0,
         data-hide-bc-num-gpus: true,
         ]
+      <%- if CheckQueues.HasQueue("workshop") -%>
+      - ["Workshop Queue", "workshop",
+        data-max-bc-num-hours: 12,
+        data-max-bc-num-cores: 128,
+        data-max-bc-num-memory: 500,
+        data-set-bc-num-gpus: 0,
+        data-hide-bc-num-gpus: true,
+        ]
+      <%- end -%>
   python_version:
     label: "Select Python Environment"
     widget: select
