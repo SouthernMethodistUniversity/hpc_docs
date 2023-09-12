@@ -53,9 +53,10 @@ attributes:
         data-max-bc-num-hours: "<%= q[1] %>",
         data-max-bc-num-cores: "<%= q[2] %>",
         data-max-bc-num-memory: "<%= q[3] %>",
-        data-set-bc-num-gpus: "<%= q[4] %>",
+        data-max-bc-num-gpus: "<%= q[4] %>",
         <%- if q[4].to_i == 0 -%>
         data-hide-bc-num-gpus: true,
+        data-set-bc-num-gpus: 0,
         <%- else -%>
         data-show-bc-num-gpus: true,
         <%- end -%>
