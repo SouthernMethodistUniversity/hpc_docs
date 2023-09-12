@@ -405,7 +405,8 @@ attributes:
     label: "Partition"
     widget: select
     help: |
-      Please select the SLURM partition to submit the job to.
+      Please select the [SLURM partition] to submit the job to.
+      [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
     <%- CheckQueues.Queues.each do |q| -%>
       - ["<%= q[0] %>", "<%= q[0] %>",
