@@ -317,6 +317,69 @@ class CustomEnvironments
 
 end
 
+# check queues
+class CheckQueues
+ 
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
+
+  def self.GetQueues()
+    begin
+      # get list of queues from sinfo
+      script = "/hpc/sys/apps/slurm/current/bin/sinfo --hide -ho '%R %l %c %m %G'"
+      o, status = Open3.capture2e(script)
+      tmp_output = o.split("\n")
+
+      output = []
+      tmp_output.each do |q|
+        params = q.gsub(/\s+/m, ' ').strip.split(" ")
+        
+        # convert time to hours
+        hours = 0
+        tmp = params[1].split("-")
+        if tmp.count == 2
+          hours = hours + 24*tmp[0].to_i
+          hours = hours + tmp[1].split(":")[0].to_i
+        else
+          hours = hours + tmp[0].split(":")[0].to_i
+        end
+        params[1] = hours
+        
+        # convert memory to GB (implicit floor division)
+        params[3] = params[3].to_i / 1024
+
+        # get number of gpus
+        if params[4] == "(null)"
+          params[4] = 0
+        else
+          params[4] = params[4].split(":")[-1]
+        end
+
+        # if HTC, set cores to 1
+        if params[0] == "htc"
+          params[2] = 1
+        end
+
+        # only keep queues with time limits <= 24 hours
+        # or highmem
+        if (hours < 25 || params[0] == "highmem")
+          # set the time limit to 12 hours or max queue time
+          params[1] = [params[1].to_i, 12].min
+          output.push(params) 
+        end
+      end
+      return output
+    end
+  end
+  
+  def self.Queues
+    begin
+      @Queues = @cache.fetch("#{User.new.name}/queues", race_condition_ttl: 30.seconds) do
+        self.GetQueues()
+      end
+      return @Queues
+    end
+  end
+end
 
 -%>
 
@@ -342,42 +405,22 @@ attributes:
     label: "Partition"
     widget: select
     help: |
-      Please select the SLURM partition to submit the job to.
+      Please select the [SLURM partition] to submit the job to.
+      [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
-      - ["Development Queue (2 hour limit)", "dev",
-        data-max-bc-num-hours: 2,
-        data-max-bc-num-cores: 128,
-        data-max-bc-num-memory: 500,
-        data-set-bc-num-gpus: 0,
+    <%- CheckQueues.Queues.each do |q| -%>
+      - ["<%= q[0] %>", "<%= q[0] %>",
+        data-max-bc-num-hours: "<%= q[1] %>",
+        data-max-bc-num-cores: "<%= q[2] %>",
+        data-max-bc-num-memory: "<%= q[3] %>",
+        data-set-bc-num-gpus: "<%= q[4] %>",
+        <%- if q[4].to_i == 0 -%>
         data-hide-bc-num-gpus: true,
-        ]
-      - ["GPU Development Queue (2 hour limit)", "gpu-dev",
-        data-max-bc-num-hours: 2,
-        data-max-bc-num-cores: 36,
-        data-max-bc-num-memory: 734,
+        <%- else -%>
         data-show-bc-num-gpus: true,
+        <%- end -%>
         ]
-      - ["HTC Queue (12 hour limit, 1 core)", "htc",
-        data-max-bc-num-hours: 12,
-        data-max-bc-num-cores: 1,
-        data-max-bc-num-memory: 500,
-        data-set-bc-num-gpus: 0,
-        data-hide-bc-num-gpus: true,
-        ]
-      - ["Standard Memory Queue (12 hour limit)", "standard-s",
-        data-max-bc-num-hours: 12,
-        data-max-bc-num-cores: 128,
-        data-max-bc-num-memory: 500,
-        data-set-bc-num-gpus: 0,
-        data-hide-bc-num-gpus: true,
-        ]
-      - ["High Memory Queue (12 hour limit)", "highmem",
-        data-max-bc-num-hours: 12,
-        data-max-bc-num-cores: 128,
-        data-max-bc-num-memory: 2000,
-        data-set-bc-num-gpus: 0,
-        data-hide-bc-num-gpus: true,
-        ]
+    <%- end -%>
   python_version:
     label: "Select Python Environment"
     widget: select
