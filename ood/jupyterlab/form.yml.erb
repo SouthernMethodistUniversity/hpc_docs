@@ -317,7 +317,7 @@ class CustomEnvironments
 
 end
 
-# check for workshop queue
+# check queues
 class CheckQueues
  
   @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.minute)
