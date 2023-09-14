@@ -1,4 +1,4 @@
-whatis("ANSYS Electronics Package R23.1")
+whatis("ANSYS Electronics Package R23.2")
 family("ansys")
 
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
