@@ -48,5 +48,3 @@ script:
     - "--gres"
     - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
     <%- end -%>
-    - "-x"
-    - "c012"
