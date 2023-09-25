@@ -6,10 +6,6 @@ set -e
 # Benchmark info
 echo "TIMING - Starting main script at: $(date)"
 
-echo "type module: " $(type module)
-
-env > env_file.txt
-
 WARNING_FILE=$(pwd)/warnings.txt
 touch ${WARNING_FILE}
 LOAD_WARNINGS=0

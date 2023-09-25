@@ -27,8 +27,6 @@
 #       The plain text password used to authenticate to the web server with
 
 # Export the module function if it exists
-env > before_env
-
 [[ $(type -t module) == "function" ]] && export -f module
 
 # Find available port to run server on
