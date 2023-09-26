@@ -13,6 +13,7 @@ parts:
   - file: portal.md
   - file: m3_migration.md
   - file: mp_update.md
+  - file: external_facilities.md
 - caption: Applications
   chapters:
   - file: examples/conda/README.md
