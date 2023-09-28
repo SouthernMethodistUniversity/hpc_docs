@@ -1,22 +1,26 @@
 #!/bin/bash
 #SBATCH -J crystal
 #SBATCH -o crystal_%j.out
-#SBATCH -p standard-mem-s
-#SBATCH --mem=250G
+#SBATCH -p dev
+#SBATCH --mem=16GB
 #SBATCH -N 1
-#SBATCH --ntasks-per-node=36
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=16
 
 module purge
-module load crystal/17
+module load crystal/23
 
 # Crystal Versions
 #
 # See documentation:
-# /hpc/applications/crystal/17/1.0.2/documentation
+# https://www.crystal.unito.it/documentation.html
 #
-# Serial: crystal
-# Parallel for small/medium calculations: srun Pcrystal
-# Parallel for medium/large calculations: srun MPPcrystal
+# Serial:
+# Set `--cpus-per-task=1` and use `crystalOMP`
+#
+# Parallel:
+# Set `--cpus-per-task=<threads_per_task_integer>` and use `srun PcrystalOMP`
 
-srun Pcrystal 
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 
+srun PcrystalOMP < INPUT
