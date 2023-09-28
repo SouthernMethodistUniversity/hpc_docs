@@ -7,7 +7,7 @@ load("matio/1.5.17-4c7lfdp")
 load("openblas/0.3.21-s5husbk")
 load("boost/1.82.0-5wb3ikw")
 load("gsl/2.7.1-oyt4rtp")
-
+load("x13as/1.1.b60")
 
 append_path("LD_LIBRARY_PATH", "/hpc/m3/apps/slicot/5.0/lib")
 append_path("LIBRARY_PATH", "/hpc/m3/apps/slicot/5.0/lib")
