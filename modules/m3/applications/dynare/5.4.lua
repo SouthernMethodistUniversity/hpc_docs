@@ -12,6 +12,8 @@ load("x13as/1.1.b60")
 append_path("LD_LIBRARY_PATH", "/hpc/m3/apps/slicot/5.0/lib")
 append_path("LIBRARY_PATH", "/hpc/m3/apps/slicot/5.0/lib")
 
+prepend_path("LD_PRELOAD", "/usr/lib/x86_64-linux-gnu/libstdc++.so.6")
+
 append_path("PATH", "/hpc/m3/apps/dynare/5.4/bin")
 append_path("LIBRARY_PATH","/hpc/m3/apps/dynare/5.4/lib")
 append_path("MATLABPATH","/hpc/m3/apps/dynare/5.4/lib/dynare/matlab/")
