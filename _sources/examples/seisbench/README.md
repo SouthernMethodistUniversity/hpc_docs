@@ -1,9 +1,9 @@
-# SeisBench on ManeFrame II (M2)
+# SeisBench on M3
 
 ## Initial Setup
 
-On M2 via a terminal session run `./initial_setup.sh`. This script takes about
-five minutes to complete.
+On SMU HPC systems via a terminal session run `./initial_setup.sh`. This script
+takes about five minutes to complete.
 
 ## Usage
 
