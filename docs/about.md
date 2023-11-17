@@ -17,31 +17,31 @@ their work.
 | HPC System           | M1                 | M2         | M2         | SuperPOD     | M3           |
 |----------------------|--------------------|------------|------------|--------------| -------------|
 | Year                 | 2014               | 2017       | 2019       | 2022         | 2023         |
-| Compute Ability      | 104 TFLOPS         | 630 TFLOPS | 870 TFLOPS | 1,644 TFLOPS | 1,003 TFLOPS |
-| Number of Nodes      | 1,104              | 349        | 354        | 20           | 178          |
-| CPU Cores            | 8,832              | 11,088     | 11,276     | 2,560        | 22,784       |
-| Total GPU Cores      | 0                  | 132,608    | 275,968    | 1,392,640    | 0            |
-| Total Memory         | 29.2 TB            | 116.5 TB   | 120 TB     | 52.5 TB      | 101 TB       |
+| Compute Ability      | 104 TFLOPS         | 630 TFLOPS | 870 TFLOPS | 1,644 TFLOPS | 1,077 TFLOPS |
+| Number of Nodes      | 1,104              | 349        | 354        | 20           | 181          |
+| CPU Cores            | 8,832              | 11,088     | 11,276     | 2,560        | 22,892       |
+| Total GPU Cores      | 0                  | 132,608    | 275,968    | 1,392,640    | 122,880      |
+| Total Memory         | 29.2 TB            | 116.5 TB   | 120 TB     | 52.5 TB      | 103 TB       |
 | Network Bandwidth    | 20 Gb/s            | 100 Gb/s   | 100 Gb/s   | 200 Gb/s     | 200 Gb/s     |
 | Work Storage         | None               | None       | 768 TB     | 768 TB       | 3.5 PB       |
 | Scratch Space        | 1.4 PB             | 1.4 PB     | 2.8 PB     | 750 TB       | 3.5 PB       |
 | Archive Capabilities | No                 | Yes        | Yes        | No           | No           |
-| Operating System     | Scientific Linux 6 | CentOS 7   | CentOS 7   | Ubuntu 20.04 | Ubuntu 22.04 |
+| Operating System     | Scientific Linux 6 | CentOS 7   | CentOS 7   | Ubuntu 22.04 | Ubuntu 22.04 |
 
 ## ManeFrame III (M3)
 
 ### Configuration
 
-| Resource           | Standard-Memory | High-Memory   |
-|--------------------|-----------------|---------------|
-| Nodes              | 170             | 8             |
-| Processors         | AMD EPYC 7763   | AMD EPYC 7763 |
-| Frequency          | 2.45 GHz        | 2.45 GHz      |
-| CPUs/Node          | 2               | 2             |
-| Cores/Node         | 128             | 128           |
-| Memory/Node        | 512 GB          | 2 TB          |
-| Local Scratch/Node | None            | 4.3 TB        |
-| Interconnect       | 200 Gb/s        | 200 Gb/s      |
+| Resource           | Standard-Memory | High-Memory   | GPU                  |
+|--------------------|-----------------|---------------|----------------------|
+| Nodes              | 170             | 8             | 3                    |
+| Processors         | AMD EPYC 7763   | AMD EPYC 7763 | Intel Xeon Gold 6154 |
+| Frequency          | 2.45 GHz        | 2.45 GHz      | 3.00 GHz             |
+| CPUs/Node          | 2               | 2             | 2                    |
+| Cores/Node         | 128             | 128           | 18                   |
+| Memory/Node        | 512 GB          | 2 TB          | 756 GB               |
+| Local Scratch/Node | None            | 4.3 TB        | None                 |
+| Interconnect       | 200 Gb/s        | 200 Gb/s      | 100 Gb/s             |
 
 ## NVIDIA DGX SuperPOD (MP)
 
