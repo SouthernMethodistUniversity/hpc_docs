@@ -224,7 +224,7 @@ setting can be used to enable connection persistence. Within Cyberduck:
 2. Under "Transfers", use the "Transfer Files" drop-down to select
    "Use browser connection".
 
-### Port Forwarding
+## Port Forwarding
 
 :::{note}
 These instructions assume you are using an OpenSSH client.
