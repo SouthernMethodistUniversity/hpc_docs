@@ -2,6 +2,16 @@
 
 Accounts on SMU HPC clusters can be created via the processes detailed below.
 
+## Accounts for a Class
+
+Please email the [Help Desk](mailto:help@smu.edu?subject=[HPC]) with the
+following information:
+
+- Course number(s)
+- Coure title
+- If needed, details for class shared directory including who should have write
+  permissions.
+
 ## Accounts for Individuals with an SMU ID
 
 - SMU faculty/staff can request an account by filling out the [New
@@ -34,6 +44,6 @@ changes your password for all SMU services such as email as well.
 # Terminate an Existing Account
 
 Please send a request to the [SMU HPC
-Admins](mailto:help@smu.edu?subject=HPC) with a short explanation of
+Admins](mailto:help@smu.edu?subject=[HPC]) with a short explanation of
 reason for the termination.
 
