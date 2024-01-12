@@ -4,7 +4,7 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.3.0"
+VERSION="4.3.2"
 TAG=${VERSION}
 
 echo "Building tag: ${TAG}"
