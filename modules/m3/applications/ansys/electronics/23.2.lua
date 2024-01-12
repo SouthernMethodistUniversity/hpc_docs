@@ -16,7 +16,7 @@ if (container_name == "") then
    always_load('apptainer')
 
    function build_command(app)
-   local app_command = pathJoin("/hpc/m3/apps/ansys/23R2/v232/Linux64", app)
+   local app_command = pathJoin("/hpc/m3/apps/ansys/23R2/AnsysEM/v232/Linux64/", app)
    local cmd        = 'apptainer exec  ' .. container_path .. ' ' .. app_command
    local sh_ending  = ' "$@"'
    local csh_ending = ' $*'
@@ -44,7 +44,7 @@ else
   -- already in a container
   -- note: this does not check for the "correct" container so this might
   -- not work
-  append_path("PATH","/hpc/m3/apps/ansys/23R2/v232/Linux64")
+  append_path("PATH","/hpc/m3/apps/ansys/23R2/AnsysEM/v232/Linux64/")
   setenv("GALLIUM_DRIVER","softpipe")
 end
 
