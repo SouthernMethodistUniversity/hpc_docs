@@ -14,8 +14,9 @@ From: almalinux:8
 %post
     dnf install -y dnf-plugin-config-manager
     dnf config-manager --set-enabled powertools
-    dnf config-manager --add-repo https://virtualgl.org/pmwiki/uploads/Downloads/VirtualGL.repo
-    dnf config-manager --add-repo https://turbovnc.org/pmwiki/uploads/Downloads/TurboVNC.repo
+    dnf config-manager --add-repo https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL.repo
+    dnf config-manager --add-repo https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL-i386.repo
+    dnf config-manager --add-repo https://raw.githubusercontent.com/TurboVNC/repo/main/TurboVNC.repo
     gpg --list-keys
     dnf install -y epel-release
     dnf -y install yum-utils
