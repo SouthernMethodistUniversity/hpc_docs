@@ -17,7 +17,7 @@ if (container_name == "") then
 
    function build_command(app)
    local app_command = pathJoin("/hpc/m3/apps/mathematica/13.3.0/executables", app)
-   local cmd        = 'apptainer exec  ' .. container_path .. ' ' .. app_command
+   local cmd        = 'apptainer exec -B /run/user ' .. container_path .. ' ' .. app_command
    local sh_ending  = ' "$@"'
    local csh_ending = ' $*'
    local sh_cmd     = cmd .. sh_ending
