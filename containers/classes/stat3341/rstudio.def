@@ -47,5 +47,7 @@ From: rocker/geospatial:TAG
     R -q -e 'install.packages("mclust")'
     R -q -e 'install.packages("factoextra")'
     R -q -e 'install.packages("polite")'
+    R -q -e 'install.packages("tinytex")'
+    R -q -e 'tinytex::install_tinytex(force = TRUE)'
 
     rm -rf /tmp/downloaded_packages

@@ -4,13 +4,13 @@
 # Based on https://hub.docker.com/r/rocker/geospatial
 
 # R tag version
-VERSION="4.3.0"
+VERSION="4.3.2"
 TAG=${VERSION}
 
 # Set Class information
 COURSE_NUMBER="stat3341"
-TERM="june_b"
-YEAR="2023"
+TERM="spring"
+YEAR="2024"
 
 # check if this version already exists
 CONTAINER_NAME=${COURSE_NUMBER}_r_${TAG}.sif

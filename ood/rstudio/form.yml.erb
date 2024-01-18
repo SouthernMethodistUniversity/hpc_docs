@@ -3,13 +3,16 @@ require 'open3'
 
 # check queue help scripts
 require_relative "CheckQueues"
+require_relative "CheckAccounts"
 
 -%>
 
 ---
 cluster: "m3cluster"
 form:
-  - auto_accounts
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  - slurm_accounts
+<%- end -%>
   - r_module
   - environment
   - custom_queues
@@ -19,19 +22,43 @@ form:
   - bc_num_memory
   - bc_num_gpus
 attributes:
-  auto_accounts:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
    help: |
      Select a Slurm account. By default all users have a  default "smu" account.
      You may have other accounts, e.g. to access course specific material or
      special allocations.
+   options:
+    <%- CheckAccounts.Accounts.each do |q| -%>
+    - [ "<%= q %>",  "<%= q %>" ]
+    <%- end -%>
+<%- end -%>
   r_module:
     widget: select
     label: "R Version"
     options:
+      - [ "4.3.2", "R/4.3.2" ]
       - [ "4.3.0", "R/4.3.0" ]
       - [ "4.2.3", "R/4.2.3" ]
-      - [ "stat 3341", "/hpc/m3/containers/classes/2023/june_b/stat3341/stat3341_4.3.0.lua",
-          data-option-for-auto-accounts-smu: false
+      - [ "STAT 3341 (2023 June B)", "/hpc/m3/containers/classes/2023/june_b/stat3341/stat3341_4.3.0.lua",
+          <%- CheckAccounts.Accounts.each do |q| -%>
+          <% if q == "stat3341_june_b_2023" %>
+            data-option-for-auto-accounts-stat3341-june-b-2023: true,
+          <%- else -%>
+            data-option-for-slurm-accounts-<%= q.tr("_", "-") %>: false,
+          <%- end -%>
+          <%- end -%>
+        ]
+      - [ "STAT 3341 (2024 Spring)", "/hpc/m3/containers/classes/2024/spring/stat3341/stat3341_4.3.2.lua",
+          <%- CheckAccounts.Accounts.each do |q| -%>
+          <% if q == "stat3341_spring_2024" %>
+            data-option-for-auto-accounts-stat3341-spring-2024: true,
+          <%- else -%>
+            data-option-for-slurm-accounts-<%= q.tr("_", "-") %>: false,
+          <%- end -%>
+          <%- end -%>
         ]
   environment:
     widget: text_area

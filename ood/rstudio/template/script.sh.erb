@@ -1,6 +1,12 @@
 #!/bin/bash
 module purge
 
+# Clustom environment settings
+<%- unless context.environment.blank? -%>
+env
+<%= context.environment.encode(universal_newline: true) %>
+<%- end -%>
+
 # load the requested module
 FORM_MODULE=<%= context.r_module %>
 EXTENSION="${FORM_MODULE##*.}"
@@ -16,11 +22,6 @@ then
 else
   module load ${FORM_MODULE}
 fi
-# Clustom environment settings
-<%- unless context.environment.blank? -%>
-env
-<%= context.environment.encode(universal_newline: true) %>
-<%- end -%>
 
 #
 # Start RStudio Server
