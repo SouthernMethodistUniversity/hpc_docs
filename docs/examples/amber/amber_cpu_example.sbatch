@@ -4,7 +4,6 @@
 #SBATCH -p dev
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=4
-#SBATCH --exclusive
 
 # Amber
 module purge
