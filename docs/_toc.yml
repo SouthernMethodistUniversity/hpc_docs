@@ -8,6 +8,7 @@ parts:
   - file: about.md
     sections:
     - file: about/queues.md
+    - file: about/contact.md
   - file: accounts.md
   - file: access.md
   - file: portal.md
@@ -15,6 +16,9 @@ parts:
   - file: mp_update.md
 - caption: Applications
   chapters:
+  - file: examples/chemistry.md
+    sections: 
+    - file: examples/amber/index.md
   - file: examples/conda/README.md
   - file: examples/torch/README.md
 - caption: Tutorials
