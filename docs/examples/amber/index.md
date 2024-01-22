@@ -1,16 +1,16 @@
 # Amber
 
-:::{seealso}
-For examples and tips on submitting jobs, see [our SLURM documentation](tutorials:slurm) and [Best Practices for Jobs](tutorials:slurm:best_practices)
-
-For compute resources, see [HPC Queues](about:queues)
-:::
-
 **Amber** is a suite of biomolecular simulation programs.
 
 **Amber homepage**: [ambermd.org/](https://ambermd.org/)
 
 **Official Amber Tutorials**: [ambermd.org/tutorials/](https://ambermd.org/tutorials/)
+
+:::{seealso}
+For examples and tips on submitting jobs, see [our SLURM documentation](tutorials:slurm) and [Best Practices for Jobs](tutorials:slurm:best_practices)
+
+For compute resources, see [HPC Queues](about:queues)
+:::
 
 ## Using Amber on the SuperPod
 
