@@ -1,9 +1,9 @@
 # Amber
 
 :::{seealso}
-For examples and tips on submitting jobs, see [our SLURM documentation](../../slurm/slurm.md) and [Best Practices for Jobs](../../slurm/best_practices.md)
+For examples and tips on submitting jobs, see [our SLURM documentation](tutorials:slurm) and [Best Practices for Jobs](tutorials:slurm:best_practices)
 
-For compute resources, see [HPC Queues](../../about/queeues.md)
+For compute resources, see [HPC Queues](about:queues)
 :::
 
 **Amber** is a suite of biomolecular simulation programs.
