@@ -1,3 +1,4 @@
+(tutorials:slurm:best_practices)=
 # Best Practices for Jobs
 
 The following are some tips that will help your and everyone elses jobs use HPC resources more efficiently.

@@ -1,11 +1,12 @@
+(about:queues)=
 # Queues
 
 SMU's high-performance computing (HPC) clusters use [SLURM](https://slurm.schedmd.com/)
 to schedule and manage resources.
 
-:::{seealso}
-For examples and tips on SLURM usage, see [our SLURM documentation](../slurm/slurm.md).
-:::
+```{seealso}
+For examples and tips on SLURM usage, see [our SLURM documentation](tutorials:slurm) and [Best Practices](tutorials:slurm:best_practices).
+```
 
 :::{note}
 The efficiency of SLURM and our HPC systems depend on reasonable resource requests.
