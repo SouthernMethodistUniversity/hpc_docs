@@ -32,7 +32,7 @@ https://libcal.smu.edu/calendar. Please bring your laptop to the workshop.
 | 3/5   | 1PM-3PM      | Parallel Programming in C++                                      | Zoom       |
 | 3/21  | 10AM-12PM    | Adapting AI Workflows                                            | FLE109     |
 | 3/28  | 10AM-12PM    | Generative AI & Stable Diffusion on M3                           | FLE109     |
-| 4/15  | 10AM-11:30AM | Digital Twins and Tools to Construct Them                        | 
+| 4/15  | 10AM-11:30AM | Digital Twins and Tools to Construct Them                        | FLE109     |
 | N/A   | On-Demand    | Submitting HPC Jobs More Efficiently using SLURM                 | [HPC Docs] |
 
 ## OIT Workshop Series
