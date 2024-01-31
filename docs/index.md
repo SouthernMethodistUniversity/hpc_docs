@@ -41,7 +41,7 @@ https://libcal.smu.edu/calendar. Please bring your laptop to the workshop.
 | ----- | ----------- | ------------------------------------------------------------ | -------- |
 | 2/14  | 3PM-5PM     | Introduction to GitHub                                       | FLE323   |
 | 2/14  | 11AM-1PM    | A Date with K8s: Kubernetes for Research Use Cases           | Zoom     |
-| 2/1   | 10AM-1PM    | Introduction to Programming in Python                        | FLE109   |
+| 2/15  | 10AM-1PM    | Introduction to Programming in Python                        | FLE109   |
 | 3/7   | 10AM-12PM   | Introduction to Linux                                        | FLE109   |
 | 4/2   | 1PM-3PM     | Containerizing All the Things: Using Containers for Research | Zoom     |
 | 4/11  | 10AM-12PM   | Effective Visualization of Data in R                         | FLE109   |
