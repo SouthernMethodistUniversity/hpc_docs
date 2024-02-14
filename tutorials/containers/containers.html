@@ -366,6 +366,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">Benefits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-and-hpc">Docker and HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-singularity-features">Apptainer (Singularity) Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-use-cases">Common Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-singularity-workflow">Apptainer (Singularity) Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-docker-apptainer-container-with-python-environment">Example Docker &amp; Apptainer Container with Python Environment</a></li>
 </ul>
             </nav>
@@ -380,6 +386,87 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="containers">
 <h1>Containers<a class="headerlink" href="#containers" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Containers offer the ability to run fully customized software stacks,
+<em>e.g.</em> based on different Linux distributions and versions</p></li>
+<li><p>Containers are not virtual machines, where an entire hardware platform
+is virtualized, rather containers share a common kernel and access to
+physical hardware resources</p></li>
+</ul>
+</section>
+<section id="benefits">
+<h2>Benefits<a class="headerlink" href="#benefits" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Performant</p>
+<ul>
+<li><p>Containers can perform at near native performance.</p></li>
+</ul>
+</li>
+<li><p>Flexible</p>
+<ul>
+<li><p>Install (almost) any software you need.</p></li>
+</ul>
+</li>
+<li><p>Reproducible</p>
+<ul>
+<li><p>Define complex software environments that are verifiable.</p></li>
+</ul>
+</li>
+<li><p>Compatible</p>
+<ul>
+<li><p>Built on open standards that works on all major Linux distributions.</p></li>
+</ul>
+</li>
+<li><p>Portable</p>
+<ul>
+<li><p>Build once and run (almost) anywhere.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="docker-and-hpc">
+<h2>Docker and HPC<a class="headerlink" href="#docker-and-hpc" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We don’t allow direct Docker use on SMU HPC systems</p></li>
+<li><p>Docker’s security model is designed to support users “trusted” users
+running “trusted” containers (e.g. users who can escalate to root
+access)</p></li>
+<li><p>Docker is not designed to support scripted or batch based workflows</p></li>
+<li><p>Docker is not designed to support parallel applications</p></li>
+</ul>
+</section>
+<section id="apptainer-singularity-features">
+<h2>Apptainer (Singularity) Features<a class="headerlink" href="#apptainer-singularity-features" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Containers are a single image file</p></li>
+<li><p>No root owned daemon processes</p></li>
+<li><p>User inside containers are the same as users outside the container (no
+contextual changes)</p></li>
+<li><p>Supports shared, multi-user environments</p></li>
+<li><p>Supports HPC hardware such as GPUs and Infiniband networks</p></li>
+<li><p>Supports HPC applications like MPI</p></li>
+</ul>
+</section>
+<section id="common-use-cases">
+<h2>Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Converting Docker containers to Apptainer (Singularity)</p></li>
+<li><p>Building and running software that require newer systems and libraries</p></li>
+<li><p>Running commercial software binaries that have specific requirements</p></li>
+</ul>
+</section>
+<section id="apptainer-singularity-workflow">
+<h2>Apptainer (Singularity) Workflow<a class="headerlink" href="#apptainer-singularity-workflow" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Build your Singularity containers on a local system you have root or
+sudo access. Alternatively build a Docker container</p></li>
+<li><p>Transfer your container to an HPC system. If you used Docker,
+you will need to convert the image</p></li>
+<li><p>Run your Singularity containers</p></li>
+</ul>
+</section>
 <section id="example-docker-apptainer-container-with-python-environment">
 <h2>Example Docker &amp; Apptainer Container with Python Environment<a class="headerlink" href="#example-docker-apptainer-container-with-python-environment" title="Permalink to this heading">#</a></h2>
 <p>A template repository for building a Apptainer container with a custom Python
@@ -451,6 +538,12 @@ environment for use on SMU HPC systems can be found
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">Benefits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-and-hpc">Docker and HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-singularity-features">Apptainer (Singularity) Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-use-cases">Common Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-singularity-workflow">Apptainer (Singularity) Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-docker-apptainer-container-with-python-environment">Example Docker &amp; Apptainer Container with Python Environment</a></li>
 </ul>
   </nav></div>
