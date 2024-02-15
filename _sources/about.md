@@ -62,7 +62,7 @@ their work.
 | Interconnect Bandwidth | 10x200 Gb/s Infiniband Connections Per Node |
 | Work Storage           | 768 TB (Shared)                             |
 | Scratch Storage        | 750 TB (Raw)                                |
-| Operating System       | Ubuntu 20.04                                |
+| Operating System       | Ubuntu 22.04                                |
 
 | Resource           | DGX Node                    |
 |--------------------|-----------------------------|
