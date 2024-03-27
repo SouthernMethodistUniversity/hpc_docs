@@ -15,6 +15,10 @@ script:
     - "--gres"
     - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
     <%- end -%>
+    <%- if !slurm_accounts.blank? -%>
+    - "-A"
+    - "<%= slurm_accounts %>"
+    <%- end -%>
   template: "vnc"
 batch_connect:
   template: "vnc"
