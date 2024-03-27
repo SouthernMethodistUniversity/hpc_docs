@@ -3,6 +3,7 @@ require 'open3'
 
 # check queue help scripts
 require_relative "CheckQueues"
+require_relative "CheckAccounts"
 
 -%>
 
@@ -13,6 +14,9 @@ cluster: "m3cluster"
 submit: submit.yml.erb
 
 form:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  - slurm_accounts
+<%- end -%>
   - custom_queues
   - desktop_os
   - desktop_env
@@ -24,6 +28,19 @@ form:
   - bc_num_gpus
 
 attributes:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     Select a Slurm account. By default all users have a  default "smu" account.
+     You may have other accounts, e.g. to access course specific material or
+     special allocations.
+   options:
+    <%- CheckAccounts.Accounts.each do |q| -%>
+    - [ "<%= q %>",  "<%= q %>" ]
+    <%- end -%>
+<%- end -%>
   custom_queues:
     label: "Partition"
     widget: select
