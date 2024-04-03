@@ -113,13 +113,13 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   export LANG=en_US.UTF-8
 
   # TurboVNC
-  wget https://sourceforge.net/projects/turbovnc/files/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
+  https://github.com/TurboVNC/turbovnc/releases/download/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
   dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
   rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
  
   # VirtualGL 
-  wget https://sourceforge.net/projects/libjpeg-turbo/files/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q
-  wget https://sourceforge.net/projects/virtualgl/files/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
+  wget https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_am>
+  wget https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
   dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
   dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
   rm -f *.deb
