@@ -39,13 +39,13 @@ From: ubuntu:22.04
   # probably way more than we need
   apt-get -y update
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
-               lua5.3 \
+               lua5.4 \
                lua-bit32:amd64 \
                lua-posix:amd64 \
                lua-posix-dev \
                lua-filesystem \
-               liblua5.3-0:amd64 \
-               liblua5.3-dev:amd64 \
+               liblua5.4-0:amd64 \
+               liblua5.4-dev:amd64 \
                tcl \
                tcl-dev \
                tcl8.6 \
