@@ -118,7 +118,7 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
  
   # VirtualGL 
-  wget https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_am>
+  wget https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q 
   wget https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
   dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
   dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
