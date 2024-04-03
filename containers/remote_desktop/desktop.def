@@ -105,7 +105,7 @@ From: ubuntu:22.04
   export LANG=en_US.UTF-8
 
   # TurboVNC
-  https://github.com/TurboVNC/turbovnc/releases/download/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
+  wget https://github.com/TurboVNC/turbovnc/releases/download/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
   dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
   rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
  
