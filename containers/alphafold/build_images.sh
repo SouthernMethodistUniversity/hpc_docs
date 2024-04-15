@@ -58,5 +58,5 @@ fi
 
 # Update module file with new Singularity image name
 sed -i'' -e "s/^local img_name.*/local img_name      = \'${img}\'/g"\
- ${name}.lua
+ ../../modules/m3/applications/${name}/${version}.lua
 
