@@ -123,7 +123,8 @@ From: ubuntu:22.04
   
   # Ansys statically links libldap-2.4.so.2
   # just symlink to a more recent version
-  ln -s /usr/lib/x86_64-linux-gnu/libldap-2.5.so.0.1.9 /usr/lib/x86_64-linux-gnu/libldap-2.4.so.2
+  CURRENT_LDAP=$(find /usr/lib/x86_64-linux-gnu/ -type f -name libldap*)
+  ln -s ${CURRENT_LDAP} /usr/lib/x86_64-linux-gnu/libldap-2.4.so.2
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
