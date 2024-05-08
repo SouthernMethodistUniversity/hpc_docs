@@ -19,6 +19,10 @@ script:
     - "-A"
     - "<%= slurm_accounts %>"
     <%- end -%>
+    <%- if email_on_start == "1" -%>
+    - "--mail-type"
+    - "BEGIN"
+    <%- end -%>
   template: "vnc"
 batch_connect:
   template: "vnc"
