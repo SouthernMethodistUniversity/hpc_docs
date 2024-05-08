@@ -208,5 +208,8 @@ From: ubuntu:22.04
   apt-get -y update
   apt-get -y install code
 
+  # add --no-sandbox to code
+  sed -i 's\Exec=/usr/share/code/code\Exec=/usr/share/code/code --no-sandbox\g' /usr/share/applications/code.desktop
+
   # Clean up
   rm -rf /var/lib/apt/lists/*
