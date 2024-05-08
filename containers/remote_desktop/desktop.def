@@ -32,20 +32,23 @@ From: ubuntu:22.04
   /etc/zsh/zshenv /opt/zshenv
 
 %post
-  export TURBOVNC_VERSION=3.1
-  export VIRTUALGL_VERSION=3.1
+  export TURBOVNC_VERSION=3.1.1
+  export VIRTUALGL_VERSION=3.1.1
   export LIBJPEG_VERSION=3.0.1
 
   # probably way more than we need
   apt-get -y update
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
                lua5.3 \
+               lua5.4 \
                lua-bit32:amd64 \
                lua-posix:amd64 \
                lua-posix-dev \
                lua-filesystem \
                liblua5.3-0:amd64 \
                liblua5.3-dev:amd64 \
+               liblua5.4-0:amd64 \
+               liblua5.4-dev:amd64 \
                tcl \
                tcl-dev \
                tcl8.6 \
@@ -105,13 +108,13 @@ From: ubuntu:22.04
   export LANG=en_US.UTF-8
 
   # TurboVNC
-  wget https://sourceforge.net/projects/turbovnc/files/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
+  wget https://github.com/TurboVNC/turbovnc/releases/download/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
   dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
   rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
  
   # VirtualGL 
-  wget https://sourceforge.net/projects/libjpeg-turbo/files/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q
-  wget https://sourceforge.net/projects/virtualgl/files/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
+  wget https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q
+  wget https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
   dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
   dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
   rm -f *.deb
@@ -125,6 +128,55 @@ From: ubuntu:22.04
   # just symlink to a more recent version
   CURRENT_LDAP=$(find /usr/lib/x86_64-linux-gnu/ -type f -name libldap*)
   ln -s ${CURRENT_LDAP} /usr/lib/x86_64-linux-gnu/libldap-2.4.so.2
+
+  # Matlab requirements (most of these should already be here)
+  apt-get -y update
+  DEBIAN_FRONTEND=noninteractive apt-get -y install \
+	 ca-certificates\
+	 libasound2\
+	 libc6\
+	 libcairo-gobject2\
+	 libcairo2\
+	 libcap2\
+	 libcups2\
+	 libdrm2\
+	 libfontconfig1\
+	 libgbm1\
+	 libgdk-pixbuf-2.0-0\
+	 libgl1\
+	 libglib2.0-0\
+	 libgstreamer-plugins-base1.0-0\
+         libgstreamer1.0-0\
+	 libgtk-3-0\
+	 libice6\
+	 libltdl7\
+	 libnspr4\
+	 libnss3\
+	 libpam0g\
+	 libpango-1.0-0\
+	 libpangocairo-1.0-0\
+	 libpangoft2-1.0-0\
+	 libsndfile1\
+	 libudev1\
+	 libuuid1\
+	 libwayland-client0\
+	 libxcomposite1\
+	 libxcursor1\
+	 libxdamage1\
+	 libxfixes3\
+	 libxft2\
+	 libxinerama1\
+	 libxrandr2\
+	 libxt6\
+	 libxtst6\
+	 libxxf86vm1\
+	 locales\
+	 locales-all\
+	 net-tools\
+	 procps\
+	 unzip\
+	 zlib1g
+
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
