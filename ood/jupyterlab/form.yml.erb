@@ -24,6 +24,7 @@ form:
   - bc_num_cores
   - bc_num_memory
   - bc_num_gpus
+  - email_on_start
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
@@ -150,3 +151,8 @@ attributes:
     min: 0
     step: 0
     value: 1
+  email_on_start:
+    widget: "check_box"
+    value: 0
+    label: "Email When Job Starts"
+    help: "Sends an email to your SMU email when this job starts if checked"

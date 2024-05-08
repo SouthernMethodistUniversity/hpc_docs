@@ -18,3 +18,7 @@ script:
     - "--gres"
     - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
     <%- end -%>
+    <%- if email_on_start == "1" -%>
+    - "--mail-type"
+    - "BEGIN"
+    <%- end -%>
