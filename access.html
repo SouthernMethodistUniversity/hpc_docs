@@ -388,6 +388,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty-on-windows">PuTTY on Windows</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-smu-hpc-systems-using-the-bastion-hosts">Accessing SMU HPC Systems Using the Bastion Hosts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-setup">Manual Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-setup">Automated Setup</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -744,6 +749,59 @@ See the specific host in the second to last line of the error message
 </ol>
 </section>
 </section>
+<section id="accessing-smu-hpc-systems-using-the-bastion-hosts">
+<h2>Accessing SMU HPC Systems Using the Bastion Hosts<a class="headerlink" href="#accessing-smu-hpc-systems-using-the-bastion-hosts" title="Permalink to this heading">#</a></h2>
+<p>The bastion hosts provide an alternative to using the VPN to access SMU HPC
+systems via SSH. Access to the bastion hosts can be requested by emailing
+<a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D%20Bastion%20Host%20Access%20Request">help<span>&#64;</span>smu<span>&#46;</span>edu with
+“[HPC]”</a>
+in the subject line.</p>
+<p>There are two ways to setup access to SMU HPC systems through the bastion
+hosts. The first is manually and the second is via script that will automate
+the setup procedure including the setup of SSH keys. In both cases the VPN is
+no longer needed for SSH access.</p>
+<section id="manual-setup">
+<h3>Manual Setup<a class="headerlink" href="#manual-setup" title="Permalink to this heading">#</a></h3>
+<p>The manual procedure will work on any operating system using OpenSSH, which
+includes Linux, macOS, and Windows.</p>
+<p>The bastion hostnames are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sjump7ap01.smu.edu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sjump7ap02.smu.edu</span></code></p></li>
+</ul>
+<p>Accessing M3 then done via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-u<span class="w"> </span>&lt;your_hpc_username&gt;<span class="w"> </span>-J<span class="w"> </span>sjump7ap01.smu.edu<span class="w"> </span>m3.smu.edu
+</pre></div>
+</div>
+<p>While accessin the SuperPOD is done via:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-u<span class="w"> </span>&lt;your_hpc_username&gt;<span class="w"> </span>-J<span class="w"> </span>sjump7ap01.smu.edu<span class="w"> </span>m3.smu.edu
+</pre></div>
+</div>
+<p>In both cases <code class="docutils literal notranslate"><span class="pre">&lt;your_hpc_username&gt;</span></code> should be replaced with your SMU HPC
+username.</p>
+</section>
+<section id="automated-setup">
+<h3>Automated Setup<a class="headerlink" href="#automated-setup" title="Permalink to this heading">#</a></h3>
+<p>The automated script will guide you through setting up your SSH configuration
+such that you can access M3 and the NVIDIA SuperPOD (MP) without need of the
+SMU VPN nor passwords. This is accomplished using SSH keys and SMU’s HPC
+bastion hosts.</p>
+<p>The script makes only single one-line edit to <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> with all other
+files contained in <code class="docutils literal notranslate"><span class="pre">~/.ssh/smu_hpc_ssh</span></code>.</p>
+<p>Note that if something goes wrong during the setup process you can simply
+restart this script to try again.</p>
+<p>Begin by copying and pasting the command below into a UNIX terminal, e.g.
+Linux, macOS, or Windows WSL, on your own computer, i.e. not logged into M3 nor
+the NVIDIA SuperPOD (MP).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/SouthernMethodistUniversity/smu_hpc_ssh/main/setup.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+</div>
+<p>After following the scripts prompts you can access the SuperPOD via <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">mp</span></code>
+and M3 via <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">m3</span></code>. Note the same command is used both on and off campus. The
+SSH setup made by the script will automatically determine if the bastion hosts
+are needed and use them if so.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -829,6 +887,11 @@ See the specific host in the second to last line of the error message
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-host-key-changes">SSH Host Key Changes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openssh">OpenSSH</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putty-on-windows">PuTTY on Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-smu-hpc-systems-using-the-bastion-hosts">Accessing SMU HPC Systems Using the Bastion Hosts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-setup">Manual Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-setup">Automated Setup</a></li>
 </ul>
 </li>
 </ul>
