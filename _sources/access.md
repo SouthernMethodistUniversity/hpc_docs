@@ -351,12 +351,12 @@ The bastion hostnames are:
 
 Accessing M3 then done via:
 ```bash
-ssh -u <your_hpc_username> -J sjump7ap01.smu.edu m3.smu.edu
+ssh -l <your_hpc_username> -J sjump7ap01.smu.edu m3.smu.edu
 ```
 
 While accessin the SuperPOD is done via:
 ```bash
-ssh -u <your_hpc_username> -J sjump7ap01.smu.edu m3.smu.edu
+ssh -l <your_hpc_username> -J sjump7ap01.smu.edu m3.smu.edu
 ```
 In both cases `<your_hpc_username>` should be replaced with your SMU HPC
 username.
