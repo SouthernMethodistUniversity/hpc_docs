@@ -327,3 +327,63 @@ See the specific host in the second to last line of the error message
 2. Browse to "HKEY_CURRENT_USER\SOFTWARE\<Your Windows User Name>\PuTTY\SshHostKeys".
 3. Right-click on the offending key and select delete.
 
+## Accessing SMU HPC Systems Using the Bastion Hosts
+
+The bastion hosts provide an alternative to using the VPN to access SMU HPC
+systems via SSH. Access to the bastion hosts can be requested by emailing
+[help@smu.edu with
+"[HPC]"](mailto:help@smu.edu?subject=[HPC]%20Bastion%20Host%20Access%20Request)
+in the subject line.
+
+There are two ways to setup access to SMU HPC systems through the bastion
+hosts. The first is manually and the second is via script that will automate
+the setup procedure including the setup of SSH keys. In both cases the VPN is
+no longer needed for SSH access.
+
+### Manual Setup
+
+The manual procedure will work on any operating system using OpenSSH, which
+includes Linux, macOS, and Windows. 
+
+The bastion hostnames are:
+- `sjump7ap01.smu.edu`
+- `sjump7ap02.smu.edu`
+
+Accessing M3 then done via:
+```bash
+ssh -u <your_hpc_username> -J sjump7ap01.smu.edu m3.smu.edu
+```
+
+While accessin the SuperPOD is done via:
+```bash
+ssh -u <your_hpc_username> -J sjump7ap01.smu.edu m3.smu.edu
+```
+In both cases `<your_hpc_username>` should be replaced with your SMU HPC
+username.
+
+### Automated Setup
+
+The automated script will guide you through setting up your SSH configuration
+such that you can access M3 and the NVIDIA SuperPOD (MP) without need of the
+SMU VPN nor passwords. This is accomplished using SSH keys and SMU's HPC
+bastion hosts.
+
+The script makes only single one-line edit to `~/.ssh/config` with all other
+files contained in `~/.ssh/smu_hpc_ssh`.
+
+Note that if something goes wrong during the setup process you can simply
+restart this script to try again.
+
+Begin by copying and pasting the command below into a UNIX terminal, e.g.
+Linux, macOS, or Windows WSL, on your own computer, i.e. not logged into M3 nor
+the NVIDIA SuperPOD (MP).
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/SouthernMethodistUniversity/smu_hpc_ssh/main/setup.sh | sh
+```
+
+After following the scripts prompts you can access the SuperPOD via `ssh mp`
+and M3 via `ssh m3`. Note the same command is used both on and off campus. The
+SSH setup made by the script will automatically determine if the bastion hosts
+are needed and use them if so.
+
