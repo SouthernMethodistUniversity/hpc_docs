@@ -2,10 +2,10 @@ whatis("NVIDIA HPC-X toolkit")
 family("mpi")
 extensions("hcoll/4.8.3223, ucx/1.16.0, ucc/1.3.1, openmpi/4.1.7a1, sharp/3.5.1-rc1")
 
-load("cuda/12.4.1-vz7djzz ")
+load("cuda/12.4.1-nsrijq7")
 
 local HPCX_HOME="/hpc/mp/apps/hpcx/hpcx-v2.17.1-gcc-inbox-ubuntu22.04-cuda12-x86_64"
-local OMPI_DIR="hpcx-ompi-gcc-13.2.0"
+local OMPI_DIR="hpcx-ompi-gcc-11.2.0"
 setenv("UCX_NET_DEVICES","mlx5_0:1,mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_6:1,mlx5_7:1,mlx5_8:1,mlx5_9:1")
 
 setenv("HPCX_DIR",HPCX_HOME)
