@@ -1,8 +1,7 @@
-torch==2.0.0
-torchvision==0.15.1
-torchaudio==2.0.1
-jupyterlab==3.6.3
-pandas==2.0.0
---index-url https://download.pytorch.org/whl/cpu
---extra-index-url=https://pypi.org/simple
-
+torch
+torchvision
+torchaudio
+jupyterlab
+pandas
+---index-url https://download.pytorch.org/whl/cpu
+---extra-index-url=https://pypi.org/simple
