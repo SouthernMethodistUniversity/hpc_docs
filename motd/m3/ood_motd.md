@@ -12,15 +12,3 @@
   and have a default quota of  8 TB.
 * Scratch directories, `$SCRATCH`, are for tempoary storage and files older
   than 60 days will be deleted.
-
-# Spring 2024 Workshop Series - Open to All!
-
-The Spring 2024 ODSRCI and OIT workshop series provides a hands-on experience
-that will guide researchers from the basics of using SMU's supercomputing
-resources to advanced parallelization and application specific usage. The
-topics will cover information useful for researchers to quickly begin to use
-the advanced compute capabilities provided with the cluster.
-
-Students can register for the workshops in advance via
-<https://libcal.smu.edu/calendar>. Please bring your laptop to the workshop.
-
