@@ -3,7 +3,7 @@
 * [Documentation](https://southernmethodistuniversity.github.io/hpc_docs)
 * [Example Scripts and Input
   Files](https://hpc.m3.smu.edu/pun/sys/dashboard/files/fs/hpc/m3/examples)
-* Help: help@smu.edu with "HPC" in subject line
+* Help: help@smu.edu with "[HPC]" in subject line
 
 # Storage Locations and Quotas
 
