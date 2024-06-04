@@ -130,7 +130,9 @@ users with the following restrictions.
 
 ## Acknowledgement
 
-If you wish to acknowledge the use of SMU HPC resources in any publication we
-suggest the following: \"Computational resources for this research were
-provided by SMU\'s Center for Research Computing.\"
+We request that all work supported by SMU HPC resources make an appropriate acknowledgement.
+We suggest the following: 
+
+\"Computational resources for this research were
+provided by SMU\'s O\’Donnell Data Science and Research Computing Institute.\"
 
