@@ -83,7 +83,7 @@ their work.
 ### Professor Thomas Hagstrom (Mathematics)
 
 Professor Hagstrom has one node that is available as part of M3. This
-node has dual  AMD EPYC 7742 64-Core Processor \"Zen 2\"
+node has dual  AMD EPYC 7742 64-Core \"Zen 2\"
 processors, 512 GB of memory, and an NVIDIA A100 GPU accelerator with 
 40 GB of HBM2 memory, 6912 Cuda cores, and 432 tensor cores. 
 
@@ -127,6 +127,16 @@ users with the following restrictions.
 -   Members of Dr. Cai\'s group may run upto 2 weeks
     when the `--qos qos_cai` Slurm flag is used
 -   Jobs submitted without the `--qos qos_cai` flag may be preempted
+
+### Assistant Professor Devin Matthews (Chemistry)
+
+Dr. Matthews has one node that is available as part of M3. This node has
+dual AMD EPYC 7763 2.45 Ghz 64-Core \"Zen 3\" processors, 512 GB of memory,
+and AMD Instinct MI210 GPU with 64 GB of HBM2e memory and 6,656 stream processors.
+This node is also equipped with AMD/Xilinx Alveo U55C FPGA.
+
+This node `ga001`, is currently available only with permision
+from Dr. Matthews. 
 
 ## Acknowledgement
 
