@@ -134,5 +134,5 @@ We request that all work supported by SMU HPC resources make an appropriate ackn
 We suggest the following: 
 
 \"Computational resources for this research were
-provided by SMU\'s O\’Donnell Data Science and Research Computing Institute.\"
+provided by SMU\'s O\'Donnell Data Science and Research Computing Institute.\"
 
