@@ -11,8 +11,7 @@ require_relative "CustomEnvironments"
 require_relative "CheckEnabled"
 
 -%>
-
-<% if CheckEnabled.Enabled == true %>
+<%- if CheckEnabled.AccountEnabled -%>
 ---
 cluster: "m3cluster"
 form:
