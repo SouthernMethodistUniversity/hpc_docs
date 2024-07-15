@@ -1,7 +1,7 @@
 whatis("ANSYS Electronics Package R24.2")
 family("ansys")
 
-local ansys_home="/hpc/m3/apps/ansys/23R2/AnsysEM/v232/Linux64/"
+local ansys_home="/hpc/m3/apps/ansys/24R2/AnsysEM/v242/Linux64/"
 
 append_path("PATH",ansys_home)
 
