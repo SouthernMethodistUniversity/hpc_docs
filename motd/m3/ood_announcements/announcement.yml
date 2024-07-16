@@ -9,16 +9,12 @@ msg: |
 
   Please review any data you have stored in ${SCRATCH} before August 1 and move anything you need to keep another location such as $WORK, $HOME, or somewhere off of the HPC systems entirely.
 
-  <% end %>
-
-type: warning
-msg: |
   <% if Time.now < Time.new(2024, 9, 1, 12, 0, 0) %>
   M2 Home directories will be decomissioned on **August 30, 2024**
 
   - ${M2HOME} will no longer be accessible.
   - All data in ${M2HOME} will be permenantly deleted.
 
-  Please review any data you have stored in ${M2HOME} before August 30 and move anything you need to keep another location such as $WORK, $HOME, or somewhere off of the HPC systems entire>
+  Please review any data you have stored in ${M2HOME} before August 30 and move anything you need to keep another location such as $WORK, $HOME, or somewhere off of the HPC systems entirely
 
   <% end %>
