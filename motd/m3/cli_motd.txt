@@ -15,12 +15,11 @@ Help:            help@smu.edu with "[HPC]" in subject line
 Storage Locations:
 
 Variable     | Quota   | Usage
------------- | ------- | -------------------------------
+------------ | ------- | -----------------------------------------------------
 $HOME        | 200 GB  | Home directory, backed up
 $WORK        | 8 TB    | Long term storage
 $SCRATCH     | 60 days | Temporary scratch space
-$M2HOME      | 200 GB  | Read-only access to M2 $HOME
-$M2SCRATCH   | NA      | Read-only access to M2 $SCRATCH
+$M2HOME      | 200 GB  | Read-only access to M2 $HOME (ending August 30, 2024)
 
 *Do not* use login nodes or $HOME for calculations
 
