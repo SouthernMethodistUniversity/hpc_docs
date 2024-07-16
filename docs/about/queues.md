@@ -50,11 +50,12 @@ You should select the queue most appropriate for your jobs and not on current av
 
 ## SuperPod (MP) Queues
 
-The SuperPod has only 1 queue:
+The SuperPod has 2 queues:
 
 | Partition Name | Number of Nodes | Cores Per Node | Memory Per Node | GPUs Per Node  | Time Limit |
 |----------------|-----------------|----------------|-----------------|----------------|------------|
-| batch          | 20              | 128            | 2TB             | 8 Nvidia A100s | 48 hours   |
+| batch          | 18              | 128            | 2TB             | 8 Nvidia A100s | 48 hours   |
+| short          | 2               | 128            | 2TB             | 8 Nvidia A100s | 4 hours    |
 
 All SuperPod nodes are identical and contain dual AMD EPYC 7742 64-Core Processors.
 
@@ -64,3 +65,17 @@ receive 16 CPU cores and 96GB of memory automatically.
 :::{note}
 CPU only jobs should be run on M3 and not the SuperPod
 :::
+
+### Short queue:
+
+The short queue is intended for interactive work, development, and other short tasks.
+The following job restrictions apply:
+
+- 4 hour time limit
+- default allocation 1 GPU, 16 cores, 96GB memory, 2 hours
+- default of of 96 GB and 16 cores per GPU
+- Max 2 GPUs
+- Max 128GB per GPU
+- Max 16 cores per GPU
+- Max 1 running job per user
+- ssh access to compute nodes enabled for running jobs
