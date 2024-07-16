@@ -8,6 +8,7 @@ msg: |
   - ${SCRATCH} storage space is intended as high performance, temporary storage for jobs
 
   Please review any data you have stored in ${SCRATCH} before August 1 and move anything you need to keep another location such as $WORK, $HOME, or somewhere off of the HPC systems entirely.
+  <% end %>
 
   <% if Time.now < Time.new(2024, 9, 1, 12, 0, 0) %>
   M2 Home directories will be decomissioned on **August 30, 2024**
