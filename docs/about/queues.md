@@ -66,7 +66,7 @@ receive 16 CPU cores and 96GB of memory automatically.
 CPU only jobs should be run on M3 and not the SuperPod
 :::
 
-### Short queue:
+### Short queue
 
 The short queue is intended for interactive work, development, and other short tasks.
 The following job restrictions apply:
@@ -79,3 +79,10 @@ The following job restrictions apply:
 - Max 16 cores per GPU
 - Max 1 running job per user
 - ssh access to compute nodes enabled for running jobs
+
+### Special Requests
+
+Exceptions may be requested, for example, to run a job on all 20 SuperPOD nodes.
+Approval for any such requests will be the responsibility of the 
+[O’Donnell Data Science and Research Computing Institute](https://www.smu.edu/Provost/Data-Science-Institute)
+and will be based on demonstrated need and impact to other users.
