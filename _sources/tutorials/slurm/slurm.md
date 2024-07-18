@@ -36,25 +36,19 @@ the system.
 #### SLURM commands
 
 While there are a [multitude of SLURM
-commands](https://computing.llnl.gov/linux/slurm/documentation.html),
+commands](https://slurm.schedmd.com/quickstart.html),
 here we'll focus on those applicable to running batch and interactive
 jobs:
 
 -   `sinfo` \-- displays information about SLURM nodes and partitions
     (queue types). A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/sinfo.html). The usage
+    [here](https://slurm.schedmd.com/sinfo.html). The usage
     command (with the most-helpful optional arguments in brackets) is
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ sinfo [-a] [-l] [-n <nodes>] [-p <partition>] [-s] [-a] [-a] [-a]
     ```
 
-    ```{=html}
-    </div>
-    ```
     where these options are:
 
     -   `-a` or `--all` \-- Display information about all partitions
@@ -71,34 +65,21 @@ jobs:
 
     Examples:
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ sinfo --long -p highmem  # long output for all nodes allocated to the "highmem" partition
     $ sinfo -s                 # summarizes output on all nodes on all partitions
     ```
 
-    ```{=html}
-    </div>
-    ```
-
 -   `squeue` \-- views information about jobs located in the SLURM
     scheduling queue. A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/squeue.html). The
+    [here](https://slurm.schedmd.com/squeue.html). The
     usage command (with the most-helpful optional arguments in brackets)
     is
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ squeue [-a] [-j] [-l] [-p] [--start] [-u]
     ```
 
-    ```{=html}
-    </div>
-    ```
     where these options are:
 
     -   `-a` or `--all` \-- Display information about jobs and job steps
@@ -120,34 +101,22 @@ jobs:
 
     Examples:
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ squeue                            # all jobs
     $ squeue -u rkalescky --start       # anticipated start time of jobs
     $ squeue --jobs 12345,12346,12348   # information on only jobs 12345, 12346 and 12348
     ```
 
-    ```{=html}
-    </div>
-    ```
 
 -   `sbatch` \-- submits a batch script to SLURM. A full list of options
     is available
-    [here](https://computing.llnl.gov/linux/slurm/sbatch.html). The
+    [here](https://slurm.schedmd.com/sbatch.html). The
     usage command is
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ sbatch [options] `<script>` [args]
     ```
 
-    ```{=html}
-    </div>
-    ```
     where `<script>` is a *batch submission script*, and `[args]` are
     any optional arguments that should be supplied to `<script>`. The
     `sbatch` command accepts a multitude of options; these options may
@@ -165,32 +134,20 @@ jobs:
 
     Examples:
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ sbatch ./myscript.sh    # submits the batch submission file "myscript.sh" to SLURM
     ```
 
-    ```{=html}
-    </div>
-    ```
 
 -   `srun` \-- runs a parallel or interactive job on the worker nodes. A
     full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/srun.html). The usage
+    [here](https://slurm.schedmd.com/srun.html). The usage
     command (with the most-helpful optional arguments in brackets) is
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ srun [-D <path>] [-e <errf>] [--epilog=<executable>] [-o <outf>] [-p <part>] [--pty] [--x11] <executable>
     ```
 
-    ```{=html}
-    </div>
-    ```
     where these options are:
 
     -   `-D <path>` or `--chdir=<path>` \-- have the remote processes
@@ -226,35 +183,22 @@ jobs:
 
     Examples:
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ srun -p dev /bin/program # runs executable /bin/program on "dev" partition
     $ srun --x11=first --pty emacs  # runs "emacs" and forwards graphics
     $ srun --x11=first --pty $SHELL # runs a the user's current shell and forwards graphics
     ```
 
-    ```{=html}
-    </div>
-    ```
-
 -   `salloc` \-- obtains a SLURM job allocation (a set of nodes),
     executes a command, and then releases the allocation when the
     command is finished. A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/salloc.html). The
+    [here](https://slurm.schedmd.com/salloc.html). The
     usage command is
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ salloc [options] <command> [command args]
     ```
 
-    ```{=html}
-    </div>
-    ```
     where `<command> [command args]` specifies the command (and any
     arguments) to run. Available options are almost identical to `srun`,
     including:
@@ -274,20 +218,14 @@ jobs:
 
 -   `scancel` \-- kills jobs or job steps that are under the control of
     SLURM (and listed by `squeue`. A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/scancel.html). The
+    [here](https://slurm.schedmd.com/scancel.html). The
     usage command (with the most-helpful optional arguments in brackets)
     is
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ scancel [-i] [-n <job_name>] [-p <part>] [-t <state>] [-u <uname>] [jobid]
     ```
 
-    ```{=html}
-    </div>
-    ```
     where these options are:
 
     -   `-i` or `--interactive` \-- require response from user for each
@@ -307,18 +245,12 @@ jobs:
 
     Examples:
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     $ scancel 1234  # cancel job number 1234
     $ scancel -u rkalescky  # cancel all jobs owned by user "rkalescky"
     $ scancel -t PENDING -u joe  # cancel all pending jobs owned by user "joe"
     ```
 
-    ```{=html}
-    </div>
-    ```
 
 ### Example: Running Interactive Jobs
 
@@ -333,16 +265,10 @@ better your answer*.
 
 While you can run this at the command line:
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 $ python ./pi_monte_carlo.py 50
 ```
 
-```{=html}
-</div>
-```
 as we increase the number of random values to obtain a more accurate
 approximation it can take longer to run, so as "good citizens" we
 should instead run it on dedicated compute nodes instead of the shared
@@ -351,23 +277,16 @@ login nodes.
 Before running this script on a compute node, we need to ensure that
 `myjob.py` has "executable" permissions:
 
-```{=html}
-<div class="sourceCode">
-```
+
 ``` bash
 $ chmod +x ./pi_monte_carlo.py
 ```
 
-```{=html}
-</div>
-```
 We'll use `srun` to run this script interactively for interval values
 of {50,500,5000,50000}. For each run, we'll direct the output to a
 separate file:
 
-```{=html}
-<div class="sourceCode">
-```
+
 ``` bash
 $ srun -o run_50.txt ./pi_monte_carlo.py 50
 $ srun -o run_500.txt ./pi_monte_carlo.py 500
@@ -375,23 +294,17 @@ $ srun -o run_5000.txt ./mpi_monte_carlo.py 5000
 $ srun -o run_50000.txt ./pi_monte_carlo.py 50000
 ```
 
-```{=html}
-</div>
-```
+
 Upon completion you should have the files `run_50.txt`, `run_500.txt`,
 `run_5000.txt` and `run_50000.txt` in your directory. View the results
 to ensure that things ran properly:
 
-```{=html}
-<div class="sourceCode">
-```
+
 ``` bash
 $ cat run_*
 ```
 
-```{=html}
-</div>
-```
+
 in the above commands we do not need to directly specify to run on the
 "dev" SLURM partition, since that is the default partition.
 
@@ -406,23 +319,17 @@ A batch submission script is just that, a shell script. You are welcome
 to use your preferred shell scripting language; in this tutorial we'll
 use Bash. As a result, the script typically starts with the line
 
-```{=html}
-<div class="sourceCode">
-```
+
 ``` bash
 #!/bin/bash
 ```
 
-```{=html}
-</div>
-```
+
 The following lines (before any executable commands) contain the options
 to be supplied to the `sbatch` command. Each of these options must be
 prepended with the text `#SBATCH`, e.g.
 
-```{=html}
-<div class="sourceCode">
-```
+
 ``` bash
 #!/bin/bash
 #SBATCH -J my_program       # job name to display in squeue
@@ -433,9 +340,7 @@ prepended with the text `#SBATCH`, e.g.
 #SBATCH --mem=10G           # memory in GB
 ```
 
-```{=html}
-</div>
-```
+
 Since each of these `sbatch` options begins with the character `#`, they
 are treated as comments by the Bash shell; however `sbatch` parses the
 file to find these and supply them as options for the job.
@@ -458,7 +363,7 @@ Unlike general Bash scripts, there are a few SLURM replacement symbols
 -   `%u` \-- your username
 
 The available options to `sbatch` are
-[numerous](https://computing.llnl.gov/linux/slurm/sbatch.html). Here we
+[numerous](https://slurm.schedmd.com/sbatch.html). Here we
 list the most useful options for running serial batch jobs.
 
 -   `-D <dir>` or `--workdir=<dir>` \-- sets the working directory where

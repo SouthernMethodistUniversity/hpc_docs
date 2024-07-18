@@ -4,7 +4,7 @@ SMU's high-performance computing (HPC) clusters use [SLURM](https://slurm.schedm
 to schedule and manage resources.
 
 :::{seealso}
-For examples and tips on SLURM usage, see [our SLURM documentation](../slurm/slurm.md).
+For examples and tips on SLURM usage, see [our SLURM documentation](../tutorials/slurm/slurm.md).
 :::
 
 :::{note}
