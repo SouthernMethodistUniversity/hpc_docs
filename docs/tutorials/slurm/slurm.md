@@ -649,9 +649,6 @@ Here we'll look at six ways to run jobs on M3 using Slurm.
 
 #### Interactive Session Via `srun`
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 srun -p htc --pty $SHELL
 module load conda
@@ -659,48 +656,30 @@ conda activate base
 python pi_monte_carlo.py 1000
 ```
 
-```{=html}
-</div>
-```
 This method involves interactively requesting a HTC compute node and
 then running the calculation manually.
 
 #### Single Interactive Job Via `srun`
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 srun -p htc python pi_monte_carlo.py 1000
 ```
 
-```{=html}
-</div>
-```
 This method interactively requests that the calculation be directly run
 on the requested resource.
 
 #### Single-Threaded Batch Job via `sbatch`'s Wrapping Function
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 sbatch -p htc --wrap "sleep 30; time python pi_monte_carlo.py 1000"
 ```
 
-```{=html}
-</div>
-```
 This method submits a batch job by wrapping the command line that you
 wish to run in an `sbatch` script that is then submited for you. This
 method is non-interactive.
 
 #### Single Threaded Batch Job via Batch Script
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 #!/bin/bash
 #SBATCH -J python
@@ -716,17 +695,11 @@ conda activate base
 time python pi_monte_carlo.py 1000
 ```
 
-```{=html}
-</div>
-```
 This batch script is manually creatd and then submited via
 `sbatch 04_sbatch_htc.sbatch`.
 
 #### Single Multi-Threaded Job via Batch Script
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 #!/bin/bash
 #SBATCH -J pi
@@ -743,17 +716,11 @@ conda activate base
 time python pi_monte_carlo_shared.py 10000000 ${SLURM_NTASKS}
 ```
 
-```{=html}
-</div>
-```
 This batch script runs a parallel version of the Monte Carlo *π*
 approximation script on two cores.
 
 #### Array of Single Threaded Jobs via Batch Script
 
-```{=html}
-<div class="sourceCode">
-```
 ``` bash
 #!/bin/bash
 #SBATCH -J pi_array
@@ -770,8 +737,5 @@ conda activate base
 time python pi_monte_carlo.py $((10**${SLURM_ARRAY_JOB_ID}))
 ```
 
-```{=html}
-</div>
-```
 This batch script submits a job that will perform an array of jobs in
 parallel as allowed by the queue system.
