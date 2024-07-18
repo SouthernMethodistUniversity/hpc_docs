@@ -5,7 +5,7 @@ Introduction to UNIX
 ====================
 
 The internet is full of `useful UNIX/Linux
-tutorials <https://www.google.com/search?q=unix+tutorial>`__; this is just one
+tutorials <http://lmgtfy.com/?q=linux+tutorial>`__; this is just one
 more, but hopefully it will be brief yet thorough enough to learn the
 basics of using UNIX/Linux insofar as will be needed for the remainder of
 this documentation. The contents of this tutorial are adapted from an `online
