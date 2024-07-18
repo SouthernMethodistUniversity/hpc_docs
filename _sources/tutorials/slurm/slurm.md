@@ -369,76 +369,45 @@ list the most useful options for running serial batch jobs.
 -   `-D <dir>` or `--workdir=<dir>` \-- sets the working directory where
     the batch script should be run, e.g.
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
+
     ``` bash
     #SBATCH -D /scratch/users/ezekiel/test_run
     ```
 
-    ```{=html}
-    </div>
-    ```
 
 -   `-J <name>` or `--job-name=<name>` \-- sets the job name as output
     by the `squeue` command, e.g.
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH -J test_job
     ```
 
-    ```{=html}
-    </div>
-    ```
 
 -   `-o <fname>` \-- sets the output file name for stdout and stderr (if
     stderr is left unspecified). The default standard output is directed
     to a file of the name `slurm-%j.out`, where `%j` corresponds to the
     job ID number. You can do something similar, e.g.
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH -o output-%j.txt
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `-e <fname>` \-- sets the output file name for stderr only. The
     default is to combine this with stdout. An example similar to `-o`
     above would be
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH -e error-%j.txt
     ```
 
-    ```{=html}
-    </div>
-    ```
 
 -   `-i <fname>` or `--input=<fname>` \-- sets the standard input stream
     for the running job. For example, if an executable program will
     prompt the user for text input, these inputs may be placed in a file
     `inputs.txt` and specified to the script via
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH -i inputs.txt
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `-p <part>` \-- tells SLURM on which partition it should submit the
@@ -446,44 +415,23 @@ list the most useful options for running serial batch jobs.
     For example, so submit a batch job to a high-memory node you would
     use
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH -p highmem
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `-t <num>` \-- tells SLURM the maximum runtime to be allowed for the
     job (in minutes). For example, to allow a job to run for up to 3
     hours you would use
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH -t 180
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `--exclusive` \-- tells SLURM that the job can not share nodes with
     other running jobs.
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH --exclusive
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `-s` or `--share` \-- tells SLURM that the job can share nodes with
@@ -494,29 +442,16 @@ list the most useful options for running serial batch jobs.
     application performance will likely suffer due to competition for
     resources within a node.
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
+
     ``` bash
     #SBATCH -s
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `--mail-user <email address>` \-- tells SLURM your email address if
     you'd like to receive job-related email notifications, e.g.
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH --mail-user peruna@smu.edu
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 -   `--mail-type=<flag>` \-- tells SLURM which types of email
@@ -530,15 +465,8 @@ list the most useful options for running serial batch jobs.
 
     For example,
 
-    ```{=html}
-    <div class="sourceCode">
-    ```
     ``` bash
     #SBATCH --mail-type=all
-    ```
-
-    ```{=html}
-    </div>
     ```
 
 ### Running Batch Jobs
