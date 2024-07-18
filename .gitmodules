@@ -1,3 +1,6 @@
 [submodule "docs/examples/python_container"]
 	path = docs/examples/python_container
 	url = https://github.com/SouthernMethodistUniversity/python_container.git
+[submodule "docs/examples/m2_examples"]
+	path = docs/examples/m2_examples
+	url = https://github.com/SouthernMethodistUniversity/m2_examples.git
