@@ -12,7 +12,7 @@ cp -R /hpc/m3/examples/slurm .
 ### The SLURM Job Scheduler
 
 In this tutorial we'll focus on running serial jobs (both batch and
-interactive) on ManeFrame II (we'll discuss parallel jobs in later
+interactive) on M3 (we'll discuss parallel jobs in later
 tutorial sessions).
 
 In general, a *job scheduler* is a program that manages unattended
@@ -230,7 +230,7 @@ jobs:
     <div class="sourceCode">
     ```
     ``` bash
-    $ srun -p parallel /bin/program # runs executable /bin/program on "parallel" partition
+    $ srun -p dev /bin/program # runs executable /bin/program on "dev" partition
     $ srun --x11=first --pty emacs  # runs "emacs" and forwards graphics
     $ srun --x11=first --pty $SHELL # runs a the user's current shell and forwards graphics
     ```
@@ -393,7 +393,7 @@ $ cat run_*
 </div>
 ```
 in the above commands we do not need to directly specify to run on the
-"development" SLURM partition, since that is the default partition.
+"dev" SLURM partition, since that is the default partition.
 
 ### Batch Job Submission File
 
@@ -428,8 +428,9 @@ prepended with the text `#SBATCH`, e.g.
 #SBATCH -J my_program       # job name to display in squeue
 #SBATCH -o output-%j.txt    # standard output file
 #SBATCH -e error-%j.txt     # standard error file
-#SBATCH -p development      # requested partition
-#SBATCH -t 180              # maximum runtime in minutes
+#SBATCH -p dev              # requested partition
+#SBATCH -t 120              # maximum runtime in minutes
+#SBATCH --mem=10G           # memory in GB
 ```
 
 ```{=html}
@@ -652,8 +653,9 @@ Here we'll look at six ways to run jobs on ManeFrame II using Slurm.
 <div class="sourceCode">
 ```
 ``` bash
-module load python
 srun -p htc --pty $SHELL
+module load conda
+conda activate base
 python pi_monte_carlo.py 1000
 ```
 
@@ -704,9 +706,12 @@ method is non-interactive.
 #SBATCH -J python
 #SBATCH -o python_%j.out
 #SBATCH -p htc
+#SBATCH -t 15
+#SBATCH --mem=10G
 
 module purge
-module load python
+module load conda
+conda activate base
 
 time python pi_monte_carlo.py 1000
 ```
@@ -726,12 +731,14 @@ This batch script is manually creatd and then submited via
 #!/bin/bash
 #SBATCH -J pi
 #SBATCH -o pi_%j.out
-#SBATCH -p development
+#SBATCH -p dev
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=2
+#SBATCH -t 15
+#SBATCH --mem=10G
 
-module purge
-module load python
+module load conda
+conda activate base
 
 time python pi_monte_carlo_shared.py 10000000 ${SLURM_NTASKS}
 ```
@@ -752,10 +759,13 @@ approximation script on two cores.
 #SBATCH -J pi_array
 #SBATCH -o pi_array_%a-%A.out
 #SBATCH --array=1-4%2
-#SBATCH -p development
+#SBATCH -p dev
+#SBATCH -t 15
+#SBATCH --mem=10G
 
 module purge
-module load python
+module load conda
+conda activate base
 
 time python pi_monte_carlo.py $((10**${SLURM_ARRAY_JOB_ID}))
 ```

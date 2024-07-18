@@ -407,7 +407,7 @@ files either by copying the relevant files at the command line:</p>
 <section id="the-slurm-job-scheduler">
 <h3>The SLURM Job Scheduler<a class="headerlink" href="#the-slurm-job-scheduler" title="Permalink to this heading">#</a></h3>
 <p>In this tutorial we’ll focus on running serial jobs (both batch and
-interactive) on ManeFrame II (we’ll discuss parallel jobs in later
+interactive) on M3 (we’ll discuss parallel jobs in later
 tutorial sessions).</p>
 <p>In general, a <em>job scheduler</em> is a program that manages unattended
 background program execution (a.k.a. <em>batch processing</em>). The basic
@@ -559,7 +559,7 @@ this process can be forwarded to your screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;executable&gt;</span></code> – the actual program to run.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;parallel&quot; partition</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;dev&quot; partition</span>
 $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>emacs<span class="w">  </span><span class="c1"># runs &quot;emacs&quot; and forwards graphics</span>
 $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span><span class="w"> </span><span class="c1"># runs a the user&#39;s current shell and forwards graphics</span>
 </pre></div>
@@ -664,7 +664,7 @@ to ensure that things ran properly:</p>
 </pre></div>
 </div>
 <p>in the above commands we do not need to directly specify to run on the
-“development” SLURM partition, since that is the default partition.</p>
+“dev” SLURM partition, since that is the default partition.</p>
 </section>
 <section id="batch-job-submission-file">
 <h3>Batch Job Submission File<a class="headerlink" href="#batch-job-submission-file" title="Permalink to this heading">#</a></h3>
@@ -685,8 +685,9 @@ prepended with the text <code class="docutils literal notranslate"><span class="
 <span class="c1">#SBATCH -J my_program       # job name to display in squeue</span>
 <span class="c1">#SBATCH -o output-%j.txt    # standard output file</span>
 <span class="c1">#SBATCH -e error-%j.txt     # standard error file</span>
-<span class="c1">#SBATCH -p development      # requested partition</span>
-<span class="c1">#SBATCH -t 180              # maximum runtime in minutes</span>
+<span class="c1">#SBATCH -p dev              # requested partition</span>
+<span class="c1">#SBATCH -t 120              # maximum runtime in minutes</span>
+<span class="c1">#SBATCH --mem=10G           # memory in GB</span>
 </pre></div>
 </div>
 <p>Since each of these <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> options begins with the character <code class="docutils literal notranslate"><span class="pre">#</span></code>, they
@@ -814,8 +815,9 @@ notification messages you wish to receive. Options include:</p>
 </ol>
 <section id="interactive-session-via-srun">
 <h4>Interactive Session Via <code class="docutils literal notranslate"><span class="pre">srun</span></code><a class="headerlink" href="#interactive-session-via-srun" title="Permalink to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>python
-srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
@@ -845,9 +847,12 @@ method is non-interactive.</p>
 <span class="c1">#SBATCH -J python</span>
 <span class="c1">#SBATCH -o python_%j.out</span>
 <span class="c1">#SBATCH -p htc</span>
+<span class="c1">#SBATCH -t 15</span>
+<span class="c1">#SBATCH --mem=10G</span>
 
 module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>python
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
@@ -860,12 +865,14 @@ module<span class="w"> </span>load<span class="w"> </span>python
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J pi</span>
 <span class="c1">#SBATCH -o pi_%j.out</span>
-<span class="c1">#SBATCH -p development</span>
+<span class="c1">#SBATCH -p dev</span>
 <span class="c1">#SBATCH -N 1</span>
 <span class="c1">#SBATCH --ntasks-per-node=2</span>
+<span class="c1">#SBATCH -t 15</span>
+<span class="c1">#SBATCH --mem=10G</span>
 
-module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>python
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo_shared.py<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span>
 </pre></div>
@@ -879,10 +886,13 @@ approximation script on two cores.</p>
 <span class="c1">#SBATCH -J pi_array</span>
 <span class="c1">#SBATCH -o pi_array_%a-%A.out</span>
 <span class="c1">#SBATCH --array=1-4%2</span>
-<span class="c1">#SBATCH -p development</span>
+<span class="c1">#SBATCH -p dev</span>
+<span class="c1">#SBATCH -t 15</span>
+<span class="c1">#SBATCH --mem=10G</span>
 
 module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>python
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="k">$((</span><span class="m">10</span><span class="o">**</span><span class="si">${</span><span class="nv">SLURM_ARRAY_JOB_ID</span><span class="si">}</span><span class="k">))</span>
 </pre></div>
