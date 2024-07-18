@@ -638,7 +638,7 @@ list the most useful options for running serial batch jobs.
 
 ### Running Batch Jobs
 
-Here we'll look at six ways to run jobs on ManeFrame II using Slurm.
+Here we'll look at six ways to run jobs on M3 using Slurm.
 
 1.  Interactive session via srun
 2.  Single interactive job via srun
