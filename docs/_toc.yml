@@ -19,6 +19,9 @@ parts:
   - file: examples/chemistry.md
     sections: 
     - file: examples/amber/index.md
+  - file: examples/fluid_dynamics.md
+    sections: 
+    - file: examples/openfoam/index.md
   - file: examples/conda/README.md
   - file: examples/torch/README.md
 - caption: Tutorials
