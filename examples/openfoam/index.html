@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Working Version of NVIDIA Demo &#8212; SMU HPC Documentation</title>
+    <title>OpenFoam (.com) &#8212; SMU HPC Documentation</title>
   
   
   
@@ -62,7 +62,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/gromacs/README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/openfoam/index';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -276,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/examples/gromacs/README.md" target="_blank"
+      <li><a href="../../_sources/examples/openfoam/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -360,7 +360,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Working Version of NVIDIA Demo</h1>
+    <h1>OpenFoam (.com)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -370,9 +370,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-job">Batch Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-job">Interactive Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-openfoam-on-m3">Using OpenFoam on M3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-submission-script">Example submission script</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -384,32 +385,67 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-version-of-nvidia-demo">
-<h1>Working Version of NVIDIA Demo<a class="headerlink" href="#working-version-of-nvidia-demo" title="Permalink to this heading">#</a></h1>
-<section id="batch-job">
-<h2>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this heading">#</a></h2>
-<p>Simply run <code class="docutils literal notranslate"><span class="pre">./submit_jobs.sh</span></code>, which will submit up to two jobs. The first job,
-if needed, will convert the NGC Docker image to an enroot image and extract the
-GROMACS input data. The second job runs the simulation.</p>
-</section>
-<section id="interactive-job">
-<h2>Interactive Job<a class="headerlink" href="#interactive-job" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enroot import &quot;docker://nvcr.io#hpc/gromacs:2022.1&quot;
-srun -N 1 -G 8 --cpus-per-gpu=16 --container-image=./hpc+gromacs+2022.1.sqsh --container-mounts=$PWD:/data --pty bash
-cd /data
-source /usr/local/gromacs/avx2_256/bin/GMXRC.bash
-gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gpu -bonded gpu -pme gpu -npme 1 -nstlist 400 -s stmv.tpr
+  <section class="tex2jax_ignore mathjax_ignore" id="openfoam-com">
+<h1>OpenFoam (.com)<a class="headerlink" href="#openfoam-com" title="Permalink to this heading">#</a></h1>
+<p><strong>OpenFoam</strong> is an open source Computation Fluid Dynamics Package.</p>
+<p><strong>OpenFoam homepage</strong>: <a class="reference external" href="https://www.openfoam.com/">openfoam.com/</a></p>
+<p><strong>Official OpenFoam Tutorials</strong>: <a class="reference external" href="https://www.openfoam.com/documentation/tutorial-guide">openfoam.com/documentation/tutorial-guide</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For examples and tips on submitting jobs, see <a class="reference internal" href="../../tutorials/slurm/slurm.html#tutorials-slurm"><span class="std std-ref">our SLURM documentation</span></a> and <a class="reference internal" href="../../tutorials/slurm/best_practices.html#tutorials-slurm-best-practices"><span class="std std-ref">Best Practices for Jobs</span></a></p>
+<p>For compute resources, see <a class="reference internal" href="../../about/queues.html#about-queues"><span class="std std-ref">HPC Queues</span></a></p>
+</div>
+<section id="using-openfoam-on-m3">
+<h2>Using OpenFoam on M3<a class="headerlink" href="#using-openfoam-on-m3" title="Permalink to this heading">#</a></h2>
+<p>Files used in the example are available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/openfoam">on github</a></p></li>
+<li><p>on M3 at <code class="docutils literal notranslate"><span class="pre">/hpc/m3/examples/openfoam/</span></code></p></li>
+</ul>
+<section id="example-submission-script">
+<h3>Example submission script<a class="headerlink" href="#example-submission-script" title="Permalink to this heading">#</a></h3>
+<p>The following job script can be submitted using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">openfoam_example.sbatch</span></code>.</p>
+<p>It requires a <code class="docutils literal notranslate"><span class="pre">decomposeParDict</span></code> to run, (see e.g. <a class="reference external" href="https://doc.cfd.direct/openfoam/user-guide-v12/running-applications-parallel">running in paralell</a>). An example file is included in the files mentioned above</p>
+<p>This example should run in approximately 10 seconds and use about 600 MB of memory when using 4 tasks.
+Therefore, we request 1 GB of memory and 3 minutes of run time to give
+ourselves some room for error.</p>
+<p>Note, we know this from running the job.
+It is always a good idea to review the resources your jobs use
+and adjust future jobs to more accurately request resources.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos"> 2</span><span class="c1">#SBATCH --nodes=1</span>
+<span class="linenos"> 3</span><span class="c1">#SBATCH --ntasks-per-node=4</span>
+<span class="linenos"> 4</span><span class="c1">#SBATCH --mem=10G</span>
+<span class="linenos"> 5</span><span class="c1">#SBATCH --job-name=OpenFOAM</span>
+<span class="linenos"> 6</span><span class="c1">#SBATCH --output=output_OpenFOAM_%j.out</span>
+<span class="linenos"> 7</span><span class="c1">#SBATCH --time=00:05:00</span>
+<span class="linenos"> 8</span><span class="c1">#SBATCH -p dev</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># load openfoam</span>
+<span class="linenos">11</span>module<span class="w"> </span>purge
+<span class="linenos">12</span>module<span class="w"> </span>load<span class="w"> </span>gcc/11.2.0
+<span class="linenos">13</span>module<span class="w"> </span>load<span class="w"> </span>openfoam/2312-5z7e7ot
+<span class="linenos">14</span>module<span class="w"> </span>load<span class="w"> </span>openmpi/4.1.6-vfi4iwj
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># make a test directory in scratch with the Job id</span>
+<span class="linenos">17</span><span class="c1"># NOTE: $SCRATCH has a 60 day purge policy</span>
+<span class="linenos">18</span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">SCRATCH</span><span class="si">}</span>/openfoam/test_run_<span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span>/
+<span class="linenos">19</span><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">SCRATCH</span><span class="si">}</span>/openfoam/test_run_<span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span>/
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="c1"># copy example from official tutorial</span>
+<span class="linenos">22</span>cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$FOAM_TUTORIALS</span>/incompressible/simpleFoam/pitzDaily<span class="w"> </span>.
+<span class="linenos">23</span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>-R<span class="w"> </span>pitzDaily<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>pitzDaily
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="c1"># copy our decomposeParDict into the $SCRATCH job folder</span>
+<span class="linenos">26</span>cp<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_SUBMIT_DIR</span><span class="si">}</span>/decomposeParDict<span class="w"> </span>system/decomposeParDict
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="c1"># run the example</span>
+<span class="linenos">29</span>srun<span class="w"> </span>blockMesh
+<span class="linenos">30</span>srun<span class="w"> </span>decomposePar
+<span class="linenos">31</span>srun<span class="w"> </span>simpleFoam<span class="w"> </span>-parallel
 </pre></div>
 </div>
 </section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added quotes around enroot URL</p></li>
-<li><p>Added GPU and cores per GPU flags. 16 CPUs per GPU coresponds to 8 cores due to 2-way SMT</p></li>
-<li><p>Container mounts uses PWD, which needs to contain the GROMACS input file</p></li>
-<li><p>Changed “-ntomp” to use one thread per physical CPU core</p></li>
-</ul>
 </section>
 </section>
 
@@ -426,7 +462,7 @@ gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gp
         },
         kernelOptions: {
             name: "python3",
-            path: "./examples/gromacs"
+            path: "./examples/openfoam"
         },
         predefinedOutput: true
     }
@@ -458,9 +494,10 @@ gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gp
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-job">Batch Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-job">Interactive Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-openfoam-on-m3">Using OpenFoam on M3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-submission-script">Example submission script</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

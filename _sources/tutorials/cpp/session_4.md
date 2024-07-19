@@ -47,7 +47,7 @@ linenos: true
 ---
 ```
 
-```{literalinclude} ../../examples/cpp/classes/inheritance_test.hpp
+```{literalinclude} ../../examples/cpp/classes/inheritance_test.cpp
 ---
 language: c++
 linenos: true

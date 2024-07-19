@@ -173,6 +173,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../about/queues.html">Queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/contact.html">Contact</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
@@ -185,23 +187,27 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/amber/index.html">Amber</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/conda/README.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/torch/README.html">Torch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unix/unix.html">UNIX &amp; Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unix/scripting.html">Scripting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Modules</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/slurm.html">Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/slurm.html">Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../slurm/best_practices.html">Best Practices for Jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../containers/containers.html">Containers</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">C++</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">C++</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="session_1.html">Session 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session_2.html">Session 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="session_3.html">Session 3</a></li>
@@ -209,7 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="session_5.html">Session 5</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r/environments.html">R Virtual Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r/slurm.html">Submitting R Jobs</a></li>
 </ul>
@@ -1163,6 +1169,148 @@ document.write(`
 <span class="linenos">182</span><span class="c1">// End the preprocessor header guard if / else</span>
 <span class="linenos">183</span><span class="c1">// I like to add a comment after it refering to the variable it set</span>
 <span class="linenos">184</span><span class="cp">#endif </span><span class="c1">//_SIMPLE_INHERITANCE_H_</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/*</span>
+<span class="linenos">  2</span><span class="cm"> Simple demonstration of classes and inheritance</span>
+<span class="linenos">  3</span>
+<span class="linenos">  4</span><span class="cm"> This file runs the classes declared in</span>
+<span class="linenos">  5</span><span class="cm"> simple_inheritance.hpp and implemented in simple_inheritance.cpp</span>
+<span class="linenos">  6</span>
+<span class="linenos">  7</span><span class="cm"> Useful References:</span>
+<span class="linenos">  8</span><span class="cm"> * Discovering Modern C++ by Peter Gottschling (amongst many other C++ books)</span>
+<span class="linenos">  9</span><span class="cm"> * https://en.cppreference.com/</span>
+<span class="linenos"> 10</span><span class="cm">*/</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> // for IO (we could use the fmt library)</span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span><span class="c1">// include our class declarations</span>
+<span class="linenos"> 15</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;simple_inheritance.hpp&quot;</span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="linenos"> 18</span><span class="p">{</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="w">    </span><span class="c1">// use our namespace so we don&#39;t need to append</span>
+<span class="linenos"> 21</span><span class="w">    </span><span class="c1">// everything with smu_demo_namespace::</span>
+<span class="linenos"> 22</span><span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">smu_demo_namespace</span><span class="p">;</span>
+<span class="linenos"> 23</span>
+<span class="linenos"> 24</span><span class="w">    </span><span class="c1">// Create a triangle:</span>
+<span class="linenos"> 25</span><span class="w">    </span><span class="n">Triangle</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">;</span>
+<span class="linenos"> 26</span>
+<span class="linenos"> 27</span><span class="w">    </span><span class="c1">// print out area and perimenter</span>
+<span class="linenos"> 28</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The default triangle has area: &quot;</span>
+<span class="linenos"> 29</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos"> 30</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos"> 31</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos"> 32</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="w">    </span><span class="c1">// Create an invalid triangle.</span>
+<span class="linenos"> 35</span><span class="w">    </span><span class="k">try</span>
+<span class="linenos"> 36</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 37</span><span class="w">        </span><span class="n">Triangle</span><span class="w"> </span><span class="nf">bad_triangle</span><span class="p">(</span><span class="mi">-2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="linenos"> 38</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The bad triangle has area: &quot;</span>
+<span class="linenos"> 39</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos"> 40</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos"> 41</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos"> 42</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 43</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="c1">// const std::exception &amp;e covers all types of polymorphic exceptions,</span>
+<span class="linenos"> 45</span><span class="w">    </span><span class="c1">// but if we wanted to handle different types we could</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="c1">// be more precise (here we know it is std::invalid_argument)</span>
+<span class="linenos"> 47</span><span class="w">    </span><span class="c1">// we can also use (...) as a catchall for any thrown value</span>
+<span class="linenos"> 48</span><span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span>
+<span class="linenos"> 49</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 50</span><span class="w">        </span><span class="c1">// print out the error</span>
+<span class="linenos"> 51</span><span class="w">        </span><span class="c1">// usually you stop the program after an error, but we&#39;ll keep going</span>
+<span class="linenos"> 52</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;bad triangle: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 53</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 54</span>
+<span class="linenos"> 55</span><span class="w">    </span><span class="k">try</span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 57</span><span class="w">        </span><span class="n">Triangle</span><span class="w"> </span><span class="nf">bad_triangle2</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos"> 58</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The second bad triangle has area: &quot;</span>
+<span class="linenos"> 59</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos"> 60</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos"> 61</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_triagle</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos"> 62</span><span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 63</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 64</span><span class="w">    </span><span class="c1">// const std::exception &amp;e covers all types of polymorphic exceptions,</span>
+<span class="linenos"> 65</span><span class="w">    </span><span class="c1">// but if we wanted to handle different types we could</span>
+<span class="linenos"> 66</span><span class="w">    </span><span class="c1">// be more precise (here we know it is std::invalid_argument)</span>
+<span class="linenos"> 67</span><span class="w">    </span><span class="c1">// we can also use (...) as a catchall for any thrown value</span>
+<span class="linenos"> 68</span><span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span>
+<span class="linenos"> 69</span><span class="w">    </span><span class="p">{</span>
+<span class="linenos"> 70</span><span class="w">        </span><span class="c1">// print out the error</span>
+<span class="linenos"> 71</span><span class="w">        </span><span class="c1">// usually you stop the program after an error, but we&#39;ll keep going</span>
+<span class="linenos"> 72</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;bad triangle 2: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos"> 74</span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="c1">// Create a circle:</span>
+<span class="linenos"> 76</span><span class="w">    </span><span class="n">Circle</span><span class="w"> </span><span class="n">default_circle</span><span class="p">;</span>
+<span class="linenos"> 77</span>
+<span class="linenos"> 78</span><span class="w">    </span><span class="c1">// print out area and perimenter</span>
+<span class="linenos"> 79</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The default circle has area: &quot;</span>
+<span class="linenos"> 80</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_circle</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos"> 81</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos"> 82</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_circle</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos"> 83</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 84</span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="n">Circle</span><span class="w"> </span><span class="nf">test_circle</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="linenos"> 86</span>
+<span class="linenos"> 87</span><span class="w">    </span><span class="c1">// print out area and perimenter</span>
+<span class="linenos"> 88</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The test circle has area: &quot;</span>
+<span class="linenos"> 89</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">test_circle</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos"> 90</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos"> 91</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">test_circle</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos"> 92</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos"> 93</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="c1">// Create a rectangle:</span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="n">Rectangle</span><span class="w"> </span><span class="n">default_rec</span><span class="p">;</span>
+<span class="linenos"> 96</span>
+<span class="linenos"> 97</span><span class="w">    </span><span class="c1">// print out area and perimenter</span>
+<span class="linenos"> 98</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The default rectangle has area: &quot;</span>
+<span class="linenos"> 99</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_rec</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos">100</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos">101</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_rec</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos">102</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">103</span>
+<span class="linenos">104</span><span class="w">    </span><span class="n">Rectangle</span><span class="w"> </span><span class="nf">rect</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="linenos">105</span>
+<span class="linenos">106</span><span class="w">    </span><span class="c1">// print out area and perimenter</span>
+<span class="linenos">107</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The rectangle has area: &quot;</span>
+<span class="linenos">108</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rect</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos">109</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos">110</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rect</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos">111</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">112</span>
+<span class="linenos">113</span><span class="w">    </span><span class="n">Square</span><span class="w"> </span><span class="n">default_square</span><span class="p">;</span>
+<span class="linenos">114</span>
+<span class="linenos">115</span><span class="w">    </span><span class="c1">// print out area and perimenter</span>
+<span class="linenos">116</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The default square has area: &quot;</span>
+<span class="linenos">117</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_square</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos">118</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos">119</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">default_square</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos">120</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">121</span>
+<span class="linenos">122</span><span class="w">    </span><span class="n">Square</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="linenos">123</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The square has area: &quot;</span>
+<span class="linenos">124</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">square</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos">125</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos">126</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">square</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos">127</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">128</span>
+<span class="linenos">129</span><span class="w">    </span><span class="c1">// You can use the base class as a datetype for</span>
+<span class="linenos">130</span><span class="w">    </span><span class="c1">// one of its children</span>
+<span class="linenos">131</span><span class="w">    </span><span class="n">ShapeProperties</span><span class="w"> </span><span class="n">shape</span><span class="p">;</span>
+<span class="linenos">132</span><span class="w">    </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Square</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+<span class="linenos">133</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The shape has area: &quot;</span>
+<span class="linenos">134</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">shape</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span>
+<span class="linenos">135</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and perimeter: &quot;</span>
+<span class="linenos">136</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">shape</span><span class="p">.</span><span class="n">getPerimeter</span><span class="p">()</span>
+<span class="linenos">137</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">138</span>
+<span class="linenos">139</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">140</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>

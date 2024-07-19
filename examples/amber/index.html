@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Working Version of NVIDIA Demo &#8212; SMU HPC Documentation</title>
+    <title>Amber &#8212; SMU HPC Documentation</title>
   
   
   
@@ -62,10 +62,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/gromacs/README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/amber/index';</script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Conda" href="../conda/README.html" />
+    <link rel="prev" title="Chemistry" href="../chemistry.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,9 +186,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../mp_update.html">SuperPod System Update</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../amber/index.html">Amber</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../chemistry.html">Chemistry</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Amber</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../conda/README.html">Conda</a></li>
@@ -276,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/examples/gromacs/README.md" target="_blank"
+      <li><a href="../../_sources/examples/amber/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -360,7 +362,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Working Version of NVIDIA Demo</h1>
+    <h1>Amber</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -370,9 +372,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-job">Batch Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-job">Interactive Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-amber-on-the-superpod">Using Amber on the SuperPod</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-submission-script">Example submission script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-amber-on-m3">Using Amber on M3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example submission script</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -384,32 +391,79 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-version-of-nvidia-demo">
-<h1>Working Version of NVIDIA Demo<a class="headerlink" href="#working-version-of-nvidia-demo" title="Permalink to this heading">#</a></h1>
-<section id="batch-job">
-<h2>Batch Job<a class="headerlink" href="#batch-job" title="Permalink to this heading">#</a></h2>
-<p>Simply run <code class="docutils literal notranslate"><span class="pre">./submit_jobs.sh</span></code>, which will submit up to two jobs. The first job,
-if needed, will convert the NGC Docker image to an enroot image and extract the
-GROMACS input data. The second job runs the simulation.</p>
-</section>
-<section id="interactive-job">
-<h2>Interactive Job<a class="headerlink" href="#interactive-job" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enroot import &quot;docker://nvcr.io#hpc/gromacs:2022.1&quot;
-srun -N 1 -G 8 --cpus-per-gpu=16 --container-image=./hpc+gromacs+2022.1.sqsh --container-mounts=$PWD:/data --pty bash
-cd /data
-source /usr/local/gromacs/avx2_256/bin/GMXRC.bash
-gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gpu -bonded gpu -pme gpu -npme 1 -nstlist 400 -s stmv.tpr
+  <section class="tex2jax_ignore mathjax_ignore" id="amber">
+<h1>Amber<a class="headerlink" href="#amber" title="Permalink to this heading">#</a></h1>
+<p><strong>Amber</strong> is a suite of biomolecular simulation programs.</p>
+<p><strong>Amber homepage</strong>: <a class="reference external" href="https://ambermd.org/">ambermd.org/</a></p>
+<p><strong>Official Amber Tutorials</strong>: <a class="reference external" href="https://ambermd.org/tutorials/">ambermd.org/tutorials/</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For examples and tips on submitting jobs, see <a class="reference internal" href="../../tutorials/slurm/slurm.html#tutorials-slurm"><span class="std std-ref">our SLURM documentation</span></a> and <a class="reference internal" href="../../tutorials/slurm/best_practices.html#tutorials-slurm-best-practices"><span class="std std-ref">Best Practices for Jobs</span></a></p>
+<p>For compute resources, see <a class="reference internal" href="../../about/queues.html#about-queues"><span class="std std-ref">HPC Queues</span></a></p>
+</div>
+<section id="using-amber-on-the-superpod">
+<h2>Using Amber on the SuperPod<a class="headerlink" href="#using-amber-on-the-superpod" title="Permalink to this heading">#</a></h2>
+<p>Files used in the example are available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/amber">on github</a></p></li>
+<li><p>on the SuperPod at <code class="docutils literal notranslate"><span class="pre">/hpc/mp/examples/amber/</span></code></p></li>
+</ul>
+<section id="example-submission-script">
+<h3>Example submission script<a class="headerlink" href="#example-submission-script" title="Permalink to this heading">#</a></h3>
+<p>The following job script can be submitted using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">amber_gpu_example.sbatch</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos"> 2</span><span class="c1">#SBATCH -J example</span>
+<span class="linenos"> 3</span><span class="c1">#SBATCH -o example_%j.out</span>
+<span class="linenos"> 4</span><span class="c1">#SBATCH -N 1</span>
+<span class="linenos"> 5</span><span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="linenos"> 6</span><span class="c1">#SBATCH -G 1</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># Amber</span>
+<span class="linenos"> 9</span>module<span class="w"> </span>purge
+<span class="linenos">10</span>module<span class="w"> </span>load<span class="w"> </span>amber/22
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c1"># Program Command</span>
+<span class="linenos">13</span><span class="c1"># NOTE: the flag -AllowSmallBox is needed to run this example</span>
+<span class="linenos">14</span><span class="c1"># but you shouldn&#39;t need it most of the time</span>
+<span class="linenos">15</span>srun<span class="w"> </span>pmemd.cuda.MPI<span class="w"> </span>-AllowSmallBox<span class="w"> </span>-O<span class="w"> </span>-o<span class="w"> </span>stdout<span class="w"> </span>-i<span class="w"> </span>alanine_md.in<span class="w"> </span>-c<span class="w"> </span>alanine_md.rst<span class="w"> </span>-p<span class="w"> </span>alanine_md.prmtop<span class="w"> </span>-r<span class="w"> </span>alanine_md_new.rst<span class="w"> </span>-x<span class="w"> </span>alanine_md_new.mdcrd
 </pre></div>
 </div>
 </section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="using-amber-on-m3">
+<h2>Using Amber on M3<a class="headerlink" href="#using-amber-on-m3" title="Permalink to this heading">#</a></h2>
+<p>Files used in the example are available:</p>
 <ul class="simple">
-<li><p>Added quotes around enroot URL</p></li>
-<li><p>Added GPU and cores per GPU flags. 16 CPUs per GPU coresponds to 8 cores due to 2-way SMT</p></li>
-<li><p>Container mounts uses PWD, which needs to contain the GROMACS input file</p></li>
-<li><p>Changed “-ntomp” to use one thread per physical CPU core</p></li>
+<li><p><a class="reference external" href="https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/amber">on github</a></p></li>
+<li><p>on M3 at <code class="docutils literal notranslate"><span class="pre">/hpc/m3/examples/amber/</span></code></p></li>
 </ul>
+<section id="id1">
+<h3>Example submission script<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The following job script can be submitted using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">amber_cpu_example.sbatch</span></code>.</p>
+<p>This example should run in approximately 90 seconds and use about 600 MB of memory when using 4 cores. Therefore, we request 1 GB of memory and 3 minutes of run time to give
+ourselves some room for error.</p>
+<p>Note, we know this from running the job.
+It is always a good idea to review the resources your jobs use
+and adjust future jobs to more accurately request resources.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos"> 2</span><span class="c1">#SBATCH -J amber_example          # Job name, display in queue</span>
+<span class="linenos"> 3</span><span class="c1">#SBATCH -o amber_example_%j.out   # output file, %j is the job id</span>
+<span class="linenos"> 4</span><span class="c1">#SBATCH -p dev                    # partition to use</span>
+<span class="linenos"> 5</span><span class="c1">#SBATCH -N 1                      # number of nodes</span>
+<span class="linenos"> 6</span><span class="c1">#SBATCH -c 1                      # number of cpu cores per task</span>
+<span class="linenos"> 7</span><span class="c1">#SBATCH --ntasks-per-node=4       # number of tasks per node</span>
+<span class="linenos"> 8</span><span class="c1">#SBATCH --mem=1G                  # memory per node</span>
+<span class="linenos"> 9</span><span class="c1">#SBATCH -t 0-00:03:00             # run time, days-HH:MM:SS</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1"># Amber</span>
+<span class="linenos">12</span>module<span class="w"> </span>purge
+<span class="linenos">13</span>module<span class="w"> </span>load<span class="w"> </span>amber/22
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="c1"># Program Command</span>
+<span class="linenos">16</span>srun<span class="w"> </span>sander.MPI<span class="w"> </span>-O<span class="w"> </span>-o<span class="w"> </span>stdout<span class="w"> </span>-i<span class="w"> </span>alanine_md.in<span class="w"> </span>-c<span class="w"> </span>alanine_md.rst<span class="w"> </span>-p<span class="w"> </span>alanine_md.prmtop<span class="w"> </span>-r<span class="w"> </span>alanine_md_new.rst<span class="w"> </span>-x<span class="w"> </span>alanine_md_new.mdcrd
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -426,7 +480,7 @@ gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gp
         },
         kernelOptions: {
             name: "python3",
-            path: "./examples/gromacs"
+            path: "./examples/amber"
         },
         predefinedOutput: true
     }
@@ -443,6 +497,24 @@ gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gp
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../chemistry.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chemistry</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../conda/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conda</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -458,9 +530,14 @@ gmx mdrun -v -nsteps 100000 -resetstep 90000 -noconfout -ntmpi 8 -ntomp 8 -nb gp
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-job">Batch Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-job">Interactive Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-amber-on-the-superpod">Using Amber on the SuperPod</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-submission-script">Example submission script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-amber-on-m3">Using Amber on M3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example submission script</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

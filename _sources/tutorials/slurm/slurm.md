@@ -1,3 +1,4 @@
+(tutorials:slurm)=
 # Slurm
 
 ## Submitting Jobs Using Slurm

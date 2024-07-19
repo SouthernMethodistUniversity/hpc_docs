@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Policies &#8212; SMU HPC Documentation</title>
+    <title>Fluid Dynamics &#8212; SMU HPC Documentation</title>
   
   
   
@@ -62,11 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'policies/policies';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/fluid_dynamics';</script>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Submitting R Jobs" href="../tutorials/r/slurm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,12 +185,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../examples/chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../examples/amber/index.html">Amber</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="amber/index.html">Amber</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/conda/README.html">Conda</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/torch/README.html">Torch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conda/README.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch/README.html">Torch</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
@@ -221,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Policies</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../policies/policies.html">Policies</a></li>
 </ul>
 
     </div>
@@ -277,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/policies/policies.md" target="_blank"
+      <li><a href="../_sources/examples/fluid_dynamics.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -348,9 +347,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -361,22 +358,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Policies</h1>
+    <h1>Fluid Dynamics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smu-policies">SMU Policies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purge-policy">Purge Policy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#account-and-account-password-sharing-policy">Account and Account Password Sharing Policy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -386,36 +372,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="policies">
-<h1>Policies<a class="headerlink" href="#policies" title="Permalink to this heading">#</a></h1>
-<section id="smu-policies">
-<h2>SMU Policies<a class="headerlink" href="#smu-policies" title="Permalink to this heading">#</a></h2>
-<p>Users must comply with all applicable laws, regulations, and SMU policies
-when using HPC resources. This includes, but is not limited to,
-<a class="reference external" href="https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use">SMU’s acceptable use policy</a></p>
-</section>
-<section id="purge-policy">
-<h2>Purge Policy<a class="headerlink" href="#purge-policy" title="Permalink to this heading">#</a></h2>
-<p>Data stored in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> on M3 or the SuperPod has a time based quota.
-Data older than 60 days will be purged (deleted) without warning.
-<code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> is intended as high performance, temporary storage for jobs.</p>
-<p>If data is needed for a longer period of time, it should be stored in
-<code class="docutils literal notranslate"><span class="pre">$WORK</span></code> (8 TB limit) or <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directories (200 GB). If those are also
-insuffiencient, please contact us to discuss options.</p>
-</section>
-<section id="account-and-account-password-sharing-policy">
-<h2>Account and Account Password Sharing Policy<a class="headerlink" href="#account-and-account-password-sharing-policy" title="Permalink to this heading">#</a></h2>
-<p>No two individuals should share the same HPC account, nor
-should two individuals share the password of the same account. Each
-individual is entitled to have their own account hence please request
-one.</p>
-</section>
-<section id="data-transfer-nodes">
-<h2>Data Transfer Nodes<a class="headerlink" href="#data-transfer-nodes" title="Permalink to this heading">#</a></h2>
-<p>Access to data tranfer nodes is available by request and legitimate need.
-These nodes are meant only for transferring large amounts data to/from HPC resources.
-They should not be used for computational jobs.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="fluid-dynamics">
+<span id="examples-fluids"></span><h1>Fluid Dynamics<a class="headerlink" href="#fluid-dynamics" title="Permalink to this heading">#</a></h1>
+<p>We have examples of submitting jobs using the following
+software packages.</p>
+<p>If you would like examples for other software packages,
+please <a class="reference internal" href="../about/contact.html#about-contact"><span class="std std-ref">contact us.</span></a>.</p>
+<p>You can also submit issues and/or pull requests for updates or additions at
+<a class="reference external" href="https://github.com/SouthernMethodistUniversity/hpc_docs">our github page</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="openfoam/index.html"><span class="doc std std-doc">OpenFOAM (.com)</span></a></p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -431,7 +398,7 @@ They should not be used for computational jobs.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./policies"
+            path: "./examples"
         },
         predefinedOutput: true
     }
@@ -448,38 +415,12 @@ They should not be used for computational jobs.</p>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../tutorials/r/slurm.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Submitting R Jobs</p>
-      </div>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smu-policies">SMU Policies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purge-policy">Purge Policy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#account-and-account-password-sharing-policy">Account and Account Password Sharing Policy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
