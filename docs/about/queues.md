@@ -1,3 +1,4 @@
+(about:queues)=
 # Queues
 
 SMU's high-performance computing (HPC) clusters use [SLURM](https://slurm.schedmd.com/)
