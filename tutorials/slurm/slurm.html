@@ -407,7 +407,7 @@ files either by copying the relevant files at the command line:</p>
 <section id="the-slurm-job-scheduler">
 <h3>The SLURM Job Scheduler<a class="headerlink" href="#the-slurm-job-scheduler" title="Permalink to this heading">#</a></h3>
 <p>In this tutorial we’ll focus on running serial jobs (both batch and
-interactive) on ManeFrame II (we’ll discuss parallel jobs in later
+interactive) on M3 (we’ll discuss parallel jobs in later
 tutorial sessions).</p>
 <p>In general, a <em>job scheduler</em> is a program that manages unattended
 background program execution (a.k.a. <em>batch processing</em>). The basic
@@ -428,14 +428,14 @@ have used less resources and/or contributed more to the acquisition of
 the system.</p>
 <section id="slurm-commands">
 <h4>SLURM commands<a class="headerlink" href="#slurm-commands" title="Permalink to this heading">#</a></h4>
-<p>While there are a <a class="reference external" href="https://computing.llnl.gov/linux/slurm/documentation.html">multitude of SLURM
+<p>While there are a <a class="reference external" href="https://slurm.schedmd.com/quickstart.html">multitude of SLURM
 commands</a>,
 here we’ll focus on those applicable to running batch and interactive
 jobs:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code> – displays information about SLURM nodes and partitions
 (queue types). A full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sinfo.html">here</a>. The usage
+<a class="reference external" href="https://slurm.schedmd.com/sinfo.html">here</a>. The usage
 command (with the most-helpful optional arguments in brackets) is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sinfo<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>&lt;nodes&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;partition&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-s<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span>
 </pre></div>
@@ -462,7 +462,7 @@ $<span class="w"> </span>sinfo<span class="w"> </span>-s<span class="w">        
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> – views information about jobs located in the SLURM
 scheduling queue. A full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/squeue.html">here</a>. The
+<a class="reference external" href="https://slurm.schedmd.com/squeue.html">here</a>. The
 usage command (with the most-helpful optional arguments in brackets)
 is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>-j<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="o">]</span><span class="w"> </span><span class="o">[</span>--start<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="o">]</span>
@@ -496,7 +496,7 @@ $<span class="w"> </span>squeue<span class="w"> </span>--jobs<span class="w"> </
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> – submits a batch script to SLURM. A full list of options
 is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sbatch.html">here</a>. The
+<a class="reference external" href="https://slurm.schedmd.com/sbatch.html">here</a>. The
 usage command is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="sb">`</span>&lt;script&gt;<span class="sb">`</span><span class="w"> </span><span class="o">[</span>args<span class="o">]</span>
 </pre></div>
@@ -520,7 +520,7 @@ executable commands), preceded by the text <code class="docutils literal notrans
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">srun</span></code> – runs a parallel or interactive job on the worker nodes. A
 full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/srun.html">here</a>. The usage
+<a class="reference external" href="https://slurm.schedmd.com/srun.html">here</a>. The usage
 command (with the most-helpful optional arguments in brackets) is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span><span class="o">[</span>-D<span class="w"> </span>&lt;path&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span>&lt;errf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--epilog<span class="o">=</span>&lt;executable&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;outf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pty<span class="o">]</span><span class="w"> </span><span class="o">[</span>--x11<span class="o">]</span><span class="w"> </span>&lt;executable&gt;
 </pre></div>
@@ -559,7 +559,7 @@ this process can be forwarded to your screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;executable&gt;</span></code> – the actual program to run.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>parallel<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;parallel&quot; partition</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;dev&quot; partition</span>
 $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>emacs<span class="w">  </span><span class="c1"># runs &quot;emacs&quot; and forwards graphics</span>
 $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span><span class="w"> </span><span class="c1"># runs a the user&#39;s current shell and forwards graphics</span>
 </pre></div>
@@ -568,7 +568,7 @@ $<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</spa
 <li><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code> – obtains a SLURM job allocation (a set of nodes),
 executes a command, and then releases the allocation when the
 command is finished. A full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/salloc.html">here</a>. The
+<a class="reference external" href="https://slurm.schedmd.com/salloc.html">here</a>. The
 usage command is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>salloc<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span>args<span class="o">]</span>
 </pre></div>
@@ -593,7 +593,7 @@ this process can be forwarded to your screen.</p></li>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scancel</span></code> – kills jobs or job steps that are under the control of
 SLURM (and listed by <code class="docutils literal notranslate"><span class="pre">squeue</span></code>. A full list of options is available
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/scancel.html">here</a>. The
+<a class="reference external" href="https://slurm.schedmd.com/scancel.html">here</a>. The
 usage command (with the most-helpful optional arguments in brackets)
 is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="o">[</span>-i<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="w"> </span>&lt;job_name&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-t<span class="w"> </span>&lt;state&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-u<span class="w"> </span>&lt;uname&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>jobid<span class="o">]</span>
@@ -664,7 +664,7 @@ to ensure that things ran properly:</p>
 </pre></div>
 </div>
 <p>in the above commands we do not need to directly specify to run on the
-“development” SLURM partition, since that is the default partition.</p>
+“dev” SLURM partition, since that is the default partition.</p>
 </section>
 <section id="batch-job-submission-file">
 <h3>Batch Job Submission File<a class="headerlink" href="#batch-job-submission-file" title="Permalink to this heading">#</a></h3>
@@ -685,8 +685,9 @@ prepended with the text <code class="docutils literal notranslate"><span class="
 <span class="c1">#SBATCH -J my_program       # job name to display in squeue</span>
 <span class="c1">#SBATCH -o output-%j.txt    # standard output file</span>
 <span class="c1">#SBATCH -e error-%j.txt     # standard error file</span>
-<span class="c1">#SBATCH -p development      # requested partition</span>
-<span class="c1">#SBATCH -t 180              # maximum runtime in minutes</span>
+<span class="c1">#SBATCH -p dev              # requested partition</span>
+<span class="c1">#SBATCH -t 120              # maximum runtime in minutes</span>
+<span class="c1">#SBATCH --mem=10G           # memory in GB</span>
 </pre></div>
 </div>
 <p>Since each of these <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> options begins with the character <code class="docutils literal notranslate"><span class="pre">#</span></code>, they
@@ -709,7 +710,7 @@ actually runs the script).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">%u</span></code> – your username</p></li>
 </ul>
 <p>The available options to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> are
-<a class="reference external" href="https://computing.llnl.gov/linux/slurm/sbatch.html">numerous</a>. Here we
+<a class="reference external" href="https://slurm.schedmd.com/sbatch.html">numerous</a>. Here we
 list the most useful options for running serial batch jobs.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;dir&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--workdir=&lt;dir&gt;</span></code> – sets the working directory where
@@ -803,7 +804,7 @@ notification messages you wish to receive. Options include:</p>
 </section>
 <section id="running-batch-jobs">
 <h3>Running Batch Jobs<a class="headerlink" href="#running-batch-jobs" title="Permalink to this heading">#</a></h3>
-<p>Here we’ll look at six ways to run jobs on ManeFrame II using Slurm.</p>
+<p>Here we’ll look at six ways to run jobs on M3 using Slurm.</p>
 <ol class="arabic simple">
 <li><p>Interactive session via srun</p></li>
 <li><p>Single interactive job via srun</p></li>
@@ -814,8 +815,9 @@ notification messages you wish to receive. Options include:</p>
 </ol>
 <section id="interactive-session-via-srun">
 <h4>Interactive Session Via <code class="docutils literal notranslate"><span class="pre">srun</span></code><a class="headerlink" href="#interactive-session-via-srun" title="Permalink to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>python
-srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
@@ -845,9 +847,12 @@ method is non-interactive.</p>
 <span class="c1">#SBATCH -J python</span>
 <span class="c1">#SBATCH -o python_%j.out</span>
 <span class="c1">#SBATCH -p htc</span>
+<span class="c1">#SBATCH -t 15</span>
+<span class="c1">#SBATCH --mem=10G</span>
 
 module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>python
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
@@ -860,12 +865,14 @@ module<span class="w"> </span>load<span class="w"> </span>python
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J pi</span>
 <span class="c1">#SBATCH -o pi_%j.out</span>
-<span class="c1">#SBATCH -p development</span>
+<span class="c1">#SBATCH -p dev</span>
 <span class="c1">#SBATCH -N 1</span>
 <span class="c1">#SBATCH --ntasks-per-node=2</span>
+<span class="c1">#SBATCH -t 15</span>
+<span class="c1">#SBATCH --mem=10G</span>
 
-module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>python
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo_shared.py<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span>
 </pre></div>
@@ -879,10 +886,13 @@ approximation script on two cores.</p>
 <span class="c1">#SBATCH -J pi_array</span>
 <span class="c1">#SBATCH -o pi_array_%a-%A.out</span>
 <span class="c1">#SBATCH --array=1-4%2</span>
-<span class="c1">#SBATCH -p development</span>
+<span class="c1">#SBATCH -p dev</span>
+<span class="c1">#SBATCH -t 15</span>
+<span class="c1">#SBATCH --mem=10G</span>
 
 module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>python
+module<span class="w"> </span>load<span class="w"> </span>conda
+conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="k">$((</span><span class="m">10</span><span class="o">**</span><span class="si">${</span><span class="nv">SLURM_ARRAY_JOB_ID</span><span class="si">}</span><span class="k">))</span>
 </pre></div>
