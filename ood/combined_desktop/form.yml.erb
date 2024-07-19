@@ -3,6 +3,7 @@ require 'open3'
 
 # check queue help scripts
 require_relative "CheckQueues"
+require_relative "CheckAccounts"
 
 -%>
 
@@ -13,6 +14,9 @@ cluster: "m3cluster"
 submit: submit.yml.erb
 
 form:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  - slurm_accounts
+<%- end -%>
   - custom_queues
   - desktop_os
   - desktop_env
@@ -22,8 +26,22 @@ form:
   - bc_num_memory
   - bc_vnc_resolution
   - bc_num_gpus
+  - email_on_start
 
 attributes:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     Select a Slurm account. By default all users have a  default "smu" account.
+     You may have other accounts, e.g. to access course specific material or
+     special allocations.
+   options:
+    <%- CheckAccounts.Accounts.each do |q| -%>
+    - [ "<%= q %>",  "<%= q %>" ]
+    <%- end -%>
+<%- end -%>
   custom_queues:
     label: "Partition"
     widget: select
@@ -53,7 +71,7 @@ attributes:
       Please Select Operating System.
       NOTE: AlmaLinux is available to support some legacy applications. Some features of M3 will be unavailable. AlmaLinux is not available on the `gpu-dev` queue.
     options:
-      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.1.sif",
+      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.3.sif",
         data-set-desktop-env: 'mate',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
@@ -63,7 +81,7 @@ attributes:
           <%- end -%>
         <%- end -%>
         ]
-      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.1_gpu.sif",
+      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.3_gpu.sif",
         data-set-desktop-env: 'mate',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
@@ -123,3 +141,8 @@ attributes:
     min: 0
     step: 0
     value: 1
+  email_on_start:
+    widget: "check_box"
+    value: 0
+    label: "Email When Job Starts"
+    help: "Sends an email to your SMU email when this job starts if checked"

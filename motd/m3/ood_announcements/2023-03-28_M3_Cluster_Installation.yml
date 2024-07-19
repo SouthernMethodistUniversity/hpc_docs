@@ -1,0 +1,8 @@
+type: info
+msg: |
+    <% if Time.now < Time.new(2023, 4, 15, 18, 0, 0) %>
+    **NOTICE: Installation of New HPC Cluster is in Progress!!!**
+    
+    The M3 Cluster, SMU's third generation ManeFrame HPC cluster, is currently undergoing preliminary application testing and configuration. It is scheduled for release to a designated team of early adopters in mid-April 2023!
+    
+    <% end %>

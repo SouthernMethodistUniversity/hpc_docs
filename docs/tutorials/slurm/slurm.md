@@ -13,7 +13,7 @@ cp -R /hpc/m3/examples/slurm .
 ### The SLURM Job Scheduler
 
 In this tutorial we'll focus on running serial jobs (both batch and
-interactive) on ManeFrame II (we'll discuss parallel jobs in later
+interactive) on M3 (we'll discuss parallel jobs in later
 tutorial sessions).
 
 In general, a *job scheduler* is a program that manages unattended
@@ -37,13 +37,13 @@ the system.
 #### SLURM commands
 
 While there are a [multitude of SLURM
-commands](https://computing.llnl.gov/linux/slurm/documentation.html),
+commands](https://slurm.schedmd.com/quickstart.html),
 here we'll focus on those applicable to running batch and interactive
 jobs:
 
 -   `sinfo` \-- displays information about SLURM nodes and partitions
     (queue types). A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/sinfo.html). The usage
+    [here](https://slurm.schedmd.com/sinfo.html). The usage
     command (with the most-helpful optional arguments in brackets) is
 
     ``` bash
@@ -73,7 +73,7 @@ jobs:
 
 -   `squeue` \-- views information about jobs located in the SLURM
     scheduling queue. A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/squeue.html). The
+    [here](https://slurm.schedmd.com/squeue.html). The
     usage command (with the most-helpful optional arguments in brackets)
     is
 
@@ -111,7 +111,7 @@ jobs:
 
 -   `sbatch` \-- submits a batch script to SLURM. A full list of options
     is available
-    [here](https://computing.llnl.gov/linux/slurm/sbatch.html). The
+    [here](https://slurm.schedmd.com/sbatch.html). The
     usage command is
 
     ``` bash
@@ -139,9 +139,10 @@ jobs:
     $ sbatch ./myscript.sh    # submits the batch submission file "myscript.sh" to SLURM
     ```
 
+
 -   `srun` \-- runs a parallel or interactive job on the worker nodes. A
     full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/srun.html). The usage
+    [here](https://slurm.schedmd.com/srun.html). The usage
     command (with the most-helpful optional arguments in brackets) is
 
     ``` bash
@@ -184,7 +185,7 @@ jobs:
     Examples:
 
     ``` bash
-    $ srun -p parallel /bin/program # runs executable /bin/program on "parallel" partition
+    $ srun -p dev /bin/program # runs executable /bin/program on "dev" partition
     $ srun --x11=first --pty emacs  # runs "emacs" and forwards graphics
     $ srun --x11=first --pty $SHELL # runs a the user's current shell and forwards graphics
     ```
@@ -192,7 +193,7 @@ jobs:
 -   `salloc` \-- obtains a SLURM job allocation (a set of nodes),
     executes a command, and then releases the allocation when the
     command is finished. A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/salloc.html). The
+    [here](https://slurm.schedmd.com/salloc.html). The
     usage command is
 
     ``` bash
@@ -218,7 +219,7 @@ jobs:
 
 -   `scancel` \-- kills jobs or job steps that are under the control of
     SLURM (and listed by `squeue`. A full list of options is available
-    [here](https://computing.llnl.gov/linux/slurm/scancel.html). The
+    [here](https://slurm.schedmd.com/scancel.html). The
     usage command (with the most-helpful optional arguments in brackets)
     is
 
@@ -251,6 +252,7 @@ jobs:
     $ scancel -t PENDING -u joe  # cancel all pending jobs owned by user "joe"
     ```
 
+
 ### Example: Running Interactive Jobs
 
 In this example, we'll interactively run the Python script
@@ -276,6 +278,7 @@ login nodes.
 Before running this script on a compute node, we need to ensure that
 `myjob.py` has "executable" permissions:
 
+
 ``` bash
 $ chmod +x ./pi_monte_carlo.py
 ```
@@ -284,6 +287,7 @@ We'll use `srun` to run this script interactively for interval values
 of {50,500,5000,50000}. For each run, we'll direct the output to a
 separate file:
 
+
 ``` bash
 $ srun -o run_50.txt ./pi_monte_carlo.py 50
 $ srun -o run_500.txt ./pi_monte_carlo.py 500
@@ -291,16 +295,19 @@ $ srun -o run_5000.txt ./mpi_monte_carlo.py 5000
 $ srun -o run_50000.txt ./pi_monte_carlo.py 50000
 ```
 
+
 Upon completion you should have the files `run_50.txt`, `run_500.txt`,
 `run_5000.txt` and `run_50000.txt` in your directory. View the results
 to ensure that things ran properly:
+
 
 ``` bash
 $ cat run_*
 ```
 
+
 in the above commands we do not need to directly specify to run on the
-"development" SLURM partition, since that is the default partition.
+"dev" SLURM partition, since that is the default partition.
 
 ### Batch Job Submission File
 
@@ -313,22 +320,27 @@ A batch submission script is just that, a shell script. You are welcome
 to use your preferred shell scripting language; in this tutorial we'll
 use Bash. As a result, the script typically starts with the line
 
+
 ``` bash
 #!/bin/bash
 ```
 
+
 The following lines (before any executable commands) contain the options
 to be supplied to the `sbatch` command. Each of these options must be
 prepended with the text `#SBATCH`, e.g.
+
 
 ``` bash
 #!/bin/bash
 #SBATCH -J my_program       # job name to display in squeue
 #SBATCH -o output-%j.txt    # standard output file
 #SBATCH -e error-%j.txt     # standard error file
-#SBATCH -p development      # requested partition
-#SBATCH -t 180              # maximum runtime in minutes
+#SBATCH -p dev              # requested partition
+#SBATCH -t 120              # maximum runtime in minutes
+#SBATCH --mem=10G           # memory in GB
 ```
+
 
 Since each of these `sbatch` options begins with the character `#`, they
 are treated as comments by the Bash shell; however `sbatch` parses the
@@ -352,15 +364,17 @@ Unlike general Bash scripts, there are a few SLURM replacement symbols
 -   `%u` \-- your username
 
 The available options to `sbatch` are
-[numerous](https://computing.llnl.gov/linux/slurm/sbatch.html). Here we
+[numerous](https://slurm.schedmd.com/sbatch.html). Here we
 list the most useful options for running serial batch jobs.
 
 -   `-D <dir>` or `--workdir=<dir>` \-- sets the working directory where
     the batch script should be run, e.g.
 
+
     ``` bash
     #SBATCH -D /scratch/users/ezekiel/test_run
     ```
+
 
 -   `-J <name>` or `--job-name=<name>` \-- sets the job name as output
     by the `squeue` command, e.g.
@@ -368,6 +382,7 @@ list the most useful options for running serial batch jobs.
     ``` bash
     #SBATCH -J test_job
     ```
+
 
 -   `-o <fname>` \-- sets the output file name for stdout and stderr (if
     stderr is left unspecified). The default standard output is directed
@@ -385,6 +400,7 @@ list the most useful options for running serial batch jobs.
     ``` bash
     #SBATCH -e error-%j.txt
     ```
+
 
 -   `-i <fname>` or `--input=<fname>` \-- sets the standard input stream
     for the running job. For example, if an executable program will
@@ -427,6 +443,7 @@ list the most useful options for running serial batch jobs.
     application performance will likely suffer due to competition for
     resources within a node.
 
+
     ``` bash
     #SBATCH -s
     ```
@@ -455,7 +472,7 @@ list the most useful options for running serial batch jobs.
 
 ### Running Batch Jobs
 
-Here we'll look at six ways to run jobs on ManeFrame II using Slurm.
+Here we'll look at six ways to run jobs on M3 using Slurm.
 
 1.  Interactive session via srun
 2.  Single interactive job via srun
@@ -467,8 +484,9 @@ Here we'll look at six ways to run jobs on ManeFrame II using Slurm.
 #### Interactive Session Via `srun`
 
 ``` bash
-module load python
 srun -p htc --pty $SHELL
+module load conda
+conda activate base
 python pi_monte_carlo.py 1000
 ```
 
@@ -501,9 +519,12 @@ method is non-interactive.
 #SBATCH -J python
 #SBATCH -o python_%j.out
 #SBATCH -p htc
+#SBATCH -t 15
+#SBATCH --mem=10G
 
 module purge
-module load python
+module load conda
+conda activate base
 
 time python pi_monte_carlo.py 1000
 ```
@@ -517,12 +538,14 @@ This batch script is manually creatd and then submited via
 #!/bin/bash
 #SBATCH -J pi
 #SBATCH -o pi_%j.out
-#SBATCH -p development
+#SBATCH -p dev
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=2
+#SBATCH -t 15
+#SBATCH --mem=10G
 
-module purge
-module load python
+module load conda
+conda activate base
 
 time python pi_monte_carlo_shared.py 10000000 ${SLURM_NTASKS}
 ```
@@ -537,10 +560,13 @@ approximation script on two cores.
 #SBATCH -J pi_array
 #SBATCH -o pi_array_%a-%A.out
 #SBATCH --array=1-4%2
-#SBATCH -p development
+#SBATCH -p dev
+#SBATCH -t 15
+#SBATCH --mem=10G
 
 module purge
-module load python
+module load conda
+conda activate base
 
 time python pi_monte_carlo.py $((10**${SLURM_ARRAY_JOB_ID}))
 ```

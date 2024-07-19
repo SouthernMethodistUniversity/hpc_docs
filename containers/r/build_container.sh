@@ -4,7 +4,7 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.3.2"
+VERSION="4.4.0"
 TAG=${VERSION}
 
 echo "Building tag: ${TAG}"
@@ -90,7 +90,6 @@ function build_command(app)
   set_shell_function(app, sh_cmd, csh_cmd)
 end
 
-setenv('TMPDIR', '/dev/shm')
 setenv('CONTAINER_RSESSION', '${RSESSION_EXEC}')
 setenv('CONTAINER_RSERVER', '${RSERVER_EXEC}')
 setenv('CONTAINER_R', '${R_EXEC}')

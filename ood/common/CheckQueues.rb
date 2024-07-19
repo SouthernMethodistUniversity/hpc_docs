@@ -40,8 +40,7 @@ class CheckQueues
         end
 
         # only keep queues with time limits <= 24 hours
-        # or highmem
-        if (hours < 25 || params[0] == "highmem")
+        if (hours < 25)
           # set the time limit to 12 hours or max queue time
           params[1] = [params[1].to_i, 12].min
           output.push(params) 

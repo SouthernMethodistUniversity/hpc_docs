@@ -1,0 +1,52 @@
+
+                                 WELCOME TO                       
+                               ___                              ____________
+      /\/\   __ _ _ __   ___  / __\ __ __ _ _ __ ___   ___     /  _/  _/  _/
+     /    \ / _` | '_ \ / _ \/ _\| '__/ _` | '_ ` _ \ / _ \    / / / / / /
+    / /\/\ \ (_| | | | |  __/ /  | | | (_| | | | | | |  __/  _/ /_/ /_/ /
+    \/    \/\__,_|_| |_|\___\/   |_|  \__,_|_| |_| |_|\___| /___/___/___/
+
+********************************************************************************
+
+Documentation:   https://southernmethodistuniversity.github.io/hpc_docs
+Example scripts: /hpc/m3/examples
+Help:            help@smu.edu with "[HPC]" in subject line
+
+Storage Locations:
+
+Variable     | Quota   | Usage
+------------ | ------- | -----------------------------------------------------
+$HOME        | 200 GB  | Home directory, backed up
+$WORK        | 8 TB    | Long term storage
+$SCRATCH     | 60 days | Temporary scratch space
+$M2HOME      | 200 GB  | Read-only access to M2 $HOME (ending August 30, 2024)
+
+*Do not* use login nodes or $HOME for calculations
+
+********************************************************************************
+
+IMPORTANT ANNOUNCEMENTS:
+
+August 1, 2024:
+
+  ${SCRATCH} Purge Policy will begin running automatically and continuesly
+
+    - files older than 60 days in ${SCRATCH} will automatically be deleted
+    - deleted files cannot be recovered
+  
+  Please review files in your ${SCRATCH} directory and move any files you need
+  to keep before August 1
+ 
+  https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html
+
+August 30, 2024:
+
+  ${M2HOME} End of Life.
+
+    - access to ${M2HOME} will be removed
+    - all files in ${M2HOME} will be permanently deleted.
+
+  Please review files in your ${M2HOME} directory and move any files you need
+  to keep before August 30
+
+********************************************************************************

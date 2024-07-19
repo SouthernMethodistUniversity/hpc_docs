@@ -5,6 +5,7 @@
 #SBATCH -p dev
 #SBATCH -c 1
 #SBATCH --mem=6G
+#SBATCH -t 10
 
 time python3 pi_monte_carlo.py $((100**${SLURM_ARRAY_TASK_ID}))
 
