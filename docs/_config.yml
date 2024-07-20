@@ -3,4 +3,5 @@ author: "Southern Methodist University"
 logo: "./images/smu_logo.jpg"
 execute:
   execute_notebooks: "off"
-
+html:
+  favicon: "./images/favicon.ico"
