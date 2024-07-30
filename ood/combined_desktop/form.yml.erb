@@ -14,9 +14,7 @@ cluster: "m3cluster"
 submit: submit.yml.erb
 
 form:
-<%- if CheckAccounts.Accounts.length() > 1 -%>
   - slurm_accounts
-<%- end -%>
   - custom_queues
   - desktop_os
   - desktop_env
