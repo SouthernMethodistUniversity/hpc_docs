@@ -39,5 +39,5 @@ else
   -- already in a container
   -- note: this does not check for the "correct" container so this might
   -- not work
-  append_path("PATH",mathematica_execs")
+  append_path("PATH",mathematica_execs)
 end
