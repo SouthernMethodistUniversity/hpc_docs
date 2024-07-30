@@ -15,9 +15,7 @@ require_relative "CheckAccounts"
 ---
 cluster: "m3cluster"
 form:
-<%- if CheckAccounts.Accounts.length() > 1 -%>
   - slurm_accounts
-<%- end -%>
   - custom_queues
   - python_version
   - build_environment
@@ -34,7 +32,6 @@ form:
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
-<%- if CheckAccounts.Accounts.length() > 1 -%>
   slurm_accounts:
    widget: select
    label: "Slurm Account"
@@ -48,7 +45,6 @@ attributes:
     <%- CheckAccounts.Accounts.each do |q| -%>
     - [ "<%= q %>",  "<%= q %>" ]
     <%- end -%>
-<%- end -%>
   custom_queues:
     label: "Partition"
     widget: select
