@@ -10,9 +10,7 @@ require_relative "CheckAccounts"
 ---
 cluster: "m3cluster"
 form:
-<%- if CheckAccounts.Accounts.length() > 1 -%>
   - slurm_accounts
-<%- end -%>
   - r_module
   - environment
   - custom_queues
@@ -23,19 +21,19 @@ form:
   - bc_num_gpus
   - email_on_start
 attributes:
-<%- if CheckAccounts.Accounts.length() > 1 -%>
   slurm_accounts:
    widget: select
    label: "Slurm Account"
    help: |
-     Select a Slurm account. By default all users have a  default "smu" account.
-     You may have other accounts, e.g. to access course specific material or
-     special allocations.
+     Select a Slurm account.
+     Slurm accounts grant to access allocations and/or course specific material.
+     **Important:** beginning on November 1, 2024. The Slurm account *smu* will
+     be disabled. Only Slurm accounts allocated with [ColdFront] will be usable.
+     [ColdFront]: https://hpcaccess.smu.edu 
    options:
     <%- CheckAccounts.Accounts.each do |q| -%>
     - [ "<%= q %>",  "<%= q %>" ]
     <%- end -%>
-<%- end -%>
   r_module:
     widget: select
     label: "R Version"
