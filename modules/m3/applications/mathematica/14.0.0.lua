@@ -4,7 +4,7 @@ conflict("mathematica")
 
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 local mathematica_install="/hpc/m3/apps/mathematica/14.0.0"
-local mathematica_execs=pathJoin(mathematica_install,"executables")
+local mathematica_execs=pathJoin(mathematica_install,"Executables")
 -- needs GUI stuff not installed on compute nodes, so this install
 -- currently only runs in the remote desktop container. For users 
 -- already on the remote desktop, there's no issue. However, we'll
