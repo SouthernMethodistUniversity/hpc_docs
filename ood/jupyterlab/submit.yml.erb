@@ -46,3 +46,7 @@ script:
     - "--mail-type"
     - "BEGIN"
     <%- end -%>
+    <%- if defined?slurm_accounts -%>
+    - "-A"
+    - "<%= slurm_accounts %>"
+    <%- end -%>

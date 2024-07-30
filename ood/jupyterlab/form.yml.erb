@@ -7,11 +7,17 @@ require_relative "CheckQueues"
 # find user conda environments
 require_relative "CustomEnvironments"
 
+# find slurm accounts
+require_relative "CheckAccounts"
+
 -%>
 
 ---
 cluster: "m3cluster"
 form:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  - slurm_accounts
+<%- end -%>
   - custom_queues
   - python_version
   - build_environment
@@ -28,6 +34,21 @@ form:
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
 attributes:
+<%- if CheckAccounts.Accounts.length() > 1 -%>
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     Select a Slurm account.
+     Slurm accounts grant to access allocations and/or course specific material.
+     **Important:** beginning on November 1, 2024. The Slurm account *smu* will
+     be disabled. Only Slurm accounts allocated with [ColdFront] will be usable.
+     [ColdFront]: https://hpcaccess.smu.edu 
+   options:
+    <%- CheckAccounts.Accounts.each do |q| -%>
+    - [ "<%= q %>",  "<%= q %>" ]
+    <%- end -%>
+<%- end -%>
   custom_queues:
     label: "Partition"
     widget: select
