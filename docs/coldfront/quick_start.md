@@ -63,7 +63,7 @@ Once Project is created you will have multiple options to Add additional users, 
 
     The Allocations selected previous will show under Allocations, however if additional ones are needed you can add by clicking on the **+Request Resource Allocations** button
 
-    <img src="../images/CF/quick_start/request_resource_allocation.png" alt="rewuest resource allocation" width="400"/>
+    <img src="../images/CF/quick_start/request_resource_allocation.png" alt="rewuest resource allocation" width="200"/>
 
 ## Archive a Project
 
@@ -80,4 +80,4 @@ Once Project is created you will have multiple options to Add additional users, 
 1.	After logging into ColdFront, select Projects> Projects
 2.	Top right of your page, you will see View Archived Projects
 
-    <img src="../images/CF/quick_start/view_archived.png" alt="view archived" width="400"/>
+    <img src="../images/CF/quick_start/view_archived.png" alt="view archived" width="200"/>
