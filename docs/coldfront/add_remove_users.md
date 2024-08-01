@@ -2,7 +2,7 @@
 
 > Students enrolled in a course will be added automatically as a ***User*** in a class close to the course start date and cannot be removed.
 
-## User Roles
+## Roles
 
 Instructors and PI's are automatically assigned the ***Manager*** role within a project. Other users are either a ***Manager*** or a ***User***, with the following permissions:
 
