@@ -17,7 +17,8 @@ Once Project is created you will have multiple options to Add additional users, 
 
 2. If you are searching by “Exact Username Only” search for the user via SMU email alias
 
-    > NOTE: If you are adding multiple users, you can list them all in the Search String box
+    > **NOTE:**
+    > If you are adding multiple users, you can list them all in the Search String box
 
 3. If you are searching by “All Fields” you can enter last name or SMU email alias
 
@@ -51,7 +52,8 @@ Once Project is created you will have multiple options to Add additional users, 
 
 2.	Select your Course and additional sections (if necessary)
 
-    > NOTE: If you are adding multiple users, you can list them all in the Search String box
+    > **NOTE:**
+    > If you are adding multiple users, you can list them all in the Search String box
 
 3. Check the additional boxes below the sections based off need of the class
 
@@ -59,7 +61,8 @@ Once Project is created you will have multiple options to Add additional users, 
 
     All students enrolled in class will show under Users
 
-    > NOTE: All students will appear 7 days before the semester begins.
+    > **NOTE:**
+    > All students will appear 7 days before the semester begins.
 
     The Allocations selected previous will show under Allocations, however if additional ones are needed you can add by clicking on the **+Request Resource Allocations** button
 

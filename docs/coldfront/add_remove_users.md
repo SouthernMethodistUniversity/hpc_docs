@@ -1,5 +1,6 @@
 # Add or Remove Users
 
+> **NOTE:**
 > Students enrolled in a course will be added automatically as a ***User*** in a class close to the course start date and cannot be removed.
 
 ## Roles
@@ -13,6 +14,8 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 ## Add a User
 
+### To a Project/Class
+
 1. Once a project or class is created, under <img src="../images/CF/add_remove_users/manage_project.png" alt="manage project" height="35"/>, click on <img src="../images/CF/add_remove_users/add_users.png" alt="add users" height="35"/>.
 
 2. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
@@ -23,6 +26,7 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
     <img src="../images/CF/add_remove_users/search_button.png" alt="search button" width="700"/>
 
+    > **NOTE:**
     > If a user has already been added to the project or class, then you will see a message like this\
     > <img src="../images/CF/add_remove_users/user_already_added.png" alt="user already added message" height="35"/>.
 
@@ -40,7 +44,14 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 6. You can verify that a user has been added under <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/> on the Project/Class page.
 
+### To an Allocation
+
+> **NOTE:**
+> When [requesting an allocation](https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html) you can give permissions to existing users. The following instructions are for adding users to an active allocation.
+
 ## Remove a User
+
+### From a Project/Class
 
 1. Click on <img src="../images/CF/add_remove_users/remove_users.png" alt="remove users button" height="35"/> in the header next to <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/>.
 
@@ -54,7 +65,11 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 4. You can verify that a user has been removed under <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/> on the Project/Class page.
 
-## Change a User Role
+### From an Allocation
+
+## Change User
+
+### Role
 
 1. Next to the user's role you would like to change, click on <img src="../images/CF/add_remove_users/actions.png" alt="actions button" height="40"/> under Actions.
 
@@ -65,3 +80,5 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 3. Click on
 
     <img src="../images/CF/add_remove_users/update.png" alt="update user" height="40"/>
+
+### Allocation Permissions
