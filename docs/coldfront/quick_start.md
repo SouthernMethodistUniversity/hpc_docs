@@ -13,18 +13,25 @@ Once Project is created you will have multiple options to Add additional users, 
 
 1. Once your project is created, select Add Users within the Users section of your project
 
-    <img src="../images/CF/quick_start/add_users.png" alt="add users" width="400"/>
+    ```{image} ../images/CF/quick_start/add_users.png
+    :alt: add users
+    :width: 400px
+    ```
 
 2. If you are searching by “Exact Username Only” search for the user via SMU email alias
 
-    > **NOTE:**
-    > If you are adding multiple users, you can list them all in the Search String box
+    ```{note}
+    If you are adding multiple users, you can list them all in the Search String box
+    ```
 
 3. If you are searching by “All Fields” you can enter last name or SMU email alias
 
 4. Once you’ve found and selected the user(s), select the role the user should have
 
-    <img src="../images/CF/quick_start/user_role.png" alt="add users" width="100"/>
+    ```{image} ../images/CF/quick_start/user_role.png
+    :alt: user role
+    :width: 100px
+    ```
 
 5. Then Add Selected Users to Project
 6. Once complete you will see all users requested under the Users section
@@ -37,7 +44,10 @@ Once Project is created you will have multiple options to Add additional users, 
 4.	Select Submit
 5.	Once complete you will see your status request as **Pending Review** under Allocations
 
-    <img src="../images/CF/quick_start/resource_table.png" alt="resource table" width="800"/>
+    ```{image} ../images/CF/quick_start/resource_table.png
+    :alt: resource table
+    :width: 800px
+    ```
 
 ## To view your current usage
 
@@ -48,12 +58,16 @@ Once Project is created you will have multiple options to Add additional users, 
 
 1.	Select the **Add a Class** button
 
-    <img src="../images/CF/quick_start/add_class.png" alt="add a class button" width="400"/>
+    ```{image} ../images/CF/quick_start/add_class.png
+    :alt: add a class button
+    :width: 400px
+    ```
 
 2.	Select your Course and additional sections (if necessary)
 
-    > **NOTE:**
-    > If you are adding multiple users, you can list them all in the Search String box
+    ```{note}
+    If you are adding multiple users, you can list them all in the Search String box
+    ```
 
 3. Check the additional boxes below the sections based off need of the class
 
@@ -61,12 +75,16 @@ Once Project is created you will have multiple options to Add additional users, 
 
     All students enrolled in class will show under Users
 
-    > **NOTE:**
-    > All students will appear 7 days before the semester begins.
+    ```{note}
+    All students will appear 7 days before the semester begins.
+    ```
 
     The Allocations selected previous will show under Allocations, however if additional ones are needed you can add by clicking on the **+Request Resource Allocations** button
 
-    <img src="../images/CF/quick_start/request_resource_allocation.png" alt="rewuest resource allocation" width="200"/>
+    ```{image} ../images/CF/quick_start/request_resource_allocation.png
+    :alt: request resource allocation
+    :width: 200px
+    ```
 
 ## Archive a Project
 
@@ -74,7 +92,10 @@ Once Project is created you will have multiple options to Add additional users, 
 2.	Select **Archive Project** top right of the page
 3.	To Archive select “Yes” after reading the disclaimer
 
-    <img src="../images/CF/quick_start/archive_disclaimer.png" alt="archive disclaimer" width="800"/>
+    ```{image} ../images/CF/quick_start/archive_disclaimer.png
+    :alt: archive disclaimer
+    :width: 800px
+    ```
 
 4. Once you project is successfully archived, you will not be able to make any changes but will still be able to view some details at any time
 
@@ -83,4 +104,7 @@ Once Project is created you will have multiple options to Add additional users, 
 1.	After logging into ColdFront, select Projects> Projects
 2.	Top right of your page, you will see View Archived Projects
 
-    <img src="../images/CF/quick_start/view_archived.png" alt="view archived" width="200"/>
+    ```{image} ../images/CF/quick_start/view_archived.png
+    :alt: view archived
+    :width: 200px
+    ```

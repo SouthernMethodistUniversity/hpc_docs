@@ -18,6 +18,8 @@ parts:
   chapters:
   - file: coldfront/quick_start.md
   - file: coldfront/add_remove_users.md
+  - file: coldfront/request_change_allocation.md
+  - file: coldfront/add_change_project.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md

@@ -1,7 +1,8 @@
 # Add or Remove Users
 
-> **NOTE:**
-> Students enrolled in a course will be added automatically as a ***User*** in a class close to the course start date and cannot be removed.
+```{note}
+Students enrolled in a course will be added automatically as a ***User*** in a class close to the course start date and cannot be removed.
+```
 
 ## Roles
 
@@ -16,21 +17,31 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 ### To a Project/Class
 
-1. Once a project or class is created, under <img src="../images/CF/add_remove_users/manage_project.png" alt="manage project" height="35"/>, click on <img src="../images/CF/add_remove_users/add_users.png" alt="add users" height="35"/>.
+1. Once a project or class is created, under Manage Project, click on
 
-2. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
+    ```{image} ../images/CF/add_remove_users/add_users.png
+    :alt: add users
+    :height: 35px
+    ```
+
+3. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
 
     <img src="../images/CF/add_remove_users/search_user_space.png" alt="search users by space" height="150"/> <img src="../images/CF/add_remove_users/search_user_line.png" alt="search users by line" height="150"/>
 
-3. Click on
+4. Click on
 
     <img src="../images/CF/add_remove_users/search_button.png" alt="search button" width="700"/>
 
-    > **NOTE:**
-    > If a user has already been added to the project or class, then you will see a message like this\
-    > <img src="../images/CF/add_remove_users/user_already_added.png" alt="user already added message" height="35"/>.
+    ```{note}
+    If a user has already been added to the project or class, then you will see a message like this
+    ```{image} ../images/CF/add_remove_users/user_already_added.png
+    :alt: user already added message
+    :height: 35px
+    :align: center
+    ```
+    ```
 
-4. Select the user(s) that you want to add from the list 
+5. Select the user(s) that you want to add from the list 
 
     <img src="../images/CF/add_remove_users/select_user.png" alt="select users" height="60"/> 
 
@@ -38,16 +49,17 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
     <img src="../images/CF/add_remove_users/user_role.png" alt="user role selection" height="60"/>
 
-5. Click on
+6. Click on
 
     <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35"/>.
 
-6. You can verify that a user has been added under <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/> on the Project/Class page.
+7. You can verify that a user has been added under <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/> on the Project/Class page.
 
 ### To an Allocation
 
-> **NOTE:**
-> When [requesting an allocation](https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html) you can give permissions to existing users. The following instructions are for adding users to an active allocation.
+```{note}
+When [requesting an allocation](https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html) you can give permissions to existing users. The following instructions are for adding users to an active allocation.
+```
 
 ## Remove a User
 
