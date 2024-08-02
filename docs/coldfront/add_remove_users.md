@@ -26,11 +26,22 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 3. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
 
-    <img src="../images/CF/add_remove_users/search_user_space.png" alt="search users by space" height="150"/> <img src="../images/CF/add_remove_users/search_user_line.png" alt="search users by line" height="150"/>
+    ```{image} ../images/CF/add_remove_users/search_user_space.png
+    :alt: search users by space
+    :height: 150px
+    ```
+
+    ```{image} ../images/CF/add_remove_users/search_user_line.png
+    :alt: search users by line
+    :height: 150px
+    ```
 
 4. Click on
 
-    <img src="../images/CF/add_remove_users/search_button.png" alt="search button" width="700"/>
+    ```{image} ../images/CF/add_remove_users/search_button.png
+    :alt: search button
+    :weight: 700px
+    ```
 
     ```{note}
     If a user has already been added to the project or class, then you will see a message like this
@@ -43,17 +54,26 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 5. Select the user(s) that you want to add from the list 
 
-    <img src="../images/CF/add_remove_users/select_user.png" alt="select users" height="60"/> 
+    ```{image} ../images/CF/add_remove_users/select_user.png
+    :alt: select users
+    :height: 60px
+    ```
 
     and change their role to either ***Manager*** or ***User*** using the dropdown.
 
-    <img src="../images/CF/add_remove_users/user_role.png" alt="user role selection" height="60"/>
+    ```{image} ../images/CF/add_remove_users/user_role.png
+    :alt: user role selection
+    :height: 60px
+    ```
 
 6. Click on
 
-    <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35"/>.
+    ```{image} ../images/CF/add_remove_users/add_selected_users.png
+    :alt: add selected users
+    :height: 35px
+    ```
 
-7. You can verify that a user has been added under <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/> on the Project/Class page.
+7. You can verify that a user has been added under Users on the Project/Class page.
 
 ### To an Allocation
 

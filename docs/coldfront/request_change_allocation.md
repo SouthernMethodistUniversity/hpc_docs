@@ -24,24 +24,44 @@ There are 3 fields to specify when requesting a ***Compute*** allocation: ***CPU
 | ***Memory hours*** | Computed per job as (amount allocated memory in GB) * (run time in hours). For example, if a job was allocated 128GB of memory and ran for 45 minutes, it used (128) * (0.75) = 96 ***Memory hours***.     |
 
 ```{note}
-- If you request ***CPU hours***, you <u>MUST</u> request ***memory hours*** as well. The general guideline is that you need 4 ***memory hours*** for 1 ***CPU hour***.
-- If you request ***GPU hours***, you <u>MUST</u> request both ***CPU hours*** and ***memory hours*** as well. The general guideline is that you need 16 ***CPU hours*** and 96 ***memory hours*** per 1 ***GPU hour***.
-- CPU hour, GPU hour, and memory hour quota's will persist across all M3 queues and SuperPod queues. For example, if you use up your quota of GPU hours entirely on the gpu-dev queue on M3, then you will not have GPU hours left to use on M3 or the SuperPod. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
+***CPU hour***, ***GPU hour***, and ***memory hour*** quota's will persist across all M3 queues and SuperPod queues. For example, if you use up your quota of ***GPU hours*** entirely on the gpu-dev queue on M3, then you will not have ***GPU hours*** left to use on M3 or the SuperPod. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
 ```
 
 ### Request ***Compute*** Allocation
 
 1. Select ***+ Request Resource Allocation***.
 
-2. Select ***Compute*** as your Resource.
+2. Select ***Compute*** as your Resource from the dropwdown.
 
-3. 
+3. Provide a 2-3 sentence justification for the resources you are requesting.
+
+4. Select a Start Date and End Date for your allocation. The limit is 1 year, but can be renewed.
+
+5. Enter the number of ***CPU hours*** you will need.
+
+    ```{note}
+    When requesting ***CPU hours***, you <u>MUST</u> request ***memory hours*** as well. The general guideline is that you need 4 ***memory hours*** for 1 ***CPU hour***. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
+    ```
+
+6. Enter the number of ***GPU hours*** you will need.
+
+    ```{note}
+    When requesting ***GPU hours***, you <u>MUST</u> request both ***CPU hours*** and ***memory hours*** as well. The general guideline is that you need 16 ***CPU hours*** and 96 ***memory hours*** per 1 ***GPU hour***. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
+    ```
+
+6. Enter the number of ***memory hours*** you will need.
+
+7. Please read and acknowledge that you will follow the ODSRCI Community Guidelines.
+
+8. Click on Submit.
+
+9. Wait for your allocation to be approved by HPC Support.
 
 ### Change ***Compute*** Allocation
 
-## ***Storage*** Allocations
+Coming Soon.
 
-[Add language here]
+## ***Storage*** Allocations
 
 ### Request ***Storage*** Allocation
 
