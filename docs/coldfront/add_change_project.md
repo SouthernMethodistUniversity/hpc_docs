@@ -59,7 +59,7 @@ Only benefits eligible faculty or staff can create a project.
     :width: 800px
     ```
 
-8. Select your expected end date for the project, with a maximum of 1 year. This can later be extended.
+8. Select your expected end date for the project. This can be extended.
 
     ```{image} ../images/CF/add_change_project/end_date.png
     :alt: end date

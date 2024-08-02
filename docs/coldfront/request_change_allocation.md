@@ -31,6 +31,12 @@ There are 3 fields to specify when requesting a ***Compute*** allocation: ***CPU
 
 ### Request ***Compute*** Allocation
 
+1. Select ***+ Request Resource Allocation***.
+
+2. Select ***Compute*** as your Resource.
+
+3. 
+
 ### Change ***Compute*** Allocation
 
 ## ***Storage*** Allocations
