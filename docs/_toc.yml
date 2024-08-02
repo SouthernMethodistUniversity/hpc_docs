@@ -16,8 +16,8 @@ parts:
   - file: mp_update.md
 - caption: ColdFront
   chapters:
-  - file: quick_start.md
-  - file: add_remove_users.md
+  - file: coldfront/quick_start.md
+  - file: coldfront/add_remove_users.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md
