@@ -24,7 +24,7 @@ There are 3 fields to specify when requesting a ***Compute*** allocation: ***CPU
 | ***Memory hours*** | Computed per job as (amount allocated memory in GB) * (run time in hours). For example, if a job was allocated 128GB of memory and ran for 45 minutes, it used (128) * (0.75) = 96 ***Memory hours***.     |
 
 ```{note}
-***CPU hour***, ***GPU hour***, and ***memory hour*** quota's will persist across all M3 queues and SuperPod queues. For example, if you use up your quota of ***GPU hours*** entirely on the gpu-dev queue on M3, then you will not have ***GPU hours*** left to use on M3 or the SuperPod. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
+***CPU hour***, ***GPU hour***, and ***memory hour*** quota's will persist across all M3 queues and SuperPod queues. For example, if you use up your quota of ***GPU hours*** entirely on the gpu-dev queue on M3, then you will not have ***GPU hours*** left to use on M3 or the SuperPod. If you need assistance in determining how many hours to request, please submit a help desk ticket to [help@smu.edu](mailto:help@smu.edu) with [HPC] in the subject line.
 ```
 
 ### Request ***Compute*** Allocation
@@ -41,14 +41,14 @@ There are 3 fields to specify when requesting a ***Compute*** allocation: ***CPU
 
     ```{admonition} General Guidelines
     :class: tip
-    When requesting ***CPU hours***, you <u>MUST</u> request ***memory hours*** as well. The general guideline is that you need 4 ***memory hours*** for 1 ***CPU hour***. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
+    When requesting ***CPU hours***, you <u>MUST</u> request ***memory hours*** as well. The general guideline is that you need 4 ***memory hours*** for 1 ***CPU hour***. If you need assistance in determining how many hours to request, please submit a help desk ticket to [help@smu.edu](mailto:help@smu.edu) with [HPC] in the subject line.
     ```
 
 6. Enter the number of ***GPU hours*** you will need.
 
     ```{admonition} General Guidelines
     :class: tip
-    When requesting ***GPU hours***, you <u>MUST</u> request both ***CPU hours*** and ***memory hours*** as well. The general guideline is that you need 16 ***CPU hours*** and 96 ***memory hours*** per 1 ***GPU hour***. If you need assistance in determining how many hours to request, please contact [oitresearch@smu.edu](mailto:oitresearch@smu.edu).
+    When requesting ***GPU hours***, you <u>MUST</u> request both ***CPU hours*** and ***memory hours*** as well. The general guideline is that you need 16 ***CPU hours*** and 96 ***memory hours*** per 1 ***GPU hour***. If you need assistance in determining how many hours to request, please submit a help desk ticket to [help@smu.edu](mailto:help@smu.edu) with [HPC] in the subject line.
     ```
 
 6. Enter the number of ***memory hours*** you will need.
