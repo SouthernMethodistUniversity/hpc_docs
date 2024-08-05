@@ -17,12 +17,7 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 ### To a Project/Class
 
-1. Once a project or class is created, under Manage Project, click on
-
-    ```{image} ../images/CF/add_remove_users/add_users.png
-    :alt: add users
-    :height: 35px
-    ```
+1. Once a project or class is created, under Manage Project, click on <img src="../images/CF/add_remove_users/add_users.png" alt="add users" height="35"/>
 
 3. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
 
@@ -36,21 +31,16 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     :height: 150px
     ```
 
-4. Click on
+4. Click on <img src="../images/CF/add_remove_users/search_button.png" alt="search button" width="700"/>
 
-    ```{image} ../images/CF/add_remove_users/search_button.png
-    :alt: search button
-    :weight: 700px
-    ```
-
-    ```{note}
+    ````{note}
     If a user has already been added to the project or class, then you will see a message like this
     ```{image} ../images/CF/add_remove_users/user_already_added.png
     :alt: user already added message
     :height: 35px
     :align: center
     ```
-    ```
+    ````
 
 5. Select the user(s) that you want to add from the list 
 
@@ -66,12 +56,7 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     :height: 60px
     ```
 
-6. Click on
-
-    ```{image} ../images/CF/add_remove_users/add_selected_users.png
-    :alt: add selected users
-    :height: 35px
-    ```
+6. Click on <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35">
 
 7. You can verify that a user has been added under Users on the Project/Class page.
 
@@ -91,9 +76,7 @@ When [requesting an allocation](https://southernmethodistuniversity.github.io/hp
 
     <img src="../images/CF/add_remove_users/select_user.png" alt="select users" height="60"/>
 
-3. Click on
-
-    <img src="../images/CF/add_remove_users/remove_selected_users.png" alt="remove selected users" height="40"/>.
+3. Click on <img src="../images/CF/add_remove_users/remove_selected_users.png" alt="remove selected users" height="40"/>.
 
 4. You can verify that a user has been removed under <img src="../images/CF/add_remove_users/users.png" alt="users header" height="35"/> on the Project/Class page.
 
@@ -109,8 +92,6 @@ When [requesting an allocation](https://southernmethodistuniversity.github.io/hp
 
     <img src="../images/CF/add_remove_users/user_role_change.png" alt="change user role" height="40"/>
 
-3. Click on
-
-    <img src="../images/CF/add_remove_users/update.png" alt="update user" height="40"/>
+3. Click on <img src="../images/CF/add_remove_users/update.png" alt="update user" height="40"/>
 
 ### Allocation Permissions
