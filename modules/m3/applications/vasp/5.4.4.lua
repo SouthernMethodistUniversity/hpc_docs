@@ -1,7 +1,7 @@
 whatis("VASP 5.4.4: Must be member of vasp group. Request access at via help@smu.edu with HPC in the subject line.")
 
 local err_message="To use this module you must be in a particular group\n" ..
-                  "Please contact smuhpc-admins@smu.edu to join vasp group\n"
+                  "Please contact help@smu.edu with HPC in the subject to join vasp group\n"
 
 local found = required_group("vasp")
 local found_new = required_group("hpc-vasp")
