@@ -1,8 +1,15 @@
-whatis("Gaussian 16 C.02: Must be member of gaussian group. Request access at smuhpc-admins@smu.edu.")
-local groups = capture("groups")
-if string.match(groups, "gaussian") == nil then
-  LmodError("\n\nUse of Gaussian requires permission.\nRequest permission via help@smu.edu with HPC in the subject line.\n")
+whatis("Gaussian 16 C.02: Must be member of gaussian group. Request access at help@smu.edu.")
+
+local err_message="To use this module you must be in a particular group\n" ..
+                  "Please contact help@smu.edu with HPC in the subject  to join gaussian group\n"
+
+local found = required_group("gaussian")
+local found_new = required_group("hpc-gaussian")
+
+if (not found and not found_new) then
+  LmodError(err_message)
 end
+
 family("gaussian")
 load("nvidia/nvhpc/23.7")
 setenv("g16root", "/hpc/mp/apps/gaussian/g16c02")
