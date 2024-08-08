@@ -12,7 +12,7 @@ please reach out to [help@smu.edu](mailto:help%40smu.edu?subject=%5BHPC%5D) and 
 :width: 400px
 ```
 
-1. Login to ColdFront via SSO with your SMU ID and Password 
+1. Login to ColdFront via SSO with your SMU credentials
 2. Select Add a class 
 3. Select your course from the drop down menu
 4. Select which sections you would like to have access to HPC resources
