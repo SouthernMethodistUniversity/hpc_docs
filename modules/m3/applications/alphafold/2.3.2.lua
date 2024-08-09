@@ -21,3 +21,9 @@ setenv('ALPHAFOLD_DATA', '/work/data/alphafold/2.3.2')
 
 build_command('run_alphafold.sh', '/app/run_alphafold.sh')
 
+help([[Name: AlphaFold 
+Version: 2.3.2
+Website: https://deepmind.google/technologies/alphafold/
+
+AlphaFold is an AI system developed by Google DeepMind that predicts a protein’s 3D structure from its amino acid sequence. It regularly achieves accuracy competitive with experiment.
+]])
