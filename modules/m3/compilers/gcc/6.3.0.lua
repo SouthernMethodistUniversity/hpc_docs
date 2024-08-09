@@ -28,7 +28,7 @@ setenv("OMPI_MCA_btl_openib_if_include","mlx5_0:1")
 setenv("OMPI_MCA_hwloc_base_binding_policy","core")
 setenv("UCX_NET_DEVICES","mlx5_0:1")
 
-help([[Name: GNU gcc
+help([[Name: GNU GCC
 Version: 6.3.0
 Website: https://gcc.gnu.org/
 
