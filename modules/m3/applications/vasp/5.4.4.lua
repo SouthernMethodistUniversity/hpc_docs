@@ -17,4 +17,9 @@ load("gcc/11.2.0", "openmpi/4.1.4-7al4h2x",
       "openblas/0.3.21-s5husbk")
 prepend_path("PATH","/hpc/m3/apps/vasp/vasp.5.4.4/bin")
 
+help([[Name: VASP
+Version: 5.4.4
+Website: https://www.vasp.at/
 
+The Vienna Ab initio Simulation Package: atomic scale materials modelling from first principles.
+]])
