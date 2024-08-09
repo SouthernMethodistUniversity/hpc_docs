@@ -14,3 +14,10 @@ setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic2.smu.edu")
 
 prepend_path("PATH", bin)
 append_path("LD_LIBRARY_PATH", lib)
+
+help([[Name: Synopsys Quantum ATK"
+Version: 2022.03-SP1
+Website: https://www.synopsys.com/manufacturing/quantumatk.html
+
+QuantumATK - Atomistic Simulation Software
+]])
