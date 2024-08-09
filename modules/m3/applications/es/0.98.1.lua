@@ -23,3 +23,11 @@ for _, executable in ipairs(executables) do
   build_command(img_path, executable)
 end
 
+help([[Name: ES: Elementary Supernova Spectrum Synthesis
+Version: 0.98.1
+Website: https://c3.lbl.gov/es/
+
+ES: Elementary Supernova Spectrum Synthesis
+]])
+
+
