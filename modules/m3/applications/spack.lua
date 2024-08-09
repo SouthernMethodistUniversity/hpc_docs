@@ -6,5 +6,5 @@ help([[Name: Spack
 Version: several
 Website: https://spack.io/
 
-pack is a package manager for supercomputers, Linux, and macOS.
+Spack is a package manager for supercomputers, Linux, and macOS.
 ]])
