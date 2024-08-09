@@ -16,3 +16,9 @@ local img_path      = pathJoin(img_directory, img_name)
 
 build_command(img_path, 'evince')
 
+help([[Name: Evince
+Version: 42.3
+Website: https://wiki.gnome.org/Apps/Evince
+
+Evince is a document viewer for multiple document formats. 
+]])
