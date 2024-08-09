@@ -14,3 +14,10 @@ family("gaussian")
 load("apptainer")
 prepend_path("PATH", "/hpc/m3/apps/gaussian/g09d/g09")
 
+help([[Name: Gaussian
+Version: g09
+Website: https://gaussian.com/
+License Owners: Chemistry
+
+ Gaussian series of electronic structure programs, used by chemists, chemical engineers, biochemists, physicists and other scientists worldwide.
+]])
