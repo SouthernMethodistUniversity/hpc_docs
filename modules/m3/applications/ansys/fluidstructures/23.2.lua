@@ -1,6 +1,14 @@
 whatis("ANSYS Fluid and Structures Package R23.2")
 family("ansys")
 
+help([[Name: Ansys 
+Version: 23R2
+Website: https://www.ansys.com/
+License Owners : SMU?
+
+Ansys Fluent, Mechanical, Workbench
+]])
+
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 
 -- Ansys 23.2 needs GUI stuff not installed on compute nodes, so this install
