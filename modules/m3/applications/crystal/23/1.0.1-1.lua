@@ -15,4 +15,12 @@ conflict("crystal")
 load("gcc/11.2.0", "openmpi/4.1.6")
 prepend_path("PATH","/hpc/m3/apps/crystal/23_1")
 
+help([[Name: Crystal 
+Version: 23 v1.0.1-1
+Website: https://www.crystal.unito.it/
+License Owners : CATCO group
+
+CRYSTAL is a quantum chemistry ab initio program, designed primarily for calculations on crystals (3 dimensions), slabs (2 dimensions) and polymers (1 dimension) using translational symmetry, but it can also be used for single molecules.
+]])
+
 

@@ -16,3 +16,9 @@ local img_path      = pathJoin(img_directory, img_name)
 
 build_command(img_path, 'eog')
 
+help([[Name: Eye of Gnome
+Version: 3.28.4
+Website: https://help.gnome.org/users/eog/
+
+Eye of Gnome image viewer
+]])

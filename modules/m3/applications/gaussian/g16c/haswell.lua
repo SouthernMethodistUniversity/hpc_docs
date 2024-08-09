@@ -25,3 +25,11 @@ setenv("GAUSS_ARCHDIR","/hpc/m3/apps/gaussian/g16c02/g16/arch")
 append_path("LD_LIBRARY_PATH","/hpc/m3/apps/gaussian/g16c02/g16/bsd:/hpc/m3/apps/gaussian/g16c02/g16:/hpc/m3/apps/gaussian/g16c02/gv/lib")
 setenv("GAUSS_LEXEDIR","/hpc/m3/apps/gaussian/g16c02/g16/linda-exe")
 append_path("PATH","/hpc/m3/apps/gaussian/g16c02/gauopen:/hpc/m3/apps/gaussian/g16c02/g16/bsd:/hpc/m3/apps/gaussian/g16c02/g16")
+
+help([[Name: Gaussian
+Version: g16c
+Website: https://gaussian.com/
+License Owners: Chemistry
+
+Gaussian series of electronic structure programs, used by chemists, chemical engineers, biochemists, physicists and other scientists worldwide.
+]])

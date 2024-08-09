@@ -17,3 +17,10 @@ setenv("g16root", g16root)
 setenv("GAUSS_SCRDIR", os.getenv("SCRATCH"))
 source_sh('bash', pathJoin(g16root, "g16/bsd/g16.profile"))
 
+help([[Name: Gaussian
+Version: g16c
+Website: https://gaussian.com/
+License Owners: Chemistry
+
+Gaussian series of electronic structure programs, used by chemists, chemical engineers, biochemists, physicists and other scientists worldwide.
+]])

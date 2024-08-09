@@ -9,3 +9,10 @@ load("openblas/0.3.21-s5husbk",
      "bzip2/1.0.8-ujseine")
 source_sh('bash', "/hpc/m3/apps/amber/amber22/amber.sh")
 load("openmpi/4.1.6-a4ksrza")
+
+help([[Name: Amber
+Version: 22
+Website: https://ambermd.org/
+
+Amber is a suite of biomolecular simulation programs.
+]])

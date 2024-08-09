@@ -10,3 +10,9 @@ set_shell_function("snid", snid, snid)
 set_shell_function("logwave", logwave, logwave)
 set_shell_function("plotlnw", plotlnw, plotlnw)
 
+help([[Name: Supernova Identification (SNID)
+Version: 5.0
+Website: https://people.lam.fr/blondin.stephane/software/snid/index.html
+
+Supernova Identification (SNID)
+]])

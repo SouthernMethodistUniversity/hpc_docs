@@ -21,6 +21,12 @@ prepend_path("PERL5LIB","/hpc/m3/apps/amber/amber24_mpi/lib/perl")
 prepend_path("PYTHONPATH","/hpc/m3/apps/amber/amber24_mpi/lib/python3.11/site-packages")
 setenv("QUICK_BASIS","/hpc/m3/apps/amber/amber24_mpi/AmberTools/src/quick/basis")
 
+help([[Name: Amber
+Version: 24
+Website: https://ambermd.org/
+
+Amber is a suite of biomolecular simulation programs.
+]])
 
 --[[
 module load gcc/11.2.0

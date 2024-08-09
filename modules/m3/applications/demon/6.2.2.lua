@@ -12,3 +12,9 @@ setenv("CREX_ROOT", root)
 prepend_path("MANPATH", pathJoin(base, "man"))
 append_path("PATH", pathJoin(base, "bin"))
 
+help([[Name: deMon
+Version: 6.2.2
+Website: http://www.demon-software.com/
+
+A software package for density functional theory (DFT) calculations
+]])

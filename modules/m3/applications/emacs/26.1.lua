@@ -16,3 +16,10 @@ local img_path      = pathJoin(img_directory, img_name)
 
 build_command(img_path, 'emacs')
 
+
+help([[Name: GNU Emacs
+Version: 26.1
+Website: https://www.gnu.org/software/emacs/
+
+An extensible, customizable, free/libre text editor — and more.
+]])

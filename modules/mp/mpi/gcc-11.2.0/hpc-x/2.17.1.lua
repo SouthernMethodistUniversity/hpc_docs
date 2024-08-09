@@ -60,3 +60,10 @@ setenv("SHMEM_HOME",pathJoin(HPCX_HOME,OMPI_DIR))
 prepend_path("PATH",pathJoin(HPCX_HOME,OMPI_DIR,"/bin"))
 prepend_path("LD_LIBRARY_PATH",pathJoin(HPCX_HOME,OMPI_DIR,"/lib"))
 prepend_path("LIBRARY_PATH",pathJoin(HPCX_HOME,OMPI_DIR,"/lib"))
+
+help([[Name: HPC-X
+Version: 2.17.1
+Website: https://developer.nvidia.com/networking/hpc-x
+
+NVIDIA® HPC-X® is a comprehensive software package that includes Message Passing Interface (MPI), Symmetrical Hierarchical Memory (SHMEM) and Partitioned Global Address Space (PGAS) communications libraries, and various acceleration packages. 
+]])

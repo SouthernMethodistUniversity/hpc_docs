@@ -13,3 +13,10 @@ family("gaussview")
 LmodWarning("GaussView can only be used from an HPC Portal remote desktop session.")
 prepend_path("PATH","/hpc/m3/apps/gaussian/gv")
 
+help([[Name: GaussView
+Version: 6
+Website: https://gaussian.com/
+License Owners: Chemistry
+
+Graphical interface used with Gaussian
+]])
