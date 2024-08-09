@@ -16,3 +16,9 @@ local img_path      = pathJoin(img_directory, img_name)
 
 build_command(img_path, 'gedit')
 
+help([[Name: gedit
+Version: 3.28.1
+Website: https://gedit-technology.github.io/apps/gedit/
+
+gedit is an easy-to-use and general-purpose text editor.
+]])
