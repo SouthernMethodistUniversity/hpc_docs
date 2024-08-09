@@ -1,5 +1,11 @@
 
 help([[
+Name: R
+Version: 4.3.2
+Website: https://www.r-project.org/
+
+R is a language and environment for statistical computing and graphics.
+
 To use R:
 
 R -- launches an R terminal
