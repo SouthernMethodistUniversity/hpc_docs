@@ -17,7 +17,7 @@ please reach out to [help@smu.edu](mailto:help%40smu.edu?subject=%5BHPC%5D) and 
 3. Select your course from the drop down menu
 4. Select which sections you would like to have access to HPC resources
 5. Mark which additional options you need
-6. Select Save once complete.
+6. Select Submit once complete.
 
 Once a class is created you will have options to Add additional users and request additional allocations.
 
