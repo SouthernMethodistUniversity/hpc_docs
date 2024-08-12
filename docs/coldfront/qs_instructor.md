@@ -24,13 +24,13 @@ Once a class is created you will have options to Add additional users and reques
 ## To add Students and Other Users
 
 For classes, the management of students is synched hourly with class enrollment records starting a week before the semester starts.
-Once in the , students that add or drop will be added or removed from your class and allocations accordingly.
+Once a class is requested in ColdFront, students that add or drop will be added or removed from your class and allocations accordingly.
 
 ```{note}
 All students will appear 7 days before the semester begins.
 ```
 
-If you wish to add a user who is not enrolled to your class (e.g. a co-instructor), follow the steps below.
+If you wish to add a user who is ***not*** enrolled to your class (e.g. a co-instructor), follow the steps below.
 
 ```{note}
 This is not especially common. Do not add students that will be enrolled in the course as this could disrupt their file permissions.
