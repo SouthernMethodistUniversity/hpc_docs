@@ -64,7 +64,9 @@ This is not especially common. Do not add students that will be enrolled in the 
 ## In Class
 
 Once you are ready for your students to use the resources, have them go to [hpcaccess.smu.edu](hpcaccess.smu.edu) and log in to ColdFront.
-They will see your class and associated allocations on their dashboard. They will see a button for **Pending EULA** next to each allocation.
+They will see your class and associated allocations on their dashboard. They will need to click on your class to be taken to the class page.
+
+Under Allocations, they will see a button for **Review and Accept EULA to activate** for to each allocation.
 They will need to accept the EULA for each allocation in order to get access the those resources.
 
 ```{note}
