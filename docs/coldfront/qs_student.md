@@ -10,11 +10,11 @@ ColdFront is a platform for managing access to our HPC resources. You will need 
 
 You will see your class and associated allocations on your dashboard. 
 Your class will have at least one allocation for **Compute** and possibly allocations for **Storage**. 
-You will see a button for **Pending EULA** next to each allocation.
-You will need to accept the EULA for *each* allocation in order to get access the those resources.
+You will see a button for **Pending Policies and Guidelines** next to each allocation.
+You will need to accept the Policies and Guidelines for *each* allocation in order to get access the those resources.
 
 ```{note}
-Once you accept the EULA, they will be granted an HPC account.
+Once you accept the Policies and Guidelines, they will be granted an HPC account.
 In most cases this process is instantenous, however if your class has a large number of files in a storage allocation, this could take several minutes.
 ```
 
@@ -38,7 +38,7 @@ The `slurm_account` can be found in the Information field under Allocations.
 ## To view your current usage
 
 1.	Under Allocations select the folder icon
-2.	You will see your Allocation details, EULA Agreements, and Usage by Hours
+2.	You will see your Allocation details, Policies and Guidelines Agreements, and Usage by Hours
 
 
 ## Concluding the Semester

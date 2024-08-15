@@ -66,11 +66,11 @@ This is not especially common. Do not add students that will be enrolled in the 
 Once you are ready for your students to use the resources, have them go to [hpcaccess.smu.edu](hpcaccess.smu.edu) and log in to ColdFront.
 They will see your class and associated allocations on their dashboard. They will need to click on your class to be taken to the class page.
 
-Under Allocations, they will see a button for **Review and Accept EULA to activate** for to each allocation.
-They will need to accept the EULA for each allocation in order to get access the those resources.
+Under Allocations, they will see a button for **Review and Accept Policies and Guidelines to activate** for to each allocation.
+They will need to accept the Policies and Guidelines for each allocation in order to get access the those resources.
 
 ```{note}
-Once a student is in a course and accepts the EULA, they will be granted an HPC account.
+Once a student is in a course and accepts the Policies and Guidelines, they will be granted an HPC account.
 In most cases this process is instantenous, however if you have a large number of files in a storage allocation for a class, this could take several minutes.
 ```
 
@@ -114,7 +114,7 @@ If you find your class needing additional resources, you can request additional 
 ## To view your current usage
 
 1.	Under Allocations select the folder icon
-2.	You will see your Allocation details, EULA Agreements, and Usage by Hours
+2.	You will see your Allocation details, Policies and Guidelines Agreements, and Usage by Hours
 
 
 ## Concluding the Semester
