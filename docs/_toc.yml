@@ -14,6 +14,16 @@ parts:
   - file: portal.md
   - file: m3_migration.md
   - file: mp_update.md
+- caption: ColdFront
+  chapters:
+  - file: coldfront/quick_start.md
+    sections:
+    - file: coldfront/qs_instructor.md
+    - file: coldfront/qs_student.md
+  - file: coldfront/add_change_project.md
+  - file: coldfront/add_class.md
+  - file: coldfront/add_remove_users.md
+  - file: coldfront/request_change_allocation.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md
