@@ -52,7 +52,7 @@ Once Project is created you will have multiple options to Add additional users, 
 ## To view your current usage
 
 1.	Under Allocations select the folder icon
-2.	You will see your Allocation details, EULA Agreements, and Usage by Hours
+2.	You will see your Allocation details, Policies and Guidelines Agreements, and Usage by Hours
 
 ## To add a class for HPC Access [Faculty/TA ONLY]
 

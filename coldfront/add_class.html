@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Request or Change Resource Allocations &#8212; SMU HPC Documentation</title>
+    <title>Add a Class &#8212; SMU HPC Documentation</title>
   
   
   
@@ -62,13 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'coldfront/request_change_allocation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'coldfront/add_class';</script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Chemistry" href="../examples/chemistry.html" />
-    <link rel="prev" title="Add or Remove Users" href="add_remove_users.html" />
+    <link rel="next" title="Add or Remove Users" href="add_remove_users.html" />
+    <link rel="prev" title="Add or Change Project" href="add_change_project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,9 +194,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="add_change_project.html">Add or Change Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="add_class.html">Add a Class</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Add a Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="add_remove_users.html">Add or Remove Users</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Request or Change Resource Allocations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request_change_allocation.html">Request or Change Resource Allocations</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
@@ -295,7 +295,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/coldfront/request_change_allocation.md" target="_blank"
+      <li><a href="../_sources/coldfront/add_class.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Request or Change Resource Allocations</h1>
+    <h1>Add a Class</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,17 +389,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-types">Resource Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-allocations"><em><strong>Compute</strong></em> Allocations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#request-compute-allocation">Request <em><strong>Compute</strong></em> Allocation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-compute-allocation">Change <em><strong>Compute</strong></em> Allocation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-allocations"><em><strong>Storage</strong></em> Allocations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#request-storage-allocation">Request <em><strong>Storage</strong></em> Allocation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-storage-allocation">Change <em><strong>Storage</strong></em> Allocation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-class">Setting up your class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-add-students-and-other-users">To add Students and Other Users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-request-additional-resource-allocations">To Request Additional Resource Allocations</a></li>
 </ul>
             </nav>
         </div>
@@ -411,128 +403,74 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="request-or-change-resource-allocations">
-<h1>Request or Change Resource Allocations<a class="headerlink" href="#request-or-change-resource-allocations" title="Permalink to this heading">#</a></h1>
-<p><em><strong>Managers</strong></em> on a project or class can request a <em><strong>Compute</strong></em> or <em><strong>Storage</strong></em> Allocation and select which <em><strong>User(s)</strong></em> should have access to those allocations. All allocation requests will need to be approved by HPC Support.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="add-a-class">
+<h1>Add a Class<a class="headerlink" href="#add-a-class" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please see <a class="reference external" href="https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_remove_users.html">Add or Remove Users</a> for how to manage <em><strong>User</strong></em> permissions on an already active allocation.</p>
+<p>Only benefits eligible faculty or staff can create a class.</p>
 </div>
-<section id="resource-types">
-<h2>Resource Types<a class="headerlink" href="#resource-types" title="Permalink to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Resource</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><em><strong>Compute</strong></em></p></td>
-<td><p>Allocates compute time quotas for CPU hours, GPU hours, and memory hours.</p></td>
-</tr>
-<tr class="row-odd"><td><p><em><strong>Storage</strong></em></p></td>
-<td><p>Allocates shared folder with storage quotas on memory and number of files.</p></td>
-</tr>
-</tbody>
-</table>
+<p>These instructions will help you get access to HPC resources for your class.
+If you are the instructor of record in my.smu, much of this process will be easy and automated for you.
+If you are not an instructor of record for a course but would like to set up a course (e.g. workshop or bootcamp),
+please reach out to <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">help<span>&#64;</span>smu<span>&#46;</span>edu</a> and include [HPC] in the subject line.</p>
+<section id="setting-up-your-class">
+<h2>Setting up your class<a class="headerlink" href="#setting-up-your-class" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../_images/add_class.png"><img alt="add a class button" src="../_images/add_class.png" style="width: 400px;" /></a>
+<ol class="arabic simple">
+<li><p>Login to ColdFront via SSO with your SMU credentials</p></li>
+<li><p>Select Add a class</p></li>
+<li><p>Select your course from the drop down menu</p></li>
+<li><p>Select which sections you would like to have access to HPC resources</p></li>
+<li><p>Mark which additional options you need</p></li>
+<li><p>Select Save once complete.</p></li>
+</ol>
+<p>Once a class is created you will have options to Add additional users and request additional allocations.</p>
 </section>
-<section id="compute-allocations">
-<h2><em><strong>Compute</strong></em> Allocations<a class="headerlink" href="#compute-allocations" title="Permalink to this heading">#</a></h2>
-<p>There are 3 fields to specify when requesting a <em><strong>Compute</strong></em> allocation: <em><strong>CPU hours</strong></em>, <em><strong>GPU hours</strong></em>, and <em><strong>memory hours</strong></em>. Below are descriptions of each field:</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><em><strong>CPU hours</strong></em></p></td>
-<td><p>Computed per job as (number of allocated CPU cores) * (run time in hours). For example, if a job was allocated 64 cores and ran for 30 minutes, it used (64) * (0.5) = 32 <em><strong>CPU hours</strong></em> of compute time.</p></td>
-</tr>
-<tr class="row-odd"><td><p><em><strong>GPU hours</strong></em></p></td>
-<td><p>Computed per job as (number of allocated GPUs) * (run time in hours). For example, if a job was allocated 4 GPUs and ran for 1 hour and 30 minutes, it used (4) * (1.5) = 6 <em><strong>GPU hours</strong></em> of compute time.</p></td>
-</tr>
-<tr class="row-even"><td><p><em><strong>Memory hours</strong></em></p></td>
-<td><p>Computed per job as (amount allocated memory in GB) * (run time in hours). For example, if a job was allocated 128GB of memory and ran for 45 minutes, it used (128) * (0.75) = 96 <em><strong>Memory hours</strong></em>.</p></td>
-</tr>
-</tbody>
-</table>
+<section id="to-add-students-and-other-users">
+<h2>To add Students and Other Users<a class="headerlink" href="#to-add-students-and-other-users" title="Permalink to this heading">#</a></h2>
+<p>For classes, the management of students is synched hourly with class enrollment records starting a week before the semester starts.
+Once in the , students that add or drop will be added or removed from your class and allocations accordingly.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><em><strong>CPU hour</strong></em>, <em><strong>GPU hour</strong></em>, and <em><strong>memory hour</strong></em> quota’s will persist across all M3 queues and SuperPod queues. For example, if you use up your quota of <em><strong>GPU hours</strong></em> entirely on the gpu-dev queue on M3, then you will not have <em><strong>GPU hours</strong></em> left to use on M3 or the SuperPod. If you need assistance in determining how many hours to request, please submit a help desk ticket to <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu">help<span>&#64;</span>smu<span>&#46;</span>edu</a> with [HPC] in the subject line.</p>
+<p>All students will appear 7 days before the semester begins.</p>
 </div>
-<section id="request-compute-allocation">
-<h3>Request <em><strong>Compute</strong></em> Allocation<a class="headerlink" href="#request-compute-allocation" title="Permalink to this heading">#</a></h3>
+<p>If you wish to add a user who is not enrolled to your class (e.g. a co-instructor), follow the steps below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not especially common. Do not add students that will be enrolled in the course as this could disrupt their file permissions.</p>
+</div>
 <ol class="arabic">
-<li><p>Select <em><strong>+ Request Resource Allocation</strong></em>.</p></li>
-<li><p>Select <em><strong>Compute</strong></em> as your Resource from the dropwdown.</p></li>
-<li><p>Provide a 2-3 sentence justification for the resources you are requesting.</p></li>
-<li><p>Select a Start Date and End Date for your allocation. The limit is 1 year, but can be renewed.</p></li>
-<li><p>Enter the number of <em><strong>CPU hours</strong></em> you will need.</p>
-<div class="tip admonition">
-<p class="admonition-title">General Guidelines</p>
-<p>When requesting <em><strong>CPU hours</strong></em>, you <u>MUST</u> request <em><strong>memory hours</strong></em> as well. The general guideline is that you need 4 <em><strong>memory hours</strong></em> for 1 <em><strong>CPU hour</strong></em>. If you need assistance in determining how many hours to request, please submit a help desk ticket to <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu">help<span>&#64;</span>smu<span>&#46;</span>edu</a> with [HPC] in the subject line.</p>
+<li><p>Once your class is created, select Add Users within the Users section of your class</p>
+<a class="reference internal image-reference" href="../_images/add_users.png"><img alt="add users" src="../_images/add_users.png" style="width: 400px;" /></a>
+</li>
+<li><p>If you are searching by “Exact Username Only” search for the user via SMU email alias</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are adding multiple users, you can list them all in the Search String box</p>
 </div>
 </li>
-<li><p>Enter the number of <em><strong>GPU hours</strong></em> you will need.</p>
-<div class="tip admonition">
-<p class="admonition-title">General Guidelines</p>
-<p>When requesting <em><strong>GPU hours</strong></em>, you <u>MUST</u> request both <em><strong>CPU hours</strong></em> and <em><strong>memory hours</strong></em> as well. The general guideline is that you need 16 <em><strong>CPU hours</strong></em> and 96 <em><strong>memory hours</strong></em> per 1 <em><strong>GPU hour</strong></em>. If you need assistance in determining how many hours to request, please submit a help desk ticket to <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu">help<span>&#64;</span>smu<span>&#46;</span>edu</a> with [HPC] in the subject line.</p>
-</div>
+<li><p>If you are searching by “All Fields” you can enter last name or SMU email alias</p></li>
+<li><p>Once you’ve found and selected the user(s), select the role the user should have</p>
+<a class="reference internal image-reference" href="../_images/user_role.png"><img alt="user role" src="../_images/user_role.png" style="width: 100px;" /></a>
 </li>
-<li><p>Enter the number of <em><strong>memory hours</strong></em> you will need.</p></li>
-<li><p>If you have users on your project, select which users should have access to the allocation.</p></li>
-<li><p>Please read and acknowledge that you will follow the ODSRCI Community Guidelines.</p></li>
-<li><p>Click on Submit.</p></li>
-<li><p>Wait for your allocation to be approved by HPC Support.</p></li>
+<li><p>Then Add Selected Users to Project</p></li>
+<li><p>Once complete you will see all users requested under the Users section</p></li>
 </ol>
 </section>
-<section id="change-compute-allocation">
-<h3>Change <em><strong>Compute</strong></em> Allocation<a class="headerlink" href="#change-compute-allocation" title="Permalink to this heading">#</a></h3>
-<p>Coming Soon.</p>
-</section>
-</section>
-<section id="storage-allocations">
-<h2><em><strong>Storage</strong></em> Allocations<a class="headerlink" href="#storage-allocations" title="Permalink to this heading">#</a></h2>
-<p>A <em><strong>Storage</strong></em> allocation is a shared directory with a quota on gigabytes (GB) of storage, and number of files. Every HPC user will still have a <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory and a <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> directory that does not count towards the quota. Please see the <a class="reference external" href="https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html#purge-policy">Purge Policy</a> for details.</p>
-<section id="request-storage-allocation">
-<h3>Request <em><strong>Storage</strong></em> Allocation<a class="headerlink" href="#request-storage-allocation" title="Permalink to this heading">#</a></h3>
-<ol class="arabic">
-<li><p>Select <em><strong>+ Request Resource Allocation</strong></em>.</p></li>
-<li><p>Select <em><strong>Storage</strong></em> as your Resource from the dropwdown.</p></li>
-<li><p>Provide what you would like to name the shared folder. If a name is not provided, a generic name will be assigned.</p></li>
-<li><p>Provide a 2-3 sentence justification for the resources you are requesting.</p></li>
-<li><p>Select a Start Date and End Date for your allocation. The limit is 1 year, but can be renewed.</p></li>
-<li><p>Enter the amount of storage you would like in GB.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This amount is a storage quota, which means you are capped at the provided GB, but are not guarunteed to get that much.</p>
-</div>
-</li>
-<li><p>Enter the number of files you expect to create or use in this allocation.</p>
-<div class="tip admonition">
-<p class="admonition-title">General Guidelines</p>
-<ul class="simple">
-<li><p>A conda environment needs about 100,000 files.</p></li>
-<li><p>A safe bet for most people is 500,000 files for a storage allocation.</p></li>
-</ul>
-</div>
-</li>
-<li><p>If you have users on your project, select which users should have access to the shared folder and whether they should have <em><strong>Read and Write</strong></em> access or <em><strong>Read Only</strong></em> access.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><em><strong>Read Only</strong></em> means that they will only be able to see file contents, but not change them or create new files in the shared directory. <em><strong>Read and Write</strong></em> gives them full editing permissions.</p>
-</div>
-</li>
-<li><p>Please read and acknowledge that you will follow the ODSRCI Community Guidelines.</p></li>
-<li><p>Click on Submit.</p></li>
-<li><p>Wait for your allocation to be approved by HPC Support.</p></li>
+<section id="to-request-additional-resource-allocations">
+<h2>To Request Additional Resource Allocations<a class="headerlink" href="#to-request-additional-resource-allocations" title="Permalink to this heading">#</a></h2>
+<p>All classes are granted a default compute allocation consisting of <em><strong>Core Usage (Hours)</strong></em> and <em><strong>Memory Usage (Hours)</strong></em>.
+Depending on the options chosen at the creation of the project, this may contain <em><strong>Accelerator Usage (Hours)</strong></em> or a second allocation for Storage.
+The Storage allocation is Read-Only for students by default.</p>
+<p>If you find your class needing additional resources, you can request additional allocations for either Compute or Storage, by following the instructions below.</p>
+<a class="reference internal image-reference" href="../_images/request_resource_allocation.png"><img alt="request resource allocation" src="../_images/request_resource_allocation.png" style="width: 200px;" /></a>
+<ol class="arabic simple">
+<li><p>Next to Allocations, Select the <strong>+Request Resource Allocation button</strong></p></li>
+<li><p>Complete all required fields</p></li>
+<li><p>Select the users you’d like to add to this allocation</p></li>
+<li><p>Select Submit</p></li>
+<li><p>Once complete you will see your status request as <strong>Pending Review</strong> under Allocations</p></li>
 </ol>
-</section>
-<section id="change-storage-allocation">
-<h3>Change <em><strong>Storage</strong></em> Allocation<a class="headerlink" href="#change-storage-allocation" title="Permalink to this heading">#</a></h3>
-<p>Coming Soon.</p>
-</section>
 </section>
 </section>
 
@@ -567,20 +505,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="add_remove_users.html"
+       href="add_change_project.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Add or Remove Users</p>
+        <p class="prev-next-title">Add or Change Project</p>
       </div>
     </a>
     <a class="right-next"
-       href="../examples/chemistry.html"
+       href="add_remove_users.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chemistry</p>
+        <p class="prev-next-title">Add or Remove Users</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -599,17 +537,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-types">Resource Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-allocations"><em><strong>Compute</strong></em> Allocations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#request-compute-allocation">Request <em><strong>Compute</strong></em> Allocation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-compute-allocation">Change <em><strong>Compute</strong></em> Allocation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-allocations"><em><strong>Storage</strong></em> Allocations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#request-storage-allocation">Request <em><strong>Storage</strong></em> Allocation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-storage-allocation">Change <em><strong>Storage</strong></em> Allocation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-class">Setting up your class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-add-students-and-other-users">To add Students and Other Users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-request-additional-resource-allocations">To Request Additional Resource Allocations</a></li>
 </ul>
   </nav></div>
 
