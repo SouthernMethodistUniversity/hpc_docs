@@ -5,3 +5,11 @@ execute:
   execute_notebooks: "off"
 html:
   favicon: "./images/favicon.ico"
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - dollarmath
+    - linkify
+    - substitution
+    - tasklist
+    - html_image

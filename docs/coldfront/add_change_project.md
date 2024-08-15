@@ -45,10 +45,10 @@ Only benefits eligible faculty or staff can create a project.
     :width: 800px
     ```
 
-6. Select all relevant Fields of Science.
+6. Select all relevant Fields of Study.
 
     ```{image} 
-    :alt: fields of science
+    :alt: fields of study
     :width: 800px
     ```
 
@@ -68,27 +68,12 @@ Only benefits eligible faculty or staff can create a project.
 
 9. Please read and acknowledge that you will follow the ODSRCI Community Guidelines.
 
-10. Click Save to create the project.
-
-    ```{image} ../images/CF/add_change_project/save.png
-    :alt: save
-    :height: 40px
-    ```
+10. Click <img src="../images/CF/add_change_project/save.png" alt="Save" height="40"> to create the project.
 
 ## Change a Project
 
-1. From the project page, click on
-
-    ```{image} ../images/CF/add_change_project/update_project.png
-    :alt: update project information
-    :height: 40px
-    ```
+1. From the project page, click on <img src="../images/CF/add_change_project/update_project.png" alt="update project information" height="40">.
 
 2. Change any relevant information for Title, Description, Field of Science, and Departments.
 
-3. Click on
-
-    ```{image} ../images/CF/add_change_project/save.png
-    :alt: save
-    :height: 40px
-    ```
+3. Click on <img src="../images/CF/add_change_project/save.png" alt="save" height="40">.
