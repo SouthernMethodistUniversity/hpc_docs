@@ -9,11 +9,11 @@ See the [instructor quick start](qs_instructor.md).
 2. Starting on November 1, 2024, user access to HPC compute resources will require being a member of an active project and allocation in ColdFront.
 See the [quick start](quick_start.md).
 
-3. Personal user and group directories in '''$WORK''' will be decommissioned before January 15, 2025 (tentative).
-All data stored in a personal user or group directories in $WORK must be moved into an appropriate new storage allocation specified in ColdFront project(s).
+3. Personal user and group directories in `$WORK` will be decommissioned before January 15, 2025 (tentative).
+All data stored in a personal user or group directories in `$WORK` must be moved into an appropriate new storage allocation specified in ColdFront project(s).
 OIT will assist this transition as needed, please submit a STABLE Help Desk ticket if you need assistance.
 All data must be moved before January 15, 2025, though quotas on existing spaces may be reduced prior to that date.
-HPC users will receive regular communications about the status $WORK quotas.
+HPC users will receive regular communications about the status `$WORK` quotas.
 
 4. During the transition period (tentatively between August 2024 and May 2025), all allocation requests will be approved with the following exceptions:
     * Requests that violate SMU policy (see, for example,  [SMU's acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use).
@@ -95,7 +95,7 @@ No. HPC resources are free for SMU researchers and sponsored affiliates.
 
 ### Is my $HOME directory part of an allocation? 
 
-No. All users with an active HPC account will keep or be granted a home directory on M3 and the SuperPOD with 200GB of space on each system. This space is private and backed up with daily snapshots for 7 days. Sharing data in $HOME directories is not allowed. 
+No. All users with an active HPC account will keep or be granted a home directory on M3 and the SuperPOD with 200GB of space on each system. This space is private and backed up with daily snapshots for 7 days. Sharing data in `$HOME` directories is not allowed. 
 
 ### Can I add external collaborators? 
 
@@ -139,7 +139,7 @@ Request more compute time on an existing allocation or request a new compute all
 
 When a storage or compute allocation expires, user access to that allocation is revoked. For compute resources, jobs will no longer run if submitted with an expired SLURM account. For storage resources, write access will be revoked.  
 
-During the ColdFront transition, SMU will not delete any user data except for the existing 60-day $SCRATCH purge policy or by request.  More formal data retention policies for SMU HPC systems will be clarified in the future by the ODSRCI.
+During the ColdFront transition, SMU will not delete any user data except for the existing 60-day `$SCRATCH` purge policy or by request.  More formal data retention policies for SMU HPC systems will be clarified in the future by the ODSRCI.
 
 OIT recommends that all HPC users request allocation renewals in a timely manner to avoid disruptions. 
 
