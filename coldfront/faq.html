@@ -62,13 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'coldfront/faq';</script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chemistry" href="../examples/chemistry.html" />
+    <link rel="prev" title="Request or Change Resource Allocations" href="request_change_allocation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../mp_update.html">SuperPod System Update</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="quick_start.html">Quick Start</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qs_student.html">Getting Started in ColdFront as a Student</a></li>
@@ -197,6 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="add_class.html">Add a Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="add_remove_users.html">Add or Remove Users</a></li>
 <li class="toctree-l1"><a class="reference internal" href="request_change_allocation.html">Request or Change Resource Allocations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Frequently Asked Questions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
@@ -443,11 +444,11 @@ Following the submission of a class request, ColdFront will automatically add an
 See the <a class="reference internal" href="qs_instructor.html"><span class="doc std std-doc">instructor quick start</span></a>.</p></li>
 <li><p>Starting on November 1, 2024, user access to HPC compute resources will require being a member of an active project and allocation in ColdFront.
 See the <a class="reference internal" href="quick_start.html"><span class="doc std std-doc">quick start</span></a>.</p></li>
-<li><p>Personal user and group directories in ‘’’<span class="math notranslate nohighlight">\(WORK''' will be decommissioned before January 15, 2025 (tentative).
-All data stored in a personal user or group directories in \)</span>WORK must be moved into an appropriate new storage allocation specified in ColdFront project(s).
+<li><p>Personal user and group directories in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> will be decommissioned before January 15, 2025 (tentative).
+All data stored in a personal user or group directories in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> must be moved into an appropriate new storage allocation specified in ColdFront project(s).
 OIT will assist this transition as needed, please submit a STABLE Help Desk ticket if you need assistance.
 All data must be moved before January 15, 2025, though quotas on existing spaces may be reduced prior to that date.
-HPC users will receive regular communications about the status $WORK quotas.</p></li>
+HPC users will receive regular communications about the status <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> quotas.</p></li>
 <li><p>During the transition period (tentatively between August 2024 and May 2025), all allocation requests will be approved with the following exceptions:</p>
 <ul class="simple">
 <li><p>Requests that violate SMU policy (see, for example,  <a class="reference external" href="https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use">SMU’s acceptable use policy</a>.</p></li>
@@ -532,7 +533,7 @@ External users, including former students, must be added to project(s) by collab
 </section>
 <section id="is-my-home-directory-part-of-an-allocation">
 <h3>Is my $HOME directory part of an allocation?<a class="headerlink" href="#is-my-home-directory-part-of-an-allocation" title="Permalink to this heading">#</a></h3>
-<p>No. All users with an active HPC account will keep or be granted a home directory on M3 and the SuperPOD with 200GB of space on each system. This space is private and backed up with daily snapshots for 7 days. Sharing data in $HOME directories is not allowed.</p>
+<p>No. All users with an active HPC account will keep or be granted a home directory on M3 and the SuperPOD with 200GB of space on each system. This space is private and backed up with daily snapshots for 7 days. Sharing data in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directories is not allowed.</p>
 </section>
 <section id="can-i-add-external-collaborators">
 <h3>Can I add external collaborators?<a class="headerlink" href="#can-i-add-external-collaborators" title="Permalink to this heading">#</a></h3>
@@ -568,7 +569,7 @@ External users, including former students, must be added to project(s) by collab
 <section id="what-happens-when-an-allocation-expires">
 <h3>What happens when an allocation expires?<a class="headerlink" href="#what-happens-when-an-allocation-expires" title="Permalink to this heading">#</a></h3>
 <p>When a storage or compute allocation expires, user access to that allocation is revoked. For compute resources, jobs will no longer run if submitted with an expired SLURM account. For storage resources, write access will be revoked.</p>
-<p>During the ColdFront transition, SMU will not delete any user data except for the existing 60-day $SCRATCH purge policy or by request.  More formal data retention policies for SMU HPC systems will be clarified in the future by the ODSRCI.</p>
+<p>During the ColdFront transition, SMU will not delete any user data except for the existing 60-day <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> purge policy or by request.  More formal data retention policies for SMU HPC systems will be clarified in the future by the ODSRCI.</p>
 <p>OIT recommends that all HPC users request allocation renewals in a timely manner to avoid disruptions.</p>
 </section>
 <section id="how-do-i-make-a-group-folder">
@@ -640,6 +641,24 @@ External users, including former students, must be added to project(s) by collab
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="request_change_allocation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Request or Change Resource Allocations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../examples/chemistry.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chemistry</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
