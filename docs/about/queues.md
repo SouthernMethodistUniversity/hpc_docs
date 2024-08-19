@@ -85,5 +85,5 @@ The following job restrictions apply:
 
 Exceptions may be requested, for example, to run a job on all 20 SuperPOD nodes.
 Approval for any such requests will be the responsibility of the 
-[O’Donnell Data Science and Research Computing Institute](https://www.smu.edu/Provost/Data-Science-Institute)
+[O’Donnell Data Science and Research Computing Institute](https://www.smu.edu/provost/odonnell-institute)
 and will be based on demonstrated need and impact to other users.
