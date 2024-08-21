@@ -4,7 +4,7 @@ These instructions will help you get access to HPC resources in your class.
 
 ## Getting to ColdFront
 
-ColdFront is a platform for managing access to our HPC resources. You will need to go to [hpcaccess.smu.edu](hpcaccess.smu.edu) and log in to ColdFront using SSO.
+[ColdFront](https://www.smu.edu/provost/odonnell-institute/hpc/cf) is a platform for managing access to our HPC resources. You will need to go to [hpcaccess.smu.edu](https://hpcaccess.smu.edu) and log in to ColdFront using SSO.
 
 ## In Class
 
