@@ -12,39 +12,14 @@ Research Computing Institute (ODSRCI) work together to provide the
 computational resources and tools required by SMU’s faculty, researchers, and
 students to accelerate advances in research innovation.
 
-# Spring 2024 Workshop Series - Open to All!
+# Upcoming Workshops - Open to All!
 
-The Spring 2024 ODSRCI and OIT workshop series provides a hands-on experience
+The ODSRCI and OIT workshops provide a hands-on experience
 that will guide researchers from the basics of using SMU's supercomputing
 resources to advanced parallelization and application specific usage. The
 topics will cover information useful for researchers to quickly begin to use
 the advanced compute capabilities provided with the cluster.
 
-Students can register for the workshops in advance via
-https://libcal.smu.edu/calendar. Please bring your laptop to the workshop.
+Students, faculty, or staff should register for the workshops in advance via the links below. Please bring your laptop to the workshop.
 
-## ODSRCI Workshop Series
-
-| Date  | Time         | Workshop                    			 	 				      | Location   |
-| ----- | ------------ | ---------------------------------------------------------------- | ---------- |
-| 2/15  | 10AM-1PM     | NVIDIA DLI: Fundamentals of Deep Leaning                         | FLE109     |
-| 2/29  | 10AM-1PM     | NVIDIA DLI: Fundamentals of Accelerated Data Science with RAPIDS | FLE109     |
-| 3/5   | 1PM-3PM      | Parallel Programming in C++                                      | Zoom       |
-| 3/21  | 10AM-12PM    | Adapting AI Workflows                                            | FLE109     |
-| 3/28  | 10AM-12PM    | Generative AI & Stable Diffusion on M3                           | FLE109     |
-| 4/15  | 10AM-11:30AM | Digital Twins and Tools to Construct Them                        | FLE109     |
-| N/A   | On-Demand    | Submitting HPC Jobs More Efficiently using SLURM                 | [HPC Docs] |
-
-## OIT Workshop Series
-
-| Date  | Time        | Workshop                    								 | Location |
-| ----- | ----------- | ------------------------------------------------------------ | -------- |
-| 2/14  | 3PM-5PM     | Introduction to GitHub                                       | FLE323   |
-| 2/14  | 11AM-1PM    | A Date with K8s: Kubernetes for Research Use Cases           | Zoom     |
-| 2/8   | 10AM-1PM    | Introduction to Programming in Python                        | FLE109   |
-| 3/7   | 10AM-12PM   | Introduction to Linux                                        | FLE109   |
-| 4/2   | 1PM-3PM     | Containerizing All the Things: Using Containers for Research | Zoom     |
-| 4/11  | 10AM-12PM   | Effective Visualization of Data in R                         | FLE109   |
-
-[HPC Docs]: <https://southernmethodistuniversity.github.io/hpc_docs/>
-
+<iframe src="https://libcal.smu.edu/widget/events/minicalendar?&cal_id=15527&l=50&tar=0&h=450&sp=0&audience=&c=8174-8175&z=" style="border-width:0" width="800" height="450" frameborder="0" scrolling="no"></iframe>

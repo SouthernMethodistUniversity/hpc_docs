@@ -11,3 +11,9 @@ setenv("OMPI_MCA_btl_openib_if_include","mlx5_0:1")
 setenv("OMPI_MCA_hwloc_base_binding_policy","core")
 setenv("UCX_NET_DEVICES","mlx5_0:1")
 
+help([[Name: NVIDIA HPC SDK
+Version: 23.5
+Website: https://developer.nvidia.com/hpc-sdk
+
+The NVIDIA HPC Software Development Kit (SDK) includes the proven compilers, libraries and software tools essential to maximizing developer productivity and the performance and portability of HPC applications.
+]])

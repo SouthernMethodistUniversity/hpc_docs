@@ -1,6 +1,15 @@
 whatis("ANSYS Electronics Package R24.2")
 family("ansys")
 
+help([[Name: Ansys Electronics Desktop (HFSS)
+Version: 24R2
+Website: https://www.ansys.com/
+License Owners : SMU?
+
+Ansys Electronics
+Electromagnetic, Signal Integrity, Thermal and Electro-Mechanical Simulation Solutions
+]])
+
 local ansys_home="/hpc/m3/apps/ansys/24R2/AnsysEM/v242/Linux64/"
 
 append_path("PATH",ansys_home)

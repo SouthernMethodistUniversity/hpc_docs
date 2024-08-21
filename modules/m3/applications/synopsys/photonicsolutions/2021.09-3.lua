@@ -17,3 +17,10 @@ setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic2.smu.edu")
 prepend_path("PATH", opto_link_base)
 prepend_path("PATH", rsoft_programpath)
 append_path("LD_LIBRARY_PATH", rsoft_programpath)
+
+help([[Name: Synopsys Photonic Solutions
+Version: 2021.09-3
+Website: https://www.synopsys.com/photonic-solutions.html
+
+Synopsys Photonic Solutions
+]])

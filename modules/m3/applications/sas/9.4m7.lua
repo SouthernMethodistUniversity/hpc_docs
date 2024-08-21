@@ -35,3 +35,10 @@ else
   prepend_path("PATH", "/hpc/m3/apps/sas/9.4_m7/SASFoundation/9.4")
   prepend_path("MANPATH", "/hpc/m3/apps/sas/9.4_m7/SASFoundation/9.4/utilities/man")
 end
+
+help([[Name: SAS
+Version: 9.4_m7
+Website: https://www.sas.com/
+
+SAS is a statistical software suite developed by SAS Institute for data management, advanced analytics, multivariate analysis, business intelligence, criminal investigation,[2] and predictive analytics.
+]])

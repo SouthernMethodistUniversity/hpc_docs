@@ -10,3 +10,10 @@ append_path("MODULEPATH", "/hpc/mp/spack_modules/linux-ubuntu22.04-zen2/cuda/gcc
 
 -- generic packages / dependencies
 append_path("MODULEPATH", "/hpc/mp/spack_modules/linux-ubuntu22.04-zen2/gcc-11.2.0/")
+
+help([[Name: GNU GCC
+Version: 11.2.0
+Website: https://gcc.gnu.org/
+
+The GNU Compiler Collection
+]])

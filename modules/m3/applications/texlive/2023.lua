@@ -17,3 +17,10 @@ setenv('TEXMFSYSCONFIG', '/hpc/m3/apps/texlive/2023/texmf-config')
 setenv('TEXMFVAR', texmfvar)
 setenv('TEXMFCONFIG', texmfconfig)
 setenv('TEXMFHOME', texmfhome)
+
+help([[Name: TeX Live
+Version: 2023
+Website: https://www.tug.org/texlive/
+
+TeX Live is intended to be a straightforward way to get up and running with the TeX document production system
+]])

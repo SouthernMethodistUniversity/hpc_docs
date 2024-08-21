@@ -7,3 +7,9 @@ prepend_path("LD_PRELOAD","/hpc/mp/apps/nvidia/compatibility_drivers/12.2/libcud
 prepend_path("LD_PRELOAD","/hpc/mp/apps/nvidia/compatibility_drivers/12.2/libnvidia-nvvm.so.535.104.05")
 prepend_path("LD_PRELOAD","/hpc/mp/apps/nvidia/compatibility_drivers/12.2/libnvidia-ptxjitcompiler.so.535.104.05")
 
+help([[Name: Cuda Compatibility Libraries
+Version: 12.2
+Website: https://docs.nvidia.com/deploy/cuda-compatibility/
+
+Compatibility libraries to allow newer new versions of Cuda to run
+]])

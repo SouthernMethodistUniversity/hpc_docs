@@ -22,3 +22,9 @@ for _, executable in ipairs(executables) do
   build_command(executable)
 end
 
+help([[Name: Mojo
+Version: 0.6.1
+Website: https://www.modular.com/mojo
+
+Mojo is a new programming language that bridges the gap between research and production by combining Python syntax and ecosystem with systems programming and metaprogramming features.
+]])

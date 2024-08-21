@@ -1,6 +1,15 @@
 whatis("ANSYS Electronics Package R23.2")
 family("ansys")
 
+help([[Name: Ansys Electronics Desktop (HFSS)
+Version: 23R2
+Website: https://www.ansys.com/
+License Owners : SMU?
+
+Ansys Electronics
+Electromagnetic, Signal Integrity, Thermal and Electro-Mechanical Simulation Solutions
+]])
+
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 
 -- Ansys 23.2 needs GUI stuff not installed on compute nodes, so this install

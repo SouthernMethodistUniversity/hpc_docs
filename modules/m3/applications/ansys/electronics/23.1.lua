@@ -1,6 +1,15 @@
 whatis("ANSYS Electronics Package R23.1")
 family("ansys")
 
+help([[Name: Ansys Electronics Desktop (HFSS)
+Version: 23R1
+Website: https://www.ansys.com/
+License Owners : SMU?
+
+Ansys Electronics
+Electromagnetic, Signal Integrity, Thermal and Electro-Mechanical Simulation Solutions
+]])
+
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 
 -- Ansys 23.1 doesn't support Ubuntu 22.04 directly, so this install

@@ -27,7 +27,9 @@ setenv("CXX","/hpc/mp/repos/spack/opt/spack/linux-ubuntu22.04-zen2/gcc-11.2.0/gc
 setenv("FC","/hpc/mp/repos/spack/opt/spack/linux-ubuntu22.04-zen2/gcc-11.2.0/gcc-13.2.0-6sn65ps6yami7ktiqicswzuv5rpbbkec/bin/gfortran")
 setenv("F77","/hpc/mp/repos/spack/opt/spack/linux-ubuntu22.04-zen2/gcc-11.2.0/gcc-13.2.0-6sn65ps6yami7ktiqicswzuv5rpbbkec/bin/gfortran")
 
-help([[Name   : gcc
+help([[Name: GNU GCC
 Version: 13.2.0
-Target : zen2
+Website: https://gcc.gnu.org/
+
+The GNU Compiler Collection
 ]])
