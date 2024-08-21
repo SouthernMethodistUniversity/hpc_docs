@@ -11,6 +11,7 @@ prepend_path("PATH", root)
 setenv("GENEXE", pathJoin(bin, "gennbo." .. int .. ".exe"))
 setenv("NBOEXE", pathJoin(bin, "nbo7." .. int .. ".exe"))
 setenv("INT", int)
+setenv("NBOBIN", bin)
 
 help([[Name: TCI/NBO Software (i4)
 Version: 7.0
