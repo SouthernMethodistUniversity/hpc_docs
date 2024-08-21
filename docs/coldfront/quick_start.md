@@ -2,7 +2,7 @@
 
 ## Creating a Project
 
-1. Login to ColdFront via SSO with your SMU ID and Password 
+1. Login to [ColdFront](https://hpcaccess.smu.edu) via SSO with your SMU ID and Password 
 2. Select Add a project 
 3. Complete the fields  
 4. Select Save once complete.
