@@ -7,7 +7,8 @@ Accounts on SMU HPC clusters can be created via the processes detailed below.
 Accounts for classes are required to use [ColdFront](https://hpcaccess.smu.edu).
 Instructors of record will be able to see their courses around the time registration
 opens. ColdFront will automatically add and remove students enrolled in the course
-shortly before the start of the term and periodically update during the term.
+shortly before the start of the term and periodically update during the term based on 
+official enrollment data.
 
 See the [ColdFront quick start guide for instructors](coldfront/qs_instructor.md) and
 the [ColdFront quick start guide for students](coldfront/qs_student.md)
