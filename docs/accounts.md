@@ -1,3 +1,7 @@
+:::{important} Account management for our HPC platforms is migrating to [ColdFront](https://hpcaccess.smu.edu).
+See the [frequently asked questions](coldfront/faq.md)
+:::
+
 # Accounts
 
 Accounts on SMU HPC clusters can be created via the processes detailed below.
