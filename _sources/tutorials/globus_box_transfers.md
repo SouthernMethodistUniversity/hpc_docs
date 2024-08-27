@@ -59,6 +59,13 @@ Select the files you want to transfer, then click the *Transfer or Sync* link in
 If necessary, navigate to where you want the data transferred to.
 Click the start button above the side the data is coming from to start the transfer.
 
+```{image} ../images/globus/transfer.png
+:alt: image of file manager
+:width: 400px
+```
+
+You may want to adjust the transfer settings (for example, to only update new or changed files)
+
 :::{Note}
 You do not have to stay on the Globus site while the transfer is happening. It will send an email when completed.
 :::
