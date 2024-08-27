@@ -42,7 +42,9 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     ```
     ````
 
-5. Select the user(s) that you want to add from the list 
+5. Select which allocation you would like users to be added to within the project under <img src="../images/CF/add_remove_users/available_allocations.png" alt="Available Allocations" height="35">.
+
+6. Select the user(s) that you want to add from the list 
 
     ```{image} ../images/CF/add_remove_users/select_user.png
     :alt: select users
@@ -56,15 +58,25 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     :height: 60px
     ```
 
-6. Click on <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35">
+7. Click on <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35">
 
-7. You can verify that a user has been added under Users on the Project/Class page.
+8. You can verify that a user has been added under Users on the Project/Class page.
 
 ### To an Allocation
 
 ```{note}
-When [requesting an allocation](https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html) you can give permissions to existing users. The following instructions are for adding users to an active allocation.
+When [requesting an allocation](https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html) you can give permissions to existing users. When [adding a user to a project initially](https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_remove_users.html#from-a-project-class), you can add them to active allocations. The following instructions are for adding existing users to an active allocation. 
 ```
+
+1. Navigate to the Allocation details page by clicking on the allocation under <img src="../images/CF/add_remove_users/info.png" alt="Information" height="40"> in the <img src="../images/CF/add_remove_users/alloc_panel.png" alt="Allocation Panel" height="40"> panel.
+
+2. Scroll down to the <img src="../images/CF/add_remove_users/users_in_alloc.png" alt="Users in Allocation" height="40"> panel and click on <img src="../images/CF/add_remove_users/add_users.png" alt="Add Users" height="40">.
+
+3. Select which users to add to the allocation. If it is a ***Storage*** allocation, you will also need to select their **Permissions** (*Read and Write* or *Read Only*).
+
+4. Click on <img src="../images/CF/add_remove_users/add_selected_users_alloc.png" alt="Add Selected Users to Allocation" height="40">.
+
+5. The user will still need to accept the Policies and Guidelines to use the allocation.
 
 ## Remove a User
 
@@ -94,4 +106,35 @@ When [requesting an allocation](https://southernmethodistuniversity.github.io/hp
 
 3. Click on <img src="../images/CF/add_remove_users/update.png" alt="update user" height="40"/>
 
-### Allocation Permissions
+### Allocation Permissions (for ***Storage*** allocations only)
+
+1. Navigate to the Allocation details page by clicking on the allocation under <img src="../images/CF/add_remove_users/info.png" alt="Information" height="35"> in the <img src="../images/CF/add_remove_users/alloc_panel.png" alt="Allocation Panel" height="35"> panel.
+
+2. Scroll down to the <img src="../images/CF/add_remove_users/users_in_alloc.png" alt="Users in Allocation" height="35"> panel and click on <img src="../images/CF/add_remove_users/change_permissions.png" alt="Change Permissions" height="35">.
+
+3. From the <img src="../images/CF/add_remove_users/eligible_users.png" alt="Eligible Users" height="35">, set the desired Permissions.
+
+    ````{note}
+    Occassionally, it takes a while to provision users on the actual HPC systems. If you see a message like this
+    
+    ```{image} ../images/CF/add_remove_users/no_eligible_users.png
+    :alt: No users in project are currently eligible for a permissions change
+    :height: 30px
+    :align: center
+    ```
+
+    either your users have not accepted the Policies and Guidelines yet, or they are still being provisioned with their original permissions.
+    Check back in a few hours and users may be eligible for a permissions change.
+    ````
+
+4. Click on <img src="../images/CF/add_remove_users/change_users_permissions.png" alt="Change Users Permission" height="40">.
+
+### Notification Settings
+
+1. Under **Users** on your project page, you will see a column to <img src="../images/CF/add_remove_users/enable_notifications.png" alt="Enable Notifications" height="50">.
+
+2. Check or uncheck the box to enable or disable notifications for all users, or do so individually for each user.
+
+    ```{note}
+    You cannot disable notifications for someone with the ***Manager*** role. As the PI or Instructor, you are responsible for monitoring changes to allocations in your projects.
+    ```

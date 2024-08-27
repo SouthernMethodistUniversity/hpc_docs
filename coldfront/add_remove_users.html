@@ -404,7 +404,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-user">Change User</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role">Role</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allocation-permissions">Allocation Permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allocation-permissions-for-storage-allocations-only">Allocation Permissions (for <em><strong>Storage</strong></em> allocations only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notification-settings">Notification Settings</a></li>
 </ul>
 </li>
 </ul>
@@ -460,6 +461,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/user_already_added.png"><img alt="user already added message" class="align-center" src="../_images/user_already_added.png" style="height: 35px;" /></a>
 </div>
 </li>
+<li><p>Select which allocation you would like users to be added to within the project under <a class="reference internal" href="../_images/available_allocations.png"><img alt="Available Allocations" src="../_images/available_allocations.png" style="height: 35px;" /></a>.</p></li>
 <li><p>Select the user(s) that you want to add from the list</p>
 <a class="reference internal image-reference" href="../_images/select_user.png"><img alt="select users" src="../_images/select_user.png" style="height: 60px;" /></a>
 <p>and change their role to either <em><strong>Manager</strong></em> or <em><strong>User</strong></em> using the dropdown.</p>
@@ -473,8 +475,15 @@ document.write(`
 <h3>To an Allocation<a class="headerlink" href="#to-an-allocation" title="Permalink to this heading">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When <a class="reference external" href="https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html">requesting an allocation</a> you can give permissions to existing users. The following instructions are for adding users to an active allocation.</p>
+<p>When <a class="reference external" href="https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html">requesting an allocation</a> you can give permissions to existing users. When <a class="reference external" href="https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_remove_users.html#from-a-project-class">adding a user to a project initially</a>, you can add them to active allocations. The following instructions are for adding existing users to an active allocation.</p>
 </div>
+<ol class="arabic simple">
+<li><p>Navigate to the Allocation details page by clicking on the allocation under <a class="reference internal" href="../_images/info.png"><img alt="Information" src="../_images/info.png" style="height: 40px;" /></a> in the <a class="reference internal" href="../_images/alloc_panel.png"><img alt="Allocation Panel" src="../_images/alloc_panel.png" style="height: 40px;" /></a> panel.</p></li>
+<li><p>Scroll down to the <a class="reference internal" href="../_images/users_in_alloc.png"><img alt="Users in Allocation" src="../_images/users_in_alloc.png" style="height: 40px;" /></a> panel and click on <a class="reference internal" href="../_images/add_users1.png"><img alt="Add Users" src="../_images/add_users1.png" style="height: 40px;" /></a>.</p></li>
+<li><p>Select which users to add to the allocation. If it is a <em><strong>Storage</strong></em> allocation, you will also need to select their <strong>Permissions</strong> (<em>Read and Write</em> or <em>Read Only</em>).</p></li>
+<li><p>Click on <a class="reference internal" href="../_images/add_selected_users_alloc.png"><img alt="Add Selected Users to Allocation" src="../_images/add_selected_users_alloc.png" style="height: 40px;" /></a>.</p></li>
+<li><p>The user will still need to accept the Policies and Guidelines to use the allocation.</p></li>
+</ol>
 </section>
 </section>
 <section id="remove-a-user">
@@ -506,8 +515,34 @@ document.write(`
 <li><p>Click on <a class="reference internal" href="../_images/update.png"><img alt="update user" src="../_images/update.png" style="height: 40px;" /></a></p></li>
 </ol>
 </section>
-<section id="allocation-permissions">
-<h3>Allocation Permissions<a class="headerlink" href="#allocation-permissions" title="Permalink to this heading">#</a></h3>
+<section id="allocation-permissions-for-storage-allocations-only">
+<h3>Allocation Permissions (for <em><strong>Storage</strong></em> allocations only)<a class="headerlink" href="#allocation-permissions-for-storage-allocations-only" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Navigate to the Allocation details page by clicking on the allocation under <a class="reference internal" href="../_images/info.png"><img alt="Information" src="../_images/info.png" style="height: 35px;" /></a> in the <a class="reference internal" href="../_images/alloc_panel.png"><img alt="Allocation Panel" src="../_images/alloc_panel.png" style="height: 35px;" /></a> panel.</p></li>
+<li><p>Scroll down to the <a class="reference internal" href="../_images/users_in_alloc.png"><img alt="Users in Allocation" src="../_images/users_in_alloc.png" style="height: 35px;" /></a> panel and click on <a class="reference internal" href="../_images/change_permissions.png"><img alt="Change Permissions" src="../_images/change_permissions.png" style="height: 35px;" /></a>.</p></li>
+<li><p>From the <a class="reference internal" href="../_images/eligible_users.png"><img alt="Eligible Users" src="../_images/eligible_users.png" style="height: 35px;" /></a>, set the desired Permissions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Occassionally, it takes a while to provision users on the actual HPC systems. If you see a message like this</p>
+<a class="reference internal image-reference" href="../_images/no_eligible_users.png"><img alt="No users in project are currently eligible for a permissions change" class="align-center" src="../_images/no_eligible_users.png" style="height: 30px;" /></a>
+<p>either your users have not accepted the Policies and Guidelines yet, or they are still being provisioned with their original permissions.
+Check back in a few hours and users may be eligible for a permissions change.</p>
+</div>
+</li>
+<li><p>Click on <a class="reference internal" href="../_images/change_users_permissions.png"><img alt="Change Users Permission" src="../_images/change_users_permissions.png" style="height: 40px;" /></a>.</p></li>
+</ol>
+</section>
+<section id="notification-settings">
+<h3>Notification Settings<a class="headerlink" href="#notification-settings" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Under <strong>Users</strong> on your project page, you will see a column to <a class="reference internal" href="../_images/enable_notifications.png"><img alt="Enable Notifications" src="../_images/enable_notifications.png" style="height: 50px;" /></a>.</p></li>
+<li><p>Check or uncheck the box to enable or disable notifications for all users, or do so individually for each user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot disable notifications for someone with the <em><strong>Manager</strong></em> role. As the PI or Instructor, you are responsible for monitoring changes to allocations in your projects.</p>
+</div>
+</li>
+</ol>
 </section>
 </section>
 </section>
@@ -588,7 +623,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-user">Change User</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role">Role</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allocation-permissions">Allocation Permissions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allocation-permissions-for-storage-allocations-only">Allocation Permissions (for <em><strong>Storage</strong></em> allocations only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notification-settings">Notification Settings</a></li>
 </ul>
 </li>
 </ul>

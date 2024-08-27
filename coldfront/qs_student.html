@@ -415,34 +415,39 @@ document.write(`
 </section>
 <section id="in-class">
 <h2>In Class<a class="headerlink" href="#in-class" title="Permalink to this heading">#</a></h2>
-<p>You will see your class and associated allocations on your dashboard.
-Your class will have at least one allocation for <strong>Compute</strong> and possibly allocations for <strong>Storage</strong>.
-You will see a button for <strong>Pending Policies and Guidelines</strong> next to each allocation.
-You will need to accept the Policies and Guidelines for <em>each</em> allocation in order to get access the those resources.</p>
+<p>Under <a class="reference internal" href="../_images/allocations.png"><img alt="Allocations" src="../_images/allocations.png" style="height: 40px;" /></a> you will see your class and associated allocations on your dashboard.
+Your class will have at least one allocation for <strong>Compute</strong> and possibly allocations for <strong>Storage</strong>.</p>
+<p>For <em>each</em> allocation:</p>
+<ol class="arabic">
+<li><p>Click on the <strong>Review and Accept policies and guidelines to activate</strong> button.</p>
+<a class="reference internal image-reference" href="../_images/review_button.png"><img alt="Review and Accept policies and guidelines to activate" src="../_images/review_button.png" style="height: 100px;" /></a>
+</li>
+<li><p>Read the <a class="reference external" href="https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html">HPC policies and guidelines</a>, as well as the <a class="reference external" href="https://www.smu.edu/provost/odonnell-institute/hpc/guidelines">ODSRCI guidelines</a>.</p></li>
+<li><p>Click on <a class="reference internal" href="../_images/i_agree.png"><img alt="I Agree" src="../_images/i_agree.png" style="height: 40px;" /></a>.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Once you accept the Policies and Guidelines, they will be granted an HPC account.
+<p>Once you accept the Policies and Guidelines, you will be granted an HPC account.
 In most cases this process is instantenous, however if your class has a large number of files in a storage allocation, this could take several minutes.</p>
 </div>
-<p>If you are using the Open OnDemand portal <span class="xref myst">hpc.smu.edu</span> for your class, you will be able to click on the link in the top menu bar to go directly to the M3 Portal.</p>
+<p>If you are using the Open OnDemand portal <span class="xref myst">hpc.smu.edu</span> for your class, click on <a class="reference internal" href="../_images/ood_logo.png"><img alt="Open OnDemand Logo" src="../_images/ood_logo.png" style="height: 40px;" /></a> to go directly to the M3 Portal.</p>
 <p>If you are using <code class="docutils literal notranslate"><span class="pre">srun</span></code> commands or <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> scripts, you will need to add the following to your commands/scripts in order to utilize the resources.</p>
 <p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-A</span> <span class="pre">slurm_account_name</span></code></p>
 <p>or</p>
 <p><code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-A</span> <span class="pre">slurm_account_name</span> <span class="pre">…</span></code></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurm_account</span></code> can be found in the Information field under Allocations.</p>
-<a class="reference internal image-reference" href="../_images/resource_table.png"><img alt="resource table" src="../_images/resource_table.png" style="width: 800px;" /></a>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm_account_name</span></code> can be found on the project page in the <a class="reference internal" href="../_images/info1.png"><img alt="Information" src="../_images/info1.png" style="height: 40px;" /></a> field under <a class="reference internal" href="../_images/alloc_panel1.png"><img alt="Allocations" src="../_images/alloc_panel1.png" style="height: 40px;" /></a>.</p>
 </section>
 <section id="to-view-your-current-usage">
 <h2>To view your current usage<a class="headerlink" href="#to-view-your-current-usage" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Under Allocations select the folder icon</p></li>
-<li><p>You will see your Allocation details, Policies and Guidelines Agreements, and Usage by Hours</p></li>
+<li><p>Under <a class="reference internal" href="../_images/alloc_panel1.png"><img alt="Allocations" src="../_images/alloc_panel1.png" style="height: 40px;" /></a> select the folder icon</p></li>
+<li><p>You will see your Allocation details, Policies and Guidelines Agreements, and Usage by Hours.</p></li>
 </ol>
 </section>
 <section id="concluding-the-semester">
 <h2>Concluding the Semester<a class="headerlink" href="#concluding-the-semester" title="Permalink to this heading">#</a></h2>
 <p>At the end of the semester, your class will be Archived.
-Once you class is successfully archived, you will not be able to access any of the resources on the system.
+Once your class is successfully archived, you will not be able to access any of the resources on the system.
 Any files you have created that you wish to retain access to should be transferred off the HPC system.</p>
 </section>
 </section>
