@@ -63,7 +63,37 @@ There are 3 fields to specify when requesting a ***Compute*** allocation: ***CPU
 
 ### Change ***Compute*** Allocation
 
-Coming Soon.
+To change a the ***CPU hours***, ***GPU hours***, or ***memory hours*** on a ***Compute*** Allocation,
+
+1. On your project page, select the Allocation you would like to change under ***Information*** in the Allocations panel.
+
+2. Click on <img src="../images/CF/request_change_allocation/request_change.png" alt="Request Change" height="40">.
+
+3. If needed, request an extension to your allocation date **Request End Date Extension** for 30, 60, or 90 days.
+
+    ```{image} ../images/CF/request_change_allocation/extension.png
+    :alt: Request End Date Extension
+    :height: 100px
+    ```
+
+4. If needed, update your ***CPU hours***, ***GPU hours***, and ***memory hours*** under <img src="../images/CF/request_change_allocation/attributes.png" alt="Allocation Attributes" height="40">.
+
+    ```{note}
+    Your _usage_ for ***CPU hours***, ***GPU hours***, and ***memory hours*** will reset to 0, and you will have the new quota you request available to you. For example, if you have 30000 ***CPU hours*** and only need 2000 more hours, you would request 2000 ***CPU hours***, _not_ 32000. This works differently than ***Storage*** Allocations.
+    ```
+
+5. Provide a justification for the change in your allocation.
+
+6. Click on <img src="../images/CF/request_change_allocation/submit.png" alt="Submit" height="40"> to submit your change request.
+
+7. Check that your change has been requested on the **Allocation Details** page under **Allocation Change Requests**. It will show as Pending
+
+    ```{image} ../images/CF/request_change_allocation/request_pending.png
+    :alt: Allocation Change Request Pending
+    :width: 800px
+    ```
+
+8. You will recieve an email when your allocation change request is approved.
 
 ## ***Storage*** Allocations
 
@@ -109,4 +139,34 @@ A ***Storage*** allocation is a shared directory with a quota on gigabytes (GB) 
 
 ### Change ***Storage*** Allocation
 
-Coming Soon.
+To change the storage size or number of files in a ***Storage*** Allocation,
+
+1. On your project page, select the Allocation you would like to change under ***Information*** in the Allocations panel.
+
+2. Click on <img src="../images/CF/request_change_allocation/request_change.png" alt="Request Change" height="40">.
+
+3. If needed, request an extension to your allocation date **Request End Date Extension** for 30, 60, or 90 days.
+
+    ```{image} ../images/CF/request_change_allocation/extension.png
+    :alt: Request End Date Extension
+    :height: 100px
+    ```
+
+4. If needed, update your storage size and file count under <img src="../images/CF/request_change_allocation/attributes.png" alt="Allocation Attributes" height="40">.
+
+    ```{note}
+    Please request the total amount of storage and file count you need. For example, if you previously had 200GB and a 1000 file count and you need to add 100GB and 500 to your file count, you will need to request 300GB and 1500 for your file count.
+    ```
+
+5. Provide a justification for the change in your allocation.
+
+6. Click on <img src="../images/CF/request_change_allocation/submit.png" alt="Submit" height="40"> to submit your change request.
+
+7. Check that your change has been requested on the **Allocation Details** page under **Allocation Change Requests**. It will show as Pending
+
+    ```{image} ../images/CF/request_change_allocation/request_pending.png
+    :alt: Allocation Change Request Pending
+    :width: 800px
+    ```
+
+8. You will recieve an email when your allocation change request is approved.
