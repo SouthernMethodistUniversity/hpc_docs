@@ -64,7 +64,7 @@ You do not have to stay on the Globus site while the transfer is happening. It w
 :::
 
 :::{Note}
-The transfers can be slow. We typically see between 4-5 MBPS.
+The transfers can be slow. We typically see between 1-5 MBPS between Box and M3 (connection speeds to other services may vary).
 :::
 
 :::{Note}
