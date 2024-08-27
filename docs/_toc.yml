@@ -45,6 +45,7 @@ parts:
   - file: tutorials/slurm/slurm.md
     sections:
     - file: tutorials/slurm/best_practices.md
+  - file: tutorials/globus_box_transfers.md
   - file: tutorials/containers/containers.md
   - file: tutorials/cpp/intro.md
     sections:
