@@ -29,7 +29,7 @@ In order for an HPC account to be provisioned for a new user,
    See [how to create a project](coldfront/add_change_project.md)
 
 2. The user must be on an active compute and/or storage allocation managed 
-   by [ColdFront](https://hpcaccess.smu.edu). See [how to create an allocation](coldfront/add_change_allocation.md)
+   by [ColdFront](https://hpcaccess.smu.edu). See [how to create an allocation](coldfront/request_change_allocation.md)
 
 While we transition to [ColdFront](https://hpcaccess.smu.edu) (see the [frequently asked questions](coldfront/faq.md)), it is still possible to request that an account be manually created:
 
