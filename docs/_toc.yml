@@ -26,7 +26,7 @@ parts:
   - file: coldfront/request_change_allocation.md
   - file: coldfront/add_metadata.md
   - file: coldfront/usage_stats.md
-  - file" coldfront/archive_project.md
+  - file: coldfront/archive_project.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md
