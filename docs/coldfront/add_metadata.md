@@ -53,7 +53,7 @@ Like the rest of the metadata, any software used that is added here is just for 
 
 1. Go to your project page and click on <img src="../images/CF/add_metadata/add_software.png" alt="Add Software Used" height="35">.
 
-2. For any software available using `module load`, search the software name, select the checkbox next to the software version(s) you used, and click on <img src="../images/CF/add_metadata/add_selected_software.png" alt="Add Selected Software to Project" height="35">.
+2. For any software currently available on HPC systems: search the software name, select the checkbox next to the software version(s) you used, and click on <img src="../images/CF/add_metadata/add_selected_software.png" alt="Add Selected Software to Project" height="35">. This list is updated infrequently, so newer software may need to be added manually.
 
 3. If you are using any other software or cannot find your software using the search feature, click on <img src="../images/CF/add_metadata/enter_software_manually.png" alt="Enter software manually" height="35">
 
