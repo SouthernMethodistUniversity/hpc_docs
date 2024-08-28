@@ -14,7 +14,7 @@ msg: |
   M2 Home directories will be decomissioned on **August 30, 2024**
 
   - ${M2HOME} will no longer be accessible.
-  - All data in ${M2HOME} will be permenantly deleted.
+  - All data in ${M2HOME} will be permanently deleted.
 
   Please review any data you have stored in ${M2HOME} before August 30 and move anything you need to keep another location such as $WORK, $HOME, or somewhere off of the HPC systems entirely
 

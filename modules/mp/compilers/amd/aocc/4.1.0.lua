@@ -21,9 +21,12 @@ prepend_path("LD_LIBRARY_PATH","/hpc/mp/apps/amd/aocc-compiler-4.1.0/lib")
 prepend_path("LD_LIBRARY_PATH","/hpc/mp/apps/amd/aocc-compiler-4.1.0/lib32")
 prepend_path("C_INCLUDE_PATH","/hpc/mp/apps/amd/aocc-compiler-4.1.0/include")
 prepend_path("CPLUS_INCLUDE_PATH","/hpc/mp/apps/amd/aocc-compiler-4.1.0/include")
-help([[ AOCC 
 
-        loads AOCC compiler setup 
 
+help([[Name: AMD Optimizing C/C++ and Fortran Compilers (AOCC)
+Version: 4.1.0
+Website: https://www.amd.com/en/developer/aocc.html
+
+AOCC is a high-performance x86 CPU compiler for C, C++, and Fortran programming languages.
 ]])
 

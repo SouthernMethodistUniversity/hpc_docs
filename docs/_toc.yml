@@ -27,6 +27,7 @@ parts:
   - file: coldfront/add_metadata.md
   - file: coldfront/usage_stats.md
   - file: coldfront/archive_project.md
+  - file: coldfront/faq.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md
@@ -47,6 +48,7 @@ parts:
   - file: tutorials/slurm/slurm.md
     sections:
     - file: tutorials/slurm/best_practices.md
+  - file: tutorials/globus_box_transfers.md
   - file: tutorials/containers/containers.md
   - file: tutorials/cpp/intro.md
     sections:

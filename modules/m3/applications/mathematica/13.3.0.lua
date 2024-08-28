@@ -40,3 +40,12 @@ else
   -- not work
   append_path("PATH","/hpc/m3/apps/mathematica/13.3.0/executables/")
 end
+
+help([[Name: Mathematica
+Version: 13.3.0
+Website: https://www.wolfram.com/mathematica/
+License Owners: SMU site license
+
+
+Wolfram Mathematica is a software system with built-in libraries for several areas of technical computing that allow machine learning, statistics, symbolic computation, data manipulation, network analysis, time series analysis, NLP, optimization, plotting functions and various types of data, implementation of algorithms, creation of user interfaces, and interfacing with programs written in other programming languages.
+]])

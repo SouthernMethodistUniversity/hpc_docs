@@ -11,3 +11,9 @@ end
 
 build_command('lmp')
 
+help([[Name: LAMMPS
+Version: 04May2022
+Website: https://www.lammps.org/
+
+LAMMPS is a classical molecular dynamics code with a focus on materials modeling. It's an acronym for Large-scale Atomic/Molecular Massively Parallel Simulator.
+]])

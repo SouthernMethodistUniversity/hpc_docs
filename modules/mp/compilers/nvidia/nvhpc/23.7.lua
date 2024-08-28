@@ -13,3 +13,9 @@ setenv("UCX_NET_DEVICES","mlx5_0:1,mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_6:1,mlx5_7:1,
 -- setenv("OMPI_MCA_hwloc_base_binding_policy","core")
 -- setenv("UCX_NET_DEVICES","mlx5_0:1")
 
+help([[Name: NVIDIA HPC SDK
+Version: 23.7
+Website: https://developer.nvidia.com/hpc-sdk
+
+The NVIDIA HPC Software Development Kit (SDK) includes the proven compilers, libraries and software tools essential to maximizing developer productivity and the performance and portability of HPC applications.
+]])

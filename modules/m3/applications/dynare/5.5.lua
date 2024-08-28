@@ -17,3 +17,10 @@ prepend_path("LD_PRELOAD", "/usr/lib/x86_64-linux-gnu/libstdc++.so.6")
 append_path("PATH", "/hpc/m3/apps/dynare/5.5/bin")
 append_path("LIBRARY_PATH","/hpc/m3/apps/dynare/5.5/lib")
 append_path("MATLABPATH","/hpc/m3/apps/dynare/5.5/lib/dynare/matlab/")
+
+help([[Name: Dynare
+Version: 5.5
+Website: https://www.dynare.org/
+
+Dynare is a software platform for handling a wide class of economic models, in particular dynamic stochastic general equilibrium (DSGE) and overlapping generations (OLG) models.
+]])

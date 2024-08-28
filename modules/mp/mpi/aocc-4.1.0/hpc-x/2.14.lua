@@ -58,3 +58,10 @@ setenv("SHMEM_HOME","/hpc/mp/apps/hpcx/hpcx-v2.14-gcc-inbox-ubuntu22.04-cuda11-g
 prepend_path("PATH","/hpc/mp/apps/hpcx/hpcx-v2.14-gcc-inbox-ubuntu22.04-cuda11-gdrcopy2-nccl2.16-x86_64/hpcx-ompi-aocc-4.1.0/bin")
 prepend_path("LD_LIBRARY_PATH","/hpc/mp/apps/hpcx/hpcx-v2.14-gcc-inbox-ubuntu22.04-cuda11-gdrcopy2-nccl2.16-x86_64/hpcx-ompi-aocc-4.1.0/lib")
 prepend_path("LIBRARY_PATH","/hpc/mp/apps/hpcx/hpcx-v2.14-gcc-inbox-ubuntu22.04-cuda11-gdrcopy2-nccl2.16-x86_64/hpcx-ompi-aocc-4.1.0/lib")
+
+help([[Name: HPC-X
+Version: 2.14
+Website: https://developer.nvidia.com/networking/hpc-x
+
+NVIDIA® HPC-X® is a comprehensive software package that includes Message Passing Interface (MPI), Symmetrical Hierarchical Memory (SHMEM) and Partitioned Global Address Space (PGAS) communications libraries, and various acceleration packages. 
+]])

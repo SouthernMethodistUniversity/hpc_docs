@@ -27,3 +27,9 @@ for _, executable in ipairs(executables) do
   build_command(executable)
 end
 
+help([[Name: Molden
+Version: 6.9
+Website: https://www.theochem.ru.nl/molden/
+
+Molden is a package for displaying Molecular Density from the Ab Initio packages GAMESS-UK , GAMESS-US and GAUSSIAN and the Semi-Empirical packages Mopac/Ampac
+]])
