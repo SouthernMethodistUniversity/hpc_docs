@@ -24,6 +24,7 @@ parts:
   - file: coldfront/add_class.md
   - file: coldfront/add_remove_users.md
   - file: coldfront/request_change_allocation.md
+  - file: coldfront/add_metadata.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md
