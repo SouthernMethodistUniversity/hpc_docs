@@ -24,6 +24,9 @@ parts:
   - file: coldfront/add_class.md
   - file: coldfront/add_remove_users.md
   - file: coldfront/request_change_allocation.md
+  - file: coldfront/add_metadata.md
+  - file: coldfront/usage_stats.md
+  - file: coldfront/archive_project.md
   - file: coldfront/faq.md
 - caption: Applications
   chapters:
