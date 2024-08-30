@@ -42,24 +42,6 @@ attributes:
       - [ "4.3.2", "R/4.3.2" ]
       - [ "4.3.0", "R/4.3.0" ]
       - [ "4.2.3", "R/4.2.3" ]
-      - [ "STAT 3341 (2023 June B)", "/hpc/m3/containers/classes/2023/june_b/stat3341/stat3341_4.3.0.lua",
-          <%- CheckAccounts.Accounts.each do |q| -%>
-          <% if q == "stat3341_june_b_2023" %>
-            data-option-for-auto-accounts-stat3341-june-b-2023: true,
-          <%- else -%>
-            data-option-for-slurm-accounts-<%= q.tr("_", "-") %>: false,
-          <%- end -%>
-          <%- end -%>
-        ]
-      - [ "STAT 3341 (2024 Spring)", "/hpc/m3/containers/classes/2024/spring/stat3341/stat3341_4.3.2.lua",
-          <%- CheckAccounts.Accounts.each do |q| -%>
-          <% if q == "stat3341_spring_2024" %>
-            data-option-for-auto-accounts-stat3341-spring-2024: true,
-          <%- else -%>
-            data-option-for-slurm-accounts-<%= q.tr("_", "-") %>: false,
-          <%- end -%>
-          <%- end -%>
-        ]
   environment:
     widget: text_area
     label: "Custom Environment Settings"
