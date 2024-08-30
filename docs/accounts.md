@@ -46,6 +46,7 @@ While we transition to [ColdFront](https://hpcaccess.smu.edu) (see the [frequent
    activated before sponsor can request cluster access for the individual.
    Please submit an Account Request via the
    [Online Service Center](https://help.smu.edu/User/Dashboard).
+   - ***Contractor with SMU email*** is the type of account to request.
 2. Once the individual\'s SMU ID or Sponsored ID has been created and
    activated the sponsor can add them to [ColdFront](https://hpcaccess.smu.edu)
    projects and allocations. While we transition to ColdFront, requests to
