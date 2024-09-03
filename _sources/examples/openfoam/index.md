@@ -18,7 +18,7 @@ For compute resources, see [HPC Queues](about:queues)
 
 Files used in the example are available:
 
-  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/openfoam)
+  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/openfoam)
   - on M3 at `/hpc/m3/examples/openfoam/` 
 
 ### Example submission script
