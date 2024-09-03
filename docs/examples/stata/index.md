@@ -17,7 +17,7 @@ For compute resources, see [HPC Queues](about:queues)
 
 Files used in the example are available:
 
-  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/stata)
+  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/stata)
   - on M3 at `/hpc/m3/examples/stata/` 
 
 ### Example submission script
@@ -37,7 +37,7 @@ linenos: true
 ---
 ```
 
-The above job script runs the Stata script `example.do` ([on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/stata/example.do))
+The above job script runs the Stata script `example.do` ([on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/stata/example.do))
 
 ```{literalinclude} example.do
 ---
@@ -60,6 +60,6 @@ linenos: true
 ---
 ```
 
-The above job script runs the Stata scripts `array_example_1.do` ([on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/stata/array_example_1.do))
-and `array_example_2.do` ([on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/stata/array_example_2.do).)
+The above job script runs the Stata scripts `array_example_1.do` ([on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/stata/array_example_1.do))
+and `array_example_2.do` ([on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/stata/array_example_2.do).)
 Note, these scripts are identical for demonstration purposes.

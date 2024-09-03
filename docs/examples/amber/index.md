@@ -16,7 +16,7 @@ For compute resources, see [HPC Queues](about:queues)
 
 Files used in the example are available: 
 
-  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/amber)
+  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/amber)
   - on the SuperPod at `/hpc/mp/examples/amber/`
 
 ### Example submission script
@@ -34,7 +34,7 @@ linenos: true
 
 Files used in the example are available:
 
-  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/update_examples/docs/examples/amber)
+  - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/amber)
   - on M3 at `/hpc/m3/examples/amber/` 
 
 ### Example submission script
