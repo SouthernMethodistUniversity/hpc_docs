@@ -36,6 +36,9 @@ parts:
   - file: examples/fluid_dynamics.md
     sections: 
     - file: examples/openfoam/index.md
+  - file: examples/statistics.md
+    sections: 
+    - file: examples/stata/index.md
   - file: examples/conda/README.md
   - file: examples/torch/README.md
 - caption: Tutorials
