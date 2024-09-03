@@ -1,6 +1,6 @@
 # Stata
 
-**Stata** is a statistical .
+**Stata** is a general purpose statistical software suite.
 
 **Stata homepage**: [stata.com/](https://www.stata.com/)
 
@@ -14,6 +14,9 @@ For compute resources, see [HPC Queues](about:queues)
 
 
 ## Using Stata on M3
+
+:::{important} The Stata licenses we have only allow using up to 8 CPU cores. Requesting more than 8 cores will not help jobs run faster.
+:::
 
 Files used in the example are available:
 
