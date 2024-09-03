@@ -1,6 +1,6 @@
 # Stata
 
-**Stata** is a statistical .
+**Stata** is a general purpose statistical software suite.
 
 **Stata homepage**: [stata.com/](https://www.stata.com/)
 
