@@ -28,6 +28,7 @@ parts:
   - file: coldfront/usage_stats.md
   - file: coldfront/archive_project.md
   - file: coldfront/faq.md
+  - file: coldfront/optout.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md
