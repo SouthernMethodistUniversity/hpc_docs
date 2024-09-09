@@ -22,7 +22,8 @@ If you need help setting up a class, please contact the [Help Desk](mailto:help@
 ## Accounts for Individuals with an SMU ID
 
 Most benefits eligible faculty and staff can use the self-service
-[ColdFront](https://hpcaccess.smu.edu) platform to create an account.
+[ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
+themselves, students, and external collaborators with SMU credentials.
 In order for an HPC account to be provisioned for a new user,
 
 1. The user must create or be added to a project in [ColdFront](https://hpcaccess.smu.edu). 
