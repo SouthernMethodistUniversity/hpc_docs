@@ -3,7 +3,7 @@ family("apptainer")
 prepend_path("PATH","/hpc/mp/apps/apptainer/1.1.9/bin")
 source_sh('bash', '/hpc/mp/apps/apptainer/1.1.9/share/bash-completion/completions/singularity')
 source_sh('bash', '/hpc/mp/apps/apptainer/1.1.9/share/bash-completion/completions/apptainer')
-setenv("APPTAINER_BIND","/hpc,/work,/scratch")
+setenv("APPTAINER_BIND","/hpc,/work,/projects,/scratch")
 
 help([[Name: Apptainer
 Version: 1.1.9
