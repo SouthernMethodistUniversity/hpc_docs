@@ -4,8 +4,9 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.4.0"
+VERSION="4.4.1"
 TAG=${VERSION}
+IMAGE_NAME="ml-verse"
 
 echo "Building tag: ${TAG}"
 
@@ -13,8 +14,8 @@ echo "Building tag: ${TAG}"
 module purge
 module load apptainer
 
-CONTAINER_NAME=rocker_geospatial_${TAG}.sif
-apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
+CONTAINER_NAME=rocker_${IMAGE_NAME}_${TAG}.sif
+apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/${IMAGE_NAME}:${TAG}
 
 # get the path for rsession inside the contianer. We need this
 # for the portal, so it's useful to "precompute" and load
@@ -60,16 +61,22 @@ MODULE_FILE=../../modules/${CLUSTER}/applications/R/${VERSION}.lua
 sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
 
 help([[
+Name: R
+Version: ${TAG}
+Website: https://www.r-project.org/
+
+R is a language and environment for statistical computing and graphics.
+
 To use R:
 
 R -- launches an R terminal
-Rscript script -- run a scrip
+Rscript script -- run a script
 
 ]])
 whatis("Name: R")
-whatis("Version: geospatial:${TAG}")
+whatis("Version: ${IMAGE_NAME}:${TAG}")
 whatis("Category: R")
-whatis("URL: https://hub.docker.com/r/rocker/geospatial")
+whatis("URL: https://hub.docker.com/r/rocker/${IMAGE_NAME}")
 whatis("Description: Provides access to R and Rstudio through a Rocker container built with Apptainer")
 family("R")
 
