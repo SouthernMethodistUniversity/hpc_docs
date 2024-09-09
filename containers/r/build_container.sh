@@ -4,7 +4,7 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.4.0"
+VERSION="4.4.1"
 TAG=${VERSION}
 
 echo "Building tag: ${TAG}"
@@ -14,7 +14,7 @@ module purge
 module load apptainer
 
 CONTAINER_NAME=rocker_geospatial_${TAG}.sif
-apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/geospatial:${TAG}
+apptainer build --fakeroot ${CONTAINER_NAME} docker://rocker/ml-verse:${TAG}
 
 # get the path for rsession inside the contianer. We need this
 # for the portal, so it's useful to "precompute" and load
@@ -60,10 +60,16 @@ MODULE_FILE=../../modules/${CLUSTER}/applications/R/${VERSION}.lua
 sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
 
 help([[
+Name: R
+Version: ${TAG}
+Website: https://www.r-project.org/
+
+R is a language and environment for statistical computing and graphics.
+
 To use R:
 
 R -- launches an R terminal
-Rscript script -- run a scrip
+Rscript script -- run a script
 
 ]])
 whatis("Name: R")
