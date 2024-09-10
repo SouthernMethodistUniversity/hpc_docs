@@ -27,6 +27,7 @@ parts:
   - file: coldfront/add_metadata.md
   - file: coldfront/usage_stats.md
   - file: coldfront/archive_project.md
+  - file: coldfront/running_jobs.md
   - file: coldfront/faq.md
   - file: coldfront/optout.md
 - caption: Applications
