@@ -27,26 +27,31 @@ $M2HOME      | 200 GB  | Read-only access to M2 $HOME (ending August 30, 2024)
 
 IMPORTANT ANNOUNCEMENTS:
 
-August 1, 2024:
+=================
+November 1, 2024:
+=================
 
-  ${SCRATCH} Purge Policy will begin running automatically and continuesly
+Account management is migrating to ColdFront (https://hpcaccess.smu.edu).
+Beginning on Nov 1, 2024 submitting jobs will require an active allocation
+in ColdFront.
 
-    - files older than 60 days in ${SCRATCH} will automatically be deleted
-    - deleted files cannot be recovered
-  
-  Please review files in your ${SCRATCH} directory and move any files you need
-  to keep before August 1
- 
-  https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html
+See the frequently asked questions for more details:
+https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
 
-August 30, 2024:
+Please contact help@smu.edu with [HPC] in the subject line with any questions
+or concerns.
 
-  ${M2HOME} End of Life.
+=================
+January 15, 2025:
+=================
 
-    - access to ${M2HOME} will be removed
-    - all files in ${M2HOME} will be permanently deleted.
+All data stored in personal $WORK directories and shared group directories
+must be moved to storage allocations managed by ColdFront.
 
-  Please review files in your ${M2HOME} directory and move any files you need
-  to keep before August 30
+See the frequently asked questions for more details:
+https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+
+Please contact help@smu.edu with [HPC] in the subject line with any questions
+or concerns.
 
 ********************************************************************************
