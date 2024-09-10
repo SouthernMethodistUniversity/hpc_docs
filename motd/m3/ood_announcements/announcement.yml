@@ -8,20 +8,17 @@ msg: |
   See the frequently asked questions for more details:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
 
-  Please contact help@smu.edu with [HPC] in the subject line with any questions
-  or concerns.
   <% else %>
   Reminder: running jobs now require being on an active allocation in ColdFront.
 
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
-  Please contact help@smu.edu with [HPC] in the subject line with any questions
-  or concerns.
-
   <% end %>
 
   <% if Time.now < Time.new(2025, 1, 15, 0, 0, 0) %>
+
+  **Before January 15, 2025**
 
   All data stored in personal $WORK directories and shared group directories
   must be moved to storage allocations managed by ColdFront.
