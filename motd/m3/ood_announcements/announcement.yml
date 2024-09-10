@@ -1,15 +1,15 @@
 type: warning
 msg: |
   <% if Time.now < Time.new(2024, 11, 1, 0, 0, 0) %>
-  Account management is migrating to ColdFront (https://hpcaccess.smu.edu).
-  Beginning on **November 1, 2024** submitting jobs will require an active allocation
-  in ColdFront.
 
-  See the frequently asked questions for more details:
-  https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+  Account management is migrating to ColdFront (https://hpcaccess.smu.edu).
+
+  **Beginning November 1, 2024:**
+  
+  - Submitting jobs will require an active allocation in ColdFront.
 
   <% else %>
-  Reminder: running jobs now require being on an active allocation in ColdFront.
+  Reminder: running jobs now require being on an active allocation in ColdFront (https://hpcaccess.smu.edu).
 
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
@@ -18,9 +18,9 @@ msg: |
 
   <% if Time.now < Time.new(2025, 1, 15, 0, 0, 0) %>
 
-  **Before January 15, 2025**
+  **Before January 15, 2025:**
 
-  All data stored in personal $WORK directories and shared group directories
+  - All data stored in personal $WORK directories and shared group directories
   must be moved to storage allocations managed by ColdFront.
 
   See the frequently asked questions for more details:
