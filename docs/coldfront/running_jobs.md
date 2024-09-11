@@ -25,6 +25,6 @@ simply select the Slurm account from the drop down menu.
 ```
 
 :::{note}
-The `account` account shown will not be usable after November 1, 2024.
+The `smu` account shown will not be usable after November 1, 2024.
 You must use an account from a ColdFront allocation.
 :::
