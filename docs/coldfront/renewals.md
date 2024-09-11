@@ -47,7 +47,7 @@ who no longer need access.
 
 ```{image} ../images/CF/renewals/allocation_renewal_user_choices.png
 :alt: allocation choices to keep or remove users
-:width: 800px
+:height: 120px
 ```
 
 ```{note}
