@@ -42,7 +42,7 @@ batch_connect:
 
     sed -e s/-nohttpd//g -i container.sh
 
-    export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK,/projects,/cm/local/apps/slurm,/var/lib/sss,/etc/passwd"
+    export APPTAINER_BINDPATH="$HOME,/run,/tmp,/hpc,$SCRATCH,$WORK,/work/projects:/projects,/cm/local/apps/slurm,/var/lib/sss,/etc/passwd"
     export APPTAINER_BINDPATH="${APPTAINER_BINDPATH},/usr/lib/liblustreapi.so,/usr/lib/liblustreapi.so.1,/usr/lib/liblustreapi.so.1.0.0"
     export APPTAINER_BINDPATH="${APPTAINER_BINDPATH},/usr/lib/liblnetconfig.so,/usr/lib/liblnetconfig.so.4,/usr/lib/liblnetconfig.so.4.0.0"
 
