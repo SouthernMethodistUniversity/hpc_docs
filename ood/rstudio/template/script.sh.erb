@@ -201,7 +201,7 @@ apptainer exec \
   -B ${WORK} \
   -B ${SCRATCH} \
   -B /work \
-  -B /projects \
+  -B /work/projects:/projects \
   -B /hpc \
   ${CONTAINER_IMAGE} \
   ${RUN_RSERVER}
