@@ -197,12 +197,6 @@ apptainer exec \
   -B ${WORKING_DIR} \
   -B ${WORKING_DIR}/etc/logging.conf:/etc/rstudio/logging.conf \
   -B ${WORKING_DIR}/etc/rstudio-prefs.json:/etc/rstudio/rstudio-prefs.json \
-  -B ${HOME} \
-  -B ${WORK} \
-  -B ${SCRATCH} \
-  -B /work \
-  -B /projects \
-  -B /hpc \
   ${CONTAINER_IMAGE} \
   ${RUN_RSERVER}
 
