@@ -34,6 +34,8 @@ In order for an HPC account to be provisioned for a new user,
 
 While we transition to [ColdFront](https://hpcaccess.smu.edu) (see the [frequently asked questions](coldfront/faq.md)), it is still possible to request that an account be manually created:
 
+**Manually created accounts will no longer be able to run jobs on the HPC systems after November 1, 2024 unless they are added to a ColdFront managed allocation.**
+
 - SMU faculty/staff can request an account by filling out the [New
   Account
   Form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL).
