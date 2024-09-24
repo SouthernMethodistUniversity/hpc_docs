@@ -17,9 +17,13 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 
 ### To a Project/Class
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/e0pm5rufj25hx7af5bea1s59pri76x57?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 1. Once a project or class is created, under Manage Project, click on <img src="../images/CF/add_remove_users/add_users.png" alt="add users" height="35"/>
 
-3. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
+2. Type in usernames of the user(s) you would like to add separated by a space or on separate lines.
 
     ```{image} ../images/CF/add_remove_users/search_user_space.png
     :alt: search users by space
@@ -31,7 +35,7 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     :height: 150px
     ```
 
-4. Click on <img src="../images/CF/add_remove_users/search_button.png" alt="search button" width="700"/>
+3. Click on <img src="../images/CF/add_remove_users/search_button.png" alt="search button" width="700"/>
 
     ````{note}
     If a user has already been added to the project or class, then you will see a message like this
@@ -42,9 +46,9 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     ```
     ````
 
-5. Select which allocation you would like users to be added to within the project under <img src="../images/CF/add_remove_users/available_allocations.png" alt="Available Allocations" height="35">.
+4. Select which allocation you would like users to be added to within the project under <img src="../images/CF/add_remove_users/available_allocations.png" alt="Available Allocations" height="35">.
 
-6. Select the user(s) that you want to add from the list 
+5. Select the user(s) that you want to add from the list 
 
     ```{image} ../images/CF/add_remove_users/select_user.png
     :alt: select users
@@ -58,9 +62,9 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
     :height: 60px
     ```
 
-7. Click on <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35">
+6. Click on <img src="../images/CF/add_remove_users/add_selected_users.png" alt="add selected users" height="35">
 
-8. You can verify that a user has been added under Users on the Project/Class page.
+7. You can verify that a user has been added under Users on the Project/Class page.
 
 ### To an Allocation
 

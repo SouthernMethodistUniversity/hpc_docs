@@ -29,6 +29,10 @@ There are 3 fields to specify when requesting a ***Compute*** allocation: ***CPU
 
 ### Request ***Compute*** Allocation
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/vk5v4eacfl1eoi06l2uurvgaapvcwci9?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 1. Click on <img src="../images/CF/request_change_allocation/request_resource.png" alt="Request Resource Allocation" height="40"> in the Allocations box on your project page.
 
 2. Select ***Compute*** as your Resource from the dropwdown.
@@ -111,6 +115,10 @@ To change a the ***CPU hours***, ***GPU hours***, or ***memory hours*** on a ***
 A ***Storage*** allocation is a shared directory with a quota on gigabytes (GB) of storage, and number of files. Every HPC user will still have a `$HOME` directory and a `$SCRATCH` directory that does not count towards the quota. Please see the [Purge Policy](https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html#purge-policy) for details.
 
 ### Request ***Storage*** Allocation
+
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/leu8vk5f416lmcjchc3ojdp379pl922p?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
 
 1. Click on <img src="../images/CF/request_change_allocation/request_resource.png" alt="Request Resource Allocation" height="40"> in the Allocations box on your project page.
 

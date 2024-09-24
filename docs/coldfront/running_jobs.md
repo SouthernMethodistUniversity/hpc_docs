@@ -16,6 +16,10 @@ and clicking on the "Usage Help" link in the last column of the allocation you w
 
 ## Open OnDemand Web Portal
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/0esizdutyhg5xg4wd4y05ri644jyn1ei?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 On the On Demand Web Portal [hpc.m3.smu.edu](https://hpc.m3.smu.edu/),
 simply select the Slurm account from the drop down menu.
 

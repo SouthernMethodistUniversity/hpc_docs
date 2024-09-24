@@ -6,6 +6,10 @@ Only benefits eligible faculty or staff can create a project.
 
 ## Add a Project
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/lgre6i9sf90lpd0k0sk78h2u0e9wrinw?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 1. Click on
 
     ```{image} ../images/CF/add_change_project/add_project.png
@@ -71,6 +75,10 @@ Only benefits eligible faculty or staff can create a project.
 10. Click <img src="../images/CF/add_change_project/save.png" alt="Save" height="40"> to create the project.
 
 ## Change a Project
+
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/ajxe4zokicp17046xeaxojuj99ab37f5?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
 
 1. From the project page, click on <img src="../images/CF/add_change_project/update_project.png" alt="update project information" height="40">.
 
