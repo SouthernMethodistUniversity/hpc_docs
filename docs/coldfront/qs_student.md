@@ -8,6 +8,10 @@ These instructions will help you get access to HPC resources in your class.
 
 ## In Class
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/duihsm33td92fvwaosw0thpeqld6c2e5?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 Under <img src="../images/CF/quick_start/allocations.png" alt="Allocations" height="40"> you will see your class and associated allocations on your dashboard.
 Your class will have at least one allocation for **Compute** and possibly allocations for **Storage**. 
 

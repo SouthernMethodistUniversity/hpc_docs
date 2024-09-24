@@ -7,6 +7,10 @@ Here, you will find statistics and graphics related to your Publications, Resear
 
 ## Usage Metrics
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/tujfmod9tcndb7j1wsfhktupvop7erj3?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 To see user scorecards for users on your projects:
 
 1. Click on **Usage Metrics** > **User Statistics** in the top menu bar of ColdFront.
