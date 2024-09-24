@@ -1,5 +1,9 @@
 # Add Metadata
 
+```{dropdown} Video Walkthrough
+<iframe src="https://smu.app.box.com/embed/s/w3nwawpfwkbgceyg5pj7fdt0nzjdjyjk?sortColumn=date" width="100%" height="550" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen></iframe>
+```
+
 Providing any of the following data is optional has no bearing on your ability to request allocations or make projects. This is simply to help us collect better data on HPC usage and to provide you with better metrics. We greatly appreciate efforts to fill this out, as it aids our ability to provide the best HPC services for your research and classes.
 
 ## Add Grants
