@@ -21,40 +21,39 @@ If you need help setting up a class, please contact the [Help Desk](mailto:help@
 
 ## Accounts for Individuals with an SMU ID
 
+:::{important} Beginning **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) will require using a slurm 
+account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
+See the [frequently asked questions](coldfront/faq.md)
+:::
+
 Most benefits eligible faculty and staff can use the self-service
 [ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
 themselves, students, and external collaborators with SMU credentials.
-In order for an HPC account to be provisioned for a new user,
+In order for an HPC account to be created or reactived for an user, the following
+conditions must be satisfied:
 
 1. The user must create or be added to a project in [ColdFront](https://hpcaccess.smu.edu). 
-   See [how to create a project](coldfront/add_change_project.md)
+   See [how to create a project](coldfront/add_change_project.md).
+   Note that students cannot create their own projects.
 
 2. The user must be on an active compute and/or storage allocation managed 
    by [ColdFront](https://hpcaccess.smu.edu). See [how to create an allocation](coldfront/request_change_allocation.md)
 
-While we transition to [ColdFront](https://hpcaccess.smu.edu) (see the [frequently asked questions](coldfront/faq.md)), it is still possible to request that an account be manually created:
-
-**Manually created accounts will no longer be able to run jobs on the HPC systems after November 1, 2024 unless they are added to a ColdFront managed allocation.**
-
-- SMU faculty/staff can request an account by filling out the [New
-  Account
-  Form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL).
-- If you are a student or postdoc please ask your supervisor, sponsor,
-  or adviser to request an account via the [New Account
-  Form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL).
 
 ## Accounts for Individuals without an SMU ID or Sponsored ID
 
 1. The sponsor must request an SMU ID or Sponsored ID and have that account
    activated before sponsor can request cluster access for the individual.
    Please submit an Account Request via the
-   [Online Service Center](https://help.smu.edu/User/Dashboard).
+   [Online Service Center](https://www.smu.edu/oit/services/stable).
    - ***Contractor with SMU email*** is the type of account to request.
 2. Once the individual\'s SMU ID or Sponsored ID has been created and
    activated the sponsor can add them to [ColdFront](https://hpcaccess.smu.edu)
-   projects and allocations. While we transition to ColdFront, requests to
-   manually activate accounts for the individuals is available via the [New Account
-   Form](https://smu.az1.qualtrics.com/jfe/form/SV_6WIK4HsRuE4N6JL).
+   projects and allocations.
+
+:::{note} The HPC and Research support teams are not involved in the process of
+creating SMU IDs or Sponsored IDs. 
+:::
 
 # Reset Account Password
 
