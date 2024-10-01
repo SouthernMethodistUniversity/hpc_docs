@@ -12,7 +12,7 @@ end
 
 family("vasp")
 conflict("vasp")
-load("gcc/11.2.0", "openmpi/4.1.4-7al4h2x",
+load("gcc/11.2.0", "openmpi/4.1.6-vfi4iwj",
       "netlib-scalapack/2.2.0-k6ikp5r", "fftw/3.3.10-gz7qiki",
       "openblas/0.3.21-s5husbk")
 prepend_path("PATH","/hpc/m3/apps/vasp/vasp.5.4.4/bin")
