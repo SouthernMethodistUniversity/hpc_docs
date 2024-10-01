@@ -2,7 +2,7 @@ whatis("Synopsys Quantum ATK")
 family("quantum_atk")
 
 load("gcc/11.2.0")
-load("openmpi/4.1.4-7al4h2x")
+load("openmpi/4.1.6-vfi4iwj")
 
 
 local synopsys_root = "/hpc/m3/apps/quantumatk/"
