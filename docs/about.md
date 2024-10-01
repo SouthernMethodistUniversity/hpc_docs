@@ -62,7 +62,7 @@ their work.
 | GPU Accelerator Cores  | 1,392,640                                   |
 | Total Memory           | 52.5 TB                                     |
 | Interconnect Bandwidth | 10x200 Gb/s Infiniband Connections Per Node |
-| Work Storage           | 768 TB (Shared)                             |
+| Work Storage           | 3.5 PB (Shared with M3)                     |
 | Scratch Storage        | 750 TB (Raw)                                |
 | Operating System       | Ubuntu 22.04                                |
 
