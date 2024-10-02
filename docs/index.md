@@ -22,4 +22,4 @@ the advanced compute capabilities provided with the cluster.
 
 Students, faculty, or staff should register for the workshops in advance via the links below. Please bring your laptop to the workshop.
 
-<iframe src="https://libcal.smu.edu/widget/events/minicalendar?&cal_id=15527&l=50&tar=0&h=450&sp=0&audience=&c=8174-8175&z=" style="border-width:0" width="800" height="464" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://libcal.smu.edu/widget/events/minicalendar?&cal_id=15527&l=50&tar=0&h=450&sp=0&audience=&c=8174-8175&z=" style="border-width:0" width="100%" height="464" frameborder="0" scrolling="no"></iframe>
