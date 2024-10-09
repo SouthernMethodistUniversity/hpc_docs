@@ -15,7 +15,4 @@
 
 # Workshops and Events
 
-Additional workshops and events may be available on the [SMU Libraries Workshop Calendar](https://libcal.smu.edu/calendar/libraryworkshops?cid=15527&t=g&d=0000-00-00&cal=15527&cm=8174,8175&inc=0)
-  
-<div id="api_upc_cid15527_iid3341"></div>
-<script src="https://libcal.smu.edu/api_events.php?m=upc&cid=15527&audience=&c=8174-8175&d=&tags=&l=5&tar=0&external_icon=true&simple=agenda&context=object&format=js"> </script>
+Upcoming workshops and events are on the [SMU Libraries Workshop Calendar](https://libcal.smu.edu/calendar/libraryworkshops?cid=15527&t=g&d=0000-00-00&cal=15527&cm=8174,8175&inc=0)
