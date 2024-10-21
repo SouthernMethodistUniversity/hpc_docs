@@ -5,10 +5,10 @@ dorms, and PerunaNet. All other networks require using the SMU VPN.
 Instructions for setting up and using the VPN can be found
 [here](https://www.smu.edu/OIT/Services/VPN).
 
-## HPC OnDemand Web Portal
+## [HPC OnDemand Web Portal](https://hpc.m3.smu.edu/)
 
-SMU HPC clusters can be accessed directly from a browser via the HPC OnDemand
-Web Portal, which provides access to files, remote desktops, JupyterLab, and
+M3 can be accessed directly from a browser via the [HPC OnDemand Web Portal](https://hpc.m3.smu.edu/), 
+which provides access to files, remote desktops, JupyterLab, and
 RStudio.
 
 ## Terminal Access via SSH
@@ -241,7 +241,7 @@ using.
 The basic procedure is:
 
 1. Log in to a HPC machine
-2. Request compute resuorces using `srun`, `sbatch`, `salloc`, or similar
+2. Request compute resources using `srun`, `sbatch`, `salloc`, or similar
 3. Start your program and get port information
 4. ssh into the compute node you got using a login node as a jump host and forward the appropriate port
 
