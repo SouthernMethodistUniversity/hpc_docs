@@ -10,7 +10,7 @@ local root = pathJoin(synopsys_root, version)
 local bin = pathJoin(root, "bin")
 local lib = pathJoin(root, "lib")
 
-setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic2.smu.edu")
+setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic3.smu.edu")
 
 prepend_path("PATH", bin)
 append_path("LD_LIBRARY_PATH", lib)
