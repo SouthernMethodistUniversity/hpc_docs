@@ -12,7 +12,7 @@ setenv("PHOTONICS_SOLUTIONS_ROOT", ps_root)
 setenv("PHOTONICS_SOLUTIONS_VERSION", ps_version)
 setenv("RSOFT_PROGRAMPATH", rsoft_programpath)
 setenv("OPTO_LINK_BASE", opto_link_base)
-setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic2.smu.edu")
+setenv("SNPSLMD_LICENSE_FILE", "27020@sengr7lic3.smu.edu")
 
 prepend_path("PATH", opto_link_base)
 prepend_path("PATH", rsoft_programpath)
