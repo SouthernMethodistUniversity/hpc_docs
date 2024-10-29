@@ -11,7 +11,7 @@ class CheckAccounts
       output = []
       tmp_output.each do |q|
         tmp = q.strip
-        if tmp != "Account"
+        if tmp != "Account" && tmp != "smu" && tmp != "default" 
           output.push(tmp)
         end
       end
