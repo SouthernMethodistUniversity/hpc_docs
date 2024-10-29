@@ -10,6 +10,8 @@ script:
   native:
     - "-N"
     - "1"
+    - "-w"
+    - "c001"
     - "--cpus-per-task"
     - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
     - "--mem"
