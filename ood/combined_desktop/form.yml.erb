@@ -12,7 +12,22 @@ require_relative "CheckAccounts"
 title: "Remote Desktop"
 cluster: "m3cluster"
 submit: submit.yml.erb
+<%- if CheckAccounts.Accounts.count == 0 -%>
+form:
+  - slurm_accounts
+attributes:
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     You are not a member of any valid Slurm accounts. In order to run jobs,
+     you must be on a slurm account created by [ColdFront].
+     See the ColdFront [documentation] and [frequently asked questions] for more information.
+     [ColdFront]: https://hpcaccess.smu.edu
+     [documentation]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/quick_start.html
+     [frequently asked questions]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
 
+<%- else -%>
 form:
   - slurm_accounts
   - custom_queues
@@ -31,11 +46,8 @@ attributes:
    widget: select
    label: "Slurm Account"
    help: |
-     Select a Slurm account. 
+     Select a Slurm account.
      Slurm accounts grant to access allocations and/or course specific material.
-     **Important:** beginning on November 1, 2024. The Slurm account *smu* will
-     be disabled. Only Slurm accounts allocated with [ColdFront] will be usable.
-     [ColdFront]: https://hpcaccess.smu.edu 
    options:
     <%- CheckAccounts.Accounts.each do |q| -%>
     - [ "<%= q %>",  "<%= q %>" ]
@@ -144,3 +156,4 @@ attributes:
     value: 0
     label: "Email When Job Starts"
     help: "Sends an email to your SMU email when this job starts if checked"
+<%- end -%>
