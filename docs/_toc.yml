@@ -44,6 +44,7 @@ parts:
     - file: examples/stata/index.md
   - file: examples/conda/README.md
   - file: examples/torch/README.md
+  - file: examples/vscode/README.md
 - caption: Tutorials
   chapters:
   - file: tutorials/unix/intro.md
