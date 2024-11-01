@@ -9,7 +9,7 @@ msg: |
   - Submitting jobs will require an active allocation in ColdFront.
 
   <% else %>
-  Reminder: running jobs now require being on an active allocation in ColdFront (https://hpcaccess.smu.edu).
+  Reminder: running jobs now requires being on an active allocation in ColdFront (https://hpcaccess.smu.edu).
 
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
