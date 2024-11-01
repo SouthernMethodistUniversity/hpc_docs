@@ -27,19 +27,11 @@ $M2HOME      | 200 GB  | Read-only access to M2 $HOME (ending August 30, 2024)
 
 IMPORTANT ANNOUNCEMENTS:
 
-=================
-November 1, 2024:
-=================
+Reminder: running jobs now requires being on an active allocation in ColdFront (https://hpcaccess.smu.edu).
 
-Account management is migrating to ColdFront (https://hpcaccess.smu.edu).
-Beginning on Nov 1, 2024 submitting jobs will require an active allocation
-in ColdFront.
+See the documentation for running jobs:
+https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
-See the frequently asked questions for more details:
-https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
-
-Please contact help@smu.edu with [HPC] in the subject line with any questions
-or concerns.
 
 =================
 January 15, 2025:
