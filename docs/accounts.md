@@ -21,15 +21,14 @@ If you need help setting up a class, please contact the [Help Desk](mailto:help@
 
 ## Accounts for Individuals with an SMU ID
 
-:::{important} Beginning **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) will require using a slurm 
-account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
+:::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) requires using a slurm account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
 See the [frequently asked questions](coldfront/faq.md)
 :::
 
 Most benefits eligible faculty and staff can use the self-service
 [ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
 themselves, students, and external collaborators with SMU credentials.
-In order for an HPC account to be created or reactived for an user, the following
+In order for an HPC account to be created or reactivated for an user, the following
 conditions must be satisfied:
 
 1. The user must create or be added to a project in [ColdFront](https://hpcaccess.smu.edu). 
