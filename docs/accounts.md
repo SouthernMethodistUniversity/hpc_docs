@@ -28,7 +28,7 @@ See the [frequently asked questions](coldfront/faq.md)
 Most benefits eligible faculty and staff can use the self-service
 [ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
 themselves, students, and external collaborators with SMU credentials.
-In order for an HPC account to be created or reactived for an user, the following
+In order for an HPC account to be created or reactivated for an user, the following
 conditions must be satisfied:
 
 1. The user must create or be added to a project in [ColdFront](https://hpcaccess.smu.edu). 
