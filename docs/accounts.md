@@ -21,8 +21,7 @@ If you need help setting up a class, please contact the [Help Desk](mailto:help@
 
 ## Accounts for Individuals with an SMU ID
 
-:::{important} Beginning **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) will require using a slurm 
-account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
+:::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) requires using a slurm account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
 See the [frequently asked questions](coldfront/faq.md)
 :::
 
