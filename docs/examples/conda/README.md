@@ -19,7 +19,7 @@ module load mamba
 
 ### User Installation
 
-You can also install your own versions of Mamba in your `$WORK` or `$HOME` directory.
+You can also install your own versions of Conda in your `$HOME` directory.
 We recommend 
 
 - Micromamba: <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>
@@ -35,18 +35,19 @@ After doing this, you may need to log out and log back in to see the effects.
 In most cases, you can source your shell profile to avoid having to log out.
 For most users, this is `source ~/.bashrc`.
 
-We additionally recommend that you disable Mamba's auto-activate base
-functionallity. By default, Mamba will load a base environment, which can cause
+We additionally recommend that you disable Conda's auto-activate base
+functionality. By default, Conda will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
-<https://hpc.m3.smu.edu> often behave in unexpected ways becuase it tries to
-use a Mamba package instead of the correct system package.
-The next two commands tell Mamba to prefer to save packages and environments
-in your `$WORK` directory so they don't take up space in your `$HOME`.
+<https://hpc.m3.smu.edu> often behave in unexpected ways because it tries to
+use a Conda package instead of the correct system package.
+The next two commands tell Conda to prefer to save packages and environments
+in your `$HOME` directory (you can specify other locations you have access to,
+but performance is generally better in `$HOME`).
 
 ```bash
-mamba config --set auto_activate_base false
-mamba config --prepend envs_dirs $WORK/.conda/envs
-mamba config --prepend pkgs_dirs $WORK/.conda/pkgs
+conda config --set auto_activate_base false
+conda config --prepend envs_dirs $HOME/.conda/envs
+conda config --prepend pkgs_dirs $HOME/.conda/pkgs
 ```
 
 ## Creating Virtual Environments from the Command Line
