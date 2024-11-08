@@ -19,7 +19,7 @@ module load conda
 
 ### User Installation
 
-You can also install your own versions of Conda in your `$WORK` or `$HOME` directory.
+You can also install your own versions of Conda in your `$HOME` directory.
 We recommend 
 
 - Micromamba: <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>
@@ -37,24 +37,24 @@ In most cases, you can source your shell profile to avoid having to log out.
 For most users, this is `source ~/.bashrc`.
 
 We additionally recommend that you disable Conda's auto-activate base
-functionallity. By default, Conda will load a base environment, which can cause
+functionality. By default, Conda will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
-<https://hpc.m3.smu.edu> often behave in unexpected ways becuase it tries to
+<https://hpc.m3.smu.edu> often behave in unexpected ways because it tries to
 use a Conda package instead of the correct system package.
 The next two commands tell Conda to prefer to save packages and environments
-in your `$WORK` directory so they don't take up space in your `$HOME`.
+in your `$HOME` directory (you can specify other locations you have access to,
+but performance is generally better in `$HOME`).
 
 ```bash
 conda config --set auto_activate_base false
-conda config --prepend envs_dirs $WORK/.conda/envs
-conda config --prepend pkgs_dirs $WORK/.conda/pkgs
+conda config --prepend envs_dirs $HOME/.conda/envs
+conda config --prepend pkgs_dirs $HOME/.conda/pkgs
 ```
 
 ## Creating Virtual Environments from the Command Line
 
 For simple environments with a small number of packages, you can create an
-environment named `conda_env` (or any name of your choosing) in your `$WORK`
-directory with
+environment named `conda_env` (or any name of your choosing)
 
 ```bash
 conda create -n conda_env python=3.9 package1 package2 package3
@@ -63,7 +63,7 @@ conda create -n conda_env python=3.9 package1 package2 package3
 The `-n` tells Conda what to name the environment. Here, we request Python
 version 3.9 and the packages `package1 package2 package3` which are the
 packages you'd like to install (e.g. `numpy`, `tensorflow`, `pandas`, etc.). In
-general, it is a good idea install all the packages at the same time becasue
+general, it is a good idea install all the packages at the same time because
 Conda will do a better job of resolving dependencies.
 
 ## Creating Virtual Environments From environment.yml File
@@ -103,7 +103,7 @@ The next section is `dependencies` and this is where you should list all of the
 packages you would like to install. If you have packages that need to be
 installed with `pip`, you should include `pip` in the dependencies as above and
 you can list the specific packages like the above as `pip_package1`, etc.
-and/or you can have all the `pip` packages in a `requirments.txt` file.
+and/or you can have all the `pip` packages in a `requirements.txt` file.
 
 Once you have made the `environment.yml` file, you can create the environment
 with:

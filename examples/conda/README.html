@@ -449,7 +449,7 @@ It is a drop in replacement for Conda and is typically considerably faster.</p>
 </section>
 <section id="user-installation">
 <h3>User Installation<a class="headerlink" href="#user-installation" title="Permalink to this heading">#</a></h3>
-<p>You can also install your own versions of Conda in your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> or <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory.
+<p>You can also install your own versions of Conda in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory.
 We recommend</p>
 <ul class="simple">
 <li><p>Micromamba: <a class="reference external" href="https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html">https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html</a></p></li>
@@ -464,15 +464,16 @@ This creates some shell functions in your profile to make it easier to call Cond
 In most cases, you can source your shell profile to avoid having to log out.
 For most users, this is <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code>.</p>
 <p>We additionally recommend that you disable Conda’s auto-activate base
-functionallity. By default, Conda will load a base environment, which can cause
+functionality. By default, Conda will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
-<a class="reference external" href="https://hpc.m3.smu.edu">https://hpc.m3.smu.edu</a> often behave in unexpected ways becuase it tries to
+<a class="reference external" href="https://hpc.m3.smu.edu">https://hpc.m3.smu.edu</a> often behave in unexpected ways because it tries to
 use a Conda package instead of the correct system package.
 The next two commands tell Conda to prefer to save packages and environments
-in your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directory so they don’t take up space in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>.</p>
+in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory (you can specify other locations you have access to,
+but performance is generally better in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
-conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>envs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/envs
-conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>pkgs_dirs<span class="w"> </span><span class="nv">$WORK</span>/.conda/pkgs
+conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>envs_dirs<span class="w"> </span><span class="nv">$HOME</span>/.conda/envs
+conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>pkgs_dirs<span class="w"> </span><span class="nv">$HOME</span>/.conda/pkgs
 </pre></div>
 </div>
 </section>
@@ -480,15 +481,14 @@ conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class=
 <section id="creating-virtual-environments-from-the-command-line">
 <h2>Creating Virtual Environments from the Command Line<a class="headerlink" href="#creating-virtual-environments-from-the-command-line" title="Permalink to this heading">#</a></h2>
 <p>For simple environments with a small number of packages, you can create an
-environment named <code class="docutils literal notranslate"><span class="pre">conda_env</span></code> (or any name of your choosing) in your <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>
-directory with</p>
+environment named <code class="docutils literal notranslate"><span class="pre">conda_env</span></code> (or any name of your choosing)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>conda_env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>package1<span class="w"> </span>package2<span class="w"> </span>package3
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">-n</span></code> tells Conda what to name the environment. Here, we request Python
 version 3.9 and the packages <code class="docutils literal notranslate"><span class="pre">package1</span> <span class="pre">package2</span> <span class="pre">package3</span></code> which are the
 packages you’d like to install (e.g. <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, etc.). In
-general, it is a good idea install all the packages at the same time becasue
+general, it is a good idea install all the packages at the same time because
 Conda will do a better job of resolving dependencies.</p>
 </section>
 <section id="creating-virtual-environments-from-environment-yml-file">
@@ -523,7 +523,7 @@ to date.)</p>
 packages you would like to install. If you have packages that need to be
 installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code>, you should include <code class="docutils literal notranslate"><span class="pre">pip</span></code> in the dependencies as above and
 you can list the specific packages like the above as <code class="docutils literal notranslate"><span class="pre">pip_package1</span></code>, etc.
-and/or you can have all the <code class="docutils literal notranslate"><span class="pre">pip</span></code> packages in a <code class="docutils literal notranslate"><span class="pre">requirments.txt</span></code> file.</p>
+and/or you can have all the <code class="docutils literal notranslate"><span class="pre">pip</span></code> packages in a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file.</p>
 <p>Once you have made the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file, you can create the environment
 with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-n<span class="w"> </span>conda_env
