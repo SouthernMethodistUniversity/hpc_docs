@@ -23,12 +23,12 @@ their work.
 | Total GPU Cores      | 0                  | 132,608      | 275,968      | 1,392,640    | 122,880      |
 | Total Memory         | 29.2 TB            | 116.5 TB     | 120 TB       | 52.5 TB      | 103 TB       |
 | Network Bandwidth    | 20 Gb/s            | 100 Gb/s     | 100 Gb/s     | 200 Gb/s     | 200 Gb/s     |
-| Work Storage         | None               | None         | 768 TB       | 3.5 PB*      | 3.5 PB*      |
+| Project Storage         | None               | None         | 768 TB       | 3.5 PB*      | 3.5 PB*      |
 | Scratch Space        | 1.4 PB             | 1.4 PB       | 2.8 PB       | 750 TB       | 3.5 PB       |
 | Archive Capabilities | No                 | Yes          | Yes          | No           | No           |
 | Operating System     | Scientific Linux 6 | CentOS 7     | CentOS 7     | Ubuntu 22.04 | Ubuntu 22.04 |
 
-\* The 3.5 PB `Work Storage` is shared on M3 and the SuperPOD.
+\* The 3.5 PB `Project Storage` is shared on M3 and the SuperPOD. It was formerly referred to as `Work Storage`, which has been deprecated and will be phased out beginning on January 15, 2025.
 
 ## ManeFrame III (M3)
 
@@ -62,7 +62,7 @@ their work.
 | GPU Accelerator Cores  | 1,392,640                                   |
 | Total Memory           | 52.5 TB                                     |
 | Interconnect Bandwidth | 10x200 Gb/s Infiniband Connections Per Node |
-| Work Storage           | 3.5 PB (Shared with M3)                     |
+| Project Storage           | 3.5 PB (Shared with M3)                     |
 | Scratch Storage        | 750 TB (Raw)                                |
 | Operating System       | Ubuntu 22.04                                |
 
