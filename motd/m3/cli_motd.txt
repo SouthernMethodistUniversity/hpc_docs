@@ -14,12 +14,12 @@ Help:            help@smu.edu with "[HPC]" in subject line
 
 Storage Locations:
 
-Variable     | Quota   | Usage
------------- | ------- | -----------------------------------------------------
-$HOME        | 200 GB  | Home directory, backed up
-$WORK        | 8 TB    | Long term storage
-$SCRATCH     | 60 days | Temporary scratch space
-$M2HOME      | 200 GB  | Read-only access to M2 $HOME (ending August 30, 2024)
+Variable or Path | Quota   | Usage
+---------------- | ------- | ---------------------------------------------------
+$HOME            | 200 GB  | Home directory, backed up
+$WORK            | 0       | Deprecated. Phase out beginning January 15, 2025
+$SCRATCH         | 60 days | Temporary scratch space
+/projects        | varies  | ColdFront storage allocations
 
 *Do not* use login nodes or $HOME for calculations
 
