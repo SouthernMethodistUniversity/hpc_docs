@@ -36,7 +36,7 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
   local sif_file = '/hpc/${CLUSTER}/containers/code-server/code-server_${TAG}.sif'
 
   local work_dir = '/work'
-  local lustre_work = '/lustre/work'
+  local lustre_work = '/lustre/work/client'
   local scratch_dir = os.getenv("SCRATCH")
 
   function build_command(app)
