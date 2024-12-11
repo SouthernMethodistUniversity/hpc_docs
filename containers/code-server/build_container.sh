@@ -36,10 +36,11 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
   local sif_file = '/hpc/${CLUSTER}/containers/code-server/code-server_${TAG}.sif'
 
   local work_dir = '/work'
+  local lustre_work = '/lustre/work'
   local scratch_dir = os.getenv("SCRATCH")
 
   function build_command(app)
-    local cmd        = '${RUN_COMMAND} -B ' .. scratch_dir .. ',' .. work_dir .. ' -B $PWD:/host_pwd --pwd /host_pwd ' .. sif_file .. ' ' .. app
+    local cmd        = '${RUN_COMMAND} -B ' .. scratch_dir .. ',' .. work_dir .. ',' .. lustre_work .. ' -B $PWD:/host_pwd --pwd /host_pwd ' .. sif_file .. ' ' .. app
     local sh_ending  = ' "$@"'
     local csh_ending = ' $*'
     local sh_cmd     = cmd .. sh_ending
