@@ -35,7 +35,7 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
   always_load('singularity')
   local sif_file = '/hpc/${CLUSTER}/containers/code-server/code-server_${TAG}.sif'
 
-  local work_dir = os.getenv("WORK")
+  local work_dir = '/work'
   local scratch_dir = os.getenv("SCRATCH")
 
   function build_command(app)
