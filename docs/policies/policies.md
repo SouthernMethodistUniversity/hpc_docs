@@ -24,7 +24,7 @@ insufficient, please contact us to discuss options.
 :::{important} SMU does not currently have facilities for archival storage of large datasets.
 Most of our HPC storage is redundant, but it is not (and cannot) be backed up.
 Storage space is also limited and current and active usage is prioritized.
-Please contact us to discuss needs and potential options [contact us](about/contact.md)
+Please [contact us](../about/contact.md) to discuss needs and potential options.
 :::
 
 ## Account and Account Password Sharing Policy
