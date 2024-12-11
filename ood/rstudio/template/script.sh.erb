@@ -204,6 +204,7 @@ apptainer exec \
   -B ${WORKING_DIR}/etc/rstudio-prefs.json:/etc/rstudio/rstudio-prefs.json \
   -B ${HOME} \
   -B ${SCRATCH} \
+  -B /lustre/work/client/ \
   -B /work \
   -B /work/projects:/projects \
   -B /hpc \
