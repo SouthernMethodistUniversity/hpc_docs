@@ -23,12 +23,13 @@ always_load('apptainer')
 local sif_file = '/hpc/m3/containers/rocker/rocker_geospatial_4.2.3.sif'
 
 local work_dir = '/work'
+local lustre_work = '/lustre/work/client'
 local scratch_dir = os.getenv("SCRATCH")
 local home = os.getenv("HOME")
 local user_libs = pathJoin(home, 'R/rocker/4.2.3')
 
 function build_command(app)
-local cmd        = 'apptainer run  --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
+local cmd        = 'apptainer run  --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ',' .. lustre_work .. ' ' .. sif_file .. ' ' .. app
 local sh_ending  = ' "$@"'
 local csh_ending = ' $*'
 local sh_cmd     = cmd .. sh_ending

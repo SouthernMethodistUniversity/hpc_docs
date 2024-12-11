@@ -111,12 +111,13 @@ always_load('apptainer')
 local sif_file = '${IMAGE_LOCATION}/${CONTAINER_NAME}'
 
 local work_dir = '/work'
+local lustre_work = '/lustre/work/client'
 local scratch_dir = os.getenv("SCRATCH")
 local home = os.getenv("HOME")
 local user_libs = pathJoin(home, 'R/rocker/${COURSE_NUMBER}_${YEAR}_${TERM}_${VERSION}')
 
 function build_command(app)
-  local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ' ' .. sif_file .. ' ' .. app
+  local cmd        = '${RUN_COMMAND} --env R_LIBS_USER=' .. user_libs .. ' -B ' .. scratch_dir .. ',' .. work_dir .. ',' .. lustre_work .. ' .. sif_file .. ' ' .. app
   local sh_ending  = ' "\$@"'
   local csh_ending = ' \$*'
   local sh_cmd     = cmd .. sh_ending

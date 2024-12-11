@@ -1,7 +1,7 @@
 load("apptainer")
 
 local img_name      = 'ds_latest_2023_02_10_16_07_16.sif'
-local work          = '/work'
+local work          = os.getenv("WORK")
 local img_directory = 'images'
 local img_path      = pathJoin(work, img_directory, img_name)
 
