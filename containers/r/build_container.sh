@@ -83,7 +83,7 @@ family("R")
 always_load('apptainer')
 local sif_file = '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}'
 
-local work_dir = os.getenv("WORK")
+local work_dir = '/work'
 local scratch_dir = os.getenv("SCRATCH")
 local home = os.getenv("HOME")
 local user_libs = pathJoin(home, 'R/rocker/${TAG}')
