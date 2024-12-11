@@ -22,7 +22,7 @@ family("R")
 always_load('apptainer')
 local sif_file = '/hpc/m3/containers/rocker/rocker_ml-verse_4.4.1.sif'
 
-local work_dir = os.getenv("WORK")
+local work_dir = '/work'
 local scratch_dir = os.getenv("SCRATCH")
 local home = os.getenv("HOME")
 local user_libs = pathJoin(home, 'R/rocker/4.4.1')
