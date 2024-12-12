@@ -23,7 +23,7 @@ those found in Linux, macOS, and Windows (>=10) including WSL.
 
 1. Open a terminal
 2. Type `ssh <your_username>@<m3|superpod>.smu.edu` where `<your_username>` is
-   your username, which is usually the first part of your SMU email address,
+   your username, which is usually the first part of your SMU NetID,
    and `<m3|superpod>` is either `m3` or `superpod`.
 3. Type a Duo **passcode** or `1` for a Duo push. The passcode can
    come from the Duo app or from an OIT procured hardware token (faculty and
@@ -60,7 +60,7 @@ Once these two programs are installed, you can then log into SMU HPC systems:
     7.  Press "Open". Select "Yes" if you presented with a "PuTTY
         Security Alert" window.
     8.  At the command prompt, type your username, which is the first
-        part of your SMU email address, followed by *enter*.
+        part of your SMU NetID, followed by *enter*.
     9.  At the command prompt, type your SMU password followed by
         *enter*.
 ```
@@ -153,7 +153,7 @@ you want to have key-based access to SMU HPC resources:
 10. Type \"\<cluster\>.smu.edu\" into the \"Host Name\" field, where
     "\<cluster\>" is either "m3" or "superpod"
 11. Press \"Open\".
-12. Enter your SMU username (first part of your SMU email address).
+12. Enter your SMU username (first part of your SMU NetID).
 13. Enter your SMU password.
 14. At the command prompt type `echo "` (note the single double quote at
     the end).

@@ -9,7 +9,7 @@ which can be requested as documented in
 {doc}`accounts`.
 
 1.  Go to [hpc.m3.smu.edu](https://hpc.m3.smu.edu/).
-2.  Sign in using your SMU ID and SMU password
+2.  Sign in using your SMU NetID and SMU password
 
 ## Interactive Apps
 
