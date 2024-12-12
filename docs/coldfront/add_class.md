@@ -46,13 +46,13 @@ This is not especially common. Do not add students that will be enrolled in the 
     :width: 400px
     ```
 
-2. If you are searching by “Exact Username Only” search for the user via SMU email alias
+2. If you are searching by “Exact Username Only” search for the user via their username (first part of their NetID)
 
     ```{note}
     If you are adding multiple users, you can list them all in the Search String box
     ```
 
-3. If you are searching by “All Fields” you can enter last name or SMU email alias
+3. If you are searching by “All Fields” you can enter last name or username (first part of their NetID)
 
 4. Once you’ve found and selected the user(s), select the role the user should have
 
