@@ -12,8 +12,7 @@ parts:
   - file: accounts.md
   - file: access.md
   - file: portal.md
-  - file: m3_migration.md
-  - file: mp_update.md
+  - file: work_deprecation.md
 - caption: ColdFront
   chapters:
   - file: coldfront/quick_start.md
