@@ -26,7 +26,7 @@ By **August 15, 2025**, the quotas for personal `$WORK` directories will be set 
 
 ## Example of Quota changes
 
-If your quota is 8TB (the default) and you have 3.45 TB of data in $WORK:
+If your quota is 8TB (the default) and you have 3.45 TB of data in `$WORK`:
 
 **January 15, 2025**:
 quota = min(current usage + 2%, current usage + 0.2TB) = min(3.45 TB * 1.02, 3.45TB + 0.2TB) = min(3.519TB, 3.65TB) = 3.519 TB
