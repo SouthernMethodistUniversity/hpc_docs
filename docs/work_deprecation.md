@@ -14,7 +14,7 @@ By **August 15, 2025**, the quotas for personal `$WORK` directories will be set 
 - Personal `$WORK` directories will no longer exist.
 - Modifying existing files or creating new files will not be possible when the quota is exceeded.
 - Applications depending on files in `$WORK` may behave unexpectedly when the quota is exceeded.
-- Many users have Conda environments installed in `$WORK`, we expect these will continue to function during the transition. However, they will need to be rebuilt an another location.
+- Many users have Conda environments installed in `$WORK`, we expect these will continue to function during the transition. However, they will need to be rebuilt in another location before the end of the deprecation timeline (August 15, 2025).
 
 ## Required Actions
 
