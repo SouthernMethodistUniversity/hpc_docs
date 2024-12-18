@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SuperPod System Update &#8212; SMU HPC Documentation</title>
+    <title>Personal $WORK deprecation &#8212; SMU HPC Documentation</title>
   
   
   
@@ -62,13 +62,15 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'mp_update';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'work_deprecation';</script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Quick Start" href="coldfront/quick_start.html" />
-    <link rel="prev" title="M3 Migration" href="m3_migration.html" />
+    <link rel="prev" title="HPC Portal" href="portal.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,8 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="m3_migration.html">M3 Migration</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">SuperPod System Update</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Personal $WORK deprecation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
 <ul class="nav bd-sidenav">
@@ -306,7 +307,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/mp_update.md" target="_blank"
+      <li><a href="_sources/work_deprecation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -390,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>SuperPod System Update</h1>
+    <h1>Personal $WORK deprecation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -400,21 +401,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system-upgrade">Operating system upgrade</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-nvidia-drivers">Updated Nvidia drivers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-slurm-scheduler">Updated SLURM Scheduler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#january-15-2025">January 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#february-15-2025">February 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#march-15-2025">March 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#april-15-2025">April 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#may-15-2025">May 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#june-15-2025">June 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#july-15-2025">July 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#august-15-2025">August 15, 2025:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impacts">Impacts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiled-programs">Compiled programs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">Pip</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-workarounds">Temporary Workarounds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
 </ul>
             </nav>
         </div>
@@ -426,58 +426,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="superpod-system-update">
-<h1>SuperPod System Update<a class="headerlink" href="#superpod-system-update" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="personal-work-deprecation">
+<h1>Personal $WORK deprecation<a class="headerlink" href="#personal-work-deprecation" title="Permalink to this heading">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Personal Work directories are deprecated. Any data you need to keep needs to be moved to a ColdFront project with a storage allocation.</p>
+</div>
 <section id="what-is-changing">
 <h2>What is changing<a class="headerlink" href="#what-is-changing" title="Permalink to this heading">#</a></h2>
-<section id="operating-system-upgrade">
-<h3>Operating system upgrade<a class="headerlink" href="#operating-system-upgrade" title="Permalink to this heading">#</a></h3>
-<p>The operating system on the SuperPod is being upgraded to Ubuntu 22.04 from Ubuntu 20.04.</p>
+<p>Beginning <strong>January 15, 2025</strong> the quotas for personal $WORK directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.</p>
+<p>By <strong>August 15, 2025</strong>, the quotas for personal <span class="math notranslate nohighlight">\(WORK directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal \)</span>WORK directories will be subject to deprovisioning.</p>
 </section>
-<section id="updated-nvidia-drivers">
-<h3>Updated Nvidia drivers<a class="headerlink" href="#updated-nvidia-drivers" title="Permalink to this heading">#</a></h3>
-<p>The Nvidia drivers are being updated to a version that supports Cuda 12.0. These drivers will support Cuda 12.x will be available using compatibility libraies.</p>
+<section id="known-and-possible-impacts">
+<h2>Known and Possible Impacts<a class="headerlink" href="#known-and-possible-impacts" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Personal $WORK directories will no longer exist.</p></li>
+<li><p>Modifying existing files or creating new files will not be possible when the quota is exceeded.</p></li>
+<li><p>Applications depending on files in $WORK may behave unexpectedly when the quota is exceeded.</p></li>
+<li><p>Many users have Conda environments installed in $WORK, we expect these will continue to function during the transition. However, they will need to be rebuilt an another location.</p></li>
+</ul>
 </section>
-<section id="updated-slurm-scheduler">
-<h3>Updated SLURM Scheduler<a class="headerlink" href="#updated-slurm-scheduler" title="Permalink to this heading">#</a></h3>
-<p>SLURM is being updated to improve “fairness” in the job queue. Priority in the queue will depend on several factors, including how many jobs an user has run recently and how long a job has been in the queue.</p>
+<section id="required-actions">
+<h2>Required Actions<a class="headerlink" href="#required-actions" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Any data currently stored in $WORK must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.</p></li>
+<li><p>Any personal software installations in <span class="math notranslate nohighlight">\(WORK, including Conda environments, will need to be reinstalled in a different location (\)</span>HOME directories or ColdFRont managed storage allocations)</p></li>
+</ul>
 </section>
+<section id="example-of-quota-changes">
+<h2>Example of Quota changes<a class="headerlink" href="#example-of-quota-changes" title="Permalink to this heading">#</a></h2>
+<p>If your quota is 8TB (the default) and you have 3.45 TB of data in $WORK:</p>
+<section id="january-15-2025">
+<h3>January 15, 2025:<a class="headerlink" href="#january-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = min(current usage + 2%, current usage + 0.2TB) = min(3.45 TB * 1.02, 3.45TB + 0.2TB) = min(3.519TB, 3.65TB) = 3.519 TB</p>
 </section>
-<section id="impacts">
-<h2>Impacts<a class="headerlink" href="#impacts" title="Permalink to this heading">#</a></h2>
-<section id="compiled-programs">
-<h3>Compiled programs<a class="headerlink" href="#compiled-programs" title="Permalink to this heading">#</a></h3>
-<p>Although they may work, we <strong>strongly recommend</strong> recompiling programs if possible.</p>
+<section id="february-15-2025">
+<h3>February 15, 2025:<a class="headerlink" href="#february-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = 0.85 * (Jan 15 quota) = 0.85 * 3.519 TB = 2.991 TB</p>
 </section>
-<section id="conda">
-<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this heading">#</a></h3>
-<p>We expect most <code class="docutils literal notranslate"><span class="pre">Conda</span></code> environments to continue to function. In some cases, rebuilding environments may imporve performance.</p>
+<section id="march-15-2025">
+<h3>March 15, 2025:<a class="headerlink" href="#march-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = (2.991 TB - 0.15 * 3.519 TB) = 2.463 TB</p>
 </section>
-<section id="pip">
-<h3>Pip<a class="headerlink" href="#pip" title="Permalink to this heading">#</a></h3>
-<p>Some packages installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code> may need to be reinstalled, especially packages that were compiled.</p>
+<section id="april-15-2025">
+<h3>April 15, 2025:<a class="headerlink" href="#april-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = (2.463 TB - 0.15 * 3.519 TB) = 1.935 TB</p>
 </section>
-<section id="modules">
-<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h3>
-<p>Although we have reinstalled most of the packages, most module names have been changed. Scripts loading modules may need to be updated.</p>
+<section id="may-15-2025">
+<h3>May 15, 2025:<a class="headerlink" href="#may-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = (1.935 TB - 0.15 * 3.519 TB) = 1.408 TB</p>
 </section>
+<section id="june-15-2025">
+<h3>June 15, 2025:<a class="headerlink" href="#june-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = (1.408 TB - 0.15 * 3.519 TB) = 0.880 TB</p>
 </section>
-<section id="temporary-workarounds">
-<h2>Temporary Workarounds<a class="headerlink" href="#temporary-workarounds" title="Permalink to this heading">#</a></h2>
-<p>In order to minimize impacts on existing workflows, we have created a containerized version of Ubuntu 20.04 closely resembling the original SuperPod install. To use this in your job scripts, you can add the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --container-image /hpc/m3/containers/mp_base.sqsh</span>
-<span class="c1">#SBATCH --container-mounts &quot;/hpc/mp,/cm/shared/apps/slurm/var/munge,/cm/shared/apps/slurm/var/etc/slurm/,/lib/security,/var/run/munge,/run/munge,/var/lib/sss,/etc/munge,/work/users/USERNAME,/lustre/smuexa01/client/users/USERNAME,/users/USERNAME&quot;</span>
-<span class="c1">#SBATCH --container-workdir &quot;/path/to/workdir&quot; </span>
-</pre></div>
+<section id="july-15-2025">
+<h3>July 15, 2025:<a class="headerlink" href="#july-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = (0.880 TB - 0.15 * 3.519 TB) = 0.352 TB</p>
+</section>
+<section id="august-15-2025">
+<h3>August 15, 2025:<a class="headerlink" href="#august-15-2025" title="Permalink to this heading">#</a></h3>
+<p>quota = (current quota - 15% Jan 15 quota) = (0.352 TB - 0.15 * 3.519 TB) = 0</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Quotas will be assessed on a regular basis and lowered to reflect usage.</p>
 </div>
-<p>Change <code class="docutils literal notranslate"><span class="pre">USERNAME</span></code> in the above to your username and <code class="docutils literal notranslate"><span class="pre">/path/to/workdir</span></code> to the location you expect commands to be run from. Without <code class="docutils literal notranslate"><span class="pre">--container-workdir</span></code> you will enter the container at <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
-<p>NOTE: <code class="docutils literal notranslate"><span class="pre">srun</span></code> calls from inside a job script will inherit the <code class="docutils literal notranslate"><span class="pre">--container-workdir</span></code>, so if you <code class="docutils literal notranslate"><span class="pre">cd</span></code> inside your job script before calling srun it may not work as expected.</p>
-<p>NOTE: Containers cannot be nested. Existing workflows using a container should continue to work without modification.</p>
 </section>
-<section id="help">
-<h2>Help<a class="headerlink" href="#help" title="Permalink to this heading">#</a></h2>
-<p>If you need help adjusting your workflows, need additional software installed, or encounter issues, please let us know at <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=HPC">SMU HPC
-Support</a>.</p>
 </section>
 </section>
 
@@ -512,12 +526,12 @@ Support</a>.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="m3_migration.html"
+       href="portal.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">M3 Migration</p>
+        <p class="prev-next-title">HPC Portal</p>
       </div>
     </a>
     <a class="right-next"
@@ -544,21 +558,20 @@ Support</a>.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operating-system-upgrade">Operating system upgrade</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-nvidia-drivers">Updated Nvidia drivers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-slurm-scheduler">Updated SLURM Scheduler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#january-15-2025">January 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#february-15-2025">February 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#march-15-2025">March 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#april-15-2025">April 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#may-15-2025">May 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#june-15-2025">June 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#july-15-2025">July 15, 2025:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#august-15-2025">August 15, 2025:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impacts">Impacts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compiled-programs">Compiled programs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">Pip</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temporary-workarounds">Temporary Workarounds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
 </ul>
   </nav></div>
 
