@@ -28,35 +28,35 @@ By **August 15, 2025**, the quotas for personal `$WORK` directories will be set 
 
 If your quota is 8TB (the default) and you have 3.45 TB of data in $WORK:
 
-- January 15, 2025:
+**January 15, 2025**:
 
 quota = min(current usage + 2%, current usage + 0.2TB) = min(3.45 TB * 1.02, 3.45TB + 0.2TB) = min(3.519TB, 3.65TB) = 3.519 TB
 
-- February 15, 2025:
+**February 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = 0.85 * (Jan 15 quota) = 0.85 * 3.519 TB = 2.991 TB
 
-- March 15, 2025:
+**March 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = (2.991 TB - 0.15 * 3.519 TB) = 2.463 TB
 
-- April 15, 2025:
+**April 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = (2.463 TB - 0.15 * 3.519 TB) = 1.935 TB
 
-- May 15, 2025:
+**May 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = (1.935 TB - 0.15 * 3.519 TB) = 1.408 TB
 
-- June 15, 2025:
+**June 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = (1.408 TB - 0.15 * 3.519 TB) = 0.880 TB
 
-- July 15, 2025:
+**July 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = (0.880 TB - 0.15 * 3.519 TB) = 0.352 TB
 
-- August 15, 2025:
+**August 15, 2025**:
 
 quota = (current quota - 15% Jan 15 quota) = (0.352 TB - 0.15 * 3.519 TB) = 0
 
