@@ -62,15 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'work_deprecation';</script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick Start" href="coldfront/quick_start.html" />
-    <link rel="prev" title="HPC Portal" href="portal.html" />
+    <link rel="next" title="About" href="about.html" />
+    <link rel="prev" title="Welcome" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,8 +170,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Announcements</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Personal $WORK deprecation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="about/queues.html">Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about/contact.html">Contact</a></li>
@@ -185,7 +187,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Personal $WORK deprecation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
 <ul class="nav bd-sidenav">
@@ -434,23 +435,23 @@ document.write(`
 </div>
 <section id="what-is-changing">
 <h2>What is changing<a class="headerlink" href="#what-is-changing" title="Permalink to this heading">#</a></h2>
-<p>Beginning <strong>January 15, 2025</strong> the quotas for personal $WORK directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.</p>
-<p>By <strong>August 15, 2025</strong>, the quotas for personal <span class="math notranslate nohighlight">\(WORK directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal \)</span>WORK directories will be subject to deprovisioning.</p>
+<p>Beginning <strong>January 15, 2025</strong> the quotas for personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.</p>
+<p>By <strong>August 15, 2025</strong>, the quotas for personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will be subject to deprovisioning.</p>
 </section>
 <section id="known-and-possible-impacts">
 <h2>Known and Possible Impacts<a class="headerlink" href="#known-and-possible-impacts" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Personal $WORK directories will no longer exist.</p></li>
+<li><p>Personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will no longer exist.</p></li>
 <li><p>Modifying existing files or creating new files will not be possible when the quota is exceeded.</p></li>
-<li><p>Applications depending on files in $WORK may behave unexpectedly when the quota is exceeded.</p></li>
-<li><p>Many users have Conda environments installed in $WORK, we expect these will continue to function during the transition. However, they will need to be rebuilt an another location.</p></li>
+<li><p>Applications depending on files in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> may behave unexpectedly when the quota is exceeded.</p></li>
+<li><p>Many users have Conda environments installed in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, we expect these will continue to function during the transition. However, they will need to be rebuilt an another location.</p></li>
 </ul>
 </section>
 <section id="required-actions">
 <h2>Required Actions<a class="headerlink" href="#required-actions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Any data currently stored in $WORK must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.</p></li>
-<li><p>Any personal software installations in <span class="math notranslate nohighlight">\(WORK, including Conda environments, will need to be reinstalled in a different location (\)</span>HOME directories or ColdFRont managed storage allocations)</p></li>
+<li><p>Any data currently stored in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.</p></li>
+<li><p>Any personal software installations in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFRont managed storage allocations)</p></li>
 </ul>
 </section>
 <section id="example-of-quota-changes">
@@ -526,20 +527,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="portal.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">HPC Portal</p>
+        <p class="prev-next-title">Welcome</p>
       </div>
     </a>
     <a class="right-next"
-       href="coldfront/quick_start.html"
+       href="about.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quick Start</p>
+        <p class="prev-next-title">About</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
