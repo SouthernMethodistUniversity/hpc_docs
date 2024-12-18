@@ -21,7 +21,7 @@ By **August 15, 2025**, the quotas for personal `$WORK` directories will be set 
 - Any data currently stored in `$WORK` must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.
 - Any personal software installations in `$WORK`, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFRont managed storage allocations)
 
-:::{recommendation} We strongly recommend taking time to assess which files you need to keep and which files can be deleted. The overall performance of our filesystems is reduced for all users as the storage space fills up.
+:::{important} We strongly recommend taking time to assess which files you need to keep and which files can be deleted. The overall performance of our filesystems is reduced for all users as the storage space fills up.
 :::
 
 ## Example of Quota changes
