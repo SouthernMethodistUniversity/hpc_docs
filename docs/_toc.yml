@@ -3,6 +3,9 @@ format: jb-book
 defaults:
   numbered: false
 parts:
+- caption: Announcements
+  chapters:
+  - file: work_deprecation.md
 - caption: Getting Started
   chapters:
   - file: about.md
@@ -12,7 +15,6 @@ parts:
   - file: accounts.md
   - file: access.md
   - file: portal.md
-  - file: work_deprecation.md
 - caption: ColdFront
   chapters:
   - file: coldfront/quick_start.md
