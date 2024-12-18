@@ -405,17 +405,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#january-15-2025">January 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#february-15-2025">February 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#march-15-2025">March 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#april-15-2025">April 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#may-15-2025">May 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#june-15-2025">June 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#july-15-2025">July 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#august-15-2025">August 15, 2025:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a></li>
 </ul>
             </nav>
         </div>
@@ -457,42 +447,42 @@ document.write(`
 <section id="example-of-quota-changes">
 <h2>Example of Quota changes<a class="headerlink" href="#example-of-quota-changes" title="Permalink to this heading">#</a></h2>
 <p>If your quota is 8TB (the default) and you have 3.45 TB of data in $WORK:</p>
-<section id="january-15-2025">
-<h3>January 15, 2025:<a class="headerlink" href="#january-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>January 15, 2025:</p></li>
+</ul>
 <p>quota = min(current usage + 2%, current usage + 0.2TB) = min(3.45 TB * 1.02, 3.45TB + 0.2TB) = min(3.519TB, 3.65TB) = 3.519 TB</p>
-</section>
-<section id="february-15-2025">
-<h3>February 15, 2025:<a class="headerlink" href="#february-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>February 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = 0.85 * (Jan 15 quota) = 0.85 * 3.519 TB = 2.991 TB</p>
-</section>
-<section id="march-15-2025">
-<h3>March 15, 2025:<a class="headerlink" href="#march-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>March 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = (2.991 TB - 0.15 * 3.519 TB) = 2.463 TB</p>
-</section>
-<section id="april-15-2025">
-<h3>April 15, 2025:<a class="headerlink" href="#april-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>April 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = (2.463 TB - 0.15 * 3.519 TB) = 1.935 TB</p>
-</section>
-<section id="may-15-2025">
-<h3>May 15, 2025:<a class="headerlink" href="#may-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>May 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = (1.935 TB - 0.15 * 3.519 TB) = 1.408 TB</p>
-</section>
-<section id="june-15-2025">
-<h3>June 15, 2025:<a class="headerlink" href="#june-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>June 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = (1.408 TB - 0.15 * 3.519 TB) = 0.880 TB</p>
-</section>
-<section id="july-15-2025">
-<h3>July 15, 2025:<a class="headerlink" href="#july-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>July 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = (0.880 TB - 0.15 * 3.519 TB) = 0.352 TB</p>
-</section>
-<section id="august-15-2025">
-<h3>August 15, 2025:<a class="headerlink" href="#august-15-2025" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>August 15, 2025:</p></li>
+</ul>
 <p>quota = (current quota - 15% Jan 15 quota) = (0.352 TB - 0.15 * 3.519 TB) = 0</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Quotas will be assessed on a regular basis and lowered to reflect usage.</p>
 </div>
-</section>
 </section>
 </section>
 
@@ -562,17 +552,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#january-15-2025">January 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#february-15-2025">February 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#march-15-2025">March 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#april-15-2025">April 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#may-15-2025">May 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#june-15-2025">June 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#july-15-2025">July 15, 2025:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#august-15-2025">August 15, 2025:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a></li>
 </ul>
   </nav></div>
 
