@@ -5,21 +5,21 @@
 
 ## What is changing
 
-Beginning **January 15, 2025** the quotas for personal $WORK directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.
+Beginning **January 15, 2025** the quotas for personal `$WORK` directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.
 
-By **August 15, 2025**, the quotas for personal $WORK directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal $WORK directories will be subject to deprovisioning.
+By **August 15, 2025**, the quotas for personal `$WORK` directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal `$WORK` directories will be subject to deprovisioning.
 
 ## Known and Possible Impacts
 
-- Personal $WORK directories will no longer exist.
+- Personal `$WORK` directories will no longer exist.
 - Modifying existing files or creating new files will not be possible when the quota is exceeded.
-- Applications depending on files in $WORK may behave unexpectedly when the quota is exceeded.
-- Many users have Conda environments installed in $WORK, we expect these will continue to function during the transition. However, they will need to be rebuilt an another location.
+- Applications depending on files in `$WORK` may behave unexpectedly when the quota is exceeded.
+- Many users have Conda environments installed in `$WORK`, we expect these will continue to function during the transition. However, they will need to be rebuilt an another location.
 
 ## Required Actions
 
-- Any data currently stored in $WORK must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.
-- Any personal software installations in $WORK, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFRont managed storage allocations)
+- Any data currently stored in `$WORK` must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.
+- Any personal software installations in `$WORK`, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFRont managed storage allocations)
 
 :::{recommendation} We strongly recommend taking time to assess which files you need to keep and which files can be deleted. The overall performance of our filesystems is reduced for all users as the storage space fills up.
 :::
