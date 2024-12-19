@@ -37,6 +37,9 @@ https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.ht
 January 15, 2025:
 =================
 
+Personal $WORK directories will begin to have their quotas decreased as they are phased out:
+https://southernmethodistuniversity.github.io/hpc_docs/work_deprecation.html
+
 All data stored in personal $WORK directories and shared group directories
 must be moved to storage allocations managed by ColdFront.
 
