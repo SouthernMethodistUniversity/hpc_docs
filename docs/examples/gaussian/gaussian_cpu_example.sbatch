@@ -65,6 +65,6 @@ g16 < ${input_file}
 # You should make sure you are keeping the files you need
 # this is just an example of a plausible workflow.
 # For instance, you may want to keep the checkpoint files
-mv *.rfw SLURM_SUBMIT_DIR/
-cd SLURM_SUBMIT_DIR
+mv *.rfw ${SLURM_SUBMIT_DIR}/
+cd ${SLURM_SUBMIT_DIR}
 rm -rf ${job_dir}
