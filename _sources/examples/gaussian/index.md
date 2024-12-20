@@ -7,7 +7,7 @@ Access to Gaussian requires permission. Please open a help ticket by emailing
 in the subject line.
 :::
 
-**Gaussian** Gaussian series of electronic structure programs, used by chemists, chemical engineers, biochemists, physicists and other scientists worldwide.
+**Gaussian** Gaussian is a series of electronic structure programs, used by chemists, chemical engineers, biochemists, physicists and other scientists worldwide.
 
 **Gaussian homepage**: [gaussian.com/](https://gaussian.com/)
 
