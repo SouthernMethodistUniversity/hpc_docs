@@ -2,9 +2,9 @@
 #SBATCH -J gaussian            # job name shown in queue
 #SBATCH -o gaussian_%j.out     # output file, %j is the job id number
 #SBATCH -p dev                 # request the dev queue
-#SBATCH -c 128                 # request all 128 GPUs
-#SBATCH --mem=0                # requests all of the memory
-#SBATCH -t 01:00:00            # request 1 hour
+#SBATCH -c 16                  # request 16 CPU cores
+#SBATCH --mem=1G               # Request 1GB of memory
+#SBATCH -t 00:01:00            # request 1 minute
 #SBATCH -A peruna_project_0001 # example account
 
 # specify the input file
