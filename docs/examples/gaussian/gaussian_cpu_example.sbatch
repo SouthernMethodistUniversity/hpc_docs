@@ -62,6 +62,9 @@ g16 < ${input_file}
 # Note, if the job runs out of time, memory, or
 # fails in some other way, these commands may not be reached
 # This assumes the checkpoint file has a .chk extension
+
+# You should make sure you are keeping the files you need
+# this is just an example of a plausible workflow.
 mv *.chk SLURM_SUBMIT_DIR/
 cd SLURM_SUBMIT_DIR
 rm -rf ${job_dir}
