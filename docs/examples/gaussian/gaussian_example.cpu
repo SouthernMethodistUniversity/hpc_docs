@@ -1,5 +1,4 @@
 %CPU=
-%GPUCPU=
 %Mem=
 %Chk=hexakis.chk
 #P B3LYP/cc-pVDZ Opt Freq
