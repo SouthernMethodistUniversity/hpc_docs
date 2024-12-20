@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>UNIX &amp; Linux &#8212; SMU HPC Documentation</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/unix/unix';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -71,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="UNIX and Linux Shells" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,6 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -156,11 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../../_static/smu_logo.jpg" class="logo__image only-light" alt="SMU HPC Documentation - Home"/>
-    <script>document.write(`<img src="../../_static/smu_logo.jpg" class="logo__image only-dark" alt="SMU HPC Documentation - Home"/>`);</script>
+    <img src="../../_static/smu_logo.jpg" class="logo__image only-dark pst-js-only" alt="SMU HPC Documentation - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,12 +176,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../about/queues.html">Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/contact.html">Contact</a></li>
 
+
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
 
 
@@ -190,11 +191,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../coldfront/quick_start.html">Quick Start</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../coldfront/quick_start.html">Quick Start</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../coldfront/qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coldfront/qs_student.html">Getting Started in ColdFront as a Student</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/add_change_project.html">Add or Change Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/add_class.html">Add a Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/add_remove_users.html">Add or Remove Users</a></li>
@@ -209,47 +210,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/chemistry.html">Chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/amber/index.html">Amber</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/fluid_dynamics.html">Fluid Dynamics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/fluid_dynamics.html">Fluid Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/openfoam/index.html">OpenFoam (.com)</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/stata/index.html">Stata</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/conda/README.html">Conda</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">UNIX and Linux Shells</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">UNIX and Linux Shells</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">UNIX &amp; Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scripting.html">Scripting</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Modules</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/slurm.html">Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/slurm.html">Slurm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../slurm/best_practices.html">Best Practices for Jobs</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../globus_box_transfers.html">Using Globus to transfer data to/from Box</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../containers/containers.html">Containers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cpp/intro.html">C++</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_1.html">Session 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_2.html">Session 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_3.html">Session 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_4.html">Session 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_5.html">Session 5</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r/environments.html">R Virtual Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r/slurm.html">Submitting R Jobs</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies and Guidelines</span></p>
 <ul class="nav bd-sidenav">
@@ -262,14 +263,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -278,14 +284,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -361,27 +367,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -531,12 +529,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="unix-linux">
-<h1>UNIX &amp; Linux<a class="headerlink" href="#unix-linux" title="Permalink to this heading">#</a></h1>
+<h1>UNIX &amp; Linux<a class="headerlink" href="#unix-linux" title="Link to this heading">#</a></h1>
 <section id="introduction-to-unix">
-<h2>Introduction to UNIX<a class="headerlink" href="#introduction-to-unix" title="Permalink to this heading">#</a></h2>
+<h2>Introduction to UNIX<a class="headerlink" href="#introduction-to-unix" title="Link to this heading">#</a></h2>
 <p>The internet is full of <a class="reference external" href="https://www.google.com/search?q=unix+tutorial">useful UNIX/Linux
 tutorials</a>; this is just one
 more, but hopefully it will be brief yet thorough enough to learn the
@@ -545,9 +543,9 @@ this documentation. The contents of this tutorial are adapted from an <a class="
 UNIX tutorial</a> by <a class="reference external" href="https://www.linkedin.com/in/mstonebank">Michael
 Stonebank</a>.</p>
 <section id="introduction-to-the-unix-and-unix-like-operating-systems">
-<h3>Introduction to the UNIX and UNIX-Like Operating Systems<a class="headerlink" href="#introduction-to-the-unix-and-unix-like-operating-systems" title="Permalink to this heading">#</a></h3>
+<h3>Introduction to the UNIX and UNIX-Like Operating Systems<a class="headerlink" href="#introduction-to-the-unix-and-unix-like-operating-systems" title="Link to this heading">#</a></h3>
 <section id="what-is-unix-linux">
-<h4>What is UNIX/Linux?<a class="headerlink" href="#what-is-unix-linux" title="Permalink to this heading">#</a></h4>
+<h4>What is UNIX/Linux?<a class="headerlink" href="#what-is-unix-linux" title="Link to this heading">#</a></h4>
 <p>UNIX is an operating system which was first developed in the 1960s, and
 has been under constant development ever since. By operating system, we
 mean the suite of programs which make the computer work. It is a stable,
@@ -559,18 +557,18 @@ graphical program, or for when there is no windows interface available,
 for example, in a ssh session.</p>
 </section>
 <section id="types-of-unix">
-<h4>Types of UNIX<a class="headerlink" href="#types-of-unix" title="Permalink to this heading">#</a></h4>
+<h4>Types of UNIX<a class="headerlink" href="#types-of-unix" title="Link to this heading">#</a></h4>
 <p>There are many different versions of UNIX, although they share common
 similarities. The most popular varieties of UNIX are GNU/Linux and macOS.
 Within the “Linux” category, there are a multitude of flavors: Debian
 (Ubuntu, Mint, Crunchbang), RedHat (RHEL, Fedora, CentOS), SuSE, etc.</p>
 </section>
 <section id="the-unix-operating-system">
-<h4>The UNIX operating system<a class="headerlink" href="#the-unix-operating-system" title="Permalink to this heading">#</a></h4>
+<h4>The UNIX operating system<a class="headerlink" href="#the-unix-operating-system" title="Link to this heading">#</a></h4>
 <p>The UNIX operating system is made up of three parts; the kernel, the
 shell, and the programs.</p>
 <section id="the-kernel">
-<h5>The kernel<a class="headerlink" href="#the-kernel" title="Permalink to this heading">#</a></h5>
+<h5>The kernel<a class="headerlink" href="#the-kernel" title="Link to this heading">#</a></h5>
 <p>The kernel of UNIX is the hub of the operating system: it allocates time
 and memory to programs and handles the filestore and communications in
 response to system calls.</p>
@@ -587,7 +585,7 @@ running, the shell then returns the UNIX prompt <code class="docutils literal no
 indicating that it is waiting for further commands.</p>
 </section>
 <section id="the-shell">
-<h5>The shell<a class="headerlink" href="#the-shell" title="Permalink to this heading">#</a></h5>
+<h5>The shell<a class="headerlink" href="#the-shell" title="Link to this heading">#</a></h5>
 <p>The shell acts as an interface between the user and the kernel. When a
 user logs in, the login program checks the username and password, and
 then starts another program called the shell. The shell is a command
@@ -613,7 +611,7 @@ and down the list or type history for a list of previous commands.</p></li>
 </section>
 </section>
 <section id="files-and-processes">
-<h4>Files and processes<a class="headerlink" href="#files-and-processes" title="Permalink to this heading">#</a></h4>
+<h4>Files and processes<a class="headerlink" href="#files-and-processes" title="Link to this heading">#</a></h4>
 <p>Everything in UNIX is either a file or a process.</p>
 <p>A process is an executing program identified by a unique PID (process
 identifier).</p>
@@ -631,7 +629,7 @@ a mixture of other directories (subdirectories) and ordinary files.</p></li>
 </ul>
 </section>
 <section id="the-directory-structure">
-<h4>The Directory Structure<a class="headerlink" href="#the-directory-structure" title="Permalink to this heading">#</a></h4>
+<h4>The Directory Structure<a class="headerlink" href="#the-directory-structure" title="Link to this heading">#</a></h4>
 <p>All the files are grouped together in the directory structure. The
 file-system is arranged in a hierarchical structure, like an inverted
 tree. The top of the hierarchy is traditionally called <em>root</em> (written
@@ -646,11 +644,11 @@ sub-directories (<code class="docutils literal notranslate"><span class="pre">do
 </section>
 </section>
 <section id="moving-around-the-filesystem">
-<h3>Moving Around the Filesystem<a class="headerlink" href="#moving-around-the-filesystem" title="Permalink to this heading">#</a></h3>
+<h3>Moving Around the Filesystem<a class="headerlink" href="#moving-around-the-filesystem" title="Link to this heading">#</a></h3>
 <section id="listing-files-and-directories">
-<h4>Listing files and directories<a class="headerlink" href="#listing-files-and-directories" title="Permalink to this heading">#</a></h4>
+<h4>Listing files and directories<a class="headerlink" href="#listing-files-and-directories" title="Link to this heading">#</a></h4>
 <section id="ls-list">
-<h5>ls (list)<a class="headerlink" href="#ls-list" title="Permalink to this heading">#</a></h5>
+<h5>ls (list)<a class="headerlink" href="#ls-list" title="Link to this heading">#</a></h5>
 <p>When you first login, your current working directory is your home
 directory. Your home directory has the same name as your user-name, e.g.
 <code class="docutils literal notranslate"><span class="pre">rkalescky</span></code>, and it is where your personal files and subdirectories
@@ -687,9 +685,9 @@ command. (See later in this tutorial).</p>
 </section>
 </section>
 <section id="making-directories">
-<h4>Making Directories<a class="headerlink" href="#making-directories" title="Permalink to this heading">#</a></h4>
+<h4>Making Directories<a class="headerlink" href="#making-directories" title="Link to this heading">#</a></h4>
 <section id="mkdir-make-directory">
-<h5>mkdir (make directory)<a class="headerlink" href="#mkdir-make-directory" title="Permalink to this heading">#</a></h5>
+<h5>mkdir (make directory)<a class="headerlink" href="#mkdir-make-directory" title="Link to this heading">#</a></h5>
 <p>We will now make a subdirectory in your home directory to hold the files
 you will be creating and using in the course of this tutorial. To make a
 subdirectory called <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> in your current working directory type</p>
@@ -707,9 +705,9 @@ subdirectory called <code class="docutils literal notranslate"><span class="pre"
 </div></section>
 </section>
 <section id="changing-to-a-different-directory">
-<h4>Changing to a different directory<a class="headerlink" href="#changing-to-a-different-directory" title="Permalink to this heading">#</a></h4>
+<h4>Changing to a different directory<a class="headerlink" href="#changing-to-a-different-directory" title="Link to this heading">#</a></h4>
 <section id="cd-change-directory">
-<h5>cd (change directory)<a class="headerlink" href="#cd-change-directory" title="Permalink to this heading">#</a></h5>
+<h5>cd (change directory)<a class="headerlink" href="#cd-change-directory" title="Link to this heading">#</a></h5>
 <p>The command <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">directory</span></code> means change the current working directory
 to <code class="docutils literal notranslate"><span class="pre">directory</span></code>. The current working directory may be thought of as the
 directory you are in, i.e. your current position in the file-system
@@ -721,13 +719,13 @@ tree.</p>
 </div><p>Type <code class="docutils literal notranslate"><span class="pre">ls</span></code> to see the contents (which should be empty).</p>
 </section>
 <section id="exercise">
-<h5>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h5>
 <p>Make another directory inside the <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> directory called
 <code class="docutils literal notranslate"><span class="pre">backups</span></code>.</p>
 </section>
 </section>
 <section id="the-directories-and">
-<h4>The directories . and ..<a class="headerlink" href="#the-directories-and" title="Permalink to this heading">#</a></h4>
+<h4>The directories . and ..<a class="headerlink" href="#the-directories-and" title="Link to this heading">#</a></h4>
 <p>While still in the <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> directory, type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-a
 </pre></div>
@@ -735,7 +733,7 @@ tree.</p>
 </div><p>As you can see, in the <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> directory (and in all other
 directories), there are two special directories called <code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">..</span></code></p>
 <section id="the-current-directory">
-<h5>. &lt;. (the current directory)&gt;<a class="headerlink" href="#the-current-directory" title="Permalink to this heading">#</a></h5>
+<h5>. &lt;. (the current directory)&gt;<a class="headerlink" href="#the-current-directory" title="Link to this heading">#</a></h5>
 <p>In UNIX, <code class="docutils literal notranslate"><span class="pre">.</span></code> means the current directory, so typing</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>.
 </pre></div>
@@ -747,7 +745,7 @@ the current directory will save a lot of typing, as we shall see later
 in the tutorial.</p>
 </section>
 <section id="the-parent-directory">
-<h5><code class="docutils literal notranslate"><span class="pre">..</span></code> (the parent directory)<a class="headerlink" href="#the-parent-directory" title="Permalink to this heading">#</a></h5>
+<h5><code class="docutils literal notranslate"><span class="pre">..</span></code> (the parent directory)<a class="headerlink" href="#the-parent-directory" title="Link to this heading">#</a></h5>
 <p>The other “special” directory in UNIX, <code class="docutils literal notranslate"><span class="pre">..</span></code>, refers to the parent of
 the current directory, so typing</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
@@ -763,9 +761,9 @@ file-system.</p>
 </div></section>
 </section>
 <section id="pathnames">
-<h4>Pathnames<a class="headerlink" href="#pathnames" title="Permalink to this heading">#</a></h4>
+<h4>Pathnames<a class="headerlink" href="#pathnames" title="Link to this heading">#</a></h4>
 <section id="pwd-print-working-directory">
-<h5>pwd (print working directory)<a class="headerlink" href="#pwd-print-working-directory" title="Permalink to this heading">#</a></h5>
+<h5>pwd (print working directory)<a class="headerlink" href="#pwd-print-working-directory" title="Link to this heading">#</a></h5>
 <p>Pathnames enable you to work out where you are in relation to the whole
 file-system. For example, to find out the absolute pathname of your
 home-directory, type <code class="docutils literal notranslate"><span class="pre">cd</span></code> to get back to your home-directory and then
@@ -790,15 +788,15 @@ sub-directory, which is in the top-level root directory called <code class="docu
 <p>UNIX directory structure example</p>
 </div></section>
 <section id="id1">
-<h5>Exercise<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
 <p>Use the commands <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code> and <code class="docutils literal notranslate"><span class="pre">pwd</span></code> to explore the file-system.</p>
 <p>(Remember, if you get lost, type <code class="docutils literal notranslate"><span class="pre">cd</span></code> by itself to return home).</p>
 </section>
 </section>
 <section id="more-about-home-directories-and-pathnames">
-<h4>More about home directories and pathnames<a class="headerlink" href="#more-about-home-directories-and-pathnames" title="Permalink to this heading">#</a></h4>
+<h4>More about home directories and pathnames<a class="headerlink" href="#more-about-home-directories-and-pathnames" title="Link to this heading">#</a></h4>
 <section id="understanding-pathnames">
-<h5>Understanding pathnames<a class="headerlink" href="#understanding-pathnames" title="Permalink to this heading">#</a></h5>
+<h5>Understanding pathnames<a class="headerlink" href="#understanding-pathnames" title="Link to this heading">#</a></h5>
 <p>Go back to your home-directory and then type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>unixstuff
 </pre></div>
@@ -822,7 +820,7 @@ instead type</p>
 </div>
 </div></section>
 <section id="your-home-directory">
-<h5>~ (your home directory)<a class="headerlink" href="#your-home-directory" title="Permalink to this heading">#</a></h5>
+<h5>~ (your home directory)<a class="headerlink" href="#your-home-directory" title="Link to this heading">#</a></h5>
 <p>Home directories can also be referred to by the tilde character, <code class="docutils literal notranslate"><span class="pre">~</span></code>.
 It can be used to specify paths starting at your home directory. So
 typing</p>
@@ -843,8 +841,8 @@ you currently are in the file-system</em>.</p>
 </section>
 </section>
 <section id="moving-around-the-filesystem-summary">
-<h4>Moving around the filesystem – summary<a class="headerlink" href="#moving-around-the-filesystem-summary" title="Permalink to this heading">#</a></h4>
-<table class="table">
+<h4>Moving around the filesystem – summary<a class="headerlink" href="#moving-around-the-filesystem-summary" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -877,14 +875,15 @@ you currently are in the file-system</em>.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="manipulating-files-and-directories">
-<h3>Manipulating Files and Directories<a class="headerlink" href="#manipulating-files-and-directories" title="Permalink to this heading">#</a></h3>
+<h3>Manipulating Files and Directories<a class="headerlink" href="#manipulating-files-and-directories" title="Link to this heading">#</a></h3>
 <section id="copying-files">
-<h4>Copying Files<a class="headerlink" href="#copying-files" title="Permalink to this heading">#</a></h4>
+<h4>Copying Files<a class="headerlink" href="#copying-files" title="Link to this heading">#</a></h4>
 <section id="cp-copy">
-<h5>cp (copy)<a class="headerlink" href="#cp-copy" title="Permalink to this heading">#</a></h5>
+<h5>cp (copy)<a class="headerlink" href="#cp-copy" title="Link to this heading">#</a></h5>
 <p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">file1</span> <span class="pre">file2</span></code> is the command which makes a copy of <code class="docutils literal notranslate"><span class="pre">file1</span></code> in the
 current working directory and calls it <code class="docutils literal notranslate"><span class="pre">file2</span></code>.</p>
 <p>What we are going to do now, is to take a file stored in an open access
@@ -910,15 +909,15 @@ name the same.</p>
 directory, <code class="docutils literal notranslate"><span class="pre">.</span></code>, without changing the file name.</p>
 </section>
 <section id="id2">
-<h5>Exercise<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h5>
 <p>Create a backup of your <code class="docutils literal notranslate"><span class="pre">types.h</span></code> file by copying it to a file called
 <code class="docutils literal notranslate"><span class="pre">types.bak</span></code>.</p>
 </section>
 </section>
 <section id="moving-files">
-<h4>Moving files<a class="headerlink" href="#moving-files" title="Permalink to this heading">#</a></h4>
+<h4>Moving files<a class="headerlink" href="#moving-files" title="Link to this heading">#</a></h4>
 <section id="mv-move">
-<h5>mv (move)<a class="headerlink" href="#mv-move" title="Permalink to this heading">#</a></h5>
+<h5>mv (move)<a class="headerlink" href="#mv-move" title="Link to this heading">#</a></h5>
 <p>To move a file from one place to another, use the <code class="docutils literal notranslate"><span class="pre">mv</span></code> command. This
 has the effect of moving rather than copying the file, so you end up
 with only one file rather than two. The calling sequence is of the form
@@ -937,9 +936,9 @@ to the same directory, but giving it a different filename.</p>
 </section>
 </section>
 <section id="removing-files-and-directories">
-<h4>Removing files and directories<a class="headerlink" href="#removing-files-and-directories" title="Permalink to this heading">#</a></h4>
+<h4>Removing files and directories<a class="headerlink" href="#removing-files-and-directories" title="Link to this heading">#</a></h4>
 <section id="rm-remove-rmdir-remove-directory">
-<h5>rm (remove), rmdir (remove directory)<a class="headerlink" href="#rm-remove-rmdir-remove-directory" title="Permalink to this heading">#</a></h5>
+<h5>rm (remove), rmdir (remove directory)<a class="headerlink" href="#rm-remove-rmdir-remove-directory" title="Link to this heading">#</a></h5>
 <p>To delete (remove) a file, use the <code class="docutils literal notranslate"><span class="pre">rm</span></code> command. As an example, we are
 going to create a copy of the <code class="docutils literal notranslate"><span class="pre">types.h</span></code> file then delete it.</p>
 <p>Inside your <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> directory, type</p>
@@ -964,15 +963,15 @@ empty first). Try to remove the <code class="docutils literal notranslate"><span
 remove a non-empty directory.</p>
 </section>
 <section id="id3">
-<h5>Exercise<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h5>
 <p>Create a directory called <code class="docutils literal notranslate"><span class="pre">tempstuff</span></code> using <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, then remove it
 using the <code class="docutils literal notranslate"><span class="pre">rmdir</span></code> command.</p>
 </section>
 </section>
 <section id="displaying-the-contents-of-a-file-on-the-screen">
-<h4>Displaying the contents of a file on the screen<a class="headerlink" href="#displaying-the-contents-of-a-file-on-the-screen" title="Permalink to this heading">#</a></h4>
+<h4>Displaying the contents of a file on the screen<a class="headerlink" href="#displaying-the-contents-of-a-file-on-the-screen" title="Link to this heading">#</a></h4>
 <section id="clear-clear-screen">
-<h5>clear (clear screen)<a class="headerlink" href="#clear-clear-screen" title="Permalink to this heading">#</a></h5>
+<h5>clear (clear screen)<a class="headerlink" href="#clear-clear-screen" title="Link to this heading">#</a></h5>
 <p>Before you start the next section, you may want to clear the terminal
 window of the previous commands so the output of the following commands
 can be clearly understood.</p>
@@ -984,7 +983,7 @@ can be clearly understood.</p>
 of the window.</p>
 </section>
 <section id="cat-concatenate">
-<h5>cat (concatenate)<a class="headerlink" href="#cat-concatenate" title="Permalink to this heading">#</a></h5>
+<h5>cat (concatenate)<a class="headerlink" href="#cat-concatenate" title="Link to this heading">#</a></h5>
 <p>The command <code class="docutils literal notranslate"><span class="pre">cat</span></code> can be used to display the contents of a file to the
 screen. Type:</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>types.h
@@ -994,7 +993,7 @@ screen. Type:</p>
 it scrolls past making it difficult to read the file from the beginning.</p>
 </section>
 <section id="less-view-file-contents">
-<h5>less (view file contents)<a class="headerlink" href="#less-view-file-contents" title="Permalink to this heading">#</a></h5>
+<h5>less (view file contents)<a class="headerlink" href="#less-view-file-contents" title="Link to this heading">#</a></h5>
 <p>The command less writes the contents of a file onto the screen one page
 at a time. Type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>less<span class="w"> </span>types.h
@@ -1006,7 +1005,7 @@ you want to quit reading.</p>
 <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p>
 </section>
 <section id="head-view-top-of-file">
-<h5>head (view top of file)<a class="headerlink" href="#head-view-top-of-file" title="Permalink to this heading">#</a></h5>
+<h5>head (view top of file)<a class="headerlink" href="#head-view-top-of-file" title="Link to this heading">#</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">head</span></code> command writes the first ten lines of a file to the screen.</p>
 <p>First clear the screen then type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>head<span class="w"> </span>types.h
@@ -1019,7 +1018,7 @@ you want to quit reading.</p>
 </div><p>What difference did the -3 do to the <code class="docutils literal notranslate"><span class="pre">head</span></code> command?</p>
 </section>
 <section id="tail-view-bottom-of-file">
-<h5>tail (view bottom of file)<a class="headerlink" href="#tail-view-bottom-of-file" title="Permalink to this heading">#</a></h5>
+<h5>tail (view bottom of file)<a class="headerlink" href="#tail-view-bottom-of-file" title="Link to this heading">#</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">tail</span></code> command writes the last ten lines of a file to the screen.</p>
 <p>Clear the screen and type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>tail<span class="w"> </span>types.h
@@ -1031,9 +1030,9 @@ you want to quit reading.</p>
 </section>
 </section>
 <section id="searching-the-contents-of-a-file">
-<h4>Searching the contents of a file<a class="headerlink" href="#searching-the-contents-of-a-file" title="Permalink to this heading">#</a></h4>
+<h4>Searching the contents of a file<a class="headerlink" href="#searching-the-contents-of-a-file" title="Link to this heading">#</a></h4>
 <section id="simple-searching-using-less">
-<h5>Simple searching using less<a class="headerlink" href="#simple-searching-using-less" title="Permalink to this heading">#</a></h5>
+<h5>Simple searching using less<a class="headerlink" href="#simple-searching-using-less" title="Link to this heading">#</a></h5>
 <p>Using <code class="docutils literal notranslate"><span class="pre">less</span></code>, you can search though a text file for a keyword
 (pattern). For example, to search through <code class="docutils literal notranslate"><span class="pre">types.h</span></code> for the word
 <code class="docutils literal notranslate"><span class="pre">long</span></code>, type</p>
@@ -1049,7 +1048,7 @@ want to search for,</p>
 search for the next occurrence of the word. Type [q] to quit the search.</p>
 </section>
 <section id="grep-grep-file-search-don-t-ask-why-it-is-called-grep">
-<h5>grep &lt;grep (file search)&gt; (don’t ask why it is called grep)<a class="headerlink" href="#grep-grep-file-search-don-t-ask-why-it-is-called-grep" title="Permalink to this heading">#</a></h5>
+<h5>grep &lt;grep (file search)&gt; (don’t ask why it is called grep)<a class="headerlink" href="#grep-grep-file-search-don-t-ask-why-it-is-called-grep" title="Link to this heading">#</a></h5>
 <p><code class="docutils literal notranslate"><span class="pre">grep</span></code> is one of many standard UNIX utilities. It searches files for
 specified words or patterns. First clear the screen, then type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>grep<span class="w"> </span>long<span class="w"> </span>types.h
@@ -1089,7 +1088,7 @@ the number of lines without the words <code class="docutils literal notranslate"
 </div>
 </div></section>
 <section id="wc-word-count">
-<h5>wc (word count)<a class="headerlink" href="#wc-word-count" title="Permalink to this heading">#</a></h5>
+<h5>wc (word count)<a class="headerlink" href="#wc-word-count" title="Link to this heading">#</a></h5>
 <p>A handy little utility is the <code class="docutils literal notranslate"><span class="pre">wc</span></code> command, short for <em>word count</em>. To
 do a word count on <code class="docutils literal notranslate"><span class="pre">types.h</span></code>, type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>wc<span class="w"> </span>-w<span class="w"> </span>types.h
@@ -1102,8 +1101,8 @@ do a word count on <code class="docutils literal notranslate"><span class="pre">
 </div></section>
 </section>
 <section id="manipulating-files-and-directories-summary">
-<h4>Manipulating files and directories – summary<a class="headerlink" href="#manipulating-files-and-directories-summary" title="Permalink to this heading">#</a></h4>
-<table class="table">
+<h4>Manipulating files and directories – summary<a class="headerlink" href="#manipulating-files-and-directories-summary" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1142,12 +1141,13 @@ do a word count on <code class="docutils literal notranslate"><span class="pre">
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="redirection-pipes-wildcards-and-getting-help">
-<h3>Redirection, Pipes, Wildcards and Getting Help<a class="headerlink" href="#redirection-pipes-wildcards-and-getting-help" title="Permalink to this heading">#</a></h3>
+<h3>Redirection, Pipes, Wildcards and Getting Help<a class="headerlink" href="#redirection-pipes-wildcards-and-getting-help" title="Link to this heading">#</a></h3>
 <section id="redirection">
-<h4>Redirection<a class="headerlink" href="#redirection" title="Permalink to this heading">#</a></h4>
+<h4>Redirection<a class="headerlink" href="#redirection" title="Link to this heading">#</a></h4>
 <p>Most processes initiated by UNIX commands write to the standard output
 (that is, they write to the terminal screen), and many take their input
 from the standard input (that is, they read it from the keyboard). There
@@ -1171,7 +1171,7 @@ screen).</p>
 standard output (<em>stdout</em>) of commands.</p>
 </section>
 <section id="redirecting-the-output-redirecting-output">
-<h4>Redirecting the Output &lt;&gt; (redirecting output)&gt;<a class="headerlink" href="#redirecting-the-output-redirecting-output" title="Permalink to this heading">#</a></h4>
+<h4>Redirecting the Output &lt;&gt; (redirecting output)&gt;<a class="headerlink" href="#redirecting-the-output-redirecting-output" title="Link to this heading">#</a></h4>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> symbol to redirect the output of a command. For
 example, to create a file called <code class="docutils literal notranslate"><span class="pre">list1</span></code> containing a list of fruit,
 type</p>
@@ -1190,13 +1190,13 @@ keyboard) and the <code class="docutils literal notranslate"><span class="pre">&
 screen, into a file called <code class="docutils literal notranslate"><span class="pre">list1</span></code></p>
 <p>To read the contents of the new file, use <code class="docutils literal notranslate"><span class="pre">cat</span></code> or <code class="docutils literal notranslate"><span class="pre">less</span></code>.</p>
 <section id="id4">
-<h5>Exercise<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h5>
 <p>Using the above method, create another file called <code class="docutils literal notranslate"><span class="pre">list2</span></code> containing
 the following fruit: orange, plum, mango, grapefruit. Read the contents
 of the new file, <code class="docutils literal notranslate"><span class="pre">list2</span></code>.</p>
 </section>
 <section id="appending-to-a-file-appending-output">
-<h5>Appending to a file &lt;&gt;&gt; (appending output)&gt;<a class="headerlink" href="#appending-to-a-file-appending-output" title="Permalink to this heading">#</a></h5>
+<h5>Appending to a file &lt;&gt;&gt; (appending output)&gt;<a class="headerlink" href="#appending-to-a-file-appending-output" title="Link to this heading">#</a></h5>
 <p>The double greater-than symbol <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> appends standard output to a file.
 So to add more items to the existing file <code class="docutils literal notranslate"><span class="pre">list1</span></code>, type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>&gt;&gt;<span class="w"> </span>list1
@@ -1229,7 +1229,7 @@ orange
 </div></section>
 </section>
 <section id="redirecting-the-input-redirecting-input">
-<h4>Redirecting the Input &lt;&lt; (redirecting input)&gt;<a class="headerlink" href="#redirecting-the-input-redirecting-input" title="Permalink to this heading">#</a></h4>
+<h4>Redirecting the Input &lt;&lt; (redirecting input)&gt;<a class="headerlink" href="#redirecting-the-input-redirecting-input" title="Link to this heading">#</a></h4>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> symbol to redirect the input of a command.</p>
 <p>The command <code class="docutils literal notranslate"><span class="pre">sort</span></code> alphabetically or numerically sorts a list. Type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sort
@@ -1263,7 +1263,7 @@ the keyboard. For example, to sort the list of fruit, type</p>
 </div><p>Use <code class="docutils literal notranslate"><span class="pre">cat</span></code> to read the contents of the newly-created file <code class="docutils literal notranslate"><span class="pre">slist</span></code>.</p>
 </section>
 <section id="pipes-pipes">
-<h4>Pipes &lt;| (pipes)&gt;<a class="headerlink" href="#pipes-pipes" title="Permalink to this heading">#</a></h4>
+<h4>Pipes &lt;| (pipes)&gt;<a class="headerlink" href="#pipes-pipes" title="Link to this heading">#</a></h4>
 <p>To see who is logged into the system along with you, type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>who
 </pre></div>
@@ -1289,15 +1289,15 @@ vertical bar <code class="docutils literal notranslate"><span class="pre">|</spa
 </pre></div>
 </div>
 </div><section id="id5">
-<h5>Exercise<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#id5" title="Link to this heading">#</a></h5>
 <p>Using two pipes, display all lines of <code class="docutils literal notranslate"><span class="pre">list1</span></code> and <code class="docutils literal notranslate"><span class="pre">list2</span></code> containing
 the letter “p”, and sort the result.</p>
 </section>
 </section>
 <section id="wildcards">
-<h4>Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this heading">#</a></h4>
+<h4>Wildcards<a class="headerlink" href="#wildcards" title="Link to this heading">#</a></h4>
 <section id="the-wildcard-wildcard">
-<h5>The * &lt;* (wildcard)&gt; wildcard<a class="headerlink" href="#the-wildcard-wildcard" title="Permalink to this heading">#</a></h5>
+<h5>The * &lt;* (wildcard)&gt; wildcard<a class="headerlink" href="#the-wildcard-wildcard" title="Link to this heading">#</a></h5>
 <p>The character <code class="docutils literal notranslate"><span class="pre">*</span></code> is called a <em>wildcard</em>, and will match against none
 or more character(s) in a file (or directory) name. For example, in your
 <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> directory, type</p>
@@ -1313,7 +1313,7 @@ characters “list”</p>
 </div><p>This will list all files in the current directory ending with “list”</p>
 </section>
 <section id="id6">
-<h5>The ? &lt;? (wildcard)&gt; wildcard<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
+<h5>The ? &lt;? (wildcard)&gt; wildcard<a class="headerlink" href="#id6" title="Link to this heading">#</a></h5>
 <p>The character <code class="docutils literal notranslate"><span class="pre">?</span></code> will match exactly one character, So <code class="docutils literal notranslate"><span class="pre">?ouse</span></code> will
 match files like <code class="docutils literal notranslate"><span class="pre">house</span></code> and <code class="docutils literal notranslate"><span class="pre">mouse</span></code>, but not <code class="docutils literal notranslate"><span class="pre">grouse</span></code>.</p>
 <p>Try typing</p>
@@ -1323,7 +1323,7 @@ match files like <code class="docutils literal notranslate"><span class="pre">ho
 </div></section>
 </section>
 <section id="file-editing">
-<h4>File Editing<a class="headerlink" href="#file-editing" title="Permalink to this heading">#</a></h4>
+<h4>File Editing<a class="headerlink" href="#file-editing" title="Link to this heading">#</a></h4>
 <p>While it is technically possible to create text files using <code class="docutils literal notranslate"><span class="pre">cat</span></code> and
 redirection, these tools are inadequate for creating/editing program
 text files. A wide variety of text editors exist within the Linux
@@ -1356,7 +1356,7 @@ available.</p></li>
 </dl>
 </div></section>
 <section id="filename-conventions">
-<h4>Filename conventions<a class="headerlink" href="#filename-conventions" title="Permalink to this heading">#</a></h4>
+<h4>Filename conventions<a class="headerlink" href="#filename-conventions" title="Link to this heading">#</a></h4>
 <p>We should note here that a directory is merely a special type of file.
 So the rules and conventions for naming files apply also to directories.</p>
 <p>In naming files, characters with special meanings such as <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>,
@@ -1364,7 +1364,7 @@ So the rules and conventions for naming files apply also to directories.</p>
 using spaces within names. The safest way to name a file is to use only
 alphanumeric characters, that is, letters and numbers, together with
 <code class="docutils literal notranslate"><span class="pre">_</span></code> (underscore) and <code class="docutils literal notranslate"><span class="pre">.</span></code> (dot).</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Good filenames</p></th>
 <th class="head"><p>Bad filenames</p></th>
@@ -1382,6 +1382,7 @@ alphanumeric characters, that is, letters and numbers, together with
 </tr>
 </tbody>
 </table>
+</div>
 <p>File names conventionally end with a dot followed by a group of letters
 indicating the contents of the file, although this is not at all
 required in Linux. For example, all files consisting of C code may be
@@ -1390,9 +1391,9 @@ list all files containing C code in your home directory, you need only
 type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">~/*.c</span></code></p>
 </section>
 <section id="getting-help">
-<h4>Getting Help<a class="headerlink" href="#getting-help" title="Permalink to this heading">#</a></h4>
+<h4>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h4>
 <section id="on-line-manuals">
-<h5>On-line Manuals<a class="headerlink" href="#on-line-manuals" title="Permalink to this heading">#</a></h5>
+<h5>On-line Manuals<a class="headerlink" href="#on-line-manuals" title="Link to this heading">#</a></h5>
 <p>There are built-in manuals which give information about most commands.
 The manual pages &lt;man (manual)&gt; tell you which options a particular
 command can take, and how each option modifies the behaviour of the
@@ -1411,7 +1412,7 @@ type</p>
 omits any information about options etc.</p>
 </section>
 <section id="apropos-apropos-command-search">
-<h5>Apropos &lt;apropos (command search)&gt;<a class="headerlink" href="#apropos-apropos-command-search" title="Permalink to this heading">#</a></h5>
+<h5>Apropos &lt;apropos (command search)&gt;<a class="headerlink" href="#apropos-apropos-command-search" title="Link to this heading">#</a></h5>
 <p>When you are not sure of the exact name of a command, “apropos
 <em>keyword</em>” will give you the commands with <em>keyword</em> in their manual
 page header. For example, try typing</p>
@@ -1421,8 +1422,8 @@ page header. For example, try typing</p>
 </div></section>
 </section>
 <section id="redirection-pipes-wildcards-and-help-summary">
-<h4>Redirection, pipes, wildcards and help – summary<a class="headerlink" href="#redirection-pipes-wildcards-and-help-summary" title="Permalink to this heading">#</a></h4>
-<table class="table">
+<h4>Redirection, pipes, wildcards and help – summary<a class="headerlink" href="#redirection-pipes-wildcards-and-help-summary" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Command</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1473,12 +1474,13 @@ their man pages</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="permissions-and-security">
-<h3>Permissions and Security<a class="headerlink" href="#permissions-and-security" title="Permalink to this heading">#</a></h3>
+<h3>Permissions and Security<a class="headerlink" href="#permissions-and-security" title="Link to this heading">#</a></h3>
 <section id="file-system-security-access-rights">
-<h4>File system security (access rights)<a class="headerlink" href="#file-system-security-access-rights" title="Permalink to this heading">#</a></h4>
+<h4>File system security (access rights)<a class="headerlink" href="#file-system-security-access-rights" title="Link to this heading">#</a></h4>
 <p>In your <code class="docutils literal notranslate"><span class="pre">unixstuff</span></code> directory, type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls<span class="w"> </span>-l
 </pre></div>
@@ -1512,7 +1514,7 @@ example);</p></li>
 <p>The symbols <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">w</span></code>, etc., have slightly different meanings
 depending on whether they refer to a simple file or to a directory.</p>
 <section id="access-rights-on-files">
-<h5>Access rights on files<a class="headerlink" href="#access-rights-on-files" title="Permalink to this heading">#</a></h5>
+<h5>Access rights on files<a class="headerlink" href="#access-rights-on-files" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> (or <code class="docutils literal notranslate"><span class="pre">-</span></code>), indicates read permission (or otherwise), that is,
 the presence or absence of permission to read and copy the file</p></li>
@@ -1523,7 +1525,7 @@ is, the permission to execute/run a file, where appropriate</p></li>
 </ul>
 </section>
 <section id="access-rights-on-directories">
-<h5>Access rights on directories<a class="headerlink" href="#access-rights-on-directories" title="Permalink to this heading">#</a></h5>
+<h5>Access rights on directories<a class="headerlink" href="#access-rights-on-directories" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> allows users to list files in the directory</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">w</span></code> means that users may delete files from the directory or move
@@ -1537,8 +1539,8 @@ directory containing that file, and hence on any directory containing
 that directory as a subdirectory, and so on, up the tree.</p>
 </section>
 <section id="some-examples">
-<h5>Some examples<a class="headerlink" href="#some-examples" title="Permalink to this heading">#</a></h5>
-<table class="table">
+<h5>Some examples<a class="headerlink" href="#some-examples" title="Link to this heading">#</a></h5>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Permissions</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1569,15 +1571,16 @@ can enter (but do nothing else)</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="changing-access-rights">
-<h4>Changing access rights<a class="headerlink" href="#changing-access-rights" title="Permalink to this heading">#</a></h4>
+<h4>Changing access rights<a class="headerlink" href="#changing-access-rights" title="Link to this heading">#</a></h4>
 <section id="chmod-change-permissions">
-<h5>chmod (change permissions)<a class="headerlink" href="#chmod-change-permissions" title="Permalink to this heading">#</a></h5>
+<h5>chmod (change permissions)<a class="headerlink" href="#chmod-change-permissions" title="Link to this heading">#</a></h5>
 <p>Only the owner of a file can use <code class="docutils literal notranslate"><span class="pre">chmod</span></code> to change the permissions of
 a file. The options of <code class="docutils literal notranslate"><span class="pre">chmod</span></code> are as follows</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Symbol</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1619,6 +1622,7 @@ a file. The options of <code class="docutils literal notranslate"><span class="p
 </tr>
 </tbody>
 </table>
+</div>
 <p>For example, to remove read write and execute permissions on the file
 <code class="docutils literal notranslate"><span class="pre">biglist</span></code> for the group and others, type</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>go-rwx<span class="w"> </span>biglist
@@ -1631,7 +1635,7 @@ a file. The options of <code class="docutils literal notranslate"><span class="p
 </div>
 </div><p>Alternatively, you may use a three-digit number to specify the access
 permissions. The numerical values for the permissions are</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Read</p></th>
 <th class="head"><p>Write</p></th>
@@ -1645,6 +1649,7 @@ permissions. The numerical values for the permissions are</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Add up the desired permissions for the user to form the first digit, add
 up the desired permissions for the group to form the second digit, and
 add up the desired permissions for others to form the third digit.</p>
@@ -1656,7 +1661,7 @@ the file <code class="docutils literal notranslate"><span class="pre">biglist</s
 </div>
 </div></section>
 <section id="id7">
-<h5>Exercise<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h5>
+<h5>Exercise<a class="headerlink" href="#id7" title="Link to this heading">#</a></h5>
 <p>Try changing access permissions on the file <code class="docutils literal notranslate"><span class="pre">types.h</span></code> and on the
 directory <code class="docutils literal notranslate"><span class="pre">backups</span></code>.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> to check that the permissions have changed.</p>
@@ -1693,7 +1698,7 @@ directory <code class="docutils literal notranslate"><span class="pre">backups</
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1721,7 +1726,9 @@ directory <code class="docutils literal notranslate"><span class="pre">backups</
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1873,7 +1880,7 @@ By Southern Methodist University
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1897,8 +1904,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

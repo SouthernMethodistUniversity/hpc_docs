@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>About &#8212; SMU HPC Documentation</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'about';</script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="#" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -71,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Personal $WORK deprecation" href="work_deprecation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,6 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="index.html">
   
@@ -156,11 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="_static/smu_logo.jpg" class="logo__image only-light" alt="SMU HPC Documentation - Home"/>
-    <script>document.write(`<img src="_static/smu_logo.jpg" class="logo__image only-dark" alt="SMU HPC Documentation - Home"/>`);</script>
+    <img src="_static/smu_logo.jpg" class="logo__image only-dark pst-js-only" alt="SMU HPC Documentation - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,12 +176,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">About</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">About</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="about/queues.html">Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about/contact.html">Contact</a></li>
 
+
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
 
 
@@ -190,11 +191,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="coldfront/quick_start.html">Quick Start</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="coldfront/quick_start.html">Quick Start</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="coldfront/qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coldfront/qs_student.html">Getting Started in ColdFront as a Student</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="coldfront/add_change_project.html">Add or Change Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coldfront/add_class.html">Add a Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coldfront/add_remove_users.html">Add or Remove Users</a></li>
@@ -209,47 +210,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/chemistry.html">Chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/amber/index.html">Amber</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/fluid_dynamics.html">Fluid Dynamics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/fluid_dynamics.html">Fluid Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/openfoam/index.html">OpenFoam (.com)</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/stata/index.html">Stata</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/conda/README.html">Conda</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/unix/intro.html">UNIX and Linux Shells</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/unix/unix.html">UNIX &amp; Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/unix/scripting.html">Scripting</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/modules/modules.html">Modules</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/slurm/slurm.html">Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/slurm/slurm.html">Slurm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/slurm/best_practices.html">Best Practices for Jobs</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/globus_box_transfers.html">Using Globus to transfer data to/from Box</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/containers/containers.html">Containers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/cpp/intro.html">C++</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_1.html">Session 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_2.html">Session 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_3.html">Session 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_4.html">Session 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_5.html">Session 5</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/r/overview.html">R</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/r/overview.html">R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/r/environments.html">R Virtual Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/r/slurm.html">Submitting R Jobs</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies and Guidelines</span></p>
 <ul class="nav bd-sidenav">
@@ -262,14 +263,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -278,14 +284,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -361,27 +367,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -428,10 +426,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="about">
-<h1>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h1>
+<h1>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h1>
 <p>SMU’s high-performance computing (HPC) clusters, M3 and the NVIDIA DGX
 SuperPOD, feature state-of-the-art CPUs, accelerators, and networking
 technologies, high memory capacity per node, and advanced interactive
@@ -444,7 +442,7 @@ and NVIDIA compiler suites. Optimized high-level programming environments
 such as MATLAB, Python, and R are also installed in addition to the
 domain specific software packages that SMU researchers depend on for
 their work.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>HPC System</p></th>
 <th class="head"><p>M1 (Retired)</p></th>
@@ -534,12 +532,13 @@ their work.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>* The 3.5 PB <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">Storage</span></code> is shared on M3 and the SuperPOD. It was formerly referred to as <code class="docutils literal notranslate"><span class="pre">Work</span> <span class="pre">Storage</span></code>, which has been deprecated and will be phased out beginning on January 15, 2025.</p>
 <section id="maneframe-iii-m3">
-<h2>ManeFrame III (M3)<a class="headerlink" href="#maneframe-iii-m3" title="Permalink to this heading">#</a></h2>
+<h2>ManeFrame III (M3)<a class="headerlink" href="#maneframe-iii-m3" title="Link to this heading">#</a></h2>
 <section id="configuration">
-<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
-<table class="table">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Resource</p></th>
 <th class="head"><p>Standard-Memory</p></th>
@@ -590,20 +589,21 @@ their work.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="nvidia-dgx-superpod-mp">
-<h2>NVIDIA DGX SuperPOD (MP)<a class="headerlink" href="#nvidia-dgx-superpod-mp" title="Permalink to this heading">#</a></h2>
+<h2>NVIDIA DGX SuperPOD (MP)<a class="headerlink" href="#nvidia-dgx-superpod-mp" title="Link to this heading">#</a></h2>
 <section id="news">
-<h3>News<a class="headerlink" href="#news" title="Permalink to this heading">#</a></h3>
+<h3>News<a class="headerlink" href="#news" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.smu.edu/News/2021/Featured-News/smu-launches-powerful-new-supercomputing-research-system-with-nvidia">SMU launches powerful new supercomputing research system with NVIDIA</a></p></li>
 <li><p><a class="reference external" href="https://dallasinnovates.com/11-5m-nvidia-collaboration-will-put-smu-in-the-fast-lane-for-artificial-intelligence/">$11.5M NVIDIA Collaboration Will Put SMU ‘in the Fast Lane for Artificial Intelligence’</a></p></li>
 </ul>
 </section>
 <section id="id1">
-<h3>Configuration<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<table class="table">
+<h3>Configuration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Component</p></th>
 <th class="head"><p>Summary</p></th>
@@ -639,7 +639,8 @@ their work.</p>
 </tr>
 </tbody>
 </table>
-<table class="table">
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Resource</p></th>
 <th class="head"><p>DGX Node</p></th>
@@ -681,12 +682,13 @@ their work.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="faculty-partner-nodes">
-<h2>Faculty Partner Nodes<a class="headerlink" href="#faculty-partner-nodes" title="Permalink to this heading">#</a></h2>
+<h2>Faculty Partner Nodes<a class="headerlink" href="#faculty-partner-nodes" title="Link to this heading">#</a></h2>
 <section id="professor-thomas-hagstrom-mathematics">
-<h3>Professor Thomas Hagstrom (Mathematics)<a class="headerlink" href="#professor-thomas-hagstrom-mathematics" title="Permalink to this heading">#</a></h3>
+<h3>Professor Thomas Hagstrom (Mathematics)<a class="headerlink" href="#professor-thomas-hagstrom-mathematics" title="Link to this heading">#</a></h3>
 <p>Professor Hagstrom has one node that is available as part of M3. This
 node has dual  AMD EPYC 7742 64-Core “Zen 2”
 processors, 512 GB of memory, and an NVIDIA A100 GPU accelerator with
@@ -695,7 +697,7 @@ processors, 512 GB of memory, and an NVIDIA A100 GPU accelerator with
 from Dr. Hagstrom.</p>
 </section>
 <section id="professor-barbara-minsker-civil-and-environmental-engineering">
-<h3>Professor Barbara Minsker (Civil and Environmental Engineering)<a class="headerlink" href="#professor-barbara-minsker-civil-and-environmental-engineering" title="Permalink to this heading">#</a></h3>
+<h3>Professor Barbara Minsker (Civil and Environmental Engineering)<a class="headerlink" href="#professor-barbara-minsker-civil-and-environmental-engineering" title="Link to this heading">#</a></h3>
 <p>Professor Minsker has two nodes that are availabe as part of M3. These
 nodes each have dual Intel Xeon Gold 6148 2.40 GHz 20-core “Skylake”
 processors, 384 GB of memory, dual NVIDIA V100 GPU accelerators, and 2
@@ -714,7 +716,7 @@ indefinitely until jobs submitted with the flag finish</p></li>
 </ul>
 </section>
 <section id="professor-wei-cai-mathematics">
-<h3>Professor Wei Cai (Mathematics)<a class="headerlink" href="#professor-wei-cai-mathematics" title="Permalink to this heading">#</a></h3>
+<h3>Professor Wei Cai (Mathematics)<a class="headerlink" href="#professor-wei-cai-mathematics" title="Link to this heading">#</a></h3>
 <p>Professor Cai has one node that is available as part of M3. This node
 has dual Intel Xeon Gold 6150 2.70 GHz 18-core “Skylake”
 processors, 384 GB of memory, dual NVIDIA V100 GPU accelerators, and 2
@@ -733,7 +735,7 @@ when the <code class="docutils literal notranslate"><span class="pre">--qos</spa
 </ul>
 </section>
 <section id="assistant-professor-devin-matthews-chemistry">
-<h3>Assistant Professor Devin Matthews (Chemistry)<a class="headerlink" href="#assistant-professor-devin-matthews-chemistry" title="Permalink to this heading">#</a></h3>
+<h3>Assistant Professor Devin Matthews (Chemistry)<a class="headerlink" href="#assistant-professor-devin-matthews-chemistry" title="Link to this heading">#</a></h3>
 <p>Dr. Matthews has one node that is available as part of M3. This node has
 dual AMD EPYC 7763 2.45 Ghz 64-Core “Zen 3” processors, 512 GB of memory,
 and AMD Instinct MI210 GPU with 64 GB of HBM2e memory and 6,656 stream processors.
@@ -743,7 +745,7 @@ from Dr. Matthews.</p>
 </section>
 </section>
 <section id="acknowledgement">
-<h2>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this heading">#</a></h2>
+<h2>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Link to this heading">#</a></h2>
 <p>We request that all work supported by SMU HPC resources make an appropriate acknowledgement.
 We suggest the following:</p>
 <p>“Computational resources for this research were
@@ -780,7 +782,7 @@ provided by SMU’s O’Donnell Data Science and Research Computing Institute.�
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -808,7 +810,9 @@ provided by SMU’s O’Donnell Data Science and Research Computing Institute.�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -857,7 +861,7 @@ By Southern Methodist University
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -881,8 +885,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

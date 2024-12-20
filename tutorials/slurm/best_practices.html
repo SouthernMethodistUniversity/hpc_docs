@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Best Practices for Jobs &#8212; SMU HPC Documentation</title>
   
@@ -15,55 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/slurm/best_practices';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -71,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Slurm" href="slurm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,6 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -156,11 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="../../_static/smu_logo.jpg" class="logo__image only-light" alt="SMU HPC Documentation - Home"/>
-    <script>document.write(`<img src="../../_static/smu_logo.jpg" class="logo__image only-dark" alt="SMU HPC Documentation - Home"/>`);</script>
+    <img src="../../_static/smu_logo.jpg" class="logo__image only-dark pst-js-only" alt="SMU HPC Documentation - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,12 +176,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../about/queues.html">Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/contact.html">Contact</a></li>
 
+
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
 
 
@@ -190,11 +191,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../coldfront/quick_start.html">Quick Start</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../coldfront/quick_start.html">Quick Start</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../coldfront/qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../coldfront/qs_student.html">Getting Started in ColdFront as a Student</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/add_change_project.html">Add or Change Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/add_class.html">Add a Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/add_remove_users.html">Add or Remove Users</a></li>
@@ -209,47 +210,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/chemistry.html">Chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/chemistry.html">Chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/amber/index.html">Amber</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/fluid_dynamics.html">Fluid Dynamics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/fluid_dynamics.html">Fluid Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/openfoam/index.html">OpenFoam (.com)</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/statistics.html">Statistics</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../examples/stata/index.html">Stata</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/conda/README.html">Conda</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../unix/intro.html">UNIX and Linux Shells</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unix/intro.html">UNIX and Linux Shells</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../unix/unix.html">UNIX &amp; Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unix/scripting.html">Scripting</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Modules</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="slurm.html">Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="slurm.html">Slurm</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Best Practices for Jobs</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../globus_box_transfers.html">Using Globus to transfer data to/from Box</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../containers/containers.html">Containers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cpp/intro.html">C++</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cpp/intro.html">C++</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_1.html">Session 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_2.html">Session 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_3.html">Session 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_4.html">Session 4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/session_5.html">Session 5</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../r/environments.html">R Virtual Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../r/slurm.html">Submitting R Jobs</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies and Guidelines</span></p>
 <ul class="nav bd-sidenav">
@@ -262,14 +263,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -278,14 +284,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -361,27 +367,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -429,16 +427,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="best-practices-for-jobs">
-<span id="tutorials-slurm-best-practices"></span><h1>Best Practices for Jobs<a class="headerlink" href="#best-practices-for-jobs" title="Permalink to this heading">#</a></h1>
+<span id="tutorials-slurm-best-practices"></span><h1>Best Practices for Jobs<a class="headerlink" href="#best-practices-for-jobs" title="Link to this heading">#</a></h1>
 <p>The following are some tips that will help your and everyone elses jobs use HPC resources more efficiently.</p>
 <section id="make-accurate-resource-requests">
-<h2>Make accurate resource requests<a class="headerlink" href="#make-accurate-resource-requests" title="Permalink to this heading">#</a></h2>
+<h2>Make accurate resource requests<a class="headerlink" href="#make-accurate-resource-requests" title="Link to this heading">#</a></h2>
 <p>The job scheduler only knows what you tell it. Being more specific about the resources you need helps SLURM schedule jobs more efficiently. This will help your and everyone elses jobs start sooner.</p>
 <section id="time-limit">
-<h3>Time Limit<a class="headerlink" href="#time-limit" title="Permalink to this heading">#</a></h3>
+<h3>Time Limit<a class="headerlink" href="#time-limit" title="Link to this heading">#</a></h3>
 <p>You should specify a time limit as low as you realistically believe your job will run in. It is reasonable to be conservative and over-estimate, but if you think your job will take about an hour it makes sense to request 2 or 3 hours, but not 24 hours.</p>
 <p>The scheduler can sometimes fit shorter running jobs in between jobs that are waiting for resources based on when those resources are scheduled to become available. This process is refered to as ‘’backfilling.’’</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --time=0-05:00:00 # time in days-HH:MM:SS</span>
@@ -446,7 +444,7 @@ document.write(`
 </div>
 </section>
 <section id="memory-limit">
-<h3>Memory Limit<a class="headerlink" href="#memory-limit" title="Permalink to this heading">#</a></h3>
+<h3>Memory Limit<a class="headerlink" href="#memory-limit" title="Link to this heading">#</a></h3>
 <p>Making accurate memory requests helps increase the throughput on our machines. It is not uncommon to see jobs use less than 5% of the memory they requested. When this happens, it may delay your or other users’ jobs from starting.</p>
 <p>Note: memory is often difficult to estimate. If you are running multiple similar jobs, it is worth experimenting to figure out how much memory they usually use.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mem=12G # memory per node in GB</span>
@@ -456,7 +454,7 @@ document.write(`
 </div>
 </section>
 <section id="cpu-cores">
-<h3>CPU cores<a class="headerlink" href="#cpu-cores" title="Permalink to this heading">#</a></h3>
+<h3>CPU cores<a class="headerlink" href="#cpu-cores" title="Link to this heading">#</a></h3>
 <p>Making accurate core requests helps increase the throughput on our machines. It is not uncommon to see jobs use a single core, but request many more. When this happens, it may delay your or other users’ jobs from starting.</p>
 <p>NOTE: Using multiple cores makes many programs run faster, but not all programs utilize multiple cores. Furthermore, like all parallelism, using more cores does not always scale well. For example a program may run in 3 hours using 64 core or 2 hours using 128 cores. In this case, it might be better to submit jobs using 64 cores (64 cores * 3 hours = 192 cpu hours) instead of jobs using 128 cores (128 cores * 2 hours = 256 cpu hours.) You should experiment with what works best for your use cases.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -c 12 # cpu cores per task</span>
@@ -465,7 +463,7 @@ document.write(`
 </section>
 </section>
 <section id="review-usage-on-completed-jobs">
-<h2>Review usage on completed jobs<a class="headerlink" href="#review-usage-on-completed-jobs" title="Permalink to this heading">#</a></h2>
+<h2>Review usage on completed jobs<a class="headerlink" href="#review-usage-on-completed-jobs" title="Link to this heading">#</a></h2>
 <p>In many cases the only way to know what resources your job needs is to run it. You can view some statistics on recently completed jobs using tools like <a class="reference external" href="https://github.com/troycomi/reportseff">reportseff</a>. We have this installed on the systems already, for example:</p>
 <p>Load <code class="docutils literal notranslate"><span class="pre">reportseff</span></code> using the module system</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">11.2.0</span>
@@ -503,17 +501,17 @@ $ reportseff -u $USER --since d=1
 <p>If you command outputs a large number of jobs, the formatting is sometimes not clean.</p>
 </div>
 <section id="time-efficiency">
-<h3>Time Efficiency<a class="headerlink" href="#time-efficiency" title="Permalink to this heading">#</a></h3>
+<h3>Time Efficiency<a class="headerlink" href="#time-efficiency" title="Link to this heading">#</a></h3>
 <p>The time efficiency column represents what percentage of your requested time was used by your job. A good target to aim for is about <code class="docutils literal notranslate"><span class="pre">80%</span></code> efficiency. While desireable from a scheduling point of view, approaching <code class="docutils literal notranslate"><span class="pre">100%</span></code> efficiency may result in jobs failing if they take slightly longer than expected.</p>
 </section>
 <section id="cpu-efficiency">
-<h3>CPU efficiency<a class="headerlink" href="#cpu-efficiency" title="Permalink to this heading">#</a></h3>
+<h3>CPU efficiency<a class="headerlink" href="#cpu-efficiency" title="Link to this heading">#</a></h3>
 <p>The CPU efficiency represents what percentage of the CPU cores in your job request where used by your job. You should always want your CPU efficiency to be as high as possible.</p>
 <p>If your CPU efficiency is low, you should inspect your program to ensure it is doing what you expect. Many programs require you to explicitly tell them to use multiple cores or specifically code for multiple cores.</p>
 <p>If your program is behaving as expected, consider reducing the number of cores you are requesting. Although this may increase the time required to run your job, it may use fewer resources meaning your and other users’ jobs may start sooner.</p>
 </section>
 <section id="memory-efficiency">
-<h3>Memory Efficiency<a class="headerlink" href="#memory-efficiency" title="Permalink to this heading">#</a></h3>
+<h3>Memory Efficiency<a class="headerlink" href="#memory-efficiency" title="Link to this heading">#</a></h3>
 <p>The memory efficiency represents the percentage of the requested memory that was used by your job. Realistically, anything about <code class="docutils literal notranslate"><span class="pre">50%</span></code> memory efficiency is good. Due to how memory is measured, programs that dynamically allocate and deallocate memory may fail as a result of running out of memory even if the reported usage is “low.” If you know your program allocates most of the memory it uses at the beginning, aiming for <code class="docutils literal notranslate"><span class="pre">80-90%</span></code> efficiency is a good target.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -522,19 +520,19 @@ $ reportseff -u $USER --since d=1
 </section>
 </section>
 <section id="use-array-jobs">
-<h2>Use array jobs<a class="headerlink" href="#use-array-jobs" title="Permalink to this heading">#</a></h2>
+<h2>Use array jobs<a class="headerlink" href="#use-array-jobs" title="Link to this heading">#</a></h2>
 <p>If you are submitting a “large” number of jobs with identical resource needs, SLURM can handle these requests more efficiently with Job Arrays.</p>
-<p>See our <a class="reference internal" href="slurm.html"><span class="doc std std-doc">SLURM examples</span></a> and the <a class="reference external" href="https://slurm.schedmd.com/job_array.html">SLURM documentation</a></p>
+<p>See our <a class="reference internal" href="slurm.html"><span class="std std-doc">SLURM examples</span></a> and the <a class="reference external" href="https://slurm.schedmd.com/job_array.html">SLURM documentation</a></p>
 </section>
 <section id="only-use-exclusive-when-needed">
-<h2>Only use <code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> when needed<a class="headerlink" href="#only-use-exclusive-when-needed" title="Permalink to this heading">#</a></h2>
+<h2>Only use <code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> when needed<a class="headerlink" href="#only-use-exclusive-when-needed" title="Link to this heading">#</a></h2>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">--exclusive</span></code> flag can result in large amounts of computational resources sitting idle.</p>
 <p>In general, you should only use the exclusive flag if you have an use case that warrants it. For example, if you need reliable timing data or are working with data that has certain security restrictionns that require you to be the only user on the node.</p>
 </section>
 <section id="frequently-asked-questions">
-<h2>Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this heading">#</a></h2>
+<h2>Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Link to this heading">#</a></h2>
 <section id="why-isn-t-my-job-starting">
-<h3>Why isn’t my job starting?<a class="headerlink" href="#why-isn-t-my-job-starting" title="Permalink to this heading">#</a></h3>
+<h3>Why isn’t my job starting?<a class="headerlink" href="#why-isn-t-my-job-starting" title="Link to this heading">#</a></h3>
 <p>Our high performance computing systems are a shared resource and there is no expectation that any particular set of resources is available at any particular time.</p>
 <p>You can see your pending jobs by running</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ squeue --me --start
@@ -545,7 +543,7 @@ $ reportseff -u $USER --since d=1
 </div>
 <p>from a terminal. Sometimes an estimated <code class="docutils literal notranslate"><span class="pre">START_TIME</span></code> is shown, usually (but not always) we find that jobs start before this time. The reason this happens is that SLURM basis these times on the requested time in the job script, but many jobs finish well before their allocated time limit. Making more accurate job requests will improve the accuracy of these estimates. It is also possible that a job will start after this time (the order jobs run in is periodically recalculated.)</p>
 <p>You should also inspect the <code class="docutils literal notranslate"><span class="pre">NODELIST(REASON)</span></code> column to ensure your job is valid. Most valid jobs will show one of the following:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Reason Code</p></th>
 <th class="head"><p>Explanation</p></th>
@@ -566,6 +564,7 @@ $ reportseff -u $USER --since d=1
 </tr>
 </tbody>
 </table>
+</div>
 <p>Most other codes indicate that there is a problem with the job request (for example <code class="docutils literal notranslate"><span class="pre">PartitionTimeLimit</span></code> means the job requested more time than is allowed.)</p>
 <p>A complete list of codes is available here: <a class="reference external" href="https://slurm.schedmd.com/squeue.html#lbAF">squeue documentation</a></p>
 </section>
@@ -599,7 +598,7 @@ $ reportseff -u $USER --since d=1
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -627,7 +626,9 @@ $ reportseff -u $USER --since d=1
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -677,7 +678,7 @@ By Southern Methodist University
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -701,8 +702,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
