@@ -26,8 +26,8 @@ M3 has the following queues:
 |----------------|------------------|----------------|-----------------|------------|-----------------------------------------------|
 | dev            | 4                | 128            | 500GB           | 2 hours    |                                               |
 | gpu-dev        | 3                | 36             | 734GB           | 2 hours    | 8 Nvidia V100 GPUs per node
-| htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *share nodes are listed in htc and standard-s |
-| standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *share nodes are listed in htc and standard-s |
+| htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *shared nodes are listed in htc and standard-s |
+| standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *shared nodes are listed in htc and standard-s |
 | standard-l     | 20               | 128            | 500GB           | 7 days     |                                               |
 | highmem        | 8                | 128            | 2TB             | 5 days     |                                               |
 | dtn            | 2                | 128            | 500GB           | 7 days     | *approval required                            |
