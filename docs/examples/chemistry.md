@@ -11,3 +11,4 @@ You can also submit issues and/or pull requests for updates or additions at
 [our github page](https://github.com/SouthernMethodistUniversity/hpc_docs)
 
 - [Amber](amber/index.md)
+- [Gaussian](gaussian/index.md)
