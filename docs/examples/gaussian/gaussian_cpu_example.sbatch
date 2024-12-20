@@ -57,4 +57,11 @@ cpu_mem ${cpus} ${mem}
 g16 < ${input_file}
 
 # clean up temp $SCRATCH directory
+# this moves the checkpoint file from Gaussian to the
+# directory you submitted the job from. 
+# Note, if the job runs out of time, memory, or
+# fails in some other way, these commands may not be reached
+# This assumes the checkpoint file has a .chk extension
+mv *.chk SLURM_SUBMIT_DIR/
+cd SLURM_SUBMIT_DIR
 rm -rf ${job_dir}
