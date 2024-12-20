@@ -57,7 +57,7 @@ cpu_mem ${cpus} ${mem}
 g16 < ${input_file}
 
 # clean up temp $SCRATCH directory
-# this moves the rfw file from Gaussian to the
+# this moves the rwf file from Gaussian to the
 # directory you submitted the job from. 
 # Note, if the job runs out of time, memory, or
 # fails in some other way, these commands may not be reached.
@@ -65,6 +65,6 @@ g16 < ${input_file}
 # You should make sure you are keeping the files you need
 # this is just an example of a plausible workflow.
 # For instance, you may want to keep the checkpoint files
-mv *.rfw ${SLURM_SUBMIT_DIR}/
+mv *.rwf ${SLURM_SUBMIT_DIR}/
 cd ${SLURM_SUBMIT_DIR}
 rm -rf ${job_dir}
