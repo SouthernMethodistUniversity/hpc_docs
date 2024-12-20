@@ -48,7 +48,13 @@ Files used in the example are available:
 
 The following job script can be submitted using `sbatch guassian_cpu_example.sbatch`.
 
-This example may not run to completion in the allotted time because it uses the `dev`
+This example will run in about 10 seconds and use less that `1GB` of memory.
+In general, more complicated simulations will take much longer and benefit from
+using more cores and memory. Note, we know this from running the job.
+It is always a good idea to review the resources your jobs use
+and adjust future jobs to more accurately request resources.
+
+This uses the `dev`
 queue which has a 2 hour time limit.
 In general, the `dev` queue should only be used for testing code and running interactive
 sessions.
@@ -62,10 +68,6 @@ After a job has finished running, any data you need to keep should be moved to
 a project directory or your $HOME directory.
 **Files in `SCRATCH` are subject to a 60 day purge policy where files older than 60 days
 may be automatically deleted without warning.**
-
-Note, we know this from running the job.
-It is always a good idea to review the resources your jobs use
-and adjust future jobs to more accurately request resources.
 
 :::{note}
 This job script will not run without modification. In particular, you must change
