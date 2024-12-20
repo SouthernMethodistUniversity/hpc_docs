@@ -1,39 +1,60 @@
-#!/usr/bin/env zsh
-#SBATCH -J gaussian
-#SBATCH -o gaussian_%j.out
-#SBATCH -p batch
-#SBATCH --exclusive
-#SBATCH --gres=gpu:8
-#SBATCH --mem=0
+#!/bin/bash
+#SBATCH -J gaussian            # job name shown in queue
+#SBATCH -o gaussian_%j.out     # output file, %j is the job id number
+#SBATCH -p dev                 # request the dev queue
+#SBATCH -c 128                 # request all 128 GPUs
+#SBATCH --mem=0                # requests all of the memory
+#SBATCH -t 01:00:00            # request 1 hour
+#SBATCH -A peruna_project_0001 # example account
 
-input_file=hexakisx.g16_gpu
+# specify the input file
+input_file=gaussian_example.cpu
 
-. /hpc/mp/spack/opt/spack/linux-ubuntu20.04-zen2/gcc-10.3.0/lmod-8.7.2-uutt23puvwraegsi7w7ck3xbhrgk22mu/lmod/lmod/init/zsh
-module use /hpc/mp/modules
+# module purge clears any existing modules so only the modules
+# requested will be loaded. This improves reproducibility
 module purge
-module load gaussian
 
-job_dir=${SCRATCH}/${SLURM_ARRAY_JOB_ID}/${SLURM_ARRAY_TASK_ID}
+# load gaussian. It is a good practice to include the version
+# the default modules without a version may change when software
+# is updated
+module load gaussian/g16c/zen3
+
+# create a temporary job directory in scratch
+# copy the input file and cd into it
+# Note: scratch is intended for temporary job storage
+# you should move any files you need to keep when the job
+# completes and delete unneeded files. Files in $SCRATCH
+# are subject to automatic deletion after 60 days.
+job_dir=${SCRATCH}/${SLURM_JOB_ID}
 mkdir -p ${job_dir}
 cp ${input_file} ${job_dir}
 cd ${job_dir}
 GAUSS_SCRDIR=${job_dir}
 
-cores_32=$(seq -s ',' 0 4 124)
-cores_64=$(seq -s ',' 0 2 124)
-cores_128="0-127"
+# gets requested mem in GB
+sleep 5 # to make sure the job info is available
+mem=$(sacct -o "ReqMem" --units=G -j ${SLURM_JOB_ID} -n | xargs)
 
-gpus_1="0=48"
-gpus_2="0-1=48,52"
-gpus_4="0-3=48,52,16,20"
-gpus_8="0-7=48,52,16,20,112,116,80,84"
+# get the cores assigned to the job
+# This is M3 specific, though something similar will work on many systems
+cpus=$(cat /sys/fs/cgroup/system.slice/slurmstepd.scope/job_${SLURM_JOB_ID}/cpuset.cpus)
 
-cpu_gpu() {
+# make sure mem is an int with correct units
+mem=${mem%.*}
+mem=${mem//[!0-9]/}
+mem="${mem}GB"
+
+# this function fills in the cpu and memory information into the
+# input file
+cpu_mem() {
   sed -i -e "/^%CPU/c\%CPU=${1}" ${input_file}
-  sed -i -e "/^%GPU/c\%GPUCPU=${2}" ${input_file}
+  sed -i -e "/^%Mem/c\%Mem=${2}" ${input_file}
 }
 
-cpu_gpu ${cores_128} ${gpus_8}
+cpu_mem ${cpus} ${mem}
 
+# run gaussian
 g16 < ${input_file}
 
+# clean up temp $SCRATCH directory
+rm -rf ${job_dir}
