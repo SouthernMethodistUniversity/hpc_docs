@@ -49,8 +49,8 @@ Files used in the example are available:
 The following job script can be submitted using `sbatch guassian_cpu_example.sbatch`.
 
 This example will run in about 10 seconds and use less that `1GB` of memory.
-In general, more complicated simulations will take much longer and benefit from
-using more cores and memory. Note, we know this from running the job.
+In general, more complicated simulations will take much longer and should typically
+use more cores and memory. Note, we know this from running the job.
 It is always a good idea to review the resources your jobs use
 and adjust future jobs to more accurately request resources.
 
