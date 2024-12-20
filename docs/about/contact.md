@@ -7,6 +7,12 @@ Tickets can be directly created using the [STABLE ticketing system](https://www.
 
 You can also email [help@smu.edu](mailto:help@smu.edu?subject=[HPC]). Please be sure to include `[HPC]` in the subject for more expedient routing.
 
+# Consultations
+
+Consultations can be requested by opening a help ticket using the above information.
+
+The OIT Research and Technology Services team can be reached directly at [oitresearch@smu.edu](mailto:oitresearch@smu.edu) to schedule a consultation.
+
 # GitHub
 
 :::{important}
