@@ -19,9 +19,9 @@ For examples and tips on submitting jobs, see [our SLURM documentation](tutorial
 For compute resources, see [HPC Queues](about:queues)
 :::
 
-## Using Gaussian on the SuperPod
+<!-- ## Using Gaussian on the SuperPod
 
-Files used in the example are available: 
+Files used in the example are available:
 
   - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/gaussian)
   - on the SuperPod at `/hpc/mp/examples/gaussian/`
@@ -35,9 +35,9 @@ The following job script can be submitted using `sbatch gaussian_gpu_example.sba
 language: bash
 linenos: true
 ---
-```
+``` -->
 
-## Using Amber on M3
+## Using Gaussian on M3
 
 Files used in the example are available:
 
@@ -51,9 +51,15 @@ The following job script can be submitted using `sbatch guassian_cpu_example.sba
 This example should run in approximately 90 seconds and use about 600 MB of memory when using 4 cores. Therefore, we request 1 GB of memory and 3 minutes of run time to give
 ourselves some room for error. 
 
-Note, we know this from running the job. 
+Note, we know this from running the job.
 It is always a good idea to review the resources your jobs use
 and adjust future jobs to more accurately request resources.
+
+:::{note}
+This job script will not run without modification. In particular, you must change
+the account from `peruna_project_0001` to the account name for an allocation you
+have access to.
+:::
 
 ```{literalinclude} gaussian_cpu_example.sbatch                 
 ---
