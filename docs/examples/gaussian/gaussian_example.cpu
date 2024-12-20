@@ -1,6 +1,6 @@
 %CPU=
 %Mem=
-%Chk=hexakis.chk
+%Chk=gaussian_example_cpu.chk
 #P B3LYP/cc-pVDZ Opt Freq
 
 Grimme4 dodeca-tBu-hexaphenylethane (-90. -90.)
