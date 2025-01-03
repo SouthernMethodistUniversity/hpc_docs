@@ -49,4 +49,10 @@ https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
 Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.
 
+=================
+January 17, 2025:
+=================
+
+All HPC systems will be down for maintenance between 6AM and 5PM Central Standard Time.
+
 ********************************************************************************
