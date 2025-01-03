@@ -5,8 +5,13 @@ msg: |
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
+  <% if Time.now < Time.new(2025, 8, 17, 6, 0, 0) %>
+  
+  **January 17, 2025:**
 
-  <% if Time.now < Time.new(2025, 8, 15, 0, 0, 0) %>
+  All HPC systems will be down for maintenance between 6AM and 5PM Central Standard Time.
+
+  <% end %>
 
   **Beginning January 15, 2025:**
 
@@ -22,4 +27,4 @@ msg: |
   Please contact help@smu.edu with [HPC] in the subject line with any questions
   or concerns.
 
-  <% end %>
+
