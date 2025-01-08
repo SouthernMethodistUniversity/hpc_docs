@@ -30,7 +30,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -408,7 +408,7 @@
 <h1>Submitting R Jobs<a class="headerlink" href="#submitting-r-jobs" title="Link to this heading">#</a></h1>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Serial <span class="math notranslate nohighlight">\(\pi\)</span> Monte Carlo R Script.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">monte_carlo_pi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">monte_carlo_pi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos">2</span><span class="w">  </span><span class="n">x</span><span class="o">=</span><span class="nf">runif</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="linenos">3</span><span class="w">  </span><span class="n">y</span><span class="o">=</span><span class="nf">runif</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="linenos">4</span><span class="w">  </span><span class="n">z</span><span class="o">=</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
@@ -424,9 +424,9 @@
 <div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Parallel <span class="math notranslate nohighlight">\(\pi\)</span> Monte Carlo R Script.</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
 <span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="n">monte_carlo_pi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 3</span><span class="n">monte_carlo_pi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos"> 4</span><span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">+</span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="kr">if</span><span class="p">(</span><span class="n">z</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 <span class="linenos"> 6</span><span class="p">}</span>
 <span class="linenos"> 7</span>
 <span class="linenos"> 8</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailing</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
