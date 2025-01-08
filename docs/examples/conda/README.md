@@ -1,31 +1,42 @@
-# Mamba
+# Conda and Mamba
+
+:::{notice}
+It is **not recommended** to use the [Anaconda Default Channels](https://docs.anaconda.com/free/anaconda/reference/default-repositories/). They are incompatible with `conda-forge` which is the basis of our system installations.
+:::
 
 :::{tip}
 We recommend using Mamba (<https://mamba.readthedocs.io/en/latest/>).
-It is a drop in replacement for Conda and is typically considerably faster.
+It is a drop in replacement for Conda and is typically faster.
 :::
 
-Mamba (<https://mamba.readthedocs.io/en/latest/>) is a package management system.
+Conda (https://docs.conda.io/projects/conda/en/stable/) and Mamba (<https://mamba.readthedocs.io/en/latest/>) are package management systems.
 
-## Loading Mamba
+## Loading Conda and Mamba
 
 ### System Installation
 
-We have a base install of Mamba available as a module that can be accessed using
+We have a base install of Mamba and Conda from [Miniforge](https://github.com/conda-forge/miniforge) available as a module that can be accessed using, for example,
 
 ```bash
-module load mamba
+module load miniforge/24.11.2-1
 ```
+
+The module will automatically load the shell and environment settings needed to use `conda` and `mamba` commands.
+
+:::{note}
+It is recommended to always include the version number when loading modules. Most modules will default to the most recent version if not specified, which may cause unexpected behaviors when new versions are installed.
+:::
 
 ### User Installation
 
-You can also install your own versions of Conda in your `$HOME` directory.
-We recommend 
+You can also install your own versions of Conda in your `$HOME` directory or a project directory.
+We recommend:
 
 - Micromamba: <https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html>
+- Miniforge: <https://github.com/conda-forge/miniforge>
 
-The first time you run Mamba, you will need to initialize it.
-This creates some shell functions in your profile to make it easier to call Mamba.
+The first time you run Conda/Mamba, you will need to initialize it.
+for example, this creates some shell functions in your profile to make it easier to call Mamba.
 
 ```bash
 mamba init $(echo $SHELL | cut -c 6-)
@@ -35,8 +46,8 @@ After doing this, you may need to log out and log back in to see the effects.
 In most cases, you can source your shell profile to avoid having to log out.
 For most users, this is `source ~/.bashrc`.
 
-We additionally recommend that you disable Conda's auto-activate base
-functionality. By default, Conda will load a base environment, which can cause
+We additionally recommend that you disable Conda/Mamba's auto-activate base
+functionality. By default, Conda/Mamba will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
 <https://hpc.m3.smu.edu> often behave in unexpected ways because it tries to
 use a Conda package instead of the correct system package.
@@ -53,7 +64,7 @@ conda config --prepend pkgs_dirs $HOME/.conda/pkgs
 ## Creating Virtual Environments from the Command Line
 
 For simple environments with a small number of packages, you can create an
-environment named `mamba_env` (or any name of your choosing) in your `$WORK`
+environment named `mamba_env` (or any name of your choosing) in your `$HOME`
 directory with
 
 ```bash
@@ -137,7 +148,7 @@ JupyterLab in the environment.
 ### Using a base
 
 ```bash
-module load mamba
+module load miniforge/24.11.2-1
 mamba activate mamba_env
 ```
 
@@ -150,7 +161,7 @@ If you are running programs interactively from the terminal (e.g. using
 ```srun```) just activate the virtual environment with
 
 ```bash
-module load mamba
+module load miniforge/24.11.2-1
 mamba activate mamba_env
 ```
 
@@ -162,13 +173,13 @@ If you are running programs using _SBatch_ scripts, you should include the
 activation command in your script:
 
 ```bash
-module load mamba
+module load miniforge/24.11.2-1
 mamba activate mamba_env
 ```
 
 ## Tips and reproducibility
 
-- In general, you should not update packages inside a Mamba environment.
+- In general, you should not update packages inside a Conda/Mamba environment.
   Instead, you should make a new environment with the versions of the packages
   need and verify this works before removing any old environments that are not
   longer needed. This is especially true if you used `pip` to install anything.
