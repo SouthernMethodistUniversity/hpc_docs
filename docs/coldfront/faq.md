@@ -9,11 +9,11 @@ See the [instructor quick start](qs_instructor.md).
 2. Starting on November 1, 2024, user access to HPC compute resources will require being a member of an active project and allocation in ColdFront.
 See the [quick start](quick_start.md).
 
-3. Personal user and group directories in `$WORK` will be decommissioned before January 15, 2025 (tentative).
+3. Personal user and group directories in `$WORK` will begin to be decommissioned on January 15, 2025.
 All data stored in a personal user or group directories in `$WORK` must be moved into an appropriate new storage allocation specified in ColdFront project(s).
 OIT will assist this transition as needed, please submit a STABLE Help Desk ticket if you need assistance.
-All data must be moved before January 15, 2025, though quotas on existing spaces may be reduced prior to that date.
-HPC users will receive regular communications about the status `$WORK` quotas.
+All data must be moved before August 15, 2025, though quotas on existing spaces will be reduced prior to that date.
+HPC users will receive regular communications about the status `$WORK` quotas. See the [deprecation schedule](../work_deprecation.md)
 
 4. During the transition period (tentatively between August 2024 and May 2025), all allocation requests will be approved with the following exceptions:
     * Requests that violate SMU policy (see, for example,  [SMU's acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use).
