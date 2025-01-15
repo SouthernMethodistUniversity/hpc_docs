@@ -91,6 +91,9 @@ From: ubuntu:22.04
                curl \
                gcc \
                gfortran \
+               gcc-multilib \
+               g++-multilib \
+               gfortran-multilib \
                make \
                wget \
                git \
