@@ -69,5 +69,5 @@ mamba activate -p $HOME/.conda/envs/mamba_env
 Once you have tested your new environment to ensure it is working, please delete the environment from `$WORK` using:
 
 ```bash
-mamba remove -p /lustre/work/client/users/[YOUR USERNAME]/.conda/envs/mamba_env --all
+mamba remove -p /lustre/work/client/users/[YOUR USERNAME]/.conda/envs/mamba_env/ --all
 ```
