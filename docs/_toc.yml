@@ -44,6 +44,8 @@ parts:
     sections: 
     - file: examples/stata/index.md
   - file: examples/conda/README.md
+    sections:
+    - file: examples/conda/migration.md
 - caption: Tutorials
   chapters:
   - file: tutorials/unix/intro.md
