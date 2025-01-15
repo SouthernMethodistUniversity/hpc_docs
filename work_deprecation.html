@@ -222,7 +222,10 @@
 <li class="toctree-l2"><a class="reference internal" href="examples/stata/index.html">Stata</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/conda/README.html">Conda and Mamba</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/conda/migration.html">Migrating Environments</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="nav bd-sidenav">
@@ -432,14 +435,14 @@
 <li><p>Personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will no longer exist.</p></li>
 <li><p>Modifying existing files or creating new files will not be possible when the quota is exceeded.</p></li>
 <li><p>Applications depending on files in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> may behave unexpectedly when the quota is exceeded.</p></li>
-<li><p>Many users have Conda environments installed in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, we expect these will continue to function during the transition. However, they will need to be rebuilt in another location before the end of the deprecation timeline (August 15, 2025).</p></li>
+<li><p>Many users have Conda environments installed in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, we expect these will continue to function during the transition. However, they will need to be rebuilt in another location before the end of the deprecation timeline (August 15, 2025). See more details <a class="reference internal" href="examples/conda/migration.html"><span class="std std-doc">here</span></a>.</p></li>
 </ul>
 </section>
 <section id="required-actions">
 <h2>Required Actions<a class="headerlink" href="#required-actions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Any data currently stored in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.</p></li>
-<li><p>Any personal software installations in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFRont managed storage allocations)</p></li>
+<li><p>Any personal software installations in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFront managed storage allocations)</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>

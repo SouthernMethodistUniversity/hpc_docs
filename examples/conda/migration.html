@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NeMo Example &#8212; SMU HPC Documentation</title>
+    <title>Migrating Environments &#8212; SMU HPC Documentation</title>
   
   
   
@@ -60,11 +60,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/nemo/README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/conda/migration';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UNIX and Linux Shells" href="../../tutorials/unix/intro.html" />
+    <link rel="prev" title="Conda and Mamba" href="README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,8 +117,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -209,7 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../coldfront/optout.html">Opting out of notifications</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chemistry.html">Chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../amber/index.html">Amber</a></li>
 </ul>
@@ -222,8 +222,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../stata/index.html">Stata</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../conda/migration.html">Migrating Environments</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Conda and Mamba</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Migrating Environments</a></li>
 </ul>
 </details></li>
 </ul>
@@ -317,7 +317,7 @@
       
       
       
-      <li><a href="../../_sources/examples/nemo/README.md" target="_blank"
+      <li><a href="../../_sources/examples/conda/migration.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -393,7 +393,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NeMo Example</h1>
+    <h1>Migrating Environments</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,7 +403,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-jobs">Submit jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-environments">Current Environments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuild-in-a-storage-allocation">Rebuild in a Storage Allocation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuild-in-home">Rebuild in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-and-removing-from-work">Testing and Removing from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -415,20 +418,68 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="nemo-example">
-<h1>NeMo Example<a class="headerlink" href="#nemo-example" title="Link to this heading">#</a></h1>
-<p><strong>Currently, the example script provided doesn’t run successfully.</strong></p>
-<section id="submit-jobs">
-<h2>Submit jobs<a class="headerlink" href="#submit-jobs" title="Link to this heading">#</a></h2>
-<p>Run the <code class="docutils literal notranslate"><span class="pre">submit_jobs.sh</span></code> script. The script will submit up to three jobs.</p>
-<p>Jobs:</p>
-<ol class="arabic simple">
-<li><p>Get datasets and the NeMo repo and preprocess the data</p></li>
-<li><p>Build the container image using script from NeMo</p></li>
-<li><p>Run the example Python script using the container image</p></li>
-</ol>
-<p>Steps 1 and 2 will run only if needed.</p>
-<p>All scripts have comments detailing what they are doing.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="migrating-environments">
+<h1>Migrating Environments<a class="headerlink" href="#migrating-environments" title="Link to this heading">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Environments by default are created in user <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories, which are deprecated as of January 15, 2025. Users with Conda environments they would like to keep using need to move or rebuild existing environments in a storage allocation created in ColdFront or their <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory before August 15, 2025. Below are recommended ways to do this.</p>
+</div>
+<p>To see your existing environments, using the command <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">env</span> <span class="pre">list</span></code>. Any projects that are in a subdirectory of <code class="docutils literal notranslate"><span class="pre">/lustre/work/client/users/[YOUR</span> <span class="pre">USERNAME]</span></code> will need to be moved or rebuilt if you are going to continue using them. We recommend always building your conda environment in the appropriate ColdFront storage allocation it is associated with. We do not recommend building environments in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory because it is limited to 200GB of space.</p>
+<section id="current-environments">
+<h2>Current Environments<a class="headerlink" href="#current-environments" title="Link to this heading">#</a></h2>
+<p>To get a list of dependencies and pip installed packages for an existing environment, run this command to save that list into an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>miniforge
+mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--no-builds<span class="w"> </span>-n<span class="w"> </span>mamba_env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;prefix&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+</pre></div>
+</div>
+</section>
+<section id="rebuild-in-a-storage-allocation">
+<h2>Rebuild in a Storage Allocation<a class="headerlink" href="#rebuild-in-a-storage-allocation" title="Link to this heading">#</a></h2>
+<p>To rebuild that environment in another directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-p<span class="w"> </span>/projects/<span class="o">[</span>USERNAME<span class="o">]</span>/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/<span class="o">[</span>STORAGE<span class="w"> </span>ALLOC<span class="w"> </span>DIRECTORY<span class="o">]</span>/.conda/envs/mamba_env
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this process does not work immediately, try removing versions numbers from packages within the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file before rebuilding it.</p>
+</div>
+<p>To use the new environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>miniforge
+mamba<span class="w"> </span>activate<span class="w"> </span>/projects/<span class="o">[</span>USERNAME<span class="o">]</span>/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/<span class="o">[</span>STORAGE<span class="w"> </span>ALLOC<span class="w"> </span>DIRECTORY<span class="o">]</span>/.conda/envs/mamba_env
+</pre></div>
+</div>
+</section>
+<section id="rebuild-in-home">
+<h2>Rebuild in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code><a class="headerlink" href="#rebuild-in-home" title="Link to this heading">#</a></h2>
+<p>If you have not done so already, first make $HOME the default location for environments:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>miniforge
+conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
+conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>envs_dirs<span class="w"> </span><span class="nv">$HOME</span>/.conda/envs
+conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>pkgs_dirs<span class="w"> </span><span class="nv">$HOME</span>/.conda/pkgs
+</pre></div>
+</div>
+<p>To rebuild you environment in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/.conda/envs/mamba_env
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this process does not work immediately, try removing versions numbers from packages within the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file before rebuilding it.</p>
+</div>
+<p>To use the new environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>miniforge
+mamba<span class="w"> </span>activate<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/.conda/envs/mamba_env
+</pre></div>
+</div>
+</section>
+<section id="testing-and-removing-from-work">
+<h2>Testing and Removing from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code><a class="headerlink" href="#testing-and-removing-from-work" title="Link to this heading">#</a></h2>
+<p>Once you have tested your new environment to ensure it is working, please delete the environment from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>remove<span class="w"> </span>-p<span class="w"> </span>/lustre/work/client/users/<span class="o">[</span>YOUR<span class="w"> </span>USERNAME<span class="o">]</span>/.conda/envs/mamba_env<span class="w"> </span>--all
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -445,7 +496,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./examples/nemo"
+            path: "./examples/conda"
         },
         predefinedOutput: true
     }
@@ -462,6 +513,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Conda and Mamba</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../tutorials/unix/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">UNIX and Linux Shells</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -479,7 +548,10 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submit-jobs">Submit jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-environments">Current Environments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuild-in-a-storage-allocation">Rebuild in a Storage Allocation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuild-in-home">Rebuild in <code class="docutils literal notranslate"><span class="pre">$HOME</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-and-removing-from-work">Testing and Removing from <code class="docutils literal notranslate"><span class="pre">$WORK</span></code></a></li>
 </ul>
   </nav></div>
 
