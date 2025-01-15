@@ -6,11 +6,11 @@ module load apptainer
 unset APPTAINER_BIND
 
 # set version
-VERSION=1.1.3
+VERSION=1.1.5
 
 # TODO: gpu enabled?
 
-CONTAINER_NAME=remote_desktop_${VERSION}.sif
+CONTAINER_NAME=remote_desktop_32_${VERSION}.sif
 
 # check if this version already exits
 CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
@@ -30,7 +30,7 @@ if [ -f "$DESTINATION" ]; then
 fi
 
 # build the container
-apptainer build --fakeroot ${CONTAINER_NAME} desktop.def
+apptainer build --fakeroot ${CONTAINER_NAME} desktop32.def
 
 # move container to /hpc/{sys}/containers/
 mkdir -p /hpc/${CLUSTER}/containers/remote_desktop
