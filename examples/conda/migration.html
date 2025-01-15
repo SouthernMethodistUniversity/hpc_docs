@@ -422,7 +422,7 @@
 <h1>Migrating Environments<a class="headerlink" href="#migrating-environments" title="Link to this heading">#</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Environments by default are created in user <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories, which are deprecated as of January 15, 2025. Users with Conda environments they would like to keep using need to move or rebuild existing environments in a storage allocation created in ColdFront or their <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory before August 15, 2025. Below are recommended ways to do this.</p>
+<p>Many environments were created, by default, in user <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories, which are deprecated as of January 15, 2025. Users with Conda environments they would like to keep using need to move or rebuild existing environments in a storage allocation created in ColdFront or their <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory before August 15, 2025. Below are recommended ways to do this.</p>
 </div>
 <p>To see your existing environments, using the command <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">env</span> <span class="pre">list</span></code>. Any projects that are in a subdirectory of <code class="docutils literal notranslate"><span class="pre">/lustre/work/client/users/[YOUR</span> <span class="pre">USERNAME]</span></code> will need to be moved or rebuilt if you are going to continue using them. We recommend always building your conda environment in the appropriate ColdFront storage allocation it is associated with. We do not recommend building environments in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory because it is limited to 200GB of space.</p>
 <section id="current-environments">
@@ -436,7 +436,7 @@ mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export<
 <section id="rebuild-in-a-storage-allocation">
 <h2>Rebuild in a Storage Allocation<a class="headerlink" href="#rebuild-in-a-storage-allocation" title="Link to this heading">#</a></h2>
 <p>To rebuild that environment in another directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-p<span class="w"> </span>/projects/<span class="o">[</span>USERNAME<span class="o">]</span>/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/<span class="o">[</span>STORAGE<span class="w"> </span>ALLOC<span class="w"> </span>DIRECTORY<span class="o">]</span>/.conda/envs/mamba_env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-p<span class="w"> </span>/projects/<span class="o">[</span>PI<span class="w"> </span>USERNAME<span class="o">]</span>/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/<span class="o">[</span>STORAGE<span class="w"> </span>ALLOC<span class="w"> </span>DIRECTORY<span class="o">]</span>/.conda/envs/mamba_env
 </pre></div>
 </div>
 <div class="admonition note">
@@ -446,7 +446,7 @@ mamba<span class="w"> </span>env<span class="w"> </span><span class="nb">export<
 <p>To use the new environment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>miniforge
-mamba<span class="w"> </span>activate<span class="w"> </span>/projects/<span class="o">[</span>USERNAME<span class="o">]</span>/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/<span class="o">[</span>STORAGE<span class="w"> </span>ALLOC<span class="w"> </span>DIRECTORY<span class="o">]</span>/.conda/envs/mamba_env
+mamba<span class="w"> </span>activate<span class="w"> </span>/projects/<span class="o">[</span>PI<span class="w"> </span>USERNAME<span class="o">]</span>/<span class="o">[</span>PROJECT<span class="w"> </span>DIRECTORY<span class="o">]</span>/<span class="o">[</span>STORAGE<span class="w"> </span>ALLOC<span class="w"> </span>DIRECTORY<span class="o">]</span>/.conda/envs/mamba_env
 </pre></div>
 </div>
 </section>
