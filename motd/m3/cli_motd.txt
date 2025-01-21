@@ -33,11 +33,11 @@ See the documentation for running jobs:
 https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
 
-=================
-January 15, 2025:
-=================
+====================
+$WORK is Deprecated!
+====================
 
-Personal $WORK directories will begin to have their quotas decreased as they are phased out:
+Quotas on personal $WORK directories are decreasing as they are phased out:
 https://southernmethodistuniversity.github.io/hpc_docs/work_deprecation.html
 
 All data stored in personal $WORK directories and shared group directories
@@ -48,11 +48,5 @@ https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
 
 Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.
-
-=================
-January 17, 2025:
-=================
-
-All HPC systems will be down for maintenance between 6AM and 5PM Central Standard Time.
 
 ********************************************************************************
