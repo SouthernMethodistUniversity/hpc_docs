@@ -5,7 +5,7 @@ msg: |
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
-  ** \$WORK is Deprecated **
+  **$WORK is Deprecated**
 
   - Quotas on personal $WORK directories are being decreased as they are phased out:
   https://southernmethodistuniversity.github.io/hpc_docs/work_deprecation.html
