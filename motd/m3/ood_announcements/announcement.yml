@@ -5,17 +5,9 @@ msg: |
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
-  <% if Time.now < Time.new(2025, 8, 17, 6, 0, 0) %>
-  
-  **January 17, 2025:**
+  ** $WORK is Deprecated **
 
-  All HPC systems will be down for maintenance between 6AM and 5PM Central Standard Time.
-
-  <% end %>
-
-  **Beginning January 15, 2025:**
-
-  - Personal $WORK directories will begin to have their quotas decreased as they are phased out:
+  - Quotas on personal $WORK directories are being decreased as they are phased out:
   https://southernmethodistuniversity.github.io/hpc_docs/work_deprecation.html
 
   - All data stored in personal $WORK directories and shared group directories
