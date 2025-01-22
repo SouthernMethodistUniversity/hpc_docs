@@ -46,6 +46,7 @@ parts:
   - file: examples/conda/README.md
     sections:
     - file: examples/conda/migration.md
+    - file: examples/conda/python_envs.md
 - caption: Tutorials
   chapters:
   - file: tutorials/unix/intro.md
