@@ -10,6 +10,9 @@ require_relative "CustomEnvironments"
 # find slurm accounts
 require_relative "CheckAccounts"
 
+# find Python modules
+require_relative "GetModules"
+
 -%>
 
 ---
@@ -86,7 +89,20 @@ attributes:
       - We've listed your *Conda* environments we found in standard locations. If the one you want to use is greyed out, it means that you need to install jupyterlab in that environment before it can be used
       - Environments using *venv*, *virtualenv*, and others will not be listed above and should be loaded below in the "Custom Environment" settings
       - Other environments can be specified by selecting "Custom Environment"
+      <%- GetModules.PythonModules.each do |q| 0%>
+       - <%= q[0] %> <%= q[1] %> <%= q[2] %> <%= q[3] %>'
+      <%- end -%>
     options:
+      <%- GetModules.PythonModules.each do |q| 0%>
+       - [ '<%= q[0] %>/<%= q[1] %>/<%= q[2] %>/<%= q[3] %>', 'module',
+            data-set-conda-command: '<%= q[0] %> <%= q[1] %>',
+            data-set-conda-type: '<%= q[2] %>',
+            <%- if q[1] != "new" -%>
+            data-hide-build-environment: true,
+            data-hide-environment-name: true
+            <%- end -%>
+          ]
+      <%- end -%>
       <%- CustomEnvironments.JupyterLabEnvs.each do |q| -%>
         - [ '<%= q[0] %>', '<%= q[1] %>',
             data-set-conda-command: '<%= q[3] %>',
