@@ -182,10 +182,10 @@ class CustomEnvironments
 
           # remove * for activated if present
           if split_env[0] == '*'
-            env_split.shift
+            split_env.shift
           end
           if split_env[1] == '*'
-            env_split.delete_at(1)
+            split_env.delete_at(1)
           end
 
           # if the name is blank insert a blank into the array
