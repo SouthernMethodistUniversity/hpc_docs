@@ -14,89 +14,13 @@ ERROR_FILE=$(pwd)/errors.txt
 touch ${ERROR_FILE}
 LOAD_ERRORS=0
 
-# if requested, try to build an environment
 module purge
-<% if context.python_version == "new" %>
 
-  echo "Building new environment"
-  module load conda
-
-  # make sure auto activate base is off
-  conda config --set auto_activate_base false
-
-  # build the environment with the requested name
-  # in $WORK/.ood_envs/$NAME
-
-  # first copy the yml file to the working dir
-  cp <%= context.build_environment %> environment.yml
-
-  # set the name to be the requested name
-  <% if context.environment_name.empty? %>
-    # use the name in the environment file
-    NAME=$(head -n 1 environment.yml)
-    NAME=${NAME#*:} # strips name: from beginning
-    # remove leading / trailing whitespace
-    NAME="$(echo -e "${NAME}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
-  <% else %>
-    NAME="<%= context.environment_name %>"
-    NAME="${NAME// /_}" # replace spaces with underscores
-  <% end %>
-
-  # check if directory already exists
-  ENV_EXISTS=0
-  N_ENV_PATHS=$(conda config --show envs_dirs | wc -l)
-  N_ENV_PATHS="$((N_ENV_PATHS-1))"
-  for i in $( seq 1 ${N_ENV_PATHS} )
-  do
-    path_str=$(conda config --show envs_dirs | tail -${i} | head -n 1)
-    ENV_PATH="/"${path_str#*/}/${NAME}
-    echo "Checking ENV_PATH: ${ENV_PATH}"
-    if [ -d "${ENV_PATH}" ]
-    then
-      ENV_EXISTS=1
-      LOAD_WARNINGS=1
-      echo "Environment name: <em>${NAME}</em> already exists!" >> ${WARNING_FILE}
-      echo "Environment path: <em>${ENV_PATH}</em>" >> ${WARNING_FILE}
-      echo "Loading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" >> ${WARNING_FILE}
-    fi
-  done
-
-  # check $WORK too since its the system default
-  # IT **SHOULD** have already been checked ...
-  ENV_PATH=${WORK}/.conda/envs/${NAME}
-  echo "Checking ENV_PATH: ${ENV_PATH}"
-  if [ -d "${ENV_PATH}" ] && [ ! ${ENV_EXISTS} ]
-  then
-    ENV_EXISTS=1
-    LOAD_WARNINGS=1
-    echo "Environment name: <em>${NAME}</em> already exists!" >> ${WARNING_FILE}
-    echo "Environment path: <em>${ENV_PATH}</em>" >> ${WARNING_FILE}
-    echo "Loading existing environment. If you wanted to make a new environment please provide a difference name or remove the old environment" >> ${WARNING_FILE}
-  fi
-
-  if (( ! ${ENV_EXISTS} )); then
-    # actually change the name
-    sed -i "1s/.*/name: ${NAME}/" environment.yml
-
-    # build the environment with mamba
-    echo "TIMING - Starting environment build at: $(date)"
-    mamba env create -vv -n ${NAME} -f environment.yml &> "${ENV_BUILD_LOG}"
-    echo "TIMING - Finisied environment build at: $(date)"
-  fi
-
-  # overide the settings with correct values
-  <% context.conda_type = "Mamba Env" %>
-  <% context.conda_command = "/hpc/m3/apps/conda/bin/mamba" %>
-
-  echo "NEW ENV BUILD COMPLETE" >> "${ENV_BUILD_LOG}"
-
-<% else %>
-  NAME=<%= context.python_version %>
-<% end %>
+# get env / module name
+NAME=<%= context.python_version %>
 
 # Set working directory to home directory
 cd "${HOME}"
-
 
 #
 # Start Jupyter Notebook Server
@@ -115,6 +39,9 @@ cd "${HOME}"
   <% elsif context.conda_type == "Mamba Env" %>
     echo "type mamba:" $(type mamba)
     mamba  activate ${NAME}
+  <% elsif context.conda_type == "Module" %>
+    echo "loading module"
+    module load ${NAME}
   <% end %>
 <% end %>
 
