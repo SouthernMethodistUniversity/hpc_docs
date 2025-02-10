@@ -98,7 +98,9 @@ From: ubuntu:22.04
                lsb \
                libxm4 \
                xsltproc \
-               paraview
+               paraview \
+               llvm-14-dev \
+               clang-14
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
