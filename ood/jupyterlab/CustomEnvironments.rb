@@ -273,7 +273,6 @@ class CustomEnvironments
 
       # always include to option to define a custom env
       custom_env = [ "Custom Environment - only use what is specified below", "custom", "user provided", "user provided"   ]
-      @JupyterLabEnvs.push(build_new)
       @JupyterLabEnvs.push(custom_env)
 
       # check the output of Conda info for useable envs
