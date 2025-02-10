@@ -108,11 +108,12 @@ class CustomEnvironments
     
           # if the name is blank insert a blank into the array
           if split_env.count == 1
-            split_env = ["", split_env[0]]
+            split_path = split_env[0].split('/')
+            split_env = [split_path[-1], split_env[0]]
+            split_env.push("Conda Env (unnamed, using path end)")
+          else
+            split_env.push("Conda Env")
           end
-          
-          # append the conda command
-          split_env.push("Conda Env")
           split_env.push(conda_command)
 
           conda_env.push(split_env)
@@ -143,11 +144,12 @@ class CustomEnvironments
 
           # if the name is blank insert a blank into the array
           if split_env.count == 1
-            split_env = ["", split_env[0]]
+            split_path = split_env[0].split('/')
+            split_env = [split_path[-1], split_env[0]]
+            split_env.push("Mamba Env (unnamed, using path end)")
+          else
+            split_env.push("Mamba Env")
           end
-
-          # append the conda command
-          split_env.push("Mamba Env")
           split_env.push(mamba_command)
 
           mamba_env.push(split_env)
@@ -190,11 +192,12 @@ class CustomEnvironments
 
           # if the name is blank insert a blank into the array
           if split_env.count == 1
-            split_env = ["", split_env[0]]
+            split_path = split_env[0].split('/')
+            split_env = [split_path[-1], split_env[0]]
+            split_env.push("Micromamba Env (unnamed, using path end)")
+          else
+            split_env.push("Micromamba Env")
           end
-
-          # append the conda command
-          split_env.push("Micromamba Env")
           split_env.push(micromamba_command)
            
           micromamba_env.push(split_env)
@@ -268,9 +271,6 @@ class CustomEnvironments
        
       @JupyterLabEnvs = []
 
-      # always include the option to build
-      build_new = [ "Build New Environment", "new", "Default Env Type", "Default Conda Path" ]
-      
       # always include to option to define a custom env
       custom_env = [ "Custom Environment - only use what is specified below", "custom", "user provided", "user provided"   ]
       @JupyterLabEnvs.push(build_new)
