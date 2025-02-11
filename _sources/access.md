@@ -26,8 +26,8 @@ those found in Linux, macOS, and Windows (>=10) including WSL.
    your username, which is usually the first part of your SMU NetID,
    and `<m3|superpod>` is either `m3` or `superpod`.
 3. Type a Duo **passcode** or `1` for a Duo push. The passcode can
-   come from the Duo app or from an OIT procured hardware token (faculty and
-   staff only).
+   come from an OIT procured hardware token (faculty and
+   staff only). Passcodes from the Duo app do not work.
 ```
 ```{tab-item} PuTTY
 PuTTY requires the one-time installation of this SSH client and X11.
