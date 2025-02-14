@@ -144,10 +144,20 @@ RUN wget https://github.com/alexdobin/STAR/archive/2.7.12b.tar.gz \
   && cd ../.. \
   && rm -rf STAR-2.7.12b 2.7.12b.tar.gz
 
+# sra-tools
+RUN git clone https://github.com/ncbi/ncbi-vdb.git \
+  && cd ncbi-vdb \
+  && git checkout tags/3.2.0 \
+  && ./configure --prefix=/usr/local && \
+  && make \
+  && make install
+
+RUN git clone https://github.com/ncbi/sra-tools.git \
+  && cd sra-tools \
+  && git checkout tags/3.2.0 \
+  && ./configure --prefix=/usr/local && \
+  && make \
+  && make install
+
 # cutadapt
 RUN apt-get install -y cutadapt
-
-ENV PATH="${PATH}:/usr/local:/usr/local/bin"
-ENV ftp_proxy="http://10.210.15.2:3128"
-ENV http_proxy="http://10.210.15.2:3128"
-ENV https_proxy="http://10.210.15.2:3128"
