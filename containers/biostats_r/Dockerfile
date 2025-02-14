@@ -94,12 +94,12 @@ RUN apt-get install -y libisal-dev libdeflate-dev \
 
 # dDocent samtools bamtools CD-HIT rainbow seqtk bedtools
 RUN apt-get install -y libvcflib-dev libvcflib-tools python3-vcf vcftools \
-  && wget https://github.com/jpuritz/dDocent/archive/v2.9.4.tar.gz \
-  && tar -xvzf v2.9.4.tar.gz \
-  && cd dDocent-2.9.4 \
+  && wget https://github.com/jpuritz/dDocent/archive/v2.9.8.tar.gz \
+  && tar -xvzf v2.9.8.tar.gz \
+  && cd dDocent-2.9.8 \
   && bash install_dDocent_requirements /usr/local/ \
   && cd .. \
-  && rm -rf v2.9.4.tar.gz dDocent-2.9.4
+  && rm -rf v2.9.8.tar.gz dDocent-2.9.8
 
 # libgtextutils
 RUN git clone https://github.com/agordon/libgtextutils.git \
