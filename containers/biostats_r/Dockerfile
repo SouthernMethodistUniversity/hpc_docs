@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM rocker/ml-verse:4.4.1
 ARG DEBIAN_FRONTEND=noninteractive
 
 # update package lists
@@ -32,21 +32,21 @@ RUN apt-get install -y libpython2-dev unzip bc
 # python3 minimal
 RUN apt-get install -y python3
 
-# DEMORT
+# DEMORT (requires python 3.7?)
 RUN apt-get install -y python3-pip
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install demort 
 RUN apt-get install -y python3-tk
 
-# STACKS 2.62
-RUN wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.62.tar.gz
-RUN tar -xvzf stacks-2.62.tar.gz
-RUN cd stacks-2.62 && \
+# STACKS 2.68
+RUN wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.68.tar.gz
+RUN tar -xvzf stacks-2.68.tar.gz
+RUN cd stacks-2.68 && \
    ./configure --prefix=/usr/local && \
    make && \
    make install && \
    cd .. && \   
-   rm -rf stacks-2.62 stacks-2.62.tar.gz
+   rm -rf stacks-2.68 stacks-2.68.tar.gz
 
 # freebayes
 RUN apt-get install -y freebayes
