@@ -135,14 +135,14 @@ RUN apt-get install -y bowtie2
 RUN apt-get install -y python-numpy python3-matplotlib python-pysam python-htseq
 
 # STAR
-RUN wget https://github.com/alexdobin/STAR/archive/2.7.10b.tar.gz \
-  && tar -xzf 2.7.10b.tar.gz \
-  && cd STAR-2.7.10b \
+RUN wget https://github.com/alexdobin/STAR/archive/2.7.12b.tar.gz \
+  && tar -xzf 2.7.12b.tar.gz \
+  && cd STAR-2.7.12b \
   && cd source \
   && make STAR \
   && cp STAR /usr/local/ \
   && cd ../.. \
-  && rm -rf STAR-2.7.10b 2.7.10b.tar.gz
+  && rm -rf STAR-2.7.12b 2.7.12b.tar.gz
 
 # cutadapt
 RUN apt-get install -y cutadapt
