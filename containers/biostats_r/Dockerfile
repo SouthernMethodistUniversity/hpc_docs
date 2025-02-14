@@ -86,6 +86,7 @@ RUN wget https://github.com/Grelot/bioinfo_singularity_recipes/raw/master/packag
 RUN apt-get install -y libisal-dev libdeflate-dev \
   && git clone https://github.com/OpenGene/fastp.git \
   && cd fastp \
+  && git checkout tags/v0.24.0 \
   && make \
   && make install \
   && cd .. \
