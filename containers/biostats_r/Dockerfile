@@ -132,7 +132,7 @@ RUN apt-get -y install fastqc
 RUN apt-get install -y bowtie2
 
 # htseq
-RUN apt-get install -y python-numpy python3-matplotlib python-pysam htseq
+RUN apt-get install -y python3-numpy python3-matplotlib python3-pysam python3-htseq
 
 # STAR
 RUN wget https://github.com/alexdobin/STAR/archive/2.7.12b.tar.gz \
