@@ -69,6 +69,7 @@ RUN apt-get install -y mawk gnuplot parallel
 # bwa
 RUN git clone https://github.com/lh3/bwa.git \
   && cd bwa \
+  && git checkout tags/v0.7.18 \
   && make \
   && chmod +x bwa \
   && cp -f bwa /usr/local/bin \
