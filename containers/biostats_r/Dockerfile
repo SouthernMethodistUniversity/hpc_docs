@@ -135,14 +135,14 @@ RUN apt-get install -y bowtie2
 RUN apt-get install -y python3-numpy python3-matplotlib python3-pysam python3-htseq
 
 # STAR
-RUN wget https://github.com/alexdobin/STAR/archive/2.7.12b.tar.gz \
-  && tar -xzf 2.7.12b.tar.gz \
-  && cd STAR-2.7.12b \
+RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
+  && tar -xzf 2.7.11b.tar.gz \
+  && cd STAR-2.7.11b \
   && cd source \
   && make STAR \
   && cp STAR /usr/local/ \
   && cd ../.. \
-  && rm -rf STAR-2.7.12b 2.7.12b.tar.gz
+  && rm -rf STAR-2.7.11b 2.7.11b.tar.gz
 
 # sra-tools
 RUN git clone https://github.com/ncbi/ncbi-vdb.git \
