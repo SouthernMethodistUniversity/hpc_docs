@@ -148,16 +148,60 @@ RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
 RUN git clone https://github.com/ncbi/ncbi-vdb.git \
   && cd ncbi-vdb \
   && git checkout tags/3.2.0 \
-  && ./configure --prefix=/usr/local && \
+  && ./configure --prefix=/usr/local \
   && make \
   && make install
 
 RUN git clone https://github.com/ncbi/sra-tools.git \
   && cd sra-tools \
   && git checkout tags/3.2.0 \
-  && ./configure --prefix=/usr/local && \
+  && ./configure --prefix=/usr/local \
   && make \
   && make install
 
 # cutadapt
 RUN apt-get install -y cutadapt
+
+RUN install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
+    BiocManager \
+    pheatmap \
+    vegan \
+    vcfR \
+    adegenet \
+    poppr \
+    mmod \
+    treemap \
+    bmp \
+    raster \
+    SpatialPack
+
+# install via biocmanager
+RUN R -q -e 'BiocManager::install("DESeq2")'
+RUN R -q -e 'BiocManager::install("arrayQualityMetrics")'
+RUN R -q -e 'BiocManager::install("dada2")'
+RUN R -q -e 'BiocManager::install("phyloseq")'
+
+
+RUN R -q -e 'BiocManager::install("airway")'
+RUN R -q -e 'BiocManager::install("Rsubread")'
+RUN R -q -e 'BiocManager::install("Rsamtools")'
+RUN R -q -e 'BiocManager::install("GenomicFeatures")'
+RUN R -q -e 'BiocManager::install("txdbmaker")'
+RUN R -q -e 'BiocManager::install("GenomicAlignments")'
+RUN R -q -e 'BiocManager::install("limma")'
+RUN R -q -e 'BiocManager::install("edgeR")'
+RUN R -q -e 'BiocManager::install("BaySeq")'
+RUN R -q -e 'BiocManager::install("DSS")'
+RUN R -q -e 'BiocManager::install("cqn")'
+RUN R -q -e 'BiocManager::install("EBSeq")'
+RUN R -q -e 'BiocManager::install("NOISeq")'
+RUN R -q -e 'BiocManager::install("RnaSeqGeneEdgeRQL")'
+RUN R -q -e 'BiocManager::install("GO.db")'
+RUN R -q -e 'BiocManager::install("org.Mm.eg.db")'
+RUN R -q -e 'BiocManager::install("AnnotationDbi")'
+RUN R -q -e 'BiocManager::install("IRanges")'
+RUN R -q -e 'BiocManager::install("S4Vectors")'
+RUN R -q -e 'BiocManager::install("Biobase")'
+RUN R -q -e 'BiocManager::install("BiocGenerics")'
+RUN R -q -e 'BiocManager::install("gplots")'
+RUN R -q -e 'BiocManager::install("BiocStyle")'
