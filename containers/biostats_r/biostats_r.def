@@ -133,13 +133,14 @@ From: rocker/ml-verse:4.4.1
   pip3 install demort
 
   # STACKS 2.68
+  cd /
   wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.68.tar.gz
   tar -xvzf stacks-2.68.tar.gz
   cd stacks-2.68 && \
   ./configure --prefix=/usr/local && \
   make && \
   make install && \
-  cd .. && \   
+  cd / && \   
   rm -rf stacks-2.68 stacks-2.68.tar.gz
 
   # trimmonatic
@@ -148,7 +149,7 @@ From: rocker/ml-verse:4.4.1
   && cd Trimmomatic-0.39 \
   && cp -f ./adapters/* /usr/local/bin \
   && cp -f trimmomatic-0.39.jar /usr/local/bin \
-  && cd .. \
+  && cd / \
   && rm -rf Trimmomatic-0.39.zip Trimmomatic-0.39
 
   # bwa
@@ -158,7 +159,7 @@ From: rocker/ml-verse:4.4.1
   && make \
   && chmod +x bwa \
   && cp -f bwa /usr/local/bin \
-  && cd .. \
+  && cd / \
   rm -rf bwa
 
   # PEAR
@@ -174,7 +175,7 @@ From: rocker/ml-verse:4.4.1
   && git checkout tags/v0.24.0 \
   && make \
   && make install \
-  && cd .. \
+  && cd / \
   rm -rf fastp
 
   # dDocent samtools bamtools CD-HIT rainbow seqtk bedtools
@@ -182,7 +183,7 @@ From: rocker/ml-verse:4.4.1
   && tar -xvzf v2.9.8.tar.gz \
   && cd dDocent-2.9.8 \
   && bash install_dDocent_requirements /usr/local/ \
-  && cd .. \
+  && cd / \
   && rm -rf v2.9.8.tar.gz dDocent-2.9.8
 
   # libgtextutils
@@ -192,7 +193,7 @@ From: rocker/ml-verse:4.4.1
   && ./configure --prefix=/usr/local/ \
   &&  make \
   && make install \
-  && cd .. \
+  && cd / \
   && rm -rf libgtextutils
 
   # Install fastx-toolkit
@@ -204,7 +205,7 @@ From: rocker/ml-verse:4.4.1
   && patch -p0 < /tmp/fastx.patch2 \
   && make \
   && make install \
-  && cd .. \
+  && cd / \
   && rm -rf fastx_toolkit /tmp/fastx.patch /tmp/fastx.patch2
 
   # STAR
@@ -214,7 +215,7 @@ RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
   && cd source \
   && make STAR \
   && cp STAR /usr/local/ \
-  && cd ../.. \
+  && cd / \
   && rm -rf STAR-2.7.11b 2.7.11b.tar.gz
 
   # sra-tools
