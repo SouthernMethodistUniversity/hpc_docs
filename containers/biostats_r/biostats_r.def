@@ -301,12 +301,6 @@ RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
   rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
   systemctl disable bluetooth.service
 
-  # create symlinks for lmod
-  rm /etc/zsh/zshenv
-  mv /opt/zshenv /etc/zsh/zshenv
-  ln -s /hpc/sys/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
-  ln -s /hpc/sys/apps/lmod/lmod/init/cshrc /etc/profile.d/z00_lmod.csh
-
   # add chrome
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -q
   apt install -y ./google-chrome-stable_current_amd64.deb
