@@ -23,8 +23,8 @@ From: rocker/ml-verse:4.4.1
 %files
 
   # copy patches into container
-  fastx.patch /tmp/fastx.patch
-  fastx.patch2 /tmp/fastx.patch2
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch /tmp/fastx.patch
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch2 /tmp/fastx.patch2
 
 %post
   export TURBOVNC_VERSION=3.1.1
