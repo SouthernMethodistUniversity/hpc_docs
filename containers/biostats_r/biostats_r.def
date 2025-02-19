@@ -252,7 +252,7 @@ From: rocker/ml-verse:4.4.1
   R -q -e 'BiocManager::install("GenomicAlignments")'
   R -q -e 'BiocManager::install("limma")'
   R -q -e 'BiocManager::install("edgeR")'
-  R -q -e 'BiocManager::install("BaySeq")'
+  R -q -e 'BiocManager::install("baySeq")'
   R -q -e 'BiocManager::install("DSS")'
   R -q -e 'BiocManager::install("cqn")'
   R -q -e 'BiocManager::install("EBSeq")'
