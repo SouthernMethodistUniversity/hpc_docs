@@ -224,14 +224,16 @@ RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
   && git checkout tags/3.2.0 \
   && ./configure --prefix=/usr/local \
   && make \
-  && make install
+  && make install \
+  && cd /
 
   git clone https://github.com/ncbi/sra-tools.git \
   && cd sra-tools \
   && git checkout tags/3.2.0 \
   && ./configure --prefix=/usr/local \
   && make \
-  && make install
+  && make install \
+  && cd /
 
   # rpackages
   install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
