@@ -130,7 +130,7 @@ From: rocker/ml-verse:4.4.1
                vcftools \
                bedtools \
                freebayes \
-               libvcflib \
+               libvcflib-tools\
                trimmomatic \
                bwa \
                libisal-dev \
