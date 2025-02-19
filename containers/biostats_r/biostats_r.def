@@ -130,14 +130,14 @@ From: rocker/ml-verse:4.4.1
                vcftools \
                bedtools \
                freebayes \
-               libvcflib-tools\
                trimmomatic \
                bwa \
                libisal-dev \
                libdeflate-dev \
                samtools \
                libbam-dev \
-               libhts3
+               libhts3 \
+               bedops
 
   python3 -m pip install --upgrade pip
   pip3 install demort
