@@ -127,7 +127,17 @@ From: rocker/ml-verse:4.4.1
                libvcflib-dev \
                libvcflib-tools \
                python3-vcf \
-               vcftools 
+               vcftools \
+               bedtools \
+               freebayes \
+               libvcflib \
+               trimmomatic \
+               bwa \
+               libisal-dev \
+               libdeflate-dev \
+               samtools \
+               libbam-dev \
+               libhts3
 
   python3 -m pip install --upgrade pip
   pip3 install demort
@@ -142,25 +152,6 @@ From: rocker/ml-verse:4.4.1
   make install && \
   cd / && \
   rm -rf stacks-2.68 stacks-2.68.tar.gz
-
-  # trimmonatic
-  curl -O http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.39.zip \
-  && unzip Trimmomatic-0.39.zip \
-  && cd Trimmomatic-0.39 \
-  && cp -f ./adapters/* /usr/local/bin \
-  && cp -f trimmomatic-0.39.jar /usr/local/bin \
-  && cd / \
-  && rm -rf Trimmomatic-0.39.zip Trimmomatic-0.39
-
-  # bwa
-  git clone https://github.com/lh3/bwa.git \
-  && cd bwa \
-  && git checkout tags/v0.7.18 \
-  && make \
-  && chmod +x bwa \
-  && cp -f bwa /usr/local/bin \
-  && cd / \
-  rm -rf bwa
 
   # PEAR
   wget https://github.com/Grelot/bioinfo_singularity_recipes/raw/master/packages/pear-0.9.11-linux-x86_64.tar.gz \
@@ -209,7 +200,7 @@ From: rocker/ml-verse:4.4.1
   && rm -rf fastx_toolkit /fastx.patch /fastx.patch2
 
   # STAR
-RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
+  wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
   && tar -xzf 2.7.11b.tar.gz \
   && cd STAR-2.7.11b \
   && cd source \
