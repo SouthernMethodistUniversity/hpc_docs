@@ -23,8 +23,8 @@ From: rocker/ml-verse:4.4.1
 %files
 
   # copy patches into container
-  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch /tmp/fastx.patch
-  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch2 /tmp/fastx.patch2
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch /fastx.patch
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch2 /fastx.patch2
 
 %post
   export TURBOVNC_VERSION=3.1.1
@@ -201,12 +201,12 @@ From: rocker/ml-verse:4.4.1
   && cd fastx_toolkit \
   && autoreconf --install \
   && ./configure --prefix=/usr/local/ \
-  && patch -p0 < /tmp/fastx.patch \
-  && patch -p0 < /tmp/fastx.patch2 \
+  && patch -p0 < /fastx.patch \
+  && patch -p0 < /fastx.patch2 \
   && make \
   && make install \
   && cd / \
-  && rm -rf fastx_toolkit /tmp/fastx.patch /tmp/fastx.patch2
+  && rm -rf fastx_toolkit /fastx.patch /fastx.patch2
 
   # STAR
 RUN wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
