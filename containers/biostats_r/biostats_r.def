@@ -238,7 +238,8 @@ From: rocker/ml-verse:4.4.1
     treemap \
     bmp \
     raster \
-    SpatialPack
+    SpatialPack \
+    PoiClaClu
 
   R -q -e 'BiocManager::install("DESeq2")'
   R -q -e 'BiocManager::install("arrayQualityMetrics")'
@@ -267,6 +268,7 @@ From: rocker/ml-verse:4.4.1
   R -q -e 'BiocManager::install("BiocGenerics")'
   R -q -e 'BiocManager::install("gplots")'
   R -q -e 'BiocManager::install("BiocStyle")'
+  R -q -e 'BiocManager::install("ReportingTools")'
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
