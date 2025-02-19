@@ -1,0 +1,318 @@
+Bootstrap: docker
+From: rocker/ml-verse:4.4.1
+
+%labels
+    Author John LaGrone <jlagrone@smu.edu>
+    Version 1.0
+
+%apprun vncserver
+  exec vncserver "${@}"
+
+%apprun vncpasswd
+  exec vncpasswd "${@}"
+
+%apprun websockify
+  exec /opt/websockify/run "${@}"
+
+%runscript
+  exec vncserver "${@}"
+
+%environment
+  export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
+
+%files
+
+  # copy patches into container
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch /fastx.patch
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch2 /fastx.patch2
+
+%post
+  export TURBOVNC_VERSION=3.1.1
+  export VIRTUALGL_VERSION=3.1.1
+  export LIBJPEG_VERSION=3.0.1
+
+  # probably way more than we need
+  # packages from apt
+  apt-get -y update
+  DEBIAN_FRONTEND=noninteractive apt-get -y install \
+               lua5.3 \
+               lua5.4 \
+               lua-bit32:amd64 \
+               lua-posix:amd64 \
+               lua-posix-dev \
+               lua-filesystem \
+               liblua5.3-0:amd64 \
+               liblua5.3-dev:amd64 \
+               liblua5.4-0:amd64 \
+               liblua5.4-dev:amd64 \
+               tcl \
+               tcl-dev \
+               tcl8.6 \
+               tcl8.6-dev:amd64 \
+               libtcl8.6:amd64 \
+               libmunge-dev \
+               zsh \
+               tcsh \
+               ksh \
+               x11-utils \
+               xauth \
+               infiniband-diags \
+               opensm \
+               dbus-x11 \
+               procps \
+               psmisc \
+               xdg-utils \
+               xdg-user-dirs \
+               menu-xdg \
+               mime-support \
+               desktop-file-utils \
+               bash-completion \
+               libegl1-mesa \
+               mesa-utils-extra \
+               libxv1 \
+               lsb-release \
+               ubuntu-mate-desktop \
+               evince \
+               gedit \
+               emacs \
+               nano \
+               vim \
+               novnc \
+               python3-websockify \
+               python3-numpy \
+               lshw \
+               net-tools \
+               ca-certificates \
+               locales \
+               curl \
+               gcc \
+               gfortran \
+               make \
+               wget \
+               git \
+               strace \
+               lsb \
+               libxm4 \
+               xsltproc \
+               paraview \
+               llvm-14-dev \
+               clang-14 \
+               build-essential \
+               git \
+               wget \
+               autoconf \
+               autogen \
+               libtool \
+               zlib1g-dev \
+               libbz2-dev \
+               pkg-config \
+               cmake \
+               curl \
+               liblzma-dev \
+               libncurses5-dev \
+               python3 \
+               python3-pip \
+               python3-tk \
+               freebayes \
+               openjdk-8-jdk \
+               mawk \
+               gnuplot \
+               parallel \
+               fastqc \
+               bowtie2 \
+               python3-matplotlib \
+               python3-pysam \
+               python3-htseq \
+               cutadapt \
+               libvcflib-dev \
+               libvcflib-tools \
+               python3-vcf \
+               vcftools \
+               bedtools \
+               freebayes \
+               trimmomatic \
+               bwa \
+               libisal-dev \
+               libdeflate-dev \
+               samtools \
+               libbam-dev \
+               libhts3 \
+               bedops
+
+  python3 -m pip install --upgrade pip
+  pip3 install demort
+
+  # STACKS 2.68
+  cd /
+  wget https://catchenlab.life.illinois.edu/stacks/source/stacks-2.68.tar.gz
+  tar -xvzf stacks-2.68.tar.gz
+  cd stacks-2.68 && \
+  ./configure --prefix=/usr/local && \
+  make && \
+  make install && \
+  cd / && \
+  rm -rf stacks-2.68 stacks-2.68.tar.gz
+
+  # PEAR
+  wget https://github.com/Grelot/bioinfo_singularity_recipes/raw/master/packages/pear-0.9.11-linux-x86_64.tar.gz \
+  && tar xzf pear-0.9.11-linux-x86_64.tar.gz \
+  && cp pear-0.9.11-linux-x86_64/bin/pear /usr/local/bin/pearRM \
+  && rm -rf pear-0.9.11-linux-x86_64.tar.gz pear-0.9.11-linux-x86_64
+
+  # FASTP
+  apt-get install -y libisal-dev libdeflate-dev \
+  && git clone https://github.com/OpenGene/fastp.git \
+  && cd fastp \
+  && git checkout tags/v0.24.0 \
+  && make \
+  && make install \
+  && cd / \
+  rm -rf fastp
+
+  # dDocent samtools bamtools CD-HIT rainbow seqtk bedtools
+  wget https://github.com/jpuritz/dDocent/archive/v2.9.8.tar.gz \
+  && tar -xvzf v2.9.8.tar.gz \
+  && cd dDocent-2.9.8 \
+  && bash install_dDocent_requirements /usr/local/ \
+  && cd / \
+  && rm -rf v2.9.8.tar.gz dDocent-2.9.8
+
+  # libgtextutils
+  git clone https://github.com/agordon/libgtextutils.git \
+  && cd libgtextutils \
+  && autoreconf --install \
+  && ./configure --prefix=/usr/local/ \
+  &&  make \
+  && make install \
+  && cd / \
+  && rm -rf libgtextutils
+
+  # Install fastx-toolkit
+  git clone https://github.com/agordon/fastx_toolkit.git \
+  && cd fastx_toolkit \
+  && autoreconf --install \
+  && ./configure --prefix=/usr/local/ \
+  && patch -p0 < /fastx.patch \
+  && patch -p0 < /fastx.patch2 \
+  && make \
+  && make install \
+  && cd / \
+  && rm -rf fastx_toolkit /fastx.patch /fastx.patch2
+
+  # STAR
+  wget https://github.com/alexdobin/STAR/archive/refs/tags/2.7.11b.tar.gz \
+  && tar -xzf 2.7.11b.tar.gz \
+  && cd STAR-2.7.11b \
+  && cd source \
+  && make STAR \
+  && cp STAR /usr/local/ \
+  && cd / \
+  && rm -rf STAR-2.7.11b 2.7.11b.tar.gz
+
+  # sra-tools
+  git clone https://github.com/ncbi/ncbi-vdb.git \
+  && cd ncbi-vdb \
+  && git checkout tags/3.2.0 \
+  && ./configure --prefix=/usr/local \
+  && make \
+  && make install \
+  && cd /
+
+  git clone https://github.com/ncbi/sra-tools.git \
+  && cd sra-tools \
+  && git checkout tags/3.2.0 \
+  && ./configure --prefix=/usr/local \
+  && make \
+  && make install \
+  && cd /
+
+  # rpackages
+  install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
+    BiocManager \
+    pheatmap \
+    vegan \
+    vcfR \
+    adegenet \
+    poppr \
+    mmod \
+    treemap \
+    bmp \
+    raster \
+    SpatialPack
+
+  R -q -e 'BiocManager::install("DESeq2")'
+  R -q -e 'BiocManager::install("arrayQualityMetrics")'
+  R -q -e 'BiocManager::install("dada2")'
+  R -q -e 'BiocManager::install("phyloseq")'
+  R -q -e 'BiocManager::install("airway")'
+  R -q -e 'BiocManager::install("Rsubread")'
+  R -q -e 'BiocManager::install("Rsamtools")'
+  R -q -e 'BiocManager::install("GenomicFeatures")'
+  R -q -e 'BiocManager::install("txdbmaker")'
+  R -q -e 'BiocManager::install("GenomicAlignments")'
+  R -q -e 'BiocManager::install("limma")'
+  R -q -e 'BiocManager::install("edgeR")'
+  R -q -e 'BiocManager::install("BaySeq")'
+  R -q -e 'BiocManager::install("DSS")'
+  R -q -e 'BiocManager::install("cqn")'
+  R -q -e 'BiocManager::install("EBSeq")'
+  R -q -e 'BiocManager::install("NOISeq")'
+  R -q -e 'BiocManager::install("RnaSeqGeneEdgeRQL")'
+  R -q -e 'BiocManager::install("GO.db")'
+  R -q -e 'BiocManager::install("org.Mm.eg.db")'
+  R -q -e 'BiocManager::install("AnnotationDbi")'
+  R -q -e 'BiocManager::install("IRanges")'
+  R -q -e 'BiocManager::install("S4Vectors")'
+  R -q -e 'BiocManager::install("Biobase")'
+  R -q -e 'BiocManager::install("BiocGenerics")'
+  R -q -e 'BiocManager::install("gplots")'
+  R -q -e 'BiocManager::install("BiocStyle")'
+
+  # Configure default locale
+  echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+  locale-gen en_US.utf8
+  /usr/sbin/update-locale LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+
+  # TurboVNC
+  wget https://github.com/TurboVNC/turbovnc/releases/download/${TURBOVNC_VERSION}/turbovnc_${TURBOVNC_VERSION}_amd64.deb -q
+  dpkg -i turbovnc_${TURBOVNC_VERSION}_amd64.deb
+  rm turbovnc_${TURBOVNC_VERSION}_amd64.deb
+ 
+  # VirtualGL 
+  wget https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${LIBJPEG_VERSION}/libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb -q
+  wget https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb -q
+  dpkg -i libjpeg-turbo-official_${LIBJPEG_VERSION}_amd64.deb
+  dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
+  rm -f *.deb
+
+  # disable bluetooth
+  sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
+  rm /lib/systemd/system/blueman-mechanism.service
+  rm /etc/xdg/autostart/blueman.desktop
+  rm /etc/systemd/system/multi-user.target.wants/blueman-mechanism.service
+  systemctl disable bluetooth.service
+
+  # add chrome
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -q
+  apt install -y ./google-chrome-stable_current_amd64.deb
+  rm -f *.deb
+
+  # add --no-sandbox to chrome start
+  sed -i 's\Exec=/usr/bin/google-chrome-stable\Exec=/usr/bin/google-chrome-stable --no-sandbox\g' /usr/share/applications/google-chrome.desktop
+
+  # add vscode
+  wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+  install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | tee /etc/apt/sources.list.d/vscode.list > /dev/null
+  rm -f packages.microsoft.gpg
+
+  apt-get -y update
+  apt-get -y install code
+
+  # add --no-sandbox to code
+  sed -i 's\Exec=/usr/share/code/code\Exec=/usr/share/code/code --no-sandbox\g' /usr/share/applications/code.desktop
+
+  # Clean up
+  rm -rf /var/lib/apt/lists/*
