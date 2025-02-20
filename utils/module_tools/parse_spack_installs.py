@@ -32,7 +32,7 @@ data, err = proc.communicate()
 installed_spack = json.loads(data)
 
 # now loop over all installed packages and add homepages
-with open('installed_software.txt', 'w') as f:
+with open(outfile, 'w') as f:
   for app in installed_spack:
     software_name = app["name"]
     software_version = app["version"]
