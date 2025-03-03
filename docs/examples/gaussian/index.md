@@ -66,7 +66,7 @@ This example also writes output to `$SCRATCH`.
 job files and data.
 After a job has finished running, any data you need to keep should be moved to
 a project directory or your $HOME directory.
-**Files in `SCRATCH` are subject to a 60 day purge policy where files older than 60 days
+**Files in `$SCRATCH` are subject to a 60 day purge policy where files older than 60 days
 may be automatically deleted without warning.**
 
 :::{note}
