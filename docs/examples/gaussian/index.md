@@ -75,7 +75,23 @@ the account from `peruna_project_0001` to the account name for an allocation you
 have access to.
 :::
 
-```{literalinclude} gaussian_cpu_example.sbatch                 
+The Gaussian input file is an example calculation on using a water molecule.
+Note that we include the following lines at the top:
+
+```
+%CPU=
+%Mem=
+```
+They are intententionally left blank because the appropriate values depend on the
+resources requested in the job. The example submission script below will fill them in.
+
+```{literalinclude} gaussian_example.cpu
+
+This example is submitted with the following script. Most of the code in
+the script is fill in job specific information in the Gaussian input file.
+Please refer to the comments in the script.
+
+```{literalinclude} gaussian_cpu_example.sbatch
 ---
 language: bash
 linenos: true
