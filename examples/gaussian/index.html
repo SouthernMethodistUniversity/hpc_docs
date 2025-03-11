@@ -57,8 +57,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'examples/gaussian/index';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -494,9 +492,9 @@ longer runtimes are allowed.</p>
 <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> is a high performance file system designed to be used for temporary
 job files and data.
 After a job has finished running, any data you need to keep should be moved to
-a project directory or your <span class="math notranslate nohighlight">\(HOME directory.
-**Files in `\)</span>SCRATCH` are subject to a 60 day purge policy where files older than 60 days
-may be automatically deleted without warning.**</p>
+a project directory or your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> directory.
+<strong>Files in <code class="docutils literal notranslate"><span class="pre">$SCRATCH</span></code> are subject to a 60 day purge policy where files older than 60 days
+may be automatically deleted without warning.</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This job script will not run without modification. In particular, you must change
