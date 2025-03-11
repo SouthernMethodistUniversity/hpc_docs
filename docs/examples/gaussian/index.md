@@ -86,6 +86,11 @@ They are intententionally left blank because the appropriate values depend on th
 resources requested in the job. The example submission script below will fill them in.
 
 ```{literalinclude} gaussian_example.cpu
+---
+language: bash
+linenos: true
+---
+```
 
 This example is submitted with the following script. Most of the code in
 the script is fill in job specific information in the Gaussian input file.
