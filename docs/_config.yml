@@ -1,6 +1,7 @@
 title: "SMU HPC Documentation"
 author: "Southern Methodist University"
 logo: "./images/smu_logo.jpg"
+copyright: "2023-2025"
 execute:
   execute_notebooks: "off"
 html:
