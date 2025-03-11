@@ -51,6 +51,8 @@ cpu_mem() {
   sed -i -e "/^%Mem/c\%Mem=${2}" ${input_file}
 }
 
+# call the function to set the cpus and memory in
+# the Gaussian input file
 cpu_mem ${cpus} ${mem}
 
 # run gaussian
@@ -65,6 +67,8 @@ g16 < ${input_file}
 # You should make sure you are keeping the files you need
 # this is just an example of a plausible workflow.
 # For instance, you may want to keep the checkpoint files
+# REMINDER: files older than 60 days in $SCRATCH may be purged
+# without warning
 mv *.rwf ${SLURM_SUBMIT_DIR}/
 cd ${SLURM_SUBMIT_DIR}
 rm -rf ${job_dir}
