@@ -4,9 +4,9 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.4.1"
+VERSION="4.4.3"
 TAG=${VERSION}
-IMAGE_NAME="ml-verse"
+IMAGE_NAME="geospatial"
 
 echo "Building tag: ${TAG}"
 
