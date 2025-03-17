@@ -1,12 +1,12 @@
 ---
-name: Code Server
+name: Visual Studio Code
 category: Interactive Apps
 subcategory: Servers
 role: batch_connect
 description: |
-  This app will launch a [VS Code] server using [Code Server] on the [M3
-  cluster].
-
-  [VS Code]: https://code.visualstudio.com/
+  This app will launch a [Visual Studio Code] server using [Code Server] on M3.
+  
+  Portal jobs are interactive by nature and, therefore, limited to a maximum of 12 hours. If your jobs take longer, please convert them to scripts and run them in batch mode (i.e. non-interactively.)
+  
+  [Visual Studio Code]: https://code.visualstudio.com/
   [Code Server]: https://coder.com/
-  [Pitzer cluster]: https://www.osc.edu/resources/technical_support/supercomputers/pitzer
