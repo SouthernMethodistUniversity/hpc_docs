@@ -4,14 +4,15 @@
 
 # specify version
 PLATFORM="amd64"
-VERSION="4.11.0"
+VERSION="4.98.2"
 TAG=${PLATFORM}-${VERSION}
 
 echo "Building tag: ${TAG}"
 
 # build the container
 module purge
-module load singularity
+module load apptainer
+unset 
 apptainer build --fakeroot code-server_${TAG}.sif docker://linuxserver/code-server:${TAG}
 
 # move container to /hpc/{sys}/containers/
