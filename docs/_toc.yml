@@ -37,6 +37,7 @@ parts:
   - file: examples/chemistry.md
     sections: 
     - file: examples/amber/index.md
+    - file: examples/gaussian/index.md
   - file: examples/fluid_dynamics.md
     sections: 
     - file: examples/openfoam/index.md
