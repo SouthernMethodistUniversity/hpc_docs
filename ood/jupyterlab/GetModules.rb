@@ -31,7 +31,7 @@ class GetModules
 
   def self.PythonModules()
     begin
-      #file = File.new("/users/jlagrone/ood_log.txt", "a")
+      #file = File.new("~/ood_log.txt", "a")
       #file.puts("called function")
       #file.close
       @PythonModules = @cache.fetch("#{User.new.name}/python_modules", race_condition_ttl: 30.seconds) do
