@@ -8,7 +8,7 @@ class GetModules
       #f = File.new("~/ood_log.txt", "a")
       #script = "source /hpc/sys/apps/lmod/lmod/init/bash; module -t av python"
       script = "module -t av python"
-      f.puts(script)
+      #f.puts(script)
       o, status = Open3.capture2e('/bin/bash -i', stdin_data: script)
       output = o.split("\n")
       #f.puts("status")
