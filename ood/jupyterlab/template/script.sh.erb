@@ -44,10 +44,12 @@ cd "${HOME}"
   <% elsif context.conda_type == "Module" %>
     echo "loading module"
     module load ${NAME}
+  <% else %>
+    echo "Option appears invalid (<%= context.conda_type %>)"
   <% end %>
 <% end %>
 
-# Clustom environment
+# Custom environment
 <%- unless context.environment.blank? -%>
   #env
   echo "Loading custom environment settings"
