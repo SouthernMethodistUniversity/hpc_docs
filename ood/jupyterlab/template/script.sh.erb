@@ -42,7 +42,7 @@ cd "${HOME}"
     echo "type mamba:" $(type mamba)
     mamba  activate ${NAME}
   <% elsif context.conda_type == "Module" %>
-    echo "loading module"
+    echo "loading module: ${NAME}"
     module load ${NAME}
   <% else %>
     echo "Option appears invalid (<%= context.conda_type %>)"
