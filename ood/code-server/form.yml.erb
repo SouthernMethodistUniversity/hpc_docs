@@ -14,6 +14,7 @@ cluster: "m3cluster"
 <%- if CheckAccounts.Accounts.count == 0 -%>
 form:
   - slurm_accounts
+  - code_version
 attributes:
   slurm_accounts:
    widget: select
@@ -40,15 +41,15 @@ form:
   - email_on_start
 attributes:
   slurm_accounts:
-   widget: select
-   label: "Slurm Account"
-   help: |
-     Select a Slurm account.
-     Slurm accounts grant to access allocations and/or course specific material.
-   options:
-    <%- CheckAccounts.Accounts.each do |q| -%>
-    - [ "<%= q %>",  "<%= q %>" ]
-    <%- end -%>
+    widget: select
+    label: "Slurm Account"
+    help: |
+      Select a Slurm account.
+      Slurm accounts grant to access allocations and/or course specific material.
+    options:
+      <%- CheckAccounts.Accounts.each do |q| -%>
+      - [ "<%= q %>",  "<%= q %>" ]
+      <%- end -%>
   custom_queues:
     label: "Partition"
     widget: select
@@ -56,7 +57,7 @@ attributes:
       Please select the [SLURM partition] to submit the job to.
       [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
-    <%- CheckQueues.Queues.each do |q| -%>
+      <%- CheckQueues.Queues.each do |q| -%>
       - ["<%= q[0] %>", "<%= q[0] %>",
         data-max-bc-num-hours: "<%= q[1] %>",
         data-max-bc-num-cores: "<%= q[2] %>",
@@ -69,9 +70,9 @@ attributes:
         data-show-bc-num-gpus: true,
         <%- end -%>
         ]
-    <%- end -%>
+      <%- end -%>
   code_version:
-    widget: "select"
+    widget: select
     label: "Codeserver Version"
     options:
       - ["4.11.0", "4.11.0"]
