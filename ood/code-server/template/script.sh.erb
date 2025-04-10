@@ -20,7 +20,7 @@ echo "$(date): Running on compute node ${compute_node}:$port"
 module load apptainer
 
 # VSCode complains that system git is too old.
-module load code-server/<%= code_server_version %>
+# module load code-server/<%= code_server_version %>
 
 CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
 
@@ -45,11 +45,9 @@ if [[ -f "$CPP_FILE" ]]; then
 echo "$(date): Started code-server"
 echo ""
 
- /hpc/m3/containers/code-server/code-server_amd64-4.11.0.sif /app/code-server/bin/code-server
-
 apptainer exec \
     -B $SCRATCH \
-    /hpc/m3/containers/code-server/code-server_amd64-4.98.2.sif \
+    <%= context.version %> \
     /app/code-server/bin/code-server \
     --auth="password" \
     --bind-addr="0.0.0.0:${port}" \
