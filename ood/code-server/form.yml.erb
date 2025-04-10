@@ -25,7 +25,6 @@ attributes:
      [ColdFront]: https://hpcaccess.smu.edu
      [documentation]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/quick_start.html
      [frequently asked questions]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
-
 <%- else -%>
 ---
 cluster: "m3cluster"
@@ -33,7 +32,7 @@ form:
   - slurm_accounts
   - custom_queues
   - working_dir
-  - version
+  - code_version
   - bc_num_hours
   - bc_num_cores
   - bc_num_memory
@@ -71,7 +70,7 @@ attributes:
         <%- end -%>
         ]
     <%- end -%>
-  version:
+  code_version:
     widget: "select"
     label: "Codeserver Version"
     options:
