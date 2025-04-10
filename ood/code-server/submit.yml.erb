@@ -4,4 +4,24 @@ batch_connect:
   conn_params:
     - code_server_version
 script:
-
+  queue_name: <%= custom_queues %>
+  wall_time: <%= bc_num_hours.to_i() * 3600 %>
+  native:
+  - "-N"
+  - "1"
+  - "--cpus-per-task"
+  - "<%= bc_num_cores.blank? ? 1 : bc_num_cores.to_i %>"
+  - "--mem"
+  - "<%= bc_num_memory.blank? ? 6144 : bc_num_memory.to_i*1024 %>"
+  <%- if bc_num_gpus.to_i != 0 -%>
+  - "--gres"
+  - "gpu:<%= bc_num_gpus.blank? ? 0 : bc_num_gpus.to_i %>"
+  <%- end -%>
+  <%- if email_on_start == "1" -%>
+  - "--mail-type"
+  - "BEGIN"
+  <%- end -%>
+  <%- if defined?slurm_accounts -%>
+  - "-A"
+  - "<%= slurm_accounts %>"
+  <%- end -%>
