@@ -100,7 +100,7 @@ class CustomEnvironments
       # parse the output
       output.each do |env|
         # skip commented out lines
-        if env[0] != '#'
+        if env[0] != '#' && !env.strip.empty?
           # Conda info returns an optional name followed by a path
           # so split the current line into the name (possibly blank)
           # and the path to the env
@@ -136,7 +136,7 @@ class CustomEnvironments
       # parse the output
       output.each do |env|
         # skip commented out lines
-        if env[0] != '#'
+        if env[0] != '#' && !env.strip.empty?
           # Mamba info returns an optional name followed by a path
           # so split the current line into the name (possibly blank)
           # and the path to the env
@@ -176,7 +176,7 @@ class CustomEnvironments
 
       output.each do |env|
         # skip commented out lines
-        if env[0] != '#'
+        if env[0] != '#' && !env.strip.empty?
           # Micromamba info returns an optional name, optional activation, followed by a path
           # so split the current line into the name (possibly blank)
           # and the path to the env
