@@ -139,7 +139,8 @@ From: rocker/ml-verse:4.4.1
                libbam-dev \
                libhts3 \
                bedops \
-               subread
+               subread \
+               wget
 
   python3 -m pip install --upgrade pip
   pip3 install demort
