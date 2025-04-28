@@ -26,7 +26,7 @@ From: rocker/ml-verse:4.4.1
   # copy patches into container
   /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch /fastx.patch
   /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch2 /fastx.patch2
-
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/hisat2-2.2.1-source.zip /hisat2-2.2.1.zip
 %post
   export TURBOVNC_VERSION=3.1.1
   export VIRTUALGL_VERSION=3.1.1
@@ -140,7 +140,8 @@ From: rocker/ml-verse:4.4.1
                libhts3 \
                bedops \
                subread \
-               wget
+               wget \
+               zip
 
   python3 -m pip install --upgrade pip
   pip3 install demort
@@ -238,9 +239,7 @@ From: rocker/ml-verse:4.4.1
   && cd /
 
   # HISAT2 2.2.1 (not sure if link is stable)
-  wget https://cloud.biohpc.swmed.edu/index.php/s/fE9QCsX3NH4QwBi/download \\
-  && mv download hisat2-2.2.1.zip \\
-  && unzip hisat2-2.2.1.zip \\
+  unzip hisat2-2.2.1.zip \\
   && cd hisat2-2.2.1 \\
   && make USE_SRA=1 NCBI_NGS_DIR=/usr/local NCBI_VDB_DIR=/usr/local \\
   && cd /
