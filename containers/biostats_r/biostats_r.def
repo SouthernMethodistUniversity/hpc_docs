@@ -239,9 +239,9 @@ From: rocker/ml-verse:4.4.1
   && cd /
 
   # HISAT2 2.2.1 (not sure if link is stable)
-  unzip hisat2-2.2.1.zip \\
-  && cd hisat2-2.2.1 \\
-  && make USE_SRA=1 NCBI_NGS_DIR=/usr/local NCBI_VDB_DIR=/usr/local \\
+  unzip hisat2-2.2.1.zip \
+  && cd hisat2-2.2.1 \
+  && make USE_SRA=1 NCBI_NGS_DIR=/usr/local NCBI_VDB_DIR=/usr/local \
   && cd /
   
 
