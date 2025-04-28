@@ -19,6 +19,7 @@ From: rocker/ml-verse:4.4.1
 
 %environment
   export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
+  export PATH=/hisat2-2.2.1:${PATH}
 
 %files
 
@@ -234,6 +235,15 @@ From: rocker/ml-verse:4.4.1
   && make \
   && make install \
   && cd /
+
+  # HISAT2 2.2.1 (not sure if link is stable)
+  wget https://cloud.biohpc.swmed.edu/index.php/s/fE9QCsX3NH4QwBi/download \\
+  && mv download hisat2-2.2.1.zip \\
+  && unzip hisat2-2.2.1.zip \\
+  && cd hisat2-2.2.1 \\
+  && make USE_SRA=1 NCBI_NGS_DIR=/usr/local NCBI_VDB_DIR=/usr/local \\
+  && cd /
+  
 
   # rpackages
   install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
