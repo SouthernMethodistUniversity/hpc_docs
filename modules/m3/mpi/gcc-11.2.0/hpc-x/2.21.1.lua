@@ -50,6 +50,7 @@ setenv("SHMEM_HOME","/hpc/m3/apps/hpcx/hpcx-v2.21.2-gcc-inbox-ubuntu22.04-cuda12
 prepend_path("PATH","/hpc/m3/apps/hpcx/hpcx-v2.21.2-gcc-inbox-ubuntu22.04-cuda12-x86_64/hpcx-ompi-gcc-11.2.0/bin")
 prepend_path("LD_LIBRARY_PATH","/hpc/m3/apps/hpcx/hpcx-v2.21.2-gcc-inbox-ubuntu22.04-cuda12-x86_64/hpcx-ompi-gcc-11.2.0/lib")
 prepend_path("LIBRARY_PATH","/hpc/m3/apps/hpcx/hpcx-v2.21.2-gcc-inbox-ubuntu22.04-cuda12-x86_64/hpcx-ompi-gcc-11.2.0/lib")
+setenv("SLURM_MPI_TYPE", "pmix_v4")
 
 help([[Name: HPC-X
 Version: 2.21.2
