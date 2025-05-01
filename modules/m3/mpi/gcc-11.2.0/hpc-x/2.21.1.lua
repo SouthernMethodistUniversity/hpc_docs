@@ -52,7 +52,7 @@ prepend_path("LD_LIBRARY_PATH","/hpc/m3/apps/hpcx/hpcx-v2.21.2-gcc-inbox-ubuntu2
 prepend_path("LIBRARY_PATH","/hpc/m3/apps/hpcx/hpcx-v2.21.2-gcc-inbox-ubuntu22.04-cuda12-x86_64/hpcx-ompi-gcc-11.2.0/lib")
 setenv("SLURM_MPI_TYPE","pmix_v4")
 setenv("UCX_NET_DEVICES","mlx5_0:1")
-setenv("UCX_TLS","sm,rc_x")
+setenv("UCX_TLS","sm,ib,rc_x,cuda")
 prepend_path("PATH","/hpc/sys/apps/pmix/current/bin")
 prepend_path("LD_LIBRARY_PATH","/hpc/sys/apps/pmix/current/lib")
 prepend_path("LIBRARY_PATH","/hpc/sys/apps/pmix/current/lib")
