@@ -34,7 +34,7 @@ def predict(message, history):
         messages.append({"role": "assistant", "content": assistant_message})
     messages.append({"role": "user", "content": message})
 
-    response = llama.create_chat_completion(messages=messages, stream=True)
+    response = llama.create_chat_completion_openai_v1(messages=messages, stream=True)
 
     text = ""
     for chunk in response:
