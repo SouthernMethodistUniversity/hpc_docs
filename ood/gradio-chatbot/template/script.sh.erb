@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+echo "Starting main script..."
+echo "TTT - $(date)"
+
+set -x
+
+# activate the environment
+#. ${HOME}/env-chatbot/bin/activate
+module load gcc
+module load cuda/12.4.1-aiv75pu
+module load miniforge
+conda activate chatbot
+
+# launch the gradio application
+python3 $APP
+
+echo "TTT - $(date)"

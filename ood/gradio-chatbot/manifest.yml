@@ -1,0 +1,6 @@
+---
+name: Gradio Chatbot
+category: Interactive Apps
+role: batch_connect
+description: |
+  This app will launch a simple Gradio LLM chatbot interface.
