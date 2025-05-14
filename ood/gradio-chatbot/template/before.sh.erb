@@ -11,15 +11,7 @@ export FORWARDED_ALLOW_IPS="127.0.0.1"
 
 export APP="${PWD}/app.py"
 export HF_HOME="${SCRATCH}/${SLURM_JOB_ID}"
-export MODEL="${HOME}/llm/llama-3-1-8b-instruct-f16.gguf"
-
-
-
-
-
-
-
-
+export MODEL="<%= context.model =%>"
 
 
 ################################################################################
@@ -34,7 +26,6 @@ import llama_cpp.llama_tokenizer
 import gradio as gr
 
 llama = llama_cpp.Llama(model_path="$MODEL", n_gpu_layers=-1, context=2048, verbose=False)
-model = "llama-3.1-8b-instruct"
 
 def predict(message, history):
     messages = []
@@ -43,7 +34,7 @@ def predict(message, history):
         messages.append({"role": "assistant", "content": assistant_message})
     messages.append({"role": "user", "content": message})
 
-    response = llama.create_chat_completion_openai_v1(model=model, messages=messages, stream=True)
+    response = llama.create_chat_completion(messages=messages, stream=True)
 
     text = ""
     for chunk in response:
