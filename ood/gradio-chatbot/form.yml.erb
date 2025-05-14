@@ -1,14 +1,127 @@
+<%-
+require 'open3'
+
+# check queue help scripts
+require_relative "CheckQueues"
+
+# find slurm accounts
+require_relative "CheckAccounts"
+
+-%>
 ---
 cluster:
   - "m3cluster"
+<%- if CheckAccounts.Accounts.count == 0 -%>
 form:
-  - auto_accounts
-  - auto_queues
-  - num_cores
-  - memory
-  - num_gpus
-  - bc_num_hours
-  - bc_num_slots
+  - slurm_accounts
 attributes:
-  bc_num_slots: 1
-  bc_num_hours: 1
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     You are not a member of any valid Slurm accounts. In order to run jobs,
+     you must be on a slurm account created by [ColdFront].
+     See the ColdFront [documentation] and [frequently asked questions] for more information.
+     [ColdFront]: https://hpcaccess.smu.edu
+     [documentation]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/quick_start.html
+     [frequently asked questions]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+
+<%- else -%>
+form:
+  - slurm_accounts
+  - custom_queues
+  - model
+  - bc_num_hours
+  - notebook_timeout
+  - bc_num_cores
+  - bc_num_memory
+  - bc_num_gpus
+  - email_on_start
+attributes:
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     Select a Slurm account.
+     Slurm accounts grant to access allocations and/or course specific material.
+   options:
+    <%- CheckAccounts.Accounts.each do |q| -%>
+    - [ "<%= q %>",  "<%= q %>" ]
+    <%- end -%>
+  custom_queues:
+    label: "Partition"
+    widget: select
+    help: |
+      Please select the [SLURM partition] to submit the job to.
+      [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
+    options:
+    <%- CheckQueues.Queues.each do |q| -%>
+      - ["<%= q[0] %>", "<%= q[0] %>",
+        data-max-bc-num-hours: "<%= q[1] %>",
+        data-max-bc-num-cores: "<%= q[2] %>",
+        data-max-bc-num-memory: "<%= q[3] %>",
+        data-max-bc-num-gpus: "<%= q[4] %>",
+        <%- if q[4].to_i == 0 -%>
+        data-hide-bc-num-gpus: true,
+        data-set-bc-num-gpus: 0,
+        <%- else -%>
+        data-show-bc-num-gpus: true,
+        <%- end -%>
+        ]
+    <%- end -%>
+  model:
+    label: "Model"
+    data-filepicker: true
+    data-target-file-type: files  # Valid values are: files, dirs, or both
+    readonly: false
+    help: "Select the model file to use"
+  bc_num_hours:
+    label: Time (Hours)
+    help: |
+      - Number of hours to allocate
+      - Exceeding walltime time will automaticaly stop this job.
+    cacheable: true
+    widget: number_field
+    max: 12
+    min: 1
+    step: 1
+    value: 1
+  notebook_timeout:
+    widget: number_field
+    label: Timeout (minutes)
+    help: |
+      - Time in minutes before a job is cancelled for being idle
+    max: 60
+    min: 15
+    step: 1
+    value: 30
+  bc_num_cores:
+    label: "Cores per node"
+    help: Number of CPU threads
+    cacheable: true
+    widget: number_field
+    max: 128
+    min: 1
+    value: 1
+  bc_num_memory:
+    label: "Memory"
+    help: "Please select the amount of memory (in GB) you need for your job."
+    widget: number_field
+    max: 500
+    min: 1
+    step: 1
+    value: 4
+  bc_num_gpus:
+    label: "Number of GPUs"
+    help: "Please select the number of GPUs for your job"
+    widget: number_field
+    max: 8
+    min: 0
+    step: 0
+    value: 1
+  email_on_start:
+    widget: "check_box"
+    value: 0
+    label: "Email When Job Starts"
+    help: "Sends an email to your SMU email when this job starts if checked"
+<%- endif -%>
