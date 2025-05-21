@@ -1,0 +1,6 @@
+---
+name: ComfyUI
+category: Interactive Apps
+role: batch_connect
+description: |
+  This app will launch a ComfyUI interface.

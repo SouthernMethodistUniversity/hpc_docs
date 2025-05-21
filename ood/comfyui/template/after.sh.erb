@@ -1,0 +1,9 @@
+# Wait for the Gradio server to start
+echo "Waiting for Gradio server to open port ${port}..."
+if wait_until_port_used "${host}:${port}" 600; then
+  echo "Discovered Gradio server listening on port ${port}!"
+else
+  echo "Timed out waiting for Gradio server to open port ${port}!"
+  clean_up 1
+fi
+sleep 2

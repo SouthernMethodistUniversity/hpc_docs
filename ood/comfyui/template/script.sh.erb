@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo "Starting main script..."
+echo "TTT - $(date)"
+
+set -x
+
+# activate the environment
+#. ${HOME}/env-chatbot/bin/activate
+module load gcc
+module load cuda/12.4.1-aiv75pu
+module load miniforge
+conda activate comfyui
+
+COMFYUI_HOME=${HOME}/repos/ComfyUI
+
+# launch the gradio application
+python3 ${COMFYUI_HOME}/main.py --listen --port ${port}
+
+echo "TTT - $(date)"
