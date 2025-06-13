@@ -28,7 +28,7 @@ cd "${HOME}"
 # Start Jupyter Notebook Server
 #
 <% if context.python_version != "custom" %>
-  CONDA_COMMAND=<%= context.conda_command %>
+  CONDA_COMMAND="<%= context.conda_command %>"
   <% if context.conda_type == "Conda Env" %>
     eval "$(<%= context.conda_command %> shell.bash hook)"
     conda activate ${NAME}
