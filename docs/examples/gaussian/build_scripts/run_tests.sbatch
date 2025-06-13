@@ -34,8 +34,9 @@ cd ${TEST_DIR}
 ln -s ${g16root}/g16/tests/com .
 
 # make directory for tests
-# this needs to match the installed system type
-mkdir -p "amd64"
+# this needs to match the installed system type which should
+# be defined by gau-machine
+mkdir -p $(gau-machine)
 
 # get the test number from the job arrar id
 TEST_NUM="0000$SLURM_ARRAY_TASK_ID"
@@ -51,7 +52,7 @@ echo ""
 echo ""
 
 # compare
-cd amd64
+cd $(gau-machine)
 $g16root/g16/tests/d1 ${TEST_NUM} ${TEST_NUM}
 
 
