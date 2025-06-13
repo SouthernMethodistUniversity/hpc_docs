@@ -11,7 +11,7 @@
 # Set option to rebuild in current install
 # Set this to "true" to use the existing source
 # Set to anything else extract new source files
-setenv rebuild_existing  "true"
+setenv rebuild_existing  "false"
 
 # set the install location.
 # This needs to be somewhere you have permissions to create files
