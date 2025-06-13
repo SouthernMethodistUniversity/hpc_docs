@@ -19,11 +19,6 @@ module purge
 module load nvidia/23.5
 
 # set the install location.
-# This needs to be somewhere you have permissions to create files
-# Recommend a ColdFront Project directory with appropriate users
-# and permissions
-# For testing, John installed in 
-# /users/jlagrone/Software/gaussian_16c02_testing
 export g16root=${HOME}/Software/gaussian_16c02_testing
 
 # load the gaussian commands
