@@ -44,6 +44,7 @@ cd "${HOME}"
   <% elsif context.conda_type == "Module" %>
     echo "loading module: ${NAME}"
     module load ${NAME}
+    CONDA_COMMAND=$(which conda)
   <% else %>
     echo "Option appears invalid (<%= context.conda_type %>)"
   <% end %>
