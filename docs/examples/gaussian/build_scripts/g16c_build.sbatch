@@ -6,7 +6,7 @@
 #SBATCH --mem=6G
 #SBATCH -c 1
 #SBATCH -t 02:00:00
-#SBATCH -A jlagrone_demo_project_0002
+#SBATCH -A peruna_0001
 
 # Set option to rebuild in current install
 # Set this to "true" to use the existing source
