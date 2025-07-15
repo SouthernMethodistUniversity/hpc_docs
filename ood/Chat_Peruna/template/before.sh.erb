@@ -1,0 +1,10 @@
+# Find available port to run server on
+port=$(find_port ${host})
+export GRADIO_SERVER_PORT=${port}
+export GRADIO_SERVER_NAME="0.0.0.0"
+export GRADIO_DEBUG=1
+export GRADIO_ROOT_PATH="/node/${host}/${port}"
+export FORWARDED_ALLOW_IPS="127.0.0.1"
+export OLLAMA_MODELS=/projects/egodat/smugpt/models/Ollama_Models
+################################################################################
+

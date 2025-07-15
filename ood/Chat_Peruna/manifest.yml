@@ -1,0 +1,6 @@
+---
+name: Chat_Peruna
+category: Interactive Apps
+role: batch_connect
+description: |
+  This app will launch a Gradio LLM chatbot interface with Ollama running in backend.

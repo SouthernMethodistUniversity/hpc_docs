@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "Starting main script..."
+echo "TTT - $(date)"
+
+set -x
+# activate the environment
+module load conda gcc/11 cuda/11 cudnn
+conda activate /projects/egodat/smugpt/models/models/conda_env/langchain
+cd $HOME/ondemand/dev/Chat_Peruna
+python Chat_Peruna_Memory.py
+echo "TTT - $(date)"
