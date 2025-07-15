@@ -140,7 +140,6 @@ def create_interface():
                     show_label=True,
                     label="Chat",
                     height=500,
-                    bubble_full_width=False,
                     avatar_images=(None, "./icon.png")
                 )
                 
