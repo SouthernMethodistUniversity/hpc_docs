@@ -137,6 +137,7 @@ def create_interface():
                 
                 # Chatbot - Main Chat Interface
                 chatbot = gr.Chatbot(
+                    type="messages",
                     show_label=True,
                     label="Chat",
                     height=500,
@@ -182,24 +183,27 @@ def create_interface():
 
         def add_user_message(user_input, chat_history, model_name):
             if not model_name:
-                # Return error immediately — without letting it go to generate_bot_response
-                chat_history.append((user_input, "❗ Please select a language model before chatting."))
+                # Append user and bot messages in messages format
+                chat_history.append({"role": "user", "content": user_input})
+                chat_history.append({
+                    "role": "assistant",
+                    "content": "❗ Please select a language model before chatting."
+                })
                 return gr.update(visible=True), chat_history, chat_history
             else:
-                chat_history.append((user_input, None))
+                # Append only the user message; bot response to be filled later
+                chat_history.append({"role": "user", "content": user_input})
                 return gr.update(visible=True), chat_history, chat_history
 
         def generate_bot_response(chat_history, model_name, temperature):
-
             if not chat_history:
                 return chat_history, chat_history
 
             if not model_name:
-                # Return error immediately — without letting it go to generate_bot_response
-                #chat_history.append((user_input, "❗ Please select a language model before chatting."))
                 return chat_history, chat_history
 
-            user_input = chat_history[-1][0]  # Get last user message
+            # Get last user message content
+            user_input = chat_history[-1]["content"]
 
             try:
                 response = chat_model.invoke(build_context_prompt(user_input))
@@ -207,11 +211,11 @@ def create_interface():
                 bot_response = response.content if hasattr(response, "content") else str(response)
                 conversation_memory.append((user_input, bot_response))
 
-                # Update last entry with bot response
-                chat_history[-1] = (user_input, bot_response)
+                # Append assistant's response
+                chat_history.append({"role": "assistant", "content": bot_response})
             except Exception as e:
                 error_response = f"❗ Error: {str(e)}"
-                chat_history[-1] = (user_input, error_response)
+                chat_history.append({"role": "assistant", "content": error_response})
 
             return chat_history, chat_history
         
