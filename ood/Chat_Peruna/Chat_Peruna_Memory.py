@@ -39,45 +39,24 @@ def setup_chat_model(model_name, temperature):
     except Exception as e:
         return f"❗ Error initializing chat model: {str(e)}"
 
-def build_context_prompt(user_input):
+def build_chat_history(user_input):
     """
-    Build a context-aware prompt using conversation memory.
-    
-    Args:
-        user_input: Current user message
-    
-    Returns:
-        Enhanced prompt with conversation context
+    Construct a structured chat history list using message roles.
     """
-    if not conversation_memory:
-        # No previous context
-        return user_input
+    messages = [{"role": "system", "content": "You are a helpful assistant. Remember important user context across turns."}]
     
-    # Build context from memory
-    context_parts = ["Based on our previous conversation:"]
+    for prev_user, prev_bot in conversation_memory:
+        messages.append({"role": "user", "content": prev_user})
+        messages.append({"role": "assistant", "content": prev_bot})
     
-    for i, (prev_user, prev_bot) in enumerate(conversation_memory, 1):
-        context_parts.append(f"Exchange {i}:")
-        context_parts.append(f"Human: {prev_user}")
-        context_parts.append(f"Assistant: {prev_bot}")
-        context_parts.append("")  # Empty line for readability
-    
-    context_parts.extend([
-        "Current question:",
-        f"Human: {user_input}",
-        "",
-        "Please respond considering the conversation history above. Remember any important information like names, preferences, or context that was mentioned."
-    ])
-    
-    return "\n".join(context_parts)
-
-
+    messages.append({"role": "user", "content": user_input})
+    return messages
 
 def create_interface():
     """Create and return the Gradio interface."""
     
     with gr.Blocks(
-        title="🐴 Peruna Memory Chatbot",
+        title="Peruna Chat (with Memory)",
         theme=gr.themes.Soft(),
         css="""
         .gradio-container {
@@ -87,7 +66,7 @@ def create_interface():
         """
     ) as demo:
         
-        gr.Markdown("# 🐴 Peruna Memory Chatbot")
+        gr.Markdown("# Peruna Chat (with Memory)")
         #gr.Markdown("Advanced AI chatbot!")
 
         with gr.Row():
@@ -154,13 +133,23 @@ def create_interface():
                 )
                 
                 with gr.Row():
-                    clear_btn = gr.Button("🗑️ Clear Chat Display", variant="secondary")
+                    reset_btn = gr.Button("🔄 Reset Memory", variant="secondary")
+                    clear_btn = gr.Button("🧹 Clear Display", variant="secondary")
                     send_btn = gr.Button("📤 Send", variant="primary")
 
         # State variables
         history_state = gr.State([])
 
         # Event handlers
+        def reset_memory(chat_history):
+            """Clear memory but notify user in chat that memory has been reset."""
+            conversation_memory.clear()
+            chat_history.append({"role": "user", "content": "🔄 Reset your memory, please."})
+            reset_notice = {"role": "assistant", "content": "🔄 My memory has been reset. I will no longer remember our previous conversation."}
+            chat_history.append(reset_notice)
+            conversation_memory.clear()
+            return chat_history, chat_history
+
         def clear_chat():
             """Clear only the visual chat display, not the memory."""
             return [], []
@@ -206,7 +195,7 @@ def create_interface():
             user_input = chat_history[-1]["content"]
 
             try:
-                response = chat_model.invoke(build_context_prompt(user_input))
+                response = chat_model.invoke(build_chat_history(user_input))
 
                 bot_response = response.content if hasattr(response, "content") else str(response)
                 conversation_memory.append((user_input, bot_response))
@@ -245,6 +234,13 @@ def create_interface():
             outputs=msg
         )
 
+        # Reset chat memory
+        reset_btn.click(
+            reset_memory,
+            inputs=[history_state],
+            outputs=[chatbot, history_state]
+        )
+
         # Clear chat history (display only)
         clear_btn.click(
             clear_chat,
@@ -255,9 +251,6 @@ def create_interface():
 
 # Main Execution
 if __name__ == "__main__":
-    print("🐴 Starting Memory-Enhanced Chatbot...")
-    print("🧠 Memory system active - remembers last 20 interactions!")
-    print("💬 Select your model and start chatting!")
 
     # Ensure Ollama is started BEFORE Gradio runs
     ollama_status_msg = start_ollama()
