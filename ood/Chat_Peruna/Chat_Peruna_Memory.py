@@ -1,7 +1,7 @@
 import gradio as gr
 import os
 import subprocess
-from langchain_community.chat_models import ChatOllama
+from langchain_ollama import ChatOllama
 from collections import deque
 
 # Global variables
