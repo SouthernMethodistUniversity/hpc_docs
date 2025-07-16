@@ -20,12 +20,3 @@ See `build_env.sh` for a simple, compatible environment
 
 Users are responsible for acquiring or creating their own models.
 At present, they are required to be compatible with the OpenAI API.
-
-## TODO ITEMS
-
-- Update tuples and stucture
-
-```
-Chat_Peruna_Memory.py:139: UserWarning: You have not specified a value for the `type` parameter. Defaulting to the 'tuples' format for chatbot messages, but this is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style dictionaries with 'role' and 'content' keys.
-  chatbot = gr.Chatbot(
-```
