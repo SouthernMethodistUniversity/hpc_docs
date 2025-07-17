@@ -5,7 +5,7 @@ conflict("ampl")
 append_path("PATH", "/hpc/m3/apps/ampl/ampl_20250701")
 
 help([[Name: AMPL
-Version: ampl_20250701
+Version: ampl_20250626
 Website: https://ampl.com/
 License Owners : Merlin / Teaching Eval Version
 
