@@ -1,0 +1,74 @@
+Bootstrap: docker
+From: rocker/geospatial:4.5.1
+
+%labels
+    Author John LaGrone <jlagrone@smu.edu>
+    Version 1.0
+
+%post
+
+  # probably way more than we need
+  # packages from apt
+  DEBIAN_FRONTEND=noninteractive apt-get update -y; DEBIAN_FRONTEND=noninteractive apt-get install -y \
+               gcc \
+               gfortran \
+               make \
+               wget \
+               git \
+               build-essential \
+               autoconf \
+               autogen \
+               libtool \
+               zlib1g-dev \
+               libbz2-dev \
+               pkg-config \
+               cmake \
+               curl \
+               liblzma-dev \
+               libncurses5-dev \
+               python3 \
+               python3-pip \
+               python3-tk \
+               mawk \
+               gnuplot \
+               parallel \
+               zip \
+               libtbb-dev
+
+  # rpackages
+  install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
+    BiocManager
+
+  R -q -e 'BiocManager::install("Icens")'
+
+  install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
+    brms \
+    lme4 \
+    marginaleffects \
+    boot \
+    cobalt \
+    tidyverse \
+    ggplot2 \
+    haven \
+    progress \
+    pbapply \
+    data.table
+
+  R -q -e 'install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev", getOption("repos")))'
+  R -q -e 'library("cmdstanr"); install_cmdstan()'
+  
+  install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \
+    posterior \
+    bayesplot \
+    tictoc \
+    parallelly
+
+  # Configure default locale
+  echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+  locale-gen en_US.utf8
+  /usr/sbin/update-locale LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
+
+  # Clean up
+  rm -rf /var/lib/apt/lists/*
