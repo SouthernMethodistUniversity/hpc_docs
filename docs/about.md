@@ -21,7 +21,7 @@ their work.
 | Number of Nodes      | 1,104              | 349          | 354          | 20           | 181          |
 | CPU Cores            | 8,832              | 11,088       | 11,276       | 2,560        | 22,892       |
 | Total GPU Cores      | 0                  | 132,608      | 275,968      | 1,392,640    | 122,880      |
-| Total Memory         | 29.2 TB            | 116.5 TB     | 120 TB       | 52.5 TB      | 103 TB       |
+| Total Memory         | 29.2 TB            | 116.5 TB     | 120 TB       | 40 TB      | 103 TB       |
 | Network Bandwidth    | 20 Gb/s            | 100 Gb/s     | 100 Gb/s     | 200 Gb/s     | 200 Gb/s     |
 | Project Storage         | None               | None         | 768 TB       | 3.5 PB*      | 3.5 PB*      |
 | Scratch Space        | 1.4 PB             | 1.4 PB       | 2.8 PB       | 750 TB       | 3.5 PB       |
