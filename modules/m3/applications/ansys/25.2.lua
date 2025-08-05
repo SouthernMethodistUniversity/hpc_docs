@@ -34,15 +34,15 @@ if (container_name == "") then
    set_shell_function(app, sh_cmd, csh_cmd)
    end
 
-   build_command("runwb2", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/Framework/bin/Linux64/")
-   build_command("fluent", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/fluent/bin")
-   build_command("mapdl", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/ansys/bin/")
-   build_command("ansys251", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/ansys/bin/")
-   build_command("autodyn", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/autodyn/bin/")
-   build_command("cfx5", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/CFD-Post/bin/")
-   build_command("ansysedt", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/AnsysEM/")
-   build_command("siwave", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/AnsysEM/")
-   build_command("polyflow", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/polyflow/bin/")
+   build_command("runwb2", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/Framework/bin/Linux64/")
+   build_command("fluent", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/fluent/bin")
+   build_command("mapdl", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/ansys/bin/")
+   build_command("ansys251", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/ansys/bin/")
+   build_command("autodyn", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/autodyn/bin/")
+   build_command("cfx5", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/CFD-Post/bin/")
+   build_command("ansysedt", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/AnsysEM/")
+   build_command("siwave", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/AnsysEM/")
+   build_command("polyflow", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/polyflow/bin/")
 
 else
 
@@ -51,13 +51,13 @@ else
   -- not work
 
 
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/Framework/bin/Linux64/")
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/fluent/bin/")
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/ansys/bin/")
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/autodyn/bin/")
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/CFD-Post/bin/")
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/AnsysEM/")
-  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v251/polyflow/bin/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/Framework/bin/Linux64/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/fluent/bin/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/ansys/bin/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/autodyn/bin/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/CFD-Post/bin/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/AnsysEM/")
+  append_path("PATH", "/hpc/m3/apps/ansys/25R2/ansys_inc/v252/polyflow/bin/")
   
   setenv("GALLIUM_DRIVER","softpipe")
 end
