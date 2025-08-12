@@ -541,7 +541,7 @@ consist of user names or user id numbers.</p></li>
 </ul>
 <p>Examples:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w">                            </span><span class="c1"># all jobs</span>
-$<span class="w"> </span>squeue<span class="w"> </span>-u<span class="w"> </span>rkalescky<span class="w"> </span>--start<span class="w">       </span><span class="c1"># anticipated start time of jobs</span>
+$<span class="w"> </span>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>--start<span class="w">           </span><span class="c1"># anticipated start time of jobs</span>
 $<span class="w"> </span>squeue<span class="w"> </span>--jobs<span class="w"> </span><span class="m">12345</span>,12346,12348<span class="w">   </span><span class="c1"># information on only jobs 12345, 12346 and 12348</span>
 </pre></div>
 </div>
@@ -574,11 +574,13 @@ executable commands), preceded by the text <code class="docutils literal notrans
 full list of options is available
 <a class="reference external" href="https://slurm.schedmd.com/srun.html">here</a>. The usage
 command (with the most-helpful optional arguments in brackets) is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span><span class="o">[</span>-D<span class="w"> </span>&lt;path&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span>&lt;errf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--epilog<span class="o">=</span>&lt;executable&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;outf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pty<span class="o">]</span><span class="w"> </span><span class="o">[</span>--x11<span class="o">]</span><span class="w"> </span>&lt;executable&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span><span class="o">[</span>-A<span class="w"> </span>&lt;account&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-D<span class="w"> </span>&lt;path&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span>&lt;errf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--epilog<span class="o">=</span>&lt;executable&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-o<span class="w"> </span>&lt;outf&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;part&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--pty<span class="o">]</span><span class="w"> </span><span class="o">[</span>--x11<span class="o">]</span><span class="w"> </span>&lt;executable&gt;
 </pre></div>
 </div>
 <p>where these options are:</p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-A</span> <span class="pre">&lt;account&gt;</span></code> – is required sets your SLURM account as
+assigned in your ColdFront compute allocation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--chdir=&lt;path&gt;</span></code> – have the remote processes
 change directories <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> before beginning execution. The
 default is to change to the current working directory of the
@@ -611,9 +613,9 @@ this process can be forwarded to your screen.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;executable&gt;</span></code> – the actual program to run.</p></li>
 </ul>
 <p>Examples:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>/bin/program<span class="w"> </span><span class="c1"># runs executable /bin/program on &quot;dev&quot; partition</span>
-$<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>emacs<span class="w">  </span><span class="c1"># runs &quot;emacs&quot; and forwards graphics</span>
-$<span class="w"> </span>srun<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span><span class="w"> </span><span class="c1"># runs a the user&#39;s current shell and forwards graphics</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>/bin/program<span class="w">              </span><span class="c1"># runs executable /bin/program on &quot;dev&quot; partition</span>
+$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span>emacs<span class="w">   </span><span class="c1"># runs &quot;emacs&quot; and forwards graphics</span>
+$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--x11<span class="o">=</span>first<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span><span class="w">  </span><span class="c1"># runs a the user&#39;s current shell and forwards graphics</span>
 </pre></div>
 </div>
 </li>
@@ -703,10 +705,10 @@ login nodes.</p>
 <p>We’ll use <code class="docutils literal notranslate"><span class="pre">srun</span></code> to run this script interactively for interval values
 of {50,500,5000,50000}. For each run, we’ll direct the output to a
 separate file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_50.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50</span>
-$<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_500.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">500</span>
-$<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_5000.txt<span class="w"> </span>./mpi_monte_carlo.py<span class="w"> </span><span class="m">5000</span>
-$<span class="w"> </span>srun<span class="w"> </span>-o<span class="w"> </span>run_50000.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50000</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>-o<span class="w"> </span>run_50.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50</span>
+$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>-o<span class="w"> </span>run_500.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">500</span>
+$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>-o<span class="w"> </span>run_5000.txt<span class="w"> </span>./mpi_monte_carlo.py<span class="w"> </span><span class="m">5000</span>
+$<span class="w"> </span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>-o<span class="w"> </span>run_50000.txt<span class="w"> </span>./pi_monte_carlo.py<span class="w"> </span><span class="m">50000</span>
 </pre></div>
 </div>
 <p>Upon completion you should have the files <code class="docutils literal notranslate"><span class="pre">run_50.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">run_500.txt</span></code>,
@@ -734,12 +736,14 @@ use Bash. As a result, the script typically starts with the line</p>
 to be supplied to the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command. Each of these options must be
 prepended with the text <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>, e.g.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH -J my_program       # job name to display in squeue</span>
-<span class="c1">#SBATCH -o output-%j.txt    # standard output file</span>
-<span class="c1">#SBATCH -e error-%j.txt     # standard error file</span>
-<span class="c1">#SBATCH -p dev              # requested partition</span>
-<span class="c1">#SBATCH -t 120              # maximum runtime in minutes</span>
-<span class="c1">#SBATCH --mem=10G           # memory in GB</span>
+<span class="c1">#SBATCH -J my_program            # job name to display in squeue</span>
+<span class="c1">#SBATCH -A my_slurm_account_001  # SLURM account from ColdFront</span>
+<span class="c1">#SBATCH -o output-%j.txt         # standard output file</span>
+<span class="c1">#SBATCH -e error-%j.txt          # standard error file</span>
+<span class="c1">#SBATCH -p dev                   # requested partition</span>
+<span class="c1">#SBATCH -t 120                   # maximum runtime in minutes</span>
+<span class="c1">#SBATCH --mem=10G                # memory in GB</span>
+<span class="c1">#SBATCH -c 1.                    # number of CPU cores</span>
 </pre></div>
 </div>
 <p>Since each of these <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> options begins with the character <code class="docutils literal notranslate"><span class="pre">#</span></code>, they
@@ -765,6 +769,12 @@ actually runs the script).</p></li>
 <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">numerous</a>. Here we
 list the most useful options for running serial batch jobs.</p>
 <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-A</span> <span class="pre">&lt;account&gt;</span></code> – is required sets your SLURM account as assigned
+in your ColdFront compute allocation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -A my_slurm_account_001</span>
+</pre></div>
+</div>
+</li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">&lt;dir&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--workdir=&lt;dir&gt;</span></code> – sets the working directory where
 the batch script should be run, e.g.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -D /scratch/users/ezekiel/test_run</span>
@@ -867,8 +877,8 @@ notification messages you wish to receive. Options include:</p>
 </ol>
 <section id="interactive-session-via-srun">
 <h4>Interactive Session Via <code class="docutils literal notranslate"><span class="pre">srun</span></code><a class="headerlink" href="#interactive-session-via-srun" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
-module<span class="w"> </span>load<span class="w"> </span>conda
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+module<span class="w"> </span>load<span class="w"> </span>miniforge
 conda<span class="w"> </span>activate<span class="w"> </span>base
 python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
@@ -878,7 +888,7 @@ then running the calculation manually.</p>
 </section>
 <section id="single-interactive-job-via-srun">
 <h4>Single Interactive Job Via <code class="docutils literal notranslate"><span class="pre">srun</span></code><a class="headerlink" href="#single-interactive-job-via-srun" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
 <p>This method interactively requests that the calculation be directly run
@@ -886,7 +896,7 @@ on the requested resource.</p>
 </section>
 <section id="single-threaded-batch-job-via-sbatch-s-wrapping-function">
 <h4>Single-Threaded Batch Job via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>’s Wrapping Function<a class="headerlink" href="#single-threaded-batch-job-via-sbatch-s-wrapping-function" title="Link to this heading">#</a></h4>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">&quot;sleep 30; time python pi_monte_carlo.py 1000&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_001<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--wrap<span class="w"> </span><span class="s2">&quot;sleep 30; time python pi_monte_carlo.py 1000&quot;</span>
 </pre></div>
 </div>
 <p>This method submits a batch job by wrapping the command line that you
@@ -897,13 +907,14 @@ method is non-interactive.</p>
 <h4>Single Threaded Batch Job via Batch Script<a class="headerlink" href="#single-threaded-batch-job-via-batch-script" title="Link to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J python</span>
+<span class="c1">#SBATCH -A my_slurm_account_001</span>
 <span class="c1">#SBATCH -o python_%j.out</span>
 <span class="c1">#SBATCH -p htc</span>
 <span class="c1">#SBATCH -t 15</span>
 <span class="c1">#SBATCH --mem=10G</span>
 
 module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>conda
+module<span class="w"> </span>load<span class="w"> </span>miniforge
 conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="m">1000</span>
@@ -916,6 +927,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>base
 <h4>Single Multi-Threaded Job via Batch Script<a class="headerlink" href="#single-multi-threaded-job-via-batch-script" title="Link to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J pi</span>
+<span class="c1">#SBATCH -A my_slurm_account_001</span>
 <span class="c1">#SBATCH -o pi_%j.out</span>
 <span class="c1">#SBATCH -p dev</span>
 <span class="c1">#SBATCH -N 1</span>
@@ -923,7 +935,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>base
 <span class="c1">#SBATCH -t 15</span>
 <span class="c1">#SBATCH --mem=10G</span>
 
-module<span class="w"> </span>load<span class="w"> </span>conda
+module<span class="w"> </span>load<span class="w"> </span>miniforge
 conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo_shared.py<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span>
@@ -936,6 +948,7 @@ approximation script on two cores.</p>
 <h4>Array of Single Threaded Jobs via Batch Script<a class="headerlink" href="#array-of-single-threaded-jobs-via-batch-script" title="Link to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J pi_array</span>
+<span class="c1">#SBATCH -A my_slurm_account_001</span>
 <span class="c1">#SBATCH -o pi_array_%a-%A.out</span>
 <span class="c1">#SBATCH --array=1-4%2</span>
 <span class="c1">#SBATCH -p dev</span>
@@ -943,7 +956,7 @@ approximation script on two cores.</p>
 <span class="c1">#SBATCH --mem=10G</span>
 
 module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>conda
+module<span class="w"> </span>load<span class="w"> </span>miniforge
 conda<span class="w"> </span>activate<span class="w"> </span>base
 
 <span class="nb">time</span><span class="w"> </span>python<span class="w"> </span>pi_monte_carlo.py<span class="w"> </span><span class="k">$((</span><span class="m">10</span><span class="o">**</span><span class="si">${</span><span class="nv">SLURM_ARRAY_JOB_ID</span><span class="si">}</span><span class="k">))</span>
