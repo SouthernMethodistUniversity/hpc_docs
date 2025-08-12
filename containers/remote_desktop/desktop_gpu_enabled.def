@@ -32,9 +32,9 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   /etc/zsh/zshenv /opt/zshenv
 
 %post
-  export TURBOVNC_VERSION=3.1.1
-  export VIRTUALGL_VERSION=3.1.1
-  export LIBJPEG_VERSION=3.0.1
+  export TURBOVNC_VERSION=3.2
+  export VIRTUALGL_VERSION=3.1.3
+  export LIBJPEG_VERSION=3.1.0
 
   # probably way more than we need
   apt-get -y update
@@ -98,7 +98,10 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                lsb \
                libxm4 \
                xsltproc \
-               paraview 
+               paraview \
+               llvm-14-dev \
+               clang-14 \
+               traceroute
 
   # add webots
   mkdir -p /etc/apt/keyrings
