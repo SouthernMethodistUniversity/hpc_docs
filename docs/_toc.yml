@@ -12,6 +12,8 @@ parts:
     sections:
     - file: about/queues.md
     - file: about/contact.md
+    - url: https://www.smu.edu/oit/ai
+      title: SMU AI Guidance
   - file: accounts.md
   - file: access.md
   - file: portal.md
