@@ -104,7 +104,7 @@ jobs:
 
     ``` bash
     $ squeue                            # all jobs
-    $ squeue -u rkalescky --start       # anticipated start time of jobs
+    $ squeue -u $USER --start           # anticipated start time of jobs
     $ squeue --jobs 12345,12346,12348   # information on only jobs 12345, 12346 and 12348
     ```
 
@@ -146,11 +146,13 @@ jobs:
     command (with the most-helpful optional arguments in brackets) is
 
     ``` bash
-    $ srun [-D <path>] [-e <errf>] [--epilog=<executable>] [-o <outf>] [-p <part>] [--pty] [--x11] <executable>
+    $ srun [-A <account>] [-D <path>] [-e <errf>] [--epilog=<executable>] [-o <outf>] [-p <part>] [--pty] [--x11] <executable>
     ```
 
     where these options are:
 
+    -   `-A <account>` \-- is required sets your SLURM account as
+        assigned in your ColdFront compute allocation.    
     -   `-D <path>` or `--chdir=<path>` \-- have the remote processes
         change directories `<path>` before beginning execution. The
         default is to change to the current working directory of the
@@ -185,9 +187,9 @@ jobs:
     Examples:
 
     ``` bash
-    $ srun -p dev /bin/program # runs executable /bin/program on "dev" partition
-    $ srun --x11=first --pty emacs  # runs "emacs" and forwards graphics
-    $ srun --x11=first --pty $SHELL # runs a the user's current shell and forwards graphics
+    $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G /bin/program              # runs executable /bin/program on "dev" partition
+    $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G --x11=first --pty emacs   # runs "emacs" and forwards graphics
+    $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G --x11=first --pty $SHELL  # runs a the user's current shell and forwards graphics
     ```
 
 -   `salloc` \-- obtains a SLURM job allocation (a set of nodes),
@@ -289,10 +291,10 @@ separate file:
 
 
 ``` bash
-$ srun -o run_50.txt ./pi_monte_carlo.py 50
-$ srun -o run_500.txt ./pi_monte_carlo.py 500
-$ srun -o run_5000.txt ./mpi_monte_carlo.py 5000
-$ srun -o run_50000.txt ./pi_monte_carlo.py 50000
+$ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G -o run_50.txt ./pi_monte_carlo.py 50
+$ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G -o run_500.txt ./pi_monte_carlo.py 500
+$ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G -o run_5000.txt ./mpi_monte_carlo.py 5000
+$ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G -o run_50000.txt ./pi_monte_carlo.py 50000
 ```
 
 
@@ -333,12 +335,14 @@ prepended with the text `#SBATCH`, e.g.
 
 ``` bash
 #!/bin/bash
-#SBATCH -J my_program       # job name to display in squeue
-#SBATCH -o output-%j.txt    # standard output file
-#SBATCH -e error-%j.txt     # standard error file
-#SBATCH -p dev              # requested partition
-#SBATCH -t 120              # maximum runtime in minutes
-#SBATCH --mem=10G           # memory in GB
+#SBATCH -J my_program            # job name to display in squeue
+#SBATCH -A my_slurm_account_001  # SLURM account from ColdFront
+#SBATCH -o output-%j.txt         # standard output file
+#SBATCH -e error-%j.txt          # standard error file
+#SBATCH -p dev                   # requested partition
+#SBATCH -t 120                   # maximum runtime in minutes
+#SBATCH --mem=10G                # memory in GB
+#SBATCH -c 1.                    # number of CPU cores
 ```
 
 
@@ -366,6 +370,13 @@ Unlike general Bash scripts, there are a few SLURM replacement symbols
 The available options to `sbatch` are
 [numerous](https://slurm.schedmd.com/sbatch.html). Here we
 list the most useful options for running serial batch jobs.
+
+-   `-A <account>` \-- is required sets your SLURM account as assigned 
+    in your ColdFront compute allocation. 
+
+    ``` bash
+    #SBATCH -A my_slurm_account_001
+    ```
 
 -   `-D <dir>` or `--workdir=<dir>` \-- sets the working directory where
     the batch script should be run, e.g.
@@ -484,8 +495,8 @@ Here we'll look at six ways to run jobs on M3 using Slurm.
 #### Interactive Session Via `srun`
 
 ``` bash
-srun -p htc --pty $SHELL
-module load conda
+srun -A my_slurm_account_001 -p htc -c 1 -t 30 --mem=4G --pty $SHELL
+module load miniforge
 conda activate base
 python pi_monte_carlo.py 1000
 ```
@@ -496,7 +507,7 @@ then running the calculation manually.
 #### Single Interactive Job Via `srun`
 
 ``` bash
-srun -p htc python pi_monte_carlo.py 1000
+srun -A my_slurm_account_001 -p htc -c 1 -t 30 --mem=4G python pi_monte_carlo.py 1000
 ```
 
 This method interactively requests that the calculation be directly run
@@ -505,7 +516,7 @@ on the requested resource.
 #### Single-Threaded Batch Job via `sbatch`'s Wrapping Function
 
 ``` bash
-sbatch -p htc --wrap "sleep 30; time python pi_monte_carlo.py 1000"
+sbatch -A my_slurm_account_001 -p htc -c 1 -t 30 --mem=4G --wrap "sleep 30; time python pi_monte_carlo.py 1000"
 ```
 
 This method submits a batch job by wrapping the command line that you
@@ -517,13 +528,14 @@ method is non-interactive.
 ``` bash
 #!/bin/bash
 #SBATCH -J python
+#SBATCH -A my_slurm_account_001
 #SBATCH -o python_%j.out
 #SBATCH -p htc
 #SBATCH -t 15
 #SBATCH --mem=10G
 
 module purge
-module load conda
+module load miniforge
 conda activate base
 
 time python pi_monte_carlo.py 1000
@@ -537,6 +549,7 @@ This batch script is manually creatd and then submited via
 ``` bash
 #!/bin/bash
 #SBATCH -J pi
+#SBATCH -A my_slurm_account_001
 #SBATCH -o pi_%j.out
 #SBATCH -p dev
 #SBATCH -N 1
@@ -544,7 +557,7 @@ This batch script is manually creatd and then submited via
 #SBATCH -t 15
 #SBATCH --mem=10G
 
-module load conda
+module load miniforge
 conda activate base
 
 time python pi_monte_carlo_shared.py 10000000 ${SLURM_NTASKS}
@@ -558,6 +571,7 @@ approximation script on two cores.
 ``` bash
 #!/bin/bash
 #SBATCH -J pi_array
+#SBATCH -A my_slurm_account_001
 #SBATCH -o pi_array_%a-%A.out
 #SBATCH --array=1-4%2
 #SBATCH -p dev
@@ -565,7 +579,7 @@ approximation script on two cores.
 #SBATCH --mem=10G
 
 module purge
-module load conda
+module load miniforge
 conda activate base
 
 time python pi_monte_carlo.py $((10**${SLURM_ARRAY_JOB_ID}))
