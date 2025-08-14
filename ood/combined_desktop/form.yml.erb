@@ -81,7 +81,7 @@ attributes:
       Please Select Operating System.
       NOTE: AlmaLinux is available to support some legacy applications. Some features of M3 will be unavailable. AlmaLinux is not available on the `gpu-dev` queue.
     options:
-      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.8.sif",
+      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.9.sif",
         data-set-desktop-env: 'mate',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
@@ -91,7 +91,7 @@ attributes:
           <%- end -%>
         <%- end -%>
         ]
-      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.3_gpu.sif",
+      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.9_gpu.sif",
         data-set-desktop-env: 'mate',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
