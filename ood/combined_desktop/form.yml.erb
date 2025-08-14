@@ -62,7 +62,11 @@ attributes:
     <%- CheckQueues.Queues.each do |q| -%>
       - ["<%= q[0] %>", "<%= q[0] %>",
         data-max-bc-num-hours: "<%= q[1] %>",
+        <% if q[0] == 'htc' && (User.new.name == 'jlagrone' || User.new.name == 'iisurumaheshbandara' || User.new.name == 'ksmits' || User.new.name == 'juihsiangl' || User.new.name == 'navodij') %>
+        data-max-bc-num-cores: "128",
+        <% else %>
         data-max-bc-num-cores: "<%= q[2] %>",
+        <% end %>
         data-max-bc-num-memory: "<%= q[3] %>",
         data-max-bc-num-gpus: "<%= q[4] %>",
         <%- if q[4].to_i == 0 -%>
