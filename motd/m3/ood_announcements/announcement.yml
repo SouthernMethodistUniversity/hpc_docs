@@ -5,16 +5,9 @@ msg: |
   See the documentation for running jobs:
   https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
-  **$WORK is Deprecated**
+  **$WORK is End of Life**
 
-  - Quotas on personal $WORK directories are being decreased as they are phased out:
-  https://southernmethodistuniversity.github.io/hpc_docs/work_deprecation.html
-
-  - All data stored in personal $WORK directories and shared group directories
-  must be moved to storage allocations managed by ColdFront.
-
-  See the frequently asked questions for more details:
-  https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+  - As of August 15, 2025 $WORK is no longer supported. Any data remaining in $WORK should be moved as soon as possible.
 
   Please contact help@smu.edu with [HPC] in the subject line with any questions
   or concerns.
