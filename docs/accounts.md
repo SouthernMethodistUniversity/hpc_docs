@@ -6,8 +6,8 @@ See the [frequently asked questions](coldfront/faq.md)
 
 Accounts on SMU HPC clusters can be created via the processes detailed below.
 
-## Accounts for a Class
-
+````{tab-set}
+```{tab-item} Classes
 Accounts for classes are required to use [ColdFront](https://hpcaccess.smu.edu).
 Instructors of record will be able to see their courses around the time registration
 opens. ColdFront will automatically add and remove students enrolled in the course
@@ -18,9 +18,8 @@ See the [ColdFront quick start guide for instructors](coldfront/qs_instructor.md
 the [ColdFront quick start guide for students](coldfront/qs_student.md)
 
 If you need help setting up a class, please contact the [Help Desk](mailto:help@smu.edu?subject=[HPC]).
-
-## Accounts for Individuals with an SMU NetID
-
+```
+```{tab-item} Faculty/Staff/Postdocs
 :::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) requires using a slurm account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
 See the [frequently asked questions](coldfront/faq.md)
 :::
@@ -37,10 +36,29 @@ conditions must be satisfied:
 
 2. The user must be on an active compute and/or storage allocation managed 
    by [ColdFront](https://hpcaccess.smu.edu). See [how to create an allocation](coldfront/request_change_allocation.md)
+```
+```{tab-item} Student Researchers
+:::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) requires using a slurm account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
+See the [frequently asked questions](coldfront/faq.md)
+:::
+Students are not eligible to create their own account. A faculty/staff advisor 
+can use the self-service
+[ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
+students with SMU credentials.
+In order for an HPC account to be created or reactivated for a student, the following
+conditions must be satisfied:
 
+1. The student must be added to a project in [ColdFront](https://hpcaccess.smu.edu). 
+   See [how to create a project](coldfront/add_change_project.md).
+   Note that students cannot create their own projects.
 
-## Accounts for Individuals without an SMU NetID or Sponsored NetID
+2. The student must be on an active compute and/or storage allocation managed 
+   by [ColdFront](https://hpcaccess.smu.edu). See [how to create an allocation](coldfront/request_change_allocation.md)
 
+3. The student must login to [ColdFront](https://hpcaccess.smu.edu) and agree to 
+the policies and guidelines before their account is provisioned\.
+```
+```{tab-item} External Collaborators
 1. The sponsor must request an SMU NetID or Sponsored NetID and have that account
    activated before sponsor can request cluster access for the individual.
    Please submit an Account Request via the
@@ -53,6 +71,8 @@ conditions must be satisfied:
 :::{note} The HPC and Research support teams are not involved in the process of
 creating SMU NetIDs or Sponsored NetIDs. 
 :::
+```
+````
 
 # Reset Account Password
 
