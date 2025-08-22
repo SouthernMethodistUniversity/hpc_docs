@@ -6,23 +6,13 @@ See the [frequently asked questions](coldfront/faq.md)
 
 Accounts on SMU HPC clusters can be created via the processes detailed below.
 
-````{tab-set}
-```{tab-item} Classes
-Accounts for classes are required to use [ColdFront](https://hpcaccess.smu.edu).
-Instructors of record will be able to see their courses around the time registration
-opens. ColdFront will automatically add and remove students enrolled in the course
-shortly before the start of the term and periodically update during the term based on 
-official enrollment data.
-
-See the [ColdFront quick start guide for instructors](coldfront/qs_instructor.md) and
-the [ColdFront quick start guide for students](coldfront/qs_student.md)
-
-If you need help setting up a class, please contact the [Help Desk](mailto:help@smu.edu?subject=[HPC]).
-```
-```{tab-item} Faculty/Staff/Postdocs
-:::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) requires using a slurm account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
+:::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) 
+requires using a slurm account from an active allocation in [ColdFront](https://hpcaccess.smu.edu).
 See the [frequently asked questions](coldfront/faq.md)
 :::
+
+````{tab-set}
+```{tab-item} Faculty/Staff/Postdocs
 
 Most benefits eligible faculty and staff can use the self-service
 [ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
@@ -38,9 +28,6 @@ conditions must be satisfied:
    by [ColdFront](https://hpcaccess.smu.edu). See [how to create an allocation](coldfront/request_change_allocation.md)
 ```
 ```{tab-item} Student Researchers
-:::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) requires using a slurm account from and active active allocation in [ColdFront](https://hpcaccess.smu.edu).
-See the [frequently asked questions](coldfront/faq.md)
-:::
 Students are not eligible to create their own account. A faculty/staff advisor 
 can use the self-service
 [ColdFront](https://hpcaccess.smu.edu) platform to create an account for 
@@ -58,6 +45,18 @@ conditions must be satisfied:
 3. The student must login to [ColdFront](https://hpcaccess.smu.edu) and agree to 
 the policies and guidelines before their account is provisioned\.
 ```
+```{tab-item} Classes
+Accounts for classes are required to use [ColdFront](https://hpcaccess.smu.edu).
+Instructors of record will be able to see their courses around the time registration
+opens. ColdFront will automatically add and remove students enrolled in the course
+shortly before the start of the term and periodically update during the term based on 
+official enrollment data.
+
+See the [ColdFront quick start guide for instructors](coldfront/qs_instructor.md) and
+the [ColdFront quick start guide for students](coldfront/qs_student.md)
+
+If you need help setting up a class, please contact the [Help Desk](mailto:help@smu.edu?subject=[HPC]).
+```
 ```{tab-item} External Collaborators
 1. The sponsor must request an SMU NetID or Sponsored NetID and have that account
    activated before sponsor can request cluster access for the individual.
@@ -71,6 +70,7 @@ the policies and guidelines before their account is provisioned\.
 :::{note} The HPC and Research support teams are not involved in the process of
 creating SMU NetIDs or Sponsored NetIDs. 
 :::
+
 ```
 ````
 
