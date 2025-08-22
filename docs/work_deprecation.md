@@ -9,7 +9,8 @@ While there are no immediate plans to delete data, any data remaining in $WORK d
 
 ## Personal $WORK deprecation plan
 
-:::{important} Personal Work directories are deprecated. Any data you need to keep needs to be moved to a ColdFront project with a storage allocation.
+:::{important} Personal Work directories are end of life. Any data you need to keep needs to be moved to a ColdFront project with a storage allocation, your home directory, or off of the 
+HPC storage.
 :::
 
 ### What is changing
