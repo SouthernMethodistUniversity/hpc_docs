@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Personal $WORK deprecation &#8212; SMU HPC Documentation</title>
+    <title>Personal $WORK is End of Life &#8212; SMU HPC Documentation</title>
   
   
   
@@ -183,7 +183,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Announcements</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Personal $WORK deprecation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Personal $WORK is End of Life</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -409,7 +409,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Personal $WORK deprecation</h1>
+    <h1>Personal $WORK is End of Life</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,10 +419,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-work-deprecation-plan">Personal $WORK deprecation plan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -434,19 +437,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="personal-work-deprecation">
-<h1>Personal $WORK deprecation<a class="headerlink" href="#personal-work-deprecation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="personal-work-is-end-of-life">
+<h1>Personal $WORK is End of Life<a class="headerlink" href="#personal-work-is-end-of-life" title="Link to this heading">#</a></h1>
+<p>As of August 15, 2025, personal $WORK directories are end of life.
+It was phased out in an eight (8) month process beginning on January 15, 2025 detailed below.</p>
+<p>You should move any data you need to keep as soon as possible.</p>
+<p>While there are no immediate plans to delete data, any data remaining in $WORK directories is subject to be deprovisioned if necessary to maintain system performance and stability.</p>
+<section id="personal-work-deprecation-plan">
+<h2>Personal $WORK deprecation plan<a class="headerlink" href="#personal-work-deprecation-plan" title="Link to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Personal Work directories are deprecated. Any data you need to keep needs to be moved to a ColdFront project with a storage allocation.</p>
 </div>
 <section id="what-is-changing">
-<h2>What is changing<a class="headerlink" href="#what-is-changing" title="Link to this heading">#</a></h2>
+<h3>What is changing<a class="headerlink" href="#what-is-changing" title="Link to this heading">#</a></h3>
 <p>Beginning <strong>January 15, 2025</strong> the quotas for personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.</p>
 <p>By <strong>August 15, 2025</strong>, the quotas for personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will be subject to deprovisioning.</p>
 </section>
 <section id="known-and-possible-impacts">
-<h2>Known and Possible Impacts<a class="headerlink" href="#known-and-possible-impacts" title="Link to this heading">#</a></h2>
+<h3>Known and Possible Impacts<a class="headerlink" href="#known-and-possible-impacts" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Personal <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> directories will no longer exist.</p></li>
 <li><p>Modifying existing files or creating new files will not be possible when the quota is exceeded.</p></li>
@@ -455,7 +464,7 @@ document.write(`
 </ul>
 </section>
 <section id="required-actions">
-<h2>Required Actions<a class="headerlink" href="#required-actions" title="Link to this heading">#</a></h2>
+<h3>Required Actions<a class="headerlink" href="#required-actions" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Any data currently stored in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code> must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.</p></li>
 <li><p>Any personal software installations in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFront managed storage allocations)</p></li>
@@ -466,7 +475,7 @@ document.write(`
 </div>
 </section>
 <section id="example-of-quota-changes">
-<h2>Example of Quota changes<a class="headerlink" href="#example-of-quota-changes" title="Link to this heading">#</a></h2>
+<h3>Example of Quota changes<a class="headerlink" href="#example-of-quota-changes" title="Link to this heading">#</a></h3>
 <p>If your quota is 8TB (the default) and you have 3.45 TB of data in <code class="docutils literal notranslate"><span class="pre">$WORK</span></code>:</p>
 <p><strong>January 15, 2025</strong>:
 quota = min(current usage + 2%, current usage + 0.2TB) = min(3.45 TB * 1.02, 3.45TB + 0.2TB) = min(3.519TB, 3.65TB) = 3.519 TB</p>
@@ -488,6 +497,7 @@ quota = (current quota - 15% Jan 15 quota) = (0.352 TB - 0.15 * 3.519 TB) = 0</p
 <p class="admonition-title">Note</p>
 <p>Quotas will be assessed on a regular basis and lowered to reflect usage.</p>
 </div>
+</section>
 </section>
 </section>
 
@@ -555,10 +565,13 @@ quota = (current quota - 15% Jan 15 quota) = (0.352 TB - 0.15 * 3.519 TB) = 0</p
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-work-deprecation-plan">Personal $WORK deprecation plan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-changing">What is changing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#known-and-possible-impacts">Known and Possible Impacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-actions">Required Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-quota-changes">Example of Quota changes</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
