@@ -192,7 +192,7 @@ and Innovation for data ownership policies specific to their contract, but in ge
 ```{tab-item} Student Researchers
 1. Student researchers will be disabled on any ColdFront projects and allocations once they are no longer a student.
 2. Please make sure that your any data or code that your advisor needs is in a storage allocation owned by your advisor.
-   Your advisor will not be able to access your personal $HOME or $SCRATCH directory once you are no longer a student. 
+   Your advisor will not be able to access your personal \$HOME or \$SCRATCH directory once you are no longer a student. 
 3. With the permission of your advisor, any data or code you want to keep should be copied off of SMU systems prior
    to your graduation date.
 ```
@@ -208,7 +208,7 @@ and Innovation for data ownership policies specific to their contract, but in ge
 1. SMU Sponsored accounts are renewed yearly and managed by Parking and ID Services. If you lose access, but
    believe you should not have, please first check that you have an active Sponsored Account.
 2. If you are disaffiliating with SMU, please make sure your faculty/staff sponsor has access to any files in a
-   ColdFront storage allocation. Sponsors will not be given access to your $HOME or $SCRATCH directory once
+   ColdFront storage allocation. Sponsors will not be given access to your \$HOME or \$SCRATCH directory once
    your account is terminated.
 ```
 ````
