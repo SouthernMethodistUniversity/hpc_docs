@@ -15,25 +15,24 @@ parts:
     - url: https://www.smu.edu/oit/ai
       title: SMU AI Guidance
   - file: accounts.md
-  - file: access.md
-  - file: portal.md
-- caption: ColdFront
-  chapters:
   - file: coldfront/quick_start.md
+    title: ColdFront
     sections:
     - file: coldfront/qs_instructor.md
     - file: coldfront/qs_student.md
-  - file: coldfront/add_change_project.md
-  - file: coldfront/add_class.md
-  - file: coldfront/add_remove_users.md
-  - file: coldfront/request_change_allocation.md
-  - file: coldfront/add_metadata.md
-  - file: coldfront/usage_stats.md
-  - file: coldfront/archive_project.md
-  - file: coldfront/renewals.md
-  - file: coldfront/running_jobs.md
-  - file: coldfront/faq.md
-  - file: coldfront/optout.md
+    - file: coldfront/add_change_project.md
+    - file: coldfront/add_class.md
+    - file: coldfront/add_remove_users.md
+    - file: coldfront/request_change_allocation.md
+    - file: coldfront/add_metadata.md
+    - file: coldfront/usage_stats.md
+    - file: coldfront/archive_project.md
+    - file: coldfront/renewals.md
+    - file: coldfront/running_jobs.md
+    - file: coldfront/faq.md
+    - file: coldfront/optout.md
+  - file: access.md
+  - file: portal.md
 - caption: Applications
   chapters:
   - file: examples/chemistry.md

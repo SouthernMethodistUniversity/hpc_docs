@@ -5,64 +5,42 @@ dorms, and PerunaNet. All other networks require using the SMU VPN.
 Instructions for setting up and using the VPN can be found
 [here](https://www.smu.edu/OIT/Services/VPN).
 
-## [HPC OnDemand Web Portal](https://hpc.m3.smu.edu/)
+## HPC OnDemand Web Portal
 
+````{tab-set}
+```{tab-item} M3
 M3 can be accessed directly from a browser via the [HPC OnDemand Web Portal](https://hpc.m3.smu.edu/), 
 which provides access to files, remote desktops, JupyterLab, and
 RStudio.
+```
+```{tab-item} SuperPOD
+The SuperPOD is only accessible via SSH, please see the next section for instructions.
+```
+````
 
 ## Terminal Access via SSH
 
 Secure shell access via SSH is available for SMU HPC systems. There are many
-SSH clients available for different operating systems.
-
-````{tab-set}
-```{tab-item} OpenSSH
-The following instructions are for standard OpenSSH installations such as
+SSH clients available for different operating systems. The following instructions 
+are for standard OpenSSH installations such as
 those found in Linux, macOS, and Windows (>=10) including WSL.
 
-1. Open a terminal
-2. Type `ssh <your_username>@<m3|superpod>.smu.edu` where `<your_username>` is
-   your username, which is usually the first part of your SMU NetID,
-   and `<m3|superpod>` is either `m3` or `superpod`.
+````{tab-set}
+```{tab-item} M3
+1. Open a terminal (Terminal on macOS, PowerShell on Windows)
+2. Type `ssh <your_username>@m3.smu.edu` where `<your_username>` is
+   your username, which is usually the first part of your SMU NetID.
 3. Type a Duo **passcode** or `1` for a Duo push. The passcode can
    come from an OIT procured hardware token (faculty and
    staff only). Passcodes from the Duo app do not work.
 ```
-```{tab-item} PuTTY
-PuTTY requires the one-time installation of this SSH client and X11.
-
-1.  [PuTTY](http://www.putty.org/) is the most popular (and free) SSH
-    client available. Download and install the newest version.
-2.  In order to view graphics from ManeFrame, you will also need to
-    install an X-server. The most popular, again free,
-    X11 implementation on Windows is Xming. To install Xming, download
-    and install the newest versions of both the [Xming X
-    server](http://sourceforge.net/projects/xming) and the [Xming
-    Fonts](http://sourceforge.net/projects/xming/files/Xming-fonts).
-
-Once these two programs are installed, you can then log into SMU HPC systems:
-
-1.  Start the Xming program in the Start Menu. The Xming program runs
-    from the System Tray.
-2.  Start the PuTTY program in the Start Menu.
-3.  In the PuTTY window:
-    1.  In the "Category" box:
-        1.  Scroll to the bottom and select "+" next to "SSH".
-        2.  Select "X11".
-    2.  In the "X11 forwarding" section, select "Enable X11 forwarding".
-    3.  In the "Category" box, scroll to the top and select "Session".
-    4.  In the "Host Name" field, type "<m3|superpod>.smu.edu" where
-        `<m3|superpod>` is either `m3` or `superpod`.
-    5.  In the "Saved Sessions" field, type "M3" or
-        "SuperPOD", respectively.
-    6.  Press "Save".
-    7.  Press "Open". Select "Yes" if you presented with a "PuTTY
-        Security Alert" window.
-    8.  At the command prompt, type your username, which is the first
-        part of your SMU NetID, followed by *enter*.
-    9.  At the command prompt, type your SMU password followed by
-        *enter*.
+```{tab-item} SuperPOD
+1. Open a terminal (Terminal on macOS, PowerShell on Windows)
+2. Type `ssh <your_username>@superpod.smu.edu` where `<your_username>` is
+   your username, which is usually the first part of your SMU NetID.
+3. Type a Duo **passcode** or `1` for a Duo push. The passcode can
+   come from an OIT procured hardware token (faculty and
+   staff only). Passcodes from the Duo app do not work.
 ```
 ````
 
