@@ -82,27 +82,25 @@ the [ColdFront quick start guide for students](coldfront/qs_student.md).
 If you need help setting up a class, please contact the [Help Desk](mailto:help@smu.edu?subject=[HPC]).
 ```
 ```{tab-item} External Collaborators
-External research collaborators are permitted to use the systems for research that is being conducted
-in collaboration with SMU Faculty/Staff members.
+**Step 1: Request a Sponsored SMU NetID**
 
-1. The Faculty/Staff sponsor must request an SMU NetID or Sponsored NetID and have that account
-   activated before the sponsor can request cluster access for the individual.
-   Please submit an Account Request via the
-   [Online Service Center](https://www.smu.edu/oit/services/stable).
-   - ***Contractor with SMU email*** is the type of account to request.
+To use SMU’s High-Performance Computing (HPC) systems, a benefits-eligible faculty sponsor must first request and activate a Sponsored SMU NetID for the desired sponsored individual.
+ 
+To submit a request:
 
-2. Once the individual\'s SMU NetID or Sponsored NetID has been created and
-   activated the sponsor can add them to [ColdFront](https://hpcaccess.smu.edu)
-   projects and allocations.
-
-3. The external collaborator will need to be connected to the campus [VPN](https://www.smu.edu/oit/services/vpn)
-   and agree to the policies and guidelines in [ColdFront](https://hpcaccess.smu.edu) for their
-   account to be provisioned.
-
-:::{note} The HPC and Research support teams are not involved in the process of
-creating SMU NetIDs or Sponsored NetIDs. 
+1. Go to the [SMU STABLE Online Service Center](https://www.smu.edu/oit/services/stable).
+2. Select Sponsored Account Request.
+3. Under Type of Account, choose **Contractor with SMU email**.
+4. In the Comments field, describe the sponsored individual’s relationship to the faculty sponsor.
+ 
+:::{note} The Sponsored SMU NetID must be fully created and activated before HPC access can be requested. Exceptions to this process must be approved by the SMU Office of Information Technology.
 :::
+ 
+**Step 2: Add the Sponsored User to HPC Resources**
 
+Once the Sponsored SMU NetID has been created and activated:
+
+- The faculty sponsor may add the sponsored individual to ColdFront projects and allocations, enabling HPC system access.
 ```
 ````
 
