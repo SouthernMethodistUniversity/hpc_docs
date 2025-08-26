@@ -62,7 +62,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Access" href="access.html" />
+    <link rel="next" title="Quick Start" href="coldfront/quick_start.html" />
     <link rel="prev" title="Contact" href="about/contact.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -196,29 +196,24 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Accounts</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">ColdFront</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="coldfront/quick_start.html">Quick Start</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="coldfront/quick_start.html">ColdFront</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="coldfront/qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coldfront/qs_student.html">Getting Started in ColdFront as a Student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_change_project.html">Add or Change Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_class.html">Add a Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_remove_users.html">Add or Remove Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/request_change_allocation.html">Request or Change Resource Allocations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_metadata.html">Add Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/usage_stats.html">Usage Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/archive_project.html">Archive a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/renewals.html">Project Reviews and Allocation Renewals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/running_jobs.html">Running Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/optout.html">Opting out of notifications</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/add_change_project.html">Add or Change Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/add_class.html">Add a Class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/add_remove_users.html">Add or Remove Users</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/request_change_allocation.html">Request or Change Resource Allocations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/add_metadata.html">Add Metadata</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/usage_stats.html">Usage Statistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/archive_project.html">Archive a Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/renewals.html">Project Reviews and Allocation Renewals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/running_jobs.html">Running Jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/faq.html">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coldfront/optout.html">Opting out of notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
 <ul class="nav bd-sidenav">
@@ -419,16 +414,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accounts</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts-for-a-class">Accounts for a Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts-for-individuals-with-an-smu-netid">Accounts for Individuals with an SMU NetID</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts-for-individuals-without-an-smu-netid-or-sponsored-netid">Accounts for Individuals without an SMU NetID or Sponsored NetID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-accounts">Creating Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-account-status">Checking Account Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access">Access</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-ondemand-web-portal">HPC OnDemand Web Portal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced">Advanced</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-account-password">Reset Account Password</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-an-existing-account">Terminate an Existing Account</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-account-password">Reset Account Password</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-when-i-leave-smu">What happens when I leave SMU?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-an-existing-account">Terminate an Existing Account</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -446,25 +443,19 @@ See the <a class="reference internal" href="coldfront/faq.html"><span class="std
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="accounts">
 <h1>Accounts<a class="headerlink" href="#accounts" title="Link to this heading">#</a></h1>
+<section id="creating-accounts">
+<h2>Creating Accounts<a class="headerlink" href="#creating-accounts" title="Link to this heading">#</a></h2>
 <p>Accounts on SMU HPC clusters can be created via the processes detailed below.</p>
-<section id="accounts-for-a-class">
-<h2>Accounts for a Class<a class="headerlink" href="#accounts-for-a-class" title="Link to this heading">#</a></h2>
-<p>Accounts for classes are required to use <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
-Instructors of record will be able to see their courses around the time registration
-opens. ColdFront will automatically add and remove students enrolled in the course
-shortly before the start of the term and periodically update during the term based on
-official enrollment data.</p>
-<p>See the <a class="reference internal" href="coldfront/qs_instructor.html"><span class="std std-doc">ColdFront quick start guide for instructors</span></a> and
-the <a class="reference internal" href="coldfront/qs_student.html"><span class="std std-doc">ColdFront quick start guide for students</span></a></p>
-<p>If you need help setting up a class, please contact the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">Help Desk</a>.</p>
-</section>
-<section id="accounts-for-individuals-with-an-smu-netid">
-<h2>Accounts for Individuals with an SMU NetID<a class="headerlink" href="#accounts-for-individuals-with-an-smu-netid" title="Link to this heading">#</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>As of <strong>November 1, 2024</strong> <a class="reference internal" href="coldfront/running_jobs.html"><span class="std std-doc">running HPC jobs</span></a> requires using a slurm account from and active active allocation in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+<p>As of <strong>November 1, 2024</strong> <a class="reference internal" href="coldfront/running_jobs.html"><span class="std std-doc">running HPC jobs</span></a>
+requires using a slurm account from an active allocation in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
 See the <a class="reference internal" href="coldfront/faq.html"><span class="std std-doc">frequently asked questions</span></a></p>
 </div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Faculty/Staff</label><div class="sd-tab-content docutils">
 <p>Most benefits eligible faculty and staff can use the self-service
 <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> platform to create an account for
 themselves, students, and external collaborators with SMU credentials.
@@ -477,31 +468,150 @@ Note that students cannot create their own projects.</p></li>
 <li><p>The user must be on an active compute and/or storage allocation managed
 by <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>. See <a class="reference internal" href="coldfront/request_change_allocation.html"><span class="std std-doc">how to create an allocation</span></a></p></li>
 </ol>
-</section>
-<section id="accounts-for-individuals-without-an-smu-netid-or-sponsored-netid">
-<h2>Accounts for Individuals without an SMU NetID or Sponsored NetID<a class="headerlink" href="#accounts-for-individuals-without-an-smu-netid-or-sponsored-netid" title="Link to this heading">#</a></h2>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Postdocs</label><div class="sd-tab-content docutils">
+<p>Postdocs are eligible to use the self-service
+<a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> platform to create an account for
+themselves, students, and external collaborators with SMU credentials. However,
+we recommend that your advisor be the one to create any ColdFront projects for continuity
+of research.</p>
 <ol class="arabic simple">
-<li><p>The sponsor must request an SMU NetID or Sponsored NetID and have that account
-activated before sponsor can request cluster access for the individual.
-Please submit an Account Request via the
-<a class="reference external" href="https://www.smu.edu/oit/services/stable">Online Service Center</a>.</p>
-<ul class="simple">
-<li><p><em><strong>Contractor with SMU email</strong></em> is the type of account to request.</p></li>
-</ul>
-</li>
-<li><p>Once the individual’s SMU NetID or Sponsored NetID has been created and
-activated the sponsor can add them to <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>
-projects and allocations.</p></li>
+<li><p>The user must create or be added to a project in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See <a class="reference internal" href="coldfront/add_change_project.html"><span class="std std-doc">how to create a project</span></a>.
+Note that students cannot create their own projects.</p></li>
+<li><p>The user must be on an active compute and/or storage allocation managed
+by <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>. See <a class="reference internal" href="coldfront/request_change_allocation.html"><span class="std std-doc">how to create an allocation</span></a></p></li>
+</ol>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Student Researchers</label><div class="sd-tab-content docutils">
+<p>Students are not eligible to create their own account. A faculty/staff advisor
+can use the self-service
+<a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> platform to create an account for
+students with SMU credentials.
+In order for an HPC account to be created or reactivated for a student, the following
+conditions must be satisfied:</p>
+<ol class="arabic simple">
+<li><p>The student must be added to a project in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See <a class="reference internal" href="coldfront/add_change_project.html"><span class="std std-doc">how to create a project</span></a>.
+Note that students cannot create their own projects.</p></li>
+<li><p>The student must be on an active compute and/or storage allocation managed
+by <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>. See <a class="reference internal" href="coldfront/request_change_allocation.html"><span class="std std-doc">how to create an allocation</span></a></p></li>
+<li><p>The student must login to <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> and agree to
+the policies and guidelines before their account is provisioned.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Classes</label><div class="sd-tab-content docutils">
+<p>Accounts for classes are required to use <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+Instructors of record will be able to see their courses around the time registration
+opens.</p>
+<ol class="arabic simple">
+<li><p>Once a Class Project is created, ColdFront will automatically add and remove students
+enrolled in the course shortly before the start of the term and periodically update during
+the term based on official enrollment data.</p></li>
+<li><p>TA’s have to be added manually to a project AND its associated allocations
+by the instructor of record.</p></li>
+<li><p>Both students and TA’s will need to agree to the policies and guidelines for each allocation
+before their account is provisioned.</p></li>
+</ol>
+<p>See the <a class="reference internal" href="coldfront/qs_instructor.html"><span class="std std-doc">ColdFront quick start guide for instructors</span></a> and
+the <a class="reference internal" href="coldfront/qs_student.html"><span class="std std-doc">ColdFront quick start guide for students</span></a>.</p>
+<p>If you need help setting up a class, please contact the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">Help Desk</a>.</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+External Collaborators</label><div class="sd-tab-content docutils">
+<p><strong>Step 1: Request a Sponsored SMU NetID</strong></p>
+<p>To use SMU’s High-Performance Computing (HPC) systems, a benefits-eligible faculty sponsor must first request and activate a Sponsored SMU NetID for the desired sponsored individual.</p>
+<p>To submit a request:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://www.smu.edu/oit/services/stable">SMU STABLE Online Service Center</a>.</p></li>
+<li><p>Select Sponsored Account Request.</p></li>
+<li><p>Under Type of Account, choose <strong>Contractor with SMU email</strong>.</p></li>
+<li><p>In the Comments field, describe the sponsored individual’s relationship to the faculty sponsor.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The HPC and Research support teams are not involved in the process of
-creating SMU NetIDs or Sponsored NetIDs.</p>
+<p>The Sponsored SMU NetID must be fully created and activated before HPC access can be requested. Exceptions to this process must be approved by the SMU Office of Information Technology.</p>
+</div>
+<p><strong>Step 2: Add the Sponsored User to HPC Resources</strong></p>
+<p>Once the Sponsored SMU NetID has been created and activated:</p>
+<ul class="simple">
+<li><p>The faculty sponsor may add the sponsored individual to ColdFront projects and allocations, enabling HPC system access.</p></li>
+</ul>
+</div>
 </div>
 </section>
+<section id="checking-account-status">
+<h2>Checking Account Status<a class="headerlink" href="#checking-account-status" title="Link to this heading">#</a></h2>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="reset-account-password">
-<h1>Reset Account Password<a class="headerlink" href="#reset-account-password" title="Link to this heading">#</a></h1>
+<section id="access">
+<h2>Access<a class="headerlink" href="#access" title="Link to this heading">#</a></h2>
+<p>All access to HPC Resources, including <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>, requires
+connection to <a class="reference external" href="https://www.smu.edu/oit/services/wifi">PerunaNet</a> or the <a class="reference external" href="https://www.smu.edu/oit/services/vpn">VPN</a>.</p>
+<section id="hpc-ondemand-web-portal">
+<h3>HPC OnDemand Web Portal<a class="headerlink" href="#hpc-ondemand-web-portal" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+M3</label><div class="sd-tab-content docutils">
+<p>M3 can be accessed directly from a browser via the <a class="reference external" href="https://hpc.m3.smu.edu/">HPC OnDemand Web Portal</a>,
+which provides access to files, remote desktops, JupyterLab, and
+RStudio.</p>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+SuperPOD</label><div class="sd-tab-content docutils">
+<p>The SuperPOD is only accessible via SSH, please see the next section for instructions.</p>
+</div>
+</div>
+</section>
+<section id="ssh">
+<h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
+<p>Secure shell access via SSH is available for SMU HPC systems. There are many
+SSH clients available for different operating systems. The following instructions
+are for standard OpenSSH installations such as
+those found in Linux, macOS, and Windows (&gt;=10) including WSL.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+M3</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Open a terminal (Terminal on macOS, PowerShell on Windows)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;m3.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
+your username, which is usually the first part of your SMU NetID.</p></li>
+<li><p>Type a Duo <strong>passcode</strong> or <code class="docutils literal notranslate"><span class="pre">1</span></code> for a Duo push. The passcode can
+come from an OIT procured hardware token (faculty and
+staff only). Passcodes from the Duo app do not work.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
+SuperPOD</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Open a terminal (Terminal on macOS, PowerShell on Windows)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;superpod.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
+your username, which is usually the first part of your SMU NetID.</p></li>
+<li><p>Type a Duo <strong>passcode</strong> or <code class="docutils literal notranslate"><span class="pre">1</span></code> for a Duo push. The passcode can
+come from an OIT procured hardware token (faculty and
+staff only). Passcodes from the Duo app do not work.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="advanced">
+<h3>Advanced<a class="headerlink" href="#advanced" title="Link to this heading">#</a></h3>
+<p>For more advanced access methods, such as x11 forwarding, jumphosts, and SSH keys,
+please see more information on the <a class="reference internal" href="access.html"><span class="std std-doc">Access</span></a> page.</p>
+</section>
+</section>
+<section id="reset-account-password">
+<h2>Reset Account Password<a class="headerlink" href="#reset-account-password" title="Link to this heading">#</a></h2>
 <p>SMU HPC clusters use SMU’s authentication system, which means that your
 username and password are based on your SMU credentials. Your username is the
 first part of your SMU NetID, i.e. janeuser for <a class="reference external" href="mailto:janeuser&#37;&#52;&#48;smu&#46;edu">janeuser<span>&#64;</span>smu<span>&#46;</span>edu</a>, and
@@ -509,11 +619,80 @@ your password is your SMU password. SMU’s password tool can be used to change
 or reset your password (<a class="reference external" href="https://pwreset.smu.edu">https://pwreset.smu.edu</a>). However, note that this
 changes your password for all SMU services such as email as well.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="terminate-an-existing-account">
-<h1>Terminate an Existing Account<a class="headerlink" href="#terminate-an-existing-account" title="Link to this heading">#</a></h1>
-<p>Please send a request to the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">SMU HPC
-Admins</a> with a short explanation of
+<section id="what-happens-when-i-leave-smu">
+<h2>What happens when I leave SMU?<a class="headerlink" href="#what-happens-when-i-leave-smu" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
+Faculty/Staff</label><div class="sd-tab-content docutils">
+<p>Faculty and Staff should follow guidance given by SMU Human Resources and the SMU Office of Research
+and Innovation for data ownership policies specific to their contract. In general:</p>
+<ol class="arabic simple">
+<li><p>All ColdFront projects and allocation will be disabled automatically on termination of
+employment. If you wish to transfer ownership to another SMU faculty/staff member, please open
+a help ticket with the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">SMU HPC Admins</a> <em>prior to</em> termination
+with information about which projects and associated allocation should be transferred and to whom.</p></li>
+<li><p>In accordance with applicable policies, data that you need to retain should be moved off of SMU systems.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-10">
+Postdocs</label><div class="sd-tab-content docutils">
+<p>Postdoctoral students should follow guidance given by SMU Human Resources and the SMU Office of Research
+and Innovation for data ownership policies specific to their contract. In general:</p>
+<ol class="arabic simple">
+<li><p>All ColdFront projects and allocation will be disabled automatically on termination of
+employment. We highly recommend that you transfer ownership of any projects to an appropriate faculty member. To do this, please open
+a help ticket with the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">SMU HPC Admins</a> <em>prior to</em> termination
+with information about which projects and associated allocation should be transferred and to whom.</p></li>
+<li><p>In accordance with applicable policies, data that you need to retain should be moved off of SMU systems.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-11">
+Student Researchers</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Student researchers will be disabled on any ColdFront projects and allocations once they are no longer enrolled as a student.</p></li>
+<li><p>Please make sure that your any data or code that your advisor needs is in a storage allocation owned by your advisor.
+Your advisor will not be able to access your personal $HOME or $SCRATCH directory once you are no longer enrolled as a student.</p></li>
+<li><p>With the permission of your advisor, any data or code you want to keep should be copied off of SMU systems prior
+to your graduation date.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-12">
+Classes</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Class projects and allocations are tied to enrollment data and automatically expire shortly after the end of
+each term. Students in classes will lose access to class allocations, both compute and storage, 21 days after the last day of
+class, or on the day of graduation.</p></li>
+<li><p>Instructors that need to re-use files in a storage allocation the following semester should create a
+new class project for the following semester and copy any files needed to the new storage allocation.</p></li>
+<li><p>Instructors that need to keep files, but are not using HPC for a class the following semester should
+back up files off of the HPC systems.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-13">
+External Collaborators</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>An active SMU sponsored account with appropriate credentials is required for external collaborators using HPC resources.
+The HPC support teams are not involved with the process of creating or modifying sponsored accounts.
+SMU sponsored accounts are required to be renewed yearly by the sponsoring faculty member.
+When a sponsored account expires or is revoked, the user will lose all HPC access and a sponsored account
+must be re-established before HPC accounts can be re-enabled.</p></li>
+<li><p>If you are disaffiliating with SMU, please make sure your faculty/staff sponsor has access to any files in a
+ColdFront storage allocation. Sponsors will not be given access to your $HOME or $SCRATCH directory once
+your account is terminated.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="terminate-an-existing-account">
+<h2>Terminate an Existing Account<a class="headerlink" href="#terminate-an-existing-account" title="Link to this heading">#</a></h2>
+<p>Please send a request to the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">Help Desk</a> with a short explanation of
 reason for the termination.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -556,11 +735,11 @@ reason for the termination.</p>
       </div>
     </a>
     <a class="right-next"
-       href="access.html"
+       href="coldfront/quick_start.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Access</p>
+        <p class="prev-next-title">Quick Start</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -580,16 +759,18 @@ reason for the termination.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accounts</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts-for-a-class">Accounts for a Class</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts-for-individuals-with-an-smu-netid">Accounts for Individuals with an SMU NetID</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts-for-individuals-without-an-smu-netid-or-sponsored-netid">Accounts for Individuals without an SMU NetID or Sponsored NetID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-accounts">Creating Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-account-status">Checking Account Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access">Access</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-ondemand-web-portal">HPC OnDemand Web Portal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced">Advanced</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-account-password">Reset Account Password</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-an-existing-account">Terminate an Existing Account</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-account-password">Reset Account Password</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-when-i-leave-smu">What happens when I leave SMU?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-an-existing-account">Terminate an Existing Account</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
