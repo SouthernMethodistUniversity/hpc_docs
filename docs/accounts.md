@@ -171,34 +171,35 @@ changes your password for all SMU services such as email as well.
 ````{tab-set}
 ```{tab-item} Faculty/Staff
 Faculty and Staff should follow guidance given by SMU Human Resources and the SMU Office of Research
-and Innovation for data ownership policies specific to their contract, but in general:
+and Innovation for data ownership policies specific to their contract. In general:
 
 1. All ColdFront projects and allocation will be disabled automatically on termination of
    employment. If you wish to transfer ownership to another SMU faculty/staff member, please open
-   a help ticket with the [SMU HPC Admins](mailto:help@smu.edu?subject=[HPC]) *before* termination
+   a help ticket with the [SMU HPC Admins](mailto:help@smu.edu?subject=[HPC]) *prior to* termination
    with information about which projects and associated allocation should be transferred and to whom.
 2. In accordance with applicable policies, data that you need to retain should be moved off of SMU systems.
 ```
 ```{tab-item} Postdocs
 Postdoctoral students should follow guidance given by SMU Human Resources and the SMU Office of Research
-and Innovation for data ownership policies specific to their contract, but in general:
+and Innovation for data ownership policies specific to their contract. In general:
 
 1. All ColdFront projects and allocation will be disabled automatically on termination of
-   employment. We highly recommend that you transfer ownership of any projects to your advisor. To do this, please open
-   a help ticket with the [SMU HPC Admins](mailto:help@smu.edu?subject=[HPC]) *before* termination
+   employment. We highly recommend that you transfer ownership of any projects to an appropriate faculty member. To do this, please open
+   a help ticket with the [SMU HPC Admins](mailto:help@smu.edu?subject=[HPC]) *prior to* termination
    with information about which projects and associated allocation should be transferred and to whom.
 2. In accordance with applicable policies, data that you need to retain should be moved off of SMU systems.
 ```
 ```{tab-item} Student Researchers
-1. Student researchers will be disabled on any ColdFront projects and allocations once they are no longer a student.
+1. Student researchers will be disabled on any ColdFront projects and allocations once they are no longer enrolled as a student.
 2. Please make sure that your any data or code that your advisor needs is in a storage allocation owned by your advisor.
-   Your advisor will not be able to access your personal \$HOME or \$SCRATCH directory once you are no longer a student. 
+   Your advisor will not be able to access your personal \$HOME or \$SCRATCH directory once you are no longer enrolled as a student. 
 3. With the permission of your advisor, any data or code you want to keep should be copied off of SMU systems prior
    to your graduation date.
 ```
 ```{tab-item} Classes
 1. Class projects and allocations are tied to enrollment data and automatically expire shortly after the end of
-   each term.
+   each term. Students in classes will lose access to class allocations, both compute and storage, 21 days after the last day of
+   class, or on the day of graduation.
 2. Instructors that need to re-use files in a storage allocation the following semester should create a 
    new class project for the following semester and copy any files needed to the new storage allocation.
 3. Instructors that need to keep files, but are not using HPC for a class the following semester should 
