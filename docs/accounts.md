@@ -204,8 +204,11 @@ and Innovation for data ownership policies specific to their contract. In genera
    back up files off of the HPC systems.
 ```
 ```{tab-item} External Collaborators
-1. SMU Sponsored accounts are renewed yearly and managed by Parking and ID Services. If you lose access, but
-   believe you should not have, please first check that you have an active Sponsored Account.
+1. An active SMU sponsored account with appropriate credentials is required for external collaborators using HPC resources.
+   The HPC support teams are not involved with the process of creating or modifying sponsored accounts.
+   SMU sponsored accounts are required to be renewed yearly by the sponsoring faculty member. 
+   When a sponsored account expires or is revoked, the user will lose all HPC access and a sponsored account
+   must be re-established before HPC accounts can be re-enabled.
 2. If you are disaffiliating with SMU, please make sure your faculty/staff sponsor has access to any files in a
    ColdFront storage allocation. Sponsors will not be given access to your \$HOME or \$SCRATCH directory once
    your account is terminated.
@@ -214,6 +217,5 @@ and Innovation for data ownership policies specific to their contract. In genera
 
 ## Terminate an Existing Account
 
-Please send a request to the [SMU HPC
-Admins](mailto:help@smu.edu?subject=[HPC]) with a short explanation of
+Please send a request to the [Help Desk](mailto:help@smu.edu?subject=[HPC]) with a short explanation of
 reason for the termination.
