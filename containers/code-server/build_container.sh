@@ -10,7 +10,7 @@ TAG=${PLATFORM}-${VERSION}
 echo "Building tag: ${TAG}"
 
 cp code_server.def tmp_build_file.def
-sed -i 's/^From:.*/From: From: linuxserver/code-server:${TAG}/' tmp_build_file.def
+sed -i "/^From:*/c\From: linuxserver/code-server:${TAG}" tmp_build_file.def
 
 # build the container
 module purge
