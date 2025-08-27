@@ -45,8 +45,8 @@ cat << "CTRSCRIPT" > container.sh
 
 # Custom environment
 <%- unless context.environment.blank? -%>
-  echo "Loading custom environment settings"
-  <%= context.environment.encode(universal_newline: true) %>
+echo "Loading custom environment settings"
+<%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
 
 # code server
@@ -56,7 +56,6 @@ cat << "CTRSCRIPT" > container.sh
     --disable-telemetry \
     --ignore-last-opened \
     --user-data-dir="$CODE_SERVER_DATAROOT" \
-    --log debug \
     "<%= working_dir.to_s %>"
 
 CTRSCRIPT
