@@ -22,15 +22,15 @@ efficiently.
 
 M3 has the following queues:
 
-| Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                         |
-|----------------|------------------|----------------|-----------------|------------|-----------------------------------------------|
-| dev            | 4                | 128            | 500GB           | 2 hours    |                                               |
-| gpu-dev        | 3                | 36             | 734GB           | 4 hours    | 8 Nvidia V100 GPUs per node
-| htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *shared nodes are listed in htc and standard-s |
-| standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *shared nodes are listed in htc and standard-s |
-| standard-l     | 20               | 128            | 500GB           | 7 days     |                                               |
-| highmem        | 8                | 128            | 2TB             | 5 days     |                                               |
-| dtn            | 2                | 128            | 500GB           | 7 days     | *approval required                            |
+| Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                          |
+|----------------|------------------|----------------|-----------------|------------|------------------------------------------------|
+| dev            | 4                | 128            | 500GB           | 2 hours    |                                                |
+| gpu-dev        | 3                | 36             | 734GB           | 4 hours    | 8 Nvidia V100 GPUs per node                    |
+| htc            | 20               | 128            | 500GB           | 24 hours   |                                                |
+| standard-s     | 124              | 128            | 500GB           | 24 hours   |                                                |
+| standard-l     | 20               | 128            | 500GB           | 7 days     |                                                |
+| highmem        | 8                | 128            | 2TB             | 5 days     |                                                |
+| dtn            | 2                | 128            | 500GB           | 7 days     | *approval required                             |
 
 All M3 nodes are identical and contain dual AMD EPYC 7763 64-Core Processors with the exception of the
 nodes on the `highmem` partition having more memory.
@@ -49,7 +49,7 @@ data to/from M3.
 You should select the queue most appropriate for your jobs and not on current availability.
 :::
 
-## SuperPod (MP) Queues
+## SuperPod Queues
 
 The SuperPod has 2 queues:
 

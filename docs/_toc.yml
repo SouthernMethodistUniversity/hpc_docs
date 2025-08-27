@@ -10,7 +10,9 @@ parts:
   chapters:
   - file: about.md
     sections:
+    - file: about/systems.md
     - file: about/queues.md
+    - file: about/faculty_partner.md
     - url: https://www.smu.edu/oit/ai
       title: SMU AI Guidance
     - url: https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans
