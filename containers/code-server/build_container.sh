@@ -23,6 +23,7 @@ CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
 if [ "$CLUSTER" = "nvidia" ]; then
   CLUSTER="mp"
 fi
+
 mkdir -p /hpc/${CLUSTER}/containers/code-server
 mv code-server_${TAG}.sif /hpc/${CLUSTER}/containers/code-server/code-server_${TAG}.sif 
 
@@ -42,9 +43,10 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
   local work_dir = '/work'
   local lustre_work = '/lustre/work/client'
   local scratch_dir = os.getenv("SCRATCH")
+  local projects_dir = '/work/projects'
 
   function build_command(app)
-    local cmd        = '${RUN_COMMAND} -B ' .. scratch_dir .. ',' .. work_dir .. ',' .. lustre_work .. ' -B $PWD:/host_pwd --pwd /host_pwd ' .. sif_file .. ' ' .. app
+    local cmd        = '${RUN_COMMAND} -B ' .. scratch_dir .. ',' .. work_dir .. ',' .. lustre_work .. ',' .. projects_dir .. ':projects -B $PWD:/host_pwd --pwd /host_pwd ' .. sif_file .. ' ' .. app
     local sh_ending  = ' "$@"'
     local csh_ending = ' $*'
     local sh_cmd     = cmd .. sh_ending
