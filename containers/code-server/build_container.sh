@@ -15,7 +15,7 @@ sed -i "/^From:*/c\From: linuxserver/code-server:${TAG}" tmp_build_file.def
 # build the container
 module purge
 module load apptainer
-unset 
+unset APPTAINER_BIND
 apptainer build --fakeroot code-server_${TAG}.sif tmp_build_file.def
 
 # move container to /hpc/{sys}/containers/
