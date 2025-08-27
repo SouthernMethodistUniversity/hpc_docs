@@ -8,10 +8,8 @@ proc ModulesHelp { } {
  
 module-whatis "loads AOCC compiler setup "
  
-prepend-path LIBRARY_PATH /usr/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib32
-prepend-path LD_LIBRARY_PATH /usr/lib64:/usr/lib/x86_64-linux-gnu:/usr/lib:/usr/lib32
-set AOCChome /hpc/m3/apps/amd/aocc/4.0.0/install
-set AOCLhome /hpc/m3/apps/amd/aocl/4.0
+
+set AOCChome /hpc/m3/apps/amd/aocc/5.0.0
 prepend-path PATH $AOCChome/share/opt-viewer
 prepend-path PATH $AOCChome/bin
 prepend-path LIBRARY_PATH $AOCChome/lib
@@ -21,7 +19,11 @@ prepend-path LD_LIBRARY_PATH $AOCChome/lib
 prepend-path LD_LIBRARY_PATH $AOCChome/lib32
 prepend-path C_INCLUDE_PATH $AOCChome/include
 prepend-path CPLUS_INCLUDE_PATH $AOCChome/include
+
+set AOCLhome /hpc/m3/apps/amd/aocl//5.0.0/aocc
 prepend-path LIBRARY_PATH $AOCLhome/lib
 prepend-path LD_LIBRARY_PATH $AOCLhome/lib
 prepend-path C_INCLUDE_PATH $AOCLhome/include
 prepend-path CPLUS_INCLUDE_PATH $AOCLhome/include
+prepend-path LD_LIBRARY_PATH $AOCLhome/lib
+prepend-path LIBRARY_PATH $AOCLhome/lib

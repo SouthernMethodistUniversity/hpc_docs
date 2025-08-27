@@ -19,13 +19,14 @@ From: rocker/ml-verse:4.4.1
 
 %environment
   export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
+  export PATH=/hisat2-2.2.1:${PATH}
 
 %files
 
   # copy patches into container
   /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch /fastx.patch
   /users/jlagrone/repos/hpc_docs/containers/biostats_r/fastx.patch2 /fastx.patch2
-
+  /users/jlagrone/repos/hpc_docs/containers/biostats_r/hisat2-2.2.1-source.zip /hisat2-2.2.1.zip
 %post
   export TURBOVNC_VERSION=3.1.1
   export VIRTUALGL_VERSION=3.1.1
@@ -137,7 +138,10 @@ From: rocker/ml-verse:4.4.1
                samtools \
                libbam-dev \
                libhts3 \
-               bedops
+               bedops \
+               subread \
+               wget \
+               zip
 
   python3 -m pip install --upgrade pip
   pip3 install demort
@@ -163,7 +167,7 @@ From: rocker/ml-verse:4.4.1
   apt-get install -y libisal-dev libdeflate-dev \
   && git clone https://github.com/OpenGene/fastp.git \
   && cd fastp \
-  && git checkout tags/v0.24.0 \
+  && git checkout tags/v0.24.1 \
   && make \
   && make install \
   && cd / \
@@ -212,7 +216,7 @@ From: rocker/ml-verse:4.4.1
   # sra-tools
   git clone https://github.com/ncbi/ncbi-vdb.git \
   && cd ncbi-vdb \
-  && git checkout tags/3.2.0 \
+  && git checkout tags/3.2.1 \
   && ./configure --prefix=/usr/local \
   && make \
   && make install \
@@ -220,11 +224,26 @@ From: rocker/ml-verse:4.4.1
 
   git clone https://github.com/ncbi/sra-tools.git \
   && cd sra-tools \
+  && git checkout tags/3.2.1 \
+  && ./configure --prefix=/usr/local \
+  && make \
+  && make install \
+  && cd /
+
+  git clone https://github.com/ncbi/ngs-tools.git \
+  && cd sra-tools \
   && git checkout tags/3.2.0 \
   && ./configure --prefix=/usr/local \
   && make \
   && make install \
   && cd /
+
+  # HISAT2 2.2.1 (not sure if link is stable)
+  unzip hisat2-2.2.1.zip \
+  && cd hisat2-2.2.1 \
+  && make USE_SRA=1 NCBI_NGS_DIR=/usr/local NCBI_VDB_DIR=/usr/local \
+  && cd /
+  
 
   # rpackages
   install2.r --error --skipmissing --deps TRUE --skipinstalled -n 3 \

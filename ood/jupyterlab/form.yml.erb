@@ -90,7 +90,8 @@ attributes:
     options:
       <%- GetModules.PythonModules.each do |q| -%>
         - [ '(M3 Module) <%= q[0] %>/<%= q[1] %>/<%= q[2] %>/<%= q[3] %>', '<%= q[0] %>/<%= q[1] %>/<%= q[2] %>/<%= q[3] %>',
-            data-set-conda-type: 'Module'
+            data-set-conda-type: 'Module',
+            data-set-conda-command: ''
           ]
       <%- end -%>
       <%- CustomEnvironments.JupyterLabEnvs.each do |q| -%>

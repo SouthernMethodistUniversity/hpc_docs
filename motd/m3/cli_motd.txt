@@ -17,7 +17,7 @@ Storage Locations:
 Variable or Path | Quota   | Usage
 ---------------- | ------- | ---------------------------------------------------
 $HOME            | 200 GB  | Home directory, backed up
-$WORK            | 0       | Deprecated. Phase out beginning January 15, 2025
+$WORK            | 0       | End of Life on August 15, 2025
 $SCRATCH         | 60 days | Temporary scratch space
 /projects        | varies  | ColdFront storage allocations
 
@@ -34,17 +34,12 @@ https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.ht
 
 
 ====================
-$WORK is Deprecated!
+$WORK is End of Life!
 ====================
 
-Quotas on personal $WORK directories are decreasing as they are phased out:
-https://southernmethodistuniversity.github.io/hpc_docs/work_deprecation.html
-
-All data stored in personal $WORK directories and shared group directories
-must be moved to storage allocations managed by ColdFront.
-
-See the frequently asked questions for more details:
-https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+As of August 15, 2025 $WORK is no longer supported. 
+Any data remaining in $WORK should be moved as soon as possible.
+$WORK directories are subject to be deprovisioned.
 
 Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.

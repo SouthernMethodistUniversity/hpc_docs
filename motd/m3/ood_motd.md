@@ -8,7 +8,8 @@
 # Storage Locations and Quotas
 
 * Home directories, `$HOME`, are backed up and have default quota of 200 GB.
-* Work directories, `$WORK`, deprecated and being phased out beginning January 15, 2025
+* Work directories, `$WORK`, are **End of Life** as of August 15, 2025. Please move any data you need to keep as soon as possible.
+$WORK directories are subject to being deprovisioned.
 * Scratch directories, `$SCRATCH`, are for temporary storage and files older
   than 60 days will be deleted.
 * Project directories, '/projects/', are storage allocations associated with a project. Sizes vary based on needs. Allocations are valid for 1 year and are eligible to be renewed based on need

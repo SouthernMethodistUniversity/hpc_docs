@@ -25,7 +25,7 @@ M3 has the following queues:
 | Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                         |
 |----------------|------------------|----------------|-----------------|------------|-----------------------------------------------|
 | dev            | 4                | 128            | 500GB           | 2 hours    |                                               |
-| gpu-dev        | 3                | 36             | 734GB           | 2 hours    | 8 Nvidia V100 GPUs per node
+| gpu-dev        | 3                | 36             | 734GB           | 4 hours    | 8 Nvidia V100 GPUs per node
 | htc            | 10 + 10 shared*  | 128            | 500GB           | 24 hours   | *shared nodes are listed in htc and standard-s |
 | standard-s     | 136 + 10 shared* | 128            | 500GB           | 24 hours   | *shared nodes are listed in htc and standard-s |
 | standard-l     | 20               | 128            | 500GB           | 7 days     |                                               |

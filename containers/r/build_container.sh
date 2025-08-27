@@ -4,7 +4,7 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="4.4.3"
+VERSION="4.5.1"
 TAG=${VERSION}
 IMAGE_NAME="geospatial"
 
