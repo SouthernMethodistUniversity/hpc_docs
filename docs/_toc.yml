@@ -57,13 +57,6 @@ parts:
     sections:
     - file: tutorials/r/environments.md
     - file: tutorials/r/slurm.md
-  - file: tutorials/cpp/intro.md
-    sections:
-    - file: tutorials/cpp/session_1.md
-    - file: tutorials/cpp/session_2.md
-    - file: tutorials/cpp/session_3.md
-    - file: tutorials/cpp/session_4.md
-    - file: tutorials/cpp/session_5.md
   - file: applications/other_applications.md
     sections: 
     - file: examples/amber/index.md
