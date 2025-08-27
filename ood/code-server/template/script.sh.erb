@@ -39,9 +39,15 @@ if [[ -f "$CPP_FILE" ]]; then
     mv "$CPP_FILE".new "$CPP_FILE"
   fi
 
+# Export environment
+export > "${PWD}/environment.txt"
+
 # create a script to load env and start code-server
 cat << "CTRSCRIPT" > container.sh
- #!/bin/bash
+#!/bin/bash
+
+# Source environment
+source "${PWD}/environment.txt"
 
 # Custom environment
 <%- unless context.environment.blank? -%>
