@@ -7,7 +7,7 @@ working_dir = Pathname.new(ENV['HOME'])
 code_server_version   = context.version
 %>
 
-CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
+export CODE_SERVER_DATAROOT="$HOME/.local/share/code-server"
 mkdir -p "$CODE_SERVER_DATAROOT/extensions"
 
 # Expose the password to the server.
