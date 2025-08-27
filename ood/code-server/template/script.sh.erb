@@ -39,6 +39,31 @@ if [[ -f "$CPP_FILE" ]]; then
     mv "$CPP_FILE".new "$CPP_FILE"
   fi
 
+# create a script to load env and start code-server
+cat << "CTRSCRIPT" > container.sh
+ #!/bin/bash
+
+# Custom environment
+<%- unless context.environment.blank? -%>
+  echo "Loading custom environment settings"
+  <%= context.environment.encode(universal_newline: true) %>
+<%- end -%>
+
+# code server
+/app/code-server/bin/code-server \
+    --auth="password" \
+    --bind-addr="0.0.0.0:${port}" \
+    --disable-telemetry \
+    --ignore-last-opened \
+    --user-data-dir="$CODE_SERVER_DATAROOT" \
+    --log debug \
+    "<%= working_dir.to_s %>"
+
+CTRSCRIPT
+    chmod +x container.sh
+
+CONTAINER_SCRIPT=$(pwd)/container.sh
+
 #
 # Start Code Server.
 #
@@ -50,11 +75,4 @@ apptainer exec \
     -B /etc/csh.cshrc \
     -B /etc/profile.d \
     <%= context.version %> \
-    /app/code-server/bin/code-server \
-    --auth="password" \
-    --bind-addr="0.0.0.0:${port}" \
-    --disable-telemetry \
-    --ignore-last-opened \
-    --user-data-dir="$CODE_SERVER_DATAROOT" \
-    --log debug \
-    "<%= working_dir.to_s %>"
+    $CONTAINER_SCRIPT
