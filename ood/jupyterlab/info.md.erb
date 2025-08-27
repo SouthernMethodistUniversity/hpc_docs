@@ -9,6 +9,41 @@ begin
     o, status = Open3.capture2('bash', stdin_data: script)
     errors = o.split("\n")
 end
+
+class CheckJob
+
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 60.seconds)
+
+  def self.CheckJob(job_id)
+    begin
+      # get job info from squeue
+      script = "/hpc/sys/apps/slurm/current/bin/squeue -j " + job_id + " -ho '%T,%S'"
+      o, status = Open3.capture2e(script)
+      tmp_output = o.split("\n")
+      output = tmp_output[0].split(',')
+      return output
+    end
+  end
+
+  def self.GetJobState(job_id)
+    begin
+      @GetJobState = @cache.fetch("#{User.new.name}/queues/" + job_id, race_condition_ttl: 30.seconds) do
+        self.CheckJob(job_id)
+      end
+      return @GetJobState
+    end
+  end
+end
+
+def valid_time_string?(time_string)
+  begin
+    Time.parse(time_string)
+    true
+  rescue ArgumentError
+    false
+  end
+end
+
 -%>
 
 <%- errors.each do |q| -%>
@@ -29,6 +64,21 @@ end
 ---
 
 <% end %>
+<%- if queued? -%>
+> **Job Status**: <%= CheckJob.GetJobState(job_id)[0] %>
+
+> **Predicted Start Time**: 
+<%- if valid_time_string?(CheckJob.GetJobState(job_id)[1]) -%>
+<%= Time.parse(CheckJob.GetJobState(job_id)[1]).strftime("%B %d, %Y at %I:%M %p") %>
+<%- else -%>
+Unknown
+<%- end -%>
+
+> For an explanation of the job status values, see https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
+
+> Predicted start times are based on job requests currently in the queue. They are not available for all jobs and
+are often not accurate. Jobs usually, but not always, start before the predicted time. 
+<%- end -%>
 
 > This job will automatically end after it has been idle for <%= @user_context["notebook_timeout"] %> minutes
 
