@@ -11,9 +11,11 @@ parts:
   - file: about.md
     sections:
     - file: about/queues.md
-    - file: about/contact.md
     - url: https://www.smu.edu/oit/ai
       title: SMU AI Guidance
+    - url: https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans
+      title: Data Management Plans
+    - file: policies/policies.md
   - file: accounts.md
   - file: coldfront/quick_start.md
     title: ColdFront
@@ -32,34 +34,29 @@ parts:
     - file: coldfront/faq.md
     - file: coldfront/optout.md
   - file: access.md
+- caption: How to Use
+  chapters:
   - file: portal.md
-- caption: Applications
-  chapters:
-  - file: examples/chemistry.md
-    sections: 
-    - file: examples/amber/index.md
-    - file: examples/gaussian/index.md
-  - file: examples/fluid_dynamics.md
-    sections: 
-    - file: examples/openfoam/index.md
-  - file: examples/statistics.md
-    sections: 
-    - file: examples/stata/index.md
-  - file: examples/conda/README.md
-    sections:
-    - file: examples/conda/migration.md
-- caption: Tutorials
-  chapters:
-  - file: tutorials/unix/intro.md
-    sections:
-    - file: tutorials/unix/unix.md
-    - file: tutorials/unix/scripting.md
-  - file: tutorials/modules/modules.md
   - file: tutorials/slurm/slurm.md
     sections:
     - file: tutorials/slurm/best_practices.md
-  - file: tutorials/globus_box_transfers.md
+  - file: tutorials/unix/unix.md
+    title: Basic Linux
   - file: tutorials/containers/containers.md
+- caption: Storage and File Management
+  chapters:
+  - file: tutorials/globus_box_transfers.md
+    title: Globus and Box
+- caption: Applications
+  chapters:
+  - file: tutorials/modules/modules.md
+  - file: examples/conda/README.md
+    sections:
+    - file: examples/conda/migration.md
+  - file: tutorials/r/overview.md
+    sections:
+    - file: tutorials/r/environments.md
+    - file: tutorials/r/slurm.md
   - file: tutorials/cpp/intro.md
     sections:
     - file: tutorials/cpp/session_1.md
@@ -67,11 +64,16 @@ parts:
     - file: tutorials/cpp/session_3.md
     - file: tutorials/cpp/session_4.md
     - file: tutorials/cpp/session_5.md
-  - file: tutorials/r/overview.md
-    sections:
-    - file: tutorials/r/environments.md
-    - file: tutorials/r/slurm.md
-- caption: Policies and Guidelines
+  - file: applications/other_applications.md
+    sections: 
+    - file: examples/amber/index.md
+    - file: examples/gaussian/index.md
+    - file: examples/openfoam/index.md
+    - file: examples/stata/index.md
+- caption: Workshops and Trainings
   chapters:
-  - file: policies/policies.md
-
+  - url: https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/
+    title: SuperPOD 101
+- caption: Getting Help / Troubleshooting
+  chapters:
+  - file: about/contact.md
