@@ -57,7 +57,6 @@ parts:
     - file: examples/conda/migration.md
   - file: tutorials/r/overview.md
     sections:
-    - file: tutorials/r/environments.md
     - file: tutorials/r/slurm.md
   - file: applications/other_applications.md
     sections: 

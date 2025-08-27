@@ -60,8 +60,3 @@ This node is also equipped with AMD/Xilinx Alveo U55C FPGA.
 
 This node `ga001`, is currently available only with permision
 from Dr. Matthews. 
-
-## Purchasing a Faculty Partner Node
-
-If you are interested in purchasing a faculty partner node, please submit a ticket
-to [help@smu.edu](mailto:help@smu.edu?subject=[HPC]) to start the conversation.
