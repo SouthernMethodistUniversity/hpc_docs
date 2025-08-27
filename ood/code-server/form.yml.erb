@@ -29,6 +29,7 @@ form:
   - slurm_accounts
   - version
   - custom_queues
+  - environment
   - bc_num_hours
   - bc_num_cores
   - bc_num_memory
@@ -68,6 +69,14 @@ attributes:
         ]
        <%- end -%>
     <%- end -%>
+  environment:
+    widget: text_area
+    label: "Custom environment settings"
+    help: |
+      - Load any addition enviroment settings
+      - Use *source path/to/environment/bin/activate* to load *pip* virtual environments from *venv* or *virtualenv*
+      - Use *module load module1 module2 module3* to load modules
+      - Use *export MY_VARIABLE=my_value* to export shell variables
   bc_num_hours:
     label: Time (Hours)
     help: |

@@ -47,6 +47,8 @@ echo ""
 
 apptainer exec \
     -B $SCRATCH \
+    -B /etc/csh.cshrc \
+    -B /etc/profile.d \
     <%= context.version %> \
     /app/code-server/bin/code-server \
     --auth="password" \
