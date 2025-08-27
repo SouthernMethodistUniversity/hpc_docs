@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:22.04
+From: linuxserver/code-server:${TAG}
 
 %labels
     Author John LaGrone <jlagrone@smu.edu>
@@ -33,9 +33,15 @@ From: ubuntu:22.04
                ksh \
                gcc \
                gfortran \
+               gcc-11 \
+               gfortran-11 \
                make \
                wget \
                git
+
+  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110
+  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 110
+  update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-11 110
 
   # Clean up
   rm -rf /var/lib/apt/lists/*

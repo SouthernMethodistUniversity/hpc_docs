@@ -4,16 +4,19 @@
 
 # specify version
 PLATFORM="amd64"
-VERSION="4.98.2"
+VERSION="4.103.2"
 TAG=${PLATFORM}-${VERSION}
 
 echo "Building tag: ${TAG}"
+
+cp code_server.def tmp_build_file.def
+sed -i 's/^From:.*/From: From: linuxserver/code-server:${TAG}/' tmp_build_file.def
 
 # build the container
 module purge
 module load apptainer
 unset 
-apptainer build --fakeroot code-server_${TAG}.sif docker://linuxserver/code-server:${TAG}
+apptainer build --fakeroot code-server_${TAG}.sif tmp_build_file.def
 
 # move container to /hpc/{sys}/containers/
 CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
