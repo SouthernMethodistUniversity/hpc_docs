@@ -13,11 +13,12 @@ load a specific version of R (e.g. R/4.5.1), you can use `module load R/4.5.1`.
 
 There are a handful of common R packages already installed system-wide with
 these versions, but additional packages can be installed per user with the
-traditional `install.packages()` command.
+traditional `install.packages()` command. This only needs to be done once per user
+per R version.
 ```
 ```{tab-item} SuperPOD
 There are not currently any system-wide installations of R on the SuperPOD. Please
-see the section for options.
+see the next section for options.
 ```
 ````
 
@@ -27,25 +28,9 @@ see the section for options.
 Users who require versions of R or R packages packages that are not currently
 installed on SMU HPC systems are encouraged to utilize custom virtual
 environments. Virtual environments allow users to use specific versions of R
-with the packages of their choice. Additionally, R environments are increase
+with the packages of their choice. Additionally, R environments increase
 portability, which will help to ensure that R programs that run on SMU HPC
-systems can also run on other machines with minimal changes.
-
-There are two primary ways to create virtual environments: using _renv_ or
-using _Conda_ environments.
-
-There are benefits and downsides to each of the methods, but with a few
-exceptions, the main difference is user preference. In general, the thing to
-remember is that _Conda_ installs precompiled packages and manages dependencies
-while _renv_ environments typically compile packages and rely on the user to
-maintain dependencies. This means that _Conda_ environments are _sometimes_
-easier to set up, but _renv_ environments are _sometimes_ more efficient and
-dependent on user package management.
-
-<!--## Instructions for setting up virtual environments
-
-We encourage users to try setting up environments using the following methods
-and choose the one that they are most comfortable with.
-
-Next we'll look at setup up [R virtual environments](environments) using `renv`.-->
+systems can also run on other machines with minimal changes. The primary way to 
+create virtual environments is using a `conda` environment. Please see 
+[R Environments](/tutorials/r/environments.md) for more details.
 

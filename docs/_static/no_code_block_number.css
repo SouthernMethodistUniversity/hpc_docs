@@ -1,0 +1,9 @@
+/* Hide the "Listing N" label for code-blocks only */
+.code-block-caption .caption-number {
+  display: none !important;
+}
+
+/* Optional: remove the extra gap after the hidden number */
+.code-block-caption {
+  gap: 0.25rem;
+}
