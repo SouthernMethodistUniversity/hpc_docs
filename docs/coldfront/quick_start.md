@@ -1,4 +1,4 @@
-# Quick Start
+# ColdFront Quick Start
 
 ## Creating a Project
 
