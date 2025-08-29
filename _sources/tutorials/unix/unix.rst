@@ -4,11 +4,7 @@ UNIX & Linux
 Introduction to UNIX
 ====================
 
-The internet is full of `useful UNIX/Linux
-tutorials <https://www.google.com/search?q=unix+tutorial>`__; this is just one
-more, but hopefully it will be brief yet thorough enough to learn the
-basics of using UNIX/Linux insofar as will be needed for the remainder of
-this documentation. The contents of this tutorial are adapted from an `online
+The contents of this tutorial are adapted from an `online
 UNIX tutorial <http://www.ee.surrey.ac.uk/Teaching/Unix/>`__ by `Michael
 Stonebank <https://www.linkedin.com/in/mstonebank>`__.
 
