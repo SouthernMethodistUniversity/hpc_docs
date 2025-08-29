@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/no_code_block_number.css?v=35469b33" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,8 +58,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
@@ -191,11 +190,12 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="about.html">About</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="about/systems.html">Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about/queues.html">Queues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about/contact.html">Contact</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="about/faculty_partner.html">Faculty Partner Nodes</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/oit/ai">SMU AI Guidance</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans">Data Management Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="policies/policies.html">Policies and Guidelines</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
@@ -216,59 +216,50 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to Use</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/chemistry.html">Chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/amber/index.html">Amber</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples/gaussian/index.html">Gaussian</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/fluid_dynamics.html">Fluid Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/openfoam/index.html">OpenFoam (.com)</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/stata/index.html">Stata</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/conda/migration.html">Migrating Environments</a></li>
-</ul>
-</details></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/unix/intro.html">UNIX and Linux Shells</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/unix/unix.html">UNIX &amp; Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/unix/scripting.html">Scripting</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/modules/modules.html">Modules</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/slurm/slurm.html">Slurm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/slurm/best_practices.html">Best Practices for Jobs</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/globus_box_transfers.html">Using Globus to transfer data to/from Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/unix/unix.html">Basic Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/containers/containers.html">Containers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/cpp/intro.html">C++</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_1.html">Session 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_2.html">Session 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_3.html">Session 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_4.html">Session 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/cpp/session_5.html">Session 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Storage and File Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/globus_box_transfers.html">Globus and Box</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/modules/modules.html">Modules</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/conda/migration.html">Migrating Environments</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/r/overview.html">R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/r/environments.html">R Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/r/environments.html">R Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/r/slurm.html">Submitting R Jobs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="applications/other_applications.html">Other Applications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/amber/index.html">Amber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/gaussian/index.html">Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/openfoam/index.html">OpenFoam (.com)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/stata/index.html">Stata</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies and Guidelines</span></p>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="policies/policies.html">Policies and Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/">SuperPOD 101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Help / Troubleshooting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="about/contact.html">Contact</a></li>
+
+
 </ul>
 
     </div>
@@ -452,6 +443,10 @@ topics will cover information useful for researchers to quickly begin to use
 the advanced compute capabilities provided with the cluster.</p>
 <p>Students, faculty, or staff should register for the workshops in advance via the links below. Please bring your laptop to the workshop.</p>
 <iframe src="https://libcal.smu.edu/widget/events/minicalendar?&cal_id=15527&l=50&tar=0&h=450&sp=0&audience=&c=8174-8175&z=" style="border-width:0" width="100%" height="464" frameborder="0" scrolling="no"></iframe><div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>

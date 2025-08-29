@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/no_code_block_number.css?v=35469b33" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -57,15 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/r/slurm';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Policies and Guidelines" href="../../policies/policies.html" />
-    <link rel="prev" title="R Virtual Environments" href="environments.html" />
+    <link rel="next" title="Other Applications" href="../../applications/other_applications.html" />
+    <link rel="prev" title="R Environments" href="environments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,11 +189,12 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/systems.html">Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../about/queues.html">Queues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../about/contact.html">Contact</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../../about/faculty_partner.html">Faculty Partner Nodes</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/oit/ai">SMU AI Guidance</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans">Data Management Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../policies/policies.html">Policies and Guidelines</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
@@ -215,59 +215,50 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../access.html">Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../portal.html">HPC Portal</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to Use</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/chemistry.html">Chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/amber/index.html">Amber</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/gaussian/index.html">Gaussian</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/fluid_dynamics.html">Fluid Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/openfoam/index.html">OpenFoam (.com)</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/statistics.html">Statistics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/stata/index.html">Stata</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../examples/conda/migration.html">Migrating Environments</a></li>
-</ul>
-</details></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../unix/intro.html">UNIX and Linux Shells</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../unix/unix.html">UNIX &amp; Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../unix/scripting.html">Scripting</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../portal.html">HPC Portal</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/slurm.html">Slurm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../slurm/best_practices.html">Best Practices for Jobs</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../globus_box_transfers.html">Using Globus to transfer data to/from Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/unix.html">Basic Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../containers/containers.html">Containers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../cpp/intro.html">C++</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/session_1.html">Session 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/session_2.html">Session 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/session_3.html">Session 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/session_4.html">Session 4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../cpp/session_5.html">Session 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Storage and File Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../globus_box_transfers.html">Globus and Box</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Modules</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/conda/migration.html">Migrating Environments</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">R</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="environments.html">R Virtual Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environments.html">R Environments</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Submitting R Jobs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../applications/other_applications.html">Other Applications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/amber/index.html">Amber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/gaussian/index.html">Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/openfoam/index.html">OpenFoam (.com)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/stata/index.html">Stata</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies and Guidelines</span></p>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../policies/policies.html">Policies and Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/">SuperPOD 101</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Help / Troubleshooting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../about/contact.html">Contact</a></li>
+
+
 </ul>
 
     </div>
@@ -393,7 +384,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -409,6 +402,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-portal-rstudio">HPC Portal (RStudio)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-srun">Interactive (<code class="docutils literal notranslate"><span class="pre">srun</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripted-sbatch">Scripted (<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-job">Single Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-jobs">Array Jobs</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -420,100 +427,223 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="submitting-r-jobs">
 <h1>Submitting R Jobs<a class="headerlink" href="#submitting-r-jobs" title="Link to this heading">#</a></h1>
+<p>There are 3 ways to run R code on the system. You can run interactive jobs through the
+<a class="reference external" href="https://hpc.m3.smu.edu/">HPC Portal</a> using RStudio Server, you can run R on a compute node
+using the <code class="docutils literal notranslate"><span class="pre">srun</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code>/<code class="docutils literal notranslate"><span class="pre">Rscript</span></code> commands, or you can run scripted <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> jobs.</p>
+<section id="hpc-portal-rstudio">
+<h2>HPC Portal (RStudio)<a class="headerlink" href="#hpc-portal-rstudio" title="Link to this heading">#</a></h2>
+<p>To launch RStudio from the <a class="reference external" href="https://hpc.m3.smu.edu/">HPC Portal</a>, navigate to <strong>Interactive Apps</strong> &gt;
+<strong>RStudio Server</strong>, select the appropriate slurm account, R version, and other job parameters. If you
+are unsure what to select, the defaults are usually fine.</p>
+</section>
+<section id="interactive-srun">
+<h2>Interactive (<code class="docutils literal notranslate"><span class="pre">srun</span></code>)<a class="headerlink" href="#interactive-srun" title="Link to this heading">#</a></h2>
+<p>To run R on the command line interactively, you first need to start a regular job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>-p<span class="w"> </span>dev<span class="w"> </span>-A<span class="w"> </span>my_slurm_account_0001<span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">30</span><span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You’ll need to change the <code class="docutils literal notranslate"><span class="pre">my_slurm_account_0001</span></code> to one of the slurm accounts
+you have access to through ColdFront. See <a class="reference internal" href="../slurm/slurm.html"><span class="std std-doc">Slurm</span></a> for
+more information on using <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p>
+</div>
+<p>Once you are on the allocated compute node, you can launch R:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Module</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>R/4.5.1
+R
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Conda Environment</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>miniforge
+mamba<span class="w"> </span>activate<span class="w"> </span>r_env
+R
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also run an Rscript in the interactive session with:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Module</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>R/4.5.1
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>myscript.R
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Conda Environment</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>miniforge
+mamba<span class="w"> </span>activate<span class="w"> </span>r_env
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>myscript.R
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scripted-sbatch">
+<h2>Scripted (<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>)<a class="headerlink" href="#scripted-sbatch" title="Link to this heading">#</a></h2>
+<p>The recommended way to run jobs on SMU HPC Systems is using an <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script
+because it allows for better debugging and reproducibility. See
+<a class="reference internal" href="../slurm/slurm.html"><span class="std std-doc">Slurm</span></a> for more information on using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<section id="single-job">
+<h3>Single Job<a class="headerlink" href="#single-job" title="Link to this heading">#</a></h3>
+<p>To run a single R script using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, you need to create a file that looks similar to this,
+with the slurm account and path to the R script you are running specified:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+Module</label><div class="sd-tab-content docutils">
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Serial <span class="math notranslate nohighlight">\(\pi\)</span> Monte Carlo R Script.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">monte_carlo_pi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">2</span><span class="w">  </span><span class="n">x</span><span class="o">=</span><span class="nf">runif</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="linenos">3</span><span class="w">  </span><span class="n">y</span><span class="o">=</span><span class="nf">runif</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="linenos">4</span><span class="w">  </span><span class="n">z</span><span class="o">=</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="o">+</span><span class="n">y</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
-<span class="linenos">5</span><span class="w">  </span><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">z</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">))</span><span class="o">*</span><span class="m">4</span><span class="o">/</span><span class="n">n</span>
-<span class="linenos">6</span><span class="p">}</span>
-<span class="linenos">7</span>
-<span class="linenos">8</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailing</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="linenos">9</span><span class="nf">monte_carlo_pi</span><span class="p">(</span><span class="nf">strtoi</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">]))</span>
+<div class="code-block-caption"><span class="caption-number">1 </span><span class="caption-text">run.sbatch</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A my_slurm_account_001                  </span>
+<span class="c1">#SBATCH -J get_data_links</span>
+<span class="c1">#SBATCH -o %j.out</span>
+<span class="c1">#SBATCH -e %j.err</span>
+<span class="c1">#SBATCH -p dev</span>
+<span class="c1">#SBATCH -t 0-00:30:00</span>
+<span class="c1">#SBATCH --mem=4G</span>
+<span class="c1">#SBATCH -c 1</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>R/4.5.1
+
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>myscript.R
 </pre></div>
 </div>
 </div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+Conda Environment</label><div class="sd-tab-content docutils">
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Parallel <span class="math notranslate nohighlight">\(\pi\)</span> Monte Carlo R Script.</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">library</span><span class="p">(</span><span class="n">parallel</span><span class="p">)</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="n">monte_carlo_pi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 4</span><span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="o">+</span><span class="nf">runif</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="kr">if</span><span class="p">(</span><span class="n">z</span><span class="o">&lt;=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
-<span class="linenos"> 6</span><span class="p">}</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailing</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="linenos"> 9</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">strtoi</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
-<span class="linenos">10</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">strtoi</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">2</span><span class="p">])</span>
-<span class="linenos">11</span><span class="n">cl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">makeCluster</span><span class="p">(</span><span class="nf">getOption</span><span class="p">(</span><span class="s">&quot;cl.cores&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">))</span>
-<span class="linenos">12</span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">clusterApply</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="n">monte_carlo_pi</span><span class="p">)</span>
-<span class="linenos">13</span><span class="nf">sum</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span><span class="n">result</span><span class="p">))</span><span class="o">*</span><span class="m">4</span><span class="o">/</span><span class="n">n</span>
-<span class="linenos">14</span><span class="nf">stopCluster</span><span class="p">(</span><span class="n">cl</span><span class="p">)</span>
+<div class="code-block-caption"><span class="caption-number">2 </span><span class="caption-text">run.sbatch</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A my_slurm_account_001                  </span>
+<span class="c1">#SBATCH -J get_data_links</span>
+<span class="c1">#SBATCH -o %j.out</span>
+<span class="c1">#SBATCH -e %j.err</span>
+<span class="c1">#SBATCH -p dev</span>
+<span class="c1">#SBATCH -t 0-00:30:00</span>
+<span class="c1">#SBATCH --mem=4G</span>
+<span class="c1">#SBATCH -c 1</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>miniforge
+module<span class="w"> </span>activate<span class="w"> </span>r_env
+
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>myscript.R
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+<p>To submit the job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>run.sbatch
+</pre></div>
+</div>
+</section>
+<section id="array-jobs">
+<h3>Array Jobs<a class="headerlink" href="#array-jobs" title="Link to this heading">#</a></h3>
+<p>While there are multiple ways to run an R script multiple times with different parameters using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>,
+the simplest way is to create a file that looks similar to this,
+with the slurm account, path to the R script, and array job parameters you are running specified:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+Module</label><div class="sd-tab-content docutils">
 <div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Interactive sessions using <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>module<span class="w"> </span>load<span class="w"> </span>r/4.0.2
-<span class="linenos">2</span>srun<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--mem<span class="o">=</span>6G<span class="w"> </span>--pty<span class="w"> </span><span class="nv">$SHELL</span>
+<div class="code-block-caption"><span class="caption-number">3 </span><span class="caption-text">run.sbatch</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A my_slurm_account_001                  </span>
+<span class="c1">#SBATCH -J get_data_links</span>
+<span class="c1">#SBATCH -o %j.out</span>
+<span class="c1">#SBATCH -e %j.err</span>
+<span class="c1">#SBATCH -p dev</span>
+<span class="c1">#SBATCH -t 0-00:30:00</span>
+<span class="c1">#SBATCH --mem=4G</span>
+<span class="c1">#SBATCH -c 1</span>
+<span class="c1">#SBATCH --array=0-5</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>R/4.5.1
+
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>myscript.R<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
 </pre></div>
 </div>
 </div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+Conda Environment</label><div class="sd-tab-content docutils">
 <div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Using <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--wrap</span></code>.</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>module<span class="w"> </span>load<span class="w"> </span>r/4.0.2
-<span class="linenos">2</span>sbatch<span class="w"> </span>-p<span class="w"> </span>htc<span class="w"> </span>--mem<span class="o">=</span>6G<span class="w">  </span>--wrap<span class="w"> </span><span class="s2">&quot;sleep 30; time Rscript pi_monte_carlo_serial.R 1000&quot;</span>
+<div class="code-block-caption"><span class="caption-number">4 </span><span class="caption-text">run.sbatch</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -A my_slurm_account_001                  </span>
+<span class="c1">#SBATCH -J get_data_links</span>
+<span class="c1">#SBATCH -o %j.out</span>
+<span class="c1">#SBATCH -e %j.err</span>
+<span class="c1">#SBATCH -p dev</span>
+<span class="c1">#SBATCH -t 0-00:30:00</span>
+<span class="c1">#SBATCH --mem=4G</span>
+<span class="c1">#SBATCH -c 1</span>
+<span class="c1">#SBATCH --array=0-4</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>miniforge
+module<span class="w"> </span>activate<span class="w"> </span>r_env
+
+Rscript<span class="w"> </span>--vanilla<span class="w"> </span>myscript.R<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+<p>Your R script will need to be modified to use <code class="docutils literal notranslate"><span class="pre">commandArgs()</span></code> function.
+The following is an example of an R script that takes one argument:</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Serial job using using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
-<span class="linenos"> 2</span><span class="c1">#SBATCH -J R</span>
-<span class="linenos"> 3</span><span class="c1">#SBATCH -o R_%j.out</span>
-<span class="linenos"> 4</span><span class="c1">#SBATCH -p htc</span>
-<span class="linenos"> 5</span><span class="c1">#SBATCH --mem=6G</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span>module<span class="w"> </span>purge
-<span class="linenos"> 8</span>module<span class="w"> </span>load<span class="w"> </span>r/4.0.2
-<span class="linenos"> 9</span>
-<span class="linenos">10</span><span class="nb">time</span><span class="w"> </span>Rscript<span class="w"> </span>pi_monte_carlo_serial.R<span class="w"> </span><span class="m">1000</span>
+<div class="code-block-caption"><span class="caption-number">5 </span><span class="caption-text">myscript.R</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">num1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">num1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<p>A more realistic scenario is that you need to do some amount of data processing
+on a large data frame, which you can do by chunking rows. Take this <code class="docutils literal notranslate"><span class="pre">iris</span></code> data set,
+for example:</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Parallel job using using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
-<span class="linenos"> 2</span><span class="c1">#SBATCH -J pi</span>
-<span class="linenos"> 3</span><span class="c1">#SBATCH -o pi_%j.out</span>
-<span class="linenos"> 4</span><span class="c1">#SBATCH -p development</span>
-<span class="linenos"> 5</span><span class="c1">#SBATCH --cpus-per-task=2</span>
-<span class="linenos"> 6</span><span class="c1">#SBATCH --mem=6G</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span>module<span class="w"> </span>purge
-<span class="linenos"> 9</span>module<span class="w"> </span>load<span class="w"> </span>r/4.0.2
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="nb">time</span><span class="w"> </span>Rscript<span class="w"> </span>pi_monte_carlo_parallel.R<span class="w"> </span><span class="m">10000000</span><span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span>
+<div class="code-block-caption"><span class="caption-number">6 </span><span class="caption-text">myscript.R</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="s">&quot;iris&quot;</span><span class="p">)</span>
+
+<span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">chunk_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span><span class="o">/</span><span class="m">5</span>
+<span class="n">starting_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chunk_size</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+<span class="n">ending_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">starting_index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">chunk_size</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">iris</span><span class="o">$</span><span class="n">Sepal.Length</span><span class="p">[</span><span class="n">starting_index</span><span class="p">,</span><span class="w"> </span><span class="n">ending_index</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Array job using using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</span><a class="headerlink" href="#id7" title="Link to this code">#</a></div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
-<span class="linenos"> 2</span><span class="c1">#SBATCH -J pi_array</span>
-<span class="linenos"> 3</span><span class="c1">#SBATCH -o pi_array_%a-%A.out</span>
-<span class="linenos"> 4</span><span class="c1">#SBATCH --array=1-4%2</span>
-<span class="linenos"> 5</span><span class="c1">#SBATCH -p development</span>
-<span class="linenos"> 6</span><span class="c1">#SBATCH --mem=6G</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span>module<span class="w"> </span>purge
-<span class="linenos"> 9</span>module<span class="w"> </span>load<span class="w"> </span>r/4.0.2
-<span class="linenos">10</span>
-<span class="linenos">11</span><span class="nb">time</span><span class="w"> </span>Rscript<span class="w"> </span>pi_monte_carlo_serial.R<span class="w"> </span><span class="k">$((</span><span class="m">100</span><span class="o">**</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="k">))</span>
-</pre></div>
-</div>
-</div>
+<p>Each run in the array job will take the sum of <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> for 1/5 of the rows.
+Notice that <code class="docutils literal notranslate"><span class="pre">chunk_size</span></code> is set by dividing by 5, which is the number of array jobs
+that will run with a setting of <code class="docutils literal notranslate"><span class="pre">array=0-4</span></code>.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -552,15 +682,15 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">R Virtual Environments</p>
+        <p class="prev-next-title">R Environments</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../policies/policies.html"
+       href="../../applications/other_applications.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Policies and Guidelines</p>
+        <p class="prev-next-title">Other Applications</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -570,6 +700,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-portal-rstudio">HPC Portal (RStudio)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-srun">Interactive (<code class="docutils literal notranslate"><span class="pre">srun</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripted-sbatch">Scripted (<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-job">Single Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-jobs">Array Jobs</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
