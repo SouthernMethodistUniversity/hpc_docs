@@ -30,11 +30,6 @@ which can be requested as documented in
     Interactive Sessions" tab in your browser and select "Delete" and
     "Confirm", when prompted, to cancel the job.
 
-<iframe
-src="https://smu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=72acf55b-f2b7-4626-a953-ab58015d1d64&autoplay=false&offerviewer=false&showtitle=true&showbrand=false&start=0&interactivity=all"
-width=600 height=338 style="border: 1px solid #464646;" allowfullscreen allow="autoplay">
-</iframe>
-
 ### JupyterLab
 
 1.  Select "JupyterLab" from the "Interactive Apps" drop-down menu.
@@ -54,7 +49,7 @@ width=600 height=338 style="border: 1px solid #464646;" allowfullscreen allow="a
 
 1.  Select "RStudio Server" from the "Interactive Apps" drop-down
     menu.
-2.  Select options required for your remote desktop instance. These
+2.  Select options required for your RStudio Server instance. These
     options are the same as those requested via a standard Slurm script.
 3.  Select "Launch"
 4.  Wait for the job to start. When the job starts a new button
@@ -63,6 +58,37 @@ width=600 height=338 style="border: 1px solid #464646;" allowfullscreen allow="a
 6.  The RStudio graphical interface will be presented and running on the
     resources requested.
 7.  When finished using the RStudio Server instance, return to the "My
+    Interactive Sessions" tab in your browser and select "Delete" and
+    "Confirm", when prompted, to cancel the job.
+
+### Visual Studio Code
+
+```{warning}
+There are multiple ways to connect a local instance of Visual Studio Code to a 
+login node on the clusters. However, code execution is prohibited on the login nodes.
+Instead use the Visual Studio Code app provided on the portal by following the instructions below.
+```
+
+1. Select "Visual Studio Code" from the "Interactive Apps" drop-down menu.
+2.  Select options required for your Visual Studio Code instance. These
+    options are the same as those requested via a standard Slurm script.
+    Any modules that are needed at runtime should be loaded using the
+    "Custom environment settings" (i.e. `module load miniforge`)
+
+```{note}
+Some modules will not work as anticipated in Visual Studio Code because it
+is running in a container. If you need a module that will not load in this
+environment, you can still use Visual Studio Code as your code editor, but
+run modules and code with the Slurm scheduler from an SSH session.
+```
+
+3.  Select "Launch"
+4.  Wait for the job to start. When the job starts a new button
+    "Connect to Visual Studio Code" button will appear.
+5.  Select "Connect to Visual Studio Code"
+6.  The Visual Studio Code graphical interface will be presented and running on the
+    resources requested.
+7.  When finished using the Visual Studio Code instance, return to the "My
     Interactive Sessions" tab in your browser and select "Delete" and
     "Confirm", when prompted, to cancel the job.
 

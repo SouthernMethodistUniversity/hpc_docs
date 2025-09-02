@@ -242,6 +242,7 @@
 <li class="toctree-l2"><a class="reference internal" href="tutorials/r/slurm.html">Submitting R Jobs</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/vscode.html">Visual Studio Code</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="applications/other_applications.html">Other Applications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples/amber/index.html">Amber</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/gaussian/index.html">Gaussian</a></li>
@@ -412,6 +413,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-desktop">Remote Desktop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">JupyterLab</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rstudio-server">RStudio Server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-studio-code">Visual Studio Code</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-access">Shell Access</a></li>
@@ -460,10 +462,6 @@ options are the same as those requested via a standard Slurm script.</p></li>
 Interactive Sessions” tab in your browser and select “Delete” and
 “Confirm”, when prompted, to cancel the job.</p></li>
 </ol>
-<iframe
-src="https://smu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=72acf55b-f2b7-4626-a953-ab58015d1d64&autoplay=false&offerviewer=false&showtitle=true&showbrand=false&start=0&interactivity=all"
-width=600 height=338 style="border: 1px solid #464646;" allowfullscreen allow="autoplay">
-</iframe>
 </section>
 <section id="jupyterlab">
 <h3>JupyterLab<a class="headerlink" href="#jupyterlab" title="Link to this heading">#</a></h3>
@@ -487,7 +485,7 @@ Interactive Sessions” tab in your browser and select “Delete” and
 <ol class="arabic simple">
 <li><p>Select “RStudio Server” from the “Interactive Apps” drop-down
 menu.</p></li>
-<li><p>Select options required for your remote desktop instance. These
+<li><p>Select options required for your RStudio Server instance. These
 options are the same as those requested via a standard Slurm script.</p></li>
 <li><p>Select “Launch”</p></li>
 <li><p>Wait for the job to start. When the job starts a new button
@@ -496,6 +494,40 @@ options are the same as those requested via a standard Slurm script.</p></li>
 <li><p>The RStudio graphical interface will be presented and running on the
 resources requested.</p></li>
 <li><p>When finished using the RStudio Server instance, return to the “My
+Interactive Sessions” tab in your browser and select “Delete” and
+“Confirm”, when prompted, to cancel the job.</p></li>
+</ol>
+</section>
+<section id="visual-studio-code">
+<h3>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Link to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There are multiple ways to connect a local instance of Visual Studio Code to a
+login node on the clusters. However, code execution is prohibited on the login nodes.
+Instead use the Visual Studio Code app provided on the portal by following the instructions below.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Select “Visual Studio Code” from the “Interactive Apps” drop-down menu.</p></li>
+<li><p>Select options required for your Visual Studio Code instance. These
+options are the same as those requested via a standard Slurm script.
+Any modules that are needed at runtime should be loaded using the
+“Custom environment settings” (i.e. <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">miniforge</span></code>)</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some modules will not work as anticipated in Visual Studio Code because it
+is running in a container. If you need a module that will not load in this
+environment, you can still use Visual Studio Code as your code editor, but
+run modules and code with the Slurm scheduler from an SSH session.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Select “Launch”</p></li>
+<li><p>Wait for the job to start. When the job starts a new button
+“Connect to Visual Studio Code” button will appear.</p></li>
+<li><p>Select “Connect to Visual Studio Code”</p></li>
+<li><p>The Visual Studio Code graphical interface will be presented and running on the
+resources requested.</p></li>
+<li><p>When finished using the Visual Studio Code instance, return to the “My
 Interactive Sessions” tab in your browser and select “Delete” and
 “Confirm”, when prompted, to cancel the job.</p></li>
 </ol>
@@ -603,6 +635,7 @@ selecting the “Download” button.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-desktop">Remote Desktop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterlab">JupyterLab</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rstudio-server">RStudio Server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-studio-code">Visual Studio Code</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-access">Shell Access</a></li>
