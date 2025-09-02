@@ -59,6 +59,7 @@ parts:
     sections:
     - file: tutorials/r/environments.md
     - file: tutorials/r/slurm.md
+  - file: applications/vscode.md
   - file: applications/other_applications.md
     sections: 
     - file: examples/amber/index.md

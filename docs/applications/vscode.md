@@ -30,7 +30,7 @@ run modules and code with the Slurm scheduler from an SSH session.
     Interactive Sessions" tab in your browser and select "Delete" and
     "Confirm", when prompted, to cancel the job.
 
-## SSH
+## SSH on Login Nodes
 
 ```{warning}
 As a reminder, running code on login nodes is prohibited. This method
