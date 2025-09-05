@@ -7,6 +7,8 @@ local hostname = os.getenv('HOSTNAME')
 
 local lic_path = pathJoin(pathJoin(pathJoin(home, '.ampl'), hostname), 'ampl.lic')
 
+setenv("TEST_HOSTNAME", hostname)
+
 setenv("AMPL_LICFILE", lic_path)
 setenv("AMPLKEY_RUNTIME_DIR", pathJoin(home, '.ampl'))
 
