@@ -13,7 +13,7 @@ setenv("AMPLKEY_RUNTIME_DIR", pathJoin(home, '.ampl'))
 append_path("PATH", "/hpc/m3/apps/ampl/ampl_20250811")
 
 local cmd  = '/hpc/m3/apps/ampl/ampl_20250811/ampl < /hpc/m3/apps/ampl/ampl_20250811/activate_key'
-set_shell_function(app, cmd, cmd)
+set_shell_function('ampl_setup_license', cmd, cmd)
 
 help([[Name: AMPL
 Version: ampl_20250811
