@@ -8,7 +8,7 @@ local hostname = os.getenv('HOSTNAME')
 local lic_path = pathJoin(pathJoin(pathJoin(home, '.ampl'), hostname), 'ampl.lic')
 
 setenv("AMPL_LICFILE","lic_path")
-setenv("AMPLKEY_RUNTIME_DIR", pathJoin(pathJoin(home, '.ampl'))
+setenv("AMPLKEY_RUNTIME_DIR", pathJoin(home, '.ampl'))
 
 append_path("PATH", "/hpc/m3/apps/ampl/ampl_20250811")
 
