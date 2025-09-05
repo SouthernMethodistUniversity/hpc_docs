@@ -3,11 +3,11 @@ family("ampl")
 conflict("ampl")
 
 local home = os.getenv("HOME")
-local hostname = os.getenv('HOSTNAME')
+local tmp_hostname = os.getenv('HOSTNAME')
 
-local lic_path = pathJoin(pathJoin(pathJoin(home, '.ampl'), hostname), 'ampl.lic')
+local lic_path = pathJoin(pathJoin(pathJoin(home, '.ampl'), tmp_hostname), 'ampl.lic')
 
-setenv("TEST_HOSTNAME", hostname)
+setenv("TEST_HOSTNAME", tmp_hostname)
 
 setenv("AMPL_LICFILE", lic_path)
 setenv("AMPLKEY_RUNTIME_DIR", pathJoin(home, '.ampl'))
