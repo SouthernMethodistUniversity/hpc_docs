@@ -3,7 +3,7 @@ family("sigrity")
 conflict("sigrity")
 
 
-setenv("LM_LICENSE_FILE","/hpc/m3/apps/amber/amber24_mpi")
+setenv("LM_LICENSE_FILE","/hpc/m3/apps/cadence/license2.dat")
 
 prepend_path("PATH","/hpc/m3/apps/cadence/SIGRITY20241/bin")
 prepend_path("PATH","/hpc/m3/apps/cadence/SIGRITY20241/tools/bin")
