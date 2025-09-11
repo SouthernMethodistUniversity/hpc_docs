@@ -131,6 +131,11 @@ From: ubuntu:22.04
   CURRENT_LDAP=$(find /usr/lib/x86_64-linux-gnu/ -type f -name libldap*)
   ln -s ${CURRENT_LDAP} /usr/lib/x86_64-linux-gnu/libldap-2.4.so.2
 
+  # nbia-data-retriever 
+  wget https://github.com/CBIIT/NBIA-TCIA/releases/download/DR-4_4_3-TCIA-20240916-1/nbia-data-retriever_4.4.3-1_amd64.deb
+  dpkg -i nbia-data-retriever_4.4.3-1_amd64.deb
+  rm -f *.deb
+
   # Matlab requirements (most of these should already be here)
   apt-get -y update
   DEBIAN_FRONTEND=noninteractive apt-get -y install \

@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: almalinux:8
+From: almalinux:9
 
 %labels
     Author Amit Kumar <ahkumar@smu.edu>, Richard England <rengland@smu.edu>
@@ -13,7 +13,6 @@ From: almalinux:8
 
 %post
     dnf install -y dnf-plugin-config-manager
-    dnf config-manager --set-enabled powertools
     dnf config-manager --add-repo https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL.repo
     dnf config-manager --add-repo https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL-i386.repo
     dnf config-manager --add-repo https://raw.githubusercontent.com/TurboVNC/repo/main/TurboVNC.repo
@@ -34,7 +33,7 @@ From: almalinux:8
     dnf -y install evince eog
     dnf -y install gedit
     dnf -y install emacs
-    dnf -y install glibc.i686 libgcc.i686  libstdc++.i686
+    dnf -y install glibc glibc-common libgcc libstdc++
     dnf -y install Lmod.x86_64
     dnf -y install libXp.x86_64
     dnf -y install VirtualGL.x86_64
@@ -45,18 +44,32 @@ From: almalinux:8
     dnf -y install systemd-libs
     dnf -y install gdm gnome-tweak-tool gnome-shell-extension-top-icons gnome-shell-extension-systemMonitor gnome-shell-extension-user-theme
     dnf -y install sssd
-    dnf install -y xorg-x11-apps xorg-x11-server-Xorg
-    dnf remove -y xfce4-screensaver
+    dnf install -y  xorg-x11-server-Xorg
     dnf -y groupinstall 'Development Tools'
     dnf -y install kernel-devel kmod
-    dnf -y install compat-openssl10
     dnf -y install libnsl
+    dnf -y install lua lua-posix
+    dnf -y install libXScrnSaver
+    dnf -y install pcre2-devel
+    dnf -y install libX11-xcb xcb-util libxcb libxcb-devel xcb-util-cursor-devel xcb-util-wm xcb-util-keysyms xcb-util-renderutil
+    dnf -y install libXrender libXrandr libXcursor
+    dnf -y install libxcrypt-compat
     ln -fs /usr/share/zoneinfo/America/Chicago /etc/localtime
     
     echo "/usr/lib64/gtk-2.0/modules" >/etc/ld.so.conf.d/gtk2.conf
     ldconfig
 
-    yum clean all
-    rm -rf /var/cache/yum/*
+    # try to get modules working
+    ln -s /usr/bin/lua /usr/bin/lua5.3
+    ln -s /usr/share/lua/5.4 /usr/share/lua/5.3
+    mkdir -p /usr/lib/lua
+    ln -s /usr/lib64/lua/5.4 /usr/lib/lua/5.3
+
+    # stop error in terminal
+    touch /usr/bin/locale-check
+    chmod +x /usr/bin/locale-check
+
+    dnf clean all -y
+    rm -rf /var/cache/dnf/*
     rm -rf /etc/ld.so.cache
     rm -rf /var/cache/ldconfig/*
