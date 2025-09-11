@@ -98,7 +98,9 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                lsb \
                libxm4 \
                xsltproc \
-               paraview 
+               paraview  \
+               llvm-14-dev \
+               clang-14
 
   # add webots
   mkdir -p /etc/apt/keyrings
@@ -137,6 +139,59 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   # just symlink to a more recent version
   CURRENT_LDAP=$(find /usr/lib/x86_64-linux-gnu/ -type f -name libldap*)
   ln -s ${CURRENT_LDAP} /usr/lib/x86_64-linux-gnu/libldap-2.4.so.2
+
+  # nbia-data-retriever 
+  wget https://github.com/CBIIT/NBIA-TCIA/releases/download/DR-4_4_3-TCIA-20240916-1/nbia-data-retriever_4.4.3-1_amd64.deb
+  dpkg -i nbia-data-retriever_4.4.3-1_amd64.deb
+  rm -f *.deb
+
+  # Matlab requirements (most of these should already be here)
+  apt-get -y update
+  DEBIAN_FRONTEND=noninteractive apt-get -y install \
+	 ca-certificates\
+	 libasound2\
+	 libc6\
+	 libcairo-gobject2\
+	 libcairo2\
+	 libcap2\
+	 libcups2\
+	 libdrm2\
+	 libfontconfig1\
+	 libgbm1\
+	 libgdk-pixbuf-2.0-0\
+	 libgl1\
+	 libglib2.0-0\
+	 libgstreamer-plugins-base1.0-0\
+         libgstreamer1.0-0\
+	 libgtk-3-0\
+	 libice6\
+	 libltdl7\
+	 libnspr4\
+	 libnss3\
+	 libpam0g\
+	 libpango-1.0-0\
+	 libpangocairo-1.0-0\
+	 libpangoft2-1.0-0\
+	 libsndfile1\
+	 libudev1\
+	 libuuid1\
+	 libwayland-client0\
+	 libxcomposite1\
+	 libxcursor1\
+	 libxdamage1\
+	 libxfixes3\
+	 libxft2\
+	 libxinerama1\
+	 libxrandr2\
+	 libxt6\
+	 libxtst6\
+	 libxxf86vm1\
+	 locales\
+	 locales-all\
+	 net-tools\
+	 procps\
+	 unzip\
+	 zlib1g
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
