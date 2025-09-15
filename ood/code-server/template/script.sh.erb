@@ -75,9 +75,18 @@ CONTAINER_SCRIPT=$(pwd)/container.sh
 echo "$(date): Started code-server"
 echo ""
 
+<%- if context.bc_num_gpus.to_i != 0 and ! context.bc_num_gpus.blank? -%>
+apptainer exec --nv \
+    -B $SCRATCH \
+    -B /etc/csh.cshrc \
+    -B /etc/profile.d \
+    <%= context.version %> \
+    $CONTAINER_SCRIPT
+<%- else -%>
 apptainer exec \
     -B $SCRATCH \
     -B /etc/csh.cshrc \
     -B /etc/profile.d \
     <%= context.version %> \
     $CONTAINER_SCRIPT
+<%- end -%>
