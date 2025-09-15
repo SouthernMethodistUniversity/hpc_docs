@@ -125,6 +125,16 @@ attributes:
           <%- end -%>
         <%- end -%>
         ]
+      - ["AlmaLinux 9, GPU enabled", "/hpc/m3/containers/remote_desktop/almalinux_gpu_remote_desktop_1.2.0.sif",
+        data-set-desktop-env: 'xfce',
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- end -%>
+        <%- end -%>
+        ]
   bc_vnc_idle: 2700
   bc_num_hours:
     label: Time (Hours)

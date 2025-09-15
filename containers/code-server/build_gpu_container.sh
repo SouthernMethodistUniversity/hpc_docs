@@ -1,0 +1,56 @@
+#/bin/bash -e
+# build singularity container for code-server
+# just pull docker image from https://hub.docker.com/r/linuxserver/code-server
+
+# specify version
+PLATFORM="amd64"
+VERSION="4.103.2"
+TAG=${PLATFORM}-${VERSION}
+
+echo "Building tag: ${TAG}"
+
+cp code_server_gpu.def tmp_build_file.def
+sed -i "/^From:*/c\From: linuxserver/code-server:${TAG}" tmp_build_file.def
+
+# build the container
+module purge
+module load apptainer
+unset APPTAINER_BIND
+apptainer build --fakeroot code-server_gpu_${TAG}.sif tmp_build_file.def
+
+# move container to /hpc/{sys}/containers/
+CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
+if [ "$CLUSTER" = "nvidia" ]; then
+  CLUSTER="mp"
+fi
+
+mkdir -p /hpc/${CLUSTER}/containers/code-server
+mv code-server_gpu_${TAG}.sif /hpc/${CLUSTER}/containers/code-server/code-server_gpu_${TAG}.sif 
+
+# create a module file in ../../modules/ (in the git repo)
+RUN_COMMAND="apptainer run --nv "
+
+mkdir -p ../../modules/${CLUSTER}/code-server
+MODULE_FILE=../../modules/${CLUSTER}/code-server/${VERSION}.lua
+(
+sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
+  always_load('singularity')
+  local sif_file = '/hpc/${CLUSTER}/containers/code-server/code-server_gpu_${TAG}.sif'
+
+  local work_dir = '/work'
+  local lustre_work = '/lustre/work/client'
+  local scratch_dir = os.getenv("SCRATCH")
+  local projects_dir = '/work/projects'
+
+  function build_command(app)
+    local cmd        = '${RUN_COMMAND} -B ' .. scratch_dir .. ',' .. work_dir .. ',' .. lustre_work .. ',' .. projects_dir .. ':projects -B $PWD:/host_pwd --pwd /host_pwd ' .. sif_file .. ' ' .. app
+    local sh_ending  = ' "$@"'
+    local csh_ending = ' $*'
+    local sh_cmd     = cmd .. sh_ending
+    local csh_cmd    = cmd .. csh_ending
+    set_shell_function(app , sh_cmd, csh_cmd)
+  end
+
+build_command('code-server')
+EOL
+)

@@ -54,21 +54,24 @@ attributes:
       [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
     <%- CheckQueues.Queues.each do |q| -%>
-      <%- if q[4].to_i == 0 -%> #disable gpu queues
       - ["<%= q[0] %>", "<%= q[0] %>",
         data-max-bc-num-hours: "<%= q[1] %>",
+        <% if q[0] == 'htc' && (User.new.name == 'jlagrone' || User.new.name == 'iisurumaheshbandara' || User.new.name == 'ksmits' || User.new.name == 'juihsiangl' || User.new.name == 'navodij') %>
+        data-max-bc-num-cores: "128",
+        <% else %>
         data-max-bc-num-cores: "<%= q[2] %>",
+        <% end %>
         data-max-bc-num-memory: "<%= q[3] %>",
         data-max-bc-num-gpus: "<%= q[4] %>",
         <%- if q[4].to_i == 0 -%>
         data-hide-bc-num-gpus: true,
+        data-show-desktop-os: true,
         data-set-bc-num-gpus: 0,
         <%- else -%>
         data-show-bc-num-gpus: true,
         <%- end -%>
         ]
-       <%- end -%>
-    <%- end -%>
+      <%- end -%>
   environment:
     widget: text_area
     label: "Custom environment settings"
@@ -121,5 +124,22 @@ attributes:
     widget: "select"
     label: "Code Server Version"
     options:
-      - ["4.103.2", "/hpc/m3/containers/code-server/code-server_amd64-4.103.2.sif"]
+      - ["4.103.2", "/hpc/m3/containers/code-server/code-server_amd64-4.103.2.sif",
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- end -%>
+        <%- end -%>
+        ]
+      - ["4.103.2 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.103.2.sif",
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- end -%>
+        <%- end -%>
+        ]
 <%- end -%>
