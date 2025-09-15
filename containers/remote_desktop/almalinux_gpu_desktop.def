@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: almalinux:9
+From: kinetica/nvidia-opengl:almalinux-base9
 
 %labels
     Author Amit Kumar <ahkumar@smu.edu>, Richard England <rengland@smu.edu>
@@ -8,14 +8,16 @@ From: almalinux:9
     Distribution CentOS 7
     Application Combined Desktops
 
+%files
+
+  10_nvidia.json /usr/local/share/glvnd/egl_vendor.d/10_nvidia.json
+
 %environment
   export PATH=/opt/TurboVNC/bin:/opt/VirtualGL/bin:${PATH}
 
 %post
     dnf update -y --refresh
     dnf install -y dnf-plugin-config-manager
-    dnf install -y almalinux-release-nvidia-driver
-    dnf install -y nvidia-open nvidia-driver-cuda cuda
     dnf config-manager --add-repo https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL.repo
     dnf config-manager --add-repo https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL-i386.repo
     dnf config-manager --add-repo https://raw.githubusercontent.com/TurboVNC/repo/main/TurboVNC.repo
@@ -76,3 +78,4 @@ From: almalinux:9
     rm -rf /var/cache/dnf/*
     rm -rf /etc/ld.so.cache
     rm -rf /var/cache/ldconfig/*
+
