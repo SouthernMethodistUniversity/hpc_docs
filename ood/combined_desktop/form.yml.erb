@@ -105,6 +105,18 @@ attributes:
           <%- end -%>
         <%- end -%>
         ]
+      <%- if CheckAccounts.Accounts.any? { |word| word.include?("fisher") } | CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") }-%>
+      - ["Ubuntu 22.04, GPU enabled (deprecated, 1.1.3)", "/hpc/m3/containers/remote_desktop/remote_desktop_1.1.3_gpu.sif",
+        data-set-desktop-env: 'mate',
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- end -%>
+        <%- end -%>
+        ]
+      <%- end -%>
       - ["AlmaLinux 8", "/hpc/m3/containers/remote_desktop/almalinux_remote_desktop_1.0.1.sif",
         data-set-desktop-env: 'xfce',
         <%- CheckQueues.Queues.each do |q| -%>
