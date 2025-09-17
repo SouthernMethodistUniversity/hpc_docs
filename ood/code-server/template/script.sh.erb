@@ -2,7 +2,11 @@
 <%
 
 # Set our working directory.
-working_dir = Pathname.new(ENV['HOME'])
+if File.directory?(context.working_dir.to_s)
+    working_directory = context.working_dir
+else
+    working_directory = Pathname.new(ENV['HOME'])
+end
 
 code_server_version   = context.version
 %>
@@ -22,7 +26,7 @@ module load apptainer
 # VSCode complains that system git is too old.
 # module load code-server/<%= code_server_version %>
 
-CPP_FILE="<%= working_dir.to_s %>/.vscode/c_cpp_properties.json"
+CPP_FILE="<%= working_directory.to_s %>/.vscode/c_cpp_properties.json"
 
 if [[ -f "$CPP_FILE" ]]; then
     CPP_DIR="${TMPDIR:=/tmp/$USER}/cpp-vscode"
@@ -62,7 +66,7 @@ echo "Loading custom environment settings"
     --disable-telemetry \
     --ignore-last-opened \
     --user-data-dir="$CODE_SERVER_DATAROOT" \
-    "<%= working_dir.to_s %>"
+    "<%= working_directory.to_s %>"
 
 CTRSCRIPT
     chmod +x container.sh
