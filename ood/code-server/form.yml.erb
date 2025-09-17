@@ -81,6 +81,7 @@ attributes:
     show_hidden: true
     show_files: false
     favorites:
+      - <%= Pathname.new(ENV['HOME']) %>
       - /projects
   environment:
     widget: text_area
