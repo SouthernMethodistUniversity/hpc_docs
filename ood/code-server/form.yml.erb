@@ -29,6 +29,7 @@ form:
   - slurm_accounts
   - version
   - custom_queues
+  - working_dir
   - environment
   - bc_num_hours
   - bc_num_cores
@@ -72,6 +73,15 @@ attributes:
         <%- end -%>
         ]
       <%- end -%>
+  working_dir:
+    widget: "path_selector"
+    label: VSCode Workspace
+    help: |
+      Select either a Workspace folder.
+    show_hidden: true
+    show_files: false
+    favorites:
+      - /projects
   environment:
     widget: text_area
     label: "Custom environment settings"
