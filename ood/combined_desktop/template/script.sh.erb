@@ -6,6 +6,9 @@ cd "${HOME}"
 # Reset module environment (may require login shell for some HPC clusters)
 module purge && module restore
 
+# make sure theres not an old chrome
+rm -rf $HOME/.config/google-chrome
+
 unset XDG_RUNTIME_DIR
 
 # Ensure that the user's configured login shell is used
