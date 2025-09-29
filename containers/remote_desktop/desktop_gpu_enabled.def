@@ -212,7 +212,7 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   rm -f *.deb
 
   # add --no-sandbox to chrome start
-  sed -i 's\Exec=/usr/bin/google-chrome-stable\Exec=/usr/bin/google-chrome-stable --no-sandbox\g' /usr/share/applications/google-chrome.desktop
+  sed -i 's\Exec=/usr/bin/google-chrome-stable\Exec=/usr/bin/google-chrome-stable --no-sandbox --profile-directory="$SLURM_JOB_NODELIST" \g' /usr/share/applications/google-chrome.desktop
 
   # add vscode
   wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -224,7 +224,7 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
   apt-get -y install code
 
   # add --no-sandbox to code
-  sed -i 's\Exec=/usr/share/code/code\Exec=/usr/share/code/code --no-sandbox\g' /usr/share/applications/code.desktop
+  sed -i 's\Exec=/usr/share/code/code\Exec=/usr/share/code/code --no-sandbox --profile-directory="$SLURM_JOB_NODELIST" \g' /usr/share/applications/code.desktop
 
   # Clean up
   rm -rf /var/lib/apt/lists/*
