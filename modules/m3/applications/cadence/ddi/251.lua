@@ -5,6 +5,7 @@ extensions("genus/251, innovus/251, jstudio/251")
 
 
 setenv("LM_LICENSE_FILE","/hpc/m3/apps/cadence/license2.dat")
+setenv("CDS_LIC_FILE", "5280@sengr7lic3.smu.edu")
 
 prepend_path("PATH","/hpc/m3/apps/cadence/DDI251/bin")
 
