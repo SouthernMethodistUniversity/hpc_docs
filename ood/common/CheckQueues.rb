@@ -52,7 +52,7 @@ class CheckQueues
           params[1] = [params[1].to_i, 2].min
           params[2] = 18
           params[4] = 1
-          if params[0] != "fp-gagpu"
+          if (params[0] != "fp-gagpu")
             output.push(params)
           end
         end
