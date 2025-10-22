@@ -47,9 +47,17 @@ class CheckQueues
         end
 
         # add fp nodes keep queues with time limits <= 24 hours
-        if params[0].include?("3") or params[0].include?("4")
+        if params[0] == "fp-gpgpu-3"
           # set the time limit to 2 hours or max queue time
-          params[1] = [params[1].to_i, 2].min
+          params[1] = 2
+          params[2] = 18
+          params[4] = 1
+          output.push(params)
+        end
+
+        if params[0] == "fp-gpgpu-2"
+          # set the time limit to 2 hours or max queue time
+          params[1] = 2
           params[2] = 18
           params[4] = 1
           output.push(params)
