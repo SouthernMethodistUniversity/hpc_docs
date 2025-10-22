@@ -55,7 +55,7 @@ class CheckQueues
           output.push(params)
         end
 
-        if params[0] == "fp-gpgpu-2"
+        if params[0] == "fp-gpgpu-4"
           # set the time limit to 2 hours or max queue time
           params[1] = 2
           params[2] = 18
