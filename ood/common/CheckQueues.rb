@@ -45,6 +45,15 @@ class CheckQueues
           params[1] = [params[1].to_i, 12].min
           output.push(params) 
         end
+
+        # add fp nodes keep queues with time limits <= 24 hours
+        if params[0].include?("fp")
+          # set the time limit to 2 hours or max queue time
+          params[1] = [params[1].to_i, 2].min
+          params[2] = 18
+          params[4] = 1
+          output.push(params) 
+        end
       end
       return output
     end
