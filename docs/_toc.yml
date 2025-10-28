@@ -70,6 +70,7 @@ parts:
   chapters:
   - url: https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/
     title: SuperPOD 101
+  - file: tutorials/clone_constellate.md
 - caption: Getting Help / Troubleshooting
   chapters:
   - file: about/contact.md
