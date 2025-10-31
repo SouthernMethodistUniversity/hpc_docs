@@ -100,7 +100,11 @@ From: ubuntu:22.04
                xsltproc \
                paraview \
                llvm-14-dev \
-               clang-14
+               clang-14 \
+               xfonts-75dpi \
+               xfonts-100dpi \
+               xterm \
+               ttf-mscorefonts-installer
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
