@@ -12,6 +12,8 @@ Ansys Fluent, Mechanical, Workbench
 
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 
+setenv("QTWEBENGINE_DISABLE_SANDBOX", "1")
+
 -- Ansys needs GUI stuff not installed on compute nodes, so this install
 -- currently only runs in the remote desktop container. For users 
 -- already on the remote desktop, there's no issue. However, we'll
