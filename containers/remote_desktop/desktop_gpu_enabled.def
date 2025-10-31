@@ -100,7 +100,11 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                xsltproc \
                paraview  \
                llvm-14-dev \
-               clang-14
+               clang-14 \
+               xfonts-75dpi \
+               xfonts-100dpi \
+               xterm \
+               ttf-mscorefonts-installer
 
   # add webots
   mkdir -p /etc/apt/keyrings
