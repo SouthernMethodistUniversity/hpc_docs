@@ -31,7 +31,7 @@ if (container_name == "") then
    set_shell_function(app, sh_cmd, csh_cmd)
    end
 
-   build_command("matlab", "matlab")
+   build_command("matlab", "/hpc/m3/apps/Matlab/r2025b/bin")
 
 else
 
