@@ -1,4 +1,0 @@
-# UNIX and Linux Shells
-
-
-
