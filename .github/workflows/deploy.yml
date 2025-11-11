@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -U jupyter-book
+        pip install -U jupyter-book<2
 
     - name: Print files
       run: |
