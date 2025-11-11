@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Accounts &#8212; SMU HPC Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/no_code_block_number.css?v=35469b33" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'accounts';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ColdFront Quick Start" href="coldfront/quick_start.html" />
+    <link rel="prev" title="Policies and Guidelines" href="policies/policies.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/smu_logo.jpg" class="logo__image only-light" alt="SMU HPC Documentation - Home"/>
+    <script>document.write(`<img src="_static/smu_logo.jpg" class="logo__image only-dark" alt="SMU HPC Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Announcements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="work_deprecation.html">Personal $WORK is End of Life</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="about.html">About</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="about/systems.html">Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/queues.html">Queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about/faculty_partner.html">Faculty Partner Nodes</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/oit/ai">SMU AI Guidance</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans">Data Management Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="policies/policies.html">Policies and Guidelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Accounts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="coldfront/quick_start.html">ColdFront</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/qs_student.html">Getting Started in ColdFront as a Student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_change_project.html">Add or Change Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_class.html">Add a Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_remove_users.html">Add or Remove Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/request_change_allocation.html">Request or Change Resource Allocations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/add_metadata.html">Add Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/usage_stats.html">Usage Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/archive_project.html">Archive a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/renewals.html">Project Reviews and Allocation Renewals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/running_jobs.html">Running Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coldfront/optout.html">Opting out of notifications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="access.html">Access</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to Use</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="portal.html">HPC Portal</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/slurm/slurm.html">Slurm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/slurm/best_practices.html">Best Practices for Jobs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/unix/unix.html">Basic Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/containers/containers.html">Containers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Storage and File Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/globus_box_transfers.html">Globus and Box</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/modules/modules.html">Modules</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/conda/migration.html">Migrating Environments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/r/overview.html">R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/r/environments.html">R Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/r/slurm.html">Submitting R Jobs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="applications/other_applications.html">Other Applications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/amber/index.html">Amber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/gaussian/index.html">Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/openfoam/index.html">OpenFoam (.com)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/stata/index.html">Stata</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/">SuperPOD 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/clone_constellate.html">Digital Humanities Workshop</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Help / Troubleshooting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="about/contact.html">Contact</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/accounts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accounts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-accounts">Creating Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-account-status">Checking Account Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access">Access</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-ondemand-web-portal">HPC OnDemand Web Portal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced">Advanced</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-account-password">Reset Account Password</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-when-i-leave-smu">What happens when I leave SMU?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-an-existing-account">Terminate an Existing Account</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Account management for our HPC platforms is migrating to <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See the <a class="reference internal" href="coldfront/faq.html"><span class="std std-doc">frequently asked questions</span></a></p>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="accounts">
+<h1>Accounts<a class="headerlink" href="#accounts" title="Link to this heading">#</a></h1>
+<section id="creating-accounts">
+<h2>Creating Accounts<a class="headerlink" href="#creating-accounts" title="Link to this heading">#</a></h2>
+<p>Accounts on SMU HPC clusters can be created via the processes detailed below.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>As of <strong>November 1, 2024</strong> <a class="reference internal" href="coldfront/running_jobs.html"><span class="std std-doc">running HPC jobs</span></a>
+requires using a slurm account from an active allocation in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See the <a class="reference internal" href="coldfront/faq.html"><span class="std std-doc">frequently asked questions</span></a></p>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Faculty/Staff</label><div class="sd-tab-content docutils">
+<p>Most benefits eligible faculty and staff can use the self-service
+<a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> platform to create an account for
+themselves, students, and external collaborators with SMU credentials.
+In order for an HPC account to be created or reactivated for an user, the following
+conditions must be satisfied:</p>
+<ol class="arabic simple">
+<li><p>The user must create or be added to a project in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See <a class="reference internal" href="coldfront/add_change_project.html"><span class="std std-doc">how to create a project</span></a>.
+Note that students cannot create their own projects.</p></li>
+<li><p>The user must be on an active compute and/or storage allocation managed
+by <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>. See <a class="reference internal" href="coldfront/request_change_allocation.html"><span class="std std-doc">how to create an allocation</span></a></p></li>
+</ol>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Postdocs</label><div class="sd-tab-content docutils">
+<p>Postdocs are eligible to use the self-service
+<a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> platform to create an account for
+themselves, students, and external collaborators with SMU credentials. However,
+we recommend that your advisor be the one to create any ColdFront projects for continuity
+of research.</p>
+<ol class="arabic simple">
+<li><p>The user must create or be added to a project in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See <a class="reference internal" href="coldfront/add_change_project.html"><span class="std std-doc">how to create a project</span></a>.
+Note that students cannot create their own projects.</p></li>
+<li><p>The user must be on an active compute and/or storage allocation managed
+by <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>. See <a class="reference internal" href="coldfront/request_change_allocation.html"><span class="std std-doc">how to create an allocation</span></a></p></li>
+</ol>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Student Researchers</label><div class="sd-tab-content docutils">
+<p>Students are not eligible to create their own account. A faculty/staff advisor
+can use the self-service
+<a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> platform to create an account for
+students with SMU credentials.
+In order for an HPC account to be created or reactivated for a student, the following
+conditions must be satisfied:</p>
+<ol class="arabic simple">
+<li><p>The student must be added to a project in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+See <a class="reference internal" href="coldfront/add_change_project.html"><span class="std std-doc">how to create a project</span></a>.
+Note that students cannot create their own projects.</p></li>
+<li><p>The student must be on an active compute and/or storage allocation managed
+by <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>. See <a class="reference internal" href="coldfront/request_change_allocation.html"><span class="std std-doc">how to create an allocation</span></a></p></li>
+<li><p>The student must login to <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a> and agree to
+the policies and guidelines before their account is provisioned.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+Classes</label><div class="sd-tab-content docutils">
+<p>Accounts for classes are required to use <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>.
+Instructors of record will be able to see their courses around the time registration
+opens.</p>
+<ol class="arabic simple">
+<li><p>Once a Class Project is created, ColdFront will automatically add and remove students
+enrolled in the course shortly before the start of the term and periodically update during
+the term based on official enrollment data.</p></li>
+<li><p>TA’s have to be added manually to a project AND its associated allocations
+by the instructor of record.</p></li>
+<li><p>Both students and TA’s will need to agree to the policies and guidelines for each allocation
+before their account is provisioned.</p></li>
+</ol>
+<p>See the <a class="reference internal" href="coldfront/qs_instructor.html"><span class="std std-doc">ColdFront quick start guide for instructors</span></a> and
+the <a class="reference internal" href="coldfront/qs_student.html"><span class="std std-doc">ColdFront quick start guide for students</span></a>.</p>
+<p>If you need help setting up a class, please contact the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">Help Desk</a>.</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+External Collaborators</label><div class="sd-tab-content docutils">
+<p><strong>Step 1: Request a Sponsored SMU NetID</strong></p>
+<p>To use SMU’s High-Performance Computing (HPC) systems, a benefits-eligible faculty sponsor must first request and activate a Sponsored SMU NetID for the desired sponsored individual.</p>
+<p>To submit a request:</p>
+<ol class="arabic simple">
+<li><p>Go to the <a class="reference external" href="https://www.smu.edu/oit/services/stable">SMU STABLE Online Service Center</a>.</p></li>
+<li><p>Select Sponsored Account Request.</p></li>
+<li><p>Under Type of Account, choose <strong>Contractor with SMU email</strong>.</p></li>
+<li><p>In the Comments field, describe the sponsored individual’s relationship to the faculty sponsor.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Sponsored SMU NetID must be fully created and activated before HPC access can be requested. Exceptions to this process must be approved by the SMU Office of Information Technology.</p>
+</div>
+<p><strong>Step 2: Add the Sponsored User to HPC Resources</strong></p>
+<p>Once the Sponsored SMU NetID has been created and activated:</p>
+<ul class="simple">
+<li><p>The faculty sponsor may add the sponsored individual to ColdFront projects and allocations, enabling HPC system access.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="checking-account-status">
+<h2>Checking Account Status<a class="headerlink" href="#checking-account-status" title="Link to this heading">#</a></h2>
+</section>
+<section id="access">
+<h2>Access<a class="headerlink" href="#access" title="Link to this heading">#</a></h2>
+<p>All access to HPC Resources, including <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>, requires
+connection to <a class="reference external" href="https://www.smu.edu/oit/services/wifi">PerunaNet</a> or the <a class="reference external" href="https://www.smu.edu/oit/services/vpn">VPN</a>.</p>
+<section id="hpc-ondemand-web-portal">
+<h3>HPC OnDemand Web Portal<a class="headerlink" href="#hpc-ondemand-web-portal" title="Link to this heading">#</a></h3>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+M3</label><div class="sd-tab-content docutils">
+<p>M3 can be accessed directly from a browser via the <a class="reference external" href="https://hpc.m3.smu.edu/">HPC OnDemand Web Portal</a>,
+which provides access to files, remote desktops, JupyterLab, and
+RStudio.</p>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+SuperPOD</label><div class="sd-tab-content docutils">
+<p>The SuperPOD is only accessible via SSH, please see the next section for instructions.</p>
+</div>
+</div>
+</section>
+<section id="ssh">
+<h3>SSH<a class="headerlink" href="#ssh" title="Link to this heading">#</a></h3>
+<p>Secure shell access via SSH is available for SMU HPC systems. There are many
+SSH clients available for different operating systems. The following instructions
+are for standard OpenSSH installations such as
+those found in Linux, macOS, and Windows (&gt;=10) including WSL.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+M3</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Open a terminal (Terminal on macOS, PowerShell on Windows)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;m3.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
+your username, which is usually the first part of your SMU NetID.</p></li>
+<li><p>Type a Duo <strong>passcode</strong> or <code class="docutils literal notranslate"><span class="pre">1</span></code> for a Duo push. The passcode can
+come from an OIT procured hardware token (faculty and
+staff only). Passcodes from the Duo app do not work.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
+SuperPOD</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Open a terminal (Terminal on macOS, PowerShell on Windows)</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;superpod.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
+your username, which is usually the first part of your SMU NetID.</p></li>
+<li><p>Type a Duo <strong>passcode</strong> or <code class="docutils literal notranslate"><span class="pre">1</span></code> for a Duo push. The passcode can
+come from an OIT procured hardware token (faculty and
+staff only). Passcodes from the Duo app do not work.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="advanced">
+<h3>Advanced<a class="headerlink" href="#advanced" title="Link to this heading">#</a></h3>
+<p>For more advanced access methods, such as x11 forwarding, jumphosts, and SSH keys,
+please see more information on the <a class="reference internal" href="access.html"><span class="std std-doc">Access</span></a> page.</p>
+</section>
+</section>
+<section id="reset-account-password">
+<h2>Reset Account Password<a class="headerlink" href="#reset-account-password" title="Link to this heading">#</a></h2>
+<p>SMU HPC clusters use SMU’s authentication system, which means that your
+username and password are based on your SMU credentials. Your username is the
+first part of your SMU NetID, i.e. janeuser for <a class="reference external" href="mailto:janeuser&#37;&#52;&#48;smu&#46;edu">janeuser<span>&#64;</span>smu<span>&#46;</span>edu</a>, and
+your password is your SMU password. SMU’s password tool can be used to change
+or reset your password (<a class="reference external" href="https://pwreset.smu.edu">https://pwreset.smu.edu</a>). However, note that this
+changes your password for all SMU services such as email as well.</p>
+</section>
+<section id="what-happens-when-i-leave-smu">
+<h2>What happens when I leave SMU?<a class="headerlink" href="#what-happens-when-i-leave-smu" title="Link to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-9">
+Faculty/Staff</label><div class="sd-tab-content docutils">
+<p>Faculty and Staff should follow guidance given by SMU Human Resources and the SMU Office of Research
+and Innovation for data ownership policies specific to their contract. In general:</p>
+<ol class="arabic simple">
+<li><p>All ColdFront projects and allocation will be disabled automatically on termination of
+employment. If you wish to transfer ownership to another SMU faculty/staff member, please open
+a help ticket with the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">SMU HPC Admins</a> <em>prior to</em> termination
+with information about which projects and associated allocation should be transferred and to whom.</p></li>
+<li><p>In accordance with applicable policies, data that you need to retain should be moved off of SMU systems.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-10">
+Postdocs</label><div class="sd-tab-content docutils">
+<p>Postdoctoral students should follow guidance given by SMU Human Resources and the SMU Office of Research
+and Innovation for data ownership policies specific to their contract. In general:</p>
+<ol class="arabic simple">
+<li><p>All ColdFront projects and allocation will be disabled automatically on termination of
+employment. We highly recommend that you transfer ownership of any projects to an appropriate faculty member. To do this, please open
+a help ticket with the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">SMU HPC Admins</a> <em>prior to</em> termination
+with information about which projects and associated allocation should be transferred and to whom.</p></li>
+<li><p>In accordance with applicable policies, data that you need to retain should be moved off of SMU systems.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-11">
+Student Researchers</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Student researchers will be disabled on any ColdFront projects and allocations once they are no longer enrolled as a student.</p></li>
+<li><p>Please make sure that your any data or code that your advisor needs is in a storage allocation owned by your advisor.
+Your advisor will not be able to access your personal $HOME or $SCRATCH directory once you are no longer enrolled as a student.</p></li>
+<li><p>With the permission of your advisor, any data or code you want to keep should be copied off of SMU systems prior
+to your graduation date.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-12">
+Classes</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Class projects and allocations are tied to enrollment data and automatically expire shortly after the end of
+each term. Students in classes will lose access to class allocations, both compute and storage, 21 days after the last day of
+class, or on the day of graduation.</p></li>
+<li><p>Instructors that need to re-use files in a storage allocation the following semester should create a
+new class project for the following semester and copy any files needed to the new storage allocation.</p></li>
+<li><p>Instructors that need to keep files, but are not using HPC for a class the following semester should
+back up files off of the HPC systems.</p></li>
+</ol>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-13">
+External Collaborators</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>An active SMU sponsored account with appropriate credentials is required for external collaborators using HPC resources.
+The HPC support teams are not involved with the process of creating or modifying sponsored accounts.
+SMU sponsored accounts are required to be renewed yearly by the sponsoring faculty member.
+When a sponsored account expires or is revoked, the user will lose all HPC access and a sponsored account
+must be re-established before HPC accounts can be re-enabled.</p></li>
+<li><p>If you are disaffiliating with SMU, please make sure your faculty/staff sponsor has access to any files in a
+ColdFront storage allocation. Sponsors will not be given access to your $HOME or $SCRATCH directory once
+your account is terminated.</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="terminate-an-existing-account">
+<h2>Terminate an Existing Account<a class="headerlink" href="#terminate-an-existing-account" title="Link to this heading">#</a></h2>
+<p>Please send a request to the <a class="reference external" href="mailto:help&#37;&#52;&#48;smu&#46;edu?subject=%5BHPC%5D">Help Desk</a> with a short explanation of
+reason for the termination.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="policies/policies.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Policies and Guidelines</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="coldfront/quick_start.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">ColdFront Quick Start</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-accounts">Creating Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-account-status">Checking Account Status</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access">Access</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-ondemand-web-portal">HPC OnDemand Web Portal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh">SSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced">Advanced</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-account-password">Reset Account Password</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-when-i-leave-smu">What happens when I leave SMU?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-an-existing-account">Terminate an Existing Account</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Southern Methodist University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

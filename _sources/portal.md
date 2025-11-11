@@ -1,0 +1,118 @@
+# HPC Portal
+
+HPC OnDemand provides an integrated, single access point for SMU HPC resources.
+
+## Accessing the Portal
+
+Access to the HPC OnDemand web portal requires an existing SMU HPC account,
+which can be requested as documented in
+{doc}`accounts`.
+
+1.  Go to [hpc.m3.smu.edu](https://hpc.m3.smu.edu/).
+2.  Sign in using your SMU NetID and SMU password
+
+## Interactive Apps
+
+(portal_remote_desktop)=
+### Remote Desktop
+
+1.  Select "Remote Desktop" from the "Interactive Apps" drop-down
+    menu.
+2.  Select options required for your remote desktop instance. These
+    options are the same as those requested via a standard Slurm script.
+3.  Select "Launch"
+4.  Wait for the job to start. When the job starts a new button
+    "Launch noVNC in New Tab" button will appear.
+5.  Select "Launch noVNC in New Tab"
+6.  Graphical applications can be run via the Terminal, e.g.
+    `module load comsol && comsol &`.
+7.  When finished using the remote desktop instance, return to the "My
+    Interactive Sessions" tab in your browser and select "Delete" and
+    "Confirm", when prompted, to cancel the job.
+
+### JupyterLab
+
+1.  Select "JupyterLab" from the "Interactive Apps" drop-down menu.
+2.  Select options required for your remote desktop instance. These
+    options are similar to those requested via a standard Slurm script.
+3.  Select "Launch"
+4.  Wait for the job to start. When the job starts a new button
+    "Connect to JupyterLab" button will appear.
+5.  Select "Connect to JupyterLab"
+6.  The Jupyter Notebook graphical interface will be presented and
+    running on the resources requested.
+7.  When finished using the JupyterLab instance, return to the "My
+    Interactive Sessions" tab in your browser and select "Delete" and
+    "Confirm", when prompted, to cancel the job.
+
+### RStudio Server
+
+1.  Select "RStudio Server" from the "Interactive Apps" drop-down
+    menu.
+2.  Select options required for your RStudio Server instance. These
+    options are the same as those requested via a standard Slurm script.
+3.  Select "Launch"
+4.  Wait for the job to start. When the job starts a new button
+    "Connect to RStudio Server" button will appear.
+5.  Select "Connect to RStudio Server"
+6.  The RStudio graphical interface will be presented and running on the
+    resources requested.
+7.  When finished using the RStudio Server instance, return to the "My
+    Interactive Sessions" tab in your browser and select "Delete" and
+    "Confirm", when prompted, to cancel the job.
+
+### Visual Studio Code
+
+```{warning}
+There are multiple ways to connect a local instance of Visual Studio Code to a 
+login node on the clusters. However, code execution is prohibited on the login nodes.
+Instead use the Visual Studio Code app provided on the portal by following the instructions below.
+```
+
+1. Select "Visual Studio Code" from the "Interactive Apps" drop-down menu.
+2.  Select options required for your Visual Studio Code instance. These
+    options are the same as those requested via a standard Slurm script.
+    Any modules that are needed at runtime should be loaded using the
+    "Custom environment settings" (i.e. `module load miniforge`)
+
+```{note}
+Some modules will not work as anticipated in Visual Studio Code because it
+is running in a container. If you need a module that will not load in this
+environment, you can still use Visual Studio Code as your code editor, but
+run modules and code with the Slurm scheduler from an SSH session.
+```
+
+3.  Select "Launch"
+4.  Wait for the job to start. When the job starts a new button
+    "Connect to Visual Studio Code" button will appear.
+5.  Select "Connect to Visual Studio Code"
+6.  The Visual Studio Code graphical interface will be presented and running on the
+    resources requested.
+7.  When finished using the Visual Studio Code instance, return to the "My
+    Interactive Sessions" tab in your browser and select "Delete" and
+    "Confirm", when prompted, to cancel the job.
+
+## Shell Access
+
+1.  Select "M3 Shell Access" from the "Clusters" drop-down menu. Note that this
+    shell access does not provide access to graphical applications. If needed,
+    please use a [Remote Desktop](portal_remote_desktop) instance.
+2.  When finished using the shell, type `exit` and close the browser
+    tab.
+
+## Monitoring Jobs
+
+1.  "Active Jobs" from the "Jobs" drop-down menu.
+
+## File Access
+
+1.  "Home Directory" from the "Files" drop-down menu.
+
+-   You can navigate to specific directories by clicking the directories
+    shown.
+-   You can go to specific directories using the "Go To..." button.
+-   You can upload files simply by dragging them to the window or by
+    selecting the "Upload" button.
+-   You can download files and directories by selecting them and then
+    selecting the "Download" button.
+

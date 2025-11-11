@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scripting &#8212; SMU HPC Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/no_code_block_number.css?v=35469b33" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/unix/scripting';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/smu_logo.jpg" class="logo__image only-light" alt="SMU HPC Documentation - Home"/>
+    <script>document.write(`<img src="../../_static/smu_logo.jpg" class="logo__image only-dark" alt="SMU HPC Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Announcements</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../work_deprecation.html">Personal $WORK is End of Life</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../about.html">About</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../about/systems.html">Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/queues.html">Queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../about/faculty_partner.html">Faculty Partner Nodes</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/oit/ai">SMU AI Guidance</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans">Data Management Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../policies/policies.html">Policies and Guidelines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../accounts.html">Accounts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../coldfront/quick_start.html">ColdFront</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/qs_instructor.html">Getting Started in ColdFront as an Instructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/qs_student.html">Getting Started in ColdFront as a Student</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/add_change_project.html">Add or Change Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/add_class.html">Add a Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/add_remove_users.html">Add or Remove Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/request_change_allocation.html">Request or Change Resource Allocations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/add_metadata.html">Add Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/usage_stats.html">Usage Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/archive_project.html">Archive a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/renewals.html">Project Reviews and Allocation Renewals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/running_jobs.html">Running Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../coldfront/optout.html">Opting out of notifications</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../access.html">Access</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to Use</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../portal.html">HPC Portal</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/slurm.html">Slurm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../slurm/best_practices.html">Best Practices for Jobs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="unix.html">Basic Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../containers/containers.html">Containers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Storage and File Management</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../globus_box_transfers.html">Globus and Box</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modules/modules.html">Modules</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../examples/conda/README.html">Conda and Mamba</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/conda/migration.html">Migrating Environments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../r/overview.html">R</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../r/environments.html">R Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r/slurm.html">Submitting R Jobs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applications/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../applications/other_applications.html">Other Applications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/amber/index.html">Amber</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/gaussian/index.html">Gaussian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/openfoam/index.html">OpenFoam (.com)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/stata/index.html">Stata</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshops and Trainings</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/">SuperPOD 101</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clone_constellate.html">Digital Humanities Workshop</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Help / Troubleshooting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../about/contact.html">Contact</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/tutorials/unix/scripting.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scripting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripting-with-bash-and-python">Scripting with Bash and Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-processes">Linux Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes-in-the-background">Running Processes in the Background</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#backgrounding-a-foreground-process">Backgrounding a Foreground Process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-processes">Listing Processes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#killing-a-process">Killing a Process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-scripts">Bash Scripts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-scripts">Python Scripts</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-shell-scripts">Executing Shell Scripts</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="scripting">
+<h1>Scripting<a class="headerlink" href="#scripting" title="Link to this heading">#</a></h1>
+<section id="scripting-with-bash-and-python">
+<h2>Scripting with Bash and Python<a class="headerlink" href="#scripting-with-bash-and-python" title="Link to this heading">#</a></h2>
+<section id="linux-processes">
+<h3>Linux Processes<a class="headerlink" href="#linux-processes" title="Link to this heading">#</a></h3>
+<p>A process is an executing program identified by a unique PID (process
+identifier). To see information about your processes, with their
+associated PID and status, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ps
+</pre></div>
+</div>
+</div><p>A process may be run in the foreground, in the background, or be
+suspended. Most Linux jobs are run in the foreground; for those jobs the
+shell does not return the command prompt until the process has finished
+executing.</p>
+<p>Some processes take a long time to run and hold up the terminal.
+Backgrounding a long process has the effect that the UNIX prompt is
+returned immediately, and other tasks can be carried out while the
+original process continues executing.</p>
+<section id="running-processes-in-the-background">
+<h4>Running Processes in the Background<a class="headerlink" href="#running-processes-in-the-background" title="Link to this heading">#</a></h4>
+<p>To background a new process, type an <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> at the end of the command
+line when the program is executed. For example, the command <code class="docutils literal notranslate"><span class="pre">sleep</span></code>
+waits a given number of seconds before continuing. Type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+</div><p>This will wait 10 seconds before returning the command prompt <code class="docutils literal notranslate"><span class="pre">$</span></code>.
+Until the command prompt is returned, you can do nothing except wait.</p>
+<p>To run <code class="docutils literal notranslate"><span class="pre">sleep</span></code> in the background, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">&amp;</span>
+
+<span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">6259</span>
+</pre></div>
+</div>
+</div><p>The <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> runs the job in the background and returns the prompt straight
+away, allowing you do run other programs while waiting for that one to
+finish. Of course, running <code class="docutils literal notranslate"><span class="pre">sleep</span></code> in the background defeats the
+purpose of this specific program, but you get the idea.</p>
+<p>The first line in the above example is typed in by the user; the next
+line, indicating job number and PID, is returned by the machine. The
+user is be notified of a job number (numbered from 1) enclosed in square
+brackets, together with a PID and is notified when a background process
+is finished. Backgrounding is useful for jobs which will take a long
+time to complete, or for starting graphical programs that you want to
+run alongside the command line.</p>
+</section>
+<section id="backgrounding-a-foreground-process">
+<h4>Backgrounding a Foreground Process<a class="headerlink" href="#backgrounding-a-foreground-process" title="Link to this heading">#</a></h4>
+<p>At the prompt, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">600</span>
+</pre></div>
+</div>
+</div><p>This will not return to the prompt for 10 minutes. You can suspend the
+process running in the foreground by typing <code class="docutils literal notranslate"><span class="pre">^z</span></code>, i.e. hold down the
+“control” key and type “z”. This has suspended the job. To put it in the
+background, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">bg</span>
+</pre></div>
+</div>
+</div><p>Note: do not background terminal-based programs that require user
+interaction e.g. <code class="docutils literal notranslate"><span class="pre">vi</span></code> or <code class="docutils literal notranslate"><span class="pre">nano</span></code></p>
+</section>
+<section id="listing-processes">
+<h4>Listing Processes<a class="headerlink" href="#listing-processes" title="Link to this heading">#</a></h4>
+<p>When a process is running, backgrounded or suspended, it will be entered
+onto a list along with a job number. To examine this list, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">jobs</span>
+</pre></div>
+</div>
+</div><p>An example of a job list could be</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Suspended<span class="w"> </span>sleep<span class="w"> </span><span class="m">600</span>
+<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Running<span class="w"> </span>firefox
+<span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w"> </span>Running<span class="w"> </span>matlab
+</pre></div>
+</div>
+</div><p>To restart (foreground) a suspended or backgrounded processes, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">fg</span><span class="w"> </span>&lt;jobnumber&gt;
+</pre></div>
+</div>
+</div><p>For example, to bring <code class="docutils literal notranslate"><span class="pre">sleep</span> <span class="pre">600</span></code> to the foreground, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">fg</span><span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+</div><p>Typing <code class="docutils literal notranslate"><span class="pre">fg</span></code> with no job number foregrounds the most-recently suspended
+or backgrounded process.</p>
+</section>
+<section id="killing-a-process">
+<h4>Killing a Process<a class="headerlink" href="#killing-a-process" title="Link to this heading">#</a></h4>
+<p>It is sometimes necessary to kill a process (for example, when an
+executing program is in an infinite loop). To kill a job running in the
+foreground, type <code class="docutils literal notranslate"><span class="pre">^c</span></code> ([control]-[c]. For example, run</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">100</span>
+^c
+</pre></div>
+</div>
+</div><p>To kill a suspended or background process, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>%&lt;jobnumber&gt;
+</pre></div>
+</div>
+</div><p>For example, run</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span><span class="nb">jobs</span>
+</pre></div>
+</div>
+</div><p>If <code class="docutils literal notranslate"><span class="pre">sleep</span> <span class="pre">100</span></code> is job number 4, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>%4
+</pre></div>
+</div>
+</div><p>To check whether this has worked, examine the job list again to see if
+the process has been removed.</p>
+<p>Alternatively, any process owned by a user (not just one launched from
+that terminal) can be killed by finding the process’ corresponding ID
+number (PID) and using <code class="docutils literal notranslate"><span class="pre">kill</span></code></p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sleep<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>ps
+
+<span class="w">  </span>PID<span class="w"> </span>TTY<span class="w">          </span>TIME<span class="w"> </span>CMD
+<span class="m">32093</span><span class="w"> </span>?<span class="w">        </span><span class="m">00</span>:00:00<span class="w"> </span>sshd
+<span class="m">32094</span><span class="w"> </span>pts/3<span class="w">    </span><span class="m">00</span>:00:00<span class="w"> </span>bash
+<span class="m">32259</span><span class="w"> </span>pts/3<span class="w">    </span><span class="m">00</span>:00:00<span class="w"> </span>sleep
+<span class="m">32260</span><span class="w"> </span>pts/3<span class="w">    </span><span class="m">00</span>:00:00<span class="w"> </span>ps
+</pre></div>
+</div>
+</div><p>To kill off the process <code class="docutils literal notranslate"><span class="pre">sleep</span> <span class="pre">1000</span></code>, type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span><span class="m">32259</span>
+</pre></div>
+</div>
+</div><p>and then type <code class="docutils literal notranslate"><span class="pre">ps</span></code> again to see if it has been removed from the list.</p>
+<p>If for some reason a process that you own refuses to be killed, you can
+try using the <code class="docutils literal notranslate"><span class="pre">-9</span></code> option, i.e. type</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span><span class="m">32259</span>
+</pre></div>
+</div>
+</div><p>Note: It is not possible to kill off other users’ processes, unless you
+are a “superuser” on that computer.</p>
+<p>Summary of commands for interacting with running processes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>command</em> &amp;</p></td>
+<td><p>run <em>command</em> in background</p></td>
+</tr>
+<tr class="row-odd"><td><p>^c</p></td>
+<td><p>kill the job running in the foreground</p></td>
+</tr>
+<tr class="row-even"><td><p>^z</p></td>
+<td><p>suspend the job in the foreground</p></td>
+</tr>
+<tr class="row-odd"><td><p>bg</p></td>
+<td><p>background the currently-suspended job</p></td>
+</tr>
+<tr class="row-even"><td><p>jobs</p></td>
+<td><p>list current jobs launched from this shell</p></td>
+</tr>
+<tr class="row-odd"><td><p>fg 1</p></td>
+<td><p>foreground job number 1</p></td>
+</tr>
+<tr class="row-even"><td><p>kill %1</p></td>
+<td><p>kill job number 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>ps</p></td>
+<td><p>list current processes</p></td>
+</tr>
+<tr class="row-even"><td><p>kill 26152</p></td>
+<td><p>kill process number 26152</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="bash-scripts">
+<h4>Bash Scripts<a class="headerlink" href="#bash-scripts" title="Link to this heading">#</a></h4>
+<p>Basics of Bash shell scripting:</p>
+<ul>
+<li><p>The first line of the shell script file should include the line</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+</pre></div>
+</div>
+</div><p>to indicate that the script contents should be executed by the Bash
+shell. This line works on Linux and OS X systems; Bash scripting on
+Windows is an entirely different animal!</p>
+</li>
+<li><p>Lines beginning with a <code class="docutils literal notranslate"><span class="pre">#</span></code> character are interpreted as comments
+(except for the first line).</p></li>
+</ul>
+<p>As an example, consider the following script:</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># define the &quot;odd&quot; function, takes one argument</span>
+odd<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span><span class="nv">$1</span><span class="s2"> is odd&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># define the &quot;even&quot; function, takes one argument</span>
+even<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span><span class="nv">$1</span><span class="s2"> is even&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># define the &quot;other&quot; function, takes one argument</span>
+other<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span><span class="nv">$1</span><span class="s2"> is neither even nor odd&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># loop over some integers, checking even/odd</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..20<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span><span class="nv">m</span><span class="o">=</span><span class="k">$((</span><span class="nv">$i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">2</span><span class="k">))</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$m</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>even<span class="w"> </span><span class="nv">$i</span>
+<span class="w">   </span><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$m</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span>odd<span class="w"> </span><span class="nv">$i</span>
+<span class="w">   </span><span class="k">else</span>
+<span class="w">      </span>other<span class="w"> </span><span class="nv">$i</span>
+<span class="w">   </span><span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div><p>The structure of this example should be obvious from the preceding short
+examples, except that there are a few notable exceptions:</p>
+<ul class="simple">
+<li><p>We perform arithmetic: these operations must be of the form
+<code class="docutils literal notranslate"><span class="pre">$((</span> <span class="pre">expression</span> <span class="pre">))</span></code>.</p></li>
+<li><p>We use the “modulus” operator, <code class="docutils literal notranslate"><span class="pre">%</span></code>. Other allowable arithmetic
+operators include <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p></li>
+<li><p>We perform the logical “equality” operation via <code class="docutils literal notranslate"><span class="pre">-eq</span></code>. The
+inequality logical operation is <code class="docutils literal notranslate"><span class="pre">-ne</span></code>. The mathematical &lt;, ≤, &gt; and
+≥ operators are given by <code class="docutils literal notranslate"><span class="pre">-lt</span></code>, <code class="docutils literal notranslate"><span class="pre">-le</span></code>, <code class="docutils literal notranslate"><span class="pre">-gt</span></code> and <code class="docutils literal notranslate"><span class="pre">-ge</span></code>,
+respectively.</p></li>
+<li><p>Bash logic operations may be performed using the standard <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>
+(and), <code class="docutils literal notranslate"><span class="pre">||</span></code> (or) and <code class="docutils literal notranslate"><span class="pre">!</span></code> (not).</p></li>
+<li><p>Function arguments are passed in following the function name; more
+than one function argument may be supplied (though not shown here).</p></li>
+</ul>
+</section>
+<section id="python-scripts">
+<h4>Python Scripts<a class="headerlink" href="#python-scripts" title="Link to this heading">#</a></h4>
+<p>Basics of Python shell scripting:</p>
+<ul>
+<li><p>The first line of the shell script file can include the line</p>
+<div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+</pre></div>
+</div>
+</div><p>to indicate that the script contents should be executed by the Python
+shell. Again, the above line is usable on Linux and OS X machines,
+and does not apply to Windows.</p>
+</li>
+<li><p>Lines beginning with a <code class="docutils literal notranslate"><span class="pre">#</span></code> character are interpreted as comments
+(except for the first line).</p></li>
+</ul>
+<p>As a more lengthy example (akin to the Bash example above), consider the
+following script (in <code class="docutils literal notranslate"><span class="pre">python_example.py</span></code>):</p>
+<div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="c1"># define the &quot;odd&quot; function, takes one argument</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">odd</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+   <span class="nb">print</span> <span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot; is odd&quot;</span>
+
+<span class="c1"># define the &quot;even&quot; function, takes one argument</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">even</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+   <span class="nb">print</span> <span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot; is even&quot;</span>
+
+<span class="c1"># define the &quot;other&quot; function, takes one argument</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">other</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+   <span class="nb">print</span> <span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot; is neither even nor odd&quot;</span>
+
+<span class="c1"># loop over some integers, checking even/odd</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>
+   <span class="n">m</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span>
+   <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">even</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+   <span class="k">elif</span> <span class="n">m</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">odd</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">other</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><p>As with the previous Bash example, the structure of this example should
+be obvious from the preceding explanations, except that there are a few
+notable exceptions:</p>
+<ul class="simple">
+<li><p>We perform the logical “equality” operation via <code class="docutils literal notranslate"><span class="pre">==</span></code>. The
+inequality logical operation is <code class="docutils literal notranslate"><span class="pre">!=</span></code>. Similarly, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> correspond to the the mathematical &lt;, ≤, &gt; and ≥
+operators.</p></li>
+<li><p>Python logic operations may be combined using <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and
+<code class="docutils literal notranslate"><span class="pre">not</span></code> (self-explanatory).</p></li>
+</ul>
+</section>
+</section>
+<section id="executing-shell-scripts">
+<h3>Executing Shell Scripts<a class="headerlink" href="#executing-shell-scripts" title="Link to this heading">#</a></h3>
+<p>Shell scripts may be executed in one of two ways. If the script already
+has <em>execute</em> permissions (ls -l will show an “x” in the fourth column
+from the left), then it may be executed like any other Linux program,
+through entering the script name at the command prompt. Alternately, a
+script may be executed by supplying the file name as an argument to the
+appropriate shell.</p>
+<p>For example, you may execute the example Bash script from above via</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>bash<span class="w"> </span>bash_example.sh
+</pre></div>
+</div>
+</div><p>Alternately, since the first line of the script was set to</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+</pre></div>
+</div>
+</div><p>then it may be executed by first changing the file permissions to
+“executable”</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>bash_example.sh
+</pre></div>
+</div>
+</div><p>and then running it like any other Linux program</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./bash_example.sh
+</pre></div>
+</div>
+</div><p>Similarly, you may execute the example Python script from above via</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>python_example.py
+</pre></div>
+</div>
+</div><p>It can also be called from an interactive Python session; first enter an
+interactive Python session via the shell command:</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python
+</pre></div>
+</div>
+</div><p>and then at the Python prompt enter the command:</p>
+<div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">execfile</span><span class="p">(</span><span class="s2">&quot;python_example.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><p>where the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> corresponds to the Python prompt (in contrast with the
+Bash prompt, <code class="docutils literal notranslate"><span class="pre">$</span></code>). To exit the interactive Python session, press
+<code class="docutils literal notranslate"><span class="pre">^d</span></code> (as in [control]-[d]).</p>
+<p>Similarly to Bash, since the the first line of this Python script is set
+to</p>
+<div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+</pre></div>
+</div>
+</div><p>then it may be given execute permissions and run directly via</p>
+<div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>python_example.py
+$<span class="w"> </span>./python_example.py
+</pre></div>
+</div>
+</div><p>Additional resources on both Bash and Python scripting are provided
+below.</p>
+<p>Bash resources:</p>
+<ul class="simple">
+<li><p>A Quick Introduction to Bash Programming: <a class="reference external" href="http://www.codecoffee.com/tipsforlinux/articles2/043.html">Part
+1</a> and
+<a class="reference external" href="http://www.codecoffee.com/tipsforlinux/articles2/044.html">Part
+2</a></p></li>
+<li><p><a class="reference external" href="http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html">Bash Programming – Introductory
+How-To</a></p></li>
+<li><p><a class="reference external" href="http://tldp.org/LDP/abs/html/">Advanced Bash-Scripting Guide</a></p></li>
+</ul>
+<p>Python resources:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.codecademy.com/learn">Codecademy</a></p></li>
+<li><p><a class="reference external" href="http://faculty.washington.edu/rjl/classes/am583s2013/notes/index.html#python">Python short
+course</a></p></li>
+<li><p><a class="reference external" href="http://www.scipy.org/Tentative_NumPy_Tutorial">Numpy tutorial</a></p></li>
+<li><p><a class="reference external" href="http://www.learnpython.org/">Introductory Python Tutorial</a></p></li>
+<li><p><a class="reference external" href="http://docs.python.org/2/tutorial/">The Definitive Python
+Tutorial</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tutorials/unix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripting-with-bash-and-python">Scripting with Bash and Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-processes">Linux Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes-in-the-background">Running Processes in the Background</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#backgrounding-a-foreground-process">Backgrounding a Foreground Process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-processes">Listing Processes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#killing-a-process">Killing a Process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-scripts">Bash Scripts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-scripts">Python Scripts</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executing-shell-scripts">Executing Shell Scripts</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Southern Methodist University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023-2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
