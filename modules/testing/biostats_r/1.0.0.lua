@@ -22,7 +22,6 @@ family("R")
 
 extensions("DEMORT, stacks/2.68, freebayes, trimmonatic/0.39, bwa/0.7.18, pear/0.9.11, fastp/0.24.0, dDocent/2.9.8, fastx-toolkit, fastqc, bowtie2, htseq, star/2.7.11b, sra-tools/3.2.0")
 
-
 always_load('apptainer')
 local sif_file = '/hpc/m3/containers/biostats_r/biostats_r_1.0.0.sif'
 
