@@ -1,0 +1,40 @@
+name: modules-ci
+
+# Only run this for PRs with module changes
+on:
+  pull_request:
+    branches:
+    - main
+    paths:
+    - modules/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install Lmod dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y lua5.3 lua5.3-dev tcl tcl-dev
+
+    - name: Download and install Lmod
+      run: |
+        LMOD_VERSION="8.7.67" # Replace with your desired Lmod version
+        wget https://github.com/TACC/Lmod/archive/refs/tags/${LMOD_VERSION}.tar.gz
+        tar -xf ${LMOD_VERSION}.tar.bz2
+        cd ${LMOD_VERSION}
+        ./configure --prefix=/opt/lmod # Choose your desired installation prefix
+        make install
+
+    - name: Configure Lmod environment (optional, for subsequent steps)
+      run: |
+        echo "source /opt/lmod/lmod/init/profile" >> $GITHUB_ENV
+        echo "export LMOD_CMD=/opt/lmod/lmod/lmod" >> $GITHUB_ENV
+
+    - name: Check module syntax
+      run: |
+        $LMOD_DIR/check_module_tree_syntax modules
