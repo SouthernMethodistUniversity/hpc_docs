@@ -40,6 +40,7 @@ local csh_cmd    = cmd .. csh_ending
 set_shell_function(app, sh_cmd, csh_cmd)
 end
 
+
 setenv('CONTAINER_RSESSION', '/usr/lib/rstudio-server/bin/rsession')
 setenv('CONTAINER_RSERVER', '/usr/lib/rstudio-server/bin/rserver')
 setenv('CONTAINER_R', '/usr/local/bin/R')
