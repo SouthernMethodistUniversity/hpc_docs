@@ -38,12 +38,12 @@ jobs:
       run: |
         ls /opt/lmod/lmod
 
-    - name: list /opt/lmod/lmod/init
+    - name: list /opt/lmod/lmod/lmod
       run: |
         ls /opt/lmod/lmod/init
 
     - name: Check module syntax
       shell: bash -l {0}
       run: |
-        source /opt/lmod/lmod/init/bash 
+        source /opt/lmod/lmod/lmod/init/bash 
         $LMOD_DIR/check_module_tree_syntax modules
