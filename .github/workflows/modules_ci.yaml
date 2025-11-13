@@ -40,7 +40,7 @@ jobs:
 
     - name: list /opt/lmod/lmod/lmod
       run: |
-        ls /opt/lmod/lmod/init
+        ls /opt/lmod/lmod/lmod
 
     - name: Check module syntax
       shell: bash -l {0}
