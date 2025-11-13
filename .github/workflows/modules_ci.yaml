@@ -33,5 +33,5 @@ jobs:
     - name: Check module syntax
       shell: bash -l {0}
       run: |
-        source /usr/share/lmod/lmod/init/bash 
+        source /opt/lmod/lmod/init/bash 
         $LMOD_DIR/check_module_tree_syntax modules
