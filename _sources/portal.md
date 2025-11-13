@@ -115,4 +115,3 @@ run modules and code with the Slurm scheduler from an SSH session.
     selecting the "Upload" button.
 -   You can download files and directories by selecting them and then
     selecting the "Download" button.
-
