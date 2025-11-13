@@ -19,7 +19,7 @@ jobs:
     - name: Install Lmod dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y lua5.3 lua5.3-dev tcl tcl-dev
+        sudo apt-get install -y lua5.3 lua5.3-dev tcl tcl-dev lua-posix-dev
 
     - name: Download and install Lmod
       run: |
