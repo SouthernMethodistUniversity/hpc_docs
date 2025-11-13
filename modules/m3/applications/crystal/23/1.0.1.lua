@@ -3,11 +3,10 @@ whatis("CRYSTAL 23 v1.0.1: Must be member of crystal group. Request access at vi
 local err_message="To use this module you must be in a particular group\n" ..
                   "Please contact help@smu.edu with HPC in the subject to join crystal group\n"
 
-local found = required_group("crystal")
-local found_new = required_group("hpc-crystal")
+local valid_groups = userInGroups("hpc-crystal")
 
-if (not found and not found_new) then
-  LmodError(err_message)
+if (not valid_groups) then
+  LmodBreak(err_message)
 end
 
 family("crystal")

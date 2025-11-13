@@ -3,11 +3,10 @@ whatis("VASP 5.4.4: Must be member of vasp group. Request access at via help@smu
 local err_message="To use this module you must be in a particular group\n" ..
                   "Please contact help@smu.edu with HPC in the subject to join vasp group\n"
 
-local found = required_group("vasp")
-local found_new = required_group("hpc-vasp")
+local valid_groups = userInGroups("hpc-vasp")
 
-if (not found and not found_new) then
-  LmodError(err_message)
+if (not valid_groups) then
+  LmodBreak(err_message)
 end
 
 family("vasp")
