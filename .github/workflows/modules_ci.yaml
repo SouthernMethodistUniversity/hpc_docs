@@ -30,6 +30,18 @@ jobs:
         ./configure --prefix=/opt/lmod # Choose your desired installation prefix
         make install
 
+    - name: list /opt/lmod
+      run: |
+        ls /opt/lmod
+
+    - name: list /opt/lmod/lmod
+      run: |
+        ls /opt/lmod/lmod
+
+    - name: list /opt/lmod/lmod/init
+      run: |
+        ls /opt/lmod/lmod/init
+
     - name: Check module syntax
       shell: bash -l {0}
       run: |
