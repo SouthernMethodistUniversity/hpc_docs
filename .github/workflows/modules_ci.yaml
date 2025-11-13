@@ -30,20 +30,12 @@ jobs:
         ./configure --prefix=/opt/lmod # Choose your desired installation prefix
         make install
 
-    - name: list /opt/lmod
+    - name: list github.workspace
       run: |
-        ls /opt/lmod
-
-    - name: list /opt/lmod/lmod
-      run: |
-        ls /opt/lmod/lmod
-
-    - name: list /opt/lmod/lmod/lmod
-      run: |
-        ls /opt/lmod/lmod/lmod
+        ls ${{ github.workspace }}
 
     - name: Check module syntax
       shell: bash -l {0}
       run: |
         source /opt/lmod/lmod/lmod/init/bash 
-        $LMOD_DIR/check_module_tree_syntax modules
+        $LMOD_DIR/check_module_tree_syntax ${{ github.workspace }}/modules
