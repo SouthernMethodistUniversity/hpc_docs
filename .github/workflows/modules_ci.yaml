@@ -34,5 +34,6 @@ jobs:
       shell: bash -l {0}
       run: |
         export SCRATCH="/scratch/user/testuser"
+        export HOSTNAME="testnode"
         source /opt/lmod/lmod/lmod/init/bash 
         $LMOD_DIR/check_module_tree_syntax ${{ github.workspace }}/modules
