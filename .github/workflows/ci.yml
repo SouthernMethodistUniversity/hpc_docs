@@ -1,0 +1,32 @@
+name: docs-ci
+
+# Only run this when the master branch changes
+on:
+  pull_request:
+    branches:
+    - main
+    paths:
+    - docs/**
+    - .github/workflows/ci.yml
+
+# This job installs dependencies, builds the book, and pushes it to `gh-pages`
+jobs:
+  deploy-book:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    # Install dependencies
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5 
+      with:
+        python-version: 3.12
+
+    - name: Install dependencies
+      run: |
+        pip install -U "jupyter-book<2"
+
+    # Build the book
+    - name: Build the book
+      run: |
+        jupyter-book build docs
