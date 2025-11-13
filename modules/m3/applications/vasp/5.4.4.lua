@@ -7,7 +7,7 @@ local found = required_group("vasp")
 local found_new = required_group("hpc-vasp")
 
 if (not found and not found_new) then
-  LmodError(err_message)
+  LmodBreak(err_message)
 end
 
 family("vasp")

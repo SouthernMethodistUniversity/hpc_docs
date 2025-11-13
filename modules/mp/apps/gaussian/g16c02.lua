@@ -7,7 +7,7 @@ local found = required_group("gaussian")
 local found_new = required_group("hpc-gaussian")
 
 if (not found and not found_new) then
-  LmodError(err_message)
+  LmodBreak(err_message)
 end
 
 family("gaussian")

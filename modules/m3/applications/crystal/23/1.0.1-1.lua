@@ -7,7 +7,7 @@ local found = required_group("crystal")
 local found_new = required_group("hpc-crystal")
 
 if (not found and not found_new) then
-  LmodError(err_message)
+  LmodBreak(err_message)
 end
 
 family("crystal")
