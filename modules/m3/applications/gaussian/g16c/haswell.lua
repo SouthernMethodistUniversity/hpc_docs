@@ -3,10 +3,9 @@ whatis("Gaussian 16 C.02: Must be member of gaussian group. Request access at he
 local err_message="To use this module you must be in a particular group\n" ..
                   "Please contact help@smu.edu with HPC in the subject to join gaussian group\n"
 
-local found = required_group("gaussian")
-local found_new = required_group("hpc-gaussian")
+local valid_groups = userInGroups("hpc-gaussian")
 
-if (not found and not found_new) then
+if (not valid_groups) then
   LmodBreak(err_message)
 end
 
