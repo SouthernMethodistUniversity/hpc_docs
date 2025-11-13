@@ -33,6 +33,6 @@ jobs:
     - name: Check module syntax
       shell: bash -l {0}
       run: |
-        ecport SCRATCH="/scratch/user/testuser"
+        export SCRATCH="/scratch/user/testuser"
         source /opt/lmod/lmod/lmod/init/bash 
         $LMOD_DIR/check_module_tree_syntax ${{ github.workspace }}/modules
