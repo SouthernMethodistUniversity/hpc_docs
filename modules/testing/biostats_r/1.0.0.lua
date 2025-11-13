@@ -12,7 +12,6 @@ R -- launches an R terminal
 Rscript script -- run a script
 
 ]])
-
 whatis("Name: Biostats R")
 whatis("Version: ml-verse:4.4.1")
 whatis("Category: R")
