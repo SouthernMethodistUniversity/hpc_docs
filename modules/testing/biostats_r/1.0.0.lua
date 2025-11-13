@@ -49,4 +49,3 @@ unsetenv('XDG_RUNTIME_DIR')
 
 build_command('R')
 build_command('Rscript')
- 
