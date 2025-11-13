@@ -30,11 +30,8 @@ jobs:
         ./configure --prefix=/opt/lmod # Choose your desired installation prefix
         make install
 
-    - name: Configure Lmod environment (optional, for subsequent steps)
-      run: |
-        echo "source /opt/lmod/lmod/init/profile" >> $GITHUB_ENV
-        echo "export LMOD_CMD=/opt/lmod/lmod/lmod" >> $GITHUB_ENV
-
     - name: Check module syntax
+      shell: bash -l {0}
       run: |
+        source /usr/share/lmod/lmod/init/bash 
         $LMOD_DIR/check_module_tree_syntax modules
