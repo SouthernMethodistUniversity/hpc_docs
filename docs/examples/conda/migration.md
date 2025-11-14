@@ -9,7 +9,7 @@ To see your existing environments, using the command `mamba env list`. Any proje
 ## Current Environments
 
 To get a list of dependencies and pip installed packages for an existing environment, run this command to save that list into an `environment.yml` file:
-
+<!-- The code block below mentions mamba_env -->
 ```bash
 module load miniforge
 mamba env export --no-builds -n mamba_env | grep -v "prefix" > environment.yml

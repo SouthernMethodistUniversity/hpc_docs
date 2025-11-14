@@ -5,7 +5,7 @@
 
 Before beginning this session, first retrieve the corresponding set of
 files either by copying the relevant files at the command line:
-
+<!-- The code block below mentions M3 -->
 ``` bash
 cp -R /hpc/m3/examples/slurm .
 ```
@@ -13,7 +13,7 @@ cp -R /hpc/m3/examples/slurm .
 ### The SLURM Job Scheduler
 
 In this tutorial we'll focus on running serial jobs (both batch and
-interactive) on M3 (we'll discuss parallel jobs in later
+interactive) on M3<!-- Mentions M3 --> (we'll discuss parallel jobs in later
 tutorial sessions).
 
 In general, a *job scheduler* is a program that manages unattended
@@ -65,7 +65,7 @@ jobs:
         with no node state details.
 
     Examples:
-
+    <!-- The code block below mentions highmem -->
     ``` bash
     $ sinfo --long -p highmem  # long output for all nodes allocated to the "highmem" partition
     $ sinfo -s                 # summarizes output on all nodes on all partitions
@@ -185,7 +185,7 @@ jobs:
     -   `<executable>` \-- the actual program to run.
 
     Examples:
-
+    <!-- The code block below mentions dev -->
     ``` bash
     $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G /bin/program              # runs executable /bin/program on "dev" partition
     $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G --x11=first --pty emacs   # runs "emacs" and forwards graphics
@@ -289,7 +289,7 @@ We'll use `srun` to run this script interactively for interval values
 of {50,500,5000,50000}. For each run, we'll direct the output to a
 separate file:
 
-
+<!-- The code block below mentions dev -->
 ``` bash
 $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G -o run_50.txt ./pi_monte_carlo.py 50
 $ srun -A my_slurm_account_001 -p dev -c 1 -t 30 --mem=4G -o run_500.txt ./pi_monte_carlo.py 500
@@ -309,7 +309,7 @@ $ cat run_*
 
 
 in the above commands we do not need to directly specify to run on the
-"dev" SLURM partition, since that is the default partition.
+"dev"<!-- Mentions dev --> SLURM partition, since that is the default partition.
 
 ### Batch Job Submission File
 
@@ -332,14 +332,14 @@ The following lines (before any executable commands) contain the options
 to be supplied to the `sbatch` command. Each of these options must be
 prepended with the text `#SBATCH`, e.g.
 
-
+<!-- The code block below mentions dev -->
 ``` bash
 #!/bin/bash
 #SBATCH -J my_program            # job name to display in squeue
 #SBATCH -A my_slurm_account_001  # SLURM account from ColdFront
 #SBATCH -o output-%j.txt         # standard output file
 #SBATCH -e error-%j.txt          # standard error file
-#SBATCH -p dev                   # requested partition
+#SBATCH -p dev                    # requested partition
 #SBATCH -t 120                   # maximum runtime in minutes
 #SBATCH --mem=10G                # memory in GB
 #SBATCH -c 1.                    # number of CPU cores
@@ -423,10 +423,10 @@ list the most useful options for running serial batch jobs.
     ```
 
 -   `-p <part>` \-- tells SLURM on which partition it should submit the
-    job. The options are "interactive", "highmem" or "parallel".
+    job. The options are "interactive", "highmem"<!-- Mentions highmem --> or "parallel".
     For example, so submit a batch job to a high-memory node you would
     use
-
+    <!-- The code block below mentions highmem -->
     ``` bash
     #SBATCH -p highmem
     ```
@@ -483,7 +483,7 @@ list the most useful options for running serial batch jobs.
 
 ### Running Batch Jobs
 
-Here we'll look at six ways to run jobs on M3 using Slurm.
+Here we'll look at six ways to run jobs on M3<!-- Mentions M3 --> using Slurm.
 
 1.  Interactive session via srun
 2.  Single interactive job via srun
@@ -493,7 +493,7 @@ Here we'll look at six ways to run jobs on M3 using Slurm.
 6.  Array of single threaded jobs via batch script
 
 #### Interactive Session Via `srun`
-
+<!-- The code block below mentions htc -->
 ``` bash
 srun -A my_slurm_account_001 -p htc -c 1 -t 30 --mem=4G --pty $SHELL
 module load miniforge
@@ -501,11 +501,11 @@ conda activate base
 python pi_monte_carlo.py 1000
 ```
 
-This method involves interactively requesting a HTC compute node and
+This method involves interactively requesting a HTC<!-- Mentions HTC --> compute node and
 then running the calculation manually.
 
 #### Single Interactive Job Via `srun`
-
+<!-- The code block below mentions htc -->
 ``` bash
 srun -A my_slurm_account_001 -p htc -c 1 -t 30 --mem=4G python pi_monte_carlo.py 1000
 ```
@@ -514,7 +514,7 @@ This method interactively requests that the calculation be directly run
 on the requested resource.
 
 #### Single-Threaded Batch Job via `sbatch`'s Wrapping Function
-
+<!-- The code block below mentions htc -->
 ``` bash
 sbatch -A my_slurm_account_001 -p htc -c 1 -t 30 --mem=4G --wrap "sleep 30; time python pi_monte_carlo.py 1000"
 ```
@@ -524,7 +524,7 @@ wish to run in an `sbatch` script that is then submited for you. This
 method is non-interactive.
 
 #### Single Threaded Batch Job via Batch Script
-
+<!-- The code block below mentions htc -->
 ``` bash
 #!/bin/bash
 #SBATCH -J python
@@ -542,10 +542,10 @@ time python pi_monte_carlo.py 1000
 ```
 
 This batch script is manually creatd and then submited via
-`sbatch 04_sbatch_htc.sbatch`.
+`sbatch 04_sbatch_htc.sbatch`<!-- Mentions htc -->.
 
 #### Single Multi-Threaded Job via Batch Script
-
+<!-- The code block below mentions dev -->
 ``` bash
 #!/bin/bash
 #SBATCH -J pi
@@ -567,7 +567,7 @@ This batch script runs a parallel version of the Monte Carlo *π*
 approximation script on two cores.
 
 #### Array of Single Threaded Jobs via Batch Script
-
+<!-- The code block below mentions dev -->
 ``` bash
 #!/bin/bash
 #SBATCH -J pi_array

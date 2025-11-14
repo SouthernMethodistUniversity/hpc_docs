@@ -225,6 +225,7 @@ compiler by using the command
 one_norm.cpp vector_difference.cpp vector_product.cpp \
 vector_sum.cpp -lm -o driver.exe
 ```
+<!-- Mentions M3 -->
 
 While this certainly works, it requires us to know the full path to
 the `dpcpp` compiler. Using the module system, this simplifies to

@@ -13,7 +13,7 @@ For compute resources, see [HPC Queues](about:queues)
 :::
 
 
-## Using Stata on M3
+## Using Stata on M3<!-- Mentions M3 -->
 
 :::{important} The Stata licenses we have only allow using up to 8 CPU cores. Requesting more than 8 cores will not help jobs run faster.
 :::
@@ -21,7 +21,7 @@ For compute resources, see [HPC Queues](about:queues)
 Files used in the example are available:
 
   - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/stata)
-  - on M3 at `/hpc/m3/examples/stata/` 
+  - on M3 at `/hpc/m3/examples/stata/`<!-- Mentions M3 -->
 
 ### Example submission script
 

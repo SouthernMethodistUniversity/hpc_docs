@@ -14,12 +14,12 @@ For compute resources, see [HPC Queues](about:queues)
 :::
 
 
-## Using OpenFoam on M3
+## Using OpenFoam on M3<!-- Mentions M3 -->
 
 Files used in the example are available:
 
   - [on github](https://github.com/SouthernMethodistUniversity/hpc_docs/tree/main/docs/examples/openfoam)
-  - on M3 at `/hpc/m3/examples/openfoam/` 
+  - on M3 at `/hpc/m3/examples/openfoam/`<!-- Mentions M3 --> 
 
 ### Example submission script
 

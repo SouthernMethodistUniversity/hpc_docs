@@ -123,7 +123,7 @@ In general, you should only use the exclusive flag if you have an use case that 
 Our high performance computing systems are a shared resource and there is no expectation that any particular set of resources is available at any particular time.
 
 You can see your pending jobs by running
-
+<!-- The code block below mentions standard -->
 ```
 $ squeue --me --start
              JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)

@@ -8,7 +8,7 @@ Access to the HPC OnDemand web portal requires an existing SMU HPC account,
 which can be requested as documented in
 {doc}`accounts`.
 
-1.  Go to [hpc.m3.smu.edu](https://hpc.m3.smu.edu/).
+1.  Go to [hpc.m3.smu.edu](https://hpc.m3.smu.edu/).<!-- Mentions M3 -->
 2.  Sign in using your SMU NetID and SMU password
 
 ## Interactive Apps
@@ -94,7 +94,7 @@ run modules and code with the Slurm scheduler from an SSH session.
 
 ## Shell Access
 
-1.  Select "M3 Shell Access" from the "Clusters" drop-down menu. Note that this
+1.  Select "M3<!-- Mentions M3 --> Shell Access" from the "Clusters" drop-down menu. Note that this
     shell access does not provide access to graphical applications. If needed,
     please use a [Remote Desktop](portal_remote_desktop) instance.
 2.  When finished using the shell, type `exit` and close the browser

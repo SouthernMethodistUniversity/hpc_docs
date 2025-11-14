@@ -49,7 +49,7 @@ For most users, this is `source ~/.bashrc`.
 We additionally recommend that you disable Conda/Mamba's auto-activate base
 functionality. By default, Conda/Mamba will load a base environment, which can cause
 issues with system dependencies. In particular, applications on
-<https://hpc.m3.smu.edu> often behave in unexpected ways because it tries to
+<https://hpc.m3.smu.edu><!-- Mentions M3 --> often behave in unexpected ways because it tries to
 use a Conda package instead of the correct system package.
 The next two commands tell Conda to prefer to save packages and environments
 in your `$HOME` directory (you can specify other locations you have access to,
@@ -64,9 +64,9 @@ conda config --prepend pkgs_dirs $HOME/.conda/pkgs
 ## Creating Virtual Environments from the Command Line
 
 For simple environments with a small number of packages, you can create an
-environment named `mamba_env` (or any name of your choosing) in your `$HOME`
+environment named `mamba_env`<!-- Mentions mamba_env --> (or any name of your choosing) in your `$HOME`
 directory with
-
+<!-- The code block below mentions mamba_env -->
 ```bash
 mamba create -n mamba_env python=3.9 package1 package2 package3
 ```
@@ -84,7 +84,7 @@ For environments that contain more than a few packages, we suggest creating a
 is common practice to call it `environment.yml`.)
 
 The basic structure of the `environment.yml` is:
-
+<!-- The code block below mentions mamba_env -->
 ```text
 name: mamba_env
 channels:
@@ -101,7 +101,7 @@ dependencies:
 ```
 
 The `name` field is what the created environment will be called (it can be
-anything you like, but we again use the name `mamba_env` for the example).
+anything you like, but we again use the name `mamba_env`<!-- Mentions mamba_env --> for the example).
 
 The next section is `channels`, which are the repositories where Mamba will
 look for the requested packages. Mamba prioritizes the channels from the top
@@ -116,7 +116,7 @@ and/or you can have all the `pip` packages in a `requirements.txt` file.
 
 Once you have made the `environment.yml` file, you can create the environment
 with:
-
+<!-- The code block below mentions mamba_env -->
 ```bash
 mamba env create -f environment.yml -n mamba_env
 ```
@@ -146,7 +146,7 @@ Environments. If it is greyed out, that means that you need to install
 JupyterLab in the environment.
 
 ### Using a base
-
+<!-- The code block below mentions mamba_env -->
 ```bash
 module load miniforge/24.11.2-1
 mamba activate mamba_env
@@ -159,7 +159,7 @@ like:
 
 If you are running programs interactively from the terminal (e.g. using
 ```srun```) just activate the virtual environment with
-
+<!-- The code block below mentions mamba_env -->
 ```bash
 module load miniforge/24.11.2-1
 mamba activate mamba_env
@@ -171,7 +171,7 @@ in the terminal before running any commands.
 
 If you are running programs using _SBatch_ scripts, you should include the
 activation command in your script:
-
+<!-- The code block below mentions mamba_env -->
 ```bash
 module load miniforge/24.11.2-1
 mamba activate mamba_env
