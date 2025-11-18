@@ -26,12 +26,6 @@ fi
 mkdir -p /hpc/${CLUSTER}/containers/ollama
 mv ${CONTAINER_NAME} /hpc/${CLUSTER}/containers/ollama/${CONTAINER_NAME}
 
-# create a module file in ../../modules/ (in the git repo)
-RUN_COMMAND="apptainer run "
-if [ "$CLUSTER" = "mp" ]; then
-  RUN_COMMAND="apptainer run --nv "
-fi
-
 mkdir -p ../../modules/${CLUSTER}/applications/${MODULE_FOLDER}
 MODULE_FILE=../../modules/${CLUSTER}/applications/${MODULE_FOLDER}/${VERSION}.lua
 (
