@@ -18,5 +18,5 @@ always_load('apptainer')
 local sif_file = '/hpc/m3/containers/ollama/ollama_0.12.11.sif'
 
 setenv('CONTAINER_IMAGE', sif_file)
-append_path("PATH", "/hpc/m3/apps/ollama/helper_scripts")
+source_sh("bash", "/hpc/m3/apps/ollama/helper_scripts/ollama.sh")
 
