@@ -39,6 +39,7 @@ parts:
 - caption: How to Use
   chapters:
   - file: portal.md
+  - file: quickstart.md
   - file: tutorials/slurm/slurm.md
     sections:
     - file: tutorials/slurm/best_practices.md
