@@ -1,0 +1,13 @@
+#!/bin/bash
+
+module purge
+
+# Launch Ollama Container
+module load testing/ollama/0.12.11
+ollama serve &
+
+# Launch Gradio App
+module load miniforge
+mamba activate research-chat
+cd ~/hpc_docs/ood/research-chat
+uvicorn app:app --host 0.0.0.0 --port ${port}

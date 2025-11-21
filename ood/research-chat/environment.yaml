@@ -1,0 +1,21 @@
+name: research-chat
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - fastapi
+  - uvicorn
+  - gradio
+  - chromadb>=0.5.3
+  - pypdf2
+  - python-docx
+  - beautifulsoup4
+  - pandoc
+  - pypandoc
+  - requests
+  - tqdm
+  - pip
+  - pip:
+      - chroma-hnswlib
+      - html5lib

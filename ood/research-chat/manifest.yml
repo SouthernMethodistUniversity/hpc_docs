@@ -1,0 +1,6 @@
+---
+name: ResearchChat
+category: Interactive Apps
+role: batch_connect
+description: |
+  This app will launch a local RAG-enabled LLM chat using Ollama and Gradio.

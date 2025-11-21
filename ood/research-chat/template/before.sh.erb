@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Gradio Config
+find_free_port() {
+  while true; do
+    port=$(shuf -i 10000-60000 -n 1)
+    (echo "" >/dev/tcp/127.0.0.1/$port) >/dev/null 2>&1 || break
+  done
+  echo $port
+}
+
+export PASSWORD="$(openssl rand -hex 16)"
+export password="$PASSWORD"
+export username="username"
+export port=$(find_free_port)
+
+# Model Config
+export MODEL_NAME="<%= context.main_model %>"
+export ENABLE_RAG="<%= context.rag_enabled %>"
+export CHROMA_DIR="<%= context.doc_dir %>"
+
+#module purge
+#module load miniforge
+#mamba activate research-chat
+#python /projects/egodat/smugpt/models/manechat/manechat/chroma.py

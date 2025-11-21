@@ -1,0 +1,96 @@
+<%-
+require 'open3'
+
+# check queue help scripts
+require_relative "CheckQueues"
+
+# find slurm accounts
+require_relative "CheckAccounts"
+
+-%>
+---
+cluster:
+  - "m3cluster"
+<%- if CheckAccounts.Accounts.count == 0 -%>
+form:
+  - slurm_accounts
+attributes:
+  slurm_accounts:
+   widget: select
+   label: "Slurm Account"
+   help: |
+     You are not a member of any valid Slurm accounts. In order to run jobs,
+     you must be on a slurm account created by [ColdFront].
+     See the ColdFront [documentation] and [frequently asked questions] for more information.
+     [ColdFront]: https://hpcaccess.smu.edu
+     [documentation]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/quick_start.html
+     [frequently asked questions]: https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+
+<%- else -%>
+form:
+  - slurm_accounts
+  - main_model
+  - license_agreement
+  - rag_enabled
+  - doc_dir
+
+attributes:
+  slurm_accounts:
+    widget: select
+    label: "Slurm Account"
+    help: |
+      Select a Slurm account.
+      Slurm accounts grant you access to allocations and/or course-specific material.
+    options:
+    <%- CheckAccounts.Accounts.each do |q| -%>
+    - [ "<%= q %>",  "<%= q %>" ]
+    <%- end -%>
+
+  email_on_start:
+    widget: "check_box"
+    value: 0
+    label: "Email When Job Starts"
+    help: "Sends an email to your SMU email when this job starts if checked"
+
+  # === New LLM options ===
+  main_model:
+    widget: "select"
+    label: "Choose your main LLM"
+    options:
+      - [
+        "gpt-oss:20b", 
+        "gpt-oss:20b", 
+        data-label-license-agreement: "I agree to the <a href='https://openai.com/'>OpenAI</a> license agreement for this model: <a href='https://www.apache.org/licenses/LICENSE-2.0'>https://www.apache.org/licenses/LICENSE-2.0</a>"
+      ]
+      - [
+        "gemma3:27b",
+        "gemma3:27b",
+        data-label-license-agreement: "I agree to the <a href='https://ai.google.dev/'>Google</a> license agreement for this model: <a href='https://ai.google.dev/gemma/terms'>https://ai.google.dev/gemma/terms</a>"
+      ]
+    help: "Select a model provided by Ollama and agree to licensing restrictions."
+
+  rag_enabled:
+    widget: "check_box"
+    label: "Enable Retrieval-Augmented Generation (RAG)"
+    value: false
+    html_options:
+      data:
+        hide-doc-dir-when-un-checked: true
+
+  doc_dir:
+    widget: "path_selector"
+    label: "Directory of documents for RAG"
+    help: "Pick a directory containing PDFs, DOCX, PPTX, Markdown, or text files."
+    show_hidden: true
+    show_files: true
+    favorites:
+      - <%= Pathname.new(ENV['HOME']) %>
+      - /projects
+
+  license_agreement:
+    widget: "check_box"
+    label: "I agree to the terms and conditions of the license agreement."
+    value: "1" # Value to be submitted when checked
+    required: true
+    checked: false
+<%- end -%>

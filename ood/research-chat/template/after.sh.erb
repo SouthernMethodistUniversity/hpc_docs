@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Waiting for Gradio/Uvicorn server to open port ${port}..."
+echo "TIMING - Starting wait at: $(date)"
+
+# Wait up to 600 seconds (10 min) for uvicorn to bind the port
+if wait_until_port_used "${HOSTNAME}:${port}" 600; then
+    echo "Discovered Gradio/Uvicorn server listening on port ${port}!"
+    echo "TIMING - Wait ended at: $(date)"
+else
+    echo "Timed out waiting for Gradio/Uvicorn server to open port ${port}!"
+    echo "TIMING - Wait ended at: $(date)"
+    pkill -P ${SCRIPT_PID}
+    clean_up 1
+fi
+
+# Small delay for good measure
+sleep 2
