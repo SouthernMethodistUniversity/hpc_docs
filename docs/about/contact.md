@@ -1,7 +1,7 @@
 (about:contact)=
 # Contact
 
-We can be contacted using SMU's Help Desk. 
+We can be contacted using SMU's IT Help Desk. 
 
 Tickets can be directly created using the [STABLE ticketing system](https://www.smu.edu/OIT/services/STABLE).
 
@@ -16,7 +16,7 @@ The OIT Research and Technology Services team can be reached directly at [oitres
 # GitHub
 
 :::{important}
-Time critical and emergency issues should **always** go through SMU's Help Desk.
+Time critical and emergency issues should **always** go through SMU's IT Help Desk.
 :::
 
 We also actively use GitHub. You are welcome to open issues and/or create pull requests [our github page](https://github.com/SouthernMethodistUniversity/hpc_docs).
