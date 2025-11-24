@@ -60,12 +60,16 @@ parts:
     - file: tutorials/r/environments.md
     - file: tutorials/r/slurm.md
   - file: applications/vscode.md
-  - file: applications/other_applications.md
+  - file: applications/jupyter.md
+  - file: tutorials/navigating_jupyterlab.md
+    title: Jupyter-Lab
+- caption: Example Workflows
     sections: 
     - file: examples/amber/index.md
     - file: examples/gaussian/index.md
     - file: examples/openfoam/index.md
     - file: examples/stata/index.md
+    - file: examples/matlab/index.md
 - caption: Workshops and Trainings
   chapters:
   - url: https://southernmethodistuniversity.github.io/SMU_SuperPOD_101/
