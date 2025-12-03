@@ -3,3 +3,5 @@
 /workshops/minted_cache
 *.sif
 /docs/_build
+READMEOliver.md
+.venv/
