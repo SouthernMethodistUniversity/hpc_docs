@@ -1,8 +1,8 @@
-# Navigating Jupyter-Lab
+# Navigating JupyterLab
 
-Jupyter-Lab is a web-based interface containing a file explorer and a code editor that supports Python, Julia, and various other languages.
+JupyterLab is a web-based interface containing a file explorer and a code editor that supports Python, Julia, and various other languages.
 
-### File management
+## File management
 
 - **To open the Terminal**:
   - Click the blue button containing a plus sign at the top of the File Browser or the plus sign next to the rightmost tab to open a Launcher tab.
@@ -11,7 +11,7 @@ Jupyter-Lab is a web-based interface containing a file explorer and a code edito
     <img src="../images/navigating_jupyterlab/open_new_terminal.jpg" height="100">
 
 
-- **To open the File Browser**, click the folder icon 📁 on the left sidebar.
+- **To open the File Browser**, click the folder icon on the left sidebar.
 
   <img src="../images/navigating_jupyterlab/open_file_browser.jpg" height="100">
 
@@ -20,7 +20,7 @@ Jupyter-Lab is a web-based interface containing a file explorer and a code edito
 
   <img src="../images/navigating_jupyterlab/enter_parent_directory.jpg" height="100">
 
-- **To upload a file** to the current location, click on the upload icon 📤 above the path.
+- **To upload a file** to the current location, click on the upload icon above the path.
 
   <img src="../images/navigating_jupyterlab/upload.jpg" height="100">
 
@@ -32,18 +32,18 @@ Jupyter-Lab is a web-based interface containing a file explorer and a code edito
 - **To open project directories** located outside your home directory (/$HOME or users/username) in the File Browser, you will need to create a symlink.
   - Click the plus sign at the top of the File Browser to open a new Launcher tab.
   - Click the Terminal button to open a new Terminal tab.
-  - Copy and paste `ln -s "$ProjectDirectory" ~DirectoryOfLink` into the Terminal, replacing `$ProjectDirectory` with the path of your project directory and `DirectoryOfLink` with the desired position of the link in your $HOME directory. Press Enter.
-  - Navigate to the path of the symlink. Click the refresh button in the top right corner of the File Browser ⟳ if required.
+  - Copy and paste `ln -s "<project directory>" ~/<new directory name>` into the Terminal, replacing `<project directory>` with the path of your project directory and `/<new directory name>` with the desired position of the link in your $HOME directory. Press Enter.
+  - Navigate to the path of the symlink. Click the refresh button in the top right corner of the File Browser if required.
   
       <img src="../images/navigating_jupyterlab/refresh.jpg" height="100">
   
   - The project directory can now be opened in the File Browser by double clicking the symlink.
 
-### Code editing
+## Code editing
 
-Jupyter contains cells that can be run individually. These cells can run either markdown or the language of the Kernel visible in top right corner of a .ipynb document tab. Python3 comes already installed with Jupyter-Lab. Cells can also contain Magic Commands that are outside the standard functionality of Python.
+Jupyter contains cells that can be run individually. These cells can run either markdown or the language of the Kernel visible in top right corner of a .ipynb document tab. Python3 comes already installed with JupyterLab. Cells can also contain Magic Commands that are outside the standard functionality of Python.
 - **To open a new notebook**:
-  - Click the plus sign next to the currently open tab on the right side of Jupyter-Lab in case there isn't a Launcher tab already open.
+  - Click the plus sign next to the currently open tab on the right side of JupyterLab in case there isn't a Launcher tab already open.
   
     <img src="../images/navigating_jupyterlab/open_launcher.jpg" height="100">
 
@@ -81,5 +81,5 @@ Jupyter contains cells that can be run individually. These cells can run either 
     - Run the cell. The output for the Python file is displayed under the cell.
    
 
-### Additional Help
-[This website](https://jupyterlab.readthedocs.io/en/latest/user/notebook.html) contains in-depth instructions on navigating Jupyter-Lab Notebooks.
+## Additional Help
+[This website](https://jupyterlab.readthedocs.io/en/latest/user/notebook.html) contains in-depth instructions on navigating JupyterLab Notebooks.
