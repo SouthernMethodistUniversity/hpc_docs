@@ -61,6 +61,8 @@ parts:
     - file: tutorials/r/environments.md
     - file: tutorials/r/slurm.md
   - file: applications/vscode.md
+  - file: tutorials/navigating_jupyterlab.md
+    title: JupyterLab
   - file: applications/other_applications.md
     sections: 
     - file: examples/amber/index.md
