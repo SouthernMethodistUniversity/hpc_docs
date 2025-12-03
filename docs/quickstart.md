@@ -29,7 +29,7 @@ Authenticate with DUO by pressing 1 for your associated device
 
 ### 3. Create a Job Script
 
-Create a new job file using Nano:
+Create a new job file using nano:
 
 ```bash
 nano my_first_job.sbatch
@@ -48,14 +48,14 @@ Paste the following contents into the editor:
 #SBATCH --mem=4G
 #SBATCH -c 1
 
-# Wait for 100 seconds so you can check the queue using 'squeue -u $USER'
+# Wait for 100 seconds so you can check the queue using 'squeue --me'
 sleep 100
  
 # Print a simple message
 echo "Hello, World!"
 ```
 
-Save and exit Nano:
+Save and exit nano:
 
 ```
 Ctrl + X  →  Y  →  Enter
@@ -72,8 +72,7 @@ sbatch my_first_job.sbatch
 Check the job status:
 
 ``` bash
-squeue -u $USER
-After completion, view output and error files:
+squeue --me
 ```
 
 Check the outputs:
@@ -88,7 +87,7 @@ cat my_first_job_<jobid>.err
 Connect to PerunaNet or the SMU campus network.
 
 1. Open a browser and visit:
-https://hpc.m3.smu.edu/pun/sys/dashboard/
+https://hpc.smu.edu
 
 2. Log in using your SMU credentials.
 
