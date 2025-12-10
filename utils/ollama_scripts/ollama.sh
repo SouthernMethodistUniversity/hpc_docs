@@ -59,10 +59,10 @@ ollama() {
 
     if [ -z "$OLLAMA_PORT" ]; then
       PORT=$(find_available_port)
-      echo "$PORT" > "$PORT_FILE"
     else
       PORT=${OLLAMA_PORT}
     fi
+    echo "$PORT" > "$PORT_FILE"
 
     # record the short hostname
     if [ -z "$OLLAMA_HOST" ]; then
