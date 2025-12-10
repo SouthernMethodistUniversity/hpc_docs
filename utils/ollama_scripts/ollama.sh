@@ -14,7 +14,7 @@ ollama() {
 
   # require a job id (except for appmgr)
   CURRENT_USER=$(id -un)
-  if [[ -z "$SLURM_JOB_ID" || [ "$CURRENT_USER" != "appmgr" ]]; then
+  if [[ -z "$SLURM_JOB_ID" || "$CURRENT_USER" != "appmgr" ]]; then
     echo "ERROR: please run Ollama in a job" >&2
     return 1
   fi
