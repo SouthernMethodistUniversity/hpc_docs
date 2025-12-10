@@ -12,8 +12,9 @@ ollama() {
     return 1
   fi
 
-  # require a job id
-  if [ -z "$SLURM_JOB_ID" ]; then
+  # require a job id (except for appmgr)
+  CURRENT_USER=$(id -un)
+  if [[ -z "$SLURM_JOB_ID" || [ "$CURRENT_USER" != "appmgr" ]]; then
     echo "ERROR: please run Ollama in a job" >&2
     return 1
   fi
@@ -25,9 +26,17 @@ ollama() {
 
   # Prepare your scratch tree for keys, models, host & port
   S="${OLLAMA_BASE_DIR}/ollama"
-  mkdir -p "${S}"/{.ollama,models}
-  PORT_FILE="${S}/port_${SLURM_JOB_ID}.txt"
-  HOST_FILE="${S}/host_${SLURM_JOB_ID}.txt"
+  mkdir -p "${S}"/{.ollama}
+  if [ -z "$OLLAMA_MODEL_DIR" ]; then
+    mkdir -p "${S}"/models
+    OLLAMA_MODEL_DIR="${S}/models"
+  fi
+  if [ -z "$OLLAMA_LOG_DIR" ]; then
+    mkdir -p "${S}"/logs
+    OLLAMA_LOG_DIR="${S}/logs"
+  fi
+  PORT_FILE="${OLLAMA_LOG_DIR}/port_${SLURM_JOB_ID}.txt"
+  HOST_FILE="${OLLAMA_LOG_DIR}/host_${SLURM_JOB_ID}.txt"
 
   # 3) Helper to pick an unused TCP port
   find_available_port() {
@@ -43,11 +52,20 @@ ollama() {
 
   # 4) If first‐time or explicitly "serve", pick & record port+host, then start server
   if [ "$1" = "serve" ] || [ ! -f "$PORT_FILE" ] || [ ! -f "$HOST_FILE" ]; then
-    PORT=$(find_available_port)
-    echo "$PORT" > "$PORT_FILE"
+
+    if [ -z "$OLLAMA_PORT" ]; then
+      PORT=$(find_available_port)
+      echo "$PORT" > "$PORT_FILE"
+    else
+      PORT=${OLLAMA_PORT}
+    fi
 
     # record the short hostname
-    hostname -s > "$HOST_FILE"
+    if [ -z "$OLLAMA_HOST" ]; then
+      hostname -s > "$HOST_FILE"
+    else
+      echo ${OLLAMA_HOST} > "$HOST_FILE"
+    fi
 
     # bind on all interfaces
     BIND="0.0.0.0:${PORT}"
@@ -61,7 +79,7 @@ ollama() {
 
     exec apptainer run \
       --nv \
-      --env OLLAMA_MODELS="${S}/ollama/models" \
+      --env OLLAMA_MODELS="${OLLAMA_MODEL_DIR}" \
       --env OLLAMA_HOST="http://${BIND}" \
       --env OLLAMA_PORT="${PORT}" \
       ${CONTAINER_IMAGE} serve "$@"
@@ -75,7 +93,7 @@ ollama() {
   echo "Forwarding 'ollama $*' to ${ENV_HOST}"
 
   apptainer run \
-    --env OLLAMA_MODELS="${S}/ollama/models" \
+    --env OLLAMA_MODELS="${OLLAMA_MODEL_DIR}" \
     --env OLLAMA_HOST="${ENV_HOST}" \
     --env OLLAMA_PORT="${PORT}" \
     ${CONTAINER_IMAGE} "$@"
