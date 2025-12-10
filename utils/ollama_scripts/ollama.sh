@@ -26,9 +26,9 @@ ollama() {
 
   # Prepare your scratch tree for keys, models, host & port
   S="${OLLAMA_BASE_DIR}/ollama"
-  mkdir -p "${S}"/{.ollama}
+  mkdir -p "${S}/.ollama"
   if [ -z "$OLLAMA_MODEL_DIR" ]; then
-    mkdir -p "${S}"/models
+    mkdir -p "${S}/models"
     OLLAMA_MODEL_DIR="${S}/models"
   fi
   if [ -z "$OLLAMA_LOG_DIR" ]; then
