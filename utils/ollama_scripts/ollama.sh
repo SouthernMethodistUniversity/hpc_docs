@@ -38,6 +38,10 @@ ollama() {
   PORT_FILE="${OLLAMA_LOG_DIR}/port_${SLURM_JOB_ID}.txt"
   HOST_FILE="${OLLAMA_LOG_DIR}/host_${SLURM_JOB_ID}.txt"
 
+  # ensure dirs exists
+  mkdir -p "${OLLAMA_MODEL_DIR}"
+  mkdir -p "${OLLAMA_LOG_DIR}"
+
   # 3) Helper to pick an unused TCP port
   find_available_port() {
     local p
