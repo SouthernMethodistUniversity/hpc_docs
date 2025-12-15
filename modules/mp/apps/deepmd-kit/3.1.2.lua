@@ -1,8 +1,9 @@
 whatis("DeePMD-kit 3.1.2")
 family("lammps")
 
+prepend_path("MODULEPATH", "/hpc/mp/spack_modules/linux-ubuntu22.04-zen2")
+
 load("gcc/13.2.0")
-load("spack")
 load("cuda/none-none/cuda/12.8.0-5bb32rl")
 load("gcc-13.2.0/python/3.12.12-ekwsqkf")
 load("gcc-13.2.0/amdfftw/5.1-4hjwb43")
