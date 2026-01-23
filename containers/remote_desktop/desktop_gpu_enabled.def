@@ -104,7 +104,8 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                xfonts-75dpi \
                xfonts-100dpi \
                xterm \
-               ttf-mscorefonts-installer
+               ttf-mscorefonts-installer \
+               uuid-runtime
 
   # add webots
   mkdir -p /etc/apt/keyrings
