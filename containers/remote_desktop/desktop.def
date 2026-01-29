@@ -138,7 +138,8 @@ From: ubuntu:22.04
                python3-toml \
                graphviz \
                graphviz-dev \
-               libboost-system1.74.0
+               libboost-system1.74.0 \
+               libqt5x11extras5
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen

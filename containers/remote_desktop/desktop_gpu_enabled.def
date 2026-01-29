@@ -137,7 +137,8 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                python3-statsmodels \
                python3-toml \
                graphviz \
-               graphviz-dev
+               graphviz-dev \
+               libqt5x11extras5
 
   # add webots
   mkdir -p /etc/apt/keyrings
