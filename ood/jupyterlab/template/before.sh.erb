@@ -48,7 +48,7 @@ cat > "${CONFIG_FILE}" << EOL
 c.ServerApp.ip = '0.0.0.0'
 c.ServerApp.port = ${port}
 c.ServerApp.port_retries = 0
-c.ServerApp.password = u'sha1:${SALT}:${PASSWORD_SHA1}'
+c.PasswordIdentityProvider.hashed_password = u'sha1:${SALT}:${PASSWORD_SHA1}'
 c.ServerApp.base_url = '/node/${host}/${port}/'
 c.ServerApp.open_browser = False
 c.ServerApp.allow_origin = '*'
