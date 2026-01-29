@@ -105,7 +105,10 @@ From: ubuntu:22.04
                xfonts-100dpi \
                xterm \
                ttf-mscorefonts-installer \
-               uuid-runtime \
+               uuid-runtime
+ 
+  # dependencies for Salome
+  DEBIAN_FRONTEND=noninteractive apt-get -y install \
                python3-pytest-cython \
                python3-jinja2 \
                python3-pyqt5.qtsvg \
@@ -139,6 +142,7 @@ From: ubuntu:22.04
                graphviz \
                graphviz-dev \
                libboost-system1.74.0 \
+               libboost1.74-all-dev \
                libqt5x11extras5
 
   # Configure default locale
