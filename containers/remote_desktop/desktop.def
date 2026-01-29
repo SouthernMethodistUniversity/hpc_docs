@@ -135,7 +135,9 @@ From: ubuntu:22.04
                python3-sphinxcontrib.websupport \
                sphinx-intl \
                python3-statsmodels \
-               python3-toml 
+               python3-toml \
+               graphviz \
+               graphviz-dev
 
   # Configure default locale
   echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen

@@ -135,7 +135,9 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
                python3-sphinxcontrib.websupport \
                sphinx-intl \
                python3-statsmodels \
-               python3-toml
+               python3-toml \
+               graphviz \
+               graphviz-dev
 
   # add webots
   mkdir -p /etc/apt/keyrings
