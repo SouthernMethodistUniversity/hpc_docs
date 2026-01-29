@@ -228,7 +228,8 @@ From: nvidia/opengl:1.2-glvnd-devel-ubuntu22.04
 	 net-tools\
 	 procps\
 	 unzip\
-	 zlib1g
+	 zlib1g \
+         libboost-system1.74.0
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
