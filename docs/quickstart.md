@@ -10,6 +10,10 @@ This guide walks you through accessing the SMU **M3 Cluster** and running your f
 
 ## Accessing the M3 Cluster via SSH
 
+```{warning}
+[Duo](https://www.smu.edu/oit/services/duo) is still required to access HPC resources via SSH. If you are not enrolled, please enroll here: [https://www.smu.edu/oit/services/duo](https://www.smu.edu/oit/services/duo).
+```
+
 > Remember to replace example terms (like `username` and `slurm_account_name`) with your own credentials.
 
 ### 1. Open a Terminal

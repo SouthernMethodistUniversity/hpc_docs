@@ -3,9 +3,13 @@
 SMU HPC systems are directly accessible on campus via Ethernet, excluding
 dorms, and PerunaNet. All other networks require using the SMU VPN.
 Instructions for setting up and using the VPN can be found
-[here](https://www.smu.edu/OIT/Services/VPN).
+[here](https://www.smu.edu/OIT/Services/VPN). Multi-factor authentication
+is required to access HPC resources.
 
 ## HPC OnDemand Web Portal
+
+:::{important} Beginning **February 25, 2026**, SMU will be transitioning from Duo to Microsoft Authenticator as the primary multi-factor authentication (MFA). For more information, please visit the [Microsoft Authenticator](https://www.smu.edu/oit/services/microsoft-authenticator) page.
+:::
 
 ````{tab-set}
 ```{tab-item} M3
@@ -24,6 +28,10 @@ Secure shell access via SSH is available for SMU HPC systems. There are many
 SSH clients available for different operating systems. The following instructions 
 are for standard OpenSSH installations such as
 those found in Linux, macOS, and Windows (>=10) including WSL.
+
+```{warning}
+[Duo](https://www.smu.edu/oit/services/duo) is still required to access HPC resources via SSH. If you are not enrolled, please enroll here: [https://www.smu.edu/oit/services/duo](https://www.smu.edu/oit/services/duo).
+```
 
 ````{tab-set}
 ```{tab-item} M3
