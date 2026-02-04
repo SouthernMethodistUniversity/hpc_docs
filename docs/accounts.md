@@ -113,6 +113,9 @@ connection to [PerunaNet](https://www.smu.edu/oit/services/wifi) or the [VPN](ht
 
 ### HPC OnDemand Web Portal
 
+:::{important} Beginning **February 25, 2026**, SMU will be transitioning from Duo to Microsoft Authenticator as the primary multi-factor authentication (MFA). For more information, please visit the [MFA page](https://www.smu.edu/oit/services/microsoft-authenticator).
+:::
+
 ````{tab-set}
 ```{tab-item} M3
 M3 can be accessed directly from a browser via the [HPC OnDemand Web Portal](https://hpc.m3.smu.edu/), 
@@ -130,6 +133,10 @@ Secure shell access via SSH is available for SMU HPC systems. There are many
 SSH clients available for different operating systems. The following instructions 
 are for standard OpenSSH installations such as
 those found in Linux, macOS, and Windows (>=10) including WSL.
+
+```{warning}
+[Duo](https://www.smu.edu/oit/services/duo) is still required to access HPC resources via SSH. If you are not enrolled, please enroll here: [https://www.smu.edu/oit/services/duo](https://www.smu.edu/oit/services/duo)
+```
 
 ````{tab-set}
 ```{tab-item} M3
