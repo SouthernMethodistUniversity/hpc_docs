@@ -1,15 +1,11 @@
 type: warning
+dismissible: false
 msg: |
-  Reminder: running jobs now requires being on an active allocation in ColdFront (https://hpcaccess.smu.edu).
+  Beginning February 25, 2026, SMU will be transitioning from Duo to Microsoft Authenticator for most multi-factor authentication (MFA).
 
-  See the documentation for running jobs:
-  https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
+  Microsoft Authenticator will be required to access the HPC OnDemand web portal and the ColdFront account management platform. SSH access to the HPC systems will continue to require DUO.
 
-  **$WORK is End of Life**
+  For more information or to [opt-in early](https://smu.edu/passwordless), please visit the [Microsoft Authenticator service page](https://www.smu.edu/oit/services/microsoft-authenticator).
 
-  - As of August 15, 2025 $WORK is no longer supported. Any data remaining in $WORK should be moved as soon as possible.
-
-  Please contact help@smu.edu with [HPC] in the subject line with any questions
-  or concerns.
-
+  If you need assistance, please contact the [IT Help Desk](https://www.smu.edu/oit/help).
 
