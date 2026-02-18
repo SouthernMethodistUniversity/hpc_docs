@@ -243,8 +243,62 @@ Generating authentication code
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FE71YRZUVM to authenticate.
 ```
 
+In your web browser, go navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and
+enter the code in the log file (in this example `FE71YRZUVM`). You should treat this code like a password.
+Sharing it is a violation of [SMU policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use).
 
+![add code to Microsoft allow access page](../images/vscode/add_auth_code.png)
 
+After clicking next on the page, you will be asked to login to a Microsoft account.
+We recommend using your SMU account.
+
+After the access code has been added to a Microsoft account, the job script will progress and should
+look similar to:
+
+```
+Downloading VSCode CLI to: /lustre/scratch/client/users/peruna/tmp.0El3JhwWWT
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   162  100   162    0     0    507      0 --:--:-- --:--:-- --:--:--   507
+100 9816k  100 9816k    0     0  5866k      0  0:00:01  0:00:01 --:--:-- 7580k
+Generating authentication code
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FE71YRZUVM to authenticate.
+Starting code tunnel
+Running
+*
+* Visual Studio Code Server
+*
+* By using the software, you agree to
+* the Visual Studio Code Server License Terms (https://aka.ms/vscode-server-license) and
+* the Microsoft Privacy Statement (https://privacy.microsoft.com/en-US/privacystatement).
+*
+
+Open this link in your browser https://vscode.dev/tunnel/m3tunnel
+```
+
+### Connect VSCode to the Tunnel
+
+To connect your VSCode client, click on `Open Remote Window` in the bottom left corner
+of VSCode (it is an icon that looks similar to `><`.) That will open up options:
+
+![options presented by VSCode after clicking open remote window.](../images/vscode/options.png)
+
+Select the `Connect to Tunnel` option. Then select the `Microsoft Account` option:
+
+![options to select the type of account used for authorization. Typically this shows Microsoft and Github.](../images/vscode/auth_option.png)
+
+After selecting the `Microsoft Account` type, you may be prompted to login to your Microsoft account.
+Then you should be able to select the tunnel you created.
+
+![Shows m3tunnel running on c031 is Online as an option to connect to.](../images/vscode/tunnel.png)
+
+The tunnel name should match the name in the job script (`m3tunnel` in this example), the node it is running on
+(`c031` in this example) and it should show as `Online` (sometimes it takes a while for this status to update, so
+it is ok if the job is running and it says `Offline`.)
+
+The first time you connect to a tunnel, VSCode may install some components that allows it to connect to
+M3 or the SuperPOD. This can can 5-10 minutes, but should only be necessary the first time you connect or
+when VSCode has updates.
 
 ## SSH on Login Nodes
 
