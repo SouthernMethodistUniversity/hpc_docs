@@ -412,6 +412,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portal">Portal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunnel">Tunnel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-on-your-computer">Setup on your computer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-job-script">HPC Job Script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-the-job-script">Submitting the job script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-credentials">Connecting credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-vscode-to-the-tunnel">Connect VSCode to the Tunnel</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-on-login-nodes">SSH on Login Nodes</a></li>
 </ul>
             </nav>
@@ -429,9 +437,20 @@ document.write(`
 <p>Visual Studio Code is a popular code editor with extensions for coding
 in different languages. We recommend using Visual Studio Code through the
 <a class="reference external" href="https://hpc.m3.smu.edu/">HPC OnDemand Web Portal</a>. See instructions
-for the using the <a class="reference internal" href="#portal"><span class="std std-ref">portal version</span></a> below.</p>
+for the using the <a class="reference internal" href="#portal"><span class="std std-ref">portal version (preferred)</span></a> below.
+You can also use <a class="reference internal" href="#tunnel"><span class="std std-ref">Remote Tunnels</span></a> submitted via batch jobs.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We understand that research and code development often requires interactive
+use. However, interactive use is inherently inefficient and often results
+in substantial HPC resources sitting idle. We highly recommend submitting
+scripted and batched jobs whenever possible. If you would like assistance
+converting an interactive workflow, please <a class="reference internal" href="../about/contact.html#about-contact"><span class="std std-ref">contact us.</span></a>.</p>
+</div>
 <section id="portal">
 <h2>Portal<a class="headerlink" href="#portal" title="Link to this heading">#</a></h2>
+<p>Using the <a class="reference external" href="https://hpc.m3.smu.edu/">HPC OnDemand Web Portal</a> portal is the
+preferred and easiest way to use Visual Studio Code on M3.</p>
 <ol class="arabic simple">
 <li><p>Select “Visual Studio Code” from the “Interactive Apps” drop-down menu.</p></li>
 <li><p>Select options required for your Visual Studio Code instance. These
@@ -458,13 +477,246 @@ Interactive Sessions” tab in your browser and select “Delete” and
 “Confirm”, when prompted, to cancel the job.</p></li>
 </ol>
 </section>
+<section id="tunnel">
+<h2>Tunnel<a class="headerlink" href="#tunnel" title="Link to this heading">#</a></h2>
+<p>Visual Studio Code can also be used on M3 or the SuperPOD by starting
+a SSH tunnel in a job. The following is the recommended way of starting
+a session.</p>
+<section id="setup-on-your-computer">
+<h3>Setup on your computer<a class="headerlink" href="#setup-on-your-computer" title="Link to this heading">#</a></h3>
+<p>In order to use the remote tunnel, you will need the following:</p>
+<ul class="simple">
+<li><p>A recent version of <a class="reference external" href="https://code.visualstudio.com/download">VSCode</a>.</p></li>
+<li><p>Install the following extension (these extensions are all published by Microsoft)</p>
+<ul>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer">Remote Explorer</a></p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a></p></li>
+<li><p><a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server">Remote - Tunnels</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="hpc-job-script">
+<h3>HPC Job Script<a class="headerlink" href="#hpc-job-script" title="Link to this heading">#</a></h3>
+<p>On either M3 or the SuperPOD, copy the following job script and make any necessary modifications.
+You will need to change the Slurm account to an active allocation in <a class="reference external" href="https://hpcaccess.smu.edu">ColdFront</a>
+that you have access to – the one in this script is an example and will not run.
+You may need to adjust the requested resources to match your needs, for instance, if you need
+more cores or memory.</p>
+<p>We’ll call this file <code class="docutils literal notranslate"><span class="pre">vscode_tunnel.sbatch</span></code>, but you can name it something else if you like.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -e</span>
+<span class="c1">#SBATCH -J code_tunnel        # job name (optional)</span>
+<span class="c1">#SBATCH -p dev                # partition</span>
+<span class="c1">#SBATCH --time=0-01:00:00     # time in Days-HH:MM:SS</span>
+<span class="c1">#SBATCH -c 1                  # number of cores</span>
+<span class="c1">#SBATCH --mem=4G              # memory in GB</span>
+<span class="c1">#SBATCH -A peruna_0001        # slurm account to use (MUST CHANGE!)</span>
+<span class="c1">#SBATCH --signal=B:USR1@15    # send interrupt signal 15s before end</span>
+
+<span class="c1"># Set a name for the tunnel. We recommend using something</span>
+<span class="c1"># that identifies the system, lik m3tunnel on M3 and</span>
+<span class="c1"># superpodtunnel on the SuperPOD</span>
+<span class="nv">TUNNEL_NAME</span><span class="o">=</span><span class="s2">&quot;m3tunnel&quot;</span>
+
+<span class="c1">#########################################################</span>
+<span class="c1"># You shouldn&#39;t need to change anything below here.     #</span>
+<span class="c1">#########################################################</span>
+
+<span class="c1"># Function executed when signal USR1 is sent</span>
+<span class="c1"># before the job ends to clean up running processes</span>
+<span class="k">function</span><span class="w"> </span>sig_handler<span class="o">()</span>
+<span class="o">{</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;function sig_handler called&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Signal trapped -  `date`&quot;</span>
+
+<span class="w">        </span><span class="c1"># stop any running commands</span>
+<span class="w">        </span><span class="c1"># Check if the AUTH PID exists</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>AUTH_PID<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c1"># Check if the auth process is running</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUTH_PID</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c1"># kill it, the -15 tries to kill &quot;nicely&quot;</span>
+<span class="w">            </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="nv">$AUTH_PID</span>
+<span class="w">          </span><span class="k">fi</span>
+<span class="w">        </span><span class="k">fi</span>
+
+<span class="w">        </span><span class="c1"># check if the TUNNEL PID exists</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>TUNNEL_PID<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c1"># Check if the auth process is running</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TUNNEL_PID</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c1"># kill it, the -15 tries to kill &quot;nicely&quot;</span>
+<span class="w">            </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="nv">$TUNNEL_PID</span>
+<span class="w">          </span><span class="k">fi</span>
+<span class="w">        </span><span class="k">fi</span>
+
+<span class="w">        </span><span class="c1"># delete the temporary folder if it exists</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>JOBTEMP<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOBTEMPR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$JOBTEMP</span>
+<span class="w">          </span><span class="k">fi</span>
+<span class="w">        </span><span class="k">fi</span>
+
+<span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="o">}</span>
+
+<span class="c1"># &quot;trap&quot; or wait for the signal USR1 and call the sig_handler </span>
+<span class="c1"># helper function to clean up temporary files and running</span>
+<span class="c1"># processes</span>
+<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;sig_handler&#39;</span><span class="w"> </span>SIGUSR1
+
+<span class="c1"># create a temp directory in $SCRATCH to download VSCode</span>
+<span class="c1"># cli tools and run out of</span>
+<span class="c1"># Reminder $SCRATCH has a 60 purge policy -- files</span>
+<span class="c1"># older than 60 days may be permanently deleted without warning</span>
+<span class="c1"># This will only be used for temporary files and this script</span>
+<span class="c1"># will try to delete them before the job ends</span>
+<span class="nv">JOBTEMP</span><span class="o">=</span><span class="k">$(</span><span class="nv">TMPDIR</span><span class="o">=</span><span class="nv">$SCRATCH</span><span class="w"> </span>mktemp<span class="w"> </span>-d<span class="k">)</span>
+
+<span class="c1"># Download the latest stable version of VSCode CLI tools</span>
+<span class="c1"># and extract it to the JOBTEMP folder</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Downloading VSCode CLI to: </span><span class="si">${</span><span class="nv">JOBTEMP</span><span class="si">}</span><span class="s2">&quot;</span>
+curl<span class="w"> </span>-Lk<span class="w"> </span><span class="s1">&#39;https://code.visualstudio.com/sha/download?build=stable&amp;os=cli-alpine-x64&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-C<span class="w"> </span><span class="nv">$JOBTEMP</span><span class="w"> </span>-xzf<span class="w"> </span>-
+
+<span class="c1"># Generate a login code for the tunnel using Microsoft as the authenticator</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generating authentication code&quot;</span>
+<span class="nv">VSCODE_CLI_DISABLE_KEYCHAIN_ENCRYPT</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">$JOBTEMP</span>/code<span class="w"> </span>tunnel<span class="w"> </span>user<span class="w"> </span>login<span class="w"> </span>--provider<span class="w"> </span>microsoft<span class="w"> </span><span class="p">&amp;</span>
+
+<span class="c1"># get PID of login code process</span>
+<span class="nv">AUTH_PID</span><span class="o">=</span><span class="nv">$!</span>
+
+<span class="c1"># wait for authentication to succeed</span>
+<span class="nb">wait</span><span class="w"> </span><span class="si">${</span><span class="nv">AUTH_PID</span><span class="si">}</span>
+
+<span class="c1"># Start the tunnel</span>
+<span class="c1"># By running this, you are accepting VSCode&#39;s license. We highly recommend</span>
+<span class="c1"># reviewing the license first: https://code.visualstudio.com/license</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting code tunnel&quot;</span>
+<span class="nv">$JOBTEMP</span>/code<span class="w"> </span>tunnel<span class="w"> </span>--accept-server-license-terms<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">TUNNEL_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>
+
+<span class="c1"># Get PID of code tunnel</span>
+<span class="nv">TUNNEL_PID</span><span class="o">=</span><span class="nv">$!</span>
+
+<span class="c1"># Keep running until we get the interrupt signal or the code server</span>
+<span class="c1"># session ends</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running&quot;</span>
+<span class="nb">wait</span><span class="w"> </span><span class="si">${</span><span class="nv">TUNNEL_PID</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="submitting-the-job-script">
+<h3>Submitting the job script<a class="headerlink" href="#submitting-the-job-script" title="Link to this heading">#</a></h3>
+<p>To submit the job script, call</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>vscode_tunnel.sbatch
+</pre></div>
+</div>
+<p>from a login node. You can use the <a class="reference external" href="https://hpc.m3.smu.edu/pun/sys/shell/ssh/129.119.70.4">web portal terminal</a>
+to submit to M3 or you can use SSH session (the SuperPOD is only available via SSH).</p>
+<p>Once you submit the job script, you should see something like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">22880401</span>
+</pre></div>
+</div>
+<p>and you can monitor when the job starts or it’s state in the queue with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>--me
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">NODELIST(REASON)</span></code> column, the reasons <code class="docutils literal notranslate"><span class="pre">Priority</span></code>, <code class="docutils literal notranslate"><span class="pre">BeginTime</span></code>, or <code class="docutils literal notranslate"><span class="pre">Resources</span></code> are
+normal and mean your job is waiting for its turn to start. If you see other reasons it may
+indicate a issue with the job. The codes are described in the
+<a class="reference external" href="https://slurm.schedmd.com/job_reason_codes.html">Slurm documentation</a> or you can
+<a class="reference internal" href="../about/contact.html#about-contact"><span class="std std-ref">contact us</span></a> with questions about the status.</p>
+<p>The amount of time a job takes to start is dependent on how busy the system currently is.
+Estimated start times are sometimes available with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>--me<span class="w"> </span>--start
+</pre></div>
+</div>
+<p>Estimated start times are based on job requests currently running or waiting in the queue.
+If a start time is given, jobs typically (but not always) start before that time.
+If the estimate is NA, the start time was not estimated – the job scheduler does only
+computes estimates for a limited number of jobs at a time, so this is not unusual.</p>
+<p>Once the job starts, the output of <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> will look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">22880401</span><span class="w">       </span>dev<span class="w"> </span>code_tun<span class="w"> </span>peruna<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:19<span class="w">      </span><span class="m">1</span><span class="w"> </span>c031
+</pre></div>
+</div>
+<p>In this case, this tells us the job has been running for 19 seconds on node <code class="docutils literal notranslate"><span class="pre">c031</span></code>.
+If you would like the system to email you when the job starts, you can include the
+following at the top of the job script before you submit (email will only be sent
+to SMU email addresses.)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mail-type=BEGIN</span>
+<span class="c1">#SBATCH --mail-user=peruna@smu.edu</span>
+</pre></div>
+</div>
+</section>
+<section id="connecting-credentials">
+<h3>Connecting credentials<a class="headerlink" href="#connecting-credentials" title="Link to this heading">#</a></h3>
+<p>Once your job starts, it should generate an output file with a name like
+<code class="docutils literal notranslate"><span class="pre">slurm-22880401.out</span></code>. The number will change each time you run and is the
+job id that was printed out when you submitted the job script.</p>
+<p>From a terminal, you can print out the file with <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">slurm-22880401.out</span></code> and
+it should look something like (it may need to run for a minute or so before
+this is available):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Downloading</span> <span class="n">VSCode</span> <span class="n">CLI</span> <span class="n">to</span><span class="p">:</span> <span class="o">/</span><span class="n">lustre</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">client</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">peruna</span><span class="o">/</span><span class="n">tmp</span><span class="mf">.0</span><span class="n">El3JhwWWT</span>
+  <span class="o">%</span> <span class="n">Total</span>    <span class="o">%</span> <span class="n">Received</span> <span class="o">%</span> <span class="n">Xferd</span>  <span class="n">Average</span> <span class="n">Speed</span>   <span class="n">Time</span>    <span class="n">Time</span>     <span class="n">Time</span>  <span class="n">Current</span>
+                                 <span class="n">Dload</span>  <span class="n">Upload</span>   <span class="n">Total</span>   <span class="n">Spent</span>    <span class="n">Left</span>  <span class="n">Speed</span>
+<span class="mi">100</span>   <span class="mi">162</span>  <span class="mi">100</span>   <span class="mi">162</span>    <span class="mi">0</span>     <span class="mi">0</span>    <span class="mi">507</span>      <span class="mi">0</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span>   <span class="mi">507</span>
+<span class="mi">100</span> <span class="mi">9816</span><span class="n">k</span>  <span class="mi">100</span> <span class="mi">9816</span><span class="n">k</span>    <span class="mi">0</span>     <span class="mi">0</span>  <span class="mi">5866</span><span class="n">k</span>      <span class="mi">0</span>  <span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span>  <span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="mi">7580</span><span class="n">k</span>
+<span class="n">Generating</span> <span class="n">authentication</span> <span class="n">code</span>
+<span class="n">To</span> <span class="n">sign</span> <span class="ow">in</span><span class="p">,</span> <span class="n">use</span> <span class="n">a</span> <span class="n">web</span> <span class="n">browser</span> <span class="n">to</span> <span class="nb">open</span> <span class="n">the</span> <span class="n">page</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">devicelogin</span> <span class="ow">and</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">code</span> <span class="n">FE71YRZUVM</span> <span class="n">to</span> <span class="n">authenticate</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>In your web browser, go navigate to <a class="reference external" href="https://microsoft.com/devicelogin">https://microsoft.com/devicelogin</a> and
+enter the code in the log file (in this example <code class="docutils literal notranslate"><span class="pre">FE71YRZUVM</span></code>). You should treat this code like a password.
+Sharing it is a violation of <a class="reference external" href="https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use">SMU policy</a>.</p>
+<p><img alt="add code to Microsoft allow access page" src="../_images/add_auth_code.png" /></p>
+<p>After clicking next on the page, you will be asked to login to a Microsoft account.
+We recommend using your SMU account.</p>
+<p>After the access code has been added to a Microsoft account, the job script will progress and should
+look similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Downloading</span> <span class="n">VSCode</span> <span class="n">CLI</span> <span class="n">to</span><span class="p">:</span> <span class="o">/</span><span class="n">lustre</span><span class="o">/</span><span class="n">scratch</span><span class="o">/</span><span class="n">client</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">peruna</span><span class="o">/</span><span class="n">tmp</span><span class="mf">.0</span><span class="n">El3JhwWWT</span>
+  <span class="o">%</span> <span class="n">Total</span>    <span class="o">%</span> <span class="n">Received</span> <span class="o">%</span> <span class="n">Xferd</span>  <span class="n">Average</span> <span class="n">Speed</span>   <span class="n">Time</span>    <span class="n">Time</span>     <span class="n">Time</span>  <span class="n">Current</span>
+                                 <span class="n">Dload</span>  <span class="n">Upload</span>   <span class="n">Total</span>   <span class="n">Spent</span>    <span class="n">Left</span>  <span class="n">Speed</span>
+<span class="mi">100</span>   <span class="mi">162</span>  <span class="mi">100</span>   <span class="mi">162</span>    <span class="mi">0</span>     <span class="mi">0</span>    <span class="mi">507</span>      <span class="mi">0</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span>   <span class="mi">507</span>
+<span class="mi">100</span> <span class="mi">9816</span><span class="n">k</span>  <span class="mi">100</span> <span class="mi">9816</span><span class="n">k</span>    <span class="mi">0</span>     <span class="mi">0</span>  <span class="mi">5866</span><span class="n">k</span>      <span class="mi">0</span>  <span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span>  <span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span> <span class="o">--</span><span class="p">:</span><span class="o">--</span><span class="p">:</span><span class="o">--</span> <span class="mi">7580</span><span class="n">k</span>
+<span class="n">Generating</span> <span class="n">authentication</span> <span class="n">code</span>
+<span class="n">To</span> <span class="n">sign</span> <span class="ow">in</span><span class="p">,</span> <span class="n">use</span> <span class="n">a</span> <span class="n">web</span> <span class="n">browser</span> <span class="n">to</span> <span class="nb">open</span> <span class="n">the</span> <span class="n">page</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">devicelogin</span> <span class="ow">and</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">code</span> <span class="n">FE71YRZUVM</span> <span class="n">to</span> <span class="n">authenticate</span><span class="o">.</span>
+<span class="n">Starting</span> <span class="n">code</span> <span class="n">tunnel</span>
+<span class="n">Running</span>
+<span class="o">*</span>
+<span class="o">*</span> <span class="n">Visual</span> <span class="n">Studio</span> <span class="n">Code</span> <span class="n">Server</span>
+<span class="o">*</span>
+<span class="o">*</span> <span class="n">By</span> <span class="n">using</span> <span class="n">the</span> <span class="n">software</span><span class="p">,</span> <span class="n">you</span> <span class="n">agree</span> <span class="n">to</span>
+<span class="o">*</span> <span class="n">the</span> <span class="n">Visual</span> <span class="n">Studio</span> <span class="n">Code</span> <span class="n">Server</span> <span class="n">License</span> <span class="n">Terms</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">aka</span><span class="o">.</span><span class="n">ms</span><span class="o">/</span><span class="n">vscode</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">license</span><span class="p">)</span> <span class="ow">and</span>
+<span class="o">*</span> <span class="n">the</span> <span class="n">Microsoft</span> <span class="n">Privacy</span> <span class="n">Statement</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">privacy</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">en</span><span class="o">-</span><span class="n">US</span><span class="o">/</span><span class="n">privacystatement</span><span class="p">)</span><span class="o">.</span>
+<span class="o">*</span>
+
+<span class="n">Open</span> <span class="n">this</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">browser</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">vscode</span><span class="o">.</span><span class="n">dev</span><span class="o">/</span><span class="n">tunnel</span><span class="o">/</span><span class="n">m3tunnel</span>
+</pre></div>
+</div>
+</section>
+<section id="connect-vscode-to-the-tunnel">
+<h3>Connect VSCode to the Tunnel<a class="headerlink" href="#connect-vscode-to-the-tunnel" title="Link to this heading">#</a></h3>
+<p>To connect your VSCode client, click on <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">Remote</span> <span class="pre">Window</span></code> in the bottom left corner
+of VSCode (it is an icon that looks similar to <code class="docutils literal notranslate"><span class="pre">&gt;&lt;</span></code>.) That will open up options:</p>
+<p><img alt="options presented by VSCode after clicking open remote window." src="../_images/options.png" /></p>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">Connect</span> <span class="pre">to</span> <span class="pre">Tunnel</span></code> option. Then select the <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Account</span></code> option:</p>
+<p><img alt="options to select the type of account used for authorization. Typically this shows Microsoft and Github." src="../_images/auth_option.png" /></p>
+<p>After selecting the <code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Account</span></code> type, you may be prompted to login to your Microsoft account.
+Then you should be able to select the tunnel you created.</p>
+<p><img alt="Shows m3tunnel running on c031 is Online as an option to connect to." src="../_images/tunnel.png" /></p>
+<p>The tunnel name should match the name in the job script (<code class="docutils literal notranslate"><span class="pre">m3tunnel</span></code> in this example), the node it is running on
+(<code class="docutils literal notranslate"><span class="pre">c031</span></code> in this example) and it should show as <code class="docutils literal notranslate"><span class="pre">Online</span></code> (sometimes it takes a while for this status to update, so
+it is ok if the job is running and it says <code class="docutils literal notranslate"><span class="pre">Offline</span></code>.)</p>
+<p>The first time you connect to a tunnel, VSCode may install some components that allows it to connect to
+M3 or the SuperPOD. This can can 5-10 minutes, but should only be necessary the first time you connect or
+when VSCode has updates.</p>
+</section>
+</section>
 <section id="ssh-on-login-nodes">
 <h2>SSH on Login Nodes<a class="headerlink" href="#ssh-on-login-nodes" title="Link to this heading">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>As a reminder, running code on login nodes is prohibited. This method
 is intended only for code editing. If you want to execute code from
-Visual Studio Code, please use the <a class="reference internal" href="#portal"><span class="std std-ref">portal version</span></a>.</p>
+Visual Studio Code, please use the <a class="reference internal" href="#portal"><span class="std std-ref">portal version</span></a>
+or <a class="reference internal" href="#tunnel"><span class="std std-ref">Remote Tunnels</span></a>.</p>
 </div>
 <p>To connect via SSH to a login node, follow the
 <a class="reference external" href="https://code.visualstudio.com/docs/remote/ssh">Remove Development using SSH</a> instructions
@@ -537,6 +789,14 @@ for using the Remote-SSH feature.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portal">Portal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunnel">Tunnel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-on-your-computer">Setup on your computer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-job-script">HPC Job Script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-the-job-script">Submitting the job script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-credentials">Connecting credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-vscode-to-the-tunnel">Connect VSCode to the Tunnel</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-on-login-nodes">SSH on Login Nodes</a></li>
 </ul>
   </nav></div>
