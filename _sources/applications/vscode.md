@@ -204,7 +204,7 @@ squeue --me --start
 
 Estimated start times are based on job requests currently running or waiting in the queue.
 If a start time is given, jobs typically (but not always) start before that time.
-If the estimate is NA, the start time was not estimated -- the job scheduler does only
+If the estimate is NA, the start time was not estimated -- the job scheduler only
 computes estimates for a limited number of jobs at a time, so this is not unusual.
 
 Once the job starts, the output of `squeue --me` will look like:
@@ -215,8 +215,8 @@ Once the job starts, the output of `squeue --me` will look like:
 
 In this case, this tells us the job has been running for 19 seconds on node `c031`.
 If you would like the system to email you when the job starts, you can include the
-following at the top of the job script before you submit (email will only be sent
-to SMU email addresses.)
+following at the top of the job script with the other `#SBATCH` lines before you submit 
+(email will only be sent to SMU email addresses.)
 
 ```bash
 #SBATCH --mail-type=BEGIN
@@ -243,7 +243,7 @@ Generating authentication code
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FE71YRZUVM to authenticate.
 ```
 
-In your web browser, go navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and
+In your web browser, navigate to [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) and
 enter the code in the log file (in this example `FE71YRZUVM`). You should treat this code like a password.
 Sharing it is a violation of [SMU policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use).
 

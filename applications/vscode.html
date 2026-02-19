@@ -630,7 +630,7 @@ Estimated start times are sometimes available with</p>
 </div>
 <p>Estimated start times are based on job requests currently running or waiting in the queue.
 If a start time is given, jobs typically (but not always) start before that time.
-If the estimate is NA, the start time was not estimated – the job scheduler does only
+If the estimate is NA, the start time was not estimated – the job scheduler only
 computes estimates for a limited number of jobs at a time, so this is not unusual.</p>
 <p>Once the job starts, the output of <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> will look like:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">22880401</span><span class="w">       </span>dev<span class="w"> </span>code_tun<span class="w"> </span>peruna<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:19<span class="w">      </span><span class="m">1</span><span class="w"> </span>c031
@@ -638,8 +638,8 @@ computes estimates for a limited number of jobs at a time, so this is not unusua
 </div>
 <p>In this case, this tells us the job has been running for 19 seconds on node <code class="docutils literal notranslate"><span class="pre">c031</span></code>.
 If you would like the system to email you when the job starts, you can include the
-following at the top of the job script before you submit (email will only be sent
-to SMU email addresses.)</p>
+following at the top of the job script with the other <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> lines before you submit
+(email will only be sent to SMU email addresses.)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --mail-type=BEGIN</span>
 <span class="c1">#SBATCH --mail-user=peruna@smu.edu</span>
 </pre></div>
@@ -662,7 +662,7 @@ this is available):</p>
 <span class="n">To</span> <span class="n">sign</span> <span class="ow">in</span><span class="p">,</span> <span class="n">use</span> <span class="n">a</span> <span class="n">web</span> <span class="n">browser</span> <span class="n">to</span> <span class="nb">open</span> <span class="n">the</span> <span class="n">page</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">devicelogin</span> <span class="ow">and</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">code</span> <span class="n">FE71YRZUVM</span> <span class="n">to</span> <span class="n">authenticate</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>In your web browser, go navigate to <a class="reference external" href="https://microsoft.com/devicelogin">https://microsoft.com/devicelogin</a> and
+<p>In your web browser, navigate to <a class="reference external" href="https://microsoft.com/devicelogin">https://microsoft.com/devicelogin</a> and
 enter the code in the log file (in this example <code class="docutils literal notranslate"><span class="pre">FE71YRZUVM</span></code>). You should treat this code like a password.
 Sharing it is a violation of <a class="reference external" href="https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use">SMU policy</a>.</p>
 <p><img alt="add code to Microsoft allow access page" src="../_images/add_auth_code.png" /></p>
