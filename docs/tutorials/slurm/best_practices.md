@@ -80,7 +80,7 @@ $ reportseff -u $USER --since d=1
   3575979  CANCELLED    00:00:43   1.2%     14.0%    12.6%  
 ```
 
-:::{Note}
+:::{note}
 If you command outputs a large number of jobs, the formatting is sometimes not clean.
 :::
 
@@ -100,7 +100,7 @@ If your program is behaving as expected, consider reducing the number of cores y
 
 The memory efficiency represents the percentage of the requested memory that was used by your job. Realistically, anything about `50%` memory efficiency is good. Due to how memory is measured, programs that dynamically allocate and deallocate memory may fail as a result of running out of memory even if the reported usage is "low." If you know your program allocates most of the memory it uses at the beginning, aiming for `80-90%` efficiency is a good target.
 
-:::{Note}
+:::{note}
 Memory efficiency is hard to measure. SLURM periodically samples memory usage, so it often misses large spikes of increased memory usage that occurs between samples. It is not unsual for jobs to temporarily use 2x or more memory than reported.
 :::
 
