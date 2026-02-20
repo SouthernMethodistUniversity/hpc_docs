@@ -1,0 +1,15 @@
+name: Accessibility Scanner
+on: workflow_dispatch # Run manually
+
+jobs:
+  accessibility_scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: github/accessibility-scanner@v2
+        with:
+          urls: | # Provide a newline-delimited list of URLs to scan; more information below.
+            https://southernmethodistuniversity.github.io/hpc_docs/
+          repository: "SouthernMethodistUniversity/hpc_docs" 
+          token: ${{ secrets.A11Y_SCAN_ACCESS_TOKEN }} 
+          cache_key: "hpc_docs_a11y_scan" # Provide a filename that will be used when caching results. We recommend including the name or domain of the site being scanned.
+          skip_copilot_assignment: true # Optional: Set to true to skip assigning issues to GitHub Copilot (or if you don't have GitHub Copilot)
