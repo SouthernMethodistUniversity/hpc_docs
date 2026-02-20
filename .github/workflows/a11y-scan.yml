@@ -9,6 +9,19 @@ jobs:
         with:
           urls: | # Provide a newline-delimited list of URLs to scan; more information below.
             https://southernmethodistuniversity.github.io/hpc_docs/
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/qs_instructor.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/qs_student.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_change_project.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_class.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_remove_users.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/request_change_allocation.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/add_metadata.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/usage_stats.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/archive_project.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/renewals.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/faq.html
+            https://southernmethodistuniversity.github.io/hpc_docs/coldfront/optout.html
           repository: "SouthernMethodistUniversity/hpc_docs" 
           token: ${{ secrets.A11Y_SCAN_ACCESS_TOKEN }} 
           cache_key: "hpc_docs_a11y_scan" # Provide a filename that will be used when caching results. We recommend including the name or domain of the site being scanned.

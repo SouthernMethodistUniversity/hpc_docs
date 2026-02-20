@@ -66,15 +66,15 @@ Click the start button above the side the data is coming from to start the trans
 
 You may want to adjust the transfer settings (for example, to only update new or changed files)
 
-:::{Note}
+:::{note}
 You do not have to stay on the Globus site while the transfer is happening. It will send an email when completed.
 :::
 
-:::{Note}
+:::{note}
 The transfers can be slow. We typically see between 1-5 MBPS between Box and M3 (connection speeds to other services may vary).
 :::
 
-:::{Note}
+:::{note}
 Box has a file size limit of 50GB
 :::
 
