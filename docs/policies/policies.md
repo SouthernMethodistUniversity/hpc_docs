@@ -39,3 +39,26 @@ one.
 Access to data transfer nodes is available by request and legitimate need.
 These nodes are meant only for transferring large amounts data to/from HPC resources.
 They should not be used for computational jobs.
+
+## AI Guidance
+
+We realize that AI can play an important role in research. AI can
+also impact HPC services, security, data, and compliance with funding agencies,
+laws, and university policies.
+
+The following are some key points to consider when using AI tools. While we
+direct these specifically at AI, they also apply to any software, tools, or commands
+run on SMU HPC systems.
+
+- Providing an AI with your SMU or HPC credentials or using AI tools to circumvent
+  system logins is a violation of [SMU policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use).
+- Users are responsible for actions taken by any AI they choose to use. AI tools are
+  often stochastic in nature and may not behave as expected. It is possible that an AI tool
+  may take unexpected actions that adversely impact research (for example, AI tools
+  may corrupt or permanently delete data even if explicitly instructed not to.)
+- Only share data with AI tools that you are allowed to share. Even if you are allowed to
+  share data, we recommend exercising caution, especially if the data is sent to a third
+  party service (these services may use your research to train their models or for other
+  purposes.)
+
+We highly recommend reviewing SMU's [Generative AI Guidance](https://www.smu.edu/oit/ai).
