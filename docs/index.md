@@ -5,7 +5,7 @@
 
 # Welcome
 
-The SMU's high-performance computing (HPC) resources (M3 and NVIDIA DGX
+The SMU high-performance computing (HPC) resources (M3 and NVIDIA DGX
 SuperPOD) are shared-access super computers for computational research. The
 Office of Information Technology (OIT) and the O'Donnell Data Science and
 Research Computing Institute (ODSRCI) work together to provide the
