@@ -13,6 +13,16 @@ such as MATLAB, Python, and R are also installed in addition to the
 domain specific software packages that SMU researchers depend on for
 their work.
 
+Quick Facts:
+Primary Cluster: ManeFrame III (M3)
+AI/GPU cluster: NVIDIA DGX SuperPOD
+Job Scheduler: SLURM
+Operating System: Ubuntu 22.04
+Interactive Portal: Open OnDemand
+Shared Project Storage: 3.5 PB
+
+
+
 | HPC System           | M1 (Retired)       | M2 (Retired) | M2 (Retired) | SuperPOD     | M3           |
 |----------------------|--------------------|--------------|--------------|--------------| -------------|
 | Year                 | 2014               | 2017         | 2019         | 2022         | 2023         |
