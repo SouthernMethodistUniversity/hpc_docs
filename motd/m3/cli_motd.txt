@@ -46,7 +46,7 @@ or concerns.
 Maintenance
 ===========
 
-Maintenance on M3 is scheduled between between 6AM, Tuesday, March 17 and 
+Maintenance on M3 is scheduled between between 6AM, Wednesday, March 18 and 
 6PM Thursday, March 19. It will not be possible to access the system or
 run jobs during this time.
 
