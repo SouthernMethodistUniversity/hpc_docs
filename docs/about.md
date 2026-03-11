@@ -26,7 +26,7 @@ Shared Project Storage: 3.5 PB
 | HPC System           | M1 (Retired)       | M2 (Retired) | M2 (Retired) | SuperPOD     | M3           |
 |----------------------|--------------------|--------------|--------------|--------------| -------------|
 | Year                 | 2014               | 2017         | 2019         | 2022         | 2023         |
-| Compute Ability      | 104 TFLOPS         | 630 TFLOPS   | 870 TFLOPS   | 1,644 TFLOPS | 1,077 TFLOPS |
+| Compute Ability      | 104 TFLOPS         | 630 TFLOPS   | 870 TFLOPS   | 1,644 TFLOPS | 1,077 TFLOPS (trillions of floating-point operations per second)|
 | Number of Nodes      | 1,104              | 349          | 354          | 20           | 181          |
 | CPU Cores            | 8,832              | 11,088       | 11,276       | 2,560        | 22,892       |
 | Total GPU Cores      | 0                  | 132,608      | 275,968      | 1,392,640    | 122,880      |
