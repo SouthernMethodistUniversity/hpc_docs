@@ -1,4 +1,4 @@
-# About
+This page provides an overview of SMU's high-performance computing systems, including ManeFrame III (M3) and the NVIDIA DGX SuperPOD. It summarizes the hardware resources, configurations, and specialized nodes available to researchers. Use this page to understand the capabilities of SMU HPC systems before running jobs or requesting resources. # About
 
 SMU's high-performance computing (HPC) clusters, M3 and the NVIDIA DGX
 SuperPOD, feature state-of-the-art CPUs, accelerators, and networking
