@@ -36,3 +36,7 @@ These limits are being implemented to maintain the stability of the system for a
 ## Reminder about changes to DUO and Microsoft Authenticator
 
 Most SMU services and logins have transitioned to Microsoft Authenticator. This includes the Open OnDemand web portal (https://hpc.smu.edu) and ColdFront (https://hpcaccess.smu.edu). Please see https://www.smu.edu/oit/services/microsoft-authenticator for more details. Access to HPC systems using SSH will continue to require DUO authentication. Microsoft Authenticator will not work for SSH login sessions. We recommend that you keep the DUO app on your phone or other devices if you plan to use HPC services.
+
+## Questions or Concerns
+
+Please [contact us.](about:contact) if you have any questions or concerns about the scheduled maintenance.
