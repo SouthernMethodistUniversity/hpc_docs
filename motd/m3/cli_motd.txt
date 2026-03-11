@@ -27,21 +27,27 @@ $SCRATCH         | 60 days | Temporary scratch space
 
 IMPORTANT ANNOUNCEMENTS:
 
-Reminder: running jobs now requires being on an active allocation in ColdFront (https://hpcaccess.smu.edu).
-
 See the documentation for running jobs:
 https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
 
-====================
+=====================
 $WORK is End of Life!
-====================
+=====================
 
 As of August 15, 2025 $WORK is no longer supported. 
 Any data remaining in $WORK should be moved as soon as possible.
-$WORK directories are subject to be deprovisioned.
+$WORK directories are subject to be deprovisioned (permanently deleted).
 
 Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.
+
+===========
+Maintenance
+===========
+
+Maintenance on M3 is scheduled between between 6AM, Tuesday, March 17 and 
+6PM Thursday, March 19. It will not be possible to access the system or
+run jobs during this time.
 
 ********************************************************************************
