@@ -50,4 +50,7 @@ Maintenance on M3 is scheduled between between 6AM, Tuesday, March 17 and
 6PM Thursday, March 19. It will not be possible to access the system or
 run jobs during this time.
 
+For more details see:
+https://southernmethodistuniversity.github.io/hpc_docs/announcements/maintenance_sb26.html
+
 ********************************************************************************
