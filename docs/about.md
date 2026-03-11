@@ -6,7 +6,7 @@ technologies. These systems provide high memory capacity per node and advanced i
 
 The clusters provides a familiar interactive experience for researchers,
 which includes the Ubuntu Linux operating system, the SLURM resource
-scheduler (software used to submit and manage jobs on the cluster), and the Lmod environment module system. Additionally,
+scheduler (software used to submit and manage jobs on the cluster), and the Lmod environment module system (tool used to load software and programming environments). Additionally,
 familiar development tool chains are available including the GCC, Intel,
 and NVIDIA compiler suites. Optimized high-level programming environments
 such as MATLAB, Python, and R are also installed in addition to the
