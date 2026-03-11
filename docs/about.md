@@ -2,8 +2,7 @@ This page provides an overview of SMU's high-performance computing systems, incl
 
 SMU's high-performance computing (HPC) clusters, M3 and the NVIDIA DGX
 SuperPOD, feature state-of-the-art CPUs, accelerators, and networking
-technologies, high memory capacity per node, and advanced interactive
-experiences via the Open OnDemand Portal.
+technologies. These systems provide high memory capacity per node and advanced interactive access through the Open OnDemand Portal.
 
 The clusters provides a familiar interactive experience for researchers,
 which includes the Ubuntu Linux operating system, the SLURM resource
