@@ -52,7 +52,7 @@ Shared Project Storage: 3.5 PB
 | Cores/Node         | 128             | 128           | 18                   |
 | Memory/Node        | 512 GB          | 2 TB          | 756 GB               |
 | Local Scratch/Node | None            | 4.3 TB        | None                 |
-| Interconnect       | 200 Gb/s        | 200 Gb/s      | 100 Gb/s             |
+| Interconnect       | 200 Gb/s (high speed network connecting compute nodes)      | 200 Gb/s      | 100 Gb/s             |
 
 ## NVIDIA DGX SuperPOD (MP)
 
