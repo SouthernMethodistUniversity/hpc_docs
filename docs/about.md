@@ -130,7 +130,7 @@ Tensor cores, and 32 GB CoWoS HBM2 memory. The V100 GPU is based on the
 Volta architecture and an extremely high bandwidth (900 GB/s) stacked
 memory architecture.
 
-The queue for these nodes, `fp-gpgpu-4`, is generally available to M3
+The fp-gpgpu-3 queue is available to M3
 users with the following restrictions.
 
 -   The maximum job duration for users not in Dr. Cai\'s group is 7
@@ -146,8 +146,7 @@ dual AMD EPYC 7763 2.45 Ghz 64-Core \"Zen 3\" processors, 512 GB of memory,
 and AMD Instinct MI210 GPU with 64 GB of HBM2e memory and 6,656 stream processors.
 This node is also equipped with AMD/Xilinx Alveo U55C FPGA.
 
-This node `ga001`, is currently available only with permision
-from Dr. Matthews. 
+The node ga001 is currently available only with permission from Dr. Matthews.
 
 ## Acknowledgement
 
