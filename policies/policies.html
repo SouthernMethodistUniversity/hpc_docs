@@ -404,6 +404,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-restrictions">Data Restrictions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purge-policy">Purge Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-nodes">Login Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#account-and-account-password-sharing-policy">Account and Account Password Sharing Policy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-guidance">AI Guidance</a></li>
@@ -459,6 +460,23 @@ Most of our HPC storage is redundant, but it is not (and cannot) be backed up.
 Storage space is also limited and current and active usage is prioritized.
 Please <a class="reference internal" href="../about/contact.html"><span class="std std-doc">contact us</span></a> to discuss needs and potential options.</p>
 </div>
+</section>
+<section id="login-nodes">
+<h2>Login Nodes<a class="headerlink" href="#login-nodes" title="Link to this heading">#</a></h2>
+<p>Running code, tasks, and persitent processes on login nodes is forbidden. The login nodes
+are a shared environment and running intensive tasks can make the entire system unstable for
+all users. Tasks running on login nodes may be terminated by system adminstrators to preserve
+system stability.</p>
+<p>Some examples of acceptable use of login nodes:</p>
+<ul class="simple">
+<li><p>Submitting and monitoring jobs.</p></li>
+<li><p>Editing or viewing files with text editors, IDEs, or similar.</p></li>
+<li><p>Compiling code (compilation tasks that are expect to take a long time or
+require extensive resources should be run inside of a job)</p></li>
+<li><p>Building Python environments, such as with Conda, UV, or Venv.</p></li>
+<li><p>Downloading files (for large data transfers, please request access to the data transfer nodes)</p></li>
+</ul>
+<p>If you need assistance submitting jobs, please <a class="reference internal" href="../about/contact.html"><span class="std std-doc">contact us</span></a>.</p>
 </section>
 <section id="account-and-account-password-sharing-policy">
 <h2>Account and Account Password Sharing Policy<a class="headerlink" href="#account-and-account-password-sharing-policy" title="Link to this heading">#</a></h2>
@@ -569,6 +587,7 @@ purposes.)</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-restrictions">Data Restrictions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purge-policy">Purge Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-nodes">Login Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#account-and-account-password-sharing-policy">Account and Account Password Sharing Policy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-nodes">Data Transfer Nodes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-guidance">AI Guidance</a></li>
