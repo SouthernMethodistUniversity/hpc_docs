@@ -111,7 +111,7 @@ Tensor cores, and 32 GB CoWoS HBM2 memory. The V100 GPU is based on the
 Volta architecture and an extremely high bandwidth (900 GB/s) stacked
 memory architecture.
 
-The queue for these nodes, `fp-gpgpu-3`, is generally available to M3
+The fp-gpgpu-3 queue is available to M3
 users with the following restrictions.
 
 -   The maximum job duration for users not in Dr. Minsker\'s group is 7 days
