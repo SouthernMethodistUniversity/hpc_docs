@@ -11,6 +11,19 @@ when using HPC resources. This includes, but is not limited to,
 Please review the
 [ODSRCI Guidelines](https://www.smu.edu/provost/odonnell-institute/hpc/guidelines)
 
+## Data Restrictions
+
+SMU's HPC systems are generally not approved for use with confidential, restricted, or protected data.
+This includes, but is not limited to:
+
+- personally identifiable data
+- protected health information
+- FERPA protected data
+- Confidential or proprietary University records
+
+Please consult with [SMU's Office of Research and Innovation (ORI)](https://www.smu.edu/provost/research)
+to ensure compliance before utilizing HPC resources.
+
 ## Purge Policy
 
 Data stored in `$SCRATCH` on M3 or the SuperPod has a time based quota.
