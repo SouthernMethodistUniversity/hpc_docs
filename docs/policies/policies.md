@@ -40,6 +40,24 @@ Storage space is also limited and current and active usage is prioritized.
 Please [contact us](../about/contact.md) to discuss needs and potential options.
 :::
 
+## Login Nodes
+
+Running code, tasks, and persitent processes on login nodes is forbidden. The login nodes
+are a shared environment and running intensive tasks can make the entire system unstable for
+all users. Tasks running on login nodes may be terminated by system adminstrators to preserve
+system stability.
+
+Some examples of acceptable use of login nodes:
+
+- Submitting and monitoring jobs.
+- Editing or viewing files with text editors, IDEs, or similar.
+- Compiling code (compilation tasks that are expect to take a long time or
+  require extensive resources should be run inside of a job)
+- Building Python environments, such as with Conda, UV, or Venv.
+- Downloading files (for large data transfers, please request access to the data transfer nodes)
+
+If you need assistance submitting jobs, please [contact us](../about/contact.md).
+
 ## Account and Account Password Sharing Policy
 
 No two individuals should share the same HPC account, nor
