@@ -36,7 +36,6 @@ parts:
     - file: coldfront/faq.md
     - file: coldfront/optout.md
   - file: access.md
-  - file: glossary.md
 - caption: How to Use
   chapters:
   - file: portal.md
