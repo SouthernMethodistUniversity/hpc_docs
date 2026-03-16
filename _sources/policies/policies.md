@@ -13,13 +13,23 @@ Please review the
 
 ## Data Restrictions
 
-SMU's HPC systems are generally not approved for use with confidential, restricted, or protected data.
+Please review [SMU's Institutional Data Governance
+](https://www.smu.edu/policy/8-information-technology/8-6-institutional-data-governance).
+
+SMU's HPC systems are generally not approved for use with restricted or confidential data.
 This includes, but is not limited to:
 
 - personally identifiable data
 - protected health information
 - FERPA protected data
-- Confidential or proprietary University records
+
+In most cases, unpublished research is classified as private data according to SMU policies.
+Private data can generally be used on the HPC systems.
+However, SMU's HPC system is a research and academic tool and may lack adequate protections for some types of
+private data.
+
+Data classified as public can always be used on the system as long as owning, storing, or using the data does
+not violate other SMU policies, contractual agreements, laws, or other regulations.
 
 Please consult with [SMU's Office of Research and Innovation (ORI)](https://www.smu.edu/provost/research)
 to ensure compliance before utilizing HPC resources.
