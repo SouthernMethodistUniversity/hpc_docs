@@ -1,34 +1,51 @@
 # About
 
+This page provides an overview of SMU's high-performance computing systems, including ManeFrame III (M3) and the NVIDIA DGX SuperPOD. It summarizes the hardware resources, configurations, and specialized nodes available to researchers. Use this page to understand the capabilities of SMU HPC systems before running jobs or requesting resources.
+
 SMU's high-performance computing (HPC) clusters, M3 and the NVIDIA DGX
 SuperPOD, feature state-of-the-art CPUs, accelerators, and networking
-technologies, high memory capacity per node, and advanced interactive
-experiences via the Open OnDemand Portal.
+technologies. These systems provide high memory capacity per node and advanced interactive access through the Open OnDemand Portal.
 
 The clusters provides a familiar interactive experience for researchers,
 which includes the Ubuntu Linux operating system, the SLURM resource
-scheduler, and the Lmod environment module system. Additionally,
+scheduler (software used to submit and manage jobs on the cluster), and the Lmod environment module system (tool used to load software and programming environments). Additionally,
 familiar development tool chains are available including the GCC, Intel,
 and NVIDIA compiler suites. Optimized high-level programming environments
 such as MATLAB, Python, and R are also installed in addition to the
 domain specific software packages that SMU researchers depend on for
 their work.
 
-| HPC System           | M1 (Retired)       | M2 (Retired) | M2 (Retired) | SuperPOD     | M3           |
-|----------------------|--------------------|--------------|--------------|--------------| -------------|
-| Year                 | 2014               | 2017         | 2019         | 2022         | 2023         |
-| Compute Ability      | 104 TFLOPS         | 630 TFLOPS   | 870 TFLOPS   | 1,644 TFLOPS | 1,077 TFLOPS |
-| Number of Nodes      | 1,104              | 349          | 354          | 20           | 181          |
-| CPU Cores            | 8,832              | 11,088       | 11,276       | 2,560        | 22,892       |
-| Total GPU Cores      | 0                  | 132,608      | 275,968      | 1,392,640    | 122,880      |
-| Total Memory         | 29.2 TB            | 116.5 TB     | 120 TB       | 40 TB      | 103 TB       |
-| Network Bandwidth    | 20 Gb/s            | 100 Gb/s     | 100 Gb/s     | 200 Gb/s     | 200 Gb/s     |
-| Project Storage         | None               | None         | 768 TB       | 3.5 PB*      | 3.5 PB*      |
-| Scratch Space        | 1.4 PB             | 1.4 PB       | 2.8 PB       | 750 TB       | 3.5 PB       |
-| Archive Capabilities | No                 | Yes          | Yes          | No           | No           |
-| Operating System     | Scientific Linux 6 | CentOS 7     | CentOS 7     | Ubuntu 22.04 | Ubuntu 22.04 |
+**Quick Facts:**
 
-\* The 3.5 PB `Project Storage` is shared on M3 and the SuperPOD. It was formerly referred to as `Work Storage`, which has been deprecated and will be phased out beginning on January 15, 2025.
+|                        |                     |
+|------------------------|---------------------|
+| Primary Cluster        | ManeFrame III (M3)  |
+| AI/GPU Cluster         | NVIDIA DGX SuperPOD |
+| Job Scheduler          | SLURM               |
+| Operating System       | Ubuntu 22.04        |
+| Interactive Portal     | Open OnDemand       |
+| Shared Project Storage | 3.5 PB              |
+
+
+**System Specifications:**
+
+| HPC System           | M1 (Retired)       | M2 (Retired) | M2 (Retired) | SuperPOD      | M3            |
+|----------------------|--------------------|--------------|--------------|---------------| --------------|
+| Year                 | 2014               | 2017         | 2019         | 2022          | 2023          |
+| Compute Ability      | 104 TFLOPS*        | 630 TFLOPS*  | 870 TFLOPS*  | 1,644 TFLOPS* | 1,077 TFLOPS* |
+| Number of Nodes      | 1,104              | 349          | 354          | 20            | 181           |
+| CPU Cores            | 8,832              | 11,088       | 11,276       | 2,560         | 22,892        |
+| Total GPU Cores      | 0                  | 132,608      | 275,968      | 1,392,640     | 122,880       |
+| Total Memory         | 29.2 TB            | 116.5 TB     | 120 TB       | 40 TB         | 103 TB        |
+| Network Bandwidth    | 20 Gb/s            | 100 Gb/s     | 100 Gb/s     | 200 Gb/s      | 200 Gb/s      |
+| Project Storage      | None               | None         | 768 TB       | 3.5 PB**      | 3.5 PB**      |
+| Scratch Space        | 1.4 PB             | 1.4 PB       | 2.8 PB       | 750 TB        | 3.5 PB        |
+| Archive Capabilities | No                 | Yes          | Yes          | No            | No            |
+| Operating System     | Scientific Linux 6 | CentOS 7     | CentOS 7     | Ubuntu 22.04  | Ubuntu 22.04  |
+
+\* trillions of floating-point operations per second
+
+\*\* The 3.5 PB `Project Storage` is shared on M3 and the SuperPOD. It was formerly referred to as `Work Storage`, which has been deprecated and will be phased out beginning on January 15, 2025.
 
 ## ManeFrame III (M3)
 
@@ -43,7 +60,9 @@ their work.
 | Cores/Node         | 128             | 128           | 18                   |
 | Memory/Node        | 512 GB          | 2 TB          | 756 GB               |
 | Local Scratch/Node | None            | 4.3 TB        | None                 |
-| Interconnect       | 200 Gb/s        | 200 Gb/s      | 100 Gb/s             |
+| Interconnect       | 200 Gb/s*       | 200 Gb/s      | 100 Gb/s             |
+
+\* high speed network connecting compute nodes
 
 ## NVIDIA DGX SuperPOD (MP)
 
@@ -102,7 +121,7 @@ Tensor cores, and 32 GB CoWoS HBM2 memory. The V100 GPU is based on the
 Volta architecture and an extremely high bandwidth (900 GB/s) stacked
 memory architecture.
 
-The queue for these nodes, `fp-gpgpu-3`, is generally available to M3
+The `fp-gpgpu-3` queue is available to M3
 users with the following restrictions.
 
 -   The maximum job duration for users not in Dr. Minsker\'s group is 7 days
@@ -121,7 +140,7 @@ Tensor cores, and 32 GB CoWoS HBM2 memory. The V100 GPU is based on the
 Volta architecture and an extremely high bandwidth (900 GB/s) stacked
 memory architecture.
 
-The queue for these nodes, `fp-gpgpu-4`, is generally available to M3
+The `fp-gpgpu-3` queue is available to M3
 users with the following restrictions.
 
 -   The maximum job duration for users not in Dr. Cai\'s group is 7
@@ -137,8 +156,7 @@ dual AMD EPYC 7763 2.45 Ghz 64-Core \"Zen 3\" processors, 512 GB of memory,
 and AMD Instinct MI210 GPU with 64 GB of HBM2e memory and 6,656 stream processors.
 This node is also equipped with AMD/Xilinx Alveo U55C FPGA.
 
-This node `ga001`, is currently available only with permision
-from Dr. Matthews. 
+The node `ga001` is currently available only with permission from Dr. Matthews.
 
 ## Acknowledgement
 
