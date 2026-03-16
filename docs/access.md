@@ -8,7 +8,7 @@ is required to access HPC resources.
 
 ## HPC OnDemand Web Portal
 
-:::{important} Beginning **February 25, 2026**, SMU will be transitioning from Duo to Microsoft Authenticator as the primary multi-factor authentication (MFA). For more information, please visit the [Microsoft Authenticator](https://www.smu.edu/oit/services/microsoft-authenticator) page.
+:::{important} Beginning **February 25, 2026**, SMU has transitioned from Duo to Microsoft Authenticator as the primary multi-factor authentication method. Access to HPC services via SSH will still require Duo authentication. For more information, please visit the [Microsoft Authenticator](https://www.smu.edu/oit/services/microsoft-authenticator) page.
 :::
 
 ````{tab-set}
