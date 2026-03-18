@@ -11,6 +11,29 @@ when using HPC resources. This includes, but is not limited to,
 Please review the
 [ODSRCI Guidelines](https://www.smu.edu/provost/odonnell-institute/hpc/guidelines)
 
+## Data Restrictions
+
+Please review [SMU's Institutional Data Governance
+](https://www.smu.edu/policy/8-information-technology/8-6-institutional-data-governance).
+
+SMU's HPC systems are generally not approved for use with restricted or confidential data.
+This includes, but is not limited to:
+
+- personally identifiable data
+- protected health information
+- FERPA protected data
+
+In most cases, unpublished research is classified as private data according to SMU policies.
+Private data can generally be used on the HPC systems.
+However, SMU's HPC system is a research and academic tool and may lack adequate protections for some types of
+private data.
+
+Data classified as public can always be used on the system as long as owning, storing, or using the data does
+not violate other SMU policies, contractual agreements, laws, or other regulations.
+
+Please consult with [SMU's Office of Research and Innovation (ORI)](https://www.smu.edu/provost/research)
+to ensure compliance before utilizing HPC resources.
+
 ## Purge Policy
 
 Data stored in `$SCRATCH` on M3 or the SuperPod has a time based quota.
@@ -26,6 +49,24 @@ Most of our HPC storage is redundant, but it is not (and cannot) be backed up.
 Storage space is also limited and current and active usage is prioritized.
 Please [contact us](../about/contact.md) to discuss needs and potential options.
 :::
+
+## Login Nodes
+
+Running code, tasks, and persitent processes on login nodes is forbidden. The login nodes
+are a shared environment and running intensive tasks can make the entire system unstable for
+all users. Tasks running on login nodes may be terminated by system adminstrators to preserve
+system stability.
+
+Some examples of acceptable use of login nodes:
+
+- Submitting and monitoring jobs.
+- Editing or viewing files with text editors, IDEs, or similar.
+- Compiling code (compilation tasks that are expect to take a long time or
+  require extensive resources should be run inside of a job)
+- Building Python environments, such as with Conda, UV, or Venv.
+- Downloading files (for large data transfers, please request access to the data transfer nodes)
+
+If you need assistance submitting jobs, please [contact us](../about/contact.md).
 
 ## Account and Account Password Sharing Policy
 

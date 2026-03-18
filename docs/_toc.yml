@@ -5,6 +5,7 @@ defaults:
 parts:
 - caption: Announcements
   chapters:
+  - file: announcements/maintenance_sb26.md
   - file: work_deprecation.md
 - caption: Getting Started
   chapters:
