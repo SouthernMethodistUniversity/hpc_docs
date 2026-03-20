@@ -1,10 +1,2 @@
-type: warning
-dismissible: false
-msg: |
-  M3 will be taken offline for scheduled maintenance between 6AM, Wednesday, March 18 and 6PM Thursday, March 19.
-  While M3 maintenance is ongoing, the Open OnDemand web portal (this site) will be unavailable.
 
-  For more information, please see the [maintenance announcement](https://southernmethodistuniversity.github.io/hpc_docs/announcements/maintenance_sb26.html).
-
-  If you have any questions or concerns, please contact the [IT Help Desk](https://www.smu.edu/oit/help).
 
