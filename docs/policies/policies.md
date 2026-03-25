@@ -2,14 +2,9 @@
 
 ## SMU Policies
 
-Users must comply with all applicable laws, regulations, and SMU policies
-when using HPC resources. This includes, but is not limited to, 
-[SMU’s acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use)
-
-### O’Donnell Data Science and Research Computing Institute Community Guidelines
-
-Please review the
-[ODSRCI Guidelines](https://www.smu.edu/provost/odonnell-institute/hpc/guidelines)
+Users must comply with all university regulations, including 
+[SMU’s acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use) and the 
+[ODSRCI Guidelines](https://www.smu.edu/provost/odonnell-institute/hpc/guidelines, when accessing HPC resources.
 
 ## Data Restrictions
 
@@ -59,21 +54,14 @@ system stability.
 
 Some examples of acceptable use of login nodes:
 
-- Submitting and monitoring jobs.
-- Editing or viewing files with text editors, IDEs, or similar.
-- Compiling code (compilation tasks that are expect to take a long time or
-  require extensive resources should be run inside of a job)
-- Building Python environments, such as with Conda, UV, or Venv.
-- Downloading files (for large data transfers, please request access to the data transfer nodes)
+Allowed: Job submission, text editing, environment building (Conda/UV), and small compiles.
+Prohibited: Heavy computation, large-scale make -j commands, and persistent background processes.
 
 If you need assistance submitting jobs, please [contact us](../about/contact.md).
 
 ## Account and Account Password Sharing Policy
 
-No two individuals should share the same HPC account, nor
-should two individuals share the password of the same account. Each
-individual is entitled to have their own account hence please request
-one.
+Sharing accounts or passwords is strictly prohibited. Each user must have their own unique credentials. If a collaborator needs access, please have them request a new account.
 
 ## Data Transfer Nodes
 
@@ -97,9 +85,9 @@ run on SMU HPC systems.
   often stochastic in nature and may not behave as expected. It is possible that an AI tool
   may take unexpected actions that adversely impact research (for example, AI tools
   may corrupt or permanently delete data even if explicitly instructed not to.)
-- Only share data with AI tools that you are allowed to share. Even if you are allowed to
-  share data, we recommend exercising caution, especially if the data is sent to a third
-  party service (these services may use your research to train their models or for other
-  purposes.)
+- Only share data with AI tools that you are legally and ethically permitted to share. Note: Sending unpublished research to public AI models may compromise your Intellectual Property or violate grant requirements. 
 
 We highly recommend reviewing SMU's [Generative AI Guidance](https://www.smu.edu/oit/ai).
+
+Need Assistance?
+For questions regarding data compliance, storage limits, or job submission, please Contact the HPC Team.
