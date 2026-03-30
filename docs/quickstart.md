@@ -42,21 +42,20 @@ nano my_first_job.sbatch
 Paste the following contents into the editor:
 
 ```bash
-#!/bin/bash
-#SBATCH -A slurm_account_name
-#SBATCH -J my_first_job
-#SBATCH -o my_first_job_%j.out
-#SBATCH -e my_first_job_%j.err
-#SBATCH -p dev
-#SBATCH -t 0-00:30:00
-#SBATCH --mem=4G
-#SBATCH -c 1
+#!/bin/bash                       
+#SBATCH -A slurm_account_name        # Replace with your faculty /
+#SBATCH -J my_first_job              # Name of the job in the queue
+#SBATCH -o my_first_job_%j.out       # Standard output file (% j expands)
+#SBATCH -e my_first_job_%j.err       # Error file
+#SBATCH -p dev                       # Partition (queue) to use
+#SBATCH -t 0-00:30:00                # Time limit (DD-HH: MM: SS)
+#SBATCH --mem=4G                     # Memory requested
+#SBATCH -c 1                         # Number of CPU cores
 
-# Wait for 100 seconds so you can check the queue using 'squeue --me'
+# Your commands go below this line
+echo "Job started at  $ (date)"
 sleep 100
- 
-# Print a simple message
-echo "Hello, World!"
+echo "Hello, World from Node: $ (hostname)"
 ```
 
 Save and exit nano:
