@@ -1,23 +1,33 @@
 (about:contact)=
 # Contact
 
-We can be contacted using SMU's IT Help Desk. 
+Method: STABLE TICKET   
+Best For: Technical Issues & Bugs
+Link/Details: https://www.google.com/search?q=https://stable.smu.edu
 
-Tickets can be directly created using the [STABLE ticketing system](https://www.smu.edu/OIT/services/STABLE).
+Method: Email
+Best for: General Inquiries
+Link/Details: help@smu.edu
 
-You can also email [help@smu.edu](mailto:help@smu.edu?subject=[HPC]). Please be sure to include `[HPC]` in the subject for more expedient routing.
+Method: Consultation
+Best For: Project & Code Help
+Link/Details: oitresearch@smu.edu
+
+[!IMPORTANT]
+Email Routing: If emailing help@smu.edu, you must include [HPC] in the subject line to ensure your request reaches our team quickly. 
+
 
 # Consultations
 
-Consultations can be requested by opening a help ticket using the above information.
+Need help optimizing your code or scaling your research? The OIT Research and Technology Services team provides one-on-one support for: Script optimization (Python, R, C++, etc.), Software environment setup (Conda, Containers), Workflow automation 
 
-The OIT Research and Technology Services team can be reached directly at [oitresearch@smu.edu](mailto:oitresearch@smu.edu) to schedule a consultation.
+To schedule a meeting, email us directly at oitresearch@smu.edu
 
-# GitHub
+# GitHub Community
+We use Github to maintain our documentation and shared scripts. You are welcome to contribute!
 
-:::{important}
-Time critical and emergency issues should **always** go through SMU's IT Help Desk.
-:::
+Open an Issue: For documentation typos or feature requests. 
+Pull Requests: To contribute code or fixes.
 
-We also actively use GitHub. You are welcome to open issues and/or create pull requests [our github page](https://github.com/SouthernMethodistUniversity/hpc_docs).
-
+[!WARNING]
+Emergenzies & Outages: Do not use GitHub for time-critical issues or account lockouts. Please use the STABLE ticketing system for immediate assistance. 
