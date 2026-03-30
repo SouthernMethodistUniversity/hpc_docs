@@ -99,11 +99,13 @@ https://hpc.smu.edu
 
 4. On the left sidebar, choose an interactive app (e.g., RStudio, Jupyter, etc.).
 
-5. Select your SLURM account and job settings (defaults are fine for testing).
+5. Configure your session: Enter your SLURM account name, Select dev (best for testing), Number of Hours: 1
 
-6. Click Launch and wait for the job to start in the queue.
+6. Launch: Click the blue Launch button. The card will turn from "Queued" to "Starting" and finally to "Running."  
 
-7. Once ready, click Launch again to open the session in your browser.
+7. Click Launch and wait for the job to start in the queue.
+
+8. Once ready, click Launch again to open the session in your browser.
 
 When finished, delete the job from My Interactive Sessions to free resources.
 
