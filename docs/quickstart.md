@@ -67,10 +67,9 @@ Ctrl + X  →  Y  →  Enter
 ### 4. Submit and Monitor Your Job
 
 Submit your job:
-
-```bash
 sbatch my_first_job.sbatch
-```
+
+You should see a message like: Submitted batch job 123456
 
 Check the job status:
 
