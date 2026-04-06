@@ -2,9 +2,14 @@
 
 ## SMU Policies
 
-Users must comply with all university regulations, including 
-[SMU’s acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use) and the 
-[ODSRCI Guidelines](https://www.smu.edu/provost/odonnell-institute/hpc/guidelines, when accessing HPC resources.
+Users must comply with all applicable laws, regulations, and SMU policies
+when using HPC resources. This includes, but is not limited to, 
+[SMU’s acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use)
+
+### O’Donnell Data Science and Research Computing Institute Community Guidelines
+
+Please review the
+[ODSRCI Guidelines](https://www.smu.edu/provost/odonnell-institute/hpc/guidelines)
 
 ## Data Restrictions
 
@@ -90,4 +95,4 @@ run on SMU HPC systems.
 We highly recommend reviewing SMU's [Generative AI Guidance](https://www.smu.edu/oit/ai).
 
 Need Assistance?
-For questions regarding data compliance, storage limits, or job submission, please Contact the HPC Team.
+For questions regarding data compliance, storage limits, or job submission, please [contact us](../about/contact.md).
