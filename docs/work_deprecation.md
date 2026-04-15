@@ -1,11 +1,6 @@
 # Personal $WORK is End of Life
 
-As of August 15, 2025, personal $WORK directories are end of life.
-It was phased out in an eight (8) month process beginning on January 15, 2025 detailed below.
-
-You should move any data you need to keep as soon as possible.
-
-While there are no immediate plans to delete data, any data remaining in $WORK directories is subject to be deprovisioned if necessary to maintain system performance and stability.
+Personal $WORK directories are retired on August 15, 2025 and are no longer usable. Any remaining data may be removed at any time.
 
 ## Personal $WORK deprecation plan
 
