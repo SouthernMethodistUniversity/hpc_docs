@@ -1,6 +1,6 @@
 # Personal $WORK is End of Life
 
-Personal $WORK directories are retired on August 15, 2025 and are no longer usable. Any remaining data may be removed at any time.
+Personal $WORK directories were retired on August 15, 2025 and are no longer usable. Any remaining data may be removed at any time.
 
 ## Personal $WORK deprecation plan
 
