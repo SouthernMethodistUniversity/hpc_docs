@@ -6,7 +6,7 @@ See the [frequently asked questions](coldfront/faq.md)
 
 ## Creating Accounts
 
-Accounts on SMU HPC clusters can be created via the processes detailed below.
+Accounts on SMU HPC clusters are created through the processes below.
 
 :::{important} As of **November 1, 2024** [running HPC jobs](coldfront/running_jobs.md) 
 requires using a slurm account from an active allocation in [ColdFront](https://hpcaccess.smu.edu).
