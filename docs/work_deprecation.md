@@ -8,11 +8,23 @@ Personal $WORK directories were retired on August 15, 2025 and are no longer usa
 HPC storage.
 :::
 
-### What is changing
+### What changed
 
-Beginning **January 15, 2025** the quotas for personal `$WORK` directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.
+- Starting January 15, 2025, quotas were set to:
+- current usage plus a small buffer
 
-By **August 15, 2025**, the quotas for personal `$WORK` directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal `$WORK` directories will be subject to deprovisioning.
+- Quotas then decreased by at least 15% each month
+
+- Quotas may be adjusted regularly based on usage
+
+- If your usage drops below your quota:
+- your quota is reduced to match
+
+- By August 15, 2025:
+- quotas were reduced to 0 files and 0 kb of storage
+- remaining data became subject to removal 
+  
+
 
 ### Known and Possible Impacts
 
