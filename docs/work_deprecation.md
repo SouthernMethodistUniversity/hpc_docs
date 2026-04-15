@@ -28,18 +28,32 @@ HPC storage.
 
 ### Known and Possible Impacts
 
-- Personal `$WORK` directories will no longer exist.
-- Modifying existing files or creating new files will not be possible when the quota is exceeded.
-- Applications depending on files in `$WORK` may behave unexpectedly when the quota is exceeded.
-- Many users have Conda environments installed in `$WORK`, we expect these will continue to function during the transition. However, they will need to be rebuilt in another location before the end of the deprecation timeline (August 15, 2025). See more details [here](/examples/conda/migration.md).
+- Personal `$WORK` directories no longer exist
 
-### Required Actions
+- You cannot:
+- Create new files
+- Modify existing files (if over quota)
+- 
+- Applications that rely on `$WORK` may:
+- Fail
+- Behave unexpectedly
 
-- Any data currently stored in `$WORK` must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.
-- Any personal software installations in `$WORK`, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFront managed storage allocations)
+- Conda Environments:
+- May have worked during the transition
+- Must be now rebuilt in another location
 
-:::{important} We strongly recommend taking time to assess which files you need to keep and which files can be deleted. The overall performance of our filesystems is reduced for all users as the storage space fills up.
-:::
+### What you must do
+
+- Move all important data out of `$WORK`
+
+- Move files to one of the following:
+- ColdFront stoage allocations
+- Your home directory
+- External/off-system storage
+
+- Reinstall any software previously stored in `$WORK`
+- Including Conda environments 
+
 
 ### Example of Quota changes
 
