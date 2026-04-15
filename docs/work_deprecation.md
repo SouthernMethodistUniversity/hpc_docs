@@ -57,6 +57,8 @@ HPC storage.
 
 ### Example of Quota changes
 
+Your storage limit decreased each month until it reached zero. 
+
 If your quota is 8TB (the default) and you have 3.45 TB of data in `$WORK`:
 
 **January 15, 2025**:
