@@ -1,9 +1,11 @@
 # Modules
 
-The *module* system is a command-line tool to help users manage their
-Linux environment variables (e.g. `PATH`, `LD_LIBRARY_PATH`). It works
-by grouping related environment variable settings together based on
-various usage scenarios, such as
+The module system is a command-line tool for managing environment variables in 
+Linux (such as `PATH` and `LD_LIBRARY_PATH`). 
+
+It lets you group and swtich between different software configurations easily. 
+
+Common uses include:
 
 -   Adding executables to a user's `PATH`
 -   Adding the location of specific software libraries to a user's
