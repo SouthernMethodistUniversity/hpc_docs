@@ -1,8 +1,8 @@
 whatis("NVIDIA HPC-X toolkit")
 family("mpi")
-extensions("hcoll/4.8.3234, ucx/1.20.0, ucc/1.6.0, 4.1.9a1, sharp/3.13.0")
+extensions("hcoll/4.8.3234, ucx/1.20.0, ucc/1.7.0, openmpi/5.0.10, sharp/3.14.5")
 
-local hpcx_home = "/hpc/m3/apps/hpcx/hpcx-v2.25.1-gcc-inbox-ubuntu22.04-cuda12-x86_64"
+local hpcx_home = "/hpc/m3/apps/hpcx/hpcx-v2.26-gcc-inbox-ubuntu22.04-cuda12-x86_64"
 local mpi_home = pathJoin(hpcx_home, "hpcx-ompi-gcc-15.2.0")
 
 setenv("HPCX_DIR", hpcx_home)
