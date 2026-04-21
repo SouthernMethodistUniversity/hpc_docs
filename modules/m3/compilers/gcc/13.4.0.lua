@@ -1,11 +1,11 @@
-whatis("Provides access to GCC 15.2.0 compiler suite, libraries, and applications.")
+whatis("Provides access to GCC 13.4.0 compiler suite, libraries, and applications.")
 family("compiler")
 
 
 -- These are just copied from the spack module. 
 -- loading spack (or gcc-11.2.0) first results in lots of unwanted
 -- spack modules for other compilers being available.
-local base = "/hpc/m3/spack/opt/spack/linux-zen3/gcc-15.2.0-k3glam63nrajvr2bd3cy3jpx3ds3roji"
+local base = "/hpc/m3/spack/opt/spack/linux-zen3/gcc-13.4.0-nbypvwpr55kqvndz7acivobvolgdnqf7
 prepend_path("C_INCLUDE_PATH",pathJoin(base, "/include"))
 prepend_path("CPLUS_INCLUDE_PATH",pathJoin(base, "/include"))
 prepend_path("CPATH",pathJoin(base, "/include"))
@@ -21,13 +21,13 @@ setenv("FC",pathJoin(base, "/bin/gfortran"))
 setenv("F77",pathJoin(base, "/bin/gfortran"))
 
 --mpi
-append_path("MODULEPATH", "/hpc/m3/hpc_docs/modules/m3/mpi/gcc-15.2.0")
+append_path("MODULEPATH", "/hpc/m3/hpc_docs/modules/m3/mpi/gcc-13.4.0")
 
 --cuda
-append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-x86_64_v3/cuda/gcc-15.2.0/")
+append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-x86_64_v3/cuda/gcc-13.4.0/")
 
 -- spack packages
-append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-zen3/gcc-15.2.0")
+append_path("MODULEPATH", "/hpc/m3/modules/spack/linux-ubuntu22.04-zen3/gcc-13.4.0")
 
 
 -- For OpenMPI
