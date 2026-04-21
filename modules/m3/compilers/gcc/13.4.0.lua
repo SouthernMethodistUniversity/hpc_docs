@@ -5,7 +5,7 @@ family("compiler")
 -- These are just copied from the spack module. 
 -- loading spack (or gcc-11.2.0) first results in lots of unwanted
 -- spack modules for other compilers being available.
-local base = "/hpc/m3/spack/opt/spack/linux-zen3/gcc-13.4.0-nbypvwpr55kqvndz7acivobvolgdnqf7
+local base = "/hpc/m3/spack/opt/spack/linux-zen3/gcc-13.4.0-nbypvwpr55kqvndz7acivobvolgdnqf7"
 prepend_path("C_INCLUDE_PATH",pathJoin(base, "/include"))
 prepend_path("CPLUS_INCLUDE_PATH",pathJoin(base, "/include"))
 prepend_path("CPATH",pathJoin(base, "/include"))
