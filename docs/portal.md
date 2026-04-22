@@ -1,6 +1,6 @@
 # HPC Portal
 
-HPC OnDemand provides an integrated, single access point for SMU HPC resources.
+HPC OnDemand provides a single, web-based access point for SMU HPC resources.
 
 ## Accessing the Portal
 
@@ -9,7 +9,8 @@ which can be requested as documented in
 {doc}`accounts`.
 
 1.  Go to [hpc.m3.smu.edu](https://hpc.m3.smu.edu/).
-2.  Sign in using your SMU NetID and SMU password
+2.  Sign in using your SMU NetID and password
+3.  You will be directed to the HPC OnDemand dashboard
 
 ## Interactive Apps
 
