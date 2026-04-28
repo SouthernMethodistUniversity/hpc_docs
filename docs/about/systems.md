@@ -13,18 +13,19 @@ and NVIDIA compiler suites. Optimized high-level programming environments
 such as MATLAB, Python, and R are available, along with domain-specific software packages.
 
 ## ManeFrame III (M3)
+ManeFrame III is SMU's primary CPU-based HPC cluster, supporting a wide range of general-purpose workloads. 
 
-### Configuration
+### System Configuration
 
-| Resource           | Standard-Memory | High-Memory   | GPU                  |
+| Resource           | Standard Memory Nodes  | High Memory Nodes  | GPU Nodes            |
 |--------------------|-----------------|---------------|----------------------|
 | Nodes              | 170             | 8             | 3                    |
-| Processors         | AMD EPYC 7763   | AMD EPYC 7763 | Intel Xeon Gold 6154 |
-| Frequency          | 2.45 GHz        | 2.45 GHz      | 3.00 GHz             |
-| CPUs/Node          | 2               | 2             | 2                    |
-| Cores/Node         | 128             | 128           | 18                   |
-| Memory/Node        | 512 GB          | 2 TB          | 756 GB               |
-| Local Scratch/Node | None            | 4.3 TB        | None                 |
+| Processor Model         | AMD EPYC 7763   | AMD EPYC 7763 | Intel Xeon Gold 6154 |
+| CPU Frequency          | 2.45 GHz        | 2.45 GHz      | 3.00 GHz             |
+| CPUs per Node          | 2               | 2             | 2                    |
+| Cores per Node         | 128             | 128           | 18                   |
+| Memory per Node        | 512 GB          | 2 TB          | 756 GB               |
+| Local Scratch per Node | None            | 4.3 TB        | None                 |
 | Interconnect       | 200 Gb/s        | 200 Gb/s      | 100 Gb/s             |
 
 ## NVIDIA DGX SuperPOD (SuperPOD)
