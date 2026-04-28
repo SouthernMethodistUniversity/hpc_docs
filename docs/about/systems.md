@@ -5,14 +5,12 @@ SuperPOD, feature state-of-the-art CPUs, accelerators, and networking
 technologies, high memory capacity per node, and advanced interactive
 experiences via the Open OnDemand Portal.
 
-The clusters provides a familiar interactive experience for researchers,
-which includes the Ubuntu Linux operating system, the SLURM resource
+The clusters provide a familiar interactive experience for researchers,
+including the Ubuntu Linux operating system, the SLURM resource
 scheduler, and the Lmod environment module system. Additionally,
-familiar development tool chains are available including the GCC, Intel,
+familiar development toolchains are available including the GCC, Intel,
 and NVIDIA compiler suites. Optimized high-level programming environments
-such as MATLAB, Python, and R are also installed in addition to the
-domain specific software packages that SMU researchers depend on for
-their work.
+such as MATLAB, Python, and R are available, along with domain-specific software packages.
 
 ## ManeFrame III (M3)
 
