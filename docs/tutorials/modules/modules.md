@@ -1,32 +1,25 @@
 # Modules
 
-The *module* system is a command-line tool to help users manage their
-Linux environment variables (e.g. `PATH`, `LD_LIBRARY_PATH`). It works
-by grouping related environment variable settings together based on
-various usage scenarios, such as
+The module system is a command-line tool for managing environment variables in 
+Linux (such as `PATH` and `LD_LIBRARY_PATH`). 
 
--   Adding executables to a user's `PATH`
--   Adding the location of specific software libraries to a user's
-    `LD_LIBRARY_PATH`
--   Adding documentation manual pages "man pages" to a user's
-    `MANPATH`
--   Creating custom environment variables to define the global path
-    where a specific package is installed, e.g. `FFTWHOME`
+It lets you group and swtich between different software configurations easily. 
 
-These modules may be added/removed dynamically, allowing a user to have
-a great amount of control over her/his environment.
+Common uses include:
 
-Possibly one of the greatest assets of the module system is that it
-provides a simple user interface, and can be queried to learn all of the
-available modules on a system, making it easier to know which packages
-are or aren't already installed on a system.
+- Add executables to a user's `PATH`
+- Add library locations to  LD_LIBRARY_PATH
+- Add manual pages to `MANPATH`
+- Define custom variables e.g. (`FFTWHOME`)
 
-The module system operates through the Linux executable, `module`,
-followed by the desired command. The primary module commands are as
-follows:
+Modules can be added or removed at any time, giving users full control over their environment.
 
--   `module avail` \-- displays a list of all available modules on the
-    system, e.g.
+One key advantage of modules is their simple interface. You can quickly view all available modules and see what is already installed. 
+
+Modules are used through the `module` command, followed by a subcommand. 
+
+Common commands include:
+-   `module avail` Lists all available modules on the system:
 
     ```{=html}
     <div class="sourceCode">

@@ -1,11 +1,6 @@
 # Personal $WORK is End of Life
 
-As of August 15, 2025, personal $WORK directories are end of life.
-It was phased out in an eight (8) month process beginning on January 15, 2025 detailed below.
-
-You should move any data you need to keep as soon as possible.
-
-While there are no immediate plans to delete data, any data remaining in $WORK directories is subject to be deprovisioned if necessary to maintain system performance and stability.
+Personal $WORK directories were retired on August 15, 2025 and are no longer usable. Any remaining data may be removed at any time.
 
 ## Personal $WORK deprecation plan
 
@@ -13,28 +8,56 @@ While there are no immediate plans to delete data, any data remaining in $WORK d
 HPC storage.
 :::
 
-### What is changing
+### What changed
 
-Beginning **January 15, 2025** the quotas for personal `$WORK` directories will be set to current usage plus a small amount. The quotas will then begin decreasing by at least 15% every month (based on the initial quota). Quotas will additionally be updated on a regular basis. When usage is lower than the current quota, the quota will be lowered to match.
+- Starting January 15, 2025, quotas were set to:
+- current usage plus a small buffer
 
-By **August 15, 2025**, the quotas for personal `$WORK` directories will be set to 0 allowed files and 0 kB of storage space. At this point in time, data remaining in personal `$WORK` directories will be subject to deprovisioning.
+- Quotas then decreased by at least 15% each month
+
+- Quotas may be adjusted regularly based on usage
+
+- If your usage drops below your quota:
+- your quota is reduced to match
+
+- By August 15, 2025:
+- quotas were reduced to 0 files and 0 kb of storage
+- remaining data became subject to removal 
+  
+
 
 ### Known and Possible Impacts
 
-- Personal `$WORK` directories will no longer exist.
-- Modifying existing files or creating new files will not be possible when the quota is exceeded.
-- Applications depending on files in `$WORK` may behave unexpectedly when the quota is exceeded.
-- Many users have Conda environments installed in `$WORK`, we expect these will continue to function during the transition. However, they will need to be rebuilt in another location before the end of the deprecation timeline (August 15, 2025). See more details [here](/examples/conda/migration.md).
+- Personal `$WORK` directories no longer exist
 
-### Required Actions
+- You cannot:
+- Create new files
+- Modify existing files (if over quota)
+- 
+- Applications that rely on `$WORK` may:
+- Fail
+- Behave unexpectedly
 
-- Any data currently stored in `$WORK` must be moved to storage allocations managed by ColdFront or to another location off of the HPC systems.
-- Any personal software installations in `$WORK`, including Conda environments, will need to be reinstalled in a different location ($HOME directories or ColdFront managed storage allocations)
+- Conda Environments:
+- May have worked during the transition
+- Must be now rebuilt in another location
 
-:::{important} We strongly recommend taking time to assess which files you need to keep and which files can be deleted. The overall performance of our filesystems is reduced for all users as the storage space fills up.
-:::
+### What you must do
+
+- Move all important data out of `$WORK`
+
+- Move files to one of the following:
+- ColdFront stoage allocations
+- Your home directory
+- External/off-system storage
+
+- Reinstall any software previously stored in `$WORK`
+- Including Conda environments 
+
 
 ### Example of Quota changes
+
+Your storage limit decreased each month until it reached zero. 
 
 If your quota is 8TB (the default) and you have 3.45 TB of data in `$WORK`:
 
