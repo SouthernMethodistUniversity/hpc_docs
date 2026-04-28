@@ -53,14 +53,14 @@ ManeFrame III is SMU's primary CPU-based HPC cluster, supporting a wide range of
 |--------------------|-----------------------------|
 | Nodes              | 20                          |
 | Processors         | AMD EPYC 7742               |
-| CPUs/Node          | 2                           |
-| Cores/Node         | 128                         |
-| Memory/Node        | 2 TB                        |
+| CPUs per Node          | 2                           |
+| Cores per Node         | 128                         |
+| Memory per Node        | 2 TB                        |
 | GPUs               | NVIDIA A100 Tensor Core GPU |
-| GPUs/Node          | 8                           |
-| GPU Memory/GPU     | 80 GB                       |
+| GPUs per Node          | 8                           |
+| GPU Memory per GPU     | 80 GB                       |
 | GPU Interconnect   | NVLink                      |
-| Local Scratch/Node | 27 TB                       |
+| Local Scratch per Node | 27 TB                       |
 | Network            | 10x200 Gb/s                 |
 
 ## Acknowledgement
