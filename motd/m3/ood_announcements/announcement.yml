@@ -1,15 +1,12 @@
-type: info
-dismissible: true
-msg: |
-  Maintenance is scheduled for Tuesday, May 26, 2026 
-  We will be updating drivers and firmware on the storage systems. 
-  Jobs will not be allowed to run while the maintenance is occurring. 
-
-  If you have any questions or concerns, please contact the [IT Help Desk](https://www.smu.edu/oit/help).
-
 type: warning
 dismissible: false
 msg: |
   Beginning on July 1, 2026, the automations will be enabled to enforce
   the 60-day purge policy for $SCRATCH.  Files older than 60 days stored
-  in $SCRATCH will be automatically and permanently deleted. 
+  in $SCRATCH will be automatically and permanently deleted.
+
+  Maintenance is scheduled for Tuesday, May 26, 2026 
+  We will be updating drivers and firmware on the storage systems. 
+  Jobs will not be allowed to run while the maintenance is occurring. 
+
+  If you have any questions or concerns, please contact the [IT Help Desk](https://www.smu.edu/oit/help).
