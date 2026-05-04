@@ -43,4 +43,20 @@ $WORK directories are subject to be deprovisioned (permanently deleted).
 Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.
 
+===========
+Maintenance
+===========
+
+Maintenance is scheduled for Tuesday, May 26, 2026 
+We will be updating drivers and firmware on the storage systems. 
+Jobs will not be allowed to run while the maintenance is occurring. 
+
+========================
+Automatic $SCRATCH Purge
+========================
+
+Beginning on July 1, 2026, the automations will be enabled to enforce
+the 60-day purge policy for $SCRATCH.  Files older than 60 days stored
+in $SCRATCH will be automatically and permanently deleted. 
+
 ********************************************************************************
