@@ -58,5 +58,4 @@ Beginning on July 1, 2026, the automations will be enabled to enforce
 the 60-day purge policy for $SCRATCH.  Files older than 60 days stored
 in $SCRATCH will be automatically and permanently deleted. 
 
-
 ********************************************************************************
