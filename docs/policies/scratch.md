@@ -65,11 +65,9 @@ manifest will begin on the following Friday.
 
 Quotas will be added on July that with the following limits:
 
-------------------------------------------------------------------------------------------------------
 | Soft Quota (TB) | Hard Quota (GB) | Soft Quota (Filecount) | Hard Quota (Filecount) | Grace Period |
 ------------------------------------------------------------------------------------------------------
 | 50 TB | 100 TB | 10,000,000 | 11,000,000 | 10 Days |
-------------------------------------------------------------------------------------------------------
 
 If an user exceeds a "Soft Quota" (50TB, 10,000,000 files) they be able to temporarily exceed this quota,
 up to the "Hard Quota" (100TB, 11,000,000 files) for up to the "Grace Period" (10 days).
