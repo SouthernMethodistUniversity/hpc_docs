@@ -69,7 +69,7 @@ Quotas will be added on July that with the following limits:
 |-----------------|-----------------|------------------------|------------------------|--------------|
 | 50 TB | 100 TB | 10,000,000 | 11,000,000 | 10 Days |
 
-If an user exceeds a "Soft Quota" (50TB, 10,000,000 files) they be able to temporarily exceed this quota,
+If an user exceeds a "Soft Quota" (50TB, 10,000,000 files) they will be able to temporarily exceed this quota,
 up to the "Hard Quota" (100TB, 11,000,000 files) for up to the "Grace Period" (10 days).
 
 When either the "Hard Quota" is reached or usage has been over the "Soft Quota" for more than the "Grace Period,"
