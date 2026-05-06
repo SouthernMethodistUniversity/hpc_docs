@@ -99,7 +99,7 @@ Definitions:
 - `atime` is "access time" and it the last time the data from a file or directory was accessed (e.g. used directly by a process or through commands and scripts)
 - `mtime` is "modification time" and it is the last time the file's contents where modified.
 
-Attempts to circumvent the purge policy by modifying either the `atime` or `ctime` is a violation of policy and will be reported.
+Attempts to circumvent the purge policy by modifying either the `atime` or `mtime` is a violation of policy and will be reported.
 
 ### Transparency
 
