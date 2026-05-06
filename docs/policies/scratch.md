@@ -64,7 +64,7 @@ manifest will begin on the following Friday.
 
 ### Quotas
 
-Quotas will be added on July that with the following limits:
+Quotas will be added on July 1, 2026 with the following limits, per user:
 
 | Soft Quota (TB) | Hard Quota (GB) | Soft Quota (Filecount) | Hard Quota (Filecount) | Grace Period |
 |-----------------|-----------------|------------------------|------------------------|--------------|
