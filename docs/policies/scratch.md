@@ -82,6 +82,13 @@ due to the quota and allow users time to clean up any excess files.
 We will attempt to notify users that have exceeded the "Soft Quota" within 48 hours using
 their SMU email address, but it is the responsibility of each user to monitor their own usage.
 
+Users can see their recent usage on ColdFront under [personal storage usage](https://hpcaccess.smu.edu/usage/personal-storage)
+or in real-time from the HPC systems with the command
+
+```bash
+lfs quota -h -p $(id -u) /scratch
+```
+
 #### Quota Exceptions
 
 Exceptions to the quotas may be considered on a case-by-case basis.
