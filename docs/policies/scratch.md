@@ -109,7 +109,7 @@ be deleted without warning if they are over 60 days old.
 
 ### Age determination
 
-Files will be determined to be over 60 days old if the following criteria are met:
+Files will be determined to be over 60 days old if all of the following criteria are met:
 
 1. The file's `atime` is greater than or equal to 60 days old.
 2. The file's `mtime` is greater than or equal to 60 days old.
