@@ -5,7 +5,8 @@ high performance storage for running jobs.
 It is not intended for persistent storage.
 In order to maintain performance and stability for all users, the `$SCRATCH` has a
 **60 day purge policy** where files older than 60 days will be permanently deleted.
-Files are not backed up in `$SCRATCH`, so important data or scripts need to be `/projects` (project directories are not backed up) or `$HOME` (home directories have a 7 day rolling snapshot based backup) to be retained.
+Files are not backed up in `$SCRATCH`, so important data or scripts need to be moved to `/projects` directories (project directories are not backed up) `$HOME` directories (home directories have a 7 day rolling snapshot based backup) or
+off of the HPC systems to be retained.
 
 ## Changes beginning July 1, 2026
 
