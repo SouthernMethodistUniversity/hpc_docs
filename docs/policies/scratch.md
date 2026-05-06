@@ -82,6 +82,18 @@ due to the quota and allow users time to clean up any excess files.
 We will attempt to notify users that have exceeded the "Soft Quota" within 48 hours using
 their SMU email address, but it is the responsibility of each user to monitor their own usage.
 
+#### Quota Exceptions
+
+Exceptions to the quotas may be considered on a case-by-case basis.
+Approval of any requests require documentation of at least:
+
+- Your workflow and an explanation of why that workflow is not possible
+with the default quota amounts.
+- A plan and demonstrable process(es) for using the data within the 60 day purge policy.
+Requests that cannot demonstrate that the data will be deleted, used, or moved off of
+the HPC systems within 60 days will not be approved.
+- Reasonable efforts have been made to reduce storage needs, such as using efficient output file formats
+or compression.
 
 ## 60 Day Purge Policy
 
