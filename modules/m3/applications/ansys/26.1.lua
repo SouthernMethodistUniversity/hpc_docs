@@ -21,7 +21,7 @@ setenv("QTWEBENGINE_DISABLE_SANDBOX", "1")
 
 if (container_name == "") then
    -- make shell functions that run inside a container
-   local cuda==os.getenv("CUDA_VISIBLE_DEVICES") or  ""
+   local cuda=os.getenv("CUDA_VISIBLE_DEVICES") or  ""
    local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.2.7.sif"
    local flags=""
    if (cuda ~= "") then
