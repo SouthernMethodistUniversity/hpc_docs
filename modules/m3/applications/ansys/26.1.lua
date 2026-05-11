@@ -45,7 +45,7 @@ if (container_name == "") then
    build_command("runwb2", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/Framework/bin/Linux64/")
    build_command("fluent", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/fluent/bin")
    build_command("mapdl", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/ansys/bin/")
-   build_command("ansys251", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/ansys/bin/")
+   build_command("ansys261", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/ansys/bin/")
    build_command("autodyn", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/autodyn/bin/")
    build_command("cfx5", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/CFD-Post/bin/")
    build_command("ansysedt", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/AnsysEM/")
