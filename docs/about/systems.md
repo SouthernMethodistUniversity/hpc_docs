@@ -64,6 +64,13 @@ their work.
 | Local Scratch/Node | 27 TB                       |
 | Network            | 10x200 Gb/s                 |
 
+## Storage Locations and Quotas
+
+* Home directories, `$HOME`, are backed up and have default quota of 200 GB.
+* Scratch directories, `$SCRATCH`, are for temporary storage and files older
+  than 60 days will be deleted.
+* Project directories, '/projects/', are storage allocations associated with a project. Sizes vary based on needs. Allocations are valid for 1 year and are eligible to be renewed based on need
+
 ## Acknowledgement
 
 We request that all work supported by SMU HPC resources make an appropriate acknowledgement.
