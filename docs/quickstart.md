@@ -42,21 +42,20 @@ nano my_first_job.sbatch
 Paste the following contents into the editor:
 
 ```bash
-#!/bin/bash
-#SBATCH -A slurm_account_name
-#SBATCH -J my_first_job
-#SBATCH -o my_first_job_%j.out
-#SBATCH -e my_first_job_%j.err
-#SBATCH -p dev
-#SBATCH -t 0-00:30:00
-#SBATCH --mem=4G
-#SBATCH -c 1
+#!/bin/bash                       
+#SBATCH -A slurm_account_name        # Replace with your faculty /
+#SBATCH -J my_first_job              # Name of the job in the queue
+#SBATCH -o my_first_job_%j.out       # Standard output file (% j expands)
+#SBATCH -e my_first_job_%j.err       # Error file
+#SBATCH -p dev                       # Partition (queue) to use
+#SBATCH -t 0-00:30:00                # Time limit (DD-HH: MM: SS)
+#SBATCH --mem=4G                     # Memory requested
+#SBATCH -c 1                         # Number of CPU cores
 
-# Wait for 100 seconds so you can check the queue using 'squeue --me'
+# Your commands go below this line
+echo "Job started at  $ (date)"
 sleep 100
- 
-# Print a simple message
-echo "Hello, World!"
+echo "Hello, World from Node: $ (hostname)"
 ```
 
 Save and exit nano:
@@ -71,6 +70,12 @@ Submit your job:
 
 ```bash
 sbatch my_first_job.sbatch
+```
+
+You should see a message like: 
+
+```bash
+Submitted batch job 123456
 ```
 
 Check the job status:
@@ -99,11 +104,13 @@ https://hpc.smu.edu
 
 4. On the left sidebar, choose an interactive app (e.g., RStudio, Jupyter, etc.).
 
-5. Select your SLURM account and job settings (defaults are fine for testing).
+5. Configure your session: Enter your SLURM account name, Select dev (best for testing), Number of Hours: 1
 
-6. Click Launch and wait for the job to start in the queue.
+6. Launch: Click the blue Launch button. The card will turn from "Queued" to "Starting" and finally to "Running."  
 
-7. Once ready, click Launch again to open the session in your browser.
+7. Click Launch and wait for the job to start in the queue.
+
+8. Once ready, click Launch again to open the session in your browser.
 
 When finished, delete the job from My Interactive Sessions to free resources.
 

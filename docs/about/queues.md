@@ -11,21 +11,20 @@ For examples and tips on SLURM usage, see [our SLURM documentation](../tutorials
 :::{note}
 The efficiency of SLURM and our HPC systems depend on reasonable resource requests.
 Whenever possible, you should request only the resources your job needs including
-memory, number of cores, number of gpus, and run time.
+memory, number of cores, number of GPUs, and run time.
 
-Requesting more than you need makes your job and everyone elses jobs run less 
-efficiently.
+Requesting more resources than necessary reduces overall system efficiency and may delay other users' jobs.
 :::
 
 
 ## M3 Queues
 
-M3 has the following queues:
+The M3 cluster provides the following SLURM partitions (queues), each optimized for different workloads.
 
 | Partition Name | Number of Nodes  | Cores Per Node | Memory Per Node | Time Limit | Notes                                          |
 |----------------|------------------|----------------|-----------------|------------|------------------------------------------------|
 | dev            | 4                | 128            | 500GB           | 2 hours    |                                                |
-| gpu-dev        | 3                | 36             | 734GB           | 4 hours    | 8 Nvidia V100 GPUs per node                    |
+| gpu-dev        | 3                | 36             | 734GB           | 4 hours    | 8 NVIDIA V100 GPUs per node                    |
 | htc            | 20               | 128            | 500GB           | 24 hours   |                                                |
 | standard-s     | 124              | 128            | 500GB           | 24 hours   |                                                |
 | standard-l     | 20               | 128            | 500GB           | 7 days     |                                                |
@@ -51,7 +50,7 @@ You should select the queue most appropriate for your jobs and not on current av
 
 ## SuperPod Queues
 
-The SuperPod has 2 queues:
+The SuperPod cluster provides two GPU-accelerated partitions.
 
 | Partition Name | Number of Nodes | Cores Per Node | Memory Per Node | GPUs Per Node  | Time Limit |
 |----------------|-----------------|----------------|-----------------|----------------|------------|

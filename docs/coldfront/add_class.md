@@ -4,10 +4,7 @@
 Only benefits eligible faculty or staff can create a class.
 ```
 
-These instructions will help you get access to HPC resources for your class.
-If you are the instructor of record in my.smu, much of this process will be easy and automated for you.
-If you are not an instructor of record for a course but would like to set up a course (e.g. workshop or bootcamp), 
-please reach out to [help@smu.edu](mailto:help%40smu.edu?subject=%5BHPC%5D) and include [HPC] in the subject line.
+These instructions help instructors and TAs access HPC resources. If you are the instructor of record in my.SMU, the process is automated. For non-credit courses (workshops/bootcamps), email [help@smu.edu](mailto:help%40smu.edu?subject=%5BHPC%5D) with  [HPC] in the subject line.
 
 ### Setting up your class
 

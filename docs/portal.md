@@ -1,6 +1,6 @@
 # HPC Portal
 
-HPC OnDemand provides an integrated, single access point for SMU HPC resources.
+HPC OnDemand provides a single, web-based access point for SMU HPC resources.
 
 ## Accessing the Portal
 
@@ -9,7 +9,8 @@ which can be requested as documented in
 {doc}`accounts`.
 
 1.  Go to [hpc.m3.smu.edu](https://hpc.m3.smu.edu/).
-2.  Sign in using your SMU NetID and SMU password
+2.  Sign in using your SMU NetID and password
+3.  You will be directed to the HPC OnDemand dashboard
 
 ## Interactive Apps
 
@@ -18,17 +19,14 @@ which can be requested as documented in
 
 1.  Select "Remote Desktop" from the "Interactive Apps" drop-down
     menu.
-2.  Select options required for your remote desktop instance. These
-    options are the same as those requested via a standard Slurm script.
+2.  Select options required for your remote desktop instance. Select compute resources (CPU, memory, time) as you would in a Slurm job script.
 3.  Select "Launch"
-4.  Wait for the job to start. When the job starts a new button
+4.  Wait for the job to start. When the job starts, a 
     "Launch noVNC in New Tab" button will appear.
 5.  Select "Launch noVNC in New Tab"
-6.  Graphical applications can be run via the Terminal, e.g.
+6.  Graphical applications can be run via the Terminal, Example command:
     `module load comsol && comsol &`.
-7.  When finished using the remote desktop instance, return to the "My
-    Interactive Sessions" tab in your browser and select "Delete" and
-    "Confirm", when prompted, to cancel the job.
+8.  When finished using the remote desktop instance, go to My Interactive Sessions, press delete, then press confirm
 
 ### JupyterLab
 
