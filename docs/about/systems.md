@@ -69,7 +69,7 @@ their work.
 * Home directories, `$HOME = /users/<username>`, are backed up and have default quota of 200 GB. Backups are daily rolling snapshots retained for 7 days.
 * Scratch directories, `$SCRATCH = /scratch/users/<username>`, are for temporary storage and files older
   than 60 days will be deleted. Scratch storage is redundant but is not backed up.
-* Project directories, '/projects/', are storage allocations associated with a project. Sizes vary based on needs. Allocations are valid for 1 year and are eligible to be renewed based on need. Project storage is redundant, but is not backed up.
+* Project directories, '/projects/', are storage allocations associated with a project. Sizes vary based on needs. Allocations are valid for 1 year and are eligible to be renewed based on need. Project storage is redundant but is not backed up.
 
 ## Acknowledgement
 
