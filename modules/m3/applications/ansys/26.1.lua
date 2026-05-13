@@ -51,6 +51,7 @@ if (container_name == "") then
    build_command("ansysedt", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/AnsysEM/")
    build_command("siwave", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/AnsysEM/")
    build_command("polyflow", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/polyflow/bin/")
+   build_command("additiveserver", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/Additive/additiveserver")
 
 else
 
@@ -66,6 +67,7 @@ else
   append_path("PATH", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/CFD-Post/bin/")
   append_path("PATH", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/AnsysEM/")
   append_path("PATH", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/polyflow/bin/")
+  append_path("PATH", "/hpc/m3/apps/ansys/26R1/ansys_inc/v261/Additive/additiveserver")
   
   setenv("GALLIUM_DRIVER","softpipe")
 end
