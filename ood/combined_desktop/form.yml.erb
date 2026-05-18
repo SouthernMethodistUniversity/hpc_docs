@@ -4,6 +4,7 @@ require 'open3'
 # check queue help scripts
 require_relative "CheckQueues"
 require_relative "CheckAccounts"
+require_relative "CheckSSH"
 
 -%>
 
@@ -12,6 +13,7 @@ require_relative "CheckAccounts"
 title: "Remote Desktop"
 cluster: "m3cluster"
 submit: submit.yml.erb
+<%- CheckSSH.SSH -%>
 <%- if CheckAccounts.Accounts.count == 0 -%>
 form:
   - slurm_accounts
