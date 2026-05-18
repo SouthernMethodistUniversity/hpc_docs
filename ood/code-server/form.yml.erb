@@ -160,7 +160,7 @@ attributes:
           data-option-for-custom-queues-fp-gpgpu-3: false,
           data-option-for-custom-queues-fp-gpgpu-4: false
         ]
-      - ["4.112.0 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.122.0.sif",
+      - ["4.112.0 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.112.0.sif",
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
         <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
