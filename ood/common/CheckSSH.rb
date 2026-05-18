@@ -13,7 +13,7 @@ class CheckSSH
 
   def self.SSH
     begin
-      @Accounts = @cache.fetch("#{User.new.name}/ssh_check", race_condition_ttl: 30.seconds) do
+      @SSH = @cache.fetch("#{User.new.name}/ssh_check", race_condition_ttl: 30.seconds) do
         self.GetSSH()
       end
       return @SSH
