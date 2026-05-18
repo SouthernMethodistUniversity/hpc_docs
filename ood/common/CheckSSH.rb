@@ -1,6 +1,6 @@
 class CheckSSH
 
-  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/", :expires_in => 1.year)
+  @cache = ActiveSupport::Cache::FileStore.new("/users/#{User.new.name}/.cache/OpenOnDemand/known_hosts", :expires_in => 1.year)
 
   def self.GetSSH()
     begin
