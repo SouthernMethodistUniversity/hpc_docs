@@ -20,7 +20,7 @@ export password PASSWORD
 
 # Print compute node.
 echo "$(date): Running on compute node ${compute_node}:$port"
-
+module use ~/test_mods/
 module load apptainer
 
 # VSCode complains that system git is too old.
