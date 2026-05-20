@@ -146,7 +146,7 @@ From: ubuntu:22.04
                libqt5x11extras5
 
   # Ansys requirements 
-  DEBIAN_FRONTEND=noninteractive dpkg --add-architecture i386 && sudo apt-get update
+  DEBIAN_FRONTEND=noninteractive dpkg --add-architecture i386 && apt update -y
 
   DEBIAN_FRONTEND=noninteractive apt-get -y install \
                libgtk-3-0 \
@@ -280,7 +280,7 @@ From: ubuntu:22.04
                libcairo2 \
                ocl-icd-libopencl1 \
                libgssapi-krb5-2 \
-               libxt \
+               libxt6 \
                libtasn1-6 \
                libxxf86vm1 \
                libxau6 \
