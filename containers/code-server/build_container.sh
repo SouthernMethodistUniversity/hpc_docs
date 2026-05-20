@@ -4,7 +4,7 @@
 
 # specify version
 PLATFORM="amd64"
-VERSION="4.112.0"
+VERSION="4.118.0"
 TAG=${PLATFORM}-${VERSION}
 
 echo "Building tag: ${TAG}"
