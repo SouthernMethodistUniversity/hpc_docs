@@ -16,7 +16,7 @@ sed -i "/^From:*/c\From: linuxserver/code-server:${TAG}" tmp_build_file.def
 module purge
 module load apptainer
 unset APPTAINER_BIND
-apptainer build --fakeroot code-server_gpu_${TAG}.sif tmp_build_file.def
+apptainer -v build --fakeroot code-server_gpu_${TAG}.sif tmp_build_file.def
 
 # move container to /hpc/{sys}/containers/
 CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
@@ -34,7 +34,7 @@ mkdir -p ../../modules/${CLUSTER}/code-server
 MODULE_FILE=../../modules/${CLUSTER}/code-server/${VERSION}.lua
 (
 sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
-  always_load('singularity')
+  always_load('apptainer')
   local sif_file = '/hpc/${CLUSTER}/containers/code-server/code-server_gpu_${TAG}.sif'
 
   local work_dir = '/work'

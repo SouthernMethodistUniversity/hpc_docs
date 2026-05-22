@@ -23,6 +23,17 @@ echo "$(date): Running on compute node ${compute_node}:$port"
 module use ~/test_mods/
 module load apptainer
 
+
+# Create a unique $TMPDIR for runtime files
+export TMPDIR="$(mktemp -d)"
+mkdir -p -m 700 ${TMPDIR}/run/$(id -u)
+
+export XDG_RUNTIME_DIR=${TMPDIR}/run/$(id -u)
+export APPTAINERENV_XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+
+echo "XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR}"
+echo "APPTAINERENV_XDG_RUNTIME_DIR: ${APPTAINERENV_XDG_RUNTIME_DIR}"
+
 # VSCode complains that system git is too old.
 # module load code-server/<%= code_server_version %>
 
@@ -59,6 +70,7 @@ echo "Loading custom environment settings"
 <%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
 
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/.singularity.d/libs/"
 # code server
 /app/code-server/bin/code-server \
     --auth="password" \
@@ -81,6 +93,7 @@ echo ""
 
 <%- if context.bc_num_gpus.to_i != 0 and ! context.bc_num_gpus.blank? -%>
 apptainer exec --nv \
+    -B ${TMPDIR}/run/$(id -u) \
     -B $SCRATCH \
     -B /etc/csh.cshrc \
     -B /etc/profile.d \
@@ -88,6 +101,7 @@ apptainer exec --nv \
     $CONTAINER_SCRIPT
 <%- else -%>
 apptainer exec \
+    -B ${TMPDIR}/run/$(id -u) \
     -B $SCRATCH \
     -B /etc/csh.cshrc \
     -B /etc/profile.d \
