@@ -12,5 +12,5 @@ help([[Name: Apptainer
 Version: 1.1.6
 Website: https://apptainer.org/
 
-pptainer is an open source container platform designed to be simple, fast, and secure. Many container platforms are available, but Apptainer is designed for ease-of-use on shared systems and in high performance computing (HPC) environments.
+Apptainer is an open source container platform designed to be simple, fast, and secure. Many container platforms are available, but Apptainer is designed for ease-of-use on shared systems and in high performance computing (HPC) environments.
 ]])
