@@ -31,7 +31,6 @@ batch_connect:
     #!/bin/bash
     . ~/.bashrc
   script_wrapper: |
-    module use ~/test_mods/
     module purge
     module load apptainer
     cat << "CTRSCRIPT" > container.sh
