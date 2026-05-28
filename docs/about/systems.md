@@ -81,5 +81,3 @@ Please use the following ackowledgment statement:
 
 "Computational resources for this research were
 provided by SMU\'s O\'Donnell Data Science and Research Computing Institute."
-
-Proper acknowledgment helps demonstrate the impact of SMU's computational resources and supports continued investment in research infrastructure. 
