@@ -43,15 +43,6 @@ $WORK directories are subject to be deprovisioned (permanently deleted).
 Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.
 
-===========
-Maintenance
-===========
-
-Maintenance is scheduled for Wednesday, May 27, 2026 
-We will be updating network switched. 
-Jobs will not be allowed to run between 6AM and 5PM while
-the maintenance is occurring.
-
 ========================
 Automatic $SCRATCH Purge
 ========================
