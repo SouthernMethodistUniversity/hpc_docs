@@ -11,8 +11,19 @@ Ansys Fluent, Mechanical, Workbench
 ]])
 
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
-
+local cuda=os.getenv("CUDA_VISIBLE_DEVICES") or  ""
+local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0.sif"
+local flags=""
+if (cuda ~= "") then
+  container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0_gpu.sif"
+  flags=" --nv "
+end
+setenv("CONTAINER_IMAGE", container_path)
+setenv("CONTAINER_FLAGS", flags)
 setenv("QTWEBENGINE_DISABLE_SANDBOX", "1")
+
+source_sh("bash", "/hpc/m3/apps/ansys/26R1/additive_server_helper.sh")
+
 
 -- Ansys needs GUI stuff not installed on compute nodes, so this install
 -- currently only runs in the remote desktop container. For users 
@@ -21,15 +32,7 @@ setenv("QTWEBENGINE_DISABLE_SANDBOX", "1")
 
 if (container_name == "") then
    -- make shell functions that run inside a container
-   local cuda=os.getenv("CUDA_VISIBLE_DEVICES") or  ""
-   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.2.7.sif"
-   local flags=""
-   if (cuda ~= "") then
-     container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.2.7_gpu.sif"
-     flags=" --nv "
-   end
    setenv("APPTAINERENV_GALLIUM_DRIVER","softpipe")
-  
    always_load('apptainer')
 
    function build_command(app, app_path)
