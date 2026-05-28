@@ -10,12 +10,17 @@ node has dual  AMD EPYC 7742 64-Core \"Zen 2\"
 processors, 512 GB of memory, and an NVIDIA A100 GPU accelerator with 
 40 GB of HBM2 memory, 6912 Cuda cores, and 432 tensor cores. 
 
-This node `amd001`, is currently available only with permision
+This node `amd001`, is currently available only with permission
 from Dr. Hagstrom.
 
 ## Professor Barbara Minsker (Civil and Environmental Engineering)
 
-Professor Minsker has two nodes that are availabe as part of M3. These
+:::{note}
+These nodes are end of life. There availability is maintained on a
+best effort basis. Critical failures will not be repaired.
+:::
+
+Professor Minsker has two nodes that are available as part of M3. These
 nodes each have dual Intel Xeon Gold 6148 2.40 GHz 20-core \"Skylake\"
 processors, 384 GB of memory, dual NVIDIA V100 GPU accelerators, and 2
 TB of local RAID scratch space. Each GPU has 5,120 CUDA cores, 640
@@ -33,6 +38,11 @@ users with the following restrictions.
     indefinitely until jobs submitted with the flag finish
 
 ## Professor Wei Cai (Mathematics)
+
+:::{note}
+This node is end of life. Its availability is maintained on a
+best effort basis. Critical failures will not be repaired.
+:::
 
 Professor Cai has one node that is available as part of M3. This node
 has dual Intel Xeon Gold 6150 2.70 GHz 18-core \"Skylake\"
@@ -58,5 +68,5 @@ dual AMD EPYC 7763 2.45 Ghz 64-Core \"Zen 3\" processors, 512 GB of memory,
 and AMD Instinct MI210 GPU with 64 GB of HBM2e memory and 6,656 stream processors.
 This node is also equipped with AMD/Xilinx Alveo U55C FPGA.
 
-This node `ga001`, is currently available only with permision
+This node `ga001`, is currently available only with permission
 from Dr. Matthews. 

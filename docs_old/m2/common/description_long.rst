@@ -146,7 +146,7 @@ The queue for these nodes, ``fp-gpgpu-2``, is generally available to M2 users.
 *Professor Barbara Minsker (Civil and Environmental Engineering)*
 -----------------------------------------------------------------
 
-Professor Minsker has two nodes that are availabe as part of M2. These nodes
+Professor Minsker has two nodes that are available as part of M2. These nodes
 each have dual Intel Xeon Gold 6148 2.40 GHz 20-core "Skylake" processors, 384
 GB of memory, dual NVIDIA V100 GPU accelerators, and 2 TB of local RAID scratch
 space. Each GPU has 5,120 CUDA cores, 640 Tensor cores, and 32 GB CoWoS HBM2
