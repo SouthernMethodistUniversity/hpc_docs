@@ -58,7 +58,7 @@ The following job restrictions apply:
 
 - 2 hour time limit per job.
 - Users are limited to using up to 1000GB and/or up to 256 cores at a time. This is approximately half of all of the resources in the dev queue. Jobs requesting more resources will not start. For example, you may submit 500 (or more)
-jobs to the dev queue requesting 1 core each, in which case a maximum of 256 of these jobs could run simultaneously (fewer may run do to resource availability and other factors.)
+jobs to the dev queue requesting 1 core each, in which case a maximum of 256 of these jobs could run simultaneously (fewer may run due to resource availability and other factors.)
 - A maximum of 4 jobs per user will gain priority based on wait time. Jobs will start if there are idle resources as long
 as there are not restricted by other limits. This is to prevent individual users or groups from being able to monopolize
 use of the queue for long periods of time.
