@@ -63,6 +63,13 @@ jobs to the dev queue requesting 1 core each, in which case a maximum of 256 of 
 as there are not restricted by other limits. This is to prevent individual users or groups from being able to monopolize
 use of the queue for long periods of time.
 
+Users with jobs exceeding the resource limits of 1000GB and/or up to 256 cores at a time will see jobs with the
+statuses:
+
+- **QOSMaxMemoryPerUser** -- The means that the job cannot currently start because the combination memory requested for currently running jobs and this job's memory requests is over 1000GB. The job will be allowed to start once enough running jobs complete and relinquish memory. **Individual jobs requesting more than 1000GB will never start.**
+- **QOSMaxCpuPerUserLimit** -- This means that the job cannot currently start because the combination of requested CPU cores for currently running jobs and this jobs requested number of CPU cores is more than 256. The job will be allowed
+to start as jobs complete and release reserved cores. **Individual jobs requesting more than 256 cores will never start.**
+
 ## SuperPod Queues
 
 The SuperPod has 2 queues:
