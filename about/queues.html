@@ -396,7 +396,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m3-queues">M3 Queues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m3-queues">M3 Queues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dev-queue">dev queue</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#superpod-queues">SuperPod Queues</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-queue">Short queue</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-requests">Special Requests</a></li>
@@ -498,7 +501,8 @@ efficiently.</p>
 <p>All M3 nodes are identical and contain dual AMD EPYC 7763 64-Core Processors with the exception of the
 nodes on the <code class="docutils literal notranslate"><span class="pre">highmem</span></code> partition having more memory.</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">dev</span></code> nodes are meant for interactive and development work</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">dev</span></code> nodes are meant for interactive and development work. There are additional restrictions on this queue
+to help keep resources available for all users with lower wait times, see the <a class="reference internal" href="#about-dev-queue"><span class="std std-ref">extended description.</span></a></p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">gpu-dev</span></code> nodes are meant for interactive and development work. Production and batch jobs should run on the SuperPod.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">htc</span></code> nodes are for “High Throughput Computing” and are intended for jobs that typically launch a
 large number of tasks that require a single core and a small amount of memory for a short time. This is also an
@@ -512,6 +516,26 @@ data to/from M3.</p></li>
 <p class="admonition-title">Note</p>
 <p>You should select the queue most appropriate for your jobs and not on current availability.</p>
 </div>
+<section id="dev-queue">
+<span id="about-dev-queue"></span><h3>dev queue<a class="headerlink" href="#dev-queue" title="Link to this heading">#</a></h3>
+<p>The dev queue is intended for interactive work, development, and other short tasks.
+The following job restrictions apply:</p>
+<ul class="simple">
+<li><p>2 hour time limit per job.</p></li>
+<li><p>Users are limited to using up to 1000GB and/or up to 256 cores at a time. This is approximately half of all of the resources in the dev queue. Jobs requesting more resources will not start. For example, you may submit 500 (or more)
+jobs to the dev queue requesting 1 core each, in which case a maximum of 256 of these jobs could run simultaneously (fewer may run do to resource availability and other factors.)</p></li>
+<li><p>A maximum of 4 jobs per user will gain priority based on wait time. Jobs will start if there are idle resources as long
+as there are not restricted by other limits. This is to prevent individual users or groups from being able to monopolize
+use of the queue for long periods of time.</p></li>
+</ul>
+<p>Users with jobs exceeding the resource limits of 1000GB and/or up to 256 cores at a time will see jobs with the
+statuses:</p>
+<ul class="simple">
+<li><p><strong>QOSMaxMemoryPerUser</strong> – The means that the job cannot currently start because the combination memory requested for currently running jobs and this job’s memory requests is over 1000GB. The job will be allowed to start once enough running jobs complete and relinquish memory. <strong>Individual jobs requesting more than 1000GB will never start.</strong></p></li>
+<li><p><strong>QOSMaxCpuPerUserLimit</strong> – This means that the job cannot currently start because the combination of requested CPU cores for currently running jobs and this jobs requested number of CPU cores is more than 256. The job will be allowed
+to start as jobs complete and release reserved cores. <strong>Individual jobs requesting more than 256 cores will never start.</strong></p></li>
+</ul>
+</section>
 </section>
 <section id="superpod-queues">
 <h2>SuperPod Queues<a class="headerlink" href="#superpod-queues" title="Link to this heading">#</a></h2>
@@ -642,7 +666,10 @@ and will be based on demonstrated need and impact to other users.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m3-queues">M3 Queues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m3-queues">M3 Queues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dev-queue">dev queue</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#superpod-queues">SuperPod Queues</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-queue">Short queue</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-requests">Special Requests</a></li>
