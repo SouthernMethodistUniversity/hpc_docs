@@ -32,6 +32,7 @@ attributes:
 <%- else -%>
 form:
   - slurm_accounts
+  - auto_groups
   - custom_queues
   - desktop_os
   - desktop_env
@@ -54,6 +55,14 @@ attributes:
     <%- CheckAccounts.Accounts.each do |q| -%>
     - [ "<%= q %>",  "<%= q %>" ]
     <%- end -%>
+  auto_groups:
+    label: "Group"
+    widget: select
+    help: |
+      Please select the group you want to use in the remote desktop container. It is only possible
+      to use 1 group at a time. Most users should not need to change this, but some users may need
+      need to select a specific group to access restricted software or use other resources
+      based group based permissions.
   custom_queues:
     label: "Partition"
     widget: select
