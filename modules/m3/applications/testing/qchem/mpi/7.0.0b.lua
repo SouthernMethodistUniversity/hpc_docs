@@ -5,6 +5,7 @@ always_load('gcc/15.2.0', 'hpc-x/2.26.0')
 
 local scratch_dir = os.getenv("SCRATCH")
 setenv("QCSCRATCH", scratch_dir)
+setenv("QCMPIRUN", "/hpc/sys/apps/slurm/current/bin/srun")
 source_sh('bash', '/hpc/m3/apps/q-chem/7.0.0b/cluster/qcenv.sh')
 
 help([[Name: Q-Chem
