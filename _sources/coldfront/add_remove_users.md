@@ -13,6 +13,16 @@ Instructors and PI's are automatically assigned the ***Manager*** role within a 
 | ***Manager*** | add users, remove users, request allocations, use allocations |
 | ***User*** | use allocations |
 
+### Role Restrictions
+
+The following restrictions apply to the ***Manager*** role:
+
+- External collaborators are not allowed to be project managers.
+Managers are required to have a current employee or student status at SMU.
+- Students and other users that are not eligible to be a project owner
+cannot add or remove users from projects. They can make allocation requests
+and changes as well as perform most other actions on projects.
+
 ## Add a User
 
 ### To a Project/Class
