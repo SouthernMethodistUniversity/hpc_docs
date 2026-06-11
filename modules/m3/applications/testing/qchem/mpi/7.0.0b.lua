@@ -7,6 +7,7 @@ local scratch_dir = os.getenv("SCRATCH")
 setenv("QCSCRATCH", scratch_dir)
 setenv("QCMPIRUN", "/hpc/sys/apps/slurm/current/bin/srun")
 source_sh('bash', '/hpc/m3/apps/q-chem/7.0.0b/cluster/qcenv.sh')
+source_sh('bash', '/hpc/m3/apps/q-chem/7.0.0b/cluster/qcpbc.sh')
 
 help([[Name: Q-Chem
 Version: 7.0.0b
