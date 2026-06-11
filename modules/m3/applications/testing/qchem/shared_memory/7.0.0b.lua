@@ -4,7 +4,6 @@ family("qchem")
 local scratch_dir = os.getenv("SCRATCH")
 setenv("QCSCRATCH", scratch_dir)
 source_sh('bash', '/hpc/m3/apps/q-chem/7.0.0b/shared_memory/qcenv.sh')
-source_sh('bash', '/hpc/m3/apps/q-chem/7.0.0b/shared_memory/qcpbc.sh')
 
 help([[Name: Q-Chem
 Version: 7.0.0b
