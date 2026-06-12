@@ -150,7 +150,7 @@ eligible for HPC access for 6 or more months is subject to deprovisioning
 and permanent deletion to maintain system availability and stability
 for current users.
 
-Home directories maintain a 7-day rolling, snapshot based backups.
+Home directories maintain 7-day rolling, snapshot based backups.
 
 ### Data stored in project directories
 
