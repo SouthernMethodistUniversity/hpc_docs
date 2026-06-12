@@ -40,7 +40,7 @@ The following assume that all eligibility has been lost.
   transfer ownership. This will deactivate all allocations associated
   with the project(s) which will revoke access to the project resources
   for all users on the project.
-- If you are own HPC projects that are owned by someone else,
+- If you are on HPC projects that are owned by someone else,
   your account will be deactivated on those projects and associated allocations.
 - Any running or queued jobs on the HPC systems will be cancelled.
 
