@@ -73,20 +73,6 @@ attributes:
         <%- end -%>
         ]
       <%- end -%>
-      <%- if (User.new.name == 'jlagrone') | (User.new.name == 'tuev') | (User.new.name == 'mlangstonsmith') -%>
-      - ["fp-gpgpu-3", "fp-gpgpu-3",
-         data-max-bc-num-cores: "40",
-         data-max-bc-num-memory: "325",
-         data-max-bc-num-gpus: "2",
-         data-show-bc-num-gpus: true
-      ]
-      - ["fp-gpgpu-4", "fp-gpgpu-4",
-         data-max-bc-num-cores: "36",
-         data-max-bc-num-memory: "364",
-         data-max-bc-num-gpus: "2",
-         data-show-bc-num-gpus: true
-      ]
-      <%- end -%> 
   working_dir:
     widget: "path_selector"
     label: VSCode Workspace
@@ -149,6 +135,42 @@ attributes:
     widget: "select"
     label: "Code Server Version"
     options:
+      - ["4.121.0", "/hpc/m3/containers/code-server/code-server_amd64-4.121.0.sif",
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- end -%>
+        <%- end -%>
+        ]
+      - ["4.121.0 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.121.0.sif",
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- end -%>
+        <%- end -%>
+        ]
+      - ["4.118.0", "/hpc/m3/containers/code-server/code-server_amd64-4.118.0.sif",
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- end -%>
+        <%- end -%>
+        ]
+      - ["4.118.0 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.118.0.sif",
+        <%- CheckQueues.Queues.each do |q| -%>
+          <%- if q[4].to_i == 0 -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
+          <%- else -%>
+        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
+          <%- end -%>
+        <%- end -%>
+        ]
       - ["4.112.0", "/hpc/m3/containers/code-server/code-server_amd64-4.112.0.sif",
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
@@ -157,10 +179,8 @@ attributes:
         <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
           <%- end -%>
         <%- end -%>
-          data-option-for-custom-queues-fp-gpgpu-3: false,
-          data-option-for-custom-queues-fp-gpgpu-4: false
         ]
-      - ["4.112.0 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.122.0.sif",
+      - ["4.112.0 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.112.0.sif",
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
         <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
@@ -168,8 +188,6 @@ attributes:
         <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
           <%- end -%>
         <%- end -%>
-          data-option-for-custom-queues-fp-gpgpu-3: true,
-          data-option-for-custom-queues-fp-gpgpu-4: true
         ]
       - ["4.103.2", "/hpc/m3/containers/code-server/code-server_amd64-4.103.2.sif",
         <%- CheckQueues.Queues.each do |q| -%>
@@ -179,8 +197,6 @@ attributes:
         <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
           <%- end -%>
         <%- end -%>
-          data-option-for-custom-queues-fp-gpgpu-3: false,
-          data-option-for-custom-queues-fp-gpgpu-4: false
         ]
       - ["4.103.2 (GPU Enabled)", "/hpc/m3/containers/code-server/code-server_gpu_amd64-4.103.2.sif",
         <%- CheckQueues.Queues.each do |q| -%>
@@ -190,7 +206,5 @@ attributes:
         <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
           <%- end -%>
         <%- end -%>
-          data-option-for-custom-queues-fp-gpgpu-3: true,
-          data-option-for-custom-queues-fp-gpgpu-4: true
         ]
 <%- end -%>

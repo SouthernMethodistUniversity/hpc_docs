@@ -113,7 +113,12 @@ from Dr. Hagstrom.
 
 ### Professor Barbara Minsker (Civil and Environmental Engineering)
 
-Professor Minsker has two nodes that are availabe as part of M3. These
+:::{note}
+These nodes are end of life. There availability is maintained on a
+best effort basis. Critical failures will not be repaired.
+:::
+
+Professor Minsker has two nodes that are available as part of M3. These
 nodes each have dual Intel Xeon Gold 6148 2.40 GHz 20-core \"Skylake\"
 processors, 384 GB of memory, dual NVIDIA V100 GPU accelerators, and 2
 TB of local RAID scratch space. Each GPU has 5,120 CUDA cores, 640
@@ -132,6 +137,11 @@ users with the following restrictions.
 
 ### Professor Wei Cai (Mathematics)
 
+:::{note}
+This node is end of life. Its availability is maintained on a
+best effort basis. Critical failures will not be repaired.
+:::
+
 Professor Cai has one node that is available as part of M3. This node
 has dual Intel Xeon Gold 6150 2.70 GHz 18-core \"Skylake\"
 processors, 384 GB of memory, dual NVIDIA V100 GPU accelerators, and 2
@@ -140,7 +150,7 @@ Tensor cores, and 32 GB CoWoS HBM2 memory. The V100 GPU is based on the
 Volta architecture and an extremely high bandwidth (900 GB/s) stacked
 memory architecture.
 
-The `fp-gpgpu-3` queue is available to M3
+The `fp-gpgpu-4` queue is available to M3
 users with the following restrictions.
 
 -   The maximum job duration for users not in Dr. Cai\'s group is 7

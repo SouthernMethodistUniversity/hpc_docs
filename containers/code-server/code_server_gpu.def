@@ -8,11 +8,87 @@ From: linuxserver/code-server:${TAG}
     Distribution Ubuntu 22.04
     Application Code Server
 
-%files
-
-  10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
-
 %post
+
+  # NVIDIA stuff https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/12.8.2/ubuntu2204/base/Dockerfile?ref_type=heads
+  NVARCH=x86_64
+  NVIDIA_REQUIRE_CUDA="cuda>=12.8 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=550,driver<551 brand=grid,driver>=550,driver<551 brand=tesla,driver>=550,driver<551 brand=nvidia,driver>=550,driver<551 brand=quadro,driver>=550,driver<551 brand=quadrortx,driver>=550,driver<551 brand=nvidiartx,driver>=550,driver<551 brand=vapps,driver>=550,driver<551 brand=vpc,driver>=550,driver<551 brand=vcs,driver>=550,driver<551 brand=vws,driver>=550,driver<551 brand=cloudgaming,driver>=550,driver<551 brand=unknown,driver>=560,driver<561 brand=grid,driver>=560,driver<561 brand=tesla,driver>=560,driver<561 brand=nvidia,driver>=560,driver<561 brand=quadro,driver>=560,driver<561 brand=quadrortx,driver>=560,driver<561 brand=nvidiartx,driver>=560,driver<561 brand=vapps,driver>=560,driver<561 brand=vpc,driver>=560,driver<561 brand=vcs,driver>=560,driver<561 brand=vws,driver>=560,driver<561 brand=cloudgaming,driver>=560,driver<561 brand=unknown,driver>=565,driver<566 brand=grid,driver>=565,driver<566 brand=tesla,driver>=565,driver<566 brand=nvidia,driver>=565,driver<566 brand=quadro,driver>=565,driver<566 brand=quadrortx,driver>=565,driver<566 brand=nvidiartx,driver>=565,driver<566 brand=vapps,driver>=565,driver<566 brand=vpc,driver>=565,driver<566 brand=vcs,driver>=565,driver<566 brand=vws,driver>=565,driver<566 brand=cloudgaming,driver>=565,driver<566 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=580,driver<581 brand=grid,driver>=580,driver<581 brand=tesla,driver>=580,driver<581 brand=nvidia,driver>=580,driver<581 brand=quadro,driver>=580,driver<581 brand=quadrortx,driver>=580,driver<581 brand=nvidiartx,driver>=580,driver<581 brand=vapps,driver>=580,driver<581 brand=vpc,driver>=580,driver<581 brand=vcs,driver>=580,driver<581 brand=vws,driver>=580,driver<581 brand=cloudgaming,driver>=580,driver<581"
+  NV_CUDA_CUDART_VERSION=12.8.90-1
+
+  echo "IMAGE_UPGRADE_ID=${IMAGE_UPGRADE_ID}" && \
+    apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+    gnupg2 curl ca-certificates && \
+    curl -fsSLO https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/${NVARCH}/cuda-keyring_1.1-1_all.deb && dpkg -i cuda-keyring_1.1-1_all.deb && \
+    apt-get purge --autoremove -y curl \
+    && rm -rf /var/lib/apt/lists/*
+
+  CUDA_VERSION=12.8.2
+
+  # For libraries in the cuda-compat-* package: https://docs.nvidia.com/cuda/eula/index.html#attachment-a
+  apt-get update && apt-get install -y --no-install-recommends \
+    cuda-cudart-12-8=${NV_CUDA_CUDART_VERSION} \
+    cuda-toolkit-12-8-config-common=${NV_CUDA_CUDART_VERSION} \
+    cuda-toolkit-12-config-common=${NV_CUDA_CUDART_VERSION} \
+    cuda-toolkit-config-common=${NV_CUDA_CUDART_VERSION} \
+    && rm -rf /var/lib/apt/lists/*
+
+  # Install cuda-compat if available in the repository
+  apt-get update && \
+    if apt-cache policy cuda-compat-12-8 2>/dev/null | grep -q "Candidate:"; then \
+        apt-get install -y --no-install-recommends cuda-compat-12-8; \
+    fi && \
+    rm -rf /var/lib/apt/lists/*
+
+  # Install cuda-compat-orin if available in the repository
+  apt-get update && \
+    if apt-cache policy cuda-compat-orin-12-8 2>/dev/null | grep -q "Candidate:"; then \
+        apt-get install -y --no-install-recommends cuda-compat-orin-12-8; \
+    fi && \
+    rm -rf /var/lib/apt/lists/*
+
+  # Required for nvidia-docker v1
+  echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+  
+  NV_CUDA_CUDART_DEV_VERSION=12.8.90-1
+  NV_NVML_DEV_VERSION=12.8.90-1
+  NV_LIBCUSPARSE_DEV_VERSION=12.5.8.93-1
+  NV_LIBNPP_DEV_VERSION=12.3.3.100-1
+  NV_LIBNPP_DEV_PACKAGE=libnpp-dev-12-8=${NV_LIBNPP_DEV_VERSION}
+  NV_LIBCUBLAS_DEV_VERSION=12.8.5.5-1
+  NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-12-8
+  NV_LIBCUBLAS_DEV_PACKAGE=${NV_LIBCUBLAS_DEV_PACKAGE_NAME}=${NV_LIBCUBLAS_DEV_VERSION}
+  NV_CUDA_NSIGHT_COMPUTE_VERSION=12.8.2-1
+  NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-12-8=${NV_CUDA_NSIGHT_COMPUTE_VERSION}
+  NV_NVPROF_VERSION=12.8.90-1
+  NV_NVPROF_DEV_PACKAGE=cuda-nvprof-12-8=${NV_NVPROF_VERSION}
+  NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+  NV_LIBNCCL_DEV_PACKAGE_VERSION=2.26.2-1
+  NCCL_VERSION=2.26.2-1
+  NV_LIBNCCL_DEV_PACKAGE=${NV_LIBNCCL_DEV_PACKAGE_NAME}=${NV_LIBNCCL_DEV_PACKAGE_VERSION}+cuda12.8
+
+  apt-get update && apt-get install -y --no-install-recommends \
+    cuda-cudart-dev-12-8=${NV_CUDA_CUDART_DEV_VERSION} \
+    cuda-command-line-tools-12-8=${NV_CUDA_LIB_VERSION} \
+    cuda-minimal-build-12-8=${NV_CUDA_LIB_VERSION} \
+    cuda-libraries-dev-12-8=${NV_CUDA_LIB_VERSION} \
+    cuda-nvml-dev-12-8=${NV_NVML_DEV_VERSION} \
+    ${NV_NVPROF_DEV_PACKAGE} \
+    ${NV_LIBNPP_DEV_PACKAGE} \
+    libcusparse-dev-12-8=${NV_LIBCUSPARSE_DEV_VERSION} \
+    ${NV_LIBCUBLAS_DEV_PACKAGE} \
+    ${NV_LIBNCCL_DEV_PACKAGE} \
+    ${NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE} \
+    && rm -rf /var/lib/apt/lists/*
+
+  # Create symlink for nsys if included in nsight-compute package
+  NSYS_PATH=$(find /opt/nvidia/nsight-compute -type f -name "nsys" 2>/dev/null | head -n 1); \
+    if [ -n "$NSYS_PATH" ] && [ ! -f /usr/local/bin/nsys ]; then \
+        ln -s "$NSYS_PATH" /usr/local/bin/nsys; \
+    fi
+
+  # Keep apt from auto upgrading the cublas and nccl packages. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
+  apt-mark hold ${NV_LIBCUBLAS_DEV_PACKAGE_NAME} ${NV_LIBNCCL_DEV_PACKAGE_NAME}
 
   # probably way more than we need
   apt-get -y update
@@ -51,32 +127,6 @@ From: linuxserver/code-server:${TAG}
   update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-11 110
   update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-13 100
 
-  # GPU stuff -- based on nvidia/opengl
-  dpkg --add-architecture i386 && \
-    apt-get update && apt-get install -y --no-install-recommends \
-        libxau6 libxau6:i386 \
-        libxdmcp6 libxdmcp6:i386 \
-        libxcb1 libxcb1:i386 \
-        libxext6 libxext6:i386 \
-        libx11-6 libx11-6:i386
-
-  apt-get update && apt-get install -y --no-install-recommends \
-        pkg-config \
-        libglvnd-dev libglvnd-dev:i386 \
-        libgl1-mesa-dev libgl1-mesa-dev:i386 \
-        libegl1-mesa-dev libegl1-mesa-dev:i386 \
-        libgles2-mesa-dev libgles2-mesa-dev:i386 && \
-
-  apt-get update && apt-get install -y --no-install-recommends \
-        libglvnd0 libglvnd0:i386 \
-        libgl1 libgl1:i386 \
-        libglx0 libglx0:i386 \
-        libegl1 libegl1:i386 \
-        libgles2 libgles2:i386
-
-  echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
-  echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
-
   # Clean up
   rm -rf /var/lib/apt/lists/*
 
@@ -85,3 +135,7 @@ From: linuxserver/code-server:${TAG}
   export NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES:-all}
   export NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics,compat32,utility
   export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/usr/lib/i386-linux-gnu${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+  export PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+  export LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64
+  export LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+

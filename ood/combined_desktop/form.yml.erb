@@ -4,6 +4,7 @@ require 'open3'
 # check queue help scripts
 require_relative "CheckQueues"
 require_relative "CheckAccounts"
+require_relative "CheckSSH"
 
 -%>
 
@@ -12,6 +13,7 @@ require_relative "CheckAccounts"
 title: "Remote Desktop"
 cluster: "m3cluster"
 submit: submit.yml.erb
+<%- CheckSSH.SSH -%>
 <%- if CheckAccounts.Accounts.count == 0 -%>
 form:
   - slurm_accounts
@@ -30,6 +32,7 @@ attributes:
 <%- else -%>
 form:
   - slurm_accounts
+  - auto_groups
   - custom_queues
   - desktop_os
   - desktop_env
@@ -52,6 +55,15 @@ attributes:
     <%- CheckAccounts.Accounts.each do |q| -%>
     - [ "<%= q %>",  "<%= q %>" ]
     <%- end -%>
+  auto_groups:
+    label: "Group"
+    cacheable: false
+    widget: select
+    help: |
+      Please select the group you want to use in the remote desktop container. It is only possible
+      to use 1 group at a time. **Most users should not need to change this**, but some users may need
+      need to select a specific group to access restricted software or use other resources
+      based group based permissions.
   custom_queues:
     label: "Partition"
     widget: select
@@ -85,7 +97,7 @@ attributes:
       Please Select Operating System.
       NOTE: AlmaLinux is available to support some legacy applications. Some features of M3 will be unavailable. AlmaLinux is not available on the `gpu-dev` queue.
     options:
-      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.2.7.sif",
+      - ["Ubuntu 22.04", "/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0.sif",
         data-set-desktop-env: 'mate',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
@@ -95,7 +107,7 @@ attributes:
           <%- end -%>
         <%- end -%>
         ]
-      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.2.7_gpu.sif",
+      - ["Ubuntu 22.04, GPU enabled", "/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0_gpu.sif",
         data-set-desktop-env: 'mate',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
