@@ -126,7 +126,7 @@ before the deletion occurs.
 These manifests will typically be generated once a week.
 
 We highly recommend reviewing these lists and moving any files you need to retain.
-Files on these manifests may be deleted even the access or modification times change
+Files on these manifests may be deleted even if the access or modification times change
 after the manifest is generated.
 
 ### Notifications
