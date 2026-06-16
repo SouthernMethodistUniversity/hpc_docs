@@ -124,7 +124,6 @@ Attempts to circumvent the purge policy by modifying either the `atime` or `mtim
 Whenever possible, a manifest of files that are going to be deleted will be available at least 5 days
 before the deletion occurs.
 These manifests will typically be generated once a week.
-When the files a deleted, a log of the deleted files will also be available.
 
 We highly recommend reviewing these lists and moving any files you need to retain.
 Files on these manifests may be deleted even the access or modification times change
