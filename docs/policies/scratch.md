@@ -28,8 +28,6 @@ are within the 60-day limit.
 - All users currently utilizing `$SCRATCH` storage space will receive
 personalized emails summarizing their their usage with reminders of
 the upcoming changes.
-- At least 5 business days before the automated `$SCRATCH` purge begins,
-users will be able to access a manifest of all files that will be deleted.
 
 #### Tentative Schedule
 
@@ -59,8 +57,8 @@ The `$SCRATCH` purge automation will begin deleting files that are over 90 days 
 ##### August 3
 
 The `$SCRATCH` purge automation will begin normal operation and will regularly delete files 60 days old.
-In most cases, a manifest of eligible files will be generated on Sundays and deletion of the files on that
-manifest will begin on the following Friday.
+In most cases, `$SCRATCH` purges will run once a week, but may be run more or less frequently to
+ensure system stability.
 
 ### Quotas
 
@@ -68,10 +66,10 @@ Quotas will be added on July 1, 2026 with the following limits, per user:
 
 | Soft Quota (TB) | Hard Quota (GB) | Soft Quota (Filecount) | Hard Quota (Filecount) | Grace Period |
 |-----------------|-----------------|------------------------|------------------------|--------------|
-| 50 TB | 100 TB | 10,000,000 | 11,000,000 | 10 Days |
+| 50 TB | 60 TB | 10,000,000 | 11,000,000 | 10 Days |
 
 If an user exceeds a "Soft Quota" (50TB, 10,000,000 files) they will be able to temporarily exceed this quota,
-up to the "Hard Quota" (100TB, 11,000,000 files) for up to the "Grace Period" (10 days).
+up to the "Hard Quota" (60TB, 11,000,000 files) for up to the "Grace Period" (10 days).
 
 When either the "Hard Quota" is reached or usage has been over the "Soft Quota" for more than the "Grace Period,"
 it will not be possible to create or modify files until the user is under the "Soft Quota."
@@ -123,15 +121,18 @@ Attempts to circumvent the purge policy by modifying either the `atime` or `mtim
 
 ### Transparency
 
-A manifest of files that are going to be deleted will be available at least 5 days
+Whenever possible, a manifest of files that are going to be deleted will be available at least 5 days
 before the deletion occurs.
-These manifests will typically be generated on Sundays.
+These manifests will typically be generated once a week.
 When the files a deleted, a log of the deleted files will also be available.
 
 We highly recommend reviewing these lists and moving any files you need to retain.
+Files on these manifests may be deleted even the access or modification times change
+after the manifest is generated.
 
 ### Notifications
 
 By default, users will be sent a notice when a new manifest of files is available
 to their SMU email address.
 User may opt out of these emails in ColdFront.
+More details about opting out will be available before July 1.
