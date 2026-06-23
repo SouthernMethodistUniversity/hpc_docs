@@ -1,6 +1,7 @@
 whatis("Phenix)
 family("phenix")
 
+load("miniforge")
 source_sh('bash', '/hpc/m3/apps/phenix/2.1-6048/phenix_env.sh')
 
 help([[Name: Phenix
