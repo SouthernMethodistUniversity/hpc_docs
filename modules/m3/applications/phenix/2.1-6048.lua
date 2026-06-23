@@ -1,4 +1,4 @@
-whatis("Phenix)
+whatis("Phenix")
 family("phenix")
 
 load("miniforge")
