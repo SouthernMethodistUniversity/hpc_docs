@@ -36,29 +36,17 @@ the HPC systems.
 
 ##### July 1
 
-The `$SCRATCH` purge automation will begin deleting files that are over 2 years old.
+Beginning on July 1, 2026, the `$SCRATCH` purge automation will begin.
+Initially the purges will be focused on files older than 2 years old.
+The maximum age of the files allowed will slowly be decreased from 2 years to the
+stated 60 day policy.
 
-##### July 6
+##### Fall 2026
 
-The `$SCRATCH` purge automation will begin deleting files that are over 18 months old.
-
-##### July 9
-
-The `$SCRATCH` purge automation will begin deleting files that are over 12 months old.
-
-##### July 15
-
-The `$SCRATCH` purge automation will begin deleting files that are over 6 months old.
-
-##### July 22
-
-The `$SCRATCH` purge automation will begin deleting files that are over 90 days old.
-
-##### August 3
-
-The `$SCRATCH` purge automation will begin normal operation and will regularly delete files 60 days old.
-In most cases, `$SCRATCH` purges will run once a week, but may be run more or less frequently to
-ensure system stability.
+The 60 day purge policy will begin to run on a scheduled basis.
+Tentatively, this is planned for mid-August, but may occur later
+based on how long it takes to run the initial processing needed to
+purge the files much older than 60 days.
 
 ### Quotas
 
@@ -89,7 +77,7 @@ lfs quota -h -p $(id -u) /scratch
 
 #### Quota Exceptions
 
-Exceptions to the quotas may be considered on a case-by-case basis.
+Temporary exceptions to the quotas may be considered on a case-by-case basis.
 Approval of any requests require documentation of at least:
 
 - Your workflow and an explanation of why that workflow is not possible
@@ -134,4 +122,4 @@ after the manifest is generated.
 By default, users will be sent a notice when a new manifest of files is available
 to their SMU email address.
 User may opt out of these emails in ColdFront.
-More details about opting out will be available before July 1.
+More details about opting out will be available soon.
