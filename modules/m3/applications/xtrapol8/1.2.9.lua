@@ -1,4 +1,4 @@
-whatis("Xtrapol8)
+whatis("Xtrapol8")
 family("xtrapol8")
 
 load("phenix/2.1-6048")
