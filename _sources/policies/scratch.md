@@ -39,7 +39,7 @@ are within the 60-day limit.
 
 #### Communications
 
-- All users currently utilizing `$SCRATCH` storage space will receive
+- All active users currently utilizing `$SCRATCH` storage space will receive
 personalized emails summarizing their their usage with reminders of
 the upcoming changes.
 
