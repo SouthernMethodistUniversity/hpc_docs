@@ -6,6 +6,10 @@ parts:
 - caption: Announcements
   chapters:
   - file: work_deprecation.md
+- caption: Policies
+  chapters:
+    - file: policies/policies.md
+    - file: policies/scratch.md
 - caption: Getting Started
   chapters:
   - file: about.md
@@ -18,6 +22,7 @@ parts:
     - url: https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans
       title: Data Management Plans
     - file: policies/policies.md
+    - file: policies/scratch.md
   - file: accounts.md
   - file: coldfront/quick_start.md
     title: ColdFront

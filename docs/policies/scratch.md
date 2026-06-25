@@ -1,12 +1,26 @@
 # $SCRATCH Policies
 
-The `$SCRATCH` (`/scratch/users/<username>`) filesystem is intended to be temporary,
+:::{important} Beginning **July 1, 2026**, the `$SCRATCH` **60 day purge policy** will begin to be
+automatically enforced. More details are below.
+:::
+
+The `$SCRATCH` (aliased as `/scratch/users/<username>`) filesystem is intended to be temporary,
 high performance storage for running jobs.
 It is not intended for persistent storage.
 In order to maintain performance and stability for all users, the `$SCRATCH` filesystem has a
 **60 day purge policy** where files older than 60 days will be permanently deleted.
 Files are not backed up in `$SCRATCH`, so important data or scripts need to be moved to `/projects` directories (project directories are not backed up) `$HOME` directories (home directories have a 7 day rolling snapshot based backup) or
 off of the HPC systems to be retained.
+
+On M3, $SCRATCH storage is located at:
+
+- `/lustre/scratch/client/users/<username>`
+- `/scratch/users/<username>`
+
+On the SuperPOD, $SCRATCH storage is located at
+
+- `/lustre/smuexa01/client/users/<username>`
+- `/scratch/users/<username>`
 
 ## Changes beginning July 1, 2026
 
