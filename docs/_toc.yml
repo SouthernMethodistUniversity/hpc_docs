@@ -21,8 +21,6 @@ parts:
       title: SMU AI Guidance
     - url: https://www.smu.edu/provost/research/sponsoredprojects/proposal_development/datamanagementplans
       title: Data Management Plans
-    - file: policies/policies.md
-    - file: policies/scratch.md
   - file: accounts.md
   - file: coldfront/quick_start.md
     title: ColdFront
