@@ -40,6 +40,8 @@ Data stored in `$SCRATCH` on M3 or the SuperPod has a time based quota.
 Data older than 60 days will be purged (deleted) without warning.
 `$SCRATCH` is intended as high performance, temporary storage for jobs.
 
+For more details see the full [scratch purge policy](scratch.md)
+
 If data is needed for a longer period of time, it should be stored in
 ColdFront storage allocations (limits vary and require justification) or `$HOME` directories (200 GB). If those are also
 insufficient, please contact us to discuss options.
@@ -52,9 +54,9 @@ Please [contact us](../about/contact.md) to discuss needs and potential options.
 
 ## Login Nodes
 
-Running code, tasks, and persitent processes on login nodes is forbidden. The login nodes
+Running code, tasks, and persistent processes on login nodes is forbidden. The login nodes
 are a shared environment and running intensive tasks can make the entire system unstable for
-all users. Tasks running on login nodes may be terminated by system adminstrators to preserve
+all users. Tasks running on login nodes may be terminated by system administrators to preserve
 system stability.
 
 Some examples of acceptable use of login nodes:
