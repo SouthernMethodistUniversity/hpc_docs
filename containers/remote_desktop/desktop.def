@@ -34,7 +34,7 @@ From: ubuntu:22.04
 %post
   export TURBOVNC_VERSION=3.3
   export VIRTUALGL_VERSION=3.1.4
-  export LIBJPEG_VERSION=3.1.3
+  export LIBJPEG_VERSION=3.2.0
 
   # probably way more than we need
   apt-get -y update
@@ -449,6 +449,10 @@ From: ubuntu:22.04
 	 unzip\
 	 zlib1g
 
+  # Macaulay2
+  add-apt-repository ppa:macaulay2/macaulay2 -y
+  apt-get -y update
+  apt-get -y macaulay2 emacs elpa-macaulay2 bash-completion curl git mlocate
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
