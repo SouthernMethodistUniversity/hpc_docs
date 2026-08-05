@@ -463,7 +463,7 @@ From: nvidia/cuda:12.8.2-runtime-ubuntu22.04
   # Macaulay2
   add-apt-repository ppa:macaulay2/macaulay2 -y
   apt-get -y update
-  apt-get -y macaulay2 emacs elpa-macaulay2 bash-completion curl git mlocate
+  DEBIAN_FRONTEND=noninteractive apt-get -y install macaulay2 emacs elpa-macaulay2 bash-completion curl git mlocate
 
   # disable bluetooth
   sed -i 's/AutoEnable=true/AutoEnable=flase/g' /etc/bluetooth/main.conf
