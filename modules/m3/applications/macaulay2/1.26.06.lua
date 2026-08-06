@@ -35,5 +35,5 @@ if (container_name ~= "remote_desktop_1.3.1.sif" or container_name ~= "remote_de
    set_shell_function(app, sh_cmd, csh_cmd)
    end
 
-   build_command("M2", "M2")
+   build_command("M2", "")
 end
