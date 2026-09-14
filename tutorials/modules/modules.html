@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/no_code_block_number.css?v=35469b33" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -62,6 +62,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/modules/modules';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -71,20 +72,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -110,7 +117,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -399,7 +450,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-example">Module Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-resources">Module Resources:</a></li>
 </ul>
@@ -458,8 +509,8 @@ system, e.g.</p>
 <span class="w">  </span>Where:
 <span class="w">   </span>D:<span class="w">  </span>Default<span class="w"> </span>Module
 
-Use<span class="w"> </span><span class="s2">&quot;module spider&quot;</span><span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules.
-Use<span class="w"> </span><span class="s2">&quot;module keyword key1 key2 ...&quot;</span><span class="w"> </span>to<span class="w"> </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules<span class="w"> </span>matching<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;keys&quot;</span>.
+Use<span class="w"> </span><span class="s2">"module spider"</span><span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules.
+Use<span class="w"> </span><span class="s2">"module keyword key1 key2 ..."</span><span class="w"> </span>to<span class="w"> </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>all<span class="w"> </span>possible<span class="w"> </span>modules<span class="w"> </span>matching<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span><span class="s2">"keys"</span>.
 </pre></div>
 </div>
 </li>
@@ -541,19 +592,19 @@ e.g.</p>
 ------------------------------------------------------------------------------------------------
 <span class="w">   </span>/hpc/modules/applications/r/3.4.1.lua:
 ------------------------------------------------------------------------------------------------
-whatis<span class="o">(</span><span class="s2">&quot;Name : r&quot;</span><span class="o">)</span>
-whatis<span class="o">(</span><span class="s2">&quot;Version : 3.4.1&quot;</span><span class="o">)</span>
-family<span class="o">(</span><span class="s2">&quot;r&quot;</span><span class="o">)</span>
-always_load<span class="o">(</span><span class="s2">&quot;gcc-6.3&quot;</span><span class="o">)</span>
-append_path<span class="o">(</span><span class="s2">&quot;PATH&quot;</span>,<span class="s2">&quot;/cm/local/apps/curl/bin&quot;</span><span class="o">)</span>
-help<span class="o">([[</span>R<span class="w"> </span>is<span class="w"> </span><span class="s1">&#39;GNU S&#39;</span>,<span class="w"> </span>a<span class="w"> </span>freely<span class="w"> </span>available<span class="w"> </span>language<span class="w"> </span>and<span class="w"> </span>environment<span class="w"> </span><span class="k">for</span><span class="w"> </span>statistical<span class="w"> </span>computing<span class="w"> </span>and<span class="w"> </span>graphics<span class="w"> </span>which<span class="w"> </span>provides<span class="w"> </span>a<span class="w"> </span>wide<span class="w"> </span>variety<span class="w"> </span>of<span class="w"> </span>statistical<span class="w"> </span>and<span class="w"> </span>graphical<span class="w"> </span>techniques:<span class="w"> </span>linear<span class="w"> </span>and<span class="w"> </span>nonlinear<span class="w"> </span>modelling,<span class="w"> </span>statistical<span class="w"> </span>tests,<span class="w"> </span><span class="nb">time</span><span class="w"> </span>series<span class="w"> </span>analysis,<span class="w"> </span>classification,<span class="w"> </span>clustering,<span class="w"> </span>etc.<span class="w"> </span>Please<span class="w"> </span>consult<span class="w"> </span>the<span class="w"> </span>R<span class="w"> </span>project<span class="w"> </span>homepage<span class="w"> </span><span class="k">for</span><span class="w"> </span>further<span class="w"> </span>information.<span class="o">]])</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;PATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/bin&quot;</span><span class="o">)</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;CMAKE_PREFIX_PATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/&quot;</span><span class="o">)</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;MANPATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/share/man&quot;</span><span class="o">)</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;XDG_DATA_DIRS&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/pango-1.40.3-esnuezqtwnztztf5ym5laexnfxyssuj4/share&quot;</span><span class="o">)</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;LIBRARY_PATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/lib&quot;</span><span class="o">)</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;LD_LIBRARY_PATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/lib&quot;</span><span class="o">)</span>
-prepend_path<span class="o">(</span><span class="s2">&quot;CPATH&quot;</span>,<span class="s2">&quot;/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/include&quot;</span><span class="o">)</span>
+whatis<span class="o">(</span><span class="s2">"Name : r"</span><span class="o">)</span>
+whatis<span class="o">(</span><span class="s2">"Version : 3.4.1"</span><span class="o">)</span>
+family<span class="o">(</span><span class="s2">"r"</span><span class="o">)</span>
+always_load<span class="o">(</span><span class="s2">"gcc-6.3"</span><span class="o">)</span>
+append_path<span class="o">(</span><span class="s2">"PATH"</span>,<span class="s2">"/cm/local/apps/curl/bin"</span><span class="o">)</span>
+help<span class="o">([[</span>R<span class="w"> </span>is<span class="w"> </span><span class="s1">'GNU S'</span>,<span class="w"> </span>a<span class="w"> </span>freely<span class="w"> </span>available<span class="w"> </span>language<span class="w"> </span>and<span class="w"> </span>environment<span class="w"> </span><span class="k">for</span><span class="w"> </span>statistical<span class="w"> </span>computing<span class="w"> </span>and<span class="w"> </span>graphics<span class="w"> </span>which<span class="w"> </span>provides<span class="w"> </span>a<span class="w"> </span>wide<span class="w"> </span>variety<span class="w"> </span>of<span class="w"> </span>statistical<span class="w"> </span>and<span class="w"> </span>graphical<span class="w"> </span>techniques:<span class="w"> </span>linear<span class="w"> </span>and<span class="w"> </span>nonlinear<span class="w"> </span>modelling,<span class="w"> </span>statistical<span class="w"> </span>tests,<span class="w"> </span><span class="nb">time</span><span class="w"> </span>series<span class="w"> </span>analysis,<span class="w"> </span>classification,<span class="w"> </span>clustering,<span class="w"> </span>etc.<span class="w"> </span>Please<span class="w"> </span>consult<span class="w"> </span>the<span class="w"> </span>R<span class="w"> </span>project<span class="w"> </span>homepage<span class="w"> </span><span class="k">for</span><span class="w"> </span>further<span class="w"> </span>information.<span class="o">]])</span>
+prepend_path<span class="o">(</span><span class="s2">"PATH"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/bin"</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">"CMAKE_PREFIX_PATH"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/"</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">"MANPATH"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/share/man"</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">"XDG_DATA_DIRS"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/pango-1.40.3-esnuezqtwnztztf5ym5laexnfxyssuj4/share"</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">"LIBRARY_PATH"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/lib"</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">"LD_LIBRARY_PATH"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/lib"</span><span class="o">)</span>
+prepend_path<span class="o">(</span><span class="s2">"CPATH"</span>,<span class="s2">"/hpc/spack/opt/spack/linux-centos7-x86_64/gcc-6.3.0/r-3.4.1-goez3p22shsw3y54osk56bpiwwjfnjmu/rlib/R/include"</span><span class="o">)</span>
 </pre></div>
 </div>
 </li>
@@ -658,7 +709,7 @@ the global location of a file when you first log into a new system.</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-example">Module Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-resources">Module Resources:</a></li>
 </ul>
@@ -709,8 +760,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/no_code_block_number.css?v=35469b33" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -62,6 +62,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'applications/vscode';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -71,20 +72,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -110,7 +117,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -399,7 +450,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portal">Portal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunnel">Tunnel</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-on-your-computer">Setup on your computer</a></li>
@@ -505,25 +556,25 @@ more cores or memory.</p>
 <span class="c1"># Set a name for the tunnel. We recommend using something</span>
 <span class="c1"># that identifies the system, lik m3tunnel on M3 and</span>
 <span class="c1"># superpodtunnel on the SuperPOD</span>
-<span class="nv">TUNNEL_NAME</span><span class="o">=</span><span class="s2">&quot;m3tunnel&quot;</span>
+<span class="nv">TUNNEL_NAME</span><span class="o">=</span><span class="s2">"m3tunnel"</span>
 
 <span class="c1">#########################################################</span>
-<span class="c1"># You shouldn&#39;t need to change anything below here.     #</span>
+<span class="c1"># You shouldn't need to change anything below here.     #</span>
 <span class="c1">#########################################################</span>
 
 <span class="c1"># Function executed when signal USR1 is sent</span>
 <span class="c1"># before the job ends to clean up running processes</span>
 <span class="k">function</span><span class="w"> </span>sig_handler<span class="o">()</span>
 <span class="o">{</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;function sig_handler called&quot;</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Signal trapped -  `date`&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"function sig_handler called"</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Signal trapped -  `date`"</span>
 
 <span class="w">        </span><span class="c1"># stop any running commands</span>
 <span class="w">        </span><span class="c1"># Check if the AUTH PID exists</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>AUTH_PID<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">          </span><span class="c1"># Check if the auth process is running</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUTH_PID</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">            </span><span class="c1"># kill it, the -15 tries to kill &quot;nicely&quot;</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$AUTH_PID</span><span class="s2">"</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c1"># kill it, the -15 tries to kill "nicely"</span>
 <span class="w">            </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="nv">$AUTH_PID</span>
 <span class="w">          </span><span class="k">fi</span>
 <span class="w">        </span><span class="k">fi</span>
@@ -531,15 +582,15 @@ more cores or memory.</p>
 <span class="w">        </span><span class="c1"># check if the TUNNEL PID exists</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>TUNNEL_PID<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">          </span><span class="c1"># Check if the auth process is running</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TUNNEL_PID</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">            </span><span class="c1"># kill it, the -15 tries to kill &quot;nicely&quot;</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$TUNNEL_PID</span><span class="s2">"</span><span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c1"># kill it, the -15 tries to kill "nicely"</span>
 <span class="w">            </span><span class="nb">kill</span><span class="w"> </span>-15<span class="w"> </span><span class="nv">$TUNNEL_PID</span>
 <span class="w">          </span><span class="k">fi</span>
 <span class="w">        </span><span class="k">fi</span>
 
 <span class="w">        </span><span class="c1"># delete the temporary folder if it exists</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-v<span class="w"> </span>JOBTEMP<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JOBTEMPR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$JOBTEMPR</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <span class="w">            </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$JOBTEMP</span>
 <span class="w">          </span><span class="k">fi</span>
 <span class="w">        </span><span class="k">fi</span>
@@ -547,10 +598,10 @@ more cores or memory.</p>
 <span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 <span class="o">}</span>
 
-<span class="c1"># &quot;trap&quot; or wait for the signal USR1 and call the sig_handler </span>
+<span class="c1"># "trap" or wait for the signal USR1 and call the sig_handler </span>
 <span class="c1"># helper function to clean up temporary files and running</span>
 <span class="c1"># processes</span>
-<span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;sig_handler&#39;</span><span class="w"> </span>SIGUSR1
+<span class="nb">trap</span><span class="w"> </span><span class="s1">'sig_handler'</span><span class="w"> </span>SIGUSR1
 
 <span class="c1"># create a temp directory in $SCRATCH to download VSCode</span>
 <span class="c1"># cli tools and run out of</span>
@@ -562,11 +613,11 @@ more cores or memory.</p>
 
 <span class="c1"># Download the latest stable version of VSCode CLI tools</span>
 <span class="c1"># and extract it to the JOBTEMP folder</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Downloading VSCode CLI to: </span><span class="si">${</span><span class="nv">JOBTEMP</span><span class="si">}</span><span class="s2">&quot;</span>
-curl<span class="w"> </span>-Lk<span class="w"> </span><span class="s1">&#39;https://code.visualstudio.com/sha/download?build=stable&amp;os=cli-alpine-x64&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-C<span class="w"> </span><span class="nv">$JOBTEMP</span><span class="w"> </span>-xzf<span class="w"> </span>-
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Downloading VSCode CLI to: </span><span class="si">${</span><span class="nv">JOBTEMP</span><span class="si">}</span><span class="s2">"</span>
+curl<span class="w"> </span>-Lk<span class="w"> </span><span class="s1">'https://code.visualstudio.com/sha/download?build=stable&amp;os=cli-alpine-x64'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-C<span class="w"> </span><span class="nv">$JOBTEMP</span><span class="w"> </span>-xzf<span class="w"> </span>-
 
 <span class="c1"># Generate a login code for the tunnel using Microsoft as the authenticator</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generating authentication code&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Generating authentication code"</span>
 <span class="nv">VSCODE_CLI_DISABLE_KEYCHAIN_ENCRYPT</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">$JOBTEMP</span>/code<span class="w"> </span>tunnel<span class="w"> </span>user<span class="w"> </span>login<span class="w"> </span>--provider<span class="w"> </span>microsoft<span class="w"> </span><span class="p">&amp;</span>
 
 <span class="c1"># get PID of login code process</span>
@@ -576,9 +627,9 @@ curl<span class="w"> </span>-Lk<span class="w"> </span><span class="s1">&#39;htt
 <span class="nb">wait</span><span class="w"> </span><span class="si">${</span><span class="nv">AUTH_PID</span><span class="si">}</span>
 
 <span class="c1"># Start the tunnel</span>
-<span class="c1"># By running this, you are accepting VSCode&#39;s license. We highly recommend</span>
+<span class="c1"># By running this, you are accepting VSCode's license. We highly recommend</span>
 <span class="c1"># reviewing the license first: https://code.visualstudio.com/license</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting code tunnel&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Starting code tunnel"</span>
 <span class="nv">$JOBTEMP</span>/code<span class="w"> </span>tunnel<span class="w"> </span>--accept-server-license-terms<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">TUNNEL_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">&amp;</span>
 
 <span class="c1"># Get PID of code tunnel</span>
@@ -586,7 +637,7 @@ curl<span class="w"> </span>-Lk<span class="w"> </span><span class="s1">&#39;htt
 
 <span class="c1"># Keep running until we get the interrupt signal or the code server</span>
 <span class="c1"># session ends</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Running"</span>
 <span class="nb">wait</span><span class="w"> </span><span class="si">${</span><span class="nv">TUNNEL_PID</span><span class="si">}</span>
 </pre></div>
 </div>
@@ -778,7 +829,7 @@ for using the Remote-SSH feature.</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portal">Portal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tunnel">Tunnel</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-on-your-computer">Setup on your computer</a></li>
@@ -837,8 +888,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

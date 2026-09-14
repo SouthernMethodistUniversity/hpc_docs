@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/no_code_block_number.css?v=35469b33" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -62,6 +62,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/unix/scripting';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -399,7 +450,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripting-with-bash-and-python">Scripting with Bash and Python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-processes">Linux Processes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes-in-the-background">Running Processes in the Background</a></li>
@@ -618,19 +669,19 @@ Windows is an entirely different animal!</p>
 <p>As an example, consider the following script:</p>
 <div class="sourceCode"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># define the &quot;odd&quot; function, takes one argument</span>
+<span class="c1"># define the "odd" function, takes one argument</span>
 odd<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span><span class="nv">$1</span><span class="s2"> is odd&quot;</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"  </span><span class="nv">$1</span><span class="s2"> is odd"</span>
 <span class="o">}</span>
 
-<span class="c1"># define the &quot;even&quot; function, takes one argument</span>
+<span class="c1"># define the "even" function, takes one argument</span>
 even<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span><span class="nv">$1</span><span class="s2"> is even&quot;</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"  </span><span class="nv">$1</span><span class="s2"> is even"</span>
 <span class="o">}</span>
 
-<span class="c1"># define the &quot;other&quot; function, takes one argument</span>
+<span class="c1"># define the "other" function, takes one argument</span>
 other<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span><span class="nv">$1</span><span class="s2"> is neither even nor odd&quot;</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"  </span><span class="nv">$1</span><span class="s2"> is neither even nor odd"</span>
 <span class="o">}</span>
 
 <span class="c1"># loop over some integers, checking even/odd</span>
@@ -682,17 +733,17 @@ and does not apply to Windows.</p>
 following script (in <code class="docutils literal notranslate"><span class="pre">python_example.py</span></code>):</p>
 <div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 
-<span class="c1"># define the &quot;odd&quot; function, takes one argument</span>
+<span class="c1"># define the "odd" function, takes one argument</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">odd</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-   <span class="nb">print</span> <span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot; is odd&quot;</span>
+   <span class="nb">print</span> <span class="s2">"  "</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">" is odd"</span>
 
-<span class="c1"># define the &quot;even&quot; function, takes one argument</span>
+<span class="c1"># define the "even" function, takes one argument</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">even</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-   <span class="nb">print</span> <span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot; is even&quot;</span>
+   <span class="nb">print</span> <span class="s2">"  "</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">" is even"</span>
 
-<span class="c1"># define the &quot;other&quot; function, takes one argument</span>
+<span class="c1"># define the "other" function, takes one argument</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">other</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-   <span class="nb">print</span> <span class="s2">&quot;  &quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot; is neither even nor odd&quot;</span>
+   <span class="nb">print</span> <span class="s2">"  "</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">" is neither even nor odd"</span>
 
 <span class="c1"># loop over some integers, checking even/odd</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>
@@ -753,7 +804,7 @@ interactive Python session via the shell command:</p>
 </pre></div>
 </div>
 </div><p>and then at the Python prompt enter the command:</p>
-<div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">execfile</span><span class="p">(</span><span class="s2">&quot;python_example.py&quot;</span><span class="p">)</span>
+<div class="sourceCode"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">execfile</span><span class="p">(</span><span class="s2">"python_example.py"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div><p>where the <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> corresponds to the Python prompt (in contrast with the
@@ -842,7 +893,7 @@ Tutorial</a></p></li>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scripting-with-bash-and-python">Scripting with Bash and Python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-processes">Linux Processes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-processes-in-the-background">Running Processes in the Background</a></li>
@@ -904,8 +955,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

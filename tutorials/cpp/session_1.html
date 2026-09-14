@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/no_code_block_number.css?v=35469b33" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -62,6 +62,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cpp/session_1';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -69,20 +70,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -108,7 +115,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -399,7 +450,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-resources">C++ Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-types-expressions-and-statements">C++ Types, Expressions, and Statements</a></li>
@@ -472,7 +523,7 @@
 <span class="linenos">26</span><span class="w">    </span>
 <span class="linenos">27</span><span class="w">    </span><span class="c1">// Print string using `cout` which is short for `std::cout` as the `std`</span>
 <span class="linenos">28</span><span class="w">    </span><span class="c1">// namespace was declared. Statements end with a semicolon.</span>
-<span class="linenos">29</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Hello, World!"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">30</span><span class="w">    </span>
 <span class="linenos">31</span><span class="w">    </span><span class="c1">// C++ is a strongly typed language, i.e. variables have specific types</span>
 <span class="linenos">32</span><span class="w">    </span><span class="c1">// and these types have a specific precision. Declaring a variable denotes</span>
@@ -491,15 +542,15 @@
 <span class="linenos">45</span><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w">           </span><span class="n">lli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1234567890</span><span class="p">;</span><span class="w">      </span><span class="c1">// 64-bits, [-2^63,-2^63-1]</span>
 <span class="linenos">46</span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ulli</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">1234567890</span><span class="p">;</span><span class="w">      </span><span class="c1">// 64-bits, [0,-2^64-1]</span>
 <span class="linenos">47</span><span class="w">    </span><span class="kt">bool</span><span class="w">                      </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nb">true</span><span class="p">;</span><span class="w">            </span><span class="c1">// 1-bit, true or false, [1, 0]</span>
-<span class="linenos">48</span><span class="w">    </span><span class="kt">signed</span><span class="w"> </span><span class="kt">char</span><span class="w">              </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w">             </span><span class="c1">// 8-bits, [-127, 127]</span>
-<span class="linenos">49</span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w">            </span><span class="n">uc</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="sc">&#39;b&#39;</span><span class="p">;</span><span class="w">             </span><span class="c1">// 8-bits, [0, 255]</span>
-<span class="linenos">50</span><span class="w">    </span><span class="kt">char</span><span class="w">                      </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="sc">&#39;c&#39;</span><span class="p">;</span><span class="w">             </span><span class="c1">// 8-bits, [-127, 127] (x86_64) or [0, 255] (ARM)</span>
+<span class="linenos">48</span><span class="w">    </span><span class="kt">signed</span><span class="w"> </span><span class="kt">char</span><span class="w">              </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="sc">'a'</span><span class="p">;</span><span class="w">             </span><span class="c1">// 8-bits, [-127, 127]</span>
+<span class="linenos">49</span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w">            </span><span class="n">uc</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="sc">'b'</span><span class="p">;</span><span class="w">             </span><span class="c1">// 8-bits, [0, 255]</span>
+<span class="linenos">50</span><span class="w">    </span><span class="kt">char</span><span class="w">                      </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="sc">'c'</span><span class="p">;</span><span class="w">             </span><span class="c1">// 8-bits, [-127, 127] (x86_64) or [0, 255] (ARM)</span>
 <span class="linenos">51</span><span class="w">    </span><span class="kt">float</span><span class="w">                     </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">3.14159</span><span class="p">;</span><span class="w">         </span><span class="c1">// 32-bits, signed decimal number</span>
 <span class="linenos">52</span><span class="w">    </span><span class="kt">double</span><span class="w">                    </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">3.14159</span><span class="p">;</span><span class="w">         </span><span class="c1">// 64-bits, signed decimal number</span>
 <span class="linenos">53</span><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">double</span><span class="w">              </span><span class="n">ld</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mf">3.14159</span><span class="p">;</span><span class="w">         </span><span class="c1">// 80-bits (x86_64) or 128-bits (ARM)</span>
 <span class="linenos">54</span><span class="w">    </span><span class="k">auto</span><span class="w">                      </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">d</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">           </span><span class="c1">// Automatic typing based on initialization (a is double)</span>
 <span class="linenos">55</span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w">                </span><span class="n">ci</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">42</span><span class="p">;</span><span class="w">              </span><span class="c1">// Immutable variable</span>
-<span class="linenos">56</span><span class="w">    </span><span class="n">string</span><span class="w">                    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s">&quot;Hello, World!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Strings are collections of characters</span>
+<span class="linenos">56</span><span class="w">    </span><span class="n">string</span><span class="w">                    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s">"Hello, World!"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Strings are collections of characters</span>
 <span class="linenos">57</span><span class="w">    </span>
 <span class="linenos">58</span><span class="w">    </span><span class="c1">// Literals can be used to define types inline</span>
 <span class="linenos">59</span><span class="w">    </span><span class="kt">int</span><span class="w">                 </span><span class="n">il</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">   </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">    </span><span class="c1">// 2 is signed int</span>
@@ -527,8 +578,8 @@
 <span class="linenos"> 7</span><span class="c1">// Include statement</span>
 <span class="linenos"> 8</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="linenos"> 9</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="linenos">10</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bitset&gt;</span><span class="c1"> // bitset</span>
-<span class="linenos">11</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span><span class="c1">  // fmod, remainder</span>
+<span class="linenos">10</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bitset&gt;</span><span class="w"> </span><span class="c1">// bitset</span>
+<span class="linenos">11</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cmath&gt;</span><span class="w">  </span><span class="c1">// fmod, remainder</span>
 <span class="linenos">12</span>
 <span class="linenos">13</span><span class="c1">// Namespace declaration statement</span>
 <span class="linenos">14</span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
@@ -539,22 +590,22 @@
 <span class="linenos">19</span><span class="w">    </span><span class="c1">// Declare initialized integer variable</span>
 <span class="linenos">20</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
 <span class="linenos">21</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-2</span><span class="p">;</span>
-<span class="linenos">22</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;We begin with n initialized as &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span>
-<span class="linenos">23</span><span class="w">         </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; and m initialized as &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">22</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"We begin with n initialized as "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span>
+<span class="linenos">23</span><span class="w">         </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" and m initialized as "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">24</span><span class="w">    </span>
 <span class="linenos">25</span><span class="w">    </span><span class="c1">// Arithmetic Operators</span>
 <span class="linenos">26</span>
 <span class="linenos">27</span><span class="w">    </span><span class="c1">// Postfix operators return the original value</span>
-<span class="linenos">28</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Post-increment: n++, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is printed, but n is now &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">29</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Post-decrement: n--, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="o">--</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is printed, but n is now &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">28</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Post-increment: n++, "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" is printed, but n is now "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Post-decrement: n--, "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="o">--</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" is printed, but n is now "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">30</span>
 <span class="linenos">31</span><span class="w">    </span><span class="c1">// Prefix operators return the modified value</span>
-<span class="linenos">32</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Prefix-increment: ++n, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">++</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is printed and n is now &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">33</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Prefix-decrement: --n, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">--</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is printed and n is now &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">32</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Prefix-increment: ++n, "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">++</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" is printed and n is now "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">33</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Prefix-decrement: --n, "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">--</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" is printed and n is now "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">34</span><span class="w">    </span>
 <span class="linenos">35</span><span class="w">    </span><span class="c1">// Unary operators</span>
-<span class="linenos">36</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Unary plus, positive &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">+</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is printed.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">37</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Unary minus, positive &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is printed.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">36</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Unary plus, positive "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">+</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" is printed."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">37</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Unary minus, positive "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" is printed."</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="linenos">38</span><span class="w">    </span>
 <span class="linenos">39</span><span class="w">    </span><span class="c1">// Binary operators</span>
 <span class="linenos">40</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">           </span><span class="c1">// Multiplication, -84 is printed</span>
@@ -585,10 +636,10 @@
 <span class="linenos">65</span>
 <span class="linenos">66</span><span class="w">    </span><span class="c1">// Bitwise operators</span>
 <span class="linenos">67</span><span class="w">    </span>
-<span class="linenos">68</span><span class="w">    </span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">{</span><span class="s">&quot;100&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// 3-bit binary representation of 4</span>
-<span class="linenos">69</span><span class="w">    </span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">j</span><span class="p">{</span><span class="s">&quot;010&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// 3-bit binary representation of 2</span>
+<span class="linenos">68</span><span class="w">    </span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">{</span><span class="s">"100"</span><span class="p">};</span><span class="w"> </span><span class="c1">// 3-bit binary representation of 4</span>
+<span class="linenos">69</span><span class="w">    </span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="w"> </span><span class="n">j</span><span class="p">{</span><span class="s">"010"</span><span class="p">};</span><span class="w"> </span><span class="c1">// 3-bit binary representation of 2</span>
 <span class="linenos">70</span>
-<span class="linenos">71</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">~</span><span class="n">i</span><span class="w">       </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// One&#39;s complement (flips each bit), 011 is printed</span>
+<span class="linenos">71</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">~</span><span class="n">i</span><span class="w">       </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// One's complement (flips each bit), 011 is printed</span>
 <span class="linenos">72</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// AND, 000</span>
 <span class="linenos">73</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">^</span><span class="w">  </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// Exclusive OR</span>
 <span class="linenos">74</span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// Inclusive OR</span>
@@ -600,14 +651,14 @@
 <span class="linenos">80</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="linenos">81</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos">82</span>
-<span class="linenos">83</span><span class="w">    </span><span class="n">x</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Assignment, x is now &quot;</span><span class="w">                                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">84</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">*=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Multiplication assignment, x = x * y, x is now &quot;</span><span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">85</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">/=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Division assignment, x = x / y, x is now &quot;</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">86</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">%=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Modulo assignment (integer only), x = x % y, x is now &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">87</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Addition assignment, x = x + y, x is now &quot;</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">88</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">-=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Subtraction assignment, x = x - y, x is now &quot;</span><span class="w">           </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">89</span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Bitwise shift left assignment, x = x &lt;&lt; y, x in now &quot;</span><span class="w">   </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="linenos">90</span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Bitwise shift right assignment, x = x &lt;&lt; y, x in now &quot;</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span>
+<span class="linenos">83</span><span class="w">    </span><span class="n">x</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Assignment, x is now "</span><span class="w">                                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">84</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">*=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Multiplication assignment, x = x * y, x is now "</span><span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">85</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">/=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Division assignment, x = x / y, x is now "</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">86</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">%=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Modulo assignment (integer only), x = x % y, x is now "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">87</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">+=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Addition assignment, x = x + y, x is now "</span><span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">88</span><span class="w">    </span><span class="n">x</span><span class="w">  </span><span class="o">-=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Subtraction assignment, x = x - y, x is now "</span><span class="w">           </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">89</span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Bitwise shift left assignment, x = x &lt;&lt; y, x in now "</span><span class="w">   </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">90</span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Bitwise shift right assignment, x = x &lt;&lt; y, x in now "</span><span class="w">  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span>
 <span class="linenos">91</span><span class="w">    </span>
 <span class="linenos">92</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos">93</span><span class="p">}</span>
@@ -667,7 +718,7 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-resources">C++ Resources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-types-expressions-and-statements">C++ Types, Expressions, and Statements</a></li>
@@ -721,8 +772,8 @@ By Southern Methodist University
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
