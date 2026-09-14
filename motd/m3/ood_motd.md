@@ -4,6 +4,8 @@
 * [Example Scripts and Input
   Files](https://hpc.m3.smu.edu/pun/sys/dashboard/files/fs/hpc/m3/examples)
 * Help: help@smu.edu with "[HPC]" in subject line
+* [Policies and Guidelines](https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html)
+* [AI Guidance](https://southernmethodistuniversity.github.io/hpc_docs/policies/policies.html#ai-guidance)
 
 # Storage Locations and Quotas
 
