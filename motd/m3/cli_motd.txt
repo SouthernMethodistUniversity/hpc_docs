@@ -14,12 +14,12 @@ Help:            help@smu.edu with "[HPC]" in subject line
 
 Storage Locations:
 
-Variable or Path | Quota   | Usage
----------------- | ------- | ---------------------------------------------------
-$HOME            | 200 GB  | Home directory, backed up
-$WORK            | 0       | End of Life on August 15, 2025
-$SCRATCH         | 60 days | Temporary scratch space
-/projects        | varies  | ColdFront storage allocations
+Variable or Path | Quota          | Usage
+---------------- | -------------- | --------------------------------------------
+$HOME            | 200 GB         | Home directory, backed up (7 days, rolling)
+$WORK            | 0              | End of Life on August 15, 2025
+$SCRATCH         | 60 days, 50 TB | Temporary scratch space
+/projects        | varies         | ColdFront storage allocations
 
 *Do not* use login nodes or $HOME for calculations
 
@@ -34,7 +34,7 @@ policy: https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use
 
 Any commands, job submissions, file operations, processes, network access, etc. 
 that jeopardize the security or stability of the HPC systems or negatively
-impacts the ability of other researchers to use the systems may be terminated
+impacts the ability for other researchers to use the systems may be terminated
 without warning.
 
 AI Usage:
@@ -54,24 +54,31 @@ IMPORTANT ANNOUNCEMENTS:
 See the documentation for running jobs:
 https://southernmethodistuniversity.github.io/hpc_docs/coldfront/running_jobs.html
 
-
 =====================
 $WORK is End of Life!
 =====================
 
-As of August 15, 2025 $WORK is no longer supported. 
-Any data remaining in $WORK should be moved as soon as possible.
-$WORK directories are subject to be deprovisioned (permanently deleted).
-
-Please contact help@smu.edu with [HPC] in the subject line with any questions
-or concerns.
+As of August 15, 2025 $WORK is end or life. Any data remaining in $WORK should be
+moved as soon as possible. $WORK directories are subject to be deprovisioned 
+(permanently deleted).
 
 ========================
 Automatic $SCRATCH Purge
 ========================
 
-Beginning on July 1, 2026, the automations will be enabled to enforce
-the 60-day purge policy for $SCRATCH.  Files older than 60 days stored
-in $SCRATCH will be automatically and permanently deleted. 
+Files older than 60 days stored in $SCRATCH will be automatically and 
+permanently deleted on a regular cadence.
+
+=======================
+Reporting System Issues
+=======================
+
+If you believe something is not working correctly, please let us know by
+emailing help@smu.edu with [HPC] included in the subject line and a
+description of the issue and any steps to reproduce (if known.)
+
+Please do not run system diagnostic tools yourself. While we appreciate the
+effort, diagnostic tools can increase strain on the system and often make it
+more difficult for us to observe issues with our system health monitoring tools.
 
 ********************************************************************************
