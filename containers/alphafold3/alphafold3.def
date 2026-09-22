@@ -1,0 +1,69 @@
+Bootstrap: docker
+From: nvidia/cuda:12.6.3-base-ubuntu24.04
+
+# based on https://github.com/google-deepmind/alphafold3/blob/main/docker/Dockerfile
+%labels
+    Author John LaGrone <jlagrone@smu.edu>
+    Version 1.0
+    Framework AlphaFold
+    Distribution Ubuntu 22.04
+    Application AlphaFold 3
+
+%apprun run_alphafold.py
+  exec uv run python3 run_alphafold.py "${@}"
+
+%files
+  jackhmmer_seq_limit.patch
+
+%post
+  ALPHAFOLD_TAG="v3.0.4"
+  DEBIAN_FRONTEND=noninteractive \
+    apt-get update --quiet \
+    && apt-get install --yes --quiet python3.12 python3.12-dev \
+    && apt-get install --yes --quiet git wget gcc g++ make zlib1g-dev zstd curl ca-certificates
+
+  curl -LsSf https://astral.sh/uv/install.sh | sh    
+  export PATH="/root/.local/bin:$PATH"
+
+  export UV_COMPILE_BYTECODE=1
+  export UV_PROJECT_ENVIRONMENT=/alphafold3_venv
+  PATH="/hmmer/bin:/alphafold3_venv/bin:$PATH"
+
+  export PATH="/hmmer/bin:/alphafold3_venv/bin:$PATH"
+
+  mkdir /hmmer_build /hmmer ; \
+    wget http://eddylab.org/software/hmmer/hmmer-3.4.tar.gz --directory-prefix /hmmer_build ; \
+    cd /hmmer_build && echo "ca70d94fd0cf271bd7063423aabb116d42de533117343a9b27a65c17ff06fbf3 hmmer-3.4.tar.gz" | sha256sum --check && \
+    cd /hmmer_build && tar zxf hmmer-3.4.tar.gz && rm hmmer-3.4.tar.gz
+
+  cd /hmmer_build && patch -p0 < /jackhmmer_seq_limit.patch
+
+  cd /hmmer_build/hmmer-3.4 && ./configure --prefix /hmmer && \
+    cd /hmmer_build/hmmer-3.4 && make -j && \
+    cd /hmmer_build/hmmer-3.4 && make install && \
+    cd /hmmer_build/hmmer-3.4/easel && make install && \
+    rm -R /hmmer_build && \
+    cd
+
+  git clone https://github.com/google-deepmind/alphafold3.git && \
+    cd alphafold3 && \
+    git checkout ${ALPHAFOLD_TAG} && \
+    cd && \
+    mkdir -p /app && \
+    mv alphafold3 /app/alphafold && \
+    cd /app/alphafold && \
+    UV_LINK_MODE=copy uv sync --frozen --all-groups --no-editable
+
+  cd /app/alphafold && \
+    uv run build_data
+
+  
+
+%environment
+  export PATH="/root/.local/bin:$PATH"
+  export UV_COMPILE_BYTECODE=1
+  export UV_PROJECT_ENVIRONMENT=/alphafold3_venv
+  export PATH="/hmmer/bin:/alphafold3_venv/bin:$PATH"
+  export XLA_FLAGS="--xla_gpu_enable_triton_gemm=false"
+  export XLA_PYTHON_CLIENT_PREALLOCATE=true
+  export XLA_CLIENT_MEM_FRACTION=0.95
