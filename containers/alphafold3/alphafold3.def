@@ -10,7 +10,7 @@ From: nvidia/cuda:12.6.3-base-ubuntu24.04
     Application AlphaFold 3
 
 %apprun run_alphafold.py
-  exec uv run python3 run_alphafold.py "${@}"
+  exec uv run python3 /app/alphafold/run_alphafold.py --model_dir=/models --db_dir=/public_databases "${@}"
 
 %files
   jackhmmer_seq_limit.patch
