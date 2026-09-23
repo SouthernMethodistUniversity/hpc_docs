@@ -4,7 +4,7 @@
 
 # TODO: MP should pull a CUDA enabled version instead?
 # specify version
-VERSION="0.32.5"
+VERSION="0.34.3"
 TAG=${VERSION}
 IMAGE_NAME="ollama"
 MODULE_FOLDER="testing/ollama"
