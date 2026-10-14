@@ -5,6 +5,9 @@ require 'open3'
 require_relative "CheckQueues"
 require_relative "CheckAccounts"
 
+# testing: GPU-enabled custom container (bypasses the R module)
+gpu_tester = ["mlangstonsmith"].include?(User.new.name)
+
 -%>
 
 ---
@@ -65,6 +68,9 @@ attributes:
       <%- if CheckAccounts.Accounts.any? { |word| word.include?("kbnk") } | CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") }-%>
       - [ "R 4.5.1 (custom kbnk)", "kbnk/R/4.5.1" ]
       <%- end -%>
+      <%- if gpu_tester -%>
+      - [ "GPU test container (rocker-ml-cuda)", "custom" ]
+      <%- end -%>
   environment:
     widget: text_area
     label: "Custom Environment Settings"
@@ -80,7 +86,7 @@ attributes:
       [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
     <%- CheckQueues.Queues.each do |q| -%>
-      <%- if q[4].to_i == 0 -%> #disable gpu queues
+      <%- if q[4].to_i == 0 || gpu_tester -%> #disable gpu queues (except for testers)
       - ["<%= q[0] %>", "<%= q[0] %>",
         data-max-bc-num-hours: "<%= q[1] %>",
         data-max-bc-num-cores: "<%= q[2] %>",
