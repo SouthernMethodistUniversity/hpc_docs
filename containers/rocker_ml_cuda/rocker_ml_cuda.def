@@ -1,0 +1,22 @@
+Bootstrap: docker
+# rocker/ml:py3.14 (== latest as of 2026-10-04), pinned by digest because
+# rocker/ml no longer publishes R version tags
+From: rocker/ml@sha256:77443c5ff6422556809910000db4fb3576cb00609f39474bdb9f04edc3eeddca
+
+%labels
+    Author Mateo Langston Smith <mlangstonsmith@smu.edu>
+    Version 1.0.0
+
+%post
+    export DEBIAN_FRONTEND=noninteractive
+
+    # GPU PyTorch for V100 (cu126; 2.14.0 is the last release with a Volta wheel)
+    /opt/venv/bin/pip install --no-cache-dir torch==2.14.0 --index-url https://download.pytorch.org/whl/cu126
+    /opt/venv/bin/pip install --no-cache-dir tabpfn
+
+    # R packages (uses the image's default CRAN/binary repo settings)
+    Rscript -e 'install.packages(c("tidymodels","probably","ranger","tictoc","modeldata","Lahman","tabpfn"))'
+
+%environment
+    export CUDA_MODULE_LOADING=LAZY
+    export RETICULATE_PYTHON=/opt/venv/bin/python
