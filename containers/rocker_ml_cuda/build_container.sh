@@ -38,13 +38,15 @@ then
   exit 12
 fi
 
-# move container to /hpc/{sys}/containers/
+# move container to /hpc/{sys}/containers/testing/ (kept out of the main
+# containers directory while in testing)
 CLUSTER=$(scontrol show config | grep ClusterName | grep -oP '= \K.+')
 if [ "$CLUSTER" = "nvidia" ]; then
   CLUSTER="mp"
 fi
-mkdir -p /hpc/${CLUSTER}/containers/rocker
-mv ${CONTAINER_NAME} /hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}
+CONTAINER_DIR=/hpc/${CLUSTER}/containers/testing/rocker
+mkdir -p ${CONTAINER_DIR}
+mv ${CONTAINER_NAME} ${CONTAINER_DIR}/${CONTAINER_NAME}
 
 # create a module file in ../../modules/ (in the git repo)
 RUN_COMMAND="apptainer run --nv "
@@ -76,7 +78,7 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
   family("R")
 
   always_load('apptainer')
-  local sif_file = '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}'
+  local sif_file = '${CONTAINER_DIR}/${CONTAINER_NAME}'
 
   local work_dir = '/work'
   local lustre_work = '/lustre/work/client'
@@ -96,7 +98,7 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
   setenv('CONTAINER_RSESSION', '${RSESSION_EXEC}')
   setenv('CONTAINER_RSERVER', '${RSERVER_EXEC}')
   setenv('CONTAINER_R', '${R_EXEC}')
-  setenv('CONTAINER_IMAGE', '/hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}')
+  setenv('CONTAINER_IMAGE', '${CONTAINER_DIR}/${CONTAINER_NAME}')
   setenv('R_LIBS_USER', user_libs)
   unsetenv('XDG_RUNTIME_DIR')
 
@@ -105,5 +107,5 @@ sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
 EOL
 )
 
-echo "Container: /hpc/${CLUSTER}/containers/rocker/${CONTAINER_NAME}"
+echo "Container: ${CONTAINER_DIR}/${CONTAINER_NAME}"
 echo "Module:    ${MODULE_FILE}"
