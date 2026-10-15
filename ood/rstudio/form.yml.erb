@@ -65,6 +65,9 @@ attributes:
       <%- if CheckAccounts.Accounts.any? { |word| word.include?("kbnk") } | CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") }-%>
       - [ "R 4.5.1 (custom kbnk)", "kbnk/R/4.5.1" ]
       <%- end -%>
+      <%- if CheckAccounts.Accounts.any? { |word| word.include?("csouth") } | CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") }-%>
+      - [ "4.6.1 + GPU", "/hpc/m3/hpc_docs/modules/testing/rocker_ml_cuda/1.0.0.lua" ]
+      <%- end -%>
   environment:
     widget: text_area
     label: "Custom Environment Settings"
@@ -80,7 +83,7 @@ attributes:
       [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
     <%- CheckQueues.Queues.each do |q| -%>
-      <%- if q[4].to_i == 0 -%> #disable gpu queues
+      <%- if q[4].to_i == 0 || CheckAccounts.Accounts.any? { |word| word.include?("csouth") } || CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") } -%> #disable gpu queues (except for GPU testers)
       - ["<%= q[0] %>", "<%= q[0] %>",
         data-max-bc-num-hours: "<%= q[1] %>",
         data-max-bc-num-cores: "<%= q[2] %>",
