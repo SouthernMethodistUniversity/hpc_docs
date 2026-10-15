@@ -69,7 +69,8 @@ attributes:
       - [ "R 4.5.1 (custom kbnk)", "kbnk/R/4.5.1" ]
       <%- end -%>
       <%- if gpu_tester -%>
-      - [ "4.6.1 + GPU", "/hpc/m3/hpc_docs/modules/testing/rocker_ml_cuda/1.0.0.lua" ]
+      # TODO before PR: change base path back to /hpc/m3/hpc_docs/modules
+      - [ "4.6.1 + GPU", "/lustre/scratch/client/users/mlangstonsmith/hpc_docs/modules/testing/rocker_ml_cuda/1.0.0.lua" ]
       <%- end -%>
   environment:
     widget: text_area
