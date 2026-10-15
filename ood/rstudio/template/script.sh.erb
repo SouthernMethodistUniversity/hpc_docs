@@ -12,17 +12,6 @@ env
 <%= context.environment.encode(universal_newline: true) %>
 <%- end -%>
 
-<%- if context.r_module == "custom" -%>
-# testing: GPU-enabled custom container, set what the R module would
-module load apptainer
-export CONTAINER_IMAGE=/lustre/scratch/client/users/mlangstonsmith/rocker_ml_cuda_test.sif
-export CONTAINER_RSERVER=/usr/lib/rstudio-server/bin/rserver
-export CONTAINER_RSESSION=/usr/lib/rstudio-server/bin/rsession
-export CONTAINER_R=/usr/bin/R
-export R_LIBS_USER=${HOME}/R/rocker-ml-cuda
-mkdir -p ${R_LIBS_USER}
-unset XDG_RUNTIME_DIR
-<%- else -%>
 # load the requested module
 FORM_MODULE=<%= context.r_module %>
 EXTENSION="${FORM_MODULE##*.}"
@@ -38,7 +27,6 @@ then
 else
   module load ${FORM_MODULE}
 fi
-<%- end -%>
 
 #
 # Start RStudio Server
@@ -65,7 +53,7 @@ sed 's/^ \{2\}//' > "${RSESSION_WRAPPER_FILE}" << EOL
 
   # make sure the container libR is visible inside container
   export LD_LIBRARY_PATH="/usr/local/lib/R/lib${LD_LIBRARY_PATH:+":$LD_LIBRARY_PATH"}"
-<%- if context.r_module == "custom" -%>
+<%- if context.r_module.include?("rocker_ml_cuda") -%>
 
   # environment.txt and the line above replace the container's paths, so
   # restore libR (apt-installed in this image), the host driver libs bound

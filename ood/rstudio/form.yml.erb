@@ -5,7 +5,7 @@ require 'open3'
 require_relative "CheckQueues"
 require_relative "CheckAccounts"
 
-# testing: GPU-enabled custom container (bypasses the R module)
+# testing: GPU-enabled container (modules/testing/rocker_ml_cuda)
 gpu_tester = ["mlangstonsmith"].include?(User.new.name)
 
 -%>
@@ -69,7 +69,7 @@ attributes:
       - [ "R 4.5.1 (custom kbnk)", "kbnk/R/4.5.1" ]
       <%- end -%>
       <%- if gpu_tester -%>
-      - [ "4.6.1 + GPU", "custom" ]
+      - [ "4.6.1 + GPU", "/hpc/m3/hpc_docs/modules/testing/rocker_ml_cuda/1.0.0.lua" ]
       <%- end -%>
   environment:
     widget: text_area
