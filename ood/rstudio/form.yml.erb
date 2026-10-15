@@ -5,9 +5,6 @@ require 'open3'
 require_relative "CheckQueues"
 require_relative "CheckAccounts"
 
-# testing: GPU-enabled container (modules/testing/rocker_ml_cuda)
-gpu_tester = ["mlangstonsmith"].include?(User.new.name)
-
 -%>
 
 ---
@@ -68,9 +65,8 @@ attributes:
       <%- if CheckAccounts.Accounts.any? { |word| word.include?("kbnk") } | CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") }-%>
       - [ "R 4.5.1 (custom kbnk)", "kbnk/R/4.5.1" ]
       <%- end -%>
-      <%- if gpu_tester -%>
-      # TODO before PR: change base path back to /hpc/m3/hpc_docs/modules
-      - [ "4.6.1 + GPU", "/lustre/scratch/client/users/mlangstonsmith/hpc_docs/modules/testing/rocker_ml_cuda/1.0.0.lua" ]
+      <%- if CheckAccounts.Accounts.any? { |word| word.include?("csouth") } | CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") }-%>
+      - [ "4.6.1 + GPU", "/hpc/m3/hpc_docs/modules/testing/rocker_ml_cuda/1.0.0.lua" ]
       <%- end -%>
   environment:
     widget: text_area
@@ -87,7 +83,7 @@ attributes:
       [SLURM partition]: https://southernmethodistuniversity.github.io/hpc_docs/about/queues.html#m3-queues
     options:
     <%- CheckQueues.Queues.each do |q| -%>
-      <%- if q[4].to_i == 0 || gpu_tester -%> #disable gpu queues (except for testers)
+      <%- if q[4].to_i == 0 || CheckAccounts.Accounts.any? { |word| word.include?("csouth") } || CheckAccounts.Accounts.any? { |word| word.include?("jlagrone") } -%> #disable gpu queues (except for GPU testers)
       - ["<%= q[0] %>", "<%= q[0] %>",
         data-max-bc-num-hours: "<%= q[1] %>",
         data-max-bc-num-cores: "<%= q[2] %>",
