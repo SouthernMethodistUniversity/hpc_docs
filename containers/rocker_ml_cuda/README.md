@@ -25,7 +25,7 @@ On a cluster node with apptainer (needs network access):
 This builds the image, checks that `rserver`, `rsession`, `R`, and
 `rstudio-server` exist inside it, moves it to
 `/hpc/<cluster>/containers/testing/rocker/`, and writes
-`modules/testing/rocker_ml_cuda/<version>.lua`.
+`$SCRATCH/modules/testing/rocker_ml_cuda/<version>.lua`.
 
 ## Check the GPU
 

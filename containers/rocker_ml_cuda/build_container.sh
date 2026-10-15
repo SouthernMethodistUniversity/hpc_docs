@@ -9,8 +9,14 @@ CONTAINER_NAME=${IMAGE_NAME}_${VERSION}.sif
 
 echo "Building ${CONTAINER_NAME}"
 
-# module file path below is relative to this directory
+# the .def file path below is relative to this directory
 cd "$(dirname "$0")"
+
+# module file is written to $SCRATCH for testing
+if [ -z "${SCRATCH}" ]; then
+  echo "SCRATCH is not set"
+  exit 12
+fi
 
 # build the container
 module purge
@@ -48,11 +54,11 @@ CONTAINER_DIR=/hpc/${CLUSTER}/containers/testing/rocker
 mkdir -p ${CONTAINER_DIR}
 mv ${CONTAINER_NAME} ${CONTAINER_DIR}/${CONTAINER_NAME}
 
-# create a module file in ../../modules/ (in the git repo)
+# create a module file in $SCRATCH/modules/ (outside the git repo for testing)
 RUN_COMMAND="apptainer run --nv "
 
-mkdir -p ../../modules/testing/${IMAGE_NAME}
-MODULE_FILE=../../modules/testing/${IMAGE_NAME}/${VERSION}.lua
+mkdir -p ${SCRATCH}/modules/testing/${IMAGE_NAME}
+MODULE_FILE=${SCRATCH}/modules/testing/${IMAGE_NAME}/${VERSION}.lua
 (
 sed 's/^ \{2\}//' > "$MODULE_FILE" << EOL
 
