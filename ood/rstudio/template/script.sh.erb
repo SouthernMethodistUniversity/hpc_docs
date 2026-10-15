@@ -15,7 +15,7 @@ env
 <%- if context.r_module == "custom" -%>
 # testing: GPU-enabled custom container, set what the R module would
 module load apptainer
-export CONTAINER_IMAGE=/lustre/scratch/client/users/mlangstonsmith/rocker-ml-cuda.sif
+export CONTAINER_IMAGE=/lustre/scratch/client/users/mlangstonsmith/rocker_ml_cuda_test.sif
 export CONTAINER_RSERVER=/usr/lib/rstudio-server/bin/rserver
 export CONTAINER_RSESSION=/usr/lib/rstudio-server/bin/rsession
 export CONTAINER_R=/usr/bin/R
