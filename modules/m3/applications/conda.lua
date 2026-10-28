@@ -1,8 +1,12 @@
 whatis("Anaconda Python Distribution")
-family("conda")
-source_sh('bash', '/hpc/m3/apps/conda/etc/profile.d/conda.sh')
-source_sh('bash', '/hpc/m3/apps/conda/etc/profile.d/mamba.sh')
 
+LmodMessage('This conda module has been removed for security reasons.\
+ The module miniforge/26.9.4-1 will be loaded instead. In most cases, the miniforge\
+ module is a one-to-one replacement for conda module and there will be no impact.\
+ If you experience issues, please open a ticket by email help@smu.edu with [HPC]\
+ included in the subject line and a description of the issue.')
+
+load("miniforge/26.9.4-1")
 
 help([[Name: Conda
 Version: several
