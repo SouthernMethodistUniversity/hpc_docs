@@ -497,7 +497,7 @@ From: nvidia/cuda:12.8.2-runtime-ubuntu22.04
   apt-get -y install code
 
   # add --no-sandbox to code
-  sed -i 's\Exec=/usr/share/code/code\Exec=/usr/share/code/code --no-sandbox --profile-directory="$SLURM_JOB_NODELIST" \g' /usr/share/applications/code.desktop
+  sed -i 's\Exec=/usr/share/code/code\Exec=/usr/share/code/code --no-sandbox --profile-directory="$SLURM_JOB_NODELIST" \g' /usr/share/applications/com.microsoft.VSCode.desktop
 
   # Clean up
   rm -rf /var/lib/apt/lists/*
