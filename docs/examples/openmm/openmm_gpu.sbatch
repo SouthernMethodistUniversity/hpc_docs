@@ -12,7 +12,7 @@
 lmod-8.7.2-uutt23puvwraegsi7w7ck3xbhrgk22mu/lmod/lmod/init/$(basename $SHELL)
 module use /hpc/mp/modules
 module purge
-module load conda
+module load miniforge
 
 # Initialize Conda environment
 if [ ! -d ~/.conda/envs/openmm ]; then
