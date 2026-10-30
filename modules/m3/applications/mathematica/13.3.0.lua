@@ -10,7 +10,7 @@ local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 -- provide shell functions for users trying to run from a normal term.
 if (container_name == "") then
    -- make shell functions that run inside a container
-   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.1.sif"
+   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2.sif"
    setenv("APPTAINERENV_GALLIUM_DRIVER","softpipe")
   
    always_load('apptainer')

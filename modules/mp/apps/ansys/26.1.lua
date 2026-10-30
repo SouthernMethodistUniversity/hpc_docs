@@ -12,10 +12,10 @@ Ansys Fluent, Mechanical, Workbench
 
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 local cuda=os.getenv("CUDA_VISIBLE_DEVICES") or  ""
-local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0.sif"
+local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2.sif"
 local flags=""
 if (cuda ~= "") then
-  container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0_gpu.sif"
+  container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2_gpu.sif"
   flags=" --nv "
 end
 setenv("CONTAINER_IMAGE", container_path)

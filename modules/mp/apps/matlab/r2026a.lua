@@ -10,9 +10,9 @@ local cuda_visible=os.getenv("CUDA_VISIBLE_DEVICES") or  ""
 if (container_name == "") then
    -- make shell functions that run inside a container
 
-   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.0.sif"
+   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2.sif"
    if (cuda_visible ~= "") then
-     container_path="--nv /hpc/m3/containers/remote_desktop/remote_desktop_1.3.0_gpu.sif"
+     container_path="--nv /hpc/m3/containers/remote_desktop/remote_desktop_1.3.2_gpu.sif"
    end
 
    setenv("APPTAINERENV_GALLIUM_DRIVER","softpipe")

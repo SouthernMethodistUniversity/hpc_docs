@@ -10,7 +10,7 @@ function build_command(img, cmd)
   set_shell_function(cmd, c .. sh .. e, c .. csh .. e)
 end
 
-local img_name      = 'almalinux_remote_desktop_1.0.0.sif'
+local img_name      = 'almalinux_remote_desktop_1.3.2.sif'
 local img_directory = '/hpc/m3/containers/remote_desktop'
 local img_path      = pathJoin(img_directory, img_name)
 

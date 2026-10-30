@@ -10,10 +10,10 @@ Macaulay2 is a software system devoted to supporting research in algebraic geome
 
 local container_name=os.getenv("APPTAINER_CONTAINER") or  ""
 local cuda=os.getenv("CUDA_VISIBLE_DEVICES") or  ""
-local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.1.sif"
+local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2.sif"
 local flags=""
 if (cuda ~= "") then
-  container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.1_gpu.sif"
+  container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2_gpu.sif"
   flags=" --nv "
 end
 setenv("CONTAINER_IMAGE", container_path)
@@ -21,7 +21,7 @@ setenv("CONTAINER_FLAGS", flags)
 
 -- Macaulay2 is currently installed in remote_desktop_1.3.1
 
-if (container_name ~= "remote_desktop_1.3.1.sif" or container_name ~= "remote_desktop_1.3.1_gpu.sif") then
+if (container_name ~= "remote_desktop_1.3.2.sif" or container_name ~= "remote_desktop_1.3.2_gpu.sif") then
    -- make shell functions that run inside the appropriate container
    always_load('apptainer')
 
