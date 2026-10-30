@@ -129,7 +129,7 @@ attributes:
         <%- end -%>
         ]
       <%- end -%>
-      - ["AlmaLinux 8", "/hpc/m3/containers/remote_desktop/almalinux_remote_desktop_1.0.1.sif",
+      - ["AlmaLinux 9", "/hpc/m3/containers/remote_desktop/almalinux_remote_desktop_1.2.1.sif",
         data-set-desktop-env: 'xfce',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
@@ -139,17 +139,7 @@ attributes:
           <%- end -%>
         <%- end -%>
         ]
-      - ["AlmaLinux 9", "/hpc/m3/containers/remote_desktop/almalinux_remote_desktop_1.2.0.sif",
-        data-set-desktop-env: 'xfce',
-        <%- CheckQueues.Queues.each do |q| -%>
-          <%- if q[4].to_i == 0 -%>
-        <%= "data-option-for-custom-queues-" + q[0].strip + ": true," %>
-          <%- else -%>
-        <%= "data-option-for-custom-queues-" + q[0].strip + ": false," %>
-          <%- end -%>
-        <%- end -%>
-        ]
-      - ["AlmaLinux 9, GPU enabled", "/hpc/m3/containers/remote_desktop/almalinux_gpu_remote_desktop_1.2.0.sif",
+      - ["AlmaLinux 9, GPU enabled", "/hpc/m3/containers/remote_desktop/almalinux_gpu_remote_desktop_1.2.1.sif",
         data-set-desktop-env: 'xfce',
         <%- CheckQueues.Queues.each do |q| -%>
           <%- if q[4].to_i == 0 -%>
