@@ -1,4 +1,271 @@
 <%-
+  # Estimated start time for queued sessions on the app card.
+  #
+  # Slurm is queried with ONE `squeue --start` call per cluster that covers all
+  # of the user's pending jobs, and the result is cached on disk. squeue is never
+  # called more than once every CACHE_TTL seconds per user per cluster, no matter
+  # how many session cards render or how often the page auto-refreshes. Failures
+  # are cached too, so a broken/slow Slurm is not hammered either.
+  #
+  # Nothing here is allowed to break the card: every failure path renders either
+  # nothing or a short "not available" message.
+
+  require 'json'
+  require 'open3'
+  require 'time'
+  require 'timeout'
+  require 'fileutils'
+  require 'erb'
+
+  cache_ttl      = 300 # seconds; do not call squeue more often than this
+  squeue_timeout = 10  # seconds
+  squeue_path    = "/hpc/sys/apps/slurm/current/bin/squeue" # absolute path; PATH is not used
+
+  # ---- Debug logging -------------------------------------------------------
+  # Appends to ~/ood_start_estimate_debug.log. The file is truncated once it
+  # passes DEBUG_MAX_BYTES so it cannot grow without bound. Logging can never
+  # break the card: any error while logging is swallowed. To turn logging off,
+  # set debug_enabled to false.
+  debug_enabled   = false
+  debug_max_bytes = 1_048_576
+  debug_file      = File.join(Dir.home, "ood_start_estimate_debug.log")
+  dbg = lambda do |step, msg = ""|
+    next unless debug_enabled
+    begin
+      File.truncate(debug_file, 0) if File.exist?(debug_file) && File.size(debug_file) > debug_max_bytes
+      File.open(debug_file, "a", 0o600) do |f|
+        f.puts("#{Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L')} pid=#{Process.pid} [#{step}] #{msg}")
+      end
+    rescue StandardError
+      nil
+    end
+  end
+
+  dbg.call("render", "info.html.erb render started")
+
+  start_estimate = begin
+    sess       = defined?(session) ? session : nil
+    #job_id     = sess && sess.respond_to?(:job_id) ? sess.job_id.to_s : ""
+    cluster_id = sess && sess.respond_to?(:cluster_id) ? sess.cluster_id.to_s : ""
+    state      = sess && sess.respond_to?(:status) ? sess.status.to_s : "queued"
+    dbg.call("session", "session_defined=#{!sess.nil?} job_id=#{job_id.inspect} " \
+                        "cluster_id=#{cluster_id.inspect} state=#{state.inspect}")
+
+    if job_id.empty? || !state.start_with?("queued")
+      dbg.call("skip", "not a pending job (empty job id or state is not queued); nothing to show")
+      nil # not a pending job: nothing to show
+    else
+      cache_dir  = File.join(ENV["XDG_CACHE_HOME"] || File.join(Dir.home, ".cache"), "ood_start_estimates")
+      safe_name  = cluster_id.gsub(/[^A-Za-z0-9_.-]/, "_")
+      safe_name  = "m3" if safe_name.empty?
+      cache_file = File.join(cache_dir, "#{safe_name}.json")
+      lock_file  = File.join(cache_dir, "#{safe_name}.lock")
+      FileUtils.mkdir_p(cache_dir, mode: 0o700)
+      dbg.call("cache-paths", "cache_file=#{cache_file} lock_file=#{lock_file}")
+
+      read_cache = lambda do
+        begin
+          c = JSON.parse(File.read(cache_file))
+          dbg.call("cache-read", "ok: fetched_at=#{c['fetched_at'].inspect} jobs=#{(c['jobs'] || {}).size} " \
+                                 "error=#{c['error'].inspect}")
+          c
+        rescue StandardError => e
+          dbg.call("cache-read", "no usable cache (#{e.class}: #{e.message[0, 100]})")
+          nil
+        end
+      end
+      fresh = lambda do |c|
+        c && c["fetched_at"].is_a?(Numeric) &&
+          (Time.now.to_i - c["fetched_at"]) < cache_ttl &&
+          (Time.now.to_i - c["fetched_at"]) >= 0
+      end
+
+      cache = read_cache.call
+
+      if fresh.call(cache)
+        dbg.call("cache-check", "cache is fresh (age=#{Time.now.to_i - cache['fetched_at']}s < ttl=#{cache_ttl}s); " \
+                                "NOT calling squeue")
+      else
+        dbg.call("cache-check", "cache missing or stale (ttl=#{cache_ttl}s); will try to refresh")
+        File.open(lock_file, File::CREAT | File::RDWR, 0o600) do |lock|
+          # Non-blocking: if another request is refreshing, just use what we have.
+          if lock.flock(File::LOCK_EX | File::LOCK_NB)
+            dbg.call("lock", "acquired refresh lock")
+            cache = read_cache.call # re-check now that we hold the lock
+            if fresh.call(cache)
+              dbg.call("lock", "another request refreshed the cache while waiting; NOT calling squeue")
+            else
+              jobs  = {}
+              error = nil
+
+              # Honour the cluster's OnDemand config (bin/conf/cluster) when available.
+              jc = begin
+                OodAppkit.clusters[cluster_id.to_sym].job_config
+              rescue StandardError
+                {}
+              end
+              env    = jc[:conf] ? { "SLURM_CONF" => jc[:conf].to_s } : {}
+              args   = [squeue_path, "--me", "--start", "--noheader", "--states=PENDING", "-o", "%i|%S|%r"]
+              args  += ["-M", jc[:cluster].to_s] if jc[:cluster]
+              dbg.call("cluster-config", "job_config keys=#{jc.keys.inspect} (empty means OodAppkit lookup failed " \
+                                         "or cluster not found; SLURM_CONF/-M options omitted)")
+              dbg.call("squeue-run", "command=#{args.join(' ')} env=#{env.inspect} timeout=#{squeue_timeout}s")
+
+              begin
+                t0 = Time.now
+                out, err, status = Timeout.timeout(squeue_timeout) { Open3.capture3(env, *args) }
+                dbg.call("squeue-done", "exit=#{status.exitstatus} elapsed=#{((Time.now - t0) * 1000).round}ms " \
+                                        "stdout_lines=#{out.lines.size} stderr=#{err.to_s.strip[0, 200].inspect}")
+                if status.success?
+                  out.each_line do |line|
+                    id, start, reason = line.strip.split("|", 3)
+                    if id.nil? || start.nil? || id !~ /\A\d+(_\d+)?\z/
+                      dbg.call("squeue-parse", "skipped unparseable line: #{line.strip[0, 120].inspect}")
+                      next
+                    end
+                    jobs[id] = { "start" => start, "reason" => reason.to_s }
+                    dbg.call("squeue-parse", "job=#{id} start=#{start.inspect} reason=#{reason.to_s.inspect}")
+                  end
+                else
+                  error = err.to_s.strip[0, 200]
+                end
+              rescue StandardError => e # includes Timeout::Error and ENOENT
+                error = e.class.to_s
+                dbg.call("squeue-error", "#{e.class}: #{e.message[0, 200]}")
+              end
+
+              cache = { "fetched_at" => Time.now.to_i, "jobs" => jobs, "error" => error }
+              tmp = "#{cache_file}.#{Process.pid}.tmp"
+              File.write(tmp, JSON.generate(cache), perm: 0o600)
+              File.rename(tmp, cache_file) # atomic
+              dbg.call("cache-write", "wrote #{cache_file} jobs=#{jobs.size} error=#{error.inspect}")
+            end
+          else
+            dbg.call("lock", "refresh lock held by another request; using existing cache without calling squeue")
+          end
+        end
+      end
+
+      result =
+        if cache.nil? || cache["error"]
+          dbg.call("lookup", "no usable data (cache nil=#{cache.nil?}, error=#{cache && cache['error'].inspect})")
+          { kind: :unavailable }
+        elsif (entry = cache["jobs"][job_id])
+          begin
+            t = Time.strptime(entry["start"], "%Y-%m-%dT%H:%M:%S")
+            dbg.call("lookup", "job #{job_id} found: estimated start #{t} reason=#{entry['reason'].inspect}")
+            { kind: :time, time: t, reason: entry["reason"], age: Time.now.to_i - cache["fetched_at"] }
+          rescue ArgumentError # "N/A" or another non-timestamp value
+            dbg.call("lookup", "job #{job_id} found but start=#{entry['start'].inspect} is not a timestamp; " \
+                               "reason=#{entry['reason'].inspect}")
+            { kind: :none, reason: entry["reason"] }
+          end
+        else
+          dbg.call("lookup", "job #{job_id} not in cache (submitted after last refresh?)")
+          { kind: :pending } # job submitted after the last refresh
+        end
+      result
+    end
+  rescue StandardError => e
+    dbg.call("fatal", "#{e.class}: #{e.message[0, 200]} at #{e.backtrace && e.backtrace.first}")
+    { kind: :unavailable }
+  end
+  dbg.call("render", "result kind=#{start_estimate ? start_estimate[:kind].inspect : 'nil (nothing rendered)'}")
+
+  humanize = lambda do |secs|
+    secs = secs.to_i
+    return "any moment now" if secs <= 60
+    d, rem = secs.divmod(86_400)
+    h, rem = rem.divmod(3_600)
+    m      = rem / 60
+    parts  = []
+    parts << "#{d}d" if d > 0
+    parts << "#{h}h" if h > 0 || d > 0
+    parts << "#{m}m" if d.zero?
+    "in about #{parts.join(' ')}"
+  end
+
+  # Plain-language explanations of Slurm pending-reason codes.
+  # Full list: https://slurm.schedmd.com/job_reason_codes.html
+  reason_text = {
+    "Priority"             => "Other jobs are ahead of yours in line. Your job will start when higher-priority jobs have started and resources free up.",
+    "Resources"            => "Your job is next in line, but the nodes, cores, memory or GPUs it needs are currently in use. It will start as soon as they are available.",
+    "None"                 => "Slurm has not assigned a reason yet. This is normal for a job that was just submitted.",
+    "BeginTime"            => "Your job was set to start no earlier than a specific time, and that time has not arrived yet.",
+    "Dependency"           => "Your job is waiting for another job to finish first.",
+    "DependencyNeverSatisfied" => "Your job depends on another job that failed or was cancelled, so it will not start. Cancel it and resubmit.",
+    "JobHeldUser"          => "The job is on hold, placed by you. It will not start until the hold is released (scontrol release <jobid>).",
+    "JobHeldAdmin"         => "The job is on hold, placed by a system administrator. Contact support to find out why.",
+    "ReqNodeNotAvail"      => "The specific nodes your job needs are unavailable (in use, down, reserved or in maintenance). It will wait until they are back.",
+    "Reservation"          => "Your job is waiting for its reserved time window to begin.",
+    "Licenses"             => "Your job is waiting for a software license that is currently in use.",
+    "PartitionDown"        => "The queue (partition) you submitted to is currently not accepting jobs to run.",
+    "PartitionTimeLimit"   => "The time you requested is longer than the queue allows. Cancel it and resubmit with fewer hours.",
+    "PartitionNodeLimit"   => "The number of nodes requested is more than the queue allows. Cancel it and resubmit with a smaller request.",
+    "NodeDown"             => "A node your job needs is down. It will wait until the node is back.",
+    "BadConstraints"       => "The job's resource constraints cannot be met on this cluster. Cancel it and resubmit with different options.",
+    "InvalidAccount"       => "The account on the job is invalid or you are not allowed to use it. Cancel it and resubmit with a valid account.",
+    "InvalidQOS"           => "The quality-of-service (QOS) on the job is invalid or not allowed for you. Cancel it and resubmit.",
+    "SchedDefer"           => "The scheduler is deferring this job for now because the system is busy. It should be scheduled shortly.",
+    "AssocGrpBilling"      => "Your account has reached its usage or billing limit. The job will start when usage drops or the limit is raised.",
+    "AssocGrpMemLimit"     => "Your account does not have enough memory hours remaining. The job may never start unless more resources are requested through ColdFront.",
+    "AssocGrpCpuLimit"     => "Your account does not have enough CPU hours remaining. The job may never start unless more resources are requested through ColdFront.",
+    "AssocGrpGRES"         => "Your account does not have enough GPU hours remaining. The job may never start unless more resources are requested through ColdFront.",
+    "AssocMaxJobsLimit"    => "You have reached the maximum number of jobs allowed to run at once. The job will start when one of yours finishes.",
+    "QOSMaxJobsPerUserLimit" => "You have reached the maximum number of jobs allowed to run at once. The job will start when one of yours finishes."
+  }
+  explain_reason = lambda do |code|
+    base = code.to_s.split(/[,(\s]/).first.to_s
+    reason_text[base] ||
+      case base
+      when /\A(Assoc|QOS)/ then "A usage limit on your account or job is preventing this job from starting."
+      when "" then nil
+      else "Slurm reports this reason code. See the Slurm job reason codes reference or contact support."
+      end
+  end
+-%>
+<%- if start_estimate -%>
+  <%- case start_estimate[:kind] -%>
+  <%- when :time -%>
+<p>
+  <strong>Estimated start:</strong>
+  <%= ERB::Util.h(start_estimate[:time].strftime("%a %b %-d, %-I:%M %p %Z")) %>
+  (<%= ERB::Util.h(humanize.call(start_estimate[:time] - Time.now)) %>)
+  <%- unless start_estimate[:reason].to_s.empty? -%>
+  <br>
+  <strong>Slurm reason:</strong> <code><%= ERB::Util.h(start_estimate[:reason]) %></code>
+  <%- if (why = explain_reason.call(start_estimate[:reason])) -%>
+  &mdash; <%= ERB::Util.h(why) %>
+  <%- end -%>
+  <%- end -%>
+  <br>
+  <small>
+    Slurm's estimate as of <%= [start_estimate[:age] / 60, 0].max %> min ago; it can change as other jobs
+    start or finish. Information is refreshed approximately every 5 minutes. Jobs often start before the
+    estimated start time. 
+  </small>
+</p>
+  <%- when :none -%>
+<p>
+  <strong>Estimated start:</strong> not yet available from Slurm
+  <%- unless start_estimate[:reason].to_s.empty? -%>
+  <br>
+  <strong>Slurm reason:</strong> <code><%= ERB::Util.h(start_estimate[:reason]) %></code>
+  <%- if (why = explain_reason.call(start_estimate[:reason])) -%>
+  &mdash; <%= ERB::Util.h(why) %>
+  <%- end -%>
+  <%- end -%>
+</p>
+  <%- when :pending -%>
+<p><strong>Estimated start:</strong> will appear at the next refresh (updated every 5 minutes).</p>
+  <%- when :unavailable -%>
+<p><strong>Estimated start:</strong> currently unavailable.</p>
+  <%- end -%>
+  ---
+<%- end -%>
+
+
+<%-
 require 'open3'
 begin
     script = 'cat ' + staged_root.to_s + '/warnings.txt'
