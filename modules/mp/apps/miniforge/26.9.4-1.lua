@@ -3,6 +3,7 @@ family("conda")
 extensions("conda/26.9.4", "mamba/2.9.0")
 
 if not os.getenv("MAMBA_ROOT_PREFIX") then
+  local home = os.getenv("HOME")
   setenv("MAMBA_ROOT_PREFIX", pathJoin(home, '.micromamba'))
 end
 source_sh('bash', '/hpc/mp/apps/miniforge/26.9.4-1/etc/profile.d/conda.sh')
