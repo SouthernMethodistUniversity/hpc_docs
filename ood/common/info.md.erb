@@ -288,3 +288,10 @@ end
 > Please cancel jobs by pressing the delete button when you are finished.
 >
 > We may terminate idle jobs to free up the resources for other users!
+
+<% if @user_context.key?("notebook_timeout") %> 
+
+---
+
+> This job will automatically end after it has been idle for <%= @user_context["notebook_timeout"] %> minutes
+<% end %>
