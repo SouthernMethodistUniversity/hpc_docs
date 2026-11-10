@@ -11,7 +11,7 @@ local mathematica_execs=pathJoin(mathematica_install,"Executables")
 -- provide shell functions for users trying to run from a normal term.
 if (container_name == "") then
    -- make shell functions that run inside a container
-   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.1.3_gpu.sif"
+   local container_path="/hpc/m3/containers/remote_desktop/remote_desktop_1.3.2_gpu.sif"
    setenv("APPTAINERENV_GALLIUM_DRIVER","softpipe")
   
    always_load('apptainer')

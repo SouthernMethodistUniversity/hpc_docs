@@ -2,7 +2,7 @@
 
 # Setup Conda
 module purge
-module load conda
+module load miniforge
 
 # Create environment
 mamba create -n ds -c conda-forge jupyterlab pandas

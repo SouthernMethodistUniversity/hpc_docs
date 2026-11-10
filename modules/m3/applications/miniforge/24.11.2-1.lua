@@ -1,9 +1,11 @@
 whatis("Miniforge")
-family("conda")
-extensions("conda/24.11.2", "mamba/1.5.12")
 
-source_sh('bash', '/hpc/m3/apps/miniforge/24.11.2-1/etc/profile.d/conda.sh')
-source_sh('bash', '/hpc/m3/apps/miniforge/24.11.2-1/etc/profile.d/mamba.sh')
+LmodMessage('This module has been removed for security reasons.\
+ The module miniforge/26.9.4-1 will be loaded instead.\
+ If you experience issues, please open a ticket by email help@smu.edu with [HPC]\
+ included in the subject line and a description of the issue.')
+
+load("miniforge/26.9.4-1")
 
 help([[Name: Miniforge
 Version: 24.11.2-1
