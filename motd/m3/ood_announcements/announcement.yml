@@ -6,3 +6,14 @@ msg: |
   in $SCRATCH will be automatically and permanently deleted.
 
   If you have any questions or concerns, please contact the [IT Help Desk](https://www.smu.edu/oit/help).
+
+type: warning
+msg: |
+    <% if Time.now < Time.new(2026, 11, 24, 18, 0, 0) %>
+    **EMERGENCY Maintenance November 24.!**
+    
+    Emergency Maintenance is planned for November 24 to resolve ongoing storage performance issues.
+    
+    Please contact help@smu.edu with [HPC] in the subject line with any questions or concerns.
+    
+    <% end %>

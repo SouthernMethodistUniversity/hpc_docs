@@ -86,3 +86,15 @@ Please contact help@smu.edu with [HPC] in the subject line with any questions
 or concerns.
 
 ********************************************************************************
+
+=====================
+Emergency Maintenance
+=====================
+
+Emergency Maintenance is planned for November 24 to resolve ongoing storage
+performance issues.
+
+Please contact help@smu.edu with [HPC] in the subject line with any questions
+or concerns.
+
+********************************************************************************
