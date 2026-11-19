@@ -5,6 +5,7 @@ defaults:
 parts:
 - caption: Announcements
   chapters:
+  - file: announcements/maintenance_sp_2027.md
   - file: work_deprecation.md
 - caption: Policies
   chapters:
