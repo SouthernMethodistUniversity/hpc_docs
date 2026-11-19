@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="_static/no_code_block_number.css?v=35469b33" />
   
   <!-- So that users can add custom icons -->
@@ -56,7 +56,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="_static/design-tabs.js?v=fcb327ea"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -224,6 +224,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Announcements</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="announcements/maintenance_sp_2027.html">SuperPOD Maintenance, January 4 through January 15</a></li>
 <li class="toctree-l1"><a class="reference internal" href="work_deprecation.html">Personal $WORK is End of Life</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Policies</span></p>
@@ -504,15 +505,15 @@ is required to access HPC resources.</p>
 </div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-0">
-M3</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-0-content" class="sd-tab-label" for="sd-tab-item-0">
+M3</label><div class="sd-tab-content docutils" id="sd-tab-item-0-content">
 <p>M3 can be accessed directly from a browser via the <a class="reference external" href="https://hpc.m3.smu.edu/">HPC OnDemand Web Portal</a>,
 which provides access to files, remote desktops, JupyterLab, and
 RStudio.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-1">
-SuperPOD</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-1-content" class="sd-tab-label" for="sd-tab-item-1">
+SuperPOD</label><div class="sd-tab-content docutils" id="sd-tab-item-1-content">
 <p>The SuperPOD is only accessible via SSH, please see the next section for instructions.</p>
 </div>
 </div>
@@ -529,8 +530,8 @@ those found in Linux, macOS, and Windows (&gt;=10) including WSL.</p>
 </div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-2">
-M3</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-2-content" class="sd-tab-label" for="sd-tab-item-2">
+M3</label><div class="sd-tab-content docutils" id="sd-tab-item-2-content">
 <ol class="arabic simple">
 <li><p>Open a terminal (Terminal on macOS, PowerShell on Windows)</p></li>
 <li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;m3.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
@@ -541,8 +542,8 @@ staff only). Passcodes from the Duo app do not work.</p></li>
 </ol>
 </div>
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-3">
-SuperPOD</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-3-content" class="sd-tab-label" for="sd-tab-item-3">
+SuperPOD</label><div class="sd-tab-content docutils" id="sd-tab-item-3-content">
 <ol class="arabic simple">
 <li><p>Open a terminal (Terminal on macOS, PowerShell on Windows)</p></li>
 <li><p>Type <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;your_username&gt;&#64;superpod.smu.edu</span></code> where <code class="docutils literal notranslate"><span class="pre">&lt;your_username&gt;</span></code> is
@@ -557,14 +558,14 @@ staff only). Passcodes from the Duo app do not work.</p></li>
 <h3>Graphical Applications via X11-Forwarding<a class="headerlink" href="#graphical-applications-via-x11-forwarding" title="Link to this heading">#</a></h3>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-4">
-Linux</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-4-content" class="sd-tab-label" for="sd-tab-item-4">
+Linux</label><div class="sd-tab-content docutils" id="sd-tab-item-4-content">
 <p>No additional softare needed. Add the <code class="docutils literal notranslate"><span class="pre">-X</span></code> flag, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span> <span class="pre">...</span></code> when
 logging in.</p>
 </div>
 <input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-5">
-macOS</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-5-content" class="sd-tab-label" for="sd-tab-item-5">
+macOS</label><div class="sd-tab-content docutils" id="sd-tab-item-5-content">
 <p>macOS requires the one-time installation of
 <a class="reference external" href="https://www.xquartz.org">XQuartz</a> to provide X11 for graphical
 applications.</p>
@@ -581,8 +582,8 @@ is disabled by default</p></li>
 logging in.</p>
 </div>
 <input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-6">
-Windows</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-6-content" class="sd-tab-label" for="sd-tab-item-6">
+Windows</label><div class="sd-tab-content docutils" id="sd-tab-item-6-content">
 <p>Windows SSH via OpenSSH or PuTTY, requires Xming. To install Xming, download
 and install the newest versions of both the <a class="reference external" href="http://sourceforge.net/projects/xming">Xming X
 server</a> and the <a class="reference external" href="http://sourceforge.net/projects/xming/files/Xming-fonts">Xming
@@ -601,8 +602,8 @@ clusters themselves.</p>
 </div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-7" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-7">
-Linux</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-7-content" class="sd-tab-label" for="sd-tab-item-7">
+Linux</label><div class="sd-tab-content docutils" id="sd-tab-item-7-content">
 <p>Run the following commands from a terminal on the <strong>local computer</strong> that
 you want to have key-based access to SMU HPC resources:</p>
 <ol class="arabic simple">
@@ -618,8 +619,8 @@ Press <em>enter</em> and you will be prompted for your SMU password.</p></li>
 </ol>
 </div>
 <input id="sd-tab-item-8" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-8">
-macOS</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-8-content" class="sd-tab-label" for="sd-tab-item-8">
+macOS</label><div class="sd-tab-content docutils" id="sd-tab-item-8-content">
 <p>Run the following commands from a terminal on the <strong>local computer</strong> that
 you want to have key-based access to SMU HPC resources:</p>
 <ol class="arabic simple">
@@ -636,8 +637,8 @@ the key’s password, if present.</p></li>
 </ol>
 </div>
 <input id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
-<label class="sd-tab-label" for="sd-tab-item-9">
-Windows</label><div class="sd-tab-content docutils">
+<label aria-controls="sd-tab-item-9-content" class="sd-tab-label" for="sd-tab-item-9">
+Windows</label><div class="sd-tab-content docutils" id="sd-tab-item-9-content">
 <ol class="arabic simple">
 <li><p>Open PuTTYgen.</p></li>
 <li><p>Press “Generate”.</p></li>

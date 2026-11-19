@@ -3,7 +3,7 @@
 ## SMU Policies
 
 Users must comply with all applicable laws, regulations, and SMU policies
-when using HPC resources. This includes, but is not limited to, 
+when using HPC resources. This includes, but is not limited to,
 [SMU’s acceptable use policy](https://www.smu.edu/policy/8-information-technology/8-1-acceptable-use)
 
 Any commands, job submissions, file operations, processes, network access, etc. that jeopardize the security or stability of the HPC systems or negatively impacts the ability for other researchers to use the systems may be terminated without warning.
