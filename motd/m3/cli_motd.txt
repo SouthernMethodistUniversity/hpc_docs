@@ -75,17 +75,3 @@ the 60-day purge policy for $SCRATCH.  Files older than 60 days stored
 in $SCRATCH will be automatically and permanently deleted. 
 
 ********************************************************************************
-
-=====================
-Emergency Maintenance
-=====================
-
-Emergency Maintenance is planned for November 24 to resolve ongoing storage
-performance issues.
-
-The system will not be available for use while the maintenance is occurring.
-
-Please contact help@smu.edu with [HPC] in the subject line with any questions
-or concerns.
-
-********************************************************************************
